@@ -1,3 +1,3 @@
-# prooftrees
+# chronos
 
-A LaTeX package for drawing logical tableaux.
+A LaTeX package for drawing timelines.
