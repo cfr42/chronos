@@ -21,7 +21,7 @@
 %%
 \pdfminorversion=7
 \RequirePackage{svn-prov}
-\ProvidesFileSVN{$Id: chronos.tex 9848 2023-10-28 03:36:17Z cfrees $}[v0.8 \revinfo]
+\ProvidesFileSVN{$Id: chronos.tex 9864 2023-11-14 21:37:46Z cfrees $}[v0.8 \revinfo]
 \GetFileInfoSVN*
 \let\chronosdocversion\fileversion
 \let\chronosdocbase\filebase
@@ -31,7 +31,7 @@
 \documentclass[10pt,british,a4paper]{ltxdoc}
 % \usepackage[dvipsnames,svgnames,rgb,x11names]{xcolor}
 \usepackage{svn-multi}
-\svnid{$Id: chronos.tex 9848 2023-10-28 03:36:17Z cfrees $}
+\svnid{$Id: chronos.tex 9864 2023-11-14 21:37:46Z cfrees $}
 \svnRegisterAuthor{cfrees}{Clea F. Rees}
 \usepackage[extract=python]{memoize}
 \mmzset{%
@@ -281,7 +281,7 @@
     \bool_if:NT \l__chronosdoc_show_targets_bool
     {
       \par
-      \textcolor{WildStrawberry}{\l_tmpa_tl}
+      \textcolor{chronosWildStrawberry}{\l_tmpa_tl}
     }
     \par
   }
@@ -1174,7 +1174,7 @@
   numbers=none,
 %%% colors
   stringstyle=\color{doc@stringcolor},
-  keywordstyle=\color{WildStrawberry}\bfseries,%\color{doc@keywordcolor}
+  keywordstyle=\color{chronosWildStrawberry}\bfseries,%\color{doc@keywordcolor}
   commentstyle=\color{doc@commentcolor},
   backgroundcolor=\color{doc@demo@backcolor},
   rulecolor=\color{doc@rulecolor},
@@ -2634,7 +2634,7 @@ By default, this \chronosstylelabelname{} does \emph{not} use the bounding box f
       -- & on line & 0:0 & 1800--2050\,\ce{} & default & \fycheck{} & \fycross{}  \\
       \keyname[type=chronosstyle,idx post=features (summary)]{cronoleg} & on line & 10:10 & 500\,\bce{}--2050\,\ce{} & \keyname[type=colscheme,idx post=use by \string\texttt{cronoleg}]{cronoleg} & \fycheck{} & \fycross{}  \\
       \keyname[type=chronosstyle,idx post=features (summary)]{date centric} & [on line] & \fycross{} & 1935--2010\,\ce{} & default & \fycross{} & \fycross{} \\
-      \keyname[type=chronosstyle,idx post=features (summary)]{lavender menace} & on line & 3:3 & 1500--1900\,\ce{} & \keyname[type=colscheme,idx post=use by \string\texttt{lavender menace}]{lavender}+\texttt{Silver} & \fycheck{} & \fycross{}  \\
+      \keyname[type=chronosstyle,idx post=features (summary)]{lavender menace} & on line & 3:3 & 1500--1900\,\ce{} & \keyname[type=colscheme,idx post=use by \string\texttt{lavender menace}]{lavender}+\texttt{chronosSilver} & \fycheck{} & \fycross{}  \\
       \keyname[type=chronosstyle,idx post=features (summary)]{modern} & on line & 3:3 & 1500--1900\,\ce{} & \keyname[type=colscheme,idx post=use by \string\texttt{modern}]{modern} & \fycross{} & \fycross{}  \\
       \keyname[type=chronosstyle,idx post=features (summary)]{rainbow serif} & on line & 3:3 & 1500--2100\,\ce{} & \keyname[type=colscheme,idx post=use by \string\texttt{rainbow serif}]{xcolseries} & \fycheck{} & \fycross{} \\
       \keyname[type=chronosstyle,idx post=features (summary)]{serif on line} & on line & 3:3 & 1800--1900\,\ce{} & default & \fycross{} & \fycross{} \\
@@ -3756,7 +3756,7 @@ Generally, this works well, but an issue occurs if your \conceptname[idx post=sp
         ]
         \chronosevent {date={{-1}-12-31},name=new year's eve,yshift=20pt}
         \chronosevent {date={1-01-01},name=new year's day,yshift=-20pt}
-        \chronosperiod {dates={0-01-01}:{0-12-31},name=non-existent year,colour=WildStrawberry}
+        \chronosperiod {dates={0-01-01}:{0-12-31},name=non-existent year,colour=chronosWildStrawberry}
       \end{chronos}%
     }%
     \subcaptionbox{\pkg{chronos} adjustment.\label{subfig:heb-sero}}{%
@@ -6337,7 +6337,12 @@ These may then be used in the same way as those provided by \pkg{chronos} (\cref
 \subsection{Defining Chronos Colour Schemes}\label{subsec:chronos-scheme-creation}\chronosdochypertargets{concept}{}{chronos colour scheme}
 % BEGIN subsec:chronos-scheme-creation
 
-As explained in \cref{subsec:chronos-schemes}, in addition to the default colours, \pkg{chronos} currently provides \keyname[type=colscheme,idx post=as instance of custom\string\idxeg]{blues,contninety,cronoleg,lavender,modern,offlinebasic,offlinealt,sobriety,xcolseries} (\cref{tab:colschemes}).
+As explained in \cref{subsec:chronos-schemes}, in addition to the default colours, \pkg{chronos} currently provides \keyname[type=colscheme,idx post=as instance of custom\string\idxeg]{blues,contninety,cronoleg,lavender,modern,offlinebasic,offlinealt,sobriety,xcolseries}\footnote{%
+  Note that \keyname[no link,no idx]{xcolseries} uses the \texttt{hsb} colour model, which is not supported by \pgf/\TikZ{}. 
+  If loading this set of colours directly, add \texttt{/utils/exec={\selectcolormodel{rgb}}} to \enviro{chronos}'s optional argument.
+  This is not necessary if loading a \conceptname[no idx,link,type=concept]{chronos style} which utilises \texttt{xcolseries}.%
+  In either case, all colours in the current \enviro{chronos} \envlabelname{} will be converted to \texttt{rgb}.%
+} (\cref{tab:colschemes}).
 \keyname[type=colscheme,idx post=use of colour series]{xcolseries} demonstrates the use of \pkg{xcolor} colour series in \pkg{chronos} \collistslabelname{}.
 \keyname[type=colscheme,idx post=as example of minimal modification to support \string\textsf{chronos styles}]{contninety,modern,offlinebasic,offlinealt} illustrate the use of \colschemeslabelname{} to support \chronosstyleslabelname{} which require minimal modifications of other \colschemeslabelname{}.
 
@@ -6379,28 +6384,28 @@ If \meta{existing scheme} is specified, it should be the name of an existing \co
     \begin{tabularx}\linewidth{>{\ttfamily}ll>{\ttfamily\raggedright\arraybackslash}X}
       \toprule
       \sffamily Key &  \sffamily Expected Argument Type &  \sffamily Example \\\midrule
-      \hypertarget{colschemekey:foreground}{foreground} & \meta{colour name} & black \\ %  {\__chronos_color_set_from_existing:nn {chronos@prifliw}{#1}} %  chronos main colour  &
-      \hypertarget{colschemekey:background}{background} & \meta{colour name} & white \\ %  {\__chronos_color_set_from_existing:nn {chronos@prifliw@cefndir}{#1}} %  chronos main background colour  &
-      \hypertarget{colschemekey:timeline-foreground}{timeline foreground} & \meta{colour name} & Cerulean  \\ %  {\__chronos_color_set_from_existing:nn {chronos@lliw@llinell}{#1}} %  chronos timeline foreground colour  &
-      \hypertarget{colschemekey:timeline-background}{timeline background} & \meta{colour name} &  DodgerBlue4!50!black  \\ %  {\__chronos_color_set_from_existing:nn {chronos@lliw@cefndir@llinell}{#1}} %  chronos timeline background colour    &
-      \hypertarget{colschemekey:timeline-border-outer}{timeline border outer}  & \meta{colour name} & white  \\ %  {\__chronos_color_set_from_existing:nn {chronos@borderouter}{#1}} %  timeline border outer colour  &
-      \hypertarget{colschemekey:timeline-border-inner}{timeline border inner}  & \meta{colour name} & Cerulean  \\ %  {\__chronos_color_set_from_existing:nn {chronos@borderinner}{#1}} %  timeline border inner colour  &
-      \hypertarget{colschemekey:timeline-border-middle}{timeline border middle}  & \meta{colour name} &  DodgerBlue4!50!black \\ %  {\__chronos_color_set_from_existing:nn {chronos@bordermiddle}{#1}} %   timeline border middle colour &
+      \hypertarget{colschemekey:foreground}{foreground} & \meta{colour name} & chronosblack \\ %  {\__chronos_color_set_from_existing:nn {chronos@prifliw}{#1}} %  chronos main colour  &
+      \hypertarget{colschemekey:background}{background} & \meta{colour name} & chronoswhite \\ %  {\__chronos_color_set_from_existing:nn {chronos@prifliw@cefndir}{#1}} %  chronos main background colour  &
+      \hypertarget{colschemekey:timeline-foreground}{timeline foreground} & \meta{colour name} & chronosCerulean  \\ %  {\__chronos_color_set_from_existing:nn {chronos@lliw@llinell}{#1}} %  chronos timeline foreground colour  &
+      \hypertarget{colschemekey:timeline-background}{timeline background} & \meta{colour name} &  chronosDodgerBlue4!50!chronosblack  \\ %  {\__chronos_color_set_from_existing:nn {chronos@lliw@cefndir@llinell}{#1}} %  chronos timeline background colour    &
+      \hypertarget{colschemekey:timeline-border-outer}{timeline border outer}  & \meta{colour name} & chronoswhite  \\ %  {\__chronos_color_set_from_existing:nn {chronos@borderouter}{#1}} %  timeline border outer colour  &
+      \hypertarget{colschemekey:timeline-border-inner}{timeline border inner}  & \meta{colour name} & chronosCerulean  \\ %  {\__chronos_color_set_from_existing:nn {chronos@borderinner}{#1}} %  timeline border inner colour  &
+      \hypertarget{colschemekey:timeline-border-middle}{timeline border middle}  & \meta{colour name} &  chronosDodgerBlue4!50!chronosblack \\ %  {\__chronos_color_set_from_existing:nn {chronos@bordermiddle}{#1}} %   timeline border middle colour &
       \cmidrule(lr){1-3}
-      \hypertarget{colschemekey:life/default}{life/default} & \meta{colour name} & DodgerBlue4  \\ %  {\__chronos_color_set_from_existing:nn {chronos@byw@lliw@rhagosodedig}{#1}} %  life/default colour  &
-      \hypertarget{colschemekey:event/default}{event/default} & \meta{colour name} & DodgerBlue4  \\ %  {\__chronos_color_set_from_existing:nn {chronos@digwyddiad@lliw@rhagosodedig}{#1}} %  event/default colour  &
-      \hypertarget{colschemekey:period/default}{period/default} & \meta{colour name} & DodgerBlue4  \\ %  {\__chronos_color_set_from_existing:nn {chronos@parhad@lliw@rhagosodedig}{#1}} %  period/default colour  &
-      \hypertarget{colschemekey:theory/default}{theory/default} & \meta{colour name} & DodgerBlue4  \\ %  {\__chronos_color_set_from_existing:nn {chronos@theori@lliw@rhagosodedig}{#1}} %  theory/default colour  &
-      \hypertarget{colschemekey:info/default}{info/default} & \meta{colour name} & DodgerBlue4  \\ %  {\__chronos_color_set_from_existing:nn {chronos@gwybodaeth@lliw@rhagosodedig}{#1}} %  info/default colour  &
+      \hypertarget{colschemekey:life/default}{life/default} & \meta{colour name} & chronosDodgerBlue4  \\ %  {\__chronos_color_set_from_existing:nn {chronos@byw@lliw@rhagosodedig}{#1}} %  life/default colour  &
+      \hypertarget{colschemekey:event/default}{event/default} & \meta{colour name} & chronosDodgerBlue4  \\ %  {\__chronos_color_set_from_existing:nn {chronos@digwyddiad@lliw@rhagosodedig}{#1}} %  event/default colour  &
+      \hypertarget{colschemekey:period/default}{period/default} & \meta{colour name} & chronosDodgerBlue4  \\ %  {\__chronos_color_set_from_existing:nn {chronos@parhad@lliw@rhagosodedig}{#1}} %  period/default colour  &
+      \hypertarget{colschemekey:theory/default}{theory/default} & \meta{colour name} & chronosDodgerBlue4  \\ %  {\__chronos_color_set_from_existing:nn {chronos@theori@lliw@rhagosodedig}{#1}} %  theory/default colour  &
+      \hypertarget{colschemekey:info/default}{info/default} & \meta{colour name} & chronosDodgerBlue4  \\ %  {\__chronos_color_set_from_existing:nn {chronos@gwybodaeth@lliw@rhagosodedig}{#1}} %  info/default colour  &
       \cmidrule(lr){1-3}
-      \hypertarget{colschemekey:default-above}{default above} & \meta{list of colour names} &  Red, Orange, Yellow, Green, Blue, MidnightBlue, Violet \\ %  \g__chronos_lliwiau_uchod_clist %  colours above  &
-      \hypertarget{colschemekey:default-below}{default below} & \meta{list of colour names} & Cerulean!50!DodgerBlue4, Cerulean!50!DodgerBlue3, Cerulean!50!DodgerBlue2, Cerulean!50!DodgerBlue1, Cerulean \\ %  \g__chronos_lliwiau_isod_clist %  colours below  &
-      \hypertarget{colschemekey:life/above}{life/above} & \meta{list of colour names} & DeepPink2, DarkOrange1, Firebrick1, Purple0, WildStrawberry, OrangeRed1, DarkGoldenrod1, DarkOrchid3 \\ %  \g__chronos_lliwiau_byw_uchod_clist %   life/colours above  &
-      \hypertarget{colschemekey:life/below}{life/below} & \meta{list of colour names} & DodgerBlue3, Green3, Blue3, SpringGreen4, DeepSkyBlue2, ForestGreen, Periwinkle, SeaGreen3 \\ %  \g__chronos_lliwiau_byw_isod_clist %   life/colours below  &
-      \hypertarget{colschemekey:event/above}{event/above} & \meta{list of colour names} & Thistle4, Thistle4!.5!Thistle3, Thistle3, Thistle3!.5!Thistle2, Thistle2 \\ %  \g__chronos_lliwiau_digwyddiad_uchod_clist %   event/colours above  &
-      \hypertarget{colschemekey:event/below}{event/below} & \meta{list of colour names} & Seashell4, Seashell4!.5!Seashell3, Seashell3, Seashell3!.5!Seashell2, Seashell2 \\ %  \g__chronos_lliwiau_digwyddiad_isod_clist %   event/colours below  &
-      \hypertarget{colschemekey:period/above}{period/above} & \meta{list of colour names} & MistyRose4, MistyRose4!.5!MistyRose3, MistyRose3, MistyRose3!.5!MistyRose2, MistyRose2 \\ %  \g__chronos_lliwiau_parhad_uchod_clist %   period/colours above  &
-      \hypertarget{colschemekey:period/below}{period/below} & \meta{list of colour names} & Ivory4, Ivory4!.5!Ivory3, Ivory3, Ivory3!.5!Ivory2, Ivory2 \\ %  \g__chronos_lliwiau_parhad_isod_clist %   period/colours below  &
+      \hypertarget{colschemekey:default-above}{default above} & \meta{list of colour names} &  chronosRed, chronosOrange, chronosYellow, chronosGreen, chronosBlue, chronosMidnightBlue, chronosViolet \\ %  \g__chronos_lliwiau_uchod_clist %  colours above  &
+      \hypertarget{colschemekey:default-below}{default below} & \meta{list of colour names} & chronosCerulean!50!chronosDodgerBlue4, chronosCerulean!50!chronosDodgerBlue3, chronosCerulean!50!chronosDodgerBlue2, chronosCerulean!50!chronosDodgerBlue1, chronosCerulean \\ %  \g__chronos_lliwiau_isod_clist %  colours below  &
+      \hypertarget{colschemekey:life/above}{life/above} & \meta{list of colour names} & chronosDeepPink2, chronosDarkOrange1, chronosFirebrick1, chronosPurple0, chronosWildStrawberry, chronosOrangeRed1, chronosDarkGoldenrod1, chronosDarkOrchid3 \\ %  \g__chronos_lliwiau_byw_uchod_clist %   life/colours above  &
+      \hypertarget{colschemekey:life/below}{life/below} & \meta{list of colour names} & chronosDodgerBlue3, chronosGreen3, chronosBlue3, chronosSpringGreen4, chronosDeepSkyBlue2, chronosForestGreen, chronosPeriwinkle, chronosSeaGreen3 \\ %  \g__chronos_lliwiau_byw_isod_clist %   life/colours below  &
+      \hypertarget{colschemekey:event/above}{event/above} & \meta{list of colour names} & chronosThistle4, chronosThistle4!.5!chronosThistle3, chronosThistle3, chronosThistle3!.5!chronosThistle2, chronosThistle2 \\ %  \g__chronos_lliwiau_digwyddiad_uchod_clist %   event/colours above  &
+      \hypertarget{colschemekey:event/below}{event/below} & \meta{list of colour names} & chronosSeashell4, chronosSeashell4!.5!chronosSeashell3, chronosSeashell3, chronosSeashell3!.5!chronosSeashell2, chronosSeashell2 \\ %  \g__chronos_lliwiau_digwyddiad_isod_clist %   event/colours below  &
+      \hypertarget{colschemekey:period/above}{period/above} & \meta{list of colour names} & chronosMistyRose4, chronosMistyRose4!.5!chronosMistyRose3, chronosMistyRose3, chronosMistyRose3!.5!chronosMistyRose2, chronosMistyRose2 \\ %  \g__chronos_lliwiau_parhad_uchod_clist %   period/colours above  &
+      \hypertarget{colschemekey:period/below}{period/below} & \meta{list of colour names} & chronosIvory4, chronosIvory4!.5!chronosIvory3, chronosIvory3, chronosIvory3!.5!chronosIvory2, chronosIvory2 \\ %  \g__chronos_lliwiau_parhad_isod_clist %   period/colours below  &
       \hypertarget{colschemekey:theory/above}{theory/above} & \meta{list of colour names} & xcolor s2!![0],xcolor s2!![1],xcolor s2!![2],xcolor s2!![3],xcolor s2!![4],xcolor s2!![5],xcolor s2!![6],xcolor s2!![7],xcolor s2!![8],xcolor s2!![9],xcolor s2!![10],xcolor s2!![11], xcolor s2!![12],xcolor s2!![13],xcolor s2!![14],xcolor s2!![15] \\ %  \g__xcolor_lliwiau_theori_uchod_clist %   theory/colours above  &
       \hypertarget{colschemekey:theory/below}{theory/below} & \meta{list of colour names} & xcolor g2!![0],xcolor g2!![1],xcolor g2!![2],xcolor g2!![3],xcolor g2!![4],xcolor g2!![5],xcolor g2!![6],xcolor g2!![7],xcolor g2!![8],xcolor g2!![9],xcolor g2!![10],xcolor g2!![11],xcolor g2!![12],xcolor g2!![13],xcolor g2!![14],xcolor g2!![15] \\ %  \g__xcolor_lliwiau_theori_isod_clist %   theory/colours below  &
       \bottomrule
@@ -6646,7 +6651,7 @@ This is what many of the standard \conceptname[type=chronosstyle,idx as=loading 
 For instance, here is the sum total of \keyname[type=chronosstyle,idx post=use of custom \string\textsf{colour scheme} in]{modern}'s \keyname[type=colscheme,link,no idx]{modern} \colschemelabelname{},
 \cywir\begin{chronoscode}
 \chronosnewcolourscheme{modern}{%
-  timeline foreground=Silver,
+  timeline foreground=chronosSilver,
 }
 \end{chronoscode}
 
@@ -7028,7 +7033,7 @@ These commands are of the following kinds.
   These are used only very, very locally.
   Any macro which needs to retain its definition for more than a few lines uses a \texttt{chronos@} prefix unless it is a variable in a \pgf{} \keyname[type=macro,no link]{\cs{foreach}} loop.
   \item They are defined only if undefined at the end of the preamble, so existing definitions are maintained without warning or error.
-  This applies to cases where either \pkg{chronos} uses a command if it is available (e.g.~\keyname[type=macro,no link,idx pre=conditionally used,idx as=\cs{uistyle}\string\textrm{\string\idxeg}]{\cs{uistyle}}), but needs a fallback otherwise, or a public macro is made available as a convenience, if the user is not using the name already (e.g.~\keyname[type=macro,idx pre=conditionally defined,idx as=\cs{celabel}\string\textrm{\string\idxeg}]{\cs{celabel}}).
+  This applies to cases where either \pkg{chronos} uses a command if it is available (e.g.~\keyname[type=macro,no link,idx pre=conditionally used,idx as=\cs{uishape}\string\textrm{\string\idxeg}]{\cs{uishape}}), but needs a fallback otherwise, or a public macro is made available as a convenience, if the user is not using the name already (e.g.~\keyname[type=macro,idx pre=conditionally defined,idx as=\cs{celabel}\string\textrm{\string\idxeg}]{\cs{celabel}}).
   These \macroslabelname{} are listed in \cref{tab:public,tab:provides}.
   \begin{table}
     \centering
@@ -7050,7 +7055,8 @@ These commands are of the following kinds.
       \toprule
       \sffamily Functionality used if defined & \sffamily\keyname[type=pkg,no link,font=\sffamily,idx as=chronos,idx post=fallback macro definitions]{\Pkg{chronos}} fallback definition  \\\midrule
       \keyname[type=macro,no link]{\cs{tlstyle}} &  \cs{let}\cs{tlstyle}\cs{upshape} \\
-      \keyname[type=macro,no link]{\cs{uistyle}} &  \cs{let}\cs{uistyle}\cs{itshape} \\
+      \keyname[type=macro,no link]{\cs{uishape}} &  \cs{let}\cs{uishape}\cs{itshape} \\
+      \keyname[type=macro,no link]{\cs{textui}} &  \cs{DeclareTextFontCommand}\{\cs{textui}\}\{\cs{uishape}\} \\
       \keyname[type=macro,no link]{\cs{sishape}} &  \cs{DeclareRobustCommand}\cs{sishape}\{\cs{itshape}\cs{scshape}\} \\
       \keyname[type=macro,no link]{\cs{textsi}} &  \cs{DeclareTextFontCommand}\{\cs{textsi}\}\{\cs{sishape}\} \\
       \bottomrule

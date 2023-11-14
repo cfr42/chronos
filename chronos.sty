@@ -34,7 +34,7 @@
 }%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \RequirePackage{svn-prov}
-\ProvidesPackageSVN{$Id: chronos.sty 9848 2023-10-28 03:36:17Z cfrees $}[\filebase \revinfo]
+\ProvidesPackageSVN{$Id: chronos.sty 9864 2023-11-14 21:37:46Z cfrees $}[\filebase \revinfo]
 \ExplSyntaxOn
 \newif\ifchronos@enwaulliwsyml
 \keys_define:nn { chronos }
@@ -77,7 +77,7 @@
 }
 % \ProcessKeyOptions [chronos]
 \ExplSyntaxOff
-\RequirePackage[rgb,x11names,svgnames,dvipsnames]{xcolor}
+\RequirePackage{xcolor}
 % mae fixedpointarithmetic eisiau fp
 \RequirePackage{tikz,etoolbox,pgfcalendar,calc,fp}% rwyt ti *eisiau* calc!
 \usetikzlibrary{arrows.meta,calc,positioning,fixedpointarithmetic,decorations.text,fit,shadows}
@@ -1241,25 +1241,82 @@
 }
 
 % BEGIN lliwiau
+\definecolorset{rgb}{chronos}{}{% xcolor.sty, x11names.def,svgnames.def
+  Blue,0,0,1;%
+  Blue3,0,0,.804;%
+  DarkGoldenrod1,1,.725,.06;%
+  DarkGray,.664,.664,.664;%
+  DarkOrange1,1,.498,0;%
+  DarkOrchid3,.604,.196,.804;%
+  DarkSlateGrey,.185,.31,.31;%
+  DeepPink2,.932,.07,.536;%
+  DeepSkyBlue2,0,.698,.932;%
+  DodgerBlue1,.116,.565,1;%
+  DodgerBlue2,.11,.525,.932;%
+  DodgerBlue3,.094,.455,.804;%
+  DodgerBlue4,.064,.305,.545;%
+  Firebrick1,1,.19,.19;%
+  ForestGreen,.132,.545,.132;%
+  Green,0,.5,0;%
+  Green3,0,.804,0;%
+  Ivory2,.932,.932,.88;%
+  Ivory3,.804,.804,.756;%
+  Ivory4,.545,.545,.512;%
+  Lavender,.9,.9,.98;%
+  LavenderBlush1,1,.94,.96;%
+  LavenderBlush2,.932,.88,.898;%
+  LavenderBlush3,.804,.756,.772;%
+  LavenderBlush4,.545,.512,.525;%
+  MediumPurple,.576,.44,.86;%
+  MidnightBlue,.098,.098,.44;%
+  MistyRose2,.932,.835,.824;%
+  MistyRose3,.804,.716,.71;%
+  MistyRose4,.545,.49,.484;%
+  Orange,1,.648,0;%
+  OrangeRed1,1,.27,0;%
+  Purple0,.628,.125,.94;%
+  Red,1,0,0;%
+  SeaGreen3,.264,.804,.5;%
+  Seashell2,.932,.898,.87;%
+  Seashell3,.804,.772,.75;%
+  Seashell4,.545,.525,.51;%
+  Silver,.752,.752,.752;%
+  SpringGreen4,0,.545,.27;%
+  Thistle2,.932,.824,.932;%
+  Thistle3,.804,.71,.804;%
+  Thistle4,.545,.484,.545;%
+  Violet,.932,.51,.932;%
+  Yellow,1,1,0;%
+  black,0,0,0;%
+  blue,.66667,1,1;%
+  darkgray,.25,.25,.25;%
+  gray,.5,.5,.5;%
+  red,1,0,0;%
+  white,1,1,1%
+}
+% dvipsnames.def
+\definecolor{chronosCerulean}      {cmyk}{0.94,0.11,0,0}
+\definecolor{chronosPeriwinkle}    {cmyk}{0.57,0.55,0,0}
+\definecolor{chronosWildStrawberry}{cmyk}{0,0.96,0.39,0}
 \newcommand*\chronos@lliwiau@cronoleg{%
-  \chronos@lliwiau@isod{Red,Orange,Yellow,Green,Blue,MidnightBlue,Violet}%
-  \chronos@lliwiau@uchod{Red,Orange,Yellow,Green,Blue,MidnightBlue,Violet}%
-  \chronos@lliwiau@isod[byw]{DodgerBlue3,Green3,Blue3,SpringGreen4,DeepSkyBlue2,ForestGreen,Periwinkle,SeaGreen3}%
-  \chronos@lliwiau@uchod[byw]{DeepPink2,DarkOrange1,Firebrick1,Purple0,WildStrawberry,OrangeRed1,DarkGoldenrod1,DarkOrchid3}%
-  \chronos@lliwiau@isod[digwyddiad]{Seashell4,Seashell4!.5!Seashell3,Seashell3,Seashell3!.5!Seashell2,Seashell2}%
-  \chronos@lliwiau@uchod[digwyddiad]{Thistle4,Thistle4!.5!Thistle3,Thistle3,Thistle3!.5!Thistle2,Thistle2}%
-  \chronos@lliwiau@isod[parhad]{Ivory4,Ivory4!.5!Ivory3,Ivory3,Ivory3!.5!Ivory2,Ivory2}%
-  \chronos@lliwiau@uchod[parhad]{MistyRose4,MistyRose4!.5!MistyRose3,MistyRose3,MistyRose3!.5!MistyRose2,MistyRose2}%
+  \chronos@lliwiau@isod{chronosRed,chronosOrange,chronosYellow,chronosGreen,chronosBlue,chronosMidnightBlue,chronosViolet}%
+  \chronos@lliwiau@uchod{chronosRed,chronosOrange,chronosYellow,chronosGreen,chronosBlue,chronosMidnightBlue,chronosViolet}%
+  \chronos@lliwiau@isod[byw]{chronosDodgerBlue3,chronosGreen3,chronosBlue3,chronosSpringGreen4,chronosDeepSkyBlue2,chronosForestGreen,chronosPeriwinkle,chronosSeaGreen3}%
+  \chronos@lliwiau@uchod[byw]{chronosDeepPink2,chronosDarkOrange1,chronosFirebrick1,chronosPurple0,chronosWildStrawberry,chronosOrangeRed1,chronosDarkGoldenrod1,chronosDarkOrchid3}%
+  \chronos@lliwiau@isod[digwyddiad]{chronosSeashell4,chronosSeashell4!.5!chronosSeashell3,chronosSeashell3,chronosSeashell3!.5!chronosSeashell2,chronosSeashell2}%
+  \chronos@lliwiau@uchod[digwyddiad]{chronosThistle4,chronosThistle4!.5!chronosThistle3,chronosThistle3,chronosThistle3!.5!chronosThistle2,chronosThistle2}%
+  \chronos@lliwiau@isod[parhad]{chronosIvory4,chronosIvory4!.5!chronosIvory3,chronosIvory3,chronosIvory3!.5!chronosIvory2,chronosIvory2}%
+  \chronos@lliwiau@uchod[parhad]{chronosMistyRose4,chronosMistyRose4!.5!chronosMistyRose3,chronosMistyRose3,chronosMistyRose3!.5!chronosMistyRose2,chronosMistyRose2}%
   % BEGIN lliwiau prif
-  \colorlet{chronos@prifliw}{black}% prifliw
-  \colorlet{chronos@prifliw@cefndir}{white}% prifliw cefndir
-  \colorlet{chronos@lliw@cefndir@llinell}{black}% oedd lliw cefndir amser?
-  \colorlet{chronos@lliw@llinell}{white}% oedd lliw amser
-%   \colorlet{chronos@lliw@cefndir}{white}% lliw cefndir
+  \colorlet{chronos@prifliw}{chronosblack}% prifliw
+  \colorlet{chronos@prifliw@cefndir}{chronoswhite}% prifliw cefndir
+  \colorlet{chronos@lliw@cefndir@llinell}{chronosblack}% oedd lliw cefndir amser?
+  \colorlet{chronos@lliw@llinell}{chronoswhite}% oedd lliw amser
+%   \colorlet{chronos@lliw@cefndir}{chronoswhite}% lliw cefndir
   % angen y ffurf gywir
   % yn wreiddiol, 'gwybodaeth' oedd theori ac 'ee' oedd gwybodaeth
-  \colorlet{chronos@lliw@theori}{white}%
-  \colorlet{chronos@lliw@cefndir@theori}{black}%
+  \colorlet{chronos@lliw@theori}{chronoswhite}%
+  \colorlet{chronos@lliw@cefndir@theori}{chronosblack}%
   \colorlet{chronos@lliw@cefndir@gwybodaeth}{chronos@prifliw!25!chronos@prifliw@cefndir}% lliw cefndir ee = prifliw!25!prifliw cefndir
   \colorlet{chronos@lliw@gwybodaeth}{chronos@prifliw}% lliw ee = prifliw
   % \colorlet{chronos@lliw@symbolau@cefndir}{chronos@lliw@cefndir}% lliw symbolau cefndir = lliw cefndir
@@ -1268,18 +1325,18 @@
   % END lliwiau prif
 }
 \newcommand*\chronos@lliwiau@rhagosodedig{%
-  \chronos@lliwiau@isod{Red,Orange,Yellow,Green,Blue,MidnightBlue,Violet}%
-  \chronos@lliwiau@uchod{Red,Orange,Yellow,Green,Blue,MidnightBlue,Violet}%
+  \chronos@lliwiau@isod{chronosRed,chronosOrange,chronosYellow,chronosGreen,chronosBlue,chronosMidnightBlue,chronosViolet}%
+  \chronos@lliwiau@uchod{chronosRed,chronosOrange,chronosYellow,chronosGreen,chronosBlue,chronosMidnightBlue,chronosViolet}%
   % BEGIN lliwiau prif
-  \colorlet{chronos@prifliw}{black}% prifliw
-  \colorlet{chronos@prifliw@cefndir}{white}% prifliw cefndir
-  \colorlet{chronos@lliw@cefndir@llinell}{black}% oedd lliw cefndir amser?
-  \colorlet{chronos@lliw@llinell}{white}% oedd lliw amser
-%   \colorlet{chronos@lliw@cefndir}{white}% lliw cefndir
+  \colorlet{chronos@prifliw}{chronosblack}% prifliw
+  \colorlet{chronos@prifliw@cefndir}{chronoswhite}% prifliw cefndir
+  \colorlet{chronos@lliw@cefndir@llinell}{chronosblack}% oedd lliw cefndir amser?
+  \colorlet{chronos@lliw@llinell}{chronoswhite}% oedd lliw amser
+%   \colorlet{chronos@lliw@cefndir}{chronoswhite}% lliw cefndir
   % angen y ffurf gywir
   % yn wreiddiol, 'gwybodaeth' oedd theori ac 'ee' oedd gwybodaeth
-  \colorlet{chronos@lliw@theori}{white}%
-  \colorlet{chronos@lliw@cefndir@theori}{black}%
+  \colorlet{chronos@lliw@theori}{chronoswhite}%
+  \colorlet{chronos@lliw@cefndir@theori}{chronosblack}%
   \colorlet{chronos@lliw@cefndir@gwybodaeth}{chronos@prifliw!25!chronos@prifliw@cefndir}% lliw cefndir ee = prifliw!25!prifliw cefndir
   \colorlet{chronos@lliw@gwybodaeth}{chronos@prifliw}% lliw ee = prifliw
   % \colorlet{chronos@lliw@symbolau@cefndir}{chronos@lliw@cefndir}% lliw symbolau cefndir = lliw cefndir
@@ -2598,11 +2655,11 @@
   show node color/.forward to=/chronos/show node colour,
   show coordinate color/.forward to=/chronos/show coordinate colour,
   show bb color/.forward to=/chronos/show bb colour,
-  show node colour=blue,
-  show coordinate colour=red,
-  show bb colour=Green,
+  show node colour=chronosblue,
+  show coordinate colour=chronosred,
+  show bb colour=chronosGreen,
   % END show coords
-  dadfygio/.code={\pgfqkeys{/chronos}{placeholders,show coords,show node colour=blue,show coordinate colour=red,show bounding box,show nodes,show node/.style={draw=chronos@lliw@node}}},
+  dadfygio/.code={\pgfqkeys{/chronos}{placeholders,show coords,show node colour=chronosblue,show coordinate colour=chronosred,show bounding box,show nodes,show node/.style={draw=chronos@lliw@node}}},
   debug/.forward to=/chronos/dadfygio,
   % BEGIN digwyddiadau, bywydau, cysylltiadau rhwng y llinell a'r ddau
   enwau lliw syml/.is if=chronos@enwaulliwsyml,
@@ -3041,10 +3098,10 @@
 % %     digwyddiad/lliwiau isod={chronos@prifliw!75!chronos@prifliw@cefndir},
 % %     digwyddiad/lliwiau uchod={chronos@prifliw!75!chronos@prifliw@cefndir},
     theori/cysylltwr testun={fill=chronos@prifliw@cefndir, circle, minimum size=5pt, anchor=center, inner sep=0pt, outer sep=0pt, thick, draw=chronos@prifliw},
-    byw/testun={/chronos/cyffredin/testun, align=left, text=##1!50!black, fill=##1, draw=##1},
+    byw/testun={/chronos/cyffredin/testun, align=left, text=##1!50!chronosblack, fill=##1, draw=##1},
 %     every digwyddiad+={only text},% yn hawsach i toggle on na off felly paid ag analluogi fel rhagosodedig
-    digwyddiad/testun={/chronos/cyffredin/testun, align=left, text=##1!50!black, fill=##1, draw=##1},
-    parhad/testun={/chronos/cyffredin/testun, align=left, text=##1!50!black, fill=##1,  draw=##1},
+    digwyddiad/testun={/chronos/cyffredin/testun, align=left, text=##1!50!chronosblack, fill=##1, draw=##1},
+    parhad/testun={/chronos/cyffredin/testun, align=left, text=##1!50!chronosblack, fill=##1,  draw=##1},
     theori/testun={/chronos/cyffredin/testun, align=center, inner sep=3pt, text=chronos@lliw@theori, fill=chronos@lliw@cefndir@theori, fill opacity=.8, draw=chronos@prifliw, double=chronos@prifliw@cefndir, font=\bfseries},
     byw/llinell={fill=##1, fill opacity=.25, draw=none},
     digwyddiad/llinell={draw=##1, draw opacity=.25, fill=none},
@@ -3072,7 +3129,7 @@
     hawlfraint={font=\footnotesize\bfseries, inner sep=0pt, outer sep=0pt, chronos@prifliw, fill=chronos@prifliw@cefndir},
 %     hawlfraint/cylchdroi=90,
 %     hawlfraint/angor=west,
-    llinellau={color=black!50, opacity=.5},
+    llinellau={color=chronosblack!50, opacity=.5},
     lefelau=10:10,
     special date=none,
     ce year label={\textsc{ce}},
@@ -3140,7 +3197,7 @@
     \begin{scope}[/chronos/@style]
       \extractcolorspec{chronos@lliw@llinell}{\chronos@templlll}%\show\chronos@templlll%
       \extractcolorspec{chronos@lliw@cefndir@llinell}{\chronos@templlllc}%\show\chronos@templlllc%
-      \extractcolorspec{white}{\chronos@templlw}%\show\chronos@templlw%
+      \extractcolorspec{chronoswhite}{\chronos@templlw}%\show\chronos@templlw%
       \extractcolorspec{chronos@prifliw}{\chronos@templlpl}%\show\chronos@templlpl%
       \extractcolorspec{chronos@prifliw@cefndir}{\chronos@templlplc}%\show\chronos@templlplc%
       \ifchronos@yearsonline % BEGIN
@@ -4686,9 +4743,10 @@
   \IfExistF \celabel {\let\celabel\chronos@ce}%
   \IfExistF \bcelabel {\let\bcelabel\chronos@bce}%
   \IfExistF \tlstyle {\let\tlstyle\upshape}%
-  \IfExistF \uistyle {\let\uistyle\itshape}%
   \IfExistF \sishape {\DeclareRobustCommand \sishape{\itshape\scshape}}%
   \IfExistF \textsi {\DeclareTextFontCommand{\textsi}{\sishape}}%
+  \IfExistF \uishape {\let\uishape\itshape}%
+  \IfExistF \textui {\DeclareTextFontCommand{\textui}{\uishape}}%
 }
 % END aliases
 % END macros y ddogfen
