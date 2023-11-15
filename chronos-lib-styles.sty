@@ -16,7 +16,7 @@
 % This work consists of all files listed in manifest.txt.
 %%
 \RequirePackage{chronos}
-\ProvidesPackageSVN{$Id: chronos-lib-styles.sty 9864 2023-11-14 21:37:46Z cfrees $}[\filebase \revinfo]
+\ProvidesPackageSVN{$Id: chronos-lib-styles.sty 9866 2023-11-15 04:51:15Z cfrees $}[\filebase \revinfo]
 \pgfqkeys{/chronos}{%
 % BEGIN styles XXX
   % BEGIN on line styles
@@ -98,7 +98,7 @@
     life/text tag+={font=\small\scshape},
     period/line+={fill=##1, fill opacity=.25},
     life/line+={fill=##1, fill opacity=.25},
-    every text tags+={text=####1!75!chronosblack},% add global default o/w ignored (ond nid eisiau inner sep=0pt)
+    every text tags+={text=####1!75!black},% add global default o/w ignored (ond nid eisiau inner sep=0pt)
     levels=3:3,
     main/title={font=\Large\bfseries,text=chronos main colour,draw=none},
     frame,
@@ -323,7 +323,7 @@
       minor years=false,
       timeline bare marks=false,
     },
-    every text tags+={text=####1!75!chronosblack,font=\sffamily\scriptsize,fill=chronos main background colour,fill opacity=.75},
+    every text tags+={text=####1!75!black,font=\sffamily\scriptsize,fill=chronos main background colour,fill opacity=.75},
     every connections+={draw=####1,{Triangle[width=0pt 3,reversed,length=0pt 1.5]}-{Triangle[width=0pt 3,reversed,length=0pt 1.5]}},
     event/line'={},
     year format={!q!Y},

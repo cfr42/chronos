@@ -21,7 +21,7 @@
 %%
 \pdfminorversion=7
 \RequirePackage{svn-prov}
-\ProvidesFileSVN{$Id: chronos.tex 9864 2023-11-14 21:37:46Z cfrees $}[v0.8 \revinfo]
+\ProvidesFileSVN{$Id: chronos.tex 9867 2023-11-15 05:43:51Z cfrees $}[v0.8 \revinfo]
 \GetFileInfoSVN*
 \let\chronosdocversion\fileversion
 \let\chronosdocbase\filebase
@@ -31,7 +31,7 @@
 \documentclass[10pt,british,a4paper]{ltxdoc}
 % \usepackage[dvipsnames,svgnames,rgb,x11names]{xcolor}
 \usepackage{svn-multi}
-\svnid{$Id: chronos.tex 9864 2023-11-14 21:37:46Z cfrees $}
+\svnid{$Id: chronos.tex 9867 2023-11-15 05:43:51Z cfrees $}
 \svnRegisterAuthor{cfrees}{Clea F. Rees}
 \usepackage[extract=python]{memoize}
 \mmzset{%
@@ -3897,8 +3897,8 @@ Some may also work without the \texttt{timeline/} prefix, but \emph{this is not 
         timeline era margin=10pt,
         major step font=\sffamily\bfseries,
         minor step font=\sffamily\bfseries\small,
-        minor marks,
-        marks,
+        timeline minor marks,
+        timeline marks,
         timeline years=above,
       },
     ]
@@ -5816,6 +5816,15 @@ This is intended for arbitrary \TikZ{} \keyslabelname{}; it should \emph{not} be
 \meta{key-value list} to apply to this \elementlabelname{}'s \conceptname[type=element,idx post=apply arbitrary \string\TikZ{} to]{text tag}.
 This is intended for arbitrary \TikZ{} \keyslabelname{}; it should \emph{not} be used for \pkg{chronos} keys as they may not be processed correctly.
 \keyname{\meta{tag}/text tag,\meta{tag}/text tag\textquotesingle} replace any current list; \keyname{\meta{tag}/text tag+} adds to it.
+\begin{chronoscode}
+\chronosset{%
+  life/text tag+={font=\scshape\small},
+  event/text tag+={font=\scshape\footnotesize},
+  period/text tag+={font=\itshape\footnotesize},
+}
+\end{chronoscode}
+See also \keyname[no idx]{\meta{tag}/date font,\meta{tag}/text font}.
+
 
 \DescribeKey{\meta{tag}/chronos connector,\meta{tag}/chronos connector+,\meta{tag}/chronos connector\textquotesingle}\valmarg{key-value list} \chronosdochypertargets{key}{life,event,period,theory}{chronos connector,chronos connector+,chronos connector\textquotesingle}\fortags{life,event,period}\AfterLastParam
 Specify \TikZ{} settings to be used when creating \conceptname[idx as=chronos connector]{chronos connectors} on the \conceptname[no idx]{timeline}.
@@ -5896,6 +5905,41 @@ The angle to rotate the node containing a \conceptname[type=tag,conj=or,no idx]{
 The year of publication for a \conceptname[type=tag,conj=or,no idx]{copyleft,copyright} notice.
 \Default[if available]{\cs{svnyear}}
 \Default[otherwise]{\cs{today}}
+
+\subsubsection{Specialist Fonts for Text Tags}\label{subsubsec:text-tags-specialist-fonts}
+% BEGIN subsubsec:text-tags-specialist-fonts
+
+\DescribeKey{\meta{tag}/date font}\valmarg{font commands} \hypertarget{key:life/date-font}{}\hypertarget{key:event/date-font}{}\hypertarget{key:period/date font}{}\fortags{life,event,period}\AfterLastParam
+Set font macros to be applied to the date content of \conceptsname[link,idx post={font, date(s)}]{text tag}.
+\Default{}
+\begin{chronoscode}
+\chronosset{%
+  ...
+  event/date font=\itshape\bfseries\small,
+  life/date font=\sffamily\large,
+  period/date font=\upshape\normalsize\mdseries,
+}
+\end{chronoscode}
+Note that if you want to alter the font for the entire contents of the \conceptname[link,no idx]{text tag}, it is better to just use \texttt{\meta{tag}/text tag+={font\valmarg{}}}.
+Use \texttt{date font} to modify those settings specifically for date(s).
+Note that if \conceptname[link,no idx]{era label} are included, they will not be affected.
+
+\DescribeKey{\meta{tag}/text font}\valmarg{font commands} \hypertarget{key:life/text-font}{}\hypertarget{key:event/text-font}{}\hypertarget{key:period/text-font}{}\fortags{life,event,period}\AfterLastParam
+Set font macros to be applied to the text content of \conceptsname[link,idx post={font, text}]{text tag}.
+\Default{}
+\begin{chronoscode}
+\chronosset{%
+  ...
+  event/text font=\uishape\large,
+  life/text font=\sffamily\Large,
+  period/text font=\small\bfseries,
+}
+\end{chronoscode}
+Note that if you want to alter the font for the entire contents of the \conceptname[link,no idx]{text tag}, it is better to just use \texttt{\meta{tag}/text tag+={font\valmarg{}}}.
+Use \texttt{text font} to modify those settings specifically for names.
+
+
+% END subsubsec:text-tags-specialist-fonts
 
 % END subsec:add-elements-glconfig
 

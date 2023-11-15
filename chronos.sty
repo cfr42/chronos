@@ -34,7 +34,7 @@
 }%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \RequirePackage{svn-prov}
-\ProvidesPackageSVN{$Id: chronos.sty 9864 2023-11-14 21:37:46Z cfrees $}[\filebase \revinfo]
+\ProvidesPackageSVN{$Id: chronos.sty 9866 2023-11-15 04:51:15Z cfrees $}[\filebase \revinfo]
 \ExplSyntaxOn
 \newif\ifchronos@enwaulliwsyml
 \keys_define:nn { chronos }
@@ -1287,12 +1287,7 @@
   Thistle4,.545,.484,.545;%
   Violet,.932,.51,.932;%
   Yellow,1,1,0;%
-  black,0,0,0;%
-  blue,.66667,1,1;%
-  darkgray,.25,.25,.25;%
-  gray,.5,.5,.5;%
-  red,1,0,0;%
-  white,1,1,1%
+  darkgray,.25,.25,.25%
 }
 % dvipsnames.def
 \definecolor{chronosCerulean}      {cmyk}{0.94,0.11,0,0}
@@ -1308,15 +1303,15 @@
   \chronos@lliwiau@isod[parhad]{chronosIvory4,chronosIvory4!.5!chronosIvory3,chronosIvory3,chronosIvory3!.5!chronosIvory2,chronosIvory2}%
   \chronos@lliwiau@uchod[parhad]{chronosMistyRose4,chronosMistyRose4!.5!chronosMistyRose3,chronosMistyRose3,chronosMistyRose3!.5!chronosMistyRose2,chronosMistyRose2}%
   % BEGIN lliwiau prif
-  \colorlet{chronos@prifliw}{chronosblack}% prifliw
-  \colorlet{chronos@prifliw@cefndir}{chronoswhite}% prifliw cefndir
-  \colorlet{chronos@lliw@cefndir@llinell}{chronosblack}% oedd lliw cefndir amser?
-  \colorlet{chronos@lliw@llinell}{chronoswhite}% oedd lliw amser
-%   \colorlet{chronos@lliw@cefndir}{chronoswhite}% lliw cefndir
+  \colorlet{chronos@prifliw}{black}% prifliw
+  \colorlet{chronos@prifliw@cefndir}{white}% prifliw cefndir
+  \colorlet{chronos@lliw@cefndir@llinell}{black}% oedd lliw cefndir amser?
+  \colorlet{chronos@lliw@llinell}{white}% oedd lliw amser
+%   \colorlet{chronos@lliw@cefndir}{white}% lliw cefndir
   % angen y ffurf gywir
   % yn wreiddiol, 'gwybodaeth' oedd theori ac 'ee' oedd gwybodaeth
-  \colorlet{chronos@lliw@theori}{chronoswhite}%
-  \colorlet{chronos@lliw@cefndir@theori}{chronosblack}%
+  \colorlet{chronos@lliw@theori}{white}%
+  \colorlet{chronos@lliw@cefndir@theori}{black}%
   \colorlet{chronos@lliw@cefndir@gwybodaeth}{chronos@prifliw!25!chronos@prifliw@cefndir}% lliw cefndir ee = prifliw!25!prifliw cefndir
   \colorlet{chronos@lliw@gwybodaeth}{chronos@prifliw}% lliw ee = prifliw
   % \colorlet{chronos@lliw@symbolau@cefndir}{chronos@lliw@cefndir}% lliw symbolau cefndir = lliw cefndir
@@ -1328,15 +1323,15 @@
   \chronos@lliwiau@isod{chronosRed,chronosOrange,chronosYellow,chronosGreen,chronosBlue,chronosMidnightBlue,chronosViolet}%
   \chronos@lliwiau@uchod{chronosRed,chronosOrange,chronosYellow,chronosGreen,chronosBlue,chronosMidnightBlue,chronosViolet}%
   % BEGIN lliwiau prif
-  \colorlet{chronos@prifliw}{chronosblack}% prifliw
-  \colorlet{chronos@prifliw@cefndir}{chronoswhite}% prifliw cefndir
-  \colorlet{chronos@lliw@cefndir@llinell}{chronosblack}% oedd lliw cefndir amser?
-  \colorlet{chronos@lliw@llinell}{chronoswhite}% oedd lliw amser
-%   \colorlet{chronos@lliw@cefndir}{chronoswhite}% lliw cefndir
+  \colorlet{chronos@prifliw}{black}% prifliw
+  \colorlet{chronos@prifliw@cefndir}{white}% prifliw cefndir
+  \colorlet{chronos@lliw@cefndir@llinell}{black}% oedd lliw cefndir amser?
+  \colorlet{chronos@lliw@llinell}{white}% oedd lliw amser
+%   \colorlet{chronos@lliw@cefndir}{white}% lliw cefndir
   % angen y ffurf gywir
   % yn wreiddiol, 'gwybodaeth' oedd theori ac 'ee' oedd gwybodaeth
-  \colorlet{chronos@lliw@theori}{chronoswhite}%
-  \colorlet{chronos@lliw@cefndir@theori}{chronosblack}%
+  \colorlet{chronos@lliw@theori}{white}%
+  \colorlet{chronos@lliw@cefndir@theori}{black}%
   \colorlet{chronos@lliw@cefndir@gwybodaeth}{chronos@prifliw!25!chronos@prifliw@cefndir}% lliw cefndir ee = prifliw!25!prifliw cefndir
   \colorlet{chronos@lliw@gwybodaeth}{chronos@prifliw}% lliw ee = prifliw
   % \colorlet{chronos@lliw@symbolau@cefndir}{chronos@lliw@cefndir}% lliw symbolau cefndir = lliw cefndir
@@ -1696,6 +1691,8 @@
       cysylltwr testun'/.code={\chronos@cadw@nodweddion{#1}{@cysylltwr@testun}{##1}},
       cysylltwr testun+/.code={\chronos@ychwanegu@nodweddion{#1}{@cysylltwr@testun}{##1}},
       cysylltwr testun/.forward to=/chronos/#1/cysylltwr testun+,
+      ffont testun/.code={\expandafter\def\csname chronos@#1@ffonttestun\endcsname{##1}},
+      ffont testun=,
       prif gysylltwr testun'/.code={\chronos@cadw@nodweddion{#1}{@cysylltwr@testun@prif}{##1}},
       prif gysylltwr testun+/.code={\chronos@ychwanegu@nodweddion{#1}{@cysylltwr@testun@prif}{##1}},
       prif gysylltwr testun/.forward to=/chronos/#1/prif gysylltwr testun',
@@ -1752,6 +1749,7 @@
       connectors/.forward to=/chronos/#1/cysylltwyr,
       connectors+/.forward to=/chronos/#1/cysylltwyr+,
       connectors'/.forward to=/chronos/#1/cysylltwyr',
+      text font/.forward to=/chronos/#1/ffont testun,
       text tag connector+/.forward to=/chronos/#1/cysylltwr testun+,
       text tag connector'/.forward to=/chronos/#1/cysylltwr testun',
       text tag connector/.forward to=/chronos/#1/cysylltwr testun,
@@ -1935,6 +1933,8 @@
       dyddiadau llawn/.chronos track={@#1@llawn},
       heb gyfnodau/.chronos track={@#1@cyfnodau},
       blynyddoedd yn unig/.chronos track={@#1@llawn},
+      ffont dyddiad/.code={\expandafter\def\csname chronos@#1@ffontdyddiad\endcsname{##1}},
+      ffont dyddiad=,
       % BEGIN saesneg: /chronos/#1
       dates/.forward to=/chronos/#1/dyddiadau,
       #8/.forward to=/chronos/#1/#2,
@@ -1954,6 +1954,7 @@
       full dates/.forward to=/chronos/#1/dyddiadau llawn,
       without eras/.forward to=/chronos/#1/heb gyfnodau,
       show eras/.forward to=/chronos/#1/dangos cyfnodau,
+      date font/.forward to=/chronos/#1/ffont dyddiad,
       % END saesneg: /chronos/#1
     }%
   },
@@ -2655,11 +2656,11 @@
   show node color/.forward to=/chronos/show node colour,
   show coordinate color/.forward to=/chronos/show coordinate colour,
   show bb color/.forward to=/chronos/show bb colour,
-  show node colour=chronosblue,
-  show coordinate colour=chronosred,
+  show node colour=blue,
+  show coordinate colour=red,
   show bb colour=chronosGreen,
   % END show coords
-  dadfygio/.code={\pgfqkeys{/chronos}{placeholders,show coords,show node colour=chronosblue,show coordinate colour=chronosred,show bounding box,show nodes,show node/.style={draw=chronos@lliw@node}}},
+  dadfygio/.code={\pgfqkeys{/chronos}{placeholders,show coords,show node colour=blue,show coordinate colour=red,show bounding box,show nodes,show node/.style={draw=chronos@lliw@node}}},
   debug/.forward to=/chronos/dadfygio,
   % BEGIN digwyddiadau, bywydau, cysylltiadau rhwng y llinell a'r ddau
   enwau lliw syml/.is if=chronos@enwaulliwsyml,
@@ -2777,6 +2778,8 @@
   /chronos/digwyddiad/.chronos tag init={digwyddiad}{event},
   /chronos/digwyddiad/.cd,
   dyddiad/.style={/chronos/set date aux/.expanded={#1-01-01-0@dig}},
+  ffont dyddiad/.code={\def\chronos@digwyddiad@ffontdyddiad{#1}},
+  ffont dyddiad=,
   fformat dyddiad/.code={%
     \def\chronos@digwyddiad@fformatdyddiad{#1}%
     \chronos@ychwanegu@nodweddion{digwyddiad}{@tag}{/chronos/digwyddiad/fformat dyddiad={#1}}%
@@ -2800,6 +2803,7 @@
   blynyddoedd yn unig/.chronos track={@digwyddiad@llawn},
   % BEGIN saesneg: /chronos/digwyddiad
   date/.forward to=/chronos/digwyddiad/dyddiad,
+  date font/.forward to=/chronos/digwyddiad/ffont dyddiad,
   date format/.forward to=/chronos/digwyddiad/fformat dyddiad,
   show eras/.forward to=/chronos/digwyddiad/dangos cyfnodau,
   only years/.forward to=/chronos/digwyddiad/blynyddoedd yn unig,
@@ -3098,10 +3102,10 @@
 % %     digwyddiad/lliwiau isod={chronos@prifliw!75!chronos@prifliw@cefndir},
 % %     digwyddiad/lliwiau uchod={chronos@prifliw!75!chronos@prifliw@cefndir},
     theori/cysylltwr testun={fill=chronos@prifliw@cefndir, circle, minimum size=5pt, anchor=center, inner sep=0pt, outer sep=0pt, thick, draw=chronos@prifliw},
-    byw/testun={/chronos/cyffredin/testun, align=left, text=##1!50!chronosblack, fill=##1, draw=##1},
+    byw/testun={/chronos/cyffredin/testun, align=left, text=##1!50!black, fill=##1, draw=##1},
 %     every digwyddiad+={only text},% yn hawsach i toggle on na off felly paid ag analluogi fel rhagosodedig
-    digwyddiad/testun={/chronos/cyffredin/testun, align=left, text=##1!50!chronosblack, fill=##1, draw=##1},
-    parhad/testun={/chronos/cyffredin/testun, align=left, text=##1!50!chronosblack, fill=##1,  draw=##1},
+    digwyddiad/testun={/chronos/cyffredin/testun, align=left, text=##1!50!black, fill=##1, draw=##1},
+    parhad/testun={/chronos/cyffredin/testun, align=left, text=##1!50!black, fill=##1,  draw=##1},
     theori/testun={/chronos/cyffredin/testun, align=center, inner sep=3pt, text=chronos@lliw@theori, fill=chronos@lliw@cefndir@theori, fill opacity=.8, draw=chronos@prifliw, double=chronos@prifliw@cefndir, font=\bfseries},
     byw/llinell={fill=##1, fill opacity=.25, draw=none},
     digwyddiad/llinell={draw=##1, draw opacity=.25, fill=none},
@@ -3129,7 +3133,7 @@
     hawlfraint={font=\footnotesize\bfseries, inner sep=0pt, outer sep=0pt, chronos@prifliw, fill=chronos@prifliw@cefndir},
 %     hawlfraint/cylchdroi=90,
 %     hawlfraint/angor=west,
-    llinellau={color=chronosblack!50, opacity=.5},
+    llinellau={color=black!50, opacity=.5},
     lefelau=10:10,
     special date=none,
     ce year label={\textsc{ce}},
@@ -3197,7 +3201,7 @@
     \begin{scope}[/chronos/@style]
       \extractcolorspec{chronos@lliw@llinell}{\chronos@templlll}%\show\chronos@templlll%
       \extractcolorspec{chronos@lliw@cefndir@llinell}{\chronos@templlllc}%\show\chronos@templlllc%
-      \extractcolorspec{chronoswhite}{\chronos@templlw}%\show\chronos@templlw%
+      \extractcolorspec{white}{\chronos@templlw}%\show\chronos@templlw%
       \extractcolorspec{chronos@prifliw}{\chronos@templlpl}%\show\chronos@templlpl%
       \extractcolorspec{chronos@prifliw@cefndir}{\chronos@templlplc}%\show\chronos@templlplc%
       \ifchronos@yearsonline % BEGIN
@@ -4076,20 +4080,20 @@
         \def \chronos@cynnwys@enw {\chronos@enw@priflythrennu{\chronos@byw@enw}}%
       }%
       \IfExistTF \chronos@cynnwys@dyddiadau {%
-        \pretocmd \chronos@cynnwys@dyddiadau {\\}{}{}%
+        \pretocmd \chronos@cynnwys@dyddiadau {\\\chronos@byw@ffontdyddiad}{}{}%
       }{%
         \ifchronos@onlytext\let\chronos@cynnwys@dyddiadau\relax
         \else
           \ifchronos@bufarw\relax\else\def\chronos@byw@labelmarw{}\fi
           \chronos@dyddiadau@tag{byw}{geni}{geni}{marw}{marw}%
           \ifchronos@temp
-            \def \chronos@cynnwys@dyddiadau {\\\chronos@byw@labelmarw}%
+            \def \chronos@cynnwys@dyddiadau {\\\chronos@byw@ffontdyddiad\chronos@byw@labelmarw}%
           \else
-            \def \chronos@cynnwys@dyddiadau {\\\chronos@byw@labelgeni--\chronos@byw@labelmarw}%
+            \def \chronos@cynnwys@dyddiadau {\\\chronos@byw@ffontdyddiad\chronos@byw@labelgeni--\chronos@byw@labelmarw}%
           \fi
         \fi
       }%
-      \def \chronos@cynnwys@testun {\chronos@cynnwys@enw\chronos@cynnwys@dyddiadau}%
+      \def \chronos@cynnwys@testun {{\chronos@byw@ffonttestun\chronos@cynnwys@enw}\chronos@cynnwys@dyddiadau}%
     }%
     \chronos@creu@llinell {byw}{\chronos@temph pt}{\chronos@tempk pt}{geni}{marw}%
     % final coordinate accurate for x and y
@@ -4134,15 +4138,22 @@
     \chronos@gosodborder@tag{digwyddiad}%
     \ifchronos@eventdatessplit
       \ifchronos@onlytext\relax
+        \IfExistF \chronos@cynnwys@testun {%
+          \IfExistTF  \chronos@cynnwys@enw {%
+            \def\chronos@cynnwys@testun {\chronos@digwyddiad@ffonttestun\chronos@cynnwys@enw}
+          }{%
+            \def \chronos@cynnwys@testun {\chronos@digwyddiad@ffonttestun\chronos@enw@priflythrennu{\chronos@digwyddiad@enw}}%
+          }%
+        }%
       \else
         \IfExistF \chronos@cynnwys@testun {%
           \IfExistF \chronos@cynnwys@dyddiadau {%
             \def \chronos@cynnwys@dyddiadau {\chronos@showdate@cs[chronos@digwyddiad@fformatdyddiad]{dig}}%
           }%
           \IfExistTF  \chronos@cynnwys@enw {%
-            \let\chronos@cynnwys@testun\chronos@cynnwys@enw
+            \def\chronos@cynnwys@testun {\chronos@digwyddiad@ffonttestun\chronos@cynnwys@enw}
           }{%
-            \def \chronos@cynnwys@testun {\chronos@enw@priflythrennu{\chronos@digwyddiad@enw}}%
+            \def \chronos@cynnwys@testun {\chronos@digwyddiad@ffonttestun\chronos@enw@priflythrennu{\chronos@digwyddiad@enw}}%
           }%
         }%
       \fi
@@ -4156,13 +4167,14 @@
         }%
         \IfExistTF \chronos@cynnwys@dyddiadau {%
           \apptocmd \chronos@cynnwys@dyddiadau {\\}{}{}%
+          \pretocmd \chronos@cynnwys@dyddiadau {\chronos@digwyddiad@ffontdyddiad}{}{}%
         }{%
           \ifchronos@onlytext\let\chronos@cynnwys@dyddiadau\relax
           \else
-            \def \chronos@cynnwys@dyddiadau {\chronos@showdate@cs[chronos@digwyddiad@fformatdyddiad]{dig}\\}%
+            \def \chronos@cynnwys@dyddiadau {\chronos@digwyddiad@ffontdyddiad\chronos@showdate@cs[chronos@digwyddiad@fformatdyddiad]{dig}\\}%
           \fi
         }%
-        \def \chronos@cynnwys@testun {\chronos@cynnwys@dyddiadau\chronos@cynnwys@enw}%
+        \def \chronos@cynnwys@testun {\chronos@cynnwys@dyddiadau\chronos@digwyddiad@ffonttestun\chronos@cynnwys@enw}%
       }%
     \fi
     % marcio digwyddiad ar y lein
@@ -4249,7 +4261,7 @@
           \fi
         \fi
       }%
-      \def \chronos@cynnwys@testun {\chronos@cynnwys@dyddiadau\chronos@cynnwys@enw}%
+      \def \chronos@cynnwys@testun {\chronos@parhad@ffontdyddiad\chronos@cynnwys@dyddiadau\chronos@parhad@ffonttestun\chronos@cynnwys@enw}%
     }%
     \chronos@creu@llinell {parhad}{\chronos@temph pt}{\chronos@tempk pt}{dechrau}{diwedd}%
     % final coordinate placement
@@ -4304,7 +4316,7 @@
       \def \chronos@cynnwys@testun {\chronos@cynnwys@enw}%
     }%
     % creu testun (text tag)
-    \chronos@creu@testun@tag[alias=\chronos@theori@tikzname]{theori}{\chronos@cynnwys@testun}%
+    \chronos@creu@testun@tag[alias=\chronos@theori@tikzname]{theori}{\chronos@theori@ffonttestun\chronos@cynnwys@testun}%
     \begin{scope}[/chronos/middle anchorborder]% ateb Symbol 1: https://tex.stackexchange.com/a/385953/
       \IfExistT \chronos@cysylltwyr{%
         \chronos@angorau@theori{\chronos@theori@enw}{cysylltwr \chronos@theori@enw}[connector \chronos@theori@enw]{/chronos/@cysylltwr@testun=\chronos@theori@lliw}}%
