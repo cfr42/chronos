@@ -21,7 +21,7 @@
 %%
 \pdfminorversion=7
 \RequirePackage{svn-prov}
-\ProvidesFileSVN{$Id: chronos.tex 9867 2023-11-15 05:43:51Z cfrees $}[v0.8 \revinfo]
+\ProvidesFileSVN{$Id: chronos.tex 9884 2023-11-21 19:38:19Z cfrees $}[v0.8 \revinfo]
 \GetFileInfoSVN*
 \let\chronosdocversion\fileversion
 \let\chronosdocbase\filebase
@@ -31,7 +31,7 @@
 \documentclass[10pt,british,a4paper]{ltxdoc}
 % \usepackage[dvipsnames,svgnames,rgb,x11names]{xcolor}
 \usepackage{svn-multi}
-\svnid{$Id: chronos.tex 9867 2023-11-15 05:43:51Z cfrees $}
+\svnid{$Id: chronos.tex 9884 2023-11-21 19:38:19Z cfrees $}
 \svnRegisterAuthor{cfrees}{Clea F. Rees}
 \usepackage[extract=python]{memoize}
 \mmzset{%
@@ -2235,7 +2235,7 @@ The \conceptname[target,idx post=components of]{timeline} itself is a horizontal
   The \keyname[link,idx=false,type=dimkey,link prefix=timeline/]{height,width,timeline border height} are responsible for the total size of the \conceptname[idx post=dimensions responsible for total size]{timeline}.
   \item \Conceptname[idx as=timeline border,target,target as={timeline border,border},idx post=introduction to]{borders}\chronosdochypertargets{element}{timeline}{timeline border} are (potentially) filled with a gradient above and below the main line.
   By default, borders are added when marks are placed on the \conceptname[idx post=borders,idx font post=\sffamily]{timeline} itself, which necessitates a taller \conceptname[idx post={effect of \string\textconcept{borders} on dimensions}]{timeline}.
-  \item \Conceptname[target,idx post=location]{era labels} are (potentially) placed at each end of the line, depending on the time period covered.
+  \item \Conceptsname[target,idx post=location]{era label} are (potentially) placed at each end of the line, depending on the time period covered.
   \item Timeline \conceptname[target,idx post=placement]{years,minor years,marks,minor marks,bare marks} may be placed above, below or on the main \conceptname[no idx,link]{timeline line}.
 \end{itemize}
 
@@ -2622,12 +2622,13 @@ See \cref{tab:chronosstyles,fig:cronoleg}.
 \end{figure}
 By default, this \chronosstylelabelname{} does \emph{not} use the bounding box for the \conceptname[link,link to=main/frame,idx post=cronoleg \string\textnormal{as not using bounding box for}\string\idxeg,idx font post=\KeyFont]{frame}.
 
+\newcolumntype{H}{>{\raggedright}X}
 \begin{table}
   \begin{adjustwidth}{-\tewadjust}{0pt}
     \centering 
     \caption{Summary of \chronosstyleslabelname.}\label{tab:chronosstyles}
     \chronosdocidx[type=chronosstyle,font=\normalfont]{list of}
-    \begin{tabularx}\linewidth{>{\ttfamily}l>{\ttfamily}X>{\ttfamily}lXlcc}
+    \begin{tabularx}\linewidth{>{\ttfamily}l>{\ttfamily}H>{\ttfamily}lHlcc}
       \toprule
       & & \multicolumn{4}{c}{\sffamily Defaults} \\\cmidrule(lr){3-7}
       \sffamily Name & \sffamily Timeline Year Style & \textsf{Levels} & \textsf{Dates} & \textsf{Colour Scheme} & \sffamily Rotation & \sffamily Arrow \\ \toprule
@@ -2874,8 +2875,11 @@ Intended for \conceptname[idx as=timeline,,no idx,link,link to=timeline]{timelin
 See \cref{tab:chronosstyles,subfig:flipping-blues}.
 This \stylelabelname{} demonstrates how to utilise an existing \chronosstylelabelname{} to produce a variant.
 
-\DescribeChronosstyle{off line colour}\chronosdocidx[symbol=eg,idx pre=off line,type=chronosstyle]{off line colour}A straightforward style utilising scientific dates.
+\DescribeChronosstyle{off line colour}\val{length}\chronosdocidx[symbol=eg,idx pre=off line,type=chronosstyle]{off line colour}\AfterLastParam
+A straightforward style utilising scientific dates in which the \conceptname[no idx,link,link to=timeline/timeline line]{line} tapers to form an arrow.
 Intended for \conceptname[idx as=timeline,,no idx,link,link to=timeline]{timelines} which add \elementslabelname{} above and/or below.
+The optional \meta{length} specifies the length of the tapering.
+\Default{20mm}
 See \cref{tab:chronosstyles,subfig:off-line-col}.
 \begin{figure}
   \begin{adjustwidth}{-\tewadjust}{0pt}
@@ -2980,14 +2984,16 @@ See \cref{tab:chronosstyles,subfig:off-line-col}.
 This \stylelabelname{} demonstrates the use of \keyname[type=layer,link to=chronos middle ground]{chronos middle ground layer} to reduce visual clutter where \conceptname[idx as=connection,idx post=reducing visual clutter]{connections} cross \conceptname[idx post=in \string\textkey{off line colour}\string\idxeg]{timeline marks}.
 Although the \conceptname[idx as=connection,idx post=on \string\textkey{chronos middle ground layer}]{connections} are drawn after the \conceptname[no idx,link,link to=timeline]{timeline}, they are placed on a lower \layerlabelname{}, with a partially transparent rectangle in between.
 
-\DescribeChronosstyle{off line colour alt}\chronosdocidx[symbol=eg,idx pre=off line,type=chronosstyle]{off line colour alt}A variant of \keyname[link,idx=false,type=chronosstyle]{off line colour} which uses a different \colschemelabelname{}.
-Intended for \conceptname[idx as=timeline,no idx,link,link to=timeline]{timelines} which add \elementslabelname{} above and/or below.
+\DescribeChronosstyle{off line colour alt}\val{length}\chronosdocidx[symbol=eg,idx pre=off line,type=chronosstyle]{off line colour alt}\AfterLastParam
+A variant of \keyname[link,idx=false,type=chronosstyle]{off line colour} which uses a different \colschemelabelname{}.
+\Default{20mm}
 See \cref{tab:chronosstyles,subfig:off-line-col-alt}.
 
-\DescribeChronosstyle{off line simple}\chronosdocidx[symbol=eg,idx pre=off line,type=chronosstyle]{off line simple}A less colourful variant of \keyname[link,idx=false,type=chronosstyle]{off line colour} utilising only two colours\texseans[%
+\DescribeChronosstyle{off line simple}\val{length}\chronosdocidx[symbol=eg,idx pre=off line,type=chronosstyle]{off line simple}\AfterLastParam
+A less colourful variant of \keyname[link,idx=false,type=chronosstyle]{off line colour} utilising only two colours\texseans[%
   In fact, this version is closest to the original. 
   See]{324106}.
-Intended for \conceptname[idx as=timeline,no idx,link,link to=timeline]{timelines} which add \elementslabelname{} above and/or below.
+\Default{20mm}
 See \cref{tab:chronosstyles,subfig:off-line-simple}.
 
 \DescribeChronosstyle{rotated 45}\chronosdocidx[symbol=eg,idx pre=off line,type=chronosstyle]{rotated 45}A \chronosstylelabelname{} featuring the off-set \conceptname[idx as=line,idx post=rotated 45\string\idxeg,idx font post=\KeyFont]{lines} and \conceptname[idx as=\meta{tag}/text tag,idx post=rotated]{text tags} rotated through 45\textdegree{}.
@@ -3014,7 +3020,10 @@ See \cref{tab:chronosstyles,fig:rotated45}.
 \end{figure}
 This \stylelabelname{} demonstrates how to rotate \conceptname[idx as=\meta{tag}/text tag,idx post=rotated\string\idxeg]{text tags}.
 
-\DescribeChronosstyle{simple arrow}\chronosdocidx[symbol=eg,idx pre=off line,type=chronosstyle]{simple arrow}A monochrome appearance with a plain 200mm arrow \conceptname[no idx,link]{timeline} and \conceptname[idx post=in \string\textkey{simple arrow}\string\idxeg]{years,marks} above\texseans{342699}.
+\DescribeChronosstyle{simple arrow}\val{length}\chronosdocidx[symbol=eg,idx pre=off line,type=chronosstyle]{simple arrow}\AfterLastParam
+A monochrome appearance with a plain 200mm arrow \conceptname[no idx,link]{timeline} and \conceptname[idx post=in \string\textkey{simple arrow}\string\idxeg]{years,marks} above\texseans{342699}.
+\meta{length} determines the length of the taper comprising the arrow.
+\Default{10mm}
 Intended for \conceptname[idx as=timeline,no idx,link,link to=timeline]{timelines} which add \elementslabelname{} below.
 See \cref{tab:chronosstyles,fig:simple-arrow}.
 \begin{figure}
@@ -3091,9 +3100,11 @@ See \cref{tab:chronosstyles,fig:event-splitter}.
   \end{adjustwidth}
 \end{figure}
 
-\DescribeChronosstyle{lines on line}\chronosdocidx[symbol=eg,idx pre=no-year,type=chronosstyle]{lines on line}A 120mm \conceptname[no idx,link]{timeline} arrow with no \conceptname[no idx]{year} labels and \conceptname[type=tag,no idx,link]{life,event,period} \conceptname[idx as=line,idx post=lines on line\string\idxeg,idx font post=\KeyFont]{lines} drawn on the \conceptname[no idx,link]{timeline} itself\texseans{324453}.
+\DescribeChronosstyle{lines on line}\val{dimension}\chronosdocidx[symbol=eg,idx pre=no-year,type=chronosstyle]{lines on line}\AfterLastParam
+A 120mm \conceptname[no idx,link]{timeline} arrow, \meta{dimension} high, with no \conceptname[no idx]{year} labels and \conceptname[type=tag,no idx,link]{life,event,period} \conceptname[idx as=line,idx post=lines on line\string\idxeg,idx font post=\KeyFont]{lines} drawn on the \conceptname[no idx,link]{timeline} itself\texseans{324453}.
 Date information is confined to \conceptname[idx as=text tag,idx post=lines on line\string\idxeg,idx font post=\KeyFont]{text tags}.
 Out-of-the-box, this \chronosstylelabelname{} adds \elementslabelname{} of \conceptname[type=concept,no idx,link]{tag} type \conceptname[type=tag,idx post=default placement (\string\textkey{lines on line})]{event} above and those of type \conceptname[type=tag,idx post=default placement (\string\textkey{lines on line})]{life,period} below.
+\Default{5mm}
 See \cref{tab:chronosstyles,fig:lines-on-line}.
 \begin{figure}
   \begin{adjustwidth}{-\tewadjust}{0pt}
@@ -3135,8 +3146,10 @@ See \cref{tab:chronosstyles,fig:lines-on-line}.
   \end{adjustwidth}
 \end{figure}
 
-\DescribeChronosstyle{plain arrow}\chronosdocidx[symbol=eg,idx pre=no-year,type=chronosstyle]{plain arrow}A variant of \keyname[link,idx=false,type=chronosstyle]{lines on line} (\cref{fig:lines-on-line}) which draws a 120mm \conceptname[no idx,link]{timeline} arrow with no \conceptname[no idx]{year} labels and \conceptname[type=tag,no idx,link]{life,event,period} \conceptname[idx as=line,idx post=plain arrow\string\idxeg,idx font post=\KeyFont]{lines} drawn on the \conceptname[no idx,link]{timeline} itself\texseans{324453}.
+\DescribeChronosstyle{plain arrow}\val{dimension}\chronosdocidx[symbol=eg,idx pre=no-year,type=chronosstyle]{plain arrow}\AfterLastParam
+A variant of \keyname[link,idx=false,type=chronosstyle]{lines on line} (\cref{fig:lines-on-line}) which draws a 120mm \conceptname[no idx,link]{timeline} arrow with no \conceptname[no idx]{year} labels and \conceptname[type=tag,no idx,link]{life,event,period} \conceptname[idx as=line,idx post=plain arrow\string\idxeg,idx font post=\KeyFont]{lines} drawn on the \conceptname[no idx,link]{timeline} itself\texseans{324453}.
 Date information is confined to \conceptname[idx as=text tag,idx post=plain arrow\string\idxeg,idx font post=\KeyFont]{text tags}.
+\Default{5mm}
 Intended for \conceptname[idx as=timeline,no idx,link,link to=timeline]{timelines} which add \elementslabelname{} of \conceptname[type=concept,no idx]{tag} type \conceptname[type=tag,idx post=plain arrow\string\idxeg,idx font post=\ttfamily]{event} above and those of type \conceptname[type=tag,idx post=plain arrow\string\idxeg,idx font post=\ttfamily]{life,period} below.
 See \cref{tab:chronosstyles,subfig:plain-arrow}.
 
@@ -3447,11 +3460,15 @@ A prime at the end of a \dimkeylabelname{}, or at the end except for a plus (\te
 % BEGIN subsubsec:nodiadau-dims
 
 \paragraph{Dimensions\label{nod:dims}}
-\dimkeyslabelname{} come in four variants:
+Each \keylabelname{} described as a \dimkeyslabelname{} is available in six forms\footnote{%
+  Occasionally, a convenience \keylabelname{} may only support the prime, prime-plus and prime-minus forms.
+  Where this applies, the limitation is noted in the description.%
+}:
 
 \DescribeDimkey{\meta{\dimkeylabelname{}}}\valmarg{pgfmath-parsable dimension}\AfterLastParam
 The \dimkeylabelname{} parses the \meta{specified value} using \pkgname[no link,idx post=\string\meta{value} parsed by]{pgfmath} and assigns the result in points as the dimension.
-This is slower but more flexible.
+This base form, which is typically the only form explicitly listed in this documentation, is slow but flexible.
+Unless otherwise noted, the existence of the base form implies the availability of all six variants.
 
 \DescribeDimkey{\meta{\dimkeylabelname{}}\texttt{\textquotesingle}}\valmarg{dimension}\AfterLastParam
 The \dimkeylabelname{} expects a \TeX{} \meta{dimension}, complete with units, which it assigns directly.
@@ -3465,13 +3482,23 @@ This is slower but more flexible.
 The \dimkeylabelname{} expects a \TeX{} \meta{dimension}, complete with units, which it adds to the \meta{existing dimension value} directly.\chronosdocidx[type=pkg,idx post=\string\meta{value}\string\texttt{\string\textquotesingle+} not parsed by]{pgfmath}
 This is faster but less flexible.
 
-When \dimkeyslabelname{} end in prime\chronosdocindex{' (prime)\actualchar\texttt{\textquotesingle} (prime)} or prime-plus\chronosdocindex{'+ (prime-plus)\actualchar\texttt{\textquotesingle+} (prime-plus)}, \meta{dimension}s  must be given as \TeX{} dimensions complete with units and may not require calculation.
+\DescribeDimkey{\meta{\dimkeylabelname{}}\texttt{-}}\valmarg{pgfmath-parsable dimension}\AfterLastParam
+The \dimkeylabelname{} parses the expression $( \meta{specified value} - \meta{existing value} )$ with \pkgname[no link,idx post=\string\meta{value}\string\texttt{-} parsed by]{pgfmath} and assigns the result in points.
+This is slower but more flexible.
+
+\DescribeDimkey{\meta{\dimkeylabelname{}}\texttt{\textquotesingle-}}\valmarg{dimension}\AfterLastParam
+The \dimkeylabelname{} expects a \TeX{} \meta{dimension}, complete with units, which it subtracts from the \meta{existing dimension value} directly.\chronosdocidx[type=pkg,idx post=\string\meta{value}\string\texttt{\string\textquotesingle-} not parsed by]{pgfmath}
+This is faster but less flexible.
+
+When \dimkeyslabelname{} end in prime\chronosdocindex{' (prime)\actualchar\texttt{\textquotesingle} (prime)}, prime-plus\chronosdocindex{'+ (prime-plus)\actualchar\texttt{\textquotesingle+} (prime-plus)} or prime-minus\chronosdocindex{'- (prime-minus)\actualchar\texttt{\textquotesingle-} (prime-minus)}, \meta{dimension}s  must be given as \TeX{} dimensions complete with units and may not require calculation.
 \Example{timeline height\textquotesingle=10mm}
 \Example{timeline border height\textquotesingle+=20pt}
+\Example{timeline width\textquotesingle-=2em}
   
 When \dimkeyslabelname{} do not include prime, any value which can be parsed by \pkgname[no link,no idx]{pgfmath} is valid.
 \Example{timeline height=.01\bs textheight}
 \Example{timeline border height+=1.5\bs headrulewidth}
+\Example{timeline width-=0.05\bs linewidth+1.5pt}
 
 % END subsubsec:nodiadau-dimsnodiadau-dims
 
@@ -4058,7 +4085,7 @@ that is,
   \end{adjustwidth}
 \end{figure}
 
-\DescribeDimkey{timeline/timeline height,timeline/height,timeline/timeline height+,timeline/height+,timeline/timeline height\textquotesingle,timeline/height\textquotesingle,timeline/timeline height\textquotesingle +,timeline/height\textquotesingle +}\val{dimension}\AfterLastParam
+\DescribeDimkey{timeline/timeline height,timeline/height}\val{dimension}\AfterLastParam
 The height of the \conceptname[idx post=height]{timeline} excluding any border.
 \Default
 For example,
@@ -4068,7 +4095,16 @@ timeline={
 },
 \end{chronoscode}
 
-\DescribeDimkey{timeline/timeline border height,timeline/timeline border height+,timeline/timeline border height\textquotesingle,timeline/timeline border height\textquotesingle +}\val{dimension}\AfterLastParam
+\DescribeMacro{\timelineht}The \keyname[type=dimkey,no idx,link,link to=timeline/timeline height]{height of the timeline}.
+This macro is available \emph{only at the end of the \conceptname[link,type=concept]{\meta{chronos preamble}} and can be considered reliable only within the \conceptname[link,type=concept]{\meta{timeline specification}}}\footnote{%
+  Note that the unreliability applies to the internal macro, too.%
+}.
+Despite its unreliability, early availability is essential to some \chronosstyleslabelname{} definitions.
+In these cases, the \chronosstylelabelname{} is responsible for ensuring accuracy (or compensating for inaccuracy).
+In standard cases, this happens automatically, even though it is not guaranteed.
+However, if you neither load a \chronosstylelabelname{} nor configure dimensions explicitly, you should not try to use this macro before the \conceptname[link,no idx]{timeline} is constructed.
+
+\DescribeDimkey{timeline/timeline border height}\val{dimension}\AfterLastParam
 The height of each of the upper and lower borders.
 \Default
 For example,
@@ -4078,20 +4114,26 @@ timeline={
 },
 \end{chronoscode}
 
-\DescribeDimkey{timeline/timeline width,timeline/timeline width+,timeline/timeline width\textquotesingle,timeline/timeline width\textquotesingle +,timeline/width,timeline/width+,timeline/width\textquotesingle,timeline/width\textquotesingle +}\val{dimension}\AfterLastParam
+\DescribeMacro{\timelineborderht}The \keyname[type=dimkey,no idx,link,link to=timeline/timeline border height]{height of the border}.
+This macro is available \emph{only within the \conceptname[link,type=concept]{\meta{timeline specification}}}.
+
+\DescribeDimkey{timeline/timeline width,timeline/width}\val{dimension}\AfterLastParam
 The total width of the \conceptname[idx post=total width]{timeline}, including margins.
 \Default{\cs{textwidth}}
 For example,
 \begin{chronoscode}
 timeline={
   timeline width=.75\paperheight,% we cannot use ' here
-  timeline width'+=10mm,% we can use ' here 
+  timeline width'-=10mm,% we can use ' here 
 },
 \end{chronoscode}
 
-\DescribeDimkey{timeline/timeline margin,timeline/timeline margin+,timeline/timeline margin\textquotesingle,timeline/timeline margin\textquotesingle +}\val{dimension}\AfterLastParam
+\DescribeMacro{\timelinewd}The \keyname[type=dimkey,no idx,link,link to=timeline/timeline width]{width of the timeline}.
+This macro is available \emph{only within the \conceptname[link,type=concept]{\meta{timeline specification}}}.
+
+\DescribeDimkey{timeline/timeline margin}\val{dimension}\AfterLastParam
 The horizontal space to allow at each of the two ends of the \conceptname[idx post=margins]{timeline}.
-\Default{10pt}
+\Default{15pt}
 For example,
 \begin{chronoscode}
 timeline={
@@ -4099,7 +4141,7 @@ timeline={
 },
 \end{chronoscode}
 
-\DescribeDimkey{timeline/timeline era margin,timeline/timeline era margin+,timeline/timeline era margin\textquotesingle,timeline/timeline era margin\textquotesingle +}\val{dimension}\AfterLastParam
+\DescribeDimkey{timeline/timeline era margin}\val{dimension}\AfterLastParam
 The horizontal space to allow between the first/last point on the \conceptname[idx post=era margins,idx font post=\sffamily]{timeline} and the era labels.
 \Default{15pt}
 For example,
@@ -4112,34 +4154,34 @@ timeline={
 The following keys determine dimensions of the \pkg{chronos} picture as a whole.
 They do not affect the dimensions of the \conceptname[idx post=dimensions]{timeline} itself.
 
-\DescribeDimkey{headings border,headings border+,headings border\textquotesingle,headings border\textquotesingle +}\val{dimension}\AfterLastParam
+\DescribeDimkey{headings border}\val{dimension}\AfterLastParam
 The distance between the top of the highest \keyname[idx as=levels,link to=levels,idx post=placement]{level} and the top of the space used for headers.
 \Default[if there are one or more \conceptname[idx post=placement]{levels} above the timeline]{15pt + \meta{headings drop} + \meta{upper subheadings drop} + \meta{lower subheadings drop}}
 \Default[otherwise]{5pt + \meta{headings drop} + \meta{upper subheadings drop} + \meta{lower subheadings drop}}
 
-\DescribeDimkey{headings drop,headings drop+,headings drop\textquotesingle,headings drop\textquotesingle +}\val{dimension}\AfterLastParam
+\DescribeDimkey{headings drop}\val{dimension}\AfterLastParam
 The distance between the top of the border and the \conceptname[link,idx post=placement]{headings}.
 \Default[if headings are omitted]{0pt}
 \Default[if headings are used]{15pt}
 \emph{Note that you should set this explicitly to \texttt{0pt} if using \conceptname[idx post=without \string\textconcept{headings}]{subheadings} without \conceptname[link,no idx]{headings}.}
 
-\DescribeDimkey{subheadings drops,subheadings drops+,subheadings drops\textquotesingle,subheadings drops\textquotesingle +}\cvalsmarg{dimension 1,dimension 2}\AfterLastParam
+\DescribeDimkey{subheadings drops}\cvalsmarg{dimension 1,dimension 2}\AfterLastParam
 The distances between the \conceptname[link,idx post=placement relative to \string\textconcept{subheadings}]{headings} and upper \conceptname[link,idx post=placement]{subheadings} and between the tops of the \conceptname[link,idx post=placement]{upper subheadings,lower subheadings}.
 \Default[if headings are omitted]{0pt:0pt}
 \Default[if headings are used]{12pt:10pt}
 \emph{Note that you should set this explicitly to \texttt{0pt:0pt}, \meta{dimension}\texttt{:0pt} or \texttt{0pt:}\meta{dimension} if using \conceptname[idx post=without \string\textconcept{upper}/\string\textconcept{lower subheadings}]{headings} without \conceptname[no idx,conj=and/or]{upper subheadings,lower subheadings} or only one of \conceptname[conj=or,idx post=as only \string\textconcept{subheadings}]{upper subheadings,lower subheadings}.}
 
-\DescribeDimkey{headings drops\textquotesingle,headings\textquotesingle +}\cvalsmarg{dimension 1,dimension 2,dimension 3}\AfterLastParam
-A convenience key equivalent to setting \keyname[type=dimkey,no idx]{headings drop\textquotesingle} to \meta{dimension 1} and \keyname[type=dimkey,no idx]{subheadings drops\textquotesingle} to \meta{dimension 2} and \meta{dimension 3}.
+\DescribeDimkey{headings drops\textquotesingle,headings\textquotesingle +,headings\textquotesingle -}\cvalsmarg{dimension 1,dimension 2,dimension 3}\AfterLastParam
+A convenience key equivalent to setting \keyname[type=dimkey,no idx,link to=headings drop]{headings drop\textquotesingle} to \meta{dimension 1} and \keyname[type=dimkey,no idx,link to=subheadings drops]{subheadings drops\textquotesingle} to \meta{dimension 2} and \meta{dimension 3}.
 \emph{Note that only the \texttt{\textquotesingle} forms are available.}
 For \pkgname[no link,no idx]{pgfmath} support, use \keyname[link,idx=false,type=dimkey]{headings drop,subheadings drops}.
 
-\DescribeDimkey{outer border,outer border+,outer border\textquotesingle,outer border\textquotesingle +}\val{dimension}\AfterLastParam
+\DescribeDimkey{outer border}\val{dimension}\AfterLastParam
 If a \conceptname[link,idx post=and \string\textkey{outer border}]{frame} is created, this is the outer border.
 In effect, the bounding box will be set to be this distance from the \conceptname[link,idx post=and bounding box]{frame}, less half the line width used to draw it.
 \Default{5pt}
 
-\DescribeDimkey{borders\textquotesingle,borders\textquotesingle +}\cvalsmarg{dimension,dimension,dimension,dimension,dimension,dimension}\AfterLastParam
+\DescribeDimkey{borders\textquotesingle,borders\textquotesingle +,borders\textquotesingle -}\cvalsmarg{dimension,dimension,dimension,dimension,dimension,dimension}\AfterLastParam
 Sets the \keyname[link,idx=false,type=dimkey]{headings border,top border,right border,bottom border,left border,outer border} in one go.
 \emph{Note that only the \texttt{\textquotesingle} forms are available.}
 For \pkgname[no link,no idx]{pgfmath} support, use \keyname[link,idx=false,type=dimkey]{top border,right border,left border,bottom border,headings border}.
@@ -4147,7 +4189,7 @@ For \pkgname[no link,no idx]{pgfmath} support, use \keyname[link,idx=false,type=
 \emph{If you're not sure what this key does or uncertain whether to use it, it is not the key you are looking for.}
 Setting the \keyname[link,idx=false,type=dimkey]{outer border,headings border} suffices in most cases.
 
-\DescribeDimkey{top border,top border+,top border\textquotesingle,top border\textquotesingle +,right border,right border+,right border\textquotesingle,right border\textquotesingle +,bottom border,bottom border+,bottom border\textquotesingle,bottom border\textquotesingle +,left border,left border+,left border\textquotesingle,left border\textquotesingle +}\val{dimension}\AfterLastParam
+\DescribeDimkey{top border,right border,bottom border,left border}\val{dimension}\AfterLastParam
 \emph{If} the \conceptname[link,idx post=if not using bounding box]{frame} does not use the bounding box, these dimensions determine the internal margin between each of the top of the headings, the \conceptname[idx post=dimensions]{timeline}'s right end, the bottom of the lowest \keyname[idx as=levels,link to=levels,idx post=placement if \string\textconcept{frame} not using bounding box]{level}, the \conceptname[no idx]{timeline}'s left end and the \conceptname[link,no idx]{frame}, less half the line width used to draw the \conceptname[link,no idx]{frame}.
 \Default{0pt}
 \emph{Most people should let the frame use the bounding box\chronosdocidx[idx pre=tikzpicture,type=env,idx font pre=\ttfamily]{bounding box}, which is the default, and leave these dimensions alone.}
@@ -4629,7 +4671,8 @@ For example, \keyname[type=chronosstyle,idx post=use of \string\textkey{timeline
 \begin{chronoscode}
 timeline={%
   ...
-  timeline line={Bar-Latex,chronos timeline foreground colour,double=chronos timeline background colour},
+  timeline line={Bar-Latex,chronos timeline foreground colour,double=chronos timeline background colour,line width=\timelineht/3,double distance=\timelineht/3,shorten <=-\timelineht/3,shorten >=-3pt-2.1\timelineht},
+  timeline config+={\pgfqkeys{/chronos/timeline}{timeline width-={3pt+2.43\timelineht}}},
   ...
 }
 \end{chronoscode}
@@ -4639,9 +4682,22 @@ To make the \conceptname[no idx]{timeline line} into an arrow, without otherwise
 timeline={%
   ...
   timeline line+={shorten >={-10mm}, -{Triangle Cap[length=10mm]}},
+  timeline config+={\pgfqkeys{/chronos/timeline}{timeline width-=10mm}},
   ...
 }
 \end{chronoscode}
+The adjustments are required to ensure that the tapered part is not counted when \enviro{chronos} calculates how much of the total \keyname[idx pre=timeline,link pre=timeline/,idx font pre=\ttfamily,type=dimkey]{timeline width} is available to represent time.
+
+\DescribeBoolkey{timeline/timeline arrow}\vals{true,false}\AfterLastParam
+Whether the \conceptname[link,no idx]{timeline} should be or have an arrow or arrows.
+\Default{true}
+\Initial{false}
+\emph{Whether this has any effect depends entirely on the \chronosstylelabelname{}.
+  With the default settings, it does nothing but trigger a warning, since \texttt{on line} \styleslabelname{} cannot have arrows.}
+
+\DescribeKey{timeline/no timeline arrow}%
+A convenience \keylabelname{} which sets \keyname[type=boolkey,no idx]{timeline/timeline arrow} \texttt{false}.
+\emph{Whether this has any effect depends entirely on the \chronosstylelabelname{}.}
 
 \DescribeKey{timeline/timeline border,timeline/timeline border\textquotesingle,timeline/timeline border+}\valmarg{key-value list}\AfterLastParam
 The style of the \conceptname[link,idx pre=timeline,idx font pre=\sffamily]{timeline border}.
@@ -4659,9 +4715,9 @@ This \keylabelname{} makes it possible to override the default gradients used to
 
 \DescribeBoolkey{frame}\vals{true,false}\AfterLastParam
 Whether to draw a frame.
-This is true by default, but the associated style is empty so the frame is invisible.
+This is initially false, but use of \keyname[no idx,link]{main/frame} will automatically set it to true.
 \Default{true}
-\Initial{true}
+\Initial{false}
 
 \DescribeBoolkey{frame uses bb}\vals{true,false}\AfterLastParam
 Whether the bounding box should be used to determine any frame at the end of the \enviro{chronos} environment.
@@ -5684,7 +5740,7 @@ Labels to be placed above and below a \conceptname[type=element,link,no idx]{the
 The text to place in the upper and lower parts of a \conceptname[link,no idx]{theory circle}.
 By default, this uses \lstinline|text effects along path|, so the content must be consistent with the restrictions imposed by use of this \TikZ{} \texttt{decoration}. 
 
-\DescribeDimkey{sizes,sizes+,sizes\textquotesingle,sizes\textquotesingle +}\cvals{outer circle dimension,inner circle dimension} \fortags[names={sizes,sizes+,sizes\textquotesingle,sizes\textquotesingle +},type=dimkey]{theory circle}\AfterLastParam
+\DescribeDimkey{sizes}\cvals{outer circle dimension,inner circle dimension} \fortags[names={sizes,sizes+,sizes-,sizes\textquotesingle,sizes\textquotesingle +,sizes\textquotesingle -},type=dimkey]{theory circle}\AfterLastParam
 The sizes of the inner and outer circles used to create a \conceptname[type=element,link,no idx]{theory circle}.
 \Default{15pt:9pt}
 The difference between the two dimensions gives the thickness of the ring around which text is placed; the size of the inner circle gives the dimension of the hole in which a symbol or similar may be placed.
@@ -5811,6 +5867,13 @@ This is intended for arbitrary \TikZ{} \keyslabelname{}; it should \emph{not} be
 \Default[on line, event]{draw=\#\#1,fill=none,opacity=.25}
 \Default[off line, life/period]{draw=\#\#1,thick,fill opacity=.75}
 \Default[off line, event]{draw=\#\#1,draw opacity=.75,fill=none}
+
+\DescribeDimkey{\meta{tag}/line yshift}\valmarg{dimension}\chronosdochypertargets{dimkey}{life,period}{line yshift}\fortags{life,period}\AfterLastParam
+Default vertical displacement of \conceptsname[no idx,link,link to=\meta{tag}/line]{line} from the \conceptname[no idx]{timeline}.
+Whether the displacement is reckoned from the centre or border of the \conceptname[no idx]{timeline} depends on the default placement.
+
+\DescribeMacro{\lineyshift}The \keyname[no idx,link,link to=\meta{tag}/line yshift,type=dimkey]{line yshift}.
+This macro is available \emph{only within the \conceptname[link,type=concept]{\meta{timeline specification}}}.
 
 \DescribeKey{\meta{tag}/text tag,\meta{tag}/text tag+,\meta{tag}/text tag\textquotesingle}\valmarg{key-value list} \chronosdochypertargets{key}{life,event,period,theory,info}{text tag,text tag+,text tag\textquotesingle}\fortags{life,event,period,theory,info}\AfterLastParam
 \meta{key-value list} to apply to this \elementlabelname{}'s \conceptname[type=element,idx post=apply arbitrary \string\TikZ{} to]{text tag}.
@@ -5954,6 +6017,31 @@ For example, \keyname[type=colkey,link prefix=\meta{tag}/,idx as=\meta{tag}/defa
 Instead, use \keyname[type=colkey]{colour} to override default settings.
 
 See \cref{subsec:lliwiau} for further information about \colkeyslabelname{} and \collistkeyslabelname{}.
+
+\DescribeKey{life,event,period,theory}\valmarg{key-value list} \fortags{life,event,period,theory}\AfterLastParam
+Equivalent to prefixing each item in \meta{key-value list} with \meta{tag}.
+\begin{chronoscode}
+\begin{chronos}
+  [
+    life={%
+      full dates,
+      without eras,
+      text tag+={font=\sffamily},
+      text font=\bfseries,
+      date font=\small,
+      colours above={red,orange,blue},
+      colours below={darkgray,gray,black,magenta},
+    },
+    period={%
+      only years,
+      text tag+={opacity=.75},
+    },
+    event={%
+      text tag+={double=blue},
+    },
+  ]
+\end{chronos}
+\end{chronoscode}
 
 \DescribeColkey{\meta{tag}/default colour,\meta{tag}/default color}\val{colour name} \fortags[names={\meta{tag}},type=colkey]{life,event,period,theory,info}\AfterLastParam
 The default colour to use for all \conceptname[idx as=element,type=concept,link,link to=element,no idx]{elements} of type \meta{tag}, as explained in \cref{subsec:lliwiau}.
@@ -6140,7 +6228,7 @@ This means the colour used here should differ from that used to fill the circles
 \Default{decoration=\{text effects along path, text=\{\#\#1\}, text effects/.cd, fit text to path, text=chronos@prifliw@cefndir, characters=\{text along path, font=\bs scriptsize\bs scshape\}\}, decorate}
 \keyname[link,no idx]{every theory circle text,every theory circle text+} add to the current \meta{key-value list}; \keyname[link,no idx]{every theory circle text\textquotesingle} replaces it.
 
-\DescribeDimkey{text tag yshift,text tag yshift+,text tag yshift\textquotesingle,text tag yshift\textquotesingle+}\val{dimension} \fortags{life,event,period,theory}\AfterLastParam
+\DescribeDimkey{text tag yshift}\val{dimension} \fortags{life,event,period,theory}\AfterLastParam
 The \texttt{yshift} to apply when placing the \keyname[idx as=\meta{tag}/text tag,link prefix=\meta{tag}/]{text tag} if \texttt{yshift} is otherwise \texttt{0pt} and \keyname[idx post=if unset]{at} is unset.
 You should probably never use this key in the context of a particular \elementlabelname{}, because \texttt{yshift} works just as well and will probably be more reliable and certainly faster.
 Moreover, unlike \texttt{yshift}, which can be used to adjust a position set with \keyname[no idx]{at}, \keyname[type=dimkey,no idx]{text tag yshift} cannot.
@@ -6494,7 +6582,7 @@ Only after this sixth stage are the ‘public’ names listed in \cref{tab:colna
 % BEGIN subsec:chronos-style-creation
 
 The current method for creating \conceptsname[type=chronosstyle,idx as=defining custom,font=\normalfont]{chronos style} is straightforward in theory, but potentially hazardous in practice.
-Here's an example from \pkg{chronos-lib-styles.sty}:
+Here's an example from \pkg{chronos-lib-styles.sty}.
 \begin{chronoscode}
 \tikzset{%
   blues below/.style={%
@@ -6509,15 +6597,22 @@ Here's an example from \pkg{chronos-lib-styles.sty}:
       step divisions=10,
       step major year=100,
       dates=1550:2050,
-      timeline height'=1pt,
-      timeline line={Bar-Latex,chronos timeline foreground colour,double=chronos timeline background colour},
+      timeline height'=3pt,
+      timeline line={chronos timeline foreground colour,double=chronos timeline background colour,line width=\timelineht/3,double distance=\timelineht/3},
+      timeline arrow,
+      conditional timeline arrow={%
+        timeline/timeline line+={Bar-Latex,shorten <=-\timelineht/3,shorten >=-3pt-2.1\timelineht},
+        timeline/timeline width-={3pt+2.43\timelineht},
+        chronos tikz+={\path (chronos post) -- ++(3pt+2.1\timelineht,0pt) (chronos pre) -- ++(-\timelineht/3,0pt);},
+      }{},
       timeline mark={chronos timeline foreground colour,line width=.6pt,shorten >=-4pt},
       timeline minor mark={chronos timeline foreground colour,line width=.5pt,shorten >=-3.5pt},
       timeline bare mark={chronos timeline foreground colour,line width=.3pt,shorten >=-2.5pt},
-      timeline year={fill=none,rotate around={45:(chronos year \chronosyeari)},text=chronos timeline foreground colour},
+      timeline year={fill=none,text=chronos timeline foreground colour,rotate around={45:(chronos year \chronosyeari |- chronos top)}},
       major step font=\sffamily\footnotesize\tlstyle,
       timeline years anchor=south west,
       minor step font=\sffamily\scriptsize\tlstyle,
+      timeline margin'=17.5pt,
     },
     minor year format={!Y},
     every event below,
@@ -6534,11 +6629,15 @@ Here's an example from \pkg{chronos-lib-styles.sty}:
   },
 }
 \end{chronoscode}
+This definition is chosen because it is the most technically complex example.
+This complexity is a function of several factors: it uses \emph{off-line} years; the year labels are rotated; the line involves two arrow tips; and the line is drawn with \texttt{double}.
+
 Note the following:
 \begin{enumerate}
   \item\label{item:col-use} colours listed in \cref{tab:colscheme} are used but not defined;
   \item\label{item:custom-col} instead, a custom colour configuration is set by loading an appropriate \colschemelabelname{};
-  \item\label{item:weird-i} there is a weird looking \cs{chronosyeari} in the definition of \keyname[link prefix=timeline/,idx as=timeline/timeline year]{timeline year};
+  \item\label{item:weird-i} there is a weird looking \keyname[type=macro,idx post=use in \string\textkey{blues below}]{\cs{chronosyeari}} in the definition of \keyname[link prefix=timeline/,idx as=timeline/timeline year]{timeline year};
+  \item\label{item:timeline-arrow} \keyname[type=boolkey,idx post=use in \string\textkey{blues below}\string\idxeg]{timeline/timeline arrow} and \keyname[idx post=use in \string\textkey{blues below}\string\idxeg]{timeline/conditional timeline arrow} enables use of arrow tips to be toggled off;
   \item\label{item:def-dyddiadau} \keyname[type=datekey,no idx]{dates} are defined, even though they are almost certainly wrong in most cases;
   \item\label{item:tlstyle} some fonts use a non-standard command \cs{tlstyle}.
 \end{enumerate}
@@ -6709,16 +6808,17 @@ The easiest way to do this is to \texttt{rotate around} one of the anchors belon
 Obviously, we can't do this for each node.
 We don't know how many there are or what they are named.
 Instead, we need a hook into the \cs{foreach} loop \pkg{chronos} uses when creating the year labels.
-\cs{chronosyeari} refers to the current \conceptname{year}.
+
+\DescribeMacro{\chronosyeari} refers to the current \conceptname{year} \emph{inside the \cs{foreach} loop used to mark years on the \conceptname[link,no idx]{timeline}}.
 \texttt{(chronos year \cs{chronosyeari})} isn't actually the node, but the point representing the date on the \conceptname[idx post=chronos year \string\cs{chronosyeari},idx font post=\ttfamily]{timeline}, but the node starts there, so we can use it provided \keyname[link prefix=timeline/,idx as=timeline/timeline years anchor]{timeline years anchor} is set appropriately.
 \begin{chronoscode}
-  timeline year={rotate around={45:(chronos year \chronosyeari)}},
+  timeline year={rotate around={45:(chronos year \chronosyeari |- chronos top)}},
   timeline years anchor=south west,
 \end{chronoscode}
 
 % END subsubsec:rotate-years
 
-\subsubsection{Hashes}\label{subsubsec:hashes}\chronosdocidx{\string\verb*\verbatimchar\string#\verbatimchar\string\space (hash)}\chronosdocidx[font=\normalfont]{hash (\string\verb*\verbatimchar\string#\verbatimchar )}XXX
+\subsubsection{Hashes}\label{subsubsec:hashes}\chronosdocidx{\string\verb*\verbatimchar\string#\verbatimchar\string\space (hash)}\chronosdocidx[font=\normalfont]{hash (\string\verb*\verbatimchar\string#\verbatimchar )}
 % BEGIN subsubsec:hashes
 
 You may have noticed the following line in the excerpt from \keyname[type=chronosstyle,link,idx post=quadrupling of hashes in]{modern}'s definition above.
@@ -6792,9 +6892,86 @@ Hashes are essential for two reasons.
   Since this referencing system works for some \elementslabelname{} not subject to \conceptname[type=concept,link,no idx]{colour rotation} at all, such as those belonging to \conceptname[type=concept,link,no idx]{tag} \conceptname[type=tag,idx post=as case of colour assignment without \string\textconcept{colour rotation}]{info} and applies even when \conceptname[type=concept,link,no idx]{colour rotation} is disabled completely, it constitutes a more general reason to avoid hard-coding colours, even if the effects may be less immediately noticeable in some \conceptname[idx as=timeline,idx post={colours, reason to avoid hard-coding}]{timelines}.
 \end{enumerate}
 
-
-
 % END subsubsec:hashes
+
+\subsection{Timeline Arrow}\label{subsec:timeline-arrow}
+% BEGIN subsec:timeline-arrow
+
+\Chronosstyleslabelname{} must decide whether to support \conceptsname[link,no idx]{timeline} with and/or without one or more 
+\textconcept{arrow tips} and/or \textconcept{line caps}.
+In deciding this, note the following points.
+\begin{itemize}
+  \item Only \keyname[type=choice,link prefix=timeline/timeline years/,idx pre=timeline/timeline years,no idx]{off line} styles can support these features.
+  \item Adding, removing or modifying a tip or cap requires adjusting the \keyname[type=dimkey,idx post=adjustments for arrow tips and line caps,idx as=timeline/timeline width,link pre=timeline/]{timeline width}.
+  This is because the length available for representing time is reduced when some proportion of the \conceptname[link,no idx,link pre=timeline/]{timeline line} is used for a tip or cap.
+  \Pkgname{chronos} adjusts automatically for \keysname[type=dimkey,idx pre=timeline,link pre=timeline/]{timeline margin,timeline era margin}, but \styleslabelname{} are responsible for other adjustments.
+  \item Supporting both arrowed and non-arrowed variants therefore requires conditionalised code.
+  \item Each arrow tip and line cap requires a bespoke adjustment, even if used in default form.
+  \item Users may legitimately use \keyname[type=boolkey,idx post=following \string\textconcept{\string\chronosstyleslabelname}]{timeline/timeline arrow} and \keyname[idx post=following \string\textconcept{\string\chronosstyleslabelname}]{timeline/no timeline arrow} after loading a \chronosstylelabelname{}.
+  \item \Chronosstyleslabelname{} may legitimately ignore these \keyslabelname{}.
+  \item \Chronosstyleslabelname{} must delay finalising the content of \keyname[no idx]{timeline} until the end of the \conceptname[link,no idx,type=concept]{\meta{chronos preamble}} if they wish to support variants with and without tips and/or caps.
+\end{itemize}
+
+See \keyname[type=boolkey,no idx]{timeline/timeline arrow} and \keyname[no idx]{timeline/no timeline arrow}.
+
+\DescribeKey{timeline/conditional timeline arrow}\valsmarg{key-value list if arrow/cap}{key-value list otherwise}\AfterLastParam
+This \keylabelname{} expects two arguments: \meta{key-value list if arrow/cap} should be a list of key-values to be executed if \keyname[no idx,type=boolkey]{timeline/timeline arrow} is \texttt{true}; \meta{key value list otherwise} should be a list of key-values to be executed if it is \texttt{false}.
+\Pkgname{chronos} will switch the \keylabelname{} path to \texttt{/chronos/} prior to using the list, but the \texttt{timeline} prefix must be specified if required.
+The effect is to add code to the \stylelabelname{} \keyname{timeline/do timeline arrow} which executes \meta{key-value list if arrow/cap} if \keyname[type=boolkey,no idx,link pre=timeline/]{timeline arrow} is \texttt{true} and \meta{key-value list otherwise} otherwise.
+More specifically, the code used to implement this mechanism is equivalent to
+\begin{chronoscode}
+  conditional timeline arrow/.code 2 args={%
+    \pgfqkeys{/chronos}{%
+      timeline config+={%
+        \pgfqkeys{/chronos/timeline}{do timeline arrow}%
+      },
+      timeline/.cd,
+      timeline@arrow/.style={/chronos/.cd,#1},
+      no@timeline@arrow/.style={/chronos/.cd,#2},
+      do timeline arrow/.add code={%
+        \ifchronostimelinearrow 
+          \tikzset{/chronos/timeline/timeline@arrow}%
+        \else
+          \tikzset{/chronos/timeline/no@timeline@arrow}%
+        \fi
+      },
+    }%
+  },
+\end{chronoscode}
+\Example{\normalfont See below.}
+
+\DescribeKey{timeline/do timeline arrow}\AfterLastParam
+\Chronosstyleslabelname{} are expected to set this \emph{via} \keyname[no idx]{timeline/conditional timeline arrow}, which causes it to be executed in \keyname[link,no idx]{timeline config}, but they could also execute it explicitly if required.
+\Default
+
+For example, \keyname[type=chronosstyle,idx post=use of \string\textkey{conditional timeline arrow}\string\idxeg]{lines on line} supports arrowed and non-arrowed variants using
+\begin{chronoscode}
+  lines on line/.style={% https://tex.stackexchange.com/a/324453/
+    /chronos/.cd,
+    ...
+    timeline={%
+      timeline width'=120mm,
+      ...
+      timeline arrow,
+      conditional timeline arrow={%
+        timeline/timeline width'-=20mm,
+        timeline/timeline line+={shorten >=-20mm, -{Triangle Cap[length=20mm]}},
+        chronos tikz+={%
+          \path (chronos post) -- +(20mm,0pt);
+        },
+      }{},
+    },
+    ...
+  },
+\end{chronoscode}
+\texttt{timeline arrow} requests an arrow by default, but does nothing else.
+\texttt{conditional timeline arrow} sets up the \stylelabelname{} \keyslabelname{} to execute if \keyname[no idx,link pre=timeline/,type=boolkey]{timeline arrow} is still enabled when \keyname[no idx,link pre=timeline/]{do timeline arrow} is executed.
+At this stage, then, no actual changes are applied to the \stylelabelname{} to be applied to the \conceptname[link,no idx]{timeline}.
+
+The actual effects on the \conceptname[no idx]{timeline}'s \stylelabelname{} are determined only at the end of \conceptname[link,no idx,type=concept]{\meta{chronos preamble}} when \keyname[no idx]{timeline/do timeline arrow} is executed.
+Hence, the user may override the \stylelabelname{}'s use of \texttt{timeline arrow} by writing \texttt{timeline/timeline arrow=false} or \texttt{timeline/no timeline arrow} after loading \keyname[type=chronosstyle,no idx]{lines on line}.
+
+% END subsec:timeline-arrow
 
 % END subsec:chronos-style-creation
 
@@ -7065,7 +7242,11 @@ mode=overlay}}.
   However, \pkg{chronos} pictures \emph{can} be ‘memoized’.
   Moreover, if \pkgname[idx post=compatibility]{memoize} is loaded, \pkg{chronos} will set up ‘automemoization’ by default.
   See \cref{sec:external-memoize}.}.
+
 \TikZ{}'s \lib{spy} \liblabelname{} also appears to be incompatible.
+
+Arrow tips\chronosdocidx[idx post=compatibility]{arrow tips} and line caps\chronosdocidx[idx post=compatibility]{line caps} from \TikZ{}'s \lib{arrows}\chronosdocidx[idx post=compatibility,font=\PkgFont,type=lib]{arrows} \liblabelname{} are not supported in \keyname[idx post={arrow tips}]{timeline}\chronosdocidx[idx post={line caps},font=KeyFont,type=key]{timeline}.
+Please use \lib{arrows.meta}\chronosdocidx[idx post=compatibility,font=\PkgFont,type=lib]{arrows.meta} instead.
 
 \Pkg{chronos} defines some commands without either marking them as internal or using a package-specific prefix.
 These commands are of the following kinds.
@@ -7073,6 +7254,28 @@ These commands are of the following kinds.
   \item They use Welsh rather than English (\keyname[type=macro,no link,idx pre=use of Welsh]{\cs{byw},\cs{digwyddiad},\cs{parhad},\cs{gwybodaeth},\cs{theori},\cs{cylchtheori},\cs{prifdeitl}}).
   These all use \cs{NewDocumentCommand}.
   Should they already be defined, \LaTeXe{} will produce an error and existing definitions will not be overwritten.
+  \item They are defined only locally within the \conceptname[link,no idx,type=concept]{\meta{timeline specification}}.
+  These provide local access to \enviro{chronos} internals and do not use a package-specific prefix for reasons of convenience.
+  These \macroslabelname{} are listed in \cref{tab:enviro}.
+  \begin{table}
+    \centering
+    \caption{Public names for \pkgname[no link]{chronos} internal macros defined locally within the \conceptname[no idx,type=concept]{\meta{timeline specification}}.}\label{tab:enviro}
+    \begin{tabular}{ll}
+      \toprule
+      \sffamily Public name & \sffamily\keyname[type=pkg,no link,idx as=chronos,font=\sffamily,idx post=internal macro names]{\Pkg{chronos}} internal name  \\\midrule
+      \keyname[type=macro,no link]{\cs{ceyearlabel}} & \keyname[type=macro,no link]{\cs{chronos@yearce}} \\
+      \keyname[type=macro,no link]{\cs{bceyearlabel}} & \keyname[type=macro,no link]{\cs{chronos@yearbce}} \\
+      \keyname[type=macro,no link]{\cs{celabel}} & \keyname[type=macro,no link]{\cs{chronos@ce}} \\
+      \keyname[type=macro,no link]{\cs{bcelabel}} & \keyname[type=macro,no link]{\cs{chronos@bce}} \\
+      \keyname[type=macro,link]{\cs{timelineht}} & \keyname[type=macro,no link]{\cs{chronos@height}} \\
+      \keyname[type=macro,link]{\cs{timelineborderht}} & \keyname[type=macro,no link]{\cs{chronos@borderheight}} \\
+      \keyname[type=macro,link]{\cs{timelinewd}} & \keyname[type=macro,no link]{\cs{chronos@width}} \\
+      \keyname[type=macro,link]{\cs{lineyshift}} & \keyname[type=macro,no link]{\cs{chronos@llinell@yshift}} \\
+      \bottomrule
+    \end{tabular}
+  \end{table}
+  \emph{Note that some of these \macroslabelname{} are also defined conditionally at the end of the preamble.
+  The local definitions described here are unconditional.}
   \item They are ‘throwaway’, extremely temporary macros such as \keyname[type=macro,no link,idx pre=throwaway definition,idx as=\cs{tempa}\string\textrm{\string\idxeg}]{\cs{tempa}}.
   These are used only very, very locally.
   Any macro which needs to retain its definition for more than a few lines uses a \texttt{chronos@} prefix unless it is a variable in a \pgf{} \keyname[type=macro,no link]{\cs{foreach}} loop.

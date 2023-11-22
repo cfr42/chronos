@@ -16,7 +16,7 @@
 % This work consists of all files listed in manifest.txt.
 %%
 \RequirePackage{chronos}
-\ProvidesPackageSVN{$Id: chronos-lib-styles.sty 9866 2023-11-15 04:51:15Z cfrees $}[\filebase \revinfo]
+\ProvidesPackageSVN{$Id: chronos-lib-styles.sty 9883 2023-11-21 17:01:04Z cfrees $}[\filebase \revinfo]
 \pgfqkeys{/chronos}{%
 % BEGIN styles XXX
   % BEGIN on line styles
@@ -156,10 +156,11 @@
       timeline years=above,
       timeline ce label={CE},
       timeline bce label={BCE},
-      timeline margin'=7.5pt,
+      timeline margin'=12.5pt,
       minor years=false,
       start=-500,
       end=2050,
+      timeline year={inner xsep=0pt},
     },
     special date=none,
     ce year label={CE},
@@ -188,7 +189,14 @@
     timeline={%
       start date=2002-01-01,
       end date=2016-12-31,
-      timeline line={-Stealth},
+      timeline arrow,
+      conditional timeline arrow={%
+        timeline/timeline width-=3pt+4.5\timelineht,
+        timeline/timeline line+={shorten >={-3pt-4.5\timelineht}, -Stealth},
+        chronos tikz+={%
+          \path (chronos post) -- +(-3pt-4.5\timelineht,0pt);
+        },
+      }{},
       timeline marks,
       timeline minor marks,
       timeline mark={ultra thick},
@@ -228,15 +236,22 @@
       step divisions=10,
       step major year=100,
       dates=1550:2050,
-      timeline height'=1pt,
-      timeline line={Bar-Latex,chronos timeline foreground colour,double=chronos timeline background colour},
+      timeline height'=3pt,
+      timeline line={chronos timeline foreground colour,double=chronos timeline background colour,line width=\timelineht/3,double distance=\timelineht/3},
+      timeline arrow,
+      conditional timeline arrow={%
+        timeline/timeline line+={Bar-Latex,shorten <=-\timelineht/3,shorten >=-3pt-2.1\timelineht},
+        timeline/timeline width-={3pt+2.43\timelineht},
+        chronos tikz+={\path (chronos post) -- ++(3pt+2.1\timelineht,0pt) (chronos pre) -- ++(-\timelineht/3,0pt);},
+      }{},
       timeline mark={chronos timeline foreground colour,line width=.6pt,shorten >=-4pt},
       timeline minor mark={chronos timeline foreground colour,line width=.5pt,shorten >=-3.5pt},
       timeline bare mark={chronos timeline foreground colour,line width=.3pt,shorten >=-2.5pt},
-      timeline year={fill=none,rotate around={45:(chronos year \chronosyeari)},text=chronos timeline foreground colour},
+      timeline year={fill=none,text=chronos timeline foreground colour,rotate around={45:(chronos year \chronosyeari |- chronos top)}},
       major step font=\sffamily\footnotesize\tlstyle,
       timeline years anchor=south west,
       minor step font=\sffamily\scriptsize\tlstyle,
+      timeline margin'=17.5pt,
     },
     minor year format={!Y},
     every event below,
@@ -312,7 +327,16 @@
       end date={-2000}-01-01,
       timeline font=\sffamily\tiny,
       timeline year={text=chronos main colour},
-      timeline line+={shorten >=-20mm, -{Triangle Cap[length=20mm]}},
+      timeline arrow,
+      conditional timeline arrow={%
+        timeline/timeline width-=#1,
+        timeline/timeline line+={%
+          shorten >={-#1}, -{Triangle Cap[length=#1]},
+        },
+        chronos tikz+={%
+          \path (chronos post) -- +(#1,0pt);
+        },
+      }{},
       timeline border height'=0pt,
       step major years=100,
       step minor years=0,
@@ -330,24 +354,29 @@
     event/date format={!q!Y},
     main/title={font=\sffamily\Large,text=chronos timeline foreground colour},
     chronos tikz+={%
-      \scoped[on chronos middle ground layer]{\fill [chronos main background colour, fill opacity=.75] (chronos pre) -| (chronos post |- chronos phantom year.south) -| cycle ;}
+      \ifchronos@timeline@showyears
+        \scoped[on chronos middle ground layer]{\fill [chronos main background colour, fill opacity=.75] (chronos pre) -| (chronos post |- chronos phantom year.south) -| cycle ;}
+      \fi
     },
   },
+  off line colour/.default=20mm,
   off line color/.forward to=/chronos/off line colour,
   off line colour alt/.style={%
     /chronos/.cd,
-    off line colour,
+    off line colour=#1,
     % use cronoleg colours
     colour scheme=offlinealt,
     rotate all colours,
     event/colours below from clist={lliwiau_byw_isod},
     event/colours above from clist={lliwiau_byw_uchod},
   },
+  off line colour alt/.default=20mm,
   off line simple/.style={% https://tex.stackexchange.com/a/324106/
     /chronos/.cd,
-    off line colour,
+    off line colour=#1,
     rotate no colours,
   },
+  off line simple/.default=20mm,
   simple arrow/.style={% https://tex.stackexchange.com/a/342699/
     timeline={%
       start date={1-01-01},
@@ -356,7 +385,14 @@
       timeline height'=2.5mm,
       timeline years=off line,
       timeline width'=200mm,
-      timeline line={shorten >={-10mm}, -{Triangle Cap[length=10mm]}},
+      timeline arrow,
+      conditional timeline arrow={%
+        timeline/timeline width-=#1,
+        timeline/timeline line+={shorten >={-#1}, -{Triangle Cap[length=#1]}},
+        chronos tikz+={%
+          \path (chronos post) -- +(#1,0pt);
+        },
+      }{},
       mark at era switch=false,
     },
     date format={!d/!m/!Y},
@@ -367,6 +403,7 @@
     headings style={font=\footnotesize\itshape},
     subheadings style={font=\scriptsize\itshape},
   },
+  simple arrow/.default=10mm,
   event splitter/.style={% https://tex.stackexchange.com/a/325890/
     no colour rotation,
     timeline={%
@@ -411,33 +448,45 @@
     rotate all colours,
     timeline={%
       timeline width'=120mm,
-      timeline height'=5mm,
+      timeline height'=#1,
       start date=01-01-01,
       end date=2016-12-31,
       timeline years=none,
       timeline years=above,
-      timeline line={shorten >=-20mm, -{Triangle Cap[length=20mm]}},
+      timeline arrow,
+      conditional timeline arrow={%
+        timeline/timeline width'-=20mm,
+        timeline/timeline line+={shorten >=-20mm, -{Triangle Cap[length=20mm]}},
+        chronos tikz+={%
+          \path (chronos post) -- +(20mm,0pt);
+        },
+      }{},
     },
     only years,
-    period/line+={line width=\chronos@height,draw=##1},
-    life/line+={line width=\chronos@height,draw=##1},
-    line yshift=.5\chronos@height,
+    period/line+={line width=#1,draw=##1},
+    life/line+={line width=#1,draw=##1},
+    line yshift=.5*#1,
     event/line+={semithick},
-    text tag yshift=2.5pt+.5\chronos@height,
+    text tag yshift=2.5pt+.5#1,
     every event above,
     every period below,
     every life below,
     headings style={font=\footnotesize\bfseries},
     subheadings style={font=\footnotesize},
+%     timeline config+={%
+%       \pgfqkeys{/chronos/timeline}{do timeline arrow}%
+%     },
   },
+  lines on line/.default=5mm,
   plain arrow/.style={% https://tex.stackexchange.com/a/324453/
     /chronos/.cd,
-    lines on line,
+    lines on line=#1,
     line yshift'=1pt,
     text tag yshift'=2.5pt,
     period/line+={line width=2pt,draw=##1},
     life/line+={line width=2pt,draw=##1},
   },
+  plain arrow/.default=5mm,
   % END no year styles
   % END styles
 }

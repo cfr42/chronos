@@ -34,7 +34,7 @@
 }%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \RequirePackage{svn-prov}
-\ProvidesPackageSVN{$Id: chronos.sty 9866 2023-11-15 04:51:15Z cfrees $}[\filebase \revinfo]
+\ProvidesPackageSVN{$Id: chronos.sty 9882 2023-11-21 06:18:31Z cfrees $}[\filebase \revinfo]
 \ExplSyntaxOn
 \newif\ifchronos@enwaulliwsyml
 \keys_define:nn { chronos }
@@ -1065,6 +1065,7 @@
 \newdimen\chronos@cylchtheori@mawr
 \newdimen\chronos@cylchtheori@bach
 \newdimen\chronos@tmpdimena
+\newdimen\chronos@tmpdimenb
 \chronos@testun@yshift=5pt
 \chronos@height=\pi pt
 \chronos@borderheight=\pi pt
@@ -1180,7 +1181,7 @@
 \newif\ifchronos@headings
 \chronos@headingsfalse
 \newif\ifchronos@frame
-\chronos@frametrue
+\chronos@framefalse
 \newif\ifchronos@framedefnyddiobb
 \chronos@framedefnyddiobbtrue
 \newif\ifchronos@placeholders
@@ -1207,6 +1208,8 @@
 \chronos@tag@cysylltutrue
 \newif\ifchronos@copyleft
 \chronos@copyleftfalse
+\newif\ifchronostimelinearrow
+\chronostimelinearrowfalse
 % END amodol
 % BEGIN pre-defined macros
 \let\chronos@coords\@empty
@@ -1592,9 +1595,14 @@
     }%
     \pgfkeysdef{\pgfkeyscurrentpath'}{#1=##1}%
     \pgfkeysdef{\pgfkeyscurrentpath'+}{\advance #1 by ##1}%
+    \pgfkeysdef{\pgfkeyscurrentpath'-}{\advance #1 by -##1}%
     \pgfkeysdef{\pgfkeyscurrentpath+}{%
       \pgfmathparse{##1}%
       \advance #1 by \pgfmathresult pt
+    }%
+    \pgfkeysdef{\pgfkeyscurrentpath-}{%
+      \pgfmathparse{##1}%
+      \advance #1 by -\pgfmathresult pt
     }%
   },
   /handlers/.chronos 2 dimens/.code 2 args={%
@@ -1612,9 +1620,17 @@
       \advance #1 by ##1
       \advance #2 by ##2
     }%
+    \pgfkeysdefargs{\pgfkeyscurrentpath'-}{##1:##2}{%
+      \advance #1 by -##1
+      \advance #2 by -##2
+    }%
     \pgfkeysdefargs{\pgfkeyscurrentpath+}{##1:##2}{%
       \pgfmathparse{##1}\advance #1 by \pgfmathresult pt
       \pgfmathparse{##2}\advance #2 by \pgfmathresult pt
+    }%
+    \pgfkeysdefargs{\pgfkeyscurrentpath-}{##1:##2}{%
+      \pgfmathparse{##1}\advance #1 by -\pgfmathresult pt
+      \pgfmathparse{##2}\advance #2 by -\pgfmathresult pt
     }%
   },
   /handlers/.chronos layer choice/.code={%
@@ -1722,6 +1738,11 @@
       yshift/.store in=\chronos@yshift,
       yshift/.forward to=yshift,
       testun yshift/.code={\chronos@ychwanegu@nodweddion{#1}{@tag}{/chronos/testun yshift=##1}},
+      testun yshift'/.code={\chronos@ychwanegu@nodweddion{#1}{@tag}{/chronos/testun yshift'=##1}},
+      testun yshift+/.code={\chronos@ychwanegu@nodweddion{#1}{@tag}{/chronos/testun yshift+=##1}},
+      testun yshift-/.code={\chronos@ychwanegu@nodweddion{#1}{@tag}{/chronos/testun yshift-=##1}},
+      testun yshift'+/.code={\chronos@ychwanegu@nodweddion{#1}{@tag}{/chronos/testun yshift'+=##1}},
+      testun yshift'-/.code={\chronos@ychwanegu@nodweddion{#1}{@tag}{/chronos/testun yshift'-=##1}},
       % BEGIN saesneg: /chronos/#1
 %       /chronos/#2/.cd,% yn anffodus dyw hyn ddim yn gweithio (not forwarded on pellach)
       name/.forward to=/chronos/#1/enw,
@@ -1769,6 +1790,11 @@
       text tag'/.forward to=/chronos/#1/testun',
       text tag+/.forward to=/chronos/#1/testun+,
       text tag yshift/.forward to=/chronos/#1/testun yshift,
+      text tag yshift'/.forward to=/chronos/#1/testun yshift',
+      text tag yshift+/.forward to=/chronos/#1/testun yshift+,
+      text tag yshift-/.forward to=/chronos/#1/testun yshift-,
+      text tag yshift'+/.forward to=/chronos/#1/testun yshift'+,
+      text tag yshift'-/.forward to=/chronos/#1/testun yshift'-,
       text content/.forward to=/chronos/#1/cynnwys testun,
       name content/.forward to=/chronos/#1/cynnwys enw,
       dates content/.forward to=/chronos/#1/cynnwys dyddiadau,
@@ -1819,6 +1845,8 @@
       % END shortcuts
       /chronos/#2/.chronos search=#1,
       /chronos/#1/.chronos search=#2,% heb bwrpas | pointless
+      /chronos/#1/.code={\pgfqkeys{/chronos/#1}{##1}},
+      /chronos/#2/.forward to=/chronos/#1,
     }%
   },
   % END .chronos tag init
@@ -2060,6 +2088,8 @@
       \chronos@ychwanegu@nodweddion@rhestr^{byw,parhad}{@llinell}{draw=####1,thick,fill opacity=.75}%
       \chronos@ychwanegu@nodweddion@rhestr^{digwyddiad}{@llinell}{draw=####1,draw opacity=.75,fill=none}%
     \fi
+    % efaillai bod yn anghywir tan inni ailosod yn hwyrach!! | maybe wrong until we reset later!!
+    \let\timelineht\chronos@height
   },
   @style/.style={},
   @@timeline@config@diwedd/.style={},
@@ -2152,6 +2182,7 @@
   heading drop/.chronos dimen=\chronos@heading@drop,
   headings drops'/.code args={#1:#2:#3}{\chronos@heading@drop=#1 \chronos@subheading@drop@uchod=#2 \chronos@subheading@drop@isod=#3},
   headings drops'+/.code args={#1:#2:#3}{\advance \chronos@heading@drop by #1 \advance \chronos@subheading@drop@uchod by #2 \advance\chronos@subheading@drop@isod by #3},
+  headings drops'-/.code args={#1:#2:#3}{\advance \chronos@heading@drop by -#1 \advance \chronos@subheading@drop@uchod by -#2 \advance\chronos@subheading@drop@isod by -#3},
   headings drops'=0pt:0pt:0pt,
   chronos coords'/.code={\chronos@to@clist{dyddiadau_coords}{#1}},
   chronos coords+/.code={\chronos@to@clist+{dyddiadau_coords}{#1}},
@@ -2211,6 +2242,29 @@
   /chronos/timeline/.forward to=/chronos/llinell amser,
   /chronos/timeline/.chronos search=llinell amser,
   /chronos/llinell amser/.cd,
+  timeline arrow/.is if=chronostimelinearrow,
+  timeline arrow/.default=true,
+  no timeline arrow/.code={\chronostimelinearrowfalse},
+  timeline@arrow/.style={},
+  no@timeline@arrow/.style={},
+  do timeline arrow/.code={},
+  conditional timeline arrow/.code 2 args={%
+    \pgfqkeys{/chronos}{%
+      timeline config+={%
+        \pgfqkeys{/chronos/timeline}{do timeline arrow}%
+      },
+      llinell amser/.cd,
+      timeline@arrow/.style={/chronos/.cd,#1},
+      no@timeline@arrow/.style={/chronos/.cd,#2},
+      do timeline arrow/.add code={%
+        \ifchronostimelinearrow 
+          \tikzset{/chronos/llinell amser/timeline@arrow}%
+        \else
+          \tikzset{/chronos/llinell amser/no@timeline@arrow}%
+        \fi
+      },
+    }%
+  },
   % BEGIN ffontiau
   ffont camau mawr/.store in=\chronos@ffont@camaumawr,
   ffont camau bach/.store in=\chronos@ffont@camaubach,
@@ -3024,6 +3078,8 @@
     \chronos@border@penawdau=#1\chronos@border@pen=#2\chronos@border@de=#3\chronos@border@gwaelod=#4\chronos@border@chwith=#5\chronos@border@allanol=#6},
   borders'+/.code args={#1:#2:#3:#4:#5:#6}{% penawdau:pen:de:gwaelod:chwith:allanol
     \advance\chronos@border@penawdau by #1 \advance\chronos@border@pen by #2 \advance\chronos@border@de by #3 \advance\chronos@border@gwaelod by #4 \advance\chronos@border@chwith by #5 \advance\chronos@border@allanol by #6 },
+  borders'-/.code args={#1:#2:#3:#4:#5:#6}{% penawdau:pen:de:gwaelod:chwith:allanol
+    \advance\chronos@border@penawdau by -#1 \advance\chronos@border@pen by -#2 \advance\chronos@border@de by -#3 \advance\chronos@border@gwaelod by -#4 \advance\chronos@border@chwith by -#5 \advance\chronos@border@allanol by -#6 },
   cysylltwyr chronos={anchor=center,inner sep=0pt,outer sep=0pt},% oedd cylch chronos
   cysylltwyr testun={anchor=center,inner sep=0pt,outer sep=0pt},% oedd cylch
   prif gysylltwyr testun={},
@@ -3154,6 +3210,7 @@
     anchor=mid,
     fixed point arithmetic,
     /chronos/.cd,
+    prif/frame/.append code={\chronos@frametrue},
     #1,
     @@timeline@config@diwedd,
     @@timeline@config@dechrau,
@@ -3212,6 +3269,10 @@
 %         \chronos@if@gosodF{@llinell}{\pgfqkeys{/chronos}{llinellau={fill=##1,fill opacity=.25,draw=none}}}%
         \ifdim\chronos@llinell@yshift=\pi pt % rhag: llunio ar y border | default: draw on the border
           \chronos@llinell@yshift=0pt %
+        \fi
+        \ifchronostimelinearrow
+          \chronostimelinearrowfalse
+          \PackageWarning{chronos}{A timeline arrow requires a suitable off line style}
         \fi
       \else
         \chronos@if@gosodF{border}{\pgfqkeys{/chronos}{border ar=middle ground}}%
@@ -3345,6 +3406,16 @@
           \let\chronos@bce\relax
         \fi
       \fi % END \ifchronos@markeras
+%       \ifchronos@yearsonline
+%         {% rhag ofn rhywun wedi gosod line width gwahanol | in case somebody's set a different line width
+%           % use a group to avoid setting timeline style globally
+%           \pgfqkeys{/pgf}{key filters/defined/.install key filter}%
+%           \pgfkeysfiltered{/chronos/llinell amser/timeline@line}%
+%           % so we need to take the line width out in a global dimen
+%           \global\chronos@tmpdimenb=\pgflinewidth
+%         }% & adjust the timeline width accordingly
+%         \advance \chronos@width by -\chronos@tmpdimenb
+%       \fi
       % cofia!! \chronos@set@date a ffrindiau'n awto-cywiro am flwyddyn sero!!
       % cofia! ti'n defnyddio **pgfcalendar** yn lle blynyddoedd nawr!!
       \pgfmathsetmacro\chronos@unit{(\chronos@width-2*\chronos@timelinemargin-\chronos@dechrau@dechrau-\chronos@diwedd@diwedd)/(\thechronos@enddate-\thechronos@startdate)}%
@@ -3365,6 +3436,8 @@
       \coordinate (chronos start) at (0pt,0pt);% dal yn gywir?
       \coordinate (chronos origin) at (chronos start);% newid isod efaillai
       \coordinate (chronos end) at (\chronos@amser@diwedd pt,0pt);
+      % styles which rotate labels need this earlier; reset here in case altered
+      \let\timelineht\chronos@height
       \begin{scope}[/chronos/chronos@border@haenen]
         \ifdim\chronos@borderheight>0pt
           \path [top color=chronos@borderouter, bottom color=chronos@borderinner, middle color=chronos@bordermiddle, /chronos/llinell amser/timeline@border] (chronos pre-top) rectangle (chronos post-head);
@@ -3375,10 +3448,15 @@
         \ifchronos@yearsonline
           % fill the timeline if putting the years etc. onto it
           \fill [chronos@lliw@cefndir@llinell,/chronos/llinell amser/timeline@line] (chronos pre-top) rectangle (chronos post-base);
-          \draw [chronos@lliw@cefndir@llinell,/chronos/llinell amser/timeline@line] (chronos pre-top) -- (chronos post-top) (chronos post-base) -- (chronos pre-base);
+%           \draw [chronos@lliw@cefndir@llinell,/chronos/llinell amser/timeline@line] (chronos pre-top) -- (chronos post-top) (chronos post-base) -- (chronos pre-base);
         \else
           % fel arall, draw
-          \draw [chronos@lliw@llinell,/chronos/llinell amser/timeline@line, line width=\chronos@height] (chronos pre) -- (chronos post);
+          \draw [chronos@lliw@llinell,line width=\chronos@height,/chronos/llinell amser/timeline@line] (chronos pre) -- (chronos post);
+          % gweler ateb Qrrbrbirlbel: https://tex.stackexchange.com/a/701524/ i fy nghwestiwn: https://tex.stackexchange.com/q/701518/
+          \coordinate (tmpa) at (current bounding box.north);
+          \coordinate (tmpb) at (current bounding box.south);
+          \pgfresetboundingbox
+          \path (chronos pre) -- (chronos post) -- (tmpa) -- (tmpb);
         \fi % \ifchronos@yearsonline
         % prif label
         % lau cyfnodau
@@ -3895,6 +3973,9 @@
       \let\bceyearlabel\chronos@yearbce
       \let\celabel\chronos@ce
       \let\bcelabel\chronos@bce
+      \let\timelineborderht\chronos@borderheight
+      \let\timelinewd\chronos@width
+      \let\lineyshift\chronos@llinell@yshift
 }{% oedd yn execute at end picture={...}
       \ifchronos@frame
         \ifchronos@headings\relax
@@ -3976,8 +4057,11 @@
           chronos pre/west, chronos post/east, 
           chronos pre-top/175, chronos post-top/15, chronos pre-base/south west, chronos post-base/south east, 
           chronos pre-head/155, chronos post-head/north east, chronos pre-foot/south, chronos post-foot/south,
-          chronos origin/-85, chronos first marked year/45}
+          chronos origin/-85}
         \node [/chronos/show coord={\j}{\i}] at (\i) {}; 
+        \ifchronos@timeline@showyears
+          \node [/chronos/show coord={45}{chronos first marked year}] at (chronos first marked year) {};
+        \fi
         \ifchronos@headings
           \foreach \i/\j in {chronos main headings/east, chronos bottom/north, chronos upper subheadings/east, chronos lower subheadings/east, chronos margin top/north}
           \node [/chronos/show coord={\j}{\i}] at (\i) {};
