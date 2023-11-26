@@ -16,12 +16,13 @@
 % This work consists of all files listed in manifest.txt.
 %%
 \RequirePackage{chronos}
-\ProvidesPackageSVN{$Id: chronos-lib-styles.sty 9883 2023-11-21 17:01:04Z cfrees $}[\filebase \revinfo]
+\ProvidesPackageSVN{$Id: chronos-lib-styles.sty 9890 2023-11-25 06:30:59Z cfrees $}[\filebase \revinfo]
 \pgfqkeys{/chronos}{%
 % BEGIN styles XXX
   % BEGIN on line styles
   modern/.style={%
     /chronos/.cd,
+    modern/.meaning to context,
     colour scheme=modern,
     no colour rotation,
     timeline={%
@@ -58,6 +59,7 @@
   },
   lavender menace/.style={%
     /chronos/.cd,
+    lavender menace/.meaning to context,
     modern,
     colour scheme=lavender,
     rotate all colours,
@@ -68,6 +70,7 @@
   },
   serif on line/.style={%
     /chronos/.cd,
+    serif on line/.meaning to context,
     no colour rotation,
     colour scheme=default,
     text tag connectors'={fill=##1, opacity=1, circle, minimum size=2.5pt, anchor=center, inner sep=0pt, outer sep=0pt},
@@ -107,6 +110,7 @@
   rainbow serif/.style={%
     /utils/exec={\selectcolormodel{rgb}},
     /chronos/.cd,
+    rainbow serif/.meaning to context,
     serif on line,
     colour scheme=xcolseries,
     rotate all colours,
@@ -120,6 +124,7 @@
   },
   sober judge/.style={%
     /chronos/.cd,
+    sober judge/.meaning to context,
     colour scheme=sobriety,
     timeline={%
       start date=1001-10-01,
@@ -146,6 +151,7 @@
   % BEGIN off line styles
   somewhat plain/.style={%
     /chronos/.cd,
+    somewhat plain/.meaning to context,
     no colour rotation,
     colour scheme=default,
     timeline={%
@@ -182,6 +188,7 @@
   },
   contemporary 90/.style={%
     /chronos/.cd,
+    contemporary 90/.meaning to context,
     colour scheme=contninety,
     every text tags+={text=####1,font=\sffamily},
     every lines+={line width=1pt},
@@ -193,8 +200,8 @@
       conditional timeline arrow={%
         timeline/timeline width-=3pt+4.5\timelineht,
         timeline/timeline line+={shorten >={-3pt-4.5\timelineht}, -Stealth},
-        chronos tikz+={%
-          \path (chronos post) -- +(-3pt-4.5\timelineht,0pt);
+        before headings+={%
+          \path (chronos post) -- +(3pt+4.5\timelineht,0pt);
         },
       }{},
       timeline marks,
@@ -226,6 +233,7 @@
   },
   blues below/.style={%
     /chronos/.cd,
+    blues below/.meaning to context,
     colour scheme=blues,
     rotate all colours,
     timeline={%
@@ -242,7 +250,7 @@
       conditional timeline arrow={%
         timeline/timeline line+={Bar-Latex,shorten <=-\timelineht/3,shorten >=-3pt-2.1\timelineht},
         timeline/timeline width-={3pt+2.43\timelineht},
-        chronos tikz+={\path (chronos post) -- ++(3pt+2.1\timelineht,0pt) (chronos pre) -- ++(-\timelineht/3,0pt);},
+        before headings+={\path (chronos post) -- ++(3pt+2.1\timelineht,0pt) coordinate (chronos arrow tip) (chronos pre) -- ++(-\timelineht/3,0pt) coordinate (chronos arrow tail);},
       }{},
       timeline mark={chronos timeline foreground colour,line width=.6pt,shorten >=-4pt},
       timeline minor mark={chronos timeline foreground colour,line width=.5pt,shorten >=-3.5pt},
@@ -270,6 +278,7 @@
   },
   flipping blues/.style={%
     /chronos/.cd,
+    flipping blues/.meaning to context,
     blues below,
     timeline={%
       timeline years=below,
@@ -283,6 +292,7 @@
   },
   rotated 45/.style={%
     /chronos/.cd,
+    rotated 45/.meaning to context,
     colour scheme=default,
     rotate all colours,
     timeline={%
@@ -318,6 +328,7 @@
   },
   off line colour/.style={% ateb: https://tex.stackexchange.com/a/324106/
     /chronos/.cd,
+    off line colour/.meaning to context,
     colour scheme=offlinebasic,
     rotate all colours,
     timeline={%
@@ -333,7 +344,7 @@
         timeline/timeline line+={%
           shorten >={-#1}, -{Triangle Cap[length=#1]},
         },
-        chronos tikz+={%
+        before headings+={%
           \path (chronos post) -- +(#1,0pt);
         },
       }{},
@@ -363,6 +374,7 @@
   off line color/.forward to=/chronos/off line colour,
   off line colour alt/.style={%
     /chronos/.cd,
+    off line colour alt/.meaning to context,
     off line colour=#1,
     % use cronoleg colours
     colour scheme=offlinealt,
@@ -371,13 +383,17 @@
     event/colours above from clist={lliwiau_byw_uchod},
   },
   off line colour alt/.default=20mm,
+  off line color alt/.forward to=/chronos/off line colour alt,
   off line simple/.style={% https://tex.stackexchange.com/a/324106/
     /chronos/.cd,
+    off line simple/.meaning to context,
     off line colour=#1,
     rotate no colours,
   },
   off line simple/.default=20mm,
   simple arrow/.style={% https://tex.stackexchange.com/a/342699/
+    /chronos/.cd,
+    simple arrow/.meaning to context,
     timeline={%
       start date={1-01-01},
       end date={2000-01-01},
@@ -389,7 +405,7 @@
       conditional timeline arrow={%
         timeline/timeline width-=#1,
         timeline/timeline line+={shorten >={-#1}, -{Triangle Cap[length=#1]}},
-        chronos tikz+={%
+        before headings+={%
           \path (chronos post) -- +(#1,0pt);
         },
       }{},
@@ -405,6 +421,8 @@
   },
   simple arrow/.default=10mm,
   event splitter/.style={% https://tex.stackexchange.com/a/325890/
+    /chronos/.cd,
+    event splitter/.meaning to context,
     no colour rotation,
     timeline={%
       start date=2014-01-13,
@@ -429,6 +447,7 @@
   % BEGIN no year styles
   date centric/.style={%
     /chronos/.cd,
+    date centric/.meaning to context,
     timeline={%
       timeline width'=150mm,
       timeline height'=5mm,
@@ -445,6 +464,7 @@
   },
   lines on line/.style={% https://tex.stackexchange.com/a/324453/
     /chronos/.cd,
+    lines on line/.meaning to context,
     rotate all colours,
     timeline={%
       timeline width'=120mm,
@@ -457,7 +477,7 @@
       conditional timeline arrow={%
         timeline/timeline width'-=20mm,
         timeline/timeline line+={shorten >=-20mm, -{Triangle Cap[length=20mm]}},
-        chronos tikz+={%
+        before headings+={%
           \path (chronos post) -- +(20mm,0pt);
         },
       }{},
@@ -473,13 +493,11 @@
     every life below,
     headings style={font=\footnotesize\bfseries},
     subheadings style={font=\footnotesize},
-%     timeline config+={%
-%       \pgfqkeys{/chronos/timeline}{do timeline arrow}%
-%     },
   },
   lines on line/.default=5mm,
   plain arrow/.style={% https://tex.stackexchange.com/a/324453/
     /chronos/.cd,
+    plain arrow/.meaning to context,
     lines on line=#1,
     line yshift'=1pt,
     text tag yshift'=2.5pt,

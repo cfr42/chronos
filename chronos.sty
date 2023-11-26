@@ -34,7 +34,7 @@
 }%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \RequirePackage{svn-prov}
-\ProvidesPackageSVN{$Id: chronos.sty 9882 2023-11-21 06:18:31Z cfrees $}[\filebase \revinfo]
+\ProvidesPackageSVN{$Id: chronos.sty 9890 2023-11-25 06:30:59Z cfrees $}[\filebase \revinfo]
 \ExplSyntaxOn
 \newif\ifchronos@enwaulliwsyml
 \keys_define:nn { chronos }
@@ -1015,6 +1015,10 @@
       \__chronos_color_set_from_existing:nn { chronos@theori@lliw@rhagosodedig } { chronos@prifliw } 
       \__chronos_color_set_from_existing:nn { chronos@gwybodaeth@lliw@rhagosodedig } { chronos@prifliw } 
       \keys_set_filter:nnn { chronos / lliwiau } { core, core ~ derivative, core ~ border } { #3 }
+      \@ifpackageloaded{memoize}
+      {
+        \mmzset { csname ~ meaning ~ to ~ context={ __chronos_lliwiau_#2 : } }
+      }{}
     }
     \cs_new_eq:cc  { chronos@lliwiau@#2 } { __chronos_lliwiau_#2 : }
   \group_end:
@@ -2062,6 +2066,14 @@
   % END llwybrau: /chronos /chronos/byw /chronos/digwyddiad /chronos/theori
   % BEGIN /chronos
   /chronos/.cd,
+  @before@headings/.code={},
+  before headings+/.code={\pgfqkeys{/chronos}{@before@headings/.append code={#1}}},
+  before headings'/.code={\pgfqkeys{/chronos}{@before@headings/.code={#1}}},
+  before headings/.forward to=/chronos/before headings+,
+  @before@frame/.code={},
+  before drawing frame+/.code={\pgfqkeys{/chronos}{@before@frame/.append code={#1}}},
+  before drawing frame'/.code={\pgfqkeys{/chronos}{@before@frame/.code={#1}}},
+  before drawing frame/.forward to=/chronos/before drawing frame+,
   tikz'/.forward to=/tikz/chronos tikz',
   tikz+/.forward to=/tikz/chronos tikz+,
   tikz/.forward to=/tikz/chronos tikz,
@@ -2250,9 +2262,6 @@
   do timeline arrow/.code={},
   conditional timeline arrow/.code 2 args={%
     \pgfqkeys{/chronos}{%
-      timeline config+={%
-        \pgfqkeys{/chronos/timeline}{do timeline arrow}%
-      },
       llinell amser/.cd,
       timeline@arrow/.style={/chronos/.cd,#1},
       no@timeline@arrow/.style={/chronos/.cd,#2},
@@ -3093,7 +3102,10 @@
   cynllun lliwiau/.code={\csname chronos@lliwiau@#1\endcsname},
   colour scheme/.forward to=/chronos/cynllun lliwiau,
   color scheme/.forward to=/chronos/cynllun lliwiau,
-  lliwiau cronoleg/.code={\chronos@lliwiau@cronoleg},
+  lliwiau cronoleg/.code={%
+    \chronos@lliwiau@cronoleg
+    \@ifpackageloaded{memoize}(\mmzset{csname meaning to context={chronos@lliwiau@cronoleg}}){}%
+  },
   lliwiau rhagosodedig/.code={\chronos@lliwiau@rhagosodedig},
   % END cynlluniau lliwiau
 }
@@ -3103,6 +3115,7 @@
 \pgfqkeys{/chronos}{%
   cronoleg/.style={% mewnol | internal
     /chronos/.cd,
+    cronoleg/.meaning to context,
     cynllun lliwiau=cronoleg,
     byw/troi lliwiau=true,
     digwyddiad/troi lliwiau=true,
@@ -3211,6 +3224,8 @@
     fixed point arithmetic,
     /chronos/.cd,
     prif/frame/.append code={\chronos@frametrue},
+    prif/frame+/.append code={\chronos@frametrue},
+    prif/frame'/.append code={\chronos@frametrue},
     #1,
     @@timeline@config@diwedd,
     @@timeline@config@dechrau,
@@ -3338,6 +3353,7 @@
       \fi
       \ifchronos@yearsonline % BEGIN \ifchronos@yearsonline
       \else
+        \pgfqkeys{/chronos/timeline}{do timeline arrow}%
         \ifdim\chronos@llinell@yshift=\pi pt % BEGIN
           \ifdim\chronos@height<5pt % BEGIN
             \ifdim\chronos@borderheight<.5pt % BEGIN
@@ -4034,7 +4050,9 @@
         \coordinate (chronos@chwith) at ($(chronos pre) + (-\chronos@border@chwith,0pt)$);% oedd chwith
   %       \coordinate (chronos@chwith1) at ($(chronos pre) + (\chronos@border@chwith,0pt)$);% oedd chwith1
       \fi % \ifchronos@headings
+      \pgfqkeys{/chronos}{@before@headings}%
       \chronos@at@end
+      \pgfqkeys{/chronos}{@before@frame}%
       \ifchronos@frame
         \scoped[on chronos background layer]{%
           \ifchronos@framedefnyddiobb % if frame uses bb
@@ -4813,7 +4831,9 @@
     \mmzset{%
       auto={chronos}{memoize},
     }%
-  }{}%
+  }{% nid yw hyn yn memoizable byth bynnag
+    \pgfkeys{/handlers/.meaning to context/.code={}}%
+  }%
   \ifchronos@byw@isod\chronos@byw@isod@rhagtrue\else\chronos@byw@isod@rhagfalse\fi
   \ifchronos@digwyddiad@isod\chronos@digwyddiad@isod@rhagtrue\else\chronos@digwyddiad@isod@rhagfalse\fi
   \ifchronos@parhad@isod\chronos@parhad@isod@rhagtrue\else\chronos@parhad@isod@rhagfalse\fi
@@ -4839,6 +4859,7 @@
   \IfExistF \celabel {\let\celabel\chronos@ce}%
   \IfExistF \bcelabel {\let\bcelabel\chronos@bce}%
   \IfExistF \tlstyle {\let\tlstyle\upshape}%
+  \IfExistF \plstyle {\let\plstyle\upshape}%
   \IfExistF \sishape {\DeclareRobustCommand \sishape{\itshape\scshape}}%
   \IfExistF \textsi {\DeclareTextFontCommand{\textsi}{\sishape}}%
   \IfExistF \uishape {\let\uishape\itshape}%

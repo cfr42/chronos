@@ -21,7 +21,7 @@
 %%
 \pdfminorversion=7
 \RequirePackage{svn-prov}
-\ProvidesFileSVN{$Id: chronos.tex 9884 2023-11-21 19:38:19Z cfrees $}[v0.8 \revinfo]
+\ProvidesFileSVN{$Id: chronos.tex 9893 2023-11-26 03:27:26Z cfrees $}[v0.8 \revinfo]
 \GetFileInfoSVN*
 \let\chronosdocversion\fileversion
 \let\chronosdocbase\filebase
@@ -31,7 +31,7 @@
 \documentclass[10pt,british,a4paper]{ltxdoc}
 % \usepackage[dvipsnames,svgnames,rgb,x11names]{xcolor}
 \usepackage{svn-multi}
-\svnid{$Id: chronos.tex 9884 2023-11-21 19:38:19Z cfrees $}
+\svnid{$Id: chronos.tex 9893 2023-11-26 03:27:26Z cfrees $}
 \svnRegisterAuthor{cfrees}{Clea F. Rees}
 \usepackage[extract=python]{memoize}
 \mmzset{%
@@ -1401,10 +1401,11 @@
         blues below,
         timeline={%
           dates={2014-07-01}:{\year-\month-\day},
-          width=\chronosdoctemplgth,
+          width=\chronosdoctemplgth+35pt,
           step major years=1,
           step minor years=0,
           step divisions=4,
+%           timeline margin'=10pt,
         },
         text tags+={align=left,font=\sffamily},
         every text tag connectors+={fill=##1,circle,minimum size=2.5pt,inner sep=0pt,anchor=center},
@@ -1529,7 +1530,7 @@
         connectors=east,
         xshift=10pt,
       }
-      \foreach \i/\j/\k  in {split/17.5pt/5pt,dformats2/22.5pt/10pt,noeth/27.5pt/15pt,hol/32.5pt/20pt}
+      \foreach \i/\j/\k  in {split/27.5pt/5pt,dformats2/32.5pt/10pt,noeth/37.5pt/15pt,hol/42.5pt/20pt}
       {
         \coordinate (a) at ([xshift=\j]chronos year 2020);
         \coordinate (b) at ([yshift=\k]level -1.south);
@@ -1552,11 +1553,11 @@
         \draw [chronos connect=event:\i] (connector \i1) -- ++(\j,0pt) |- ([xshift=2.5pt,yshift=2.5pt]h) coordinate [midway] (g) coordinate (h) -- (h |- connector ctan1.\n) -- (connector ctan1);
       }
       \foreach \i/\j/\k/\l/\m in {%
-        zero/15pt/5pt/5pt/180,%
-        dformats/13pt/7.5pt/7pt/202,
-        lol/11pt/10pt/9pt/225,
-        dcentric/9pt/12.5pt/11pt/247,
-        siml/7pt/15pt/13pt/270%
+        zero/20pt/5pt/5pt/180,%
+        dformats/18pt/7.5pt/7pt/202,
+        lol/16pt/10pt/9pt/225,
+        dcentric/14pt/12.5pt/11pt/247,
+        siml/12pt/15pt/13pt/270%
       }
       {
         \coordinate (a) at ([xshift=\j]chronos year 2020);
@@ -1565,11 +1566,11 @@
         \draw [chronos connect=event:\i] (connector \i1) -| (a |- b) -| ([yshift=2.5pt]h -| c) -- ([xshift=2.5pt,yshift=2.5pt]h) coordinate (h) -- (h |- connector ctan1.\m) -- (connector ctan1);
       }
       \foreach \i/\j/\k/\l in {%
-        second/5pt/17.5pt/west,
-        first/4pt/20pt/south west,
-        wphil/2pt/22.5pt/south,
-        wphildev/0pt/25pt/south east,
-        wphilcommit/-2pt/27.5pt/east%
+        second/10pt/17.5pt/west,
+        first/8pt/20pt/south west,
+        wphil/6pt/22.5pt/south,
+        wphildev/4pt/25pt/south east,
+        wphilcommit/2pt/27.5pt/east%
       }
       {
         \coordinate (a) at ([xshift=\j]chronos year 2020);
@@ -4657,7 +4658,7 @@ The cumulative effect of the colour settings given in the examples in this \name
 % BEGIN subsubsec:timeline-style
 
 The \conceptname[link,idx post=style]{timeline}'s overall style can be customised using the following \keyslabelname{}, which should (and, by default, do) utilise \conceptname[idx pre=timeline,idx font pre=\sffamily]{colours} from the \conceptname[link,no idx,type=concept]{colour scheme} (see \cref{subsec:chronos-style-creation}).
-Unless you are creating a \conceptname[type=concept,link,no idx]{chronos style}, it is best to \emph{add to} rather than \emph{replacing} the existing configuration.XXX
+Unless you are creating a \conceptname[type=concept,link,no idx]{chronos style}, it is best to \emph{add to} rather than \emph{replacing} the existing configuration.
 For example, if you wish the line to take the form of an arrow, you can simply add the use of an appropriate arrow tip, without modifying the colours, dimensions or markings.
 
 \DescribeKey{timeline/timeline line,timeline/timeline line\textquotesingle,timeline/timeline line+}\valmarg{key-value list}\AfterLastParam
@@ -6404,11 +6405,12 @@ Sašo Živanović's \pkgname{memoize} has no trouble compiling this documentatio
 
 \Pkgname[idx post=memoize\string\textnormal{-ready},idx font post=\PkgFont]{chronos} supports automemoization out-of-the-box\footnote{%
   This fantastic feat was accomplished by copying a line of code from \pkg{memoize}'s manual and substituting \texttt{chronos} for the appropriate word.
-  Even I managed to do achieve this without major incident.}: to enable automatic memoization of \keyname[type=env,idx post=enable automemoization]{chronos} \envslabelname{}, simply load \pkg{memoize} early in your preamble.
+  Even I managed to achieve this without major incident.}: to enable automatic memoization of \keyname[type=env,idx post=enable automemoization]{chronos} \envslabelname{}, simply load \pkg{memoize} early in your preamble.
 \Pkgname[no idx]{chronos} will then enable ‘automemoization’ for all \conceptsname[no idx]{timeline}\footnote{%
   Of course, memoization can be disabled permanently or temporarily for some or all \conceptsname[no idx]{timeline}.
   See \pkg{memoize}'s documentation for details or look at the code for this document, which disables memoization for \cref{fig:chronos-dev} to prevent destruction of hyperlinks.}.
 
+All \chronosstyleslabelname{} (except default) and all \colschemeslabelname{} (except \keyname[type=colscheme,no link,idx post={modification will not cause \string\pkg{memoize} recompilation}]{default}) are defined so that modification will automatically trigger the recompilation of all \pkg{chronos} \conceptsname[link,no idx]{timeline} which use them.
 
 % END sec:external-memoize
 
@@ -6452,6 +6454,18 @@ Commands to execute after the \conceptname[no idx,link,type=concept]{\meta{timel
 Material added with these \keyslabelname{} is excluded when the final picture's bounding box is determined.
 If you draw outside the \conceptname[no idx,link,link to=main/frame]{frame} and \conceptname[idx pre=chronos tikz outside bb,idx font pre=\KeyFont,symbol=eg]{outer border}, for example, \TeX{} will treat it as if it didn't exist and you will need to ensure adequate space is available to accommodate it manually. 
 \emph{If you aren't sure which set of \keyslabelname{} to use, avoid these.}
+
+Finally, you might want to add material at some specific point in the construction of the picture (e.g.~after \conceptsname[link,no idx]{heading} but before the \conceptname[link,no idx]{frame}).
+The following sets of \keyslabelname{} facilitate such additions.
+
+\DescribeKey{before headings\textquotesingle,before headings,before headings+}\valmarg{\TikZ{} commands}\AfterLastParam
+Commands to execute after the \conceptname[no idx,link,type=concept]{\meta{timeline additions specification}}, but before constructing any \conceptname[idx post=adding code before]{headings}.
+\keyname[link,no idx]{before headings,before headings+} add to current material; \keyname[link,no idx]{before headings\textquotesingle} replaces it.
+
+\DescribeKey{before drawing frame\textquotesingle,before drawing frame,before drawing frame+}\valmarg{\TikZ{} commands}\AfterLastParam
+Commands to execute after the \conceptname[no idx,link,type=concept]{\meta{timeline additions specification}} and any \conceptname[idx post=adding code after]{headings,subheadings} are drawn, but before constructing any \conceptname[idx post=adding code before]{frame}.
+\keyname[link,no idx]{before drawing frame,before drawing frame+} add to current material; \keyname[link,no idx]{before drawing frame\textquotesingle} replaces it.
+
 
 % END subsec:add-tikz
 
@@ -6584,9 +6598,10 @@ Only after this sixth stage are the ‘public’ names listed in \cref{tab:colna
 The current method for creating \conceptsname[type=chronosstyle,idx as=defining custom,font=\normalfont]{chronos style} is straightforward in theory, but potentially hazardous in practice.
 Here's an example from \pkg{chronos-lib-styles.sty}.
 \begin{chronoscode}
-\tikzset{%
+\pgfqkeys{/chronos}{%
   blues below/.style={%
     /chronos/.cd,
+    blues below/.meaning to context,
     colour scheme=blues,
     rotate all colours,
     timeline={%
@@ -6603,7 +6618,7 @@ Here's an example from \pkg{chronos-lib-styles.sty}.
       conditional timeline arrow={%
         timeline/timeline line+={Bar-Latex,shorten <=-\timelineht/3,shorten >=-3pt-2.1\timelineht},
         timeline/timeline width-={3pt+2.43\timelineht},
-        chronos tikz+={\path (chronos post) -- ++(3pt+2.1\timelineht,0pt) (chronos pre) -- ++(-\timelineht/3,0pt);},
+        before headings+={\path (chronos post) -- ++(3pt+2.1\timelineht,0pt) (chronos pre) -- ++(-\timelineht/3,0pt);},
       }{},
       timeline mark={chronos timeline foreground colour,line width=.6pt,shorten >=-4pt},
       timeline minor mark={chronos timeline foreground colour,line width=.5pt,shorten >=-3.5pt},
@@ -6629,7 +6644,7 @@ Here's an example from \pkg{chronos-lib-styles.sty}.
   },
 }
 \end{chronoscode}
-This definition is chosen because it is the most technically complex example.
+This definition is chosen because it is one of the most technically complex examples.
 This complexity is a function of several factors: it uses \emph{off-line} years; the year labels are rotated; the line involves two arrow tips; and the line is drawn with \texttt{double}.
 
 Note the following:
@@ -6639,6 +6654,7 @@ Note the following:
   \item\label{item:weird-i} there is a weird looking \keyname[type=macro,idx post=use in \string\textkey{blues below}]{\cs{chronosyeari}} in the definition of \keyname[link prefix=timeline/,idx as=timeline/timeline year]{timeline year};
   \item\label{item:timeline-arrow} \keyname[type=boolkey,idx post=use in \string\textkey{blues below}\string\idxeg]{timeline/timeline arrow} and \keyname[idx post=use in \string\textkey{blues below}\string\idxeg]{timeline/conditional timeline arrow} enables use of arrow tips to be toggled off;
   \item\label{item:def-dyddiadau} \keyname[type=datekey,no idx]{dates} are defined, even though they are almost certainly wrong in most cases;
+  \item\label{item:meaning2context} \keyname[no link,type=keyhandler,idx post=use in \string\texttt{blues below}\string\idxeg]{.meaning to context} is used, even though the user might not have loaded \pkg{memoize}, which defines it.
   \item\label{item:tlstyle} some fonts use a non-standard command \cs{tlstyle}.
 \end{enumerate}
 
@@ -6894,8 +6910,8 @@ Hashes are essential for two reasons.
 
 % END subsubsec:hashes
 
-\subsection{Timeline Arrow}\label{subsec:timeline-arrow}
-% BEGIN subsec:timeline-arrow
+\subsubsection{Timeline Arrow}\label{subsubsec:timeline-arrow}
+% BEGIN subsubsec:timeline-arrow
 
 \Chronosstyleslabelname{} must decide whether to support \conceptsname[link,no idx]{timeline} with and/or without one or more 
 \textconcept{arrow tips} and/or \textconcept{line caps}.
@@ -6922,22 +6938,20 @@ More specifically, the code used to implement this mechanism is equivalent to
 \begin{chronoscode}
   conditional timeline arrow/.code 2 args={%
     \pgfqkeys{/chronos}{%
-      timeline config+={%
-        \pgfqkeys{/chronos/timeline}{do timeline arrow}%
-      },
-      timeline/.cd,
+      llinell amser/.cd,
       timeline@arrow/.style={/chronos/.cd,#1},
       no@timeline@arrow/.style={/chronos/.cd,#2},
       do timeline arrow/.add code={%
         \ifchronostimelinearrow 
-          \tikzset{/chronos/timeline/timeline@arrow}%
+          \tikzset{/chronos/llinell amser/timeline@arrow}%
         \else
-          \tikzset{/chronos/timeline/no@timeline@arrow}%
+          \tikzset{/chronos/llinell amser/no@timeline@arrow}%
         \fi
       },
     }%
   },
 \end{chronoscode}
+If the \conceptname[link,no idx]{timeline} uses off line \conceptsname[link,no idx]{years}, \texttt{\cs{pgfqkeys}\marg{/chronos/timeline}\marg{do timeline arrow}} is executed after \keyname[type=dimkey,idx post={finalised before \string\texttt{timeline/do timeline arrow}}]{timeline/timeline height} is finalised.
 \Example{\normalfont See below.}
 
 \DescribeKey{timeline/do timeline arrow}\AfterLastParam
@@ -6956,7 +6970,7 @@ For example, \keyname[type=chronosstyle,idx post=use of \string\textkey{conditio
       conditional timeline arrow={%
         timeline/timeline width'-=20mm,
         timeline/timeline line+={shorten >=-20mm, -{Triangle Cap[length=20mm]}},
-        chronos tikz+={%
+        before headings+={%
           \path (chronos post) -- +(20mm,0pt);
         },
       }{},
@@ -6971,7 +6985,49 @@ At this stage, then, no actual changes are applied to the \stylelabelname{} to b
 The actual effects on the \conceptname[no idx]{timeline}'s \stylelabelname{} are determined only at the end of \conceptname[link,no idx,type=concept]{\meta{chronos preamble}} when \keyname[no idx]{timeline/do timeline arrow} is executed.
 Hence, the user may override the \stylelabelname{}'s use of \texttt{timeline arrow} by writing \texttt{timeline/timeline arrow=false} or \texttt{timeline/no timeline arrow} after loading \keyname[type=chronosstyle,no idx]{lines on line}.
 
-% END subsec:timeline-arrow
+\Styleslabelname{} which support \conceptname[link,no idx]{timeline} arrows must do the following to ensure correct results\footnote{%
+  This is necessary because \env{chronos} discards the bounding box which includes the arrows immediately after drawing them and it is not possible (as far as I can tell) to extract the required information, even though \pgf{} has just performed all these calculations itself.%
+}.
+\begin{enumerate}
+  \item Set \keyname[type=boolkey]{timeline/timeline arrow} if an arrow, non-default line-cap or similar is to be default.
+  \item Use \keyname{timeline/conditional timeline arrow} if a non-arrow is to be supported and configure the arrow/cap/spacer(s) \emph{only} using this conditional.
+  \item Decrease \keyname[type=dimkey]{timeline/timeline width} by the total length of arrows, caps and spacers.
+  At the beginning of the \enviro{chronos} \envlabelname{}, this dimension must equal the actual length available for the \keysname[type=dimkey,no idx,link pre=timeline/]{timeline era margin}, \keysname[type=dimkey,link pre=timeline/,no idx]{timeline margin} and the representation of time, else \conceptname[link,no idx]{marks,years} may be placed onto arrows or caps.
+  \begin{enumerate}
+    \item[] The recommended way to do this at present is to
+    \item calculate the total length of arrows, caps and spacers by hand and use \keyname[link to=timeline/timeline width,type=dimkey,no idx]{timeline/timeline width'}\valmarg{total length} to subtract it from the user-specified \texttt{width}\footnote{%
+      Accurate calculation requires knowledge of \cs{pgflinewidth}, any use of \texttt{double}, custom options passed to the arrow and details of the formula \pgf{} uses to calculate the length for the specific types of arrow tips and/or line caps configured.
+      In some cases, this information is included in the \TikZ{} manual but, in most cases, you must consult the source of the \lib{arrows.meta} \liblabelname{}.};
+    \item add \texttt{shorten >=} and/or \texttt{shorten <=}, as appropriate, to increase the length of the line just while it is being drawn.
+  \end{enumerate}
+  \item Ensure the bounding box includes any arrows, caps and spacers.
+  \begin{enumerate}
+    \item[] One way to achieve this is to
+    \item use \keyname{before headings+} to place coordinates at the tip and very tail of the arrow/cap/spacer(s).
+  \end{enumerate}
+  \item Calculations must account for \cs{pgflinewidth} and, if applicable, any use of \texttt{double}, in order to avoid overfull boxes.
+\end{enumerate}
+
+% END subsubsec:timeline-arrow
+
+\subsubsection{Styles and Automemoization}\label{subsubsec:memoizable-style}
+% BEGIN subsubsec:memoizable-style
+
+It is recommended that \chronosstyleslabelname{} are configured so that externalised \enviro{chronos} \conceptsname[no idx,no link]{timeline} which use them are automatically recompiled if the \styleslabelname{}' definitions change.
+This can be achieved by adding \meta{name of style}\texttt{/.meaning to context} to each \chronosstylelabelname{}'s definition.
+For example, the packaged \styleslabelname{} all use the following template to begin their definitions.
+\begin{chronoscode}
+\pgfqkeys{/chronos}{%
+  <name of style>/.style={%
+    /chronos/.cd,
+    <name of style>/.meaning to context,
+    ...
+  },
+}
+\end{chronoscode}
+This is safe, even if \pkg{memoize} isn't used, because \pkg{chronos} provides a fallback \keyhandlerlabelname{}, \keyname[type=keyhandler,no link,idx post=use in \string\textconcept{chronos styles}]{.meaning to context} which does nothing.
+
+% END subsubsec:memoizable-style
 
 % END subsec:chronos-style-creation
 
@@ -7302,6 +7358,7 @@ These commands are of the following kinds.
       \toprule
       \sffamily Functionality used if defined & \sffamily\keyname[type=pkg,no link,font=\sffamily,idx as=chronos,idx post=fallback macro definitions]{\Pkg{chronos}} fallback definition  \\\midrule
       \keyname[type=macro,no link]{\cs{tlstyle}} &  \cs{let}\cs{tlstyle}\cs{upshape} \\
+      \keyname[type=macro,no link]{\cs{plstyle}} &  \cs{let}\cs{plstyle}\cs{upshape} \\
       \keyname[type=macro,no link]{\cs{uishape}} &  \cs{let}\cs{uishape}\cs{itshape} \\
       \keyname[type=macro,no link]{\cs{textui}} &  \cs{DeclareTextFontCommand}\{\cs{textui}\}\{\cs{uishape}\} \\
       \keyname[type=macro,no link]{\cs{sishape}} &  \cs{DeclareRobustCommand}\cs{sishape}\{\cs{itshape}\cs{scshape}\} \\
@@ -7353,25 +7410,25 @@ Of these, \cref{method:complete,method:no-chronos} are strongly recommended.
 The remaining \cref{method:cy,method:rename} are for those keen for adventures in the typesetting hinterlands, desperate souls suffering in imminent-deadline hells and the perilously inquisitive with too much time on their hands.
 They are included because most of us, at one time or another, find ourselves in situations of the second type, even if we are too home-loving and incurious to dare the others.
 
-\begin{chronosmethod}
-  \item\label{method:complete}\chronosdocidx[idx post=updating from \string\TeX{}\space SE code,font=\sffamily]{timeline} If you intend to develop work utilising code from \TeX{} SE answers further, I strongly recommend taking the time to switch to the new key-value interface and \enviro{chronos} \envlabelname{}.
+\begin{chronosmethod}% XXX
+  \item\label{method:complete}\chronosdocidx[type=concept,idx post=updating from \string\TeX{}\space SE code,font=\sffamily]{timeline} If you intend to develop work utilising code from \TeX{} SE answers further, I strongly recommend taking the time to switch to the new key-value interface and \enviro{chronos} \envlabelname{}.
   This method is the most work, but also the most reliable and flexible.
   There is no guarantee that either of the alternative methods \cref*{method:cy,method:rename} will work or continue to work with future \pkg{chronos} releases.
   \Cref{method:no-chronos} is an option, but if you are actively developing a \conceptname[no idx]{timeline}, the flexibility of \pkg{chronos} should make things easier and provide options otherwise unavailable.
   If you put more work in and then find the code you have insufficient to your needs, you will only have delayed and expanded the task of updating.
-  \item\label{method:no-chronos}\chronosdocidx[idx post=updating with retained \string\TeX{}\space SE code,font=\sffamily]{timeline} If you don't intend to develop existing \conceptname[idx as=timeline,idx post=completed using \string\TeX{}\space SE code]{timelines} further, I strongly recommend not loading \pkg{chronos}, renaming any existing file to avoid conflicts and doing an ultra-simple update so existing documents load the renamed file.
+  \item\label{method:no-chronos}\chronosdocidx[type=concept,idx post=updating with retained \string\TeX{}\space SE code,font=\sffamily]{timeline} If you don't intend to develop existing \conceptsname[type=concept,idx as=timeline,idx post=completed using \string\TeX{}\space SE code]{timeline} further, I strongly recommend not loading \pkg{chronos}, renaming any existing file to avoid conflicts and doing an ultra-simple update so existing documents load the renamed file.
   This is the simplest, most straightforward option.
   Why fix what ain't broke?
   If the code you have works and you're satisfied with the results, you need this package like a head needs an ache.
   The only thing you should do --- and you really \emph{should} do this --- is rename any conflicting package you created locally.
   That is, if you've stuck code from an SE answer in a file named \texttt{chronos.sty}, I strongly recommend renaming it to, for example, \texttt{chronos-se.sty} to avoid conflicts.
   Then you can use \pkg{chronos} in new documents and just change the \cs{usepackage} invocation to \pkg{chronos-se} in old ones.
-  \item\label{method:hinterlands} If \cref{method:complete,method:no-chronos} aren't options --- if, say, you want to use this package for a new \conceptname[no idx]{timeline} in a document with existing \conceptname[idx as=timeline,idx post=combining package and \string\TeX{}\space SE code in single document]{timelines} and you don't have time to update those, then one of the following pairs of definitions \emph{may} produce more-or-less the same output from existing or slightly modified code.
+  \item\label{method:hinterlands} If \cref{method:complete,method:no-chronos} aren't options --- if, say, you want to use this package for a new \conceptname[no idx]{timeline} in a document with existing \conceptname[type=concept,idx as=timeline,idx post=combining package and \string\TeX{}\space SE code in single document]{timelines} and you don't have time to update those, then one of the following pairs of definitions \emph{may} produce more-or-less the same output from existing or slightly modified code.
   Note that there is no guarantee this will work in any particular case or, if it does, that it will continue to work with future releases of \pkg{chronos}.
   It may, however, provide a quick-and-dirty fix if you are stuck.
   \begin{chronosmethod}
     \item\label{method:cy} This requires minimal changes to existing code.
-    You will need to modify existing \conceptname[idx as=timeline,idx post=combining package and \string\TeX{}\space SE code in single document with minimal changes]{timelines} to use the \enviro{chronos} \envlabelname{} if they are currently in \enviro{tikzpicture} \envslabelname{}.
+    You will need to modify existing \conceptname[type=concept,idx as=timeline,idx post=combining package and \string\TeX{}\space SE code in single document with minimal changes]{timelines} to use the \enviro{chronos} \envlabelname{} if they are currently in \enviro{tikzpicture} \envslabelname{}.
     Then place the following code \emph{into the preamble} of your document:
 \begin{verbatim}
 \usepackage{chronos}
@@ -7419,7 +7476,7 @@ They are included because most of us, at one time or another, find ourselves in 
 \end{verbatim}
     If you use this method, you \emph{cannot} use the key-value versions of \keyname[type=macro,idx post=method incompatible with key-value version of]{\cs{chronosevent},\cs{chronosperiod}}.
     Instead, you will need to use \keyname[type=macro,no link]{\cs{digwyddiad}} for events and \keyname[type=macro,no link]{\cs{parhad}} for periods when you wish to make use of the new features.
-    \item\label{method:rename}\chronosdocidx[font=\sffamily,idx post=combining package and \string\TeX{}\space SE code in single document with legacy names]{timeline} Alternatively, update all existing \envslabelname{} to use \enviro{chronos} as explained in \cref{method:cy}, if required.
+    \item\label{method:rename}\chronosdocidx[type=concept,font=\sffamily,idx post=combining package and \string\TeX{}\space SE code in single document with legacy names]{timeline} Alternatively, update all existing \envslabelname{} to use \enviro{chronos} as explained in \cref{method:cy}, if required.
     Then replace every occurrence of \keyname[type=macro,idx post=renaming \string\TeX{}\space SE version]{\cs{chronosevent},\cs{chronosperiod}} with \keyname[type=macro,no link]{\cs{chronoslegacyevent},\cs{chronoslegacyperiod}} and place the following in your document preamble\footnote{The location isn't crucial in this case, provided the definitions are read before you use them and after \pkg{chronos} is loaded, but it is bad practice to define new commands in the body of documents.}:
 \begin{verbatim}
 \usepackage{chronos}

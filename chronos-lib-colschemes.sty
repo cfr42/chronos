@@ -16,9 +16,9 @@
 % This work consists of all files listed in manifest.txt.
 %%
 \RequirePackage{chronos}
-\ProvidesPackageSVN{$Id: chronos-lib-colschemes.sty 9866 2023-11-15 04:51:15Z cfrees $}[\filebase \revinfo]
+\ProvidesPackageSVN{$Id: chronos-lib-colschemes.sty 9891 2023-11-26 01:51:32Z cfrees $}[\filebase \revinfo]
 % BEGIN cylluniau lliwiau | colour schemes
-\chronosnewcolourscheme{blues}{%
+\chronosnewcolourscheme[default]{blues}{%
   timeline foreground=chronosDodgerBlue4,
   timeline background=chronosDodgerBlue2,
   default below={chronosCerulean!50!chronosDodgerBlue4,chronosCerulean!50!chronosDodgerBlue3,chronosCerulean!50!chronosDodgerBlue2,chronosCerulean!50!chronosDodgerBlue1,chronosCerulean},
@@ -26,7 +26,7 @@
   foreground=chronosDodgerBlue4,
   background=white,
 }
-\chronosnewcolourscheme{contninety}{%
+\chronosnewcolourscheme[default]{contninety}{%
   foreground=chronosdarkgray,
   timeline foreground=chronosdarkgray,
 }
@@ -38,7 +38,7 @@
 \definecolorseries{xcolor s2}{hsb}{step}[hsb]{.575,1,1}{.11,-.05,0}
 \resetcolorseries{xcolor g2}
 \resetcolorseries{xcolor s2}
-\chronosnewcolourscheme{xcolseries}{%
+\chronosnewcolourscheme[default]{xcolseries}{%
   default above={%
     xcolor s2!![0],xcolor s2!![1],xcolor s2!![2],xcolor s2!![3],%
     xcolor s2!![4],xcolor s2!![5],xcolor s2!![6],xcolor s2!![7],%
@@ -62,7 +62,7 @@
   theory/default=chronosdarkgray,
   info/default=chronosdarkgray,
 }
-\chronosnewcolourscheme{lavender}{%
+\chronosnewcolourscheme[default]{lavender}{%
   timeline foreground=chronosLavenderBlush4,
   timeline background=chronosLavender,
   timeline border inner=chronosLavenderBlush3,
@@ -73,15 +73,15 @@
   default above={chronosLavenderBlush4!90!chronosMediumPurple!50!chronosDarkSlateGrey,chronosLavenderBlush3!90!chronosMediumPurple!50!chronosDarkSlateGrey,chronosLavenderBlush2!90!chronosMediumPurple!50!chronosDarkSlateGrey},
   default below={chronosLavenderBlush2!90!chronosMediumPurple!50!chronosDarkSlateGrey,chronosLavenderBlush3!90!chronosMediumPurple!50!chronosDarkSlateGrey,chronosLavenderBlush4!90!chronosMediumPurple!50!chronosDarkSlateGrey},
 }
-\chronosnewcolourscheme{modern}{%
+\chronosnewcolourscheme[default]{modern}{%
   timeline foreground=chronosSilver,
 }
-\chronosnewcolourscheme{offlinebasic}{%
+\chronosnewcolourscheme[default]{offlinebasic}{%
   timeline foreground=blue!40,
   foreground=black,
   background=white,
 }
-\chronosnewcolourscheme{sobriety}{%
+\chronosnewcolourscheme[default]{sobriety}{%
   foreground=gray,
   background=white,
   timeline background=gray!50,
