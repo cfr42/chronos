@@ -34,7 +34,7 @@
 }%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \RequirePackage{svn-prov}
-\ProvidesPackageSVN{$Id: chronos.sty 9890 2023-11-25 06:30:59Z cfrees $}[\filebase \revinfo]
+\ProvidesPackageSVN{$Id: chronos.sty 9903 2023-12-02 07:00:30Z cfrees $}[\filebase \revinfo]
 \ExplSyntaxOn
 \newif\ifchronos@enwaulliwsyml
 \keys_define:nn { chronos }
@@ -88,7 +88,6 @@
 }
 % BEGIN expl3
 \ExplSyntaxOn
-\sys_if_engine_pdftex:T {\RequirePackage[T1]{fontenc}}
 % BEGIN booleans
 \bool_new:N \l__chronos_byw_troi_bool
 \bool_new:N \l__chronos_digwyddiad_troi_bool
@@ -1212,6 +1211,8 @@
 \chronos@tag@cysylltutrue
 \newif\ifchronos@copyleft
 \chronos@copyleftfalse
+\newif\ifchronos@phantom
+\chronos@phantomfalse
 \newif\ifchronostimelinearrow
 \chronostimelinearrowfalse
 % END amodol
@@ -1526,6 +1527,8 @@
     prif gysylltwyr testun+/.code={\pgfqkeys{/chronos}{@cysylltwr@testun@prif/.append style={##1}}},
     llinellau/.code={\pgfqkeys{/chronos}{@llinell/.style={##1}}},
     llinellau+/.code={\pgfqkeys{/chronos}{@llinell/.append style={##1}}},
+    phantom/.is if=chronos@phantom,
+    phantom/.default=true,
     troi lliwiau/.is if=chronos@troilliwiau,
     troi lliwiau/.default=true,
     testun yshift/.chronos dimen=\chronos@testun@yshift,
@@ -1550,6 +1553,8 @@
     #4/testun yn unig/.forward to=/chronos/testun yn unig,
     #4/troi lliwiau/.is if=chronos@troilliwiau,
     #4/troi lliwiau/.default=true,
+    #4/phantom/.is if=chronos@phantom,
+    #4/phantom/.default=true,
     #4/testun yshift/.chronos dimen=\chronos@testun@yshift,
     #4/lliw rhagosodedig/.code={%
       \edef\tempa{\csname chronos@#4@lliw\endcsname}%
@@ -1736,6 +1741,8 @@
       testun yn unig/.code={\chronos@ychwanegu@nodweddion{#1}{@tag}{/chronos/testun yn unig}},
       troi lliwiau/.code={\chronos@ychwanegu@nodweddion{#1}{@tag}{/chronos/troi lliwiau=##1}},
       troi lliwiau/.default=true,
+      phantom/.code={\chronos@ychwanegu@nodweddion{#1}{@tag}{/chronos/phantom=##1}},
+      phantom/.default=true,
       cynnwys testun/.store in=\chronos@cynnwys@testun,
       cynnwys enw/.store in=\chronos@cynnwys@enw,
       cynnwys dyddiadau/.store in=\chronos@cynnwys@dyddiadau,
@@ -2525,7 +2532,7 @@
 	/chronos/isod=#2,
   },
   lefelau at/.store in=\chronos@lefelau@at,
-  lefelau at=chronos pre,
+  lefelau at=chronos mid,
   uchod/.store in=\chronos@uchod,
   isod/.store in=\chronos@isod,
   % END lefelau
@@ -3452,6 +3459,8 @@
       \coordinate (chronos start) at (0pt,0pt);% dal yn gywir?
       \coordinate (chronos origin) at (chronos start);% newid isod efaillai
       \coordinate (chronos end) at (\chronos@amser@diwedd pt,0pt);
+      \coordinate (chronos mid) at ($(chronos pre)!.5!(chronos post)$);
+      \coordinate (chronos mid-time) at ($(chronos start)!.5!(chronos end)$);
       % styles which rotate labels need this earlier; reset here in case altered
       \let\timelineht\chronos@height
       \begin{scope}[/chronos/chronos@border@haenen]
@@ -4075,7 +4084,10 @@
           chronos pre/west, chronos post/east, 
           chronos pre-top/175, chronos post-top/15, chronos pre-base/south west, chronos post-base/south east, 
           chronos pre-head/155, chronos post-head/north east, chronos pre-foot/south, chronos post-foot/south,
-          chronos origin/-85}
+          chronos origin/-85,
+          chronos mid/90,
+          chronos mid-time/-90%
+        }
         \node [/chronos/show coord={\j}{\i}] at (\i) {}; 
         \ifchronos@timeline@showyears
           \node [/chronos/show coord={45}{chronos first marked year}] at (chronos first marked year) {};
@@ -4203,9 +4215,9 @@
     % creu cylcu ar y lein ; testun - prif node ; testun cylch ; prif gysylltiad
     \chronos@creu@testun@tag{byw}{\chronos@cynnwys@testun}%
     \ifchronos@byw@cysylltiadtheori
-      \scoped[/chronos/middle anchorborder]{% ateb Symbol 1: https://tex.stackexchange.com/a/385953/
+%       \scoped[/chronos/middle anchorborder]{% ateb Symbol 1: https://tex.stackexchange.com/a/385953/
         \chronos@angorau@theori{testun \chronos@byw@tikzname}{cysylltwr \chronos@byw@tikzname}[connector \chronos@byw@tikzname]{/chronos/@cysylltwr@testun=\chronos@byw@lliw}%
-      }%
+%       }%
     \fi
     \ifchronos@every@byw@isod
       \global\chronos@byw@isodtrue
@@ -4303,9 +4315,9 @@
       \scoped[/chronos/chronos@llinell amser@haenen]{\node [/chronos/event year on line] at (\chronos@temph pt,0pt) {\chronos@tempbd};}%
     \fi
     \ifchronos@digwyddiad@cysylltiadtheori
-      \scoped[/chronos/middle anchorborder]{% ateb Symbol 1: https://tex.stackexchange.com/a/385953/
+%       \scoped[/chronos/middle anchorborder]{% ateb Symbol 1: https://tex.stackexchange.com/a/385953/
         \chronos@angorau@theori{testun \chronos@digwyddiad@tikzname}{cysylltwr \chronos@digwyddiad@tikzname}[connector \chronos@digwyddiad@tikzname]{/chronos/@cysylltwr@testun=\chronos@digwyddiad@lliw}%
-      }%
+%       }%
     \fi
     \ifchronos@every@digwyddiad@isod
       \global\chronos@digwyddiad@isodtrue
@@ -4371,9 +4383,9 @@
     % creu cylcu ar y lein ; testun ; testun cylch ; prif gysylltiad
     \chronos@creu@testun@tag{parhad}{\chronos@cynnwys@testun}%
     \ifchronos@parhad@cysylltiadtheori
-      \scoped[/chronos/middle anchorborder]{% ateb Symbol 1: https://tex.stackexchange.com/a/385953/
+%       \scoped[/chronos/middle anchorborder]{% ateb Symbol 1: https://tex.stackexchange.com/a/385953/
         \chronos@angorau@theori{testun \chronos@parhad@tikzname}{cysylltwr \chronos@parhad@tikzname}[connector \chronos@parhad@tikzname]{/chronos/@cysylltwr@testun=\chronos@parhad@lliw}%
-      }%
+%       }%
     \fi
     \ifchronos@every@parhad@isod
       \global\chronos@parhad@isodtrue
@@ -4419,25 +4431,31 @@
     }%
     % creu testun (text tag)
     \chronos@creu@testun@tag[alias=\chronos@theori@tikzname]{theori}{\chronos@theori@ffonttestun\chronos@cynnwys@testun}%
-    \begin{scope}[/chronos/middle anchorborder]% ateb Symbol 1: https://tex.stackexchange.com/a/385953/
+%     \begin{scope}[/chronos/middle anchorborder]% ateb Symbol 1: https://tex.stackexchange.com/a/385953/
       \IfExistT \chronos@cysylltwyr{%
         \chronos@angorau@theori{\chronos@theori@enw}{cysylltwr \chronos@theori@enw}[connector \chronos@theori@enw]{/chronos/@cysylltwr@testun=\chronos@theori@lliw}}%
-    \end{scope}%
+%     \end{scope}%
     \chronos@ailosod@nodweddion
   \endgroup
 }
 % END \theori
 % BEGIN \chronos@angorau@theori
 \NewDocumentCommand \chronos@angorau@theori{mmO{connector }m}{% #1 enw y prif node ; #2 enw yr angor cyntaf ; #4 style
-  \setcounter{chronos@theori@countanchors}{0}%
-  \@for \xx:=\chronos@cysylltwyr \do {%
-    \stepcounter{chronos@theori@countanchors}%
-    \ifnum\value{chronos@theori@countanchors}=1%
-      \node (#2) [#4, alias=#2\thechronos@theori@countanchors, alias=#3, alias=#3\thechronos@theori@countanchors] at (#1.middle \xx) {};
-    \else
-      \node (#2\thechronos@theori@countanchors) [#4, alias=#3\thechronos@theori@countanchors] at (#1.middle \xx) {};
-    \fi
-  }%
+  \ifchronos@phantom
+    \PackageWarning{chronos}{Phantom tags cannot have connectors }%
+  \else
+    \begin{scope}[/chronos/middle anchorborder]% ateb Symbol 1: https://tex.stackexchange.com/a/385953/
+      \setcounter{chronos@theori@countanchors}{0}%
+      \@for \xx:=\chronos@cysylltwyr \do {%
+        \stepcounter{chronos@theori@countanchors}%
+        \ifnum\value{chronos@theori@countanchors}=1%
+          \node (#2) [#4, alias=#2\thechronos@theori@countanchors, alias=#3, alias=#3\thechronos@theori@countanchors] at (#1.middle \xx) {};
+        \else
+          \node (#2\thechronos@theori@countanchors) [#4, alias=#3\thechronos@theori@countanchors] at (#1.middle \xx) {};
+        \fi
+      }%
+    \end{scope}%
+  \fi
 }
 % END \chronos@angorau@theori
 % BEGIN \cylchtheori - cylchau bychain yn lle bocses mawr
@@ -4771,53 +4789,57 @@
 }
 % END \chronos@creu@llinell (parhad, byw)
 % BEGIN \chronos@creu@testun@tag
-\NewDocumentCommand \chronos@creu@testun@tag{s O {} m +m}{% make text tag
+\NewDocumentCommand \chronos@creu@testun@tag{s O {} m +m}{% make text tag XXX
   % #1 : seren | star
   % #2 : allweddu ychwanegol | additional keys
   % #3 : tag e.g. byw
   % #4 : testun | text
-  \expandafter\let\expandafter\chronos@tempa\csname chronos@#3@tikzname\endcsname
-  \expandafter\let\expandafter\chronos@tempb\csname chronos@#3@at\endcsname
-  \IfBooleanTF{#1}{%
-    \edef\chronos@tempa{\csname chronos@#3@tikzname\endcsname-inv}%
-    \expandafter\let\expandafter\chronos@tempc\csname chronos@#3@invanchor\endcsname
-    \pgfqkeys{/chronos}{%
-      chronos@tempa@style/.style={/chronos/event date split},% oedd yshcale=-1,...
-      chronos@tempb@style/.style={yshift=2*\chronos@yshift@inv}}%
-      \path (\chronos@tempb);
-      \pgfgetlastxy {\chronos@templgtha}{\chronos@templgthb}%
-      \ifdim\chronos@templgthb>0pt
-        \coordinate (chronos@temp@coord) at (\chronos@templgtha,-\chronos@templgthb);
-      \else
-        \coordinate (chronos@temp@coord) at (\chronos@templgtha,\chronos@templgthb);
-      \fi
-  }{%
-    \expandafter\let\expandafter\chronos@tempc\csname chronos@#3@angor\endcsname
-    \pgfqkeys{/chronos}{%
-      chronos@tempa@style/.style={#2},
-      chronos@tempb@style/.style={#2}}%
-    \coordinate (chronos@temp@coord) at (\chronos@tempb);
-  }%
-  \scoped[/chronos/middle anchorborder]{% ateb Symbol 1: https://tex.stackexchange.com/a/385953/
-    % fill opacity=0 -> problem ; fill=none -> dim problem; beth sy'n digwydd?
-    \node (testun \chronos@tempa) [/chronos/@testun/.expand once=\csname chronos@#3@lliw\endcsname, anchor=\chronos@tempc, /chronos/.cd,/utils/exec=\pgfkeysalsofrom{\chronos@cadw}, /chronos/chronos@tempb@style, /tikz/.cd, alias=tag \chronos@tempa, alias=text tag \chronos@tempa] at (chronos@temp@coord) {#4};}%
-  \ifchronos@tag@cysylltu
-    % creu cylch ar y lein | make circle on timeline
-    \scoped[/chronos/chronos@cysylltiad@haenen]{\node (cysylltwr chronos \chronos@tempa) [/chronos/@cysylltwr@chronos/.expand once=\csname chronos@#3@lliw\endcsname, alias=chronos connector \chronos@tempa, alias=circle \chronos@tempa, alias=cylch \chronos@tempa] at (\chronos@tempa) {};}%
-    \begin{scope}[/chronos/middle anchorborder]% ateb Symbol 1: https://tex.stackexchange.com/a/385953/
-      % creu cysylltwyr testun ar y node testun | make text connectors on the text node
-      \node (cysylltwr testun \chronos@tempa) [/chronos/@cysylltwr@testun/.expand once=\csname chronos@#3@lliw\endcsname,/chronos/@cysylltwr@testun@prif/.expand once=\csname chronos@#3@lliw\endcsname, alias=text tag connector \chronos@tempa, alias=prif gysylltwr \chronos@tempa, alias=main connector \chronos@tempa, alias=cysylltwr \chronos@tempa0, alias=testun cylch \chronos@tempa, alias=connector \chronos@tempa0] at (testun \chronos@tempa.middle \chronos@tempc) {};
-    \end{scope}%
-    \path (cysylltwr testun \chronos@tempa);
-    \pgfgetlastxy{\chronos@templgtha}{\chronos@templgthb}%
-    \path (cysylltwr chronos \chronos@tempa);
-    \pgfgetlastxy{\chronos@templgthc}{\chronos@templgthb}%
-    \ifdim\chronos@templgtha=\chronos@templgthc\def\chronos@tempe{--}\else\def\chronos@tempe{|-}\fi
-    \ifbool{chronos@#3@cysylltiad}{%
-      % cysylltu llinell amser i node testun | connect timeline to text node
-      \scoped[/chronos/chronos@cysylltiad@haenen]{\draw [/chronos/@cysylltiad/.expand once=\csname chronos@#3@lliw\endcsname] (cysylltwr chronos \chronos@tempa) \chronos@tempe (cysylltwr testun \chronos@tempa) ;}%% oedd .\chronos@tempc
-    }{}% ifchronos@#3@cysylltiad
-  \fi % \ifchronos@tag@cysylltu
+  \ifchronos@phantom
+    \relax
+  \else
+    \expandafter\let\expandafter\chronos@tempa\csname chronos@#3@tikzname\endcsname
+    \expandafter\let\expandafter\chronos@tempb\csname chronos@#3@at\endcsname
+    \IfBooleanTF{#1}{%
+      \edef\chronos@tempa{\csname chronos@#3@tikzname\endcsname-inv}%
+      \expandafter\let\expandafter\chronos@tempc\csname chronos@#3@invanchor\endcsname
+      \pgfqkeys{/chronos}{%
+        chronos@tempa@style/.style={/chronos/event date split},% oedd yshcale=-1,...
+        chronos@tempb@style/.style={yshift=2*\chronos@yshift@inv}}%
+        \path (\chronos@tempb);
+        \pgfgetlastxy {\chronos@templgtha}{\chronos@templgthb}%
+        \ifdim\chronos@templgthb>0pt
+          \coordinate (chronos@temp@coord) at (\chronos@templgtha,-\chronos@templgthb);
+        \else
+          \coordinate (chronos@temp@coord) at (\chronos@templgtha,\chronos@templgthb);
+        \fi
+    }{%
+      \expandafter\let\expandafter\chronos@tempc\csname chronos@#3@angor\endcsname
+      \pgfqkeys{/chronos}{%
+        chronos@tempa@style/.style={#2},
+        chronos@tempb@style/.style={#2}}%
+      \coordinate (chronos@temp@coord) at (\chronos@tempb);
+    }%
+    \scoped[/chronos/middle anchorborder]{% ateb Symbol 1: https://tex.stackexchange.com/a/385953/
+      % fill opacity=0 -> problem ; fill=none -> dim problem; beth sy'n digwydd?
+      \node (testun \chronos@tempa) [/chronos/@testun/.expand once=\csname chronos@#3@lliw\endcsname, anchor=\chronos@tempc, /chronos/.cd,/utils/exec=\pgfkeysalsofrom{\chronos@cadw}, /chronos/chronos@tempb@style, /tikz/.cd, alias=tag \chronos@tempa, alias=text tag \chronos@tempa] at (chronos@temp@coord) {#4};}%
+    \ifchronos@tag@cysylltu
+      % creu cylch ar y lein | make circle on timeline
+      \scoped[/chronos/chronos@cysylltiad@haenen]{\node (cysylltwr chronos \chronos@tempa) [/chronos/@cysylltwr@chronos/.expand once=\csname chronos@#3@lliw\endcsname, alias=chronos connector \chronos@tempa, alias=circle \chronos@tempa, alias=cylch \chronos@tempa] at (\chronos@tempa) {};}%
+      \begin{scope}[/chronos/middle anchorborder]% ateb Symbol 1: https://tex.stackexchange.com/a/385953/
+        % creu cysylltwyr testun ar y node testun | make text connectors on the text node
+        \node (cysylltwr testun \chronos@tempa) [/chronos/@cysylltwr@testun/.expand once=\csname chronos@#3@lliw\endcsname,/chronos/@cysylltwr@testun@prif/.expand once=\csname chronos@#3@lliw\endcsname, alias=text tag connector \chronos@tempa, alias=prif gysylltwr \chronos@tempa, alias=main connector \chronos@tempa, alias=cysylltwr \chronos@tempa0, alias=testun cylch \chronos@tempa, alias=connector \chronos@tempa0] at (testun \chronos@tempa.middle \chronos@tempc) {};
+      \end{scope}%
+      \path (cysylltwr testun \chronos@tempa);
+      \pgfgetlastxy{\chronos@templgtha}{\chronos@templgthb}%
+      \path (cysylltwr chronos \chronos@tempa);
+      \pgfgetlastxy{\chronos@templgthc}{\chronos@templgthb}%
+      \ifdim\chronos@templgtha=\chronos@templgthc\def\chronos@tempe{--}\else\def\chronos@tempe{|-}\fi
+      \ifbool{chronos@#3@cysylltiad}{%
+        % cysylltu llinell amser i node testun | connect timeline to text node
+        \scoped[/chronos/chronos@cysylltiad@haenen]{\draw [/chronos/@cysylltiad/.expand once=\csname chronos@#3@lliw\endcsname] (cysylltwr chronos \chronos@tempa) \chronos@tempe (cysylltwr testun \chronos@tempa) ;}%% oedd .\chronos@tempc
+      }{}% ifchronos@#3@cysylltiad
+    \fi % \ifchronos@tag@cysylltu
+  \fi
 %   \edef\chronos@tempa{\csname chronos@#3@tikzname\endcsname}%
 %   \edef\chronos@tempb{lliw \csname chronos@#3@tikzname\endcsname}%
 %   \colorlet{chronos@temp@lliw}{\chronos@tempb}%

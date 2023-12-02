@@ -16,7 +16,7 @@
 % This work consists of all files listed in manifest.txt.
 %%
 \RequirePackage{chronos}
-\ProvidesPackageSVN{$Id: chronos-lib-styles.sty 9890 2023-11-25 06:30:59Z cfrees $}[\filebase \revinfo]
+\ProvidesPackageSVN{$Id: chronos-lib-styles.sty 9897 2023-11-28 03:07:45Z cfrees $}[\filebase \revinfo]
 \pgfqkeys{/chronos}{%
 % BEGIN styles XXX
   % BEGIN on line styles
@@ -232,6 +232,7 @@
     main/title={font=\sffamily\upshape\plstyle\bfseries\huge,text=chronos main colour},
   },
   blues below/.style={%
+    /utils/exec={\selectcolormodel{rgb}},
     /chronos/.cd,
     blues below/.meaning to context,
     colour scheme=blues,
@@ -487,7 +488,7 @@
     life/line+={line width=#1,draw=##1},
     line yshift=.5*#1,
     event/line+={semithick},
-    text tag yshift=2.5pt+.5#1,
+    text tag yshift=2.5pt+.5*#1,
     every event above,
     every period below,
     every life below,
