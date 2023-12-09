@@ -34,7 +34,7 @@
 }%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \RequirePackage{svn-prov}
-\ProvidesPackageSVN{$Id: chronos.sty 9903 2023-12-02 07:00:30Z cfrees $}[\filebase \revinfo]
+\ProvidesPackageSVN{$Id: chronos.sty 9909 2023-12-09 18:24:32Z cfrees $}[\filebase \revinfo]
 \ExplSyntaxOn
 \newif\ifchronos@enwaulliwsyml
 \keys_define:nn { chronos }
@@ -145,7 +145,7 @@
 \prop_new:N \l__chronos_tmpa_prop
 % END prop
 % BEGIN regexes
-\regex_const:Nn \c__chronos_enw_regex { [^A-Za-z0-9\s] }
+\regex_const:Nn \c__chronos_enw_regex { [^A-Za-z0-9\s\-] }
 \regex_const:Nn \c__chronos_enw_priflythren_cyntaf_regex { (^[^A-Za-z]*)([a-z]) }
 \regex_const:Nn \c__chronos_enw_diogelu_regex { ([\s\-\c{\\}][[:punct:]]*) ([^\s\-\c{\\}]*) (\b|\c{\\}) } % \s unrhyw space character \b word boundary
 % \regex_const:Nn \c__chronos_pure_year_regex { ^ [\+\-]? \d+ \z }% \z = \Z = $ ($ yn newid popeth i maths yn ôl Kile!)
