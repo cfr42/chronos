@@ -34,7 +34,7 @@
 }%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \RequirePackage{svn-prov}
-\ProvidesPackageSVN{$Id: chronos.sty 9909 2023-12-09 18:24:32Z cfrees $}[\filebase \revinfo]
+\ProvidesPackageSVN{$Id: chronos.sty 10194 2024-08-04 02:46:28Z cfrees $}[\filebase \revinfo]
 \ExplSyntaxOn
 \newif\ifchronos@enwaulliwsyml
 \keys_define:nn { chronos }
@@ -221,7 +221,7 @@
     #1
   }
   {
-    \int_compare:NTF
+    \int_compare:nTF
     {
       \l__chronos_tmpa_int < 4
     }
@@ -407,7 +407,7 @@
 }
 \cs_new_protected_nopar:Nn \__chronos_enw_priflythrennu_eraill:n
 {
-  \clist_if_in:NnTF \l__chronos_llythrennau_bach_clist { #1 } { #1 } { \str_upper_case:n #1 }
+  \clist_if_in:NnTF \l__chronos_llythrennau_bach_clist { #1 } { #1 } { \str_uppercase:n #1 }
 }
 \cs_new_protected_nopar:Nn \__chronos_enw_priflythrennu:n
 {
@@ -415,7 +415,7 @@
   \legacy_if:nF {chronos@felymae}
   {
     \regex_replace_all:NnN \c__chronos_enw_diogelu_regex { \1 \c{__chronos_enw_priflythrennu_eraill:n} \cB{ \2 \cE} \3 } \l__chronos_tmpc_tl
-    \regex_replace_all:NnN \c__chronos_enw_priflythren_cyntaf_regex { \1 \c{str_upper_case:n}\2 } \l__chronos_tmpc_tl
+    \regex_replace_all:NnN \c__chronos_enw_priflythren_cyntaf_regex { \1 \c{str_uppercase:n}\2 } \l__chronos_tmpc_tl
   }
   \l__chronos_tmpc_tl
 }
@@ -737,6 +737,12 @@
 % END functions: pgf keys (keys)
 % END functions: pgf keys
 \cs_generate_variant:Nn \legacy_if:nTF { oTF }
+% joseph wright: https://chat.stackexchange.com/transcript/message/65523217#65523217
+\cs_new_eq:NN \__chronos_keys_set_exclude_groups:nnn \keys_set_exclude_groups:nnn
+\cs_if_exist:NF \__chronos_keys_set_exclude_groups:nnn
+{
+  \cs_new_eq:NN \__chronos_keys_set_exclude_groups:nnn \keys_set_filter:nnn
+}
 % END functions
 % BEGIN macros y paced **mewnol hefyd!** | **internal also!**
 % Ddylwn i ddefnyddio \NewDocumentCommand (ond *mewnol*?), \newcommand/\newcommand*, \def/\gdef/\edef/\xdef, \cs_new_eq:NN, \let neu rhywbeth arall??!!
@@ -1013,7 +1019,8 @@
       \__chronos_color_set_from_existing:nn { chronos@parhad@lliw@rhagosodedig } { chronos@prifliw } 
       \__chronos_color_set_from_existing:nn { chronos@theori@lliw@rhagosodedig } { chronos@prifliw } 
       \__chronos_color_set_from_existing:nn { chronos@gwybodaeth@lliw@rhagosodedig } { chronos@prifliw } 
-      \keys_set_filter:nnn { chronos / lliwiau } { core, core ~ derivative, core ~ border } { #3 }
+      % oedd \keys_set_filter:nnn
+      \__chronos_keys_set_exclude_groups:nnn { chronos / lliwiau } { core, core ~ derivative, core ~ border } { #3 }
       \@ifpackageloaded{memoize}
       {
         \mmzset { csname ~ meaning ~ to ~ context={ __chronos_lliwiau_#2 : } }
@@ -4369,7 +4376,7 @@
           \ifchronos@gorffenedig\relax\else\def\chronos@parhad@labeldiwedd{}\fi
           \chronos@dyddiadau@tag{parhad}{thing}{dechrau}{otherthing}{diwedd}%
           \ifchronos@temp
-            \def \chronos@cynnwys@dyddiadau {\chronos@parhad@labeldiwedd\\}%
+            \def \chronos@cynnwys@dyddiadau {\chronos@parhad@labeldechrau\\}%
           \else
             \def \chronos@cynnwys@dyddiadau {\chronos@parhad@labeldechrau--\chronos@parhad@labeldiwedd\\}%
           \fi
