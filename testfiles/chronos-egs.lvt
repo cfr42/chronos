@@ -28,7 +28,7 @@
 \pdfminorversion=7
 \fi
 \RequirePackage{svn-prov}
-\ProvidesFileSVN{$Id: chronos-egs.lvt 10850 2025-02-23 04:21:03Z cfrees $}[v0.0 \revinfo][\filebase DTX: TikZ Timelines]
+\ProvidesFileSVN{$Id: chronos-egs.lvt 10851 2025-02-23 05:24:33Z cfrees $}[v0.1 \revinfo][\filebase DTX: TikZ Timelines]
 \input chronos-test-preamble.tex\relax
 \begin{document}
 \START
@@ -51,10 +51,7 @@
 % \iffalse
 % ateb: https://tex.stackexchange.com/a/324106/
 
-% \end{document}
-
 \TEST{chronos-t1}{%
-\OMIT
   \setbox\chronosbox=\hbox{%
     \begin{chronos}
       [% https://tex.stackexchange.com/a/712296/
@@ -129,16 +126,13 @@
       }
     \end{chronos}%
   }%
-\TIMO
   \showbox\chronosbox
-}%
 \OMIT
 \box\chronosbox
 \TIMO
-
+}
 
 \TEST{chronos-t2}{%
-\OMIT
   \setbox\chronosbox=\hbox{%
     \begin{chronos}
       [
@@ -159,14 +153,13 @@
       }
     \end{chronos}%
   }%
-\TIMO
   \showbox\chronosbox
-}%
 \OMIT
 \box\chronosbox
 \TIMO
+}
+
 \TEST{chronos-t3}{%
-\OMIT
   \setbox\chronosbox=\hbox{%
     \begin{chronos}
       [
@@ -190,16 +183,13 @@
       \chronosmaintitle{name=cronoleg,at=u8 -| chronos year -200}
     \end{chronos}%
   }%
-\TIMO
   \showbox\chronosbox
-}%
 \OMIT
 \box\chronosbox
 \TIMO
-% \end{document}
-% \def\bagpuss{Old, furry cat-puss}
+}
+
 \TEST{chronos-t4}{%
-\OMIT
   \setbox\chronosbox=\hbox{%
     \begin{chronos}
       [
@@ -221,15 +211,13 @@
       \chronosmaintitle{name=modern,at=chronos year 1550 |- current bounding box.north}
     \end{chronos}%
   }%
-\TIMO
   \showbox\chronosbox
-}%
 \OMIT
 \box\chronosbox
 \TIMO
-% \Undefine\bagpuss
+}
+
 \TEST{chronos-t5}{%
-\OMIT
   \setbox\chronosbox=\hbox{%
     \begin{chronos}
       [
@@ -256,16 +244,13 @@
       \chronosmaintitle{name=lavender menace,at=chronos pre |- current bounding box.north, anchor=west}
     \end{chronos}%
   }%
-\TIMO
   \showbox\chronosbox
-}%
 \OMIT
 \box\chronosbox
 \TIMO
-% \end{document}
-% \def\bagpuss{bagpuss}
+}
+
 \TEST{chronos-t6}{%
-\OMIT
   \setbox\chronosbox=\hbox{%
     \begin{chronos}
       [
@@ -283,15 +268,13 @@
       %   \draw [red] (life below) -- ++(0pt,30pt) (person below) -- ++(0pt,30pt) (period below) -- ++(0pt,30pt);
     \end{chronos}%
   }%
-\TIMO
   \showbox\chronosbox
-}%
 \OMIT
 \box\chronosbox
 \TIMO
-% \Undefine\bagpuss
+}
+
 \TEST{chronos-t7}{%
-\OMIT
   \setbox\chronosbox=\hbox{%
     \begin{chronos}
       [
@@ -312,14 +295,13 @@
       \chronosmaintitle{name=serif On line,at=current bounding box.north west,anchor=south west}
     \end{chronos}%
   }%
-\TIMO
   \showbox\chronosbox
-}%
 \OMIT
 \box\chronosbox
 \TIMO
+}
+
 \TEST{chronos-t8}{%
-\OMIT
   \setbox\chronosbox=\hbox{%
     \begin{chronos}
       [
@@ -339,15 +321,13 @@
       \chronosmaintitle{name=rainbow serif,name content={\color{xcolor g2!!+}R\color{xcolor g2!!+}A\color{xcolor g2!!+}I\color{xcolor g2!!+}N\color{xcolor g2!!+}B\color{xcolor g2!!+}O\color{xcolor g2!!+}W \color{xcolor g2!!+}S\color{xcolor g2!!+}E\color{xcolor g2!!+}R\color{xcolor g2!!+}I\color{xcolor g2!!+}F},at=current bounding box.north west,anchor=south west}
     \end{chronos}%
   }%
-\TIMO
   \showbox\chronosbox
-}%
 \OMIT
 \box\chronosbox
 \TIMO
-% \def\bagpuss{fat, furry cat-puss}
+}
+
 \TEST{chronos-t9}{%
-\OMIT
   \setbox\chronosbox=\hbox{%
     \begin{chronos}
       [
@@ -367,15 +347,13 @@
       \chronosmaintitle{name=sober judge,at=current bounding box.north west,anchor=south west}
     \end{chronos}%
   }%
-\TIMO
   \showbox\chronosbox
-}%
 \OMIT
 \box\chronosbox
 \TIMO
-% \Undefine\bagpuss
+}
+
 \TEST{chronos-t10}{%
-\OMIT
   \setbox\chronosbox=\hbox{%
     \begin{chronos}% = rhag ar ôl gwall
       [
@@ -396,14 +374,13 @@
       \chronosevent{date={2025},name=event below,at=i3 -| event below,}
     \end{chronos}%
   }%
-\TIMO
   \showbox\chronosbox
-}%
 \OMIT
 \box\chronosbox
 \TIMO
+}
+
 \TEST{chronos-t11}{%
-\OMIT
   \setbox\chronosbox=\hbox{%
     \begin{chronos}
       [
@@ -422,15 +399,14 @@
       %   \draw [thin,red] (current bounding box.north -| chronos year \i) -- (current bounding box.south -| chronos year \i);
     \end{chronos}%
   }%
-\TIMO
   \showbox\chronosbox
-}%
 \OMIT
 \box\chronosbox
 \TIMO
+}
+
 % \chronosdangoslliwiaurhag*
 \TEST{chronos-t12}{%
-\OMIT
   \setbox\chronosbox=\hbox{%
     \begin{chronos}
       [
@@ -446,15 +422,14 @@
       \chronosmaintitle{name=blues below,at=current bounding box.south east,anchor=south east}
     \end{chronos}%
   }%
-\TIMO
   \showbox\chronosbox
-}%
 \OMIT
 \box\chronosbox
 \TIMO
+}
+
 % \chronosdangoslliwiaurhag*
 \TEST{chronos-t13}{%
-\OMIT
   \setbox\chronosbox=\hbox{%
     \begin{chronos}
       [
@@ -470,15 +445,14 @@
       \chronosmaintitle{name=flipping blues, at=u3 -| chronos post,anchor=south east}
     \end{chronos}%
   }%
-\TIMO
   \showbox\chronosbox
-}%
 \OMIT
 \box\chronosbox
 \TIMO
-% \end{document}
+}
+
+
 \TEST{chronos-t14}{%
-\OMIT
   \setbox\chronosbox=\hbox{%
     \begin{chronos}
       [
@@ -494,15 +468,14 @@
       \chronosmaintitle{name=rotated 45, at=current bounding box.south west,anchor=base west}
     \end{chronos}%
   }%
-\TIMO
   \showbox\chronosbox
-}%
 \OMIT
 \box\chronosbox
 \TIMO
+}
+
 % ateb: https://tex.stackexchange.com/a/325890/
 \TEST{chronos-t15}{%
-\OMIT
   \setbox\chronosbox=\hbox{%
     \begin{chronos}
       [
@@ -519,17 +492,14 @@
       %   \chronosperiod {dates={2014-01-09}:{2014-01-12},name=reading\\time}
     \end{chronos}%
   }%
-\TIMO
   \showbox\chronosbox
-}%
 \OMIT
 \box\chronosbox
 \TIMO
-% \end{document}
+}
+
 % ateb: https://tex.stackexchange.com/a/342699/
-% \def\bagpuss{bagpuss}
 \TEST{chronos-t16}{%
-\OMIT
   \setbox\chronosbox=\hbox{%
     \begin{chronos}
       [
@@ -544,17 +514,14 @@
       \chronosmaintitle{name=simple\\arrow, at=current bounding box.south west,anchor=south west}
     \end{chronos}%
   }%
-\TIMO
   \showbox\chronosbox
-}%
 \OMIT
 \box\chronosbox
 \TIMO
+}
 
-% \def\bagpuss{Bagpuss}
 % ateb: https://tex.stackexchange.com/a/324453/
 \TEST{chronos-t17}{%
-\OMIT
   \setbox\chronosbox=\hbox{%
     \begin{chronos}
       [
@@ -575,16 +542,14 @@
       %   \makeatother
     \end{chronos}%
   }%
-\TIMO
   \showbox\chronosbox
-}%
 \OMIT
 \box\chronosbox
 \TIMO
-% \Undefine\bagpuss
+}
+
 % ateb: https://tex.stackexchange.com/a/324453/
 \TEST{chronos-t18}{%
-\OMIT
   \setbox\chronosbox=\hbox{%
     \begin{chronos}
       [
@@ -601,16 +566,13 @@
       \chronosmaintitle{name=plain arrow,at=current bounding box.north west,anchor=north west}
     \end{chronos}%
   }%
-\TIMO
   \showbox\chronosbox
-}%
 \OMIT
 \box\chronosbox
 \TIMO
-% \end{document}
-% \def\bagpuss{bagpuss}
+}
+
 \TEST{chronos-t19}{%
-\OMIT
   \setbox\chronosbox=\hbox{%
     \begin{chronos}
       [
@@ -640,16 +602,14 @@
       %   \foreach \i in {-3000,-2900,...,-2000} \draw [red] (chronos year \i) ++(0pt,50pt) -- ++(0pt,-100pt);
     \end{chronos}%
   }%
-\TIMO
   \showbox\chronosbox
-}%
 \OMIT
 \box\chronosbox
 \TIMO
-% \Undefine\bagpuss
+}
+
 % ateb: https://tex.stackexchange.com/a/324448/
 \TEST{chronos-t20}{%
-\OMIT
   \setbox\chronosbox=\hbox{%
     \begin{chronos}
       [
@@ -664,16 +624,14 @@
       \chronosmaintitle {name=date centric, at=current bounding box.north west,anchor=north west}
     \end{chronos}%
   }%
-\TIMO
   \showbox\chronosbox
-}%
 \OMIT
 \box\chronosbox
 \TIMO
-% \end{document}
+}
+
 % addasu o tikz-chronos-timeline2.tex -   ateb: https://tex.stackexchange.com/a/312735/
 \TEST{chronos-t21}{%
-\OMIT
   \setbox\chronosbox=\hbox{%
     \begin{chronos}
       [
@@ -693,14 +651,13 @@
       \chronosevent {date={2015-10-01},name=test}
     \end{chronos}%
   }%
-\TIMO
   \showbox\chronosbox
-}%
 \OMIT
 \box\chronosbox
 \TIMO
+}
+
 \TEST{chronos-t22}{%
-\OMIT
   \setbox\chronosbox=\hbox{%
     \begin{chronos}
       [
@@ -709,14 +666,13 @@
       ]
     \end{chronos}%
   }%
-\TIMO
   \showbox\chronosbox
-}%
 \OMIT
 \box\chronosbox
 \TIMO
+}
+
 \TEST{chronos-t23}{%
-\OMIT
   \setbox\chronosbox=\hbox{%
     \begin{chronos}
       [
@@ -725,14 +681,13 @@
       ]
     \end{chronos}%
   }%
-\TIMO
   \showbox\chronosbox
-}%
 \OMIT
 \box\chronosbox
 \TIMO
+}
+
 \TEST{chronos-t24}{%
-\OMIT
   \setbox\chronosbox=\hbox{%
     \begin{chronos}
       [
@@ -741,14 +696,13 @@
       ]
     \end{chronos}%
   }%
-\TIMO
   \showbox\chronosbox
-}%
 \OMIT
 \box\chronosbox
 \TIMO
+}
+
 \TEST{chronos-t25}{%
-\OMIT
   \setbox\chronosbox=\hbox{%
     \begin{chronos}
       [
@@ -757,14 +711,13 @@
       ]
     \end{chronos}%
   }%
-\TIMO
   \showbox\chronosbox
-}%
 \OMIT
 \box\chronosbox
 \TIMO
+}
+
 \TEST{chronos-t26}{%
-\OMIT
   \setbox\chronosbox=\hbox{%
     \begin{chronos}
       [
@@ -773,15 +726,13 @@
       ]
     \end{chronos}%
   }%
-\TIMO
   \showbox\chronosbox
-}%
 \OMIT
 \box\chronosbox
 \TIMO
-% \def\bagpuss{bagpuss}%
+}
+
 \TEST{chronos-t27}{%
-\OMIT
   \setbox\chronosbox=\hbox{%
     \begin{chronos}
       [
@@ -793,14 +744,13 @@
       \chronosevent {date={1-01-01},name=new year's day,yshift=-20pt}
     \end{chronos}%
   }%
-\TIMO
   \showbox\chronosbox
-}%
 \OMIT
 \box\chronosbox
 \TIMO
+}
+
 \TEST{chronos-t28}{%
-\OMIT
   \setbox\chronosbox=\hbox{%
     \begin{chronos}
       [
@@ -823,16 +773,13 @@
       \draw (nonexistent yearweird dates) ++(10pt,0pt) -- ++(0pt,30pt);
     \end{chronos}%
   }%
-\TIMO
   \showbox\chronosbox
-}%
 \OMIT
 \box\chronosbox
 \TIMO
-% \fi
-% \def\bagpuss{emily}%
+}
+
 \TEST{chronos-t29}{%
-\OMIT
   \setbox\chronosbox=\hbox{%
     \begin{chronos}
       [
@@ -857,14 +804,13 @@
       %   \draw [magenta] (chronos first marked year) -- ++(0pt,50pt);
     \end{chronos}%
   }%
-\TIMO
   \showbox\chronosbox
-}%
 \OMIT
 \box\chronosbox
 \TIMO
+}
+
 \TEST{chronos-t30}{%
-\OMIT
   \setbox\chronosbox=\hbox{%
     \begin{chronos}
       [
@@ -1162,16 +1108,13 @@
       %   }r
     \end{chronos}%
   }%
-\TIMO
   \showbox\chronosbox
-}%
 \OMIT
 \box\chronosbox
 \TIMO
-% \end{document}
+}
 
 \TEST{chronos-t31}{%
-\OMIT
   \setbox\chronosbox=\hbox{%
     \begin{chronos}
       [
@@ -1179,15 +1122,13 @@
       ]
     \end{chronos}%
   }%
-\TIMO
   \showbox\chronosbox
-}%
 \OMIT
 \box\chronosbox
 \TIMO
-% \end{document}
+}
+
 \TEST{chronos-t32}{%
-\OMIT
   \setbox\chronosbox=\hbox{%
     \begin{chronos}
       [
@@ -1207,15 +1148,13 @@
       \draw [draw=Event 1] (0,0) -- ++(1,1);
     \end{chronos}%
   }%
-\TIMO
   \showbox\chronosbox
-}%
 \OMIT
 \box\chronosbox
 \TIMO
-% \end{document}
+}
+
 \TEST{chronos-t33}{%
-\OMIT
   \setbox\chronosbox=\hbox{%
     \begin{chronos}
       [
@@ -1229,15 +1168,13 @@
       ]
     \end{chronos}%
   }%
-\TIMO
   \showbox\chronosbox
-}%
 \OMIT
 \box\chronosbox
 \TIMO
-% \end{document}
+}
+
 \TEST{chronos-t34}{%
-\OMIT
   \setbox\chronosbox=\hbox{%
     \begin{chronos}
       [
@@ -1245,18 +1182,13 @@
       ]
     \end{chronos}%
   }%
-\TIMO
   \showbox\chronosbox
-}%
 \OMIT
 \box\chronosbox
 \TIMO
-% \def\qi{bagpuss}%
-
-% \end{document}
+}
 
 \TEST{chronos-t35}{%
-\OMIT
   \setbox\chronosbox=\hbox{%
     \begin{chronos}
       [
@@ -1397,19 +1329,16 @@
       %   \scoped[on chronos overlay layer]{\foreach \i in {-600,-550,...,2050} \draw [blue!50!white, thin] (chronos year \i) -- ++(0pt,50mm);} 
     \end{chronos}%
   }%
-\TIMO
   \showbox\chronosbox
-}%
 \OMIT
 \box\chronosbox
 \TIMO
-% \iffalse
-% \end{document}
+}
+
 \colorlet{bcol}{blue}
 \colorlet{bcol1}{black}
 \colorlet{hcol}{magenta}
 \TEST{chronos-t36}{%
-\OMIT
   \setbox\chronosbox=\hbox{%
     \begin{chronos}
       [
@@ -1456,15 +1385,13 @@
       }
     \end{chronos}%
   }%
-\TIMO
   \showbox\chronosbox
-}%
 \OMIT
 \box\chronosbox
 \TIMO
-% \end{document}
+}
+
 \TEST{chronos-t37}{%
-\OMIT
   \setbox\chronosbox=\hbox{%
     \begin{chronos}
       [
@@ -1492,19 +1419,16 @@
       \draw [pink, ->] (cylch bill of rights) \tempe (testun cylch bill of rights.south);
     \end{chronos}%
   }%
-\TIMO
   \showbox\chronosbox
-}%
 \OMIT
 \box\chronosbox
 \TIMO
-% \end{document}
-% \fi
+}
+
 \colorlet{bcol}{blue}
 \colorlet{bcol1}{black}
 \colorlet{hcol}{magenta}
 \TEST{chronos-t38}{%
-\OMIT
   \setbox\chronosbox=\hbox{%
     \begin{chronos}
       [
@@ -1536,12 +1460,11 @@
       \chronosevent{date={1795},text tag+={text=hcol},name=\emph{agrarian justice},yshift=10pt}
     \end{chronos}%
   }%
-\TIMO
   \showbox\chronosbox
-}%
 \OMIT
 \box\chronosbox
 \TIMO
+}
 %   \small
 %   {\color{bcol1}13 American colonies/USA} | {\color{bcol}France} | {\color{hcol} Works of Thomas Paine}
 % \end{document}
@@ -1551,10 +1474,7 @@
 
 % \end{document}
 
-
-
 \TEST{chronos-t39}{%
-\OMIT
   \setbox\chronosbox=\hbox{%
     \begin{chronos}
       [
@@ -1578,16 +1498,14 @@
       \chronosevent {date={1942},name=sixth event,yshift=10pt}
     \end{chronos}%
   }%
-\TIMO
   \showbox\chronosbox
-}%
 \OMIT
 \box\chronosbox
 \TIMO
-% \fi
+}
+
 % ateb: https://tex.stackexchange.com/a/324448/
 \TEST{chronos-t40}{%
-\OMIT
   \setbox\chronosbox=\hbox{%
     \begin{chronos}
       [
@@ -1612,17 +1530,14 @@
       \chronosevent {date={1942},special date=WWII,name=people discover\\some stuff\\\& lots of people\\get killed}
     \end{chronos}%
   }%
-\TIMO
   \showbox\chronosbox
-}%
 \OMIT
 \box\chronosbox
 \TIMO
-% \fi
-% \end{document}
+}
+
 % ateb: https://tex.stackexchange.com/a/324453/
 \TEST{chronos-t41}{%
-\OMIT
   \setbox\chronosbox=\hbox{%
     \begin{chronos}
       [
@@ -1633,16 +1548,14 @@
       \chronosevent {date={1969},name=steps on the moon}
     \end{chronos}%
   }%
-\TIMO
   \showbox\chronosbox
-}%
 \OMIT
 \box\chronosbox
 \TIMO
-% \end{document}
+}
+
 % ateb: https://tex.stackexchange.com/a/324454/
 \TEST{chronos-t42}{%
-\OMIT
   \setbox\chronosbox=\hbox{%
     \begin{chronos}
       [
@@ -1661,15 +1574,14 @@
       \chronosevent {date={2015-03-15},name=assassination of caesar}
     \end{chronos}%
   }%
-\TIMO
   \showbox\chronosbox
-}%
 \OMIT
 \box\chronosbox
 \TIMO
+}
+
 % ateb: https://tex.stackexchange.com/a/324857/
 \TEST{chronos-t43}{%
-\OMIT
   \setbox\chronosbox=\hbox{%
     \begin{chronos}
       [
@@ -1699,14 +1611,13 @@
       \chronosperiod {dates={{-5}}:{10},name=Random war2,/chronos/lines+={ultra thick, blue, opacity=.75},/chronos/line yshift=-1pt}
     \end{chronos}%
   }%
-\TIMO
   \showbox\chronosbox
-}%
 \OMIT
 \box\chronosbox
 \TIMO
+}
+
 \TEST{chronos-t44}{%
-\OMIT
   \setbox\chronosbox=\hbox{%
     \begin{chronos}
       [
@@ -1739,15 +1650,13 @@
       \chronosperiod {dates={{-5}}:{10},name=Random war,line+={ultra thick, gray, opacity=.75}}
     \end{chronos}%
   }%
-\TIMO
   \showbox\chronosbox
-}%
 \OMIT
 \box\chronosbox
 \TIMO
-% \end{document}
+}
+
 \TEST{chronos-t45}{%
-\OMIT
   \setbox\chronosbox=\hbox{%
     \begin{chronos}
       [
@@ -1770,16 +1679,14 @@
       \chronosperiod {dates={{-5}}:{10},name=Random war,/chronos/llinell/.append style={fill=blue, blend mode=overlay}}
     \end{chronos}%
   }%
-\TIMO
   \showbox\chronosbox
-}%
 \OMIT
 \box\chronosbox
 \TIMO
-% \fi
+}
+
 % ateb: https://tex.stackexchange.com/a/325890/
 \TEST{chronos-t46}{%
-\OMIT
   \setbox\chronosbox=\hbox{%
     \begin{chronos}
       [
@@ -1811,16 +1718,14 @@
       %   \chronosperiod {dates={2014-01-09}:{2014-01-12},name=reading\\time}
     \end{chronos}%
   }%
-\TIMO
   \showbox\chronosbox
-}%
 \OMIT
 \box\chronosbox
 \TIMO
-% \end{document}
+}
+
 % ateb: https://tex.stackexchange.com/a/342699/
 \TEST{chronos-t47}{%
-\OMIT
   \setbox\chronosbox=\hbox{%
     \begin{chronos}
       [
@@ -1841,15 +1746,14 @@
       \chronosevent {date={1969-07-21},name=first steps\\on the moon}
     \end{chronos}%
   }%
-\TIMO
   \showbox\chronosbox
-}%
 \OMIT
 \box\chronosbox
 \TIMO
+}
+
 % ateb: https://tex.stackexchange.com/a/343586/ addaswyd o gwestiwn spindoctor: https://tex.stackexchange.com/q/247210/
 \TEST{chronos-t48}{%
-\OMIT
   \setbox\chronosbox=\hbox{%
     \begin{chronos}
       [
@@ -1873,14 +1777,13 @@
       \path [every node/.style={font=\large\bfseries\sffamily}] (chronos start |- current bounding box.north) node (n) [above] {1995} (chronos end |- n) node {2008};
     \end{chronos}%
   }%
-\TIMO
   \showbox\chronosbox
-}%
 \OMIT
 \box\chronosbox
 \TIMO
+}
+
 \TEST{chronos-t49}{%
-\OMIT
   \setbox\chronosbox=\hbox{%
     \begin{chronos}
       [
@@ -1904,15 +1807,14 @@
       \path [every node/.style={font=\large\bfseries\sffamily}] (chronos start |- current bounding box.north) node (n) [above] {1995} (chronos end |- n) node {2008};
     \end{chronos}%
   }%
-\TIMO
   \showbox\chronosbox
-}%
 \OMIT
 \box\chronosbox
 \TIMO
+}
+
 % ateb: https://tex.stackexchange.com/a/349236/ addaswyd o gwestiwn rajvijay: https://tex.stackexchange.com/q/348977/
 \TEST{chronos-t50}{%
-\OMIT
   \setbox\chronosbox=\hbox{%
     \begin{chronos}
       [
@@ -1932,14 +1834,13 @@
       ]
     \end{chronos}%
   }%
-\TIMO
   \showbox\chronosbox
-}%
 \OMIT
 \box\chronosbox
 \TIMO
+}
+
 \TEST{chronos-t51}{%
-\OMIT
   \setbox\chronosbox=\hbox{%
     \begin{chronos}
       [
@@ -1962,14 +1863,13 @@
       ]
     \end{chronos}%
   }%
-\TIMO
   \showbox\chronosbox
-}%
 \OMIT
 \box\chronosbox
 \TIMO
+}
+
 \TEST{chronos-t52}{%
-\OMIT
   \setbox\chronosbox=\hbox{%
     \begin{chronos}
       % ateb: https://tex.stackexchange.com/a/701743/ i gwestiwn Node.JS: https://tex.stackexchange.com/q/699881/
@@ -2011,14 +1911,13 @@
       \chronosmaintitle{name content=The Journey,label={[font=\sffamily]right:PhD in chronological order},at=Started PhD |- chronos head,anchor=south west,yshift=10pt,font=\sffamily,draw }
     \end{chronos}%
   }%
-\TIMO
   \showbox\chronosbox
-}%
 \OMIT
 \box\chronosbox
 \TIMO
+}
+
 \TEST{chronos-t53}{%
-\OMIT
   \setbox\chronosbox=\hbox{%
     \begin{chronos}
       % ateb: https://tex.stackexchange.com/a/701756/ i gwestiwn neoben: https://tex.stackexchange.com/q/699595/
@@ -2046,14 +1945,13 @@
       \chronosmaintitle{name=\texttt{chronos}, at=chronos end, yshift=-10mm, anchor=north east}
     \end{chronos}%
   }%
-\TIMO
   \showbox\chronosbox
-}%
 \OMIT
 \box\chronosbox
 \TIMO
+}
+
 \TEST{chronos-t54}{%
-\OMIT
   \setbox\chronosbox=\hbox{%
     \begin{chronos}
       [
@@ -2079,15 +1977,13 @@
       \chronosevent{name=ides,name content={\qquad ides of March;\hfill\mbox{} assassination of Caesar},date={{-44}-3},text width=45mm}
     \end{chronos}%
   }%
-\TIMO
   \showbox\chronosbox
-}%
 \OMIT
 \box\chronosbox
 \TIMO
-%
+}
+
 \TEST{chronos-t55}{%
-\OMIT
   \setbox\chronosbox=\hbox{%
     \begin{chronos}
       [% ateb: https://tex.stackexchange.com/a/702342/
@@ -2110,15 +2006,14 @@
       \chronosperiod{dates={{2017-08-01}:{2018-12-31}},name=period 2}
     \end{chronos}%
   }%
-\TIMO
   \showbox\chronosbox
-}%
 \OMIT
 \box\chronosbox
 \TIMO
+}
+
 % ateb: https://tex.stackexchange.com/a/703431/
 \TEST{chronos-t56}{%
-\OMIT
   \setbox\chronosbox=\hbox{%
     \begin{chronos}
       [
@@ -2149,61 +2044,12 @@
       }
     \end{chronos}%
   }%
-\TIMO
   \showbox\chronosbox
-}%
 \OMIT
 \box\chronosbox
 \TIMO
-% ateb: https://tex.stackexchange.com/a/703431/
-\TEST{chronos-t57}{%
-\OMIT
-  \setbox\chronosbox=\hbox{%
-    \begin{chronos}
-      [
-        timeline={%
-          dates=2019:{2024-01-01},
-          timeline years=below,
-          height=1pt,
-          width=150mm,
-          timeline year={text=black},
-          timeline foreground=black,
-        },
-        colour scheme=blues,
-        only text,
-        every text tags={text=black,fill=##1!25,draw=black,font=\scriptsize\sffamily},
-        event/tag+={tag anchor=west,anchor=south west},
-        every connections={draw=black},
-        /tikz/my label/.style={label={[font=\scriptsize\sffamily,text=black]left:\MakeTitlecase{#1}}},
-      ]
-      \chronosevent{name=another new year,date=2022-01-01,name content={Yet Another Year \cite{westfahl:space}},xshift=2pt,yshift=1pt,my label=jan}
-      \foreach \i/\j/\k [remember=\i as \ilast (initially another new year)] in {martin-luther-king//{MLK, Jr.},wintry-storms/feb/Winter Blizzards,dydd dewi sant/mar/Dathlu!,april fools/apr/Hwyl!,may--day/may/{May Day \cite{padhye}},longest day/jun/{\Textcite{chiu}},holidays/jul/{\Autocite{jcg,nietzsche:historie}},sunshine/aug/Gwyliau,back to school/sep/Learning Ladder,all hallows eve/oct/Nos Galan Gaeaf,fireworks/nov/{Tân Gwyllt},christmas/dec/Nadolig,hanukkah//Festival of Light}
-      {
-        \chronosevent{name/.expand once=\i,name content={\k},date=2022-01-01,at=text tag \ilast.north west,my label=\j}
-      }
-      \chronosevent{name=new-year,date=2021-01-01,yshift=1pt,xshift=2pt,my label=jan}
-      \foreach \i/\j [remember=\i as \ilast (initially new-year)] in {martin-luther-king/,wintry-storms/feb,dydd dewi sant/mar,april fools/apr,may--day/may,longest day/jun,holidays/jul,sunshine/aug,back to school/sep,all hallows eve/oct,fireworks/nov,christmas/dec,hanukkah/}
-      {
-        \chronosevent{name/.expand once=\i,date=2021-01-01,at=text tag \ilast.north west,my label=\j}
-      }
-      \chronosevent{name=new year,date=2019-01-01,yshift=1pt,xshift=2pt,my label=jan}
-      \foreach \i/\j [remember=\i as \ilast (initially new year)] in {martin luther king/,wintry storms/feb,dydd dewi sant/mar,april fools/apr,may day/may,longest day/jun,holidays/jul,sunshine/aug,back to school/sep,all hallows eve/oct,fireworks/nov,christmas/dec,hanukkah/}
-      {
-        \chronosevent{name/.expand once=\i,date=2019-01-01,at=text tag \ilast.north west,my label=\j}
-      }
-      \chronosevent{name=new year,date=2020-01-01,yshift=-15pt,xshift=2pt,my label=jan,anchor=north west,connection+={shorten <=12pt}}
-      \foreach \i/\j [remember=\i as \ilast (initially new year)] in {martin luther king/,wintry storms/feb,dydd dewi sant/mar,april fools/apr,may day/may,longest day/jun,holidays/jul,sunshine/aug,back to school/sep,all hallows eve/oct,fireworks/nov,christmas/dec,hanukkah/}
-      {
-        \chronosevent{name/.expand once=\i,date=2020-01-01,at=text tag \ilast.south west,my label=\j,anchor=north west,connection+={shorten <=12pt}}
-      }
-    \end{chronos}%
-  }%
-\TIMO
-  \showbox\chronosbox
-}%
-\OMIT
-\box\chronosbox
-\TIMO
+}
+
 \END
 \end{document}
 
