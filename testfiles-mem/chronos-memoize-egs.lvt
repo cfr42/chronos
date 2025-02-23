@@ -1,0 +1,92 @@
+% !TEX TS-program = pdflatex
+% !TEX encoding = UTF-8 Unicode
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% This is file `chronos-memoize-egs.lvt',
+%%
+%% Copyright (C) 2025 Clea F. Rees.
+%% 
+%% This work may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3c
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%   https://www.latex-project.org/lppl.txt
+%% and version 1.3c or later is part of all distributions of LaTeX
+%% version 2008-05-04 or later.
+%% 
+%% This work has the LPPL maintenance status `maintained'.
+%% 
+%% The Current Maintainer of this work is Clea F. Rees.
+%% 
+%% This file may only be distributed together with a copy of the package
+%% chronos. You may however distribute the package chronos without
+%% such generated files.
+%% 
+%% This work consists of all files listed in manifest.txt.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{iftex}
+\ifpdftex
+  \pdfminorversion=7
+\fi
+\RequirePackage{svn-prov}
+\ProvidesFileSVN{$Id: chronos-memoize-egs.lvt 10849 2025-02-23 04:17:13Z cfrees $}[v0.0 \revinfo][\filebase: memoization test]
+\input regression-test.tex\relax
+\documentclass[a4paper]{article}
+\START
+\TYPE{memoize 1.4.0}
+\TEST{chronos-memoize-mmz}{%
+  \IfFileExists{chronos-memoize-egs.mmz}{%
+    \TYPE{chronos-memoize-egs.mmz:}%
+    \NEWLINE
+    \SHOWFILE{chronos-memoize-egs.mmz}%
+  }{%
+    \TYPE{CANNOT FIND chronos-memoize-egs.mmz}%
+  }%
+}
+\OMIT
+\usepackage[extract=python]{memoize}
+\usepackage{chronos}
+\usepackage[landscape,scale=1]{geometry}
+\pagestyle{empty}
+\begin{document}
+\TIMO
+\TEST{chronos-memoize-t3m}{%
+\showoutput
+  \begin{chronos}
+    [
+      cronoleg,
+      rotate all colours,
+      heading={heading}{chronos year 400}{chronos year 500},
+      subheading={upper subheading}{chronos year 400}{chronos year 500}{chronos upper subheadings},
+      subheading={lower subheading}{chronos year 400}{chronos year 500}{chronos lower subheadings},
+    ]
+    \chronoslife{dates={-400}:{-325},name=life above,at=u2 -| life above,xshift=10pt,tag anchor=west}
+    \chronoslife{dates={-400}:{-325},name=life below,at=i2 -| life below,xshift=10pt,tag anchor=west}
+    \chronoslife{dates={-500}:{-425},name=person above,at=u3 -| person above,xshift=10pt,tag anchor=west}
+    \chronoslife{dates={-500}:{-425},name=person below,at=i3 -| person below,xshift=10pt,tag anchor=west}
+    \chronosperiod{dates={-100}:{125},name=period above,at=u1 -| period above,xshift=-10pt,tag anchor=east}
+    \chronosperiod{dates={-100}:{125},name=period below,at=i1 -| period below,xshift=-10pt,tag anchor=east}
+    \chronosevent{date={250},name=event above,at=u2 -| event above,xshift=-10pt,tag anchor=east}
+    \chronosevent{date={250},name=event below,at=i2 -| event below,xshift=-10pt,tag anchor=east}
+    \chronosmaintitle{name=cronoleg,at=u8 -| chronos year -200}
+  \end{chronos}%
+}
+\TEST{chronos-memoize-t3m-cmemo}{%
+  \IfFileExists{memos/5B8AA77D8D813ABA44E655102BD6A588.memo}{%
+    \TYPE{memos/5B8AA77D8D813ABA44E655102BD6A588.memo:}%
+    \NEWLINE
+    \SHOWFILE{memos/5B8AA77D8D813ABA44E655102BD6A588.memo}%
+  }{%
+    \TYPE{CANNOT FIND memos/5B8AA77D8D813ABA44E655102BD6A588.memo!}%
+  }%
+}
+\TEST{chronos-memoize-t3m-ccmemo}{%
+  \IfFileExists{memos/5B8AA77D8D813ABA44E655102BD6A588-A4CF5565FDFB97F1C4D58ABEC7931C21.memo}{%
+    \TYPE{memos/5B8AA77D8D813ABA44E655102BD6A588-A4CF5565FDFB97F1C4D58ABEC7931C21.memo:}%
+    \NEWLINE
+    \SHOWFILE{memos/5B8AA77D8D813ABA44E655102BD6A588-A4CF5565FDFB97F1C4D58ABEC7931C21.memo}%
+  }{%
+    \TYPE{CANNOT FIND memos/5B8AA77D8D813ABA44E655102BD6A588-A4CF5565FDFB97F1C4D58ABEC7931C21.memo!}%
+  }%
+}
+% PAID Â DEFNYDDIO \END YN Y FAN HON!!!
+\end{document}
