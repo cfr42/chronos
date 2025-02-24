@@ -24,16 +24,32 @@
 %% This work consists of all files listed in manifest.txt.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \RequirePackage{svn-prov}
-\ProvidesFileSVN{$Id: chronos-test-preamble.tex 10851 2025-02-23 05:24:33Z cfrees $}[v0.0 \revinfo][\filebase DTX: TikZ Timelines]
+\ProvidesFileSVN{$Id: chronos-test-preamble.tex 10852 2025-02-24 05:11:17Z cfrees $}[v0.0 \revinfo][\filebase DTX: TikZ Timelines]
 \input regression-test.tex\relax
 \PassOptionsToPackage{rgb,svgnames,dvipsnames,x11names}{xcolor}
-\documentclass[british,10pt]{article}
-% \documentclass[british,10pt,tikz]{standalone}
+% standalone doesn't work with boxing for tests
+\documentclass[british,10pt,a4paper]{article}
 \usepackage{chronos}
 \usepackage{calc,amssymb,amsmath,amsfonts,mathtools,fetamont,metalogo,fontawesome}
 \usepackage{babel}
-\usepackage{csquotes}
+\ifpdftex
+  \usepackage[T1]{fontenc}
+\else
+  \usepackage{fontspec}
+\fi
+\usepackage[landscape,scale=0.9]{geometry}
 \usetikzlibrary{arrows.meta,ext.paths.ortho,shadows}
 \setlogokern{La}{-0.2em}
 \setlogokern{aT}{-0.05em}
+\parindent=0pt
+\pagestyle{empty}
+\AddToHook{begindocument/end}{%
+  \savegeometry{safonol}%
+  \newgeometry{scale=1}%
+  \savegeometry{arbennig}%
+  \newgeometry{vscale=0.9,hscale=0.7}%
+  \centering
+}
+\newcommand\safonol{\loadgeometry{safonol}}
+\newcommand\arbennig{\loadgeometry{arbennig}}
 \newbox\chronosbox
