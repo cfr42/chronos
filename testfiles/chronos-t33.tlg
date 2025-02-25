@@ -1,0 +1,32 @@
+*** ./build/test/chronos-t33.tlg	2025-02-25 04:15:50.441474803 +0000
+--- ./build/test/chronos-t33.pdftex.log	2025-02-25 04:15:51.727254518 +0000
+***************
+*** 1,7 ****
+  This is a generated file for the l3build validation system.
+  Don't change this file in any respect.
+  ============================================================
+! TEST 33: chronos-t33
+  ============================================================
+  Package chronos Info: Timeline height unset. Guessing an appropriate value. on input line ....
+  Package chronos Warning: You have not specified how frequently years should be marked on the timeline. Guessing appropriate values. Set step major year and/or step minor year to specify on input line ....
+--- 1,7 ----
+  This is a generated file for the l3build validation system.
+  Don't change this file in any respect.
+  ============================================================
+! TEST 1: chronos-t33
+  ============================================================
+  Package chronos Info: Timeline height unset. Guessing an appropriate value. on input line ....
+  Package chronos Warning: You have not specified how frequently years should be marked on the timeline. Guessing appropriate values. Set step major year and/or step minor year to specify on input line ....
+***************
+*** 854,858 ****
+                                                    \OMIT \box \chronosbox \TIMO 
+  l. ...}
+  ============================================================
+! [13
+! ]
+--- 854,858 ----
+                                                    \OMIT \box \chronosbox \TIMO 
+  l. ...}
+  ============================================================
+! [1
+! ] (chronos-t33.aux)

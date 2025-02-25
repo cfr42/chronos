@@ -1,0 +1,27 @@
+*** ./build/test/chronos-t39.tlg	2025-02-25 04:16:12.720118604 +0000
+--- ./build/test/chronos-t39.pdftex.log	2025-02-25 04:16:14.233453124 +0000
+***************
+*** 1,7 ****
+  This is a generated file for the l3build validation system.
+  Don't change this file in any respect.
+  ============================================================
+! TEST 39: chronos-t39
+  ============================================================
+  Package chronos Info: Timeline border height unset. Guessing an appropriate value. on input line ....
+  Package chronos Info: I'm guessing you don't want bare marks on your timeline. If I'm wrong, specify step divisions to override my decision on input line ....
+--- 1,7 ----
+  This is a generated file for the l3build validation system.
+  Don't change this file in any respect.
+  ============================================================
+! TEST 1: chronos-t39
+  ============================================================
+  Package chronos Info: Timeline border height unset. Guessing an appropriate value. on input line ....
+  Package chronos Info: I'm guessing you don't want bare marks on your timeline. If I'm wrong, specify step divisions to override my decision on input line ....
+***************
+*** 1675,1677 ****
+--- 1675,1679 ----
+                                                    \OMIT \box \chronosbox \TIMO 
+  l. ...}
+  ============================================================
++ [1
++ ] (chronos-t39.aux)

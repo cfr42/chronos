@@ -1,0 +1,27 @@
+*** ./build/test/chronos-t32.tlg	2025-02-25 04:15:47.205125567 +0000
+--- ./build/test/chronos-t32.pdftex.log	2025-02-25 04:15:48.823891982 +0000
+***************
+*** 1,7 ****
+  This is a generated file for the l3build validation system.
+  Don't change this file in any respect.
+  ============================================================
+! TEST 32: chronos-t32
+  ============================================================
+  Package chronos Info: Timeline height unset. Guessing an appropriate value. on input line ....
+  Package chronos Info: Timeline border height unset. Guessing an appropriate value. on input line ....
+--- 1,7 ----
+  This is a generated file for the l3build validation system.
+  Don't change this file in any respect.
+  ============================================================
+! TEST 1: chronos-t32
+  ============================================================
+  Package chronos Info: Timeline height unset. Guessing an appropriate value. on input line ....
+  Package chronos Info: Timeline border height unset. Guessing an appropriate value. on input line ....
+***************
+*** 1956,1958 ****
+--- 1956,1960 ----
+                                                    \OMIT \box \chronosbox \TIMO 
+  l. ...}
+  ============================================================
++ [1
++ ] (chronos-t32.aux)

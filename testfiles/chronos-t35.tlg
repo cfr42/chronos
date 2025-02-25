@@ -1,0 +1,38 @@
+*** ./build/test/chronos-t35.tlg	2025-02-25 04:15:52.892243207 +0000
+--- ./build/test/chronos-t35.pdftex.log	2025-02-25 04:16:06.544069714 +0000
+***************
+*** 1,9 ****
+  This is a generated file for the l3build validation system.
+  Don't change this file in any respect.
+  ============================================================
+! TEST 35: chronos-t35
+  ============================================================
+  Package chronos Info: I'm guessing you don't want bare marks on your timeline. If I'm wrong, specify step divisions to override my decision on input line ....
+  > \box...=
+  \hbox(544.24954+0.0)x802.73975
+  .\hbox(544.24954+0.0)x802.73975
+--- 1,11 ----
+  This is a generated file for the l3build validation system.
+  Don't change this file in any respect.
+  ============================================================
+! TEST 1: chronos-t35
+  ============================================================
+  Package chronos Info: I'm guessing you don't want bare marks on your timeline. If I'm wrong, specify step divisions to override my decision on input line ....
++ LaTeX Font Info:    Trying to load font information for U+msa on input line ....
++ LaTeX Font Info:    Trying to load font information for U+msb on input line ....
+  > \box...=
+  \hbox(544.24954+0.0)x802.73975
+  .\hbox(544.24954+0.0)x802.73975
+***************
+*** 12721,12725 ****
+                                                    \OMIT \box \chronosbox \TIMO 
+  l. ...}
+  ============================================================
+! [15
+! ]
+--- 12723,12727 ----
+                                                    \OMIT \box \chronosbox \TIMO 
+  l. ...}
+  ============================================================
+! [1
+! ] (chronos-t35.aux)
