@@ -1,0 +1,63 @@
+% !TEX TS-program = pdflatex
+% !TEX encoding = UTF-8 Unicode
+% arara: pdflatex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% This is file `chronos-egs.lvt',
+%%
+%% Copyright (C) 2023-2025 Clea F. Rees.
+%% 
+%% This work may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3c
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%   https://www.latex-project.org/lppl.txt
+%% and version 1.3c or later is part of all distributions of LaTeX
+%% version 2008-05-04 or later.
+%% 
+%% This work has the LPPL maintenance status `maintained'.
+%% 
+%% The Current Maintainer of this work is Clea F. Rees.
+%% 
+%% This file may only be distributed together with a copy of the package
+%% chronos. 
+%% 
+%% This work consists of all files listed in manifest.txt.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{iftex}
+\ifpdftex
+\pdfminorversion=7
+\fi
+\RequirePackage{svn-prov}
+\ProvidesFileSVN{$Id: chronos-egs.lvt 10852 2025-02-24 05:11:17Z cfrees $}[v0.1 \revinfo][\filebase DTX: TikZ Timelines]
+\input chronos-test-preamble.tex\relax
+\begin{document}
+\START
+\vfill
+
+\TEST{chronos-t14}{%
+  \setbox\chronosbox=\hbox{%
+    \begin{chronos}
+      [
+        rotated 45,
+        heading={heading}{chronos year -20}{chronos year 15},
+        subheading={upper subheading}{chronos year -20}{chronos year 15}{chronos upper subheadings},
+        subheading={lower subheading}{chronos year -20}{chronos year 15}{chronos lower subheadings},
+      ]
+      \chronoslife{dates={-25}:{3},name=life below,}
+      \chronoslife{dates={-5}:{10},name=person below,}
+      \chronosperiod{dates={-1}:{11},name=period below,}
+      \chronosevent{date={18},name=event below,}
+      \chronosmaintitle{name=rotated 45, at=current bounding box.south west,anchor=base west}
+    \end{chronos}%
+  }%
+  \showbox\chronosbox
+\OMIT
+\box\chronosbox
+\TIMO
+}
+\vfill
+\clearpage
+\vfill
+
+% \END does weird things to transparency
+\end{document}

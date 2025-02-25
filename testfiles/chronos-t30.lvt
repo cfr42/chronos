@@ -1,0 +1,346 @@
+% !TEX TS-program = pdflatex
+% !TEX encoding = UTF-8 Unicode
+% arara: pdflatex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% This is file `chronos-egs.lvt',
+%%
+%% Copyright (C) 2023-2025 Clea F. Rees.
+%% 
+%% This work may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3c
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%   https://www.latex-project.org/lppl.txt
+%% and version 1.3c or later is part of all distributions of LaTeX
+%% version 2008-05-04 or later.
+%% 
+%% This work has the LPPL maintenance status `maintained'.
+%% 
+%% The Current Maintainer of this work is Clea F. Rees.
+%% 
+%% This file may only be distributed together with a copy of the package
+%% chronos. 
+%% 
+%% This work consists of all files listed in manifest.txt.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{iftex}
+\ifpdftex
+\pdfminorversion=7
+\fi
+\RequirePackage{svn-prov}
+\ProvidesFileSVN{$Id: chronos-egs.lvt 10852 2025-02-24 05:11:17Z cfrees $}[v0.1 \revinfo][\filebase DTX: TikZ Timelines]
+\input chronos-test-preamble.tex\relax
+\usepackage{fetamont,metalogo}
+\setlogokern{La}{-0.2em}
+\setlogokern{aT}{-0.05em}
+\usepackage{fontawesome}
+\usetikzlibrary{ext.paths.ortho}
+\begin{document}
+\START
+\arbennig
+\vfill
+
+\TEST{chronos-t30}{%
+  \setbox\chronosbox=\hbox{%
+    \begin{chronos}
+      [
+        cronoleg,
+        start date={-3100},
+        end date=2100,
+        cam blwyddyn fach=250,
+        cam blwyddyn fawr=500,
+        chronos coords={2099,1938,1377,868},
+        levels=7:5,
+        event/colour rotation=true,
+        period/colour rotation=true,
+        %     event/colours above from clist={lliwiau_isod},
+        %     event/colours below from clist={lliwiau_uchod},
+        %     placeholders,
+        %     debug,
+        %     step from year={-3100},
+        minor year format={!Y},
+        cyffredin/testun/.append style={font=\rmfamily\scshape\scriptsize},
+        timeline font=\sffamily,
+        minor step font=\sffamily\bfseries\footnotesize,
+        major step font=\sffamily\bfseries,
+        eras font=\sffamily\normalsize\bfseries,
+        theori/testun+={font=\sffamily\bfseries},
+        chronos coords={-3100,-3050,-3000,...,2050,2100},
+        chronos coords={-771,1271,1368,618,907,1990},
+        heading={scrolls}{chronos year -2000}{chronos year 700},
+        headings={paste/chronos year 700/chronos year 1200,sewn/chronos year 1400/chronos year 1800,ebooks/chronos year 1990/chronos year 2050},
+        subheadings={shang/chronos year -2000/chronos year -1000/chronos upper subheadings,western zhou/chronos year -1000/chronos year -771/chronos upper subheadings,yuan/chronos year 1271/chronos year 1368/chronos upper subheadings,tang/chronos year 618/chronos year 907/chronos upper subheadings,concertina/chronos year 700/chronos year 750/chronos lower subheadings,butterfly/chronos year 1000/chronos year 1100/chronos lower subheadings},
+        century subheadings={15,17,19}{th},
+        century subheading={21}{st},
+        headings drops'=10pt:10pt:9pt,
+        frame uses bb=false,
+      ]
+      \chronoslife{%
+        name=bi sheng,
+        birth=972,
+        death=1051,
+        at=u2.south -| bi sheng,
+        tag anchor=east,
+        anchor=south east,
+        xshift=-5pt,
+        connectors={west},
+      }
+      \chronoslife {%
+        name=johannes gutenberg,
+        dates=1400:{1468-02-03},
+        dates content={c1393/1406--1468\,\celabel},
+        place above,
+        at=johannes gutenberg |- u2.center,
+        yshift=5pt,
+        connectors={north,west,east},
+      }
+      \chronoslife{%
+        name=friedrich gottlob koenig,
+        dates={1774-04-17}:{1833-01-17},
+        at=friedrich gottlob koenig |- i1.north,
+        tag anchor=east,
+        anchor=north east,
+        xshift=-5pt,
+      }
+      \chronoslife{%
+        name=donald knuth,
+        birth={1938-01-10},
+        at=donald knuth |- i2.north,
+        connectors={west},
+        tag anchor=east,
+        anchor=north east,
+        xshift=-5pt,
+      }
+      \node (knuth pi) [colour donald knuth, font=\Huge, below left=5pt and 10pt of tag donald knuth.base west, anchor=north west] {$\pi$};
+      \chronoslife{%
+        name=leslie lamport,
+        birth={1941-02-07},
+        at=leslie lamport |- u1.north,
+        connectors=east,
+        tag anchor=west,
+        anchor=north west,
+        xshift=20pt,
+      }
+      %   \chronoslife{%
+      %     name=chris rowley,
+      %     birth={},
+      %     at=leslie lamport |- i4.north,
+      %     connectors=east,
+      %     tag anchor=west,
+      %     anchor=north west,
+      %     xshift=5pt,
+      %   }  
+      \chronoslife{%
+        name=TeX lion,
+        name content=\TeX\ Lion,
+        birth={1986},
+        at=TeX lion |- i3.north,
+        connectors=west,
+        tag anchor=east,
+        anchor=north east,
+        xshift=-5pt,
+      }    
+      \chronoslife{% dyddiad invented ...
+        name=TeX lioness,
+        name content=\TeX\ Lioness,
+        birth={1988},
+        at=TeX lioness |- i4.north,
+        connectors=west,
+        tag anchor=east,
+        anchor=north east,
+        xshift=-5pt,
+      } 
+      \chronoslife{%
+        name=LaTeX lion,
+        name content=\LaTeX\ Lion,
+        birth={1994},
+        at=LaTeX lion |- i3.north,
+        connectors=east,
+        tag anchor=west,
+        anchor=north west,
+        xshift=5pt,
+      }
+      \chronoslife{%
+        name=l3 hummingbird,
+        name content=\LaTeX3 Hummingbird,
+        birth={2022},
+        at=l3 hummingbird |- i1.north,
+        connectors=east,
+        tag anchor=west,
+        anchor=north west,
+        xshift=5pt,
+      }
+      %   \chronoslife{%
+      %     name=rainer schopf,
+      %     name contents=Rainer Schöpf,
+      %     birth={},
+      %     at=rainer schopf |- i3.north,
+      %     connectors=east,
+      %     tag anchor=west,
+      %     anchor=north west,
+      %     xshift=5pt,
+      %   }
+      %   \chronoslife{%
+      %     name=frank mittelbach,
+      %     birth={},
+      %     at=frank mittelbach |- i2.north,
+      %     connectors=east,
+      %     tag anchor=west,
+      %     anchor=north west,
+      %     xshift=5pt,
+      %   }
+      \chronosevent{%
+        date={868-05-11},
+        name={Publication of \emph{Diamond Sutra}},
+        at=Publication of Diamond Sutra |- u1.east,
+        xshift=-5pt,
+        tag anchor=east,
+        as is,
+        connectors={west,north},
+      }
+      \chronosevent{%
+        name=gutenberg bible,
+        date={1455},
+        dates content={1450s},
+        at=u1.south -| gutenberg bible,
+        anchor=south west,
+        tag anchor=west,
+        connectors=north,
+        xshift=5pt,
+      }
+      \chronosevent{%
+        name=\emph{jikji},
+        date=1377,
+        at=jikji |- u1.east,
+        xshift=-5pt,
+        tag anchor=east,
+      }
+      \chronosperiod{%
+        name=pdftex,
+        name content={\textsc{pdf}\TeX},
+        dates=2000:,
+        at=pdftex |- i2.north,
+        tag anchor=west,
+        anchor=north west,
+        xshift=5pt,
+      }
+      \chronosperiod{%
+        name=woodblock printing,
+        start=600,
+        end=1450,
+        at=i1.west -| woodblock printing,
+        xshift=-50pt,
+        tag anchor=east,
+        dates content={c600--1450\,\celabel},
+        place below,
+      }
+      \chronosperiod{%
+        name=proto-Elamite use of cylinder seals,
+        start={{-3100}-01-01},
+        end={{-2700}-12-31},
+        dates content={c3000\,\bcelabel},
+        at=proto-Elamite use of cylinder seals |- u1.west,
+        tag anchor=west,
+        xshift=5pt,
+        connectors=north,
+        connectors=east,
+      }
+      \chronostheory {%
+        name=metafont,
+        text content=\MF,
+        at=tag donald knuth.west,
+        xshift=-15pt,
+        anchor=east,
+        connectors={east,south},
+      }
+      \chronostheory {%
+        name=TeX,
+        text content=\TeX,
+        at=metafont.south east,
+        yshift=-5pt,
+        anchor=north east,
+        connectors={east,south},
+      }
+      \def\tempa{-|-}
+      \def\tempb{|-|}
+      \draw [chronos connect=life:donald knuth] (connector donald knuth) \tempa (connector TeX) (connector donald knuth) -- (connector metafont);
+      \draw [chronos connect=life:TeX lion] (connector TeX lion) \tempa ([yshift=-2.5pt,xshift=-5pt]knuth pi.south east) -|  (connector TeX2);
+      \draw [chronos connect=life:TeX lioness] (connector TeX lioness) -| (connector metafont2);
+      \chronostheory {%
+        name=LaTeX,
+        text content=\LaTeX,
+        at=tag leslie lamport.south east,
+        xshift=20pt,
+        anchor=south west,
+        connectors={west,south},
+      }
+      \draw [chronos connect=life:leslie lamport] (connector leslie lamport) \tempa (connector LaTeX);
+      \draw [chronos connect=life:LaTeX lion] (connector LaTeX lion) -| (connector LaTeX2.south east);
+      \draw [chronos connect=life:l3 hummingbird] (connector l3 hummingbird) -| (connector LaTeX2.south west);
+      \chronostheory {%
+        name=movable type,
+        at=tag bi sheng.east |- u3.center,
+        anchor=south east,
+        connectors={east,west,north},
+      }
+      \chronostheory {%
+        name=printing press,
+        at=u5.south -| johannes gutenberg,
+        connectors={south,west},
+        anchor=south,
+      }
+      \draw [chronos connect=life:johannes gutenberg] (connector johannes gutenberg) -- (connector printing press) (connector johannes gutenberg2) \tempa (connector movable type) (connector johannes gutenberg3) -- ++(5pt,0pt) \tempb (connector gutenberg bible);
+      % ([xshift=-5pt]connector movable type2) ddim yn gweithio - wn i ddim pam lai
+      \draw [chronos connect=life:bi sheng] (connector bi sheng) -| ($(connector movable type2)+(-5pt,0pt)$) -- (connector movable type2);
+      \draw [chronos connect=theory:movable type] (connector printing press2) -| (connector movable type3);
+      \chronostheorycircle{
+        name=gutenberg revolution,
+        at=chronos end |- u6.north,
+        sizes'=15pt:9pt,
+        circle texts=Gutenberg:Revolution,
+        labels=15\textsuperscript{th}c.\thinspace \celabel:21\textsuperscript{st}c.\thinspace \celabel,  
+      }
+      \chronostheorycircle{
+        name=digital typesetting,
+        at={chronos end |- tag johannes gutenberg.north},
+        yshift=-7.5pt,
+        sizes'=15pt:9pt,
+        circle texts=Digital:Typesetting,
+        labels=20\textsuperscript{th}c.\thinspace \celabel:21\textsuperscript{st}c.\thinspace \celabel,  
+      }
+      \node [anchor=center, text=chronos main colour] at (gutenberg revolution.center) {\faBook};
+      \node [anchor=center, text=chronos main colour] at (digital typesetting.center) {\faDesktop};
+      \chronosmaintitle{%
+        name={Typography Timeline},
+        at=chronos year -2000 |- u6,
+      }
+      \chronosinfo{%
+        name=block printing,
+        text content={Block printing, originally used to print pictures and text onto cloth, developed into a method of printing books on paper.},
+        anchor=north east,
+        at=tag woodblock printing.south,
+        text width=60pt, 
+        yshift=-10pt,
+      }
+      % %   \begin{scope}[on chronos foreground layer]% cynnwys syllogism
+      %     \node (block printing) [/chronos/gwybodaeth, anchor=north east, text width=60pt, yshift=-10pt] at (tag woodblock printing.south) {Block printing, originally used to print pictures and text onto cloth, developed into a method of printing books on paper.};
+      % %   \end{scope}
+      %   \node (block printing name) [/chronos/gwybodaeth/label] at (block printing.south) {Block Printing};
+      %   \scoped[on chronos overlay layer]{
+      %     \draw [green] (chronos pre) -- ++(235mm,0pt);
+      %     \draw [blue] (-42pt,-10pt) -- ++(42pt,0pt);
+      %     \draw [red] (0,-20pt) -- ++(590pt,0pt);
+      %     \draw [orange] (590pt,-30pt) -- ++(36pt,0pt);
+      %     \draw [green] \foreach \i in {2099,2000,{-3000}} {  (chronos year \i) -- ++(0pt,50pt) } ;
+      %   }r
+    \end{chronos}%
+  }%
+  \showbox\chronosbox
+\OMIT
+\box\chronosbox
+\TIMO
+}
+\vfill
+
+% \END does weird things to transparency
+\end{document}

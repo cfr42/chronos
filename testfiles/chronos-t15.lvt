@@ -1,0 +1,62 @@
+% !TEX TS-program = pdflatex
+% !TEX encoding = UTF-8 Unicode
+% arara: pdflatex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% This is file `chronos-egs.lvt',
+%%
+%% Copyright (C) 2023-2025 Clea F. Rees.
+%% 
+%% This work may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3c
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%   https://www.latex-project.org/lppl.txt
+%% and version 1.3c or later is part of all distributions of LaTeX
+%% version 2008-05-04 or later.
+%% 
+%% This work has the LPPL maintenance status `maintained'.
+%% 
+%% The Current Maintainer of this work is Clea F. Rees.
+%% 
+%% This file may only be distributed together with a copy of the package
+%% chronos. 
+%% 
+%% This work consists of all files listed in manifest.txt.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{iftex}
+\ifpdftex
+\pdfminorversion=7
+\fi
+\RequirePackage{svn-prov}
+\ProvidesFileSVN{$Id: chronos-egs.lvt 10852 2025-02-24 05:11:17Z cfrees $}[v0.1 \revinfo][\filebase DTX: TikZ Timelines]
+\input chronos-test-preamble.tex\relax
+\begin{document}
+\START
+
+% ateb: https://tex.stackexchange.com/a/325890/
+\TEST{chronos-t15}{%
+  \setbox\chronosbox=\hbox{%
+    \begin{chronos}
+      [
+        event splitter,
+      ]
+      \chronosevent {date={2014-01-13},name=event 1}
+      \chronosevent {date={2014-01-20},name=event 2}
+      \chronosevent {date={2014-01-27},name=event 3}
+      \chronosevent {date={2014-02-03},name=event 4}
+      \chronosevent {date={2014-02-10},name=event 5}
+      \chronosevent {date={2014-02-17},name=event 6\\\& intervention}
+      \chronosevent {date={2014-02-22},name=the end}
+      \chronosmaintitle {name=event splitter,at=current bounding box.north,anchor=south}
+      %   \chronosperiod {dates={2014-01-09}:{2014-01-12},name=reading\\time}
+    \end{chronos}%
+  }%
+  \showbox\chronosbox
+\OMIT
+\box\chronosbox
+\TIMO
+}
+\vfill
+
+% \END does weird things to transparency
+\end{document}

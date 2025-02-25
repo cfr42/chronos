@@ -1,0 +1,75 @@
+% !TEX TS-program = pdflatex
+% !TEX encoding = UTF-8 Unicode
+% arara: pdflatex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% This is file `chronos-egs.lvt',
+%%
+%% Copyright (C) 2023-2025 Clea F. Rees.
+%% 
+%% This work may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3c
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%   https://www.latex-project.org/lppl.txt
+%% and version 1.3c or later is part of all distributions of LaTeX
+%% version 2008-05-04 or later.
+%% 
+%% This work has the LPPL maintenance status `maintained'.
+%% 
+%% The Current Maintainer of this work is Clea F. Rees.
+%% 
+%% This file may only be distributed together with a copy of the package
+%% chronos. 
+%% 
+%% This work consists of all files listed in manifest.txt.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{iftex}
+\ifpdftex
+\pdfminorversion=7
+\fi
+\RequirePackage{svn-prov}
+\ProvidesFileSVN{$Id: chronos-egs.lvt 10852 2025-02-24 05:11:17Z cfrees $}[v0.1 \revinfo][\filebase DTX: TikZ Timelines]
+\input chronos-test-preamble.tex\relax
+\begin{document}
+\START
+\vfill
+
+\TEST{chronos-t19}{%
+  \setbox\chronosbox=\hbox{%
+    \begin{chronos}
+      [
+        off line colour alt,
+      ]
+      \chronosevent {date={-2080},name=im15 (c),yshift=60pt}
+      \chronosevent {date={-2115},name=im13 (c),yshift=-80pt}
+      \chronosevent {date={-2115},name=im26 (b),yshift=20pt}
+      \chronosevent {date={-2170},name=im20 (b),yshift=100pt}
+      \chronosevent {date={-2190},name=iiim76 (e),yshift=-120pt}
+      \chronosevent {date={-2200},name=iiim353 (c),yshift=70pt}
+      \chronosevent {date={-2245},name=iim69 (c),yshift=30pt}
+      \chronosevent {date={-2250},name=iim281 (c),yshift=-70pt}
+      \chronosevent {date={-2145},name=im10 (b),yshift=-50pt}
+      \chronosevent {date={-2240},name=iim163 (c),yshift=-30pt}
+      \chronosevent {date={-2475},name=im90 (c),yshift=-70pt}
+      \chronosevent {date={-2480},name=im90 (b),yshift=20pt}
+      \chronosevent {date={-2500},name=iim63 (c),yshift=-20pt}
+      \chronosevent {date={-2550},name=im21 (a),yshift=70pt}
+      \chronosevent {date={-2570},name=im163 (b),yshift=-50pt}
+      \chronosevent {date={-2620},name=iim13 (c),yshift=30pt}
+      \chronosevent {date={-2690},name=im5 (b),yshift=-40pt}
+      \chronosevent {date={-2760},name=im130 (b),yshift=40pt}
+      \chronosevent {date={-2770},name=im65 (c),yshift=-15pt}
+      \chronosevent {date={-2935},name=im157 (r)}
+      \chronosmaintitle{name=off line colour alt,at=current bounding box.north west,anchor=north west}
+      %   \foreach \i in {-3000,-2900,...,-2000} \draw [red] (chronos year \i) ++(0pt,50pt) -- ++(0pt,-100pt);
+    \end{chronos}%
+  }%
+  \showbox\chronosbox
+\OMIT
+\box\chronosbox
+\TIMO
+}
+\vfill
+
+% \END does weird things to transparency
+\end{document}

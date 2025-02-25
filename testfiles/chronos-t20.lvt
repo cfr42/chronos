@@ -1,0 +1,60 @@
+% !TEX TS-program = pdflatex
+% !TEX encoding = UTF-8 Unicode
+% arara: pdflatex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% This is file `chronos-egs.lvt',
+%%
+%% Copyright (C) 2023-2025 Clea F. Rees.
+%% 
+%% This work may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3c
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%   https://www.latex-project.org/lppl.txt
+%% and version 1.3c or later is part of all distributions of LaTeX
+%% version 2008-05-04 or later.
+%% 
+%% This work has the LPPL maintenance status `maintained'.
+%% 
+%% The Current Maintainer of this work is Clea F. Rees.
+%% 
+%% This file may only be distributed together with a copy of the package
+%% chronos. 
+%% 
+%% This work consists of all files listed in manifest.txt.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{iftex}
+\ifpdftex
+\pdfminorversion=7
+\fi
+\RequirePackage{svn-prov}
+\ProvidesFileSVN{$Id: chronos-egs.lvt 10852 2025-02-24 05:11:17Z cfrees $}[v0.1 \revinfo][\filebase DTX: TikZ Timelines]
+\input chronos-test-preamble.tex\relax
+\begin{document}
+\START
+
+% ateb: https://tex.stackexchange.com/a/324448/
+\TEST{chronos-t20}{%
+  \setbox\chronosbox=\hbox{%
+    \begin{chronos}
+      [
+        date centric,
+      ]
+      \chronosevent {date={2001},name=The \emph{Mr.~Men}\\Celebrate their 30\textsuperscript{th}\\Anniversary,as is,yshift=10pt,event year on line skip}
+      \chronosevent {date={2000},name=vouchers replace\\cash support for\\asylum seekers}
+      \chronosevent {date={1988},name=section 28 prevents state\\schools `promoting homosexuality',yshift=55pt}
+      \chronosevent {date={1984},name=miners' strike ends}
+      \chronosevent {date={1979},name=labour government\\falls \& thatcher\\wins power,yshift=10pt}
+      \chronosevent {date={1942},special date=WWII,name=people discover\\some stuff\\\& lots of people\\get killed}
+      \chronosmaintitle {name=date centric, at=current bounding box.north west,anchor=north west}
+    \end{chronos}%
+  }%
+  \showbox\chronosbox
+\OMIT
+\box\chronosbox
+\TIMO
+}
+\vfill
+
+% \END does weird things to transparency
+\end{document}

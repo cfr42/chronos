@@ -1,0 +1,72 @@
+% !TEX TS-program = pdflatex
+% !TEX encoding = UTF-8 Unicode
+% arara: pdflatex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% This is file `chronos-egs.lvt',
+%%
+%% Copyright (C) 2023-2025 Clea F. Rees.
+%% 
+%% This work may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3c
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%   https://www.latex-project.org/lppl.txt
+%% and version 1.3c or later is part of all distributions of LaTeX
+%% version 2008-05-04 or later.
+%% 
+%% This work has the LPPL maintenance status `maintained'.
+%% 
+%% The Current Maintainer of this work is Clea F. Rees.
+%% 
+%% This file may only be distributed together with a copy of the package
+%% chronos. 
+%% 
+%% This work consists of all files listed in manifest.txt.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{iftex}
+\ifpdftex
+\pdfminorversion=7
+\fi
+\RequirePackage{svn-prov}
+\ProvidesFileSVN{$Id: chronos-egs.lvt 10852 2025-02-24 05:11:17Z cfrees $}[v0.1 \revinfo][\filebase DTX: TikZ Timelines]
+\input chronos-test-preamble.tex\relax
+\begin{document}
+\START
+\vfill
+
+\TEST{chronos-t29}{%
+  \setbox\chronosbox=\hbox{%
+    \begin{chronos}
+      [
+        sober judge,
+      ]
+      \foreach \i/\j/\k in {{1001-11-05}/{No fireworks}/10pt,{1002-07-04}/{No fireworks}/80pt,{1002-05-01}/{May Day}/50pt,{1002-06-21}/{Summer Solstice}/10pt}
+      {%
+        \chronosevent{
+          dyddiad=\i,
+          enw=\j,
+          yshift=-\k,
+          %      angor=north,
+          %      text tag+={fill opacity=.75, fill=gray!25, draw=gray, rounded corners, font=\footnotesize\sffamily},
+          %      cysylltiad+={draw=gray, -{Triangle[width=1.5pt,reversed,length=.75pt,fill=gray]}},
+        }
+      }
+      % %   % 1004:1002:2086209:2087397:19.852305475504322700::0.100264169068203650
+      % %   \draw [blue] (chronos year 1004.north east) -| (chronos year 1004.south west) -| cycle;
+      %   \draw [red] (chronos year 1003.north) -- ++(0pt,30pt) -- ++(-19.85pt,0pt);
+      %   \draw [blue] (chronos year 1002.north) -- ++(0pt,30pt) -- ++(-19.85pt,0pt);
+      % %   \draw [blue] (chronos start) |- ++(92*0.100264pt,90pt) |- ++(365*0.100264pt,-20pt)  |- ++(365*0.100264pt,-20pt)  |- ++(365*0.100264pt,-20pt)  |- ++(365*0.100264pt,-20pt)  |- ++(365*0.100264pt,-20pt) ;
+      %   \draw [magenta] (chronos first marked year) -- ++(0pt,50pt);
+    \end{chronos}%
+  }%
+  \showbox\chronosbox
+\OMIT
+\box\chronosbox
+\TIMO
+}
+\vfill
+\arbennig
+\centering
+
+% \END does weird things to transparency
+\end{document}

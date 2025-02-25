@@ -1,0 +1,72 @@
+% !TEX TS-program = pdflatex
+% !TEX encoding = UTF-8 Unicode
+% arara: pdflatex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% This is file `chronos-egs.lvt',
+%%
+%% Copyright (C) 2023-2025 Clea F. Rees.
+%% 
+%% This work may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3c
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%   https://www.latex-project.org/lppl.txt
+%% and version 1.3c or later is part of all distributions of LaTeX
+%% version 2008-05-04 or later.
+%% 
+%% This work has the LPPL maintenance status `maintained'.
+%% 
+%% The Current Maintainer of this work is Clea F. Rees.
+%% 
+%% This file may only be distributed together with a copy of the package
+%% chronos. 
+%% 
+%% This work consists of all files listed in manifest.txt.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{iftex}
+\ifpdftex
+\pdfminorversion=7
+\fi
+\RequirePackage{svn-prov}
+\ProvidesFileSVN{$Id: chronos-egs.lvt 10852 2025-02-24 05:11:17Z cfrees $}[v0.1 \revinfo][\filebase DTX: TikZ Timelines]
+\input chronos-test-preamble.tex\relax
+\begin{document}
+\START
+\vfill
+
+\TEST{chronos-t5}{%
+  \setbox\chronosbox=\hbox{%
+    \begin{chronos}
+      [
+        %     dates=1800:2050,
+        lavender menace,
+        %     placeholders,
+        heading={heading}{chronos year 1800}{chronos year 1900},
+        subheading={upper subheading}{chronos year 1700}{chronos year 1900}{chronos upper subheadings},
+        subheading={lower subheading}{chronos year 1700}{chronos year 1900}{chronos lower subheadings},
+        %     /tikz/drop shadow/.show code,
+        %     debug,
+      ]
+      %   \chronosshowfeatures
+      %   \chronosshowfeatures[digwyddiad]
+      %   \chronosshowfeatures[byw]
+      \chronoslife{dates={1750}:{1800},name=life above,at=u2 -| life above}
+      \chronoslife{dates={1750}:{1800},name=life below,at=i2 -| life below,}
+      \chronoslife{dates={1650}:{1700},name=person above,at=u2 -| person above,}
+      \chronoslife{dates={1650}:{1700},name=person below,at=i2 -| person below,}
+      \chronosperiod{dates={1850}:{1900},name=period above,at=u3 -| period above,}
+      \chronosperiod{dates={1850}:{1900},name=period below,at=i3 -| period below,}
+      \chronosevent{date={1550},name=event above,at=u1 -| event above,}
+      \chronosevent{date={1550},name=event below,at=i1 -| event below,}
+      \chronosmaintitle{name=lavender menace,at=chronos pre |- current bounding box.north, anchor=west}
+    \end{chronos}%
+  }%
+  \showbox\chronosbox
+\OMIT
+\box\chronosbox
+\TIMO
+}
+\vfill
+
+% \END does weird things to transparency
+\end{document}

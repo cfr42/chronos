@@ -1,0 +1,77 @@
+% !TEX TS-program = pdflatex
+% !TEX encoding = UTF-8 Unicode
+% arara: pdflatex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% This is file `chronos-egs.lvt',
+%%
+%% Copyright (C) 2023-2025 Clea F. Rees.
+%% 
+%% This work may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3c
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%   https://www.latex-project.org/lppl.txt
+%% and version 1.3c or later is part of all distributions of LaTeX
+%% version 2008-05-04 or later.
+%% 
+%% This work has the LPPL maintenance status `maintained'.
+%% 
+%% The Current Maintainer of this work is Clea F. Rees.
+%% 
+%% This file may only be distributed together with a copy of the package
+%% chronos. 
+%% 
+%% This work consists of all files listed in manifest.txt.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{iftex}
+\ifpdftex
+\pdfminorversion=7
+\fi
+\RequirePackage{svn-prov}
+\ProvidesFileSVN{$Id: chronos-egs.lvt 10852 2025-02-24 05:11:17Z cfrees $}[v0.1 \revinfo][\filebase DTX: TikZ Timelines]
+\input chronos-test-preamble.tex\relax
+\begin{document}
+\START
+\vfill
+
+\TEST{chronos-t44}{%
+  \setbox\chronosbox=\hbox{%
+    \begin{chronos}
+      [
+        start date={{-25}-01-01},
+        end date={20-01-01},
+        step major years=5,
+        only text,
+        timeline width=100mm,
+        timeline marks,
+        timeline mark eras,
+        mark at era switch,
+        timeline font=\scriptsize,
+        timeline years=above,
+        no connectors,
+        no connections,
+        lines={fill},
+        lines on=foreground,
+        event text tag+={rotate=-45},
+        period text tag+={rotate=-45},
+        every period+={tag anchor=west},
+        every event+={tag anchor=west},
+        every period below,
+        every event below,
+        text tag yshift=2.5pt,
+        debug,
+        %       timeline height=15pt,
+        %       timeline border height=2pt,
+      ]
+      \chronosevent {date={{-20}},name={Random event},line+={gray},text tag+={text=gray}}
+      \chronosperiod {dates={{-5}}:{10},name=Random war,line+={ultra thick, gray, opacity=.75}}
+    \end{chronos}%
+  }%
+  \showbox\chronosbox
+\OMIT
+\box\chronosbox
+\TIMO
+}
+
+% \END does weird things to transparency
+\end{document}

@@ -1,0 +1,92 @@
+% !TEX TS-program = pdflatex
+% !TEX encoding = UTF-8 Unicode
+% arara: pdflatex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% This is file `chronos-egs.lvt',
+%%
+%% Copyright (C) 2023-2025 Clea F. Rees.
+%% 
+%% This work may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3c
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%   https://www.latex-project.org/lppl.txt
+%% and version 1.3c or later is part of all distributions of LaTeX
+%% version 2008-05-04 or later.
+%% 
+%% This work has the LPPL maintenance status `maintained'.
+%% 
+%% The Current Maintainer of this work is Clea F. Rees.
+%% 
+%% This file may only be distributed together with a copy of the package
+%% chronos. 
+%% 
+%% This work consists of all files listed in manifest.txt.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{iftex}
+\ifpdftex
+\pdfminorversion=7
+\fi
+\RequirePackage{svn-prov}
+\ProvidesFileSVN{$Id: chronos-egs.lvt 10852 2025-02-24 05:11:17Z cfrees $}[v0.1 \revinfo][\filebase DTX: TikZ Timelines]
+\input chronos-test-preamble.tex\relax
+\begin{document}
+\START
+\colorlet{bcol}{blue}
+\colorlet{bcol1}{black}
+\colorlet{hcol}{magenta}
+\TEST{chronos-t36}{%
+  \setbox\chronosbox=\hbox{%
+    \begin{chronos}
+      [
+        start date=1760-01-01,
+        end date=1800-01-01,
+        %       modern,
+        %       cronoleg,
+        step major years=5,
+        event text tag+={text width=40mm},
+        event text tag+={font=\small\itshape},
+        %       testun={font=\itshape},
+        %       timeline font=\sffamily,
+        %       events/.append style={font=\small},
+      ] 
+      % %   \chronos
+      \chronosevent{date={1789},text tag+={text=bcol,font=\small},name=declaration of the rights of man and of the citizen,yshift=60pt}
+      \chronosperiod{%
+        line+={bcol},
+        dates={1789}:{1799},
+        text tag+={text=bcol},
+        name=french revolution,
+        yshift=5pt,
+      }
+      \chronosevent{date={1793},text tag+={text=bcol},name=declaration of the rights of man and citizen,yshift=-10pt,}
+      \chronosevent{name=\emph{The Age of Reason},date=1793,text=hcol,yshift=-40pt}
+      \chronosevent {enw=Declaration of Independence, date=1776, text=bcol1,uchod, yshift=30pt}
+      \chronosevent {name=\emph{Common Sense}, as is, yshift=5pt, date=1776, text=hcol, isod}%
+      \chronosevent {enw=\emph{Rights of Man}, text=hcol, date=1791, font=\scshape,yshift=-70pt}
+      \chronosevent{date={1787},text tag+={text=bcol1},name=constitution,yshift=120pt}
+      \chronosperiod {%
+        enw=bill of rights,
+        lliw=bcol1,
+        dechrau=1789,
+        diwedd=1791,
+        at=bill of rights,
+        yshift=90pt,
+        %     angor=north,
+      }
+      %   \chronosevent{date={1795},text tag+={text=hcol},name=\emph{agrarian justice},yshift=5pt}
+      \chronosperiod{%
+        dates=1765:1783,
+        name=american revolution,
+        yshift=-40pt
+      }
+    \end{chronos}%
+  }%
+  \showbox\chronosbox
+\OMIT
+\box\chronosbox
+\TIMO
+}
+
+% \END does weird things to transparency
+\end{document}

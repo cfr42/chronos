@@ -1,0 +1,64 @@
+% !TEX TS-program = pdflatex
+% !TEX encoding = UTF-8 Unicode
+% arara: pdflatex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% This is file `chronos-egs.lvt',
+%%
+%% Copyright (C) 2023-2025 Clea F. Rees.
+%% 
+%% This work may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3c
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%   https://www.latex-project.org/lppl.txt
+%% and version 1.3c or later is part of all distributions of LaTeX
+%% version 2008-05-04 or later.
+%% 
+%% This work has the LPPL maintenance status `maintained'.
+%% 
+%% The Current Maintainer of this work is Clea F. Rees.
+%% 
+%% This file may only be distributed together with a copy of the package
+%% chronos. 
+%% 
+%% This work consists of all files listed in manifest.txt.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{iftex}
+\ifpdftex
+\pdfminorversion=7
+\fi
+\RequirePackage{svn-prov}
+\ProvidesFileSVN{$Id: chronos-egs.lvt 10852 2025-02-24 05:11:17Z cfrees $}[v0.1 \revinfo][\filebase DTX: TikZ Timelines]
+\input chronos-test-preamble.tex\relax
+\begin{document}
+\START
+\vfill
+
+\TEST{chronos-t10}{%
+  \setbox\chronosbox=\hbox{%
+    \begin{chronos}% = rhag ar ôl gwall
+      [
+        dates={1800-01-01}:{2050-12-31},
+        heading={heading}{chronos year 1800}{chronos year 1900},
+        heading={default with levels but no style}{chronos year 1950}{chronos year 2000},
+        subheading={upper subheading}{chronos year 1800}{chronos year 1900}{chronos upper subheadings},
+        subheading={lower subheading}{chronos year 1800}{chronos year 1900}{chronos lower subheadings},
+        levels=4:3,
+      ]
+      \chronoslife{dates={1810}:{1870},name=life above,at=u2 -| life above,}
+      \chronoslife{dates={1810}:{1870},name=life below,at=i2 -| life below,}
+      \chronoslife{dates={1975}:{2000},name=person above,at=u2 -| person above,}
+      \chronoslife{dates={1975}:{2000},name=person below,at=i2 -| person below,}
+      \chronosperiod{dates={1925}:{1950},name=period above,at=u2 -| period above,xshift=-10pt,tag anchor=east}
+      \chronosperiod{dates={1925}:{1950},name=period below,at=i2 -| period below,}
+      \chronosevent{date={2025},name=event above,at=u4 -| event above,xshift=-10pt,tag anchor=east}
+      \chronosevent{date={2025},name=event below,at=i3 -| event below,}
+    \end{chronos}%
+  }%
+  \showbox\chronosbox
+\OMIT
+\box\chronosbox
+\TIMO
+
+% \END does weird things to transparency
+\end{document}

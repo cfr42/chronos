@@ -1,0 +1,188 @@
+% !TEX TS-program = pdflatex
+% !TEX encoding = UTF-8 Unicode
+% arara: pdflatex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% This is file `chronos-egs.lvt',
+%%
+%% Copyright (C) 2023-2025 Clea F. Rees.
+%% 
+%% This work may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3c
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%   https://www.latex-project.org/lppl.txt
+%% and version 1.3c or later is part of all distributions of LaTeX
+%% version 2008-05-04 or later.
+%% 
+%% This work has the LPPL maintenance status `maintained'.
+%% 
+%% The Current Maintainer of this work is Clea F. Rees.
+%% 
+%% This file may only be distributed together with a copy of the package
+%% chronos. 
+%% 
+%% This work consists of all files listed in manifest.txt.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{iftex}
+\ifpdftex
+\pdfminorversion=7
+\fi
+\RequirePackage{svn-prov}
+\ProvidesFileSVN{$Id: chronos-egs.lvt 10852 2025-02-24 05:11:17Z cfrees $}[v0.1 \revinfo][\filebase DTX: TikZ Timelines]
+\input chronos-test-preamble.tex\relax
+\begin{document}
+\START
+\arbennig
+\vfill
+
+\TEST{chronos-t35}{%
+  \setbox\chronosbox=\hbox{%
+    \begin{chronos}
+      [
+        % 	chronos={%
+        %       start year={-600},
+        % 	  end year=2100,
+        %       dechrau={-600},
+        % 	  cam blwyddyn fawr=500,
+        % %       ail gam={-100},
+        %       cam blwyddyn fach=100,
+        %       width=235mm,
+        % 	  lefelau=5:2,
+        cronoleg,
+        %       every digwyddiad+={blue,font=\small},
+        %       llinell bywyd={fill=black},
+        %       mark at era switch=false,
+        %       mark at era switch,
+        %       year zero=false,
+        chronos coords={-600,-550,-450,...,2050,2100},
+        heading={ancient}{chronos year -600}{chronos year 500},
+        % %       chronos headings={something/chronos year -600/chronos year -200,else/chronos year 300/chronos year 600},
+        headings={medieval/chronos year 350/chronos year 1650,modern/chronos year 1450/chronos year 1900,contemporary/chronos year 1950/chronos year 2050},% note that dates are adjusted for placement purposes and/or are wild gueses - do not trust!
+        subheadings={presocratic/chronos pre/chronos year -500/chronos lower subheadings,socratic/chronos year -450/chronos year -350/chronos lower subheadings,apostolic/chronos year 50/chronos year 100/chronos upper subheadings,post-apostolic/chronos year 100/chronos year 200/chronos lower subheadings,patristic/chronos year 200/chronos year 650/chronos lower subheadings,carolingian/chronos year 750/chronos year 850/chronos lower subheadings,early medieval/chronos year 350/chronos year 850/chronos upper subheadings,late medieval/chronos year 1100/chronos year 1200/chronos upper subheadings,scholasticism/chronos year 1100/chronos year 1500/chronos lower subheadings,renaissance/chronos year 1350/chronos year 1650/chronos upper subheadings,enlightenment/chronos year 1700/chronos year 1800/chronos upper subheadings,hellenistic/chronos year -600/chronos year -350/chronos upper subheadings,roman/chronos year -150/chronos year -100/chronos upper subheadings,current/chronos year 2000/chronos year 2050/chronos upper subheadings},% note that dates are adjusted for placement purposes and/or are wild gueses - do not trust!
+        century subheadings={16,17,...,20}{th},
+        century subheading={21}{st},
+        placeholders,
+        show coords,
+        frame uses bb=false,
+        %       enwau lliwiau siml=false,% dylai roi wall unknown colour am rousseau
+        %     },
+      ]
+      \chronoslife {%
+        enw=rousseau,
+        dyddiadau=1712:1778,
+        at=u1 -| rousseau,
+        cysylltwyr={west,north},
+        angor=east,
+        xshift=-5pt,
+      }
+      \chronoslife {% saesneg
+        name=rousseau2,
+        dates=1712:1778,
+        connectors=west,
+        tag anchor=east,
+        at=i1 -| rousseau2,
+        yshift=-5pt,
+        xshift=-10pt,
+      }
+      \chronosevent {%
+        enw=write a bit,
+        dyddiad=1756,
+        at=u3 -| write a bit,
+        xshift=-10pt,
+        angor=east,
+      }
+      \chronoslife {%
+        enw=kant,
+        dyddiadau=1724:1804,
+        xshift=-10pt,
+        angor=east,
+        cysylltwyr=west,
+        at=u4 -| kant,
+        isod=false,
+      }
+      \chronoslife {%
+        enw=hegel,
+        dyddiadau=1770:1831,
+        at=i4.north -| hegel,
+        angor=north,
+        yshift=-5pt,
+        cysylltwyr=east,
+        cysylltwyr=west,
+        cysylltu=false,
+      }
+      \chronosevent {%
+        enw=cinio,
+        dyddiad=1750,
+        at=u2 -| cinio,
+        isod=false,
+        angor=east,
+        xshift=-20pt,
+        cysylltu=false
+      }
+      \chronostheory {%
+        enw=social contract theory,
+        at=testun kant.west,
+        xshift=-10pt,
+        angor=east,
+        cysylltwyr={north,south},
+      }
+      \chronosperiod {%
+        enw=bill of rights,
+        %     lliw=blue,
+        dechrau=1789,
+        diwedd=1791,
+        at=bill of rights,
+        yshift=50pt,
+        %     isod,
+        xshift=10pt,
+        angor=west,
+      }
+      \draw [chronos connect=byw:rousseau] (cysylltwr rousseau) -| (cysylltwr social contract theory3);
+
+      \begin{scope}[on chronos foreground layer]% cynnwys syllogism
+        \chronosinfo{%
+          enw=syllogism,
+          at=chronos year 200 |- u4,
+          cynnwys testun={All men are\\[-.25em]\hspace*{1.5em}mortal.\\Socrates is a\\[-.25em]\hspace*{1.5em}man.\\$\therefore$ Socrates is\\[-.25em]\hspace*{1.5em}mortal.},
+          anchor=north,
+          caption=A Syllogism,
+        }
+      \end{scope}
+
+      \chronostheorycircle{
+        enw=sophist,
+        at={$(chronos start |- i2.center)!1/2!(kant |- i2.center)$},
+        meintiau'=15pt:9pt,
+        testunau cylch=Sophists:Sophistes,% Sophist{\=e}s
+        labels=5\textsuperscript{th}c.\thinspace \bcelabel:4\textsuperscript{th}c.\thinspace \bcelabel,  
+      }
+      \chronoslife {%
+        enw=james,
+        dyddiadau=1842:1910,
+        at=i3 -| james,
+        xshift=5pt,
+        angor=west,
+        %     yshift=-5pt,
+        cysylltwyr={east,south},
+        cysylltu,
+        isod,
+      }
+
+      \chronosmaintitle{%
+        name={Main Title},
+        at=chronos year 200 |- u7,
+      }
+      %   \node [anchor=south,draw] at (i10.south -| chronos year 1200) {Here};
+      %   \scoped[on chronos overlay layer]{\foreach \i in {-600,-550,...,2050} \draw [blue!50!white, thin] (chronos year \i) -- ++(0pt,50mm);} 
+    \end{chronos}%
+  }%
+  \showbox\chronosbox
+\OMIT
+\box\chronosbox
+\TIMO
+}
+\vfill
+
+
+% \END does weird things to transparency
+\end{document}

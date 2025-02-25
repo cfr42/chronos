@@ -1,0 +1,119 @@
+% !TEX TS-program = pdflatex
+% !TEX encoding = UTF-8 Unicode
+% arara: pdflatex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% This is file `chronos-egs.lvt',
+%%
+%% Copyright (C) 2023-2025 Clea F. Rees.
+%% 
+%% This work may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3c
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%   https://www.latex-project.org/lppl.txt
+%% and version 1.3c or later is part of all distributions of LaTeX
+%% version 2008-05-04 or later.
+%% 
+%% This work has the LPPL maintenance status `maintained'.
+%% 
+%% The Current Maintainer of this work is Clea F. Rees.
+%% 
+%% This file may only be distributed together with a copy of the package
+%% chronos. 
+%% 
+%% This work consists of all files listed in manifest.txt.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{iftex}
+\ifpdftex
+\pdfminorversion=7
+\fi
+\RequirePackage{svn-prov}
+\ProvidesFileSVN{$Id: chronos-egs.lvt 10852 2025-02-24 05:11:17Z cfrees $}[v0.1 \revinfo][\filebase DTX: TikZ Timelines]
+\input chronos-test-preamble.tex\relax
+\begin{document}
+\START
+\vfill
+
+\TEST{chronos-t1}{%
+  \setbox\chronosbox=\hbox{%
+    \begin{chronos}
+      [% https://tex.stackexchange.com/a/712296/
+        no colour rotation,
+        colour scheme=default,
+        date format={!q!Y},
+        year format={!q!Y},
+        frame=false,
+        every text tags+={font=\normalfont\footnotesize},
+        event/tag+={alias=myself,rotate around={45:([yshift=3pt]\csname chronos@digwyddiad@tikzname\endcsname)},tag anchor=west},
+        every event above,
+        text tag yshift'=3pt,
+        timeline={%
+          minor years=false,
+          timeline mark eras=false,
+          year zero,
+          year at era switch,
+          timeline era margin'=0pt,
+          step major years=250,
+          timeline years=below,
+          timeline font=\normalfont\footnotesize,
+          timeline line+={shorten >=5pt,shorten <=\timelineht,{Bar[width=3pt]}-{Latex[length=5pt]}},
+          timeline arrow,
+          dates={-500}:1675,
+          width'=.9\textwidth,
+        },
+      ]
+      \chronosevent{%
+        date={-399},
+        text content={Person 1 (\dag -399)},
+        name=p1,
+      }
+      \chronosevent{%
+        date={-322},
+        text content={Person 2 (\dag -348) and Person 3 (\dag -322)},
+        name=p23,
+      }
+      \chronosevent{%
+        date={-232},
+        text content={Person 4 (\dag -261) and Person 5 (\dag -232)},
+        name=p45,
+      }
+      \chronosevent{%
+        date={-43},
+        text content={Person 6 (\dag -43)},
+        name=p6,
+      }
+      \chronosevent{%
+        date={65},
+        text content={Person 7 (\dag 65)},
+        name=p7,
+      }
+      \chronosevent{%
+        date={950},
+        text content={Person 8 (\dag 950)},
+        name=p8,
+      }
+      \chronosevent{%
+        date={1037},
+        text content={Person 9 (\dag 1037)},
+        name=p9,
+      }
+      \chronosevent{%
+        date={1198},
+        text content={Person 10 (\dag 1198)},
+        name=p10,
+      }
+      \chronosevent{%
+        date={1274},
+        text content={Person 11 (\dag 1274) and Person 12 (\dag 1280)},
+        name=p1112,
+      }
+    \end{chronos}%
+  }%
+  \showbox\chronosbox
+\OMIT
+\box\chronosbox
+\TIMO
+}
+
+% \END does weird things to transparency
+\end{document}

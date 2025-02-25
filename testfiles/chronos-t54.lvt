@@ -1,0 +1,70 @@
+% !TEX TS-program = pdflatex
+% !TEX encoding = UTF-8 Unicode
+% arara: pdflatex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% This is file `chronos-egs.lvt',
+%%
+%% Copyright (C) 2023-2025 Clea F. Rees.
+%% 
+%% This work may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3c
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%   https://www.latex-project.org/lppl.txt
+%% and version 1.3c or later is part of all distributions of LaTeX
+%% version 2008-05-04 or later.
+%% 
+%% This work has the LPPL maintenance status `maintained'.
+%% 
+%% The Current Maintainer of this work is Clea F. Rees.
+%% 
+%% This file may only be distributed together with a copy of the package
+%% chronos. 
+%% 
+%% This work consists of all files listed in manifest.txt.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{iftex}
+\ifpdftex
+\pdfminorversion=7
+\fi
+\RequirePackage{svn-prov}
+\ProvidesFileSVN{$Id: chronos-egs.lvt 10852 2025-02-24 05:11:17Z cfrees $}[v0.1 \revinfo][\filebase DTX: TikZ Timelines]
+\input chronos-test-preamble.tex\relax
+\begin{document}
+\START
+\vfill
+
+\TEST{chronos-t54}{%
+  \setbox\chronosbox=\hbox{%
+    \begin{chronos}
+      [
+        simple arrow,
+        timeline={
+          dates={-100}:{-30},
+          width=\linewidth,
+          height=2ex,
+          major step font=\normalfont,
+          minor step font=\normalfont,
+          year format={!q!Y},
+          timeline marks=false,
+          timeline year={yshift=30pt},
+          step major year=70,
+          step from year={-100},
+        },
+        every date format={!q!Y},
+        event/.cd,
+        text font=\upshape\bfseries,
+        date font=\itshape,
+      ]
+      \chronosevent{name=eruption of Mont Vesuvius,date={{-79}-10},}
+      \chronosevent{name=ides,name content={\qquad ides of March;\hfill\mbox{} assassination of Caesar},date={{-44}-3},text width=45mm}
+    \end{chronos}%
+  }%
+  \showbox\chronosbox
+\OMIT
+\box\chronosbox
+\TIMO
+}
+
+% \END does weird things to transparency
+\end{document}
