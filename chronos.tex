@@ -26,7 +26,7 @@
 %%
 \pdfminorversion=7
 \RequirePackage{svn-prov}
-\ProvidesFileSVN{$Id: chronos.tex 10876 2025-02-27 05:02:39Z cfrees $}[v0.9 \revinfo]
+\ProvidesFileSVN{$Id: chronos.tex 10878 2025-02-27 07:05:05Z cfrees $}[v0.9 \revinfo]
 \GetFileInfoSVN*
 \let\chronosdocversion\fileversion
 \let\chronosdocbase\filebase
@@ -36,9 +36,9 @@
 \documentclass[10pt,british,a4paper]{ltxdoc}
 % \usepackage[dvipsnames,svgnames,rgb,x11names]{xcolor}
 \usepackage{svn-multi}
-\svnid{$Id: chronos.tex 10876 2025-02-27 05:02:39Z cfrees $}
+\svnid{$Id: chronos.tex 10878 2025-02-27 07:05:05Z cfrees $}
 \svnRegisterAuthor{cfrees}{Clea F. Rees}
-\usepackage[extract=no]{memoize}
+\usepackage[extract=python]{memoize}
 \mmzset{%
   prefix=memos/,
 %   path={dir=memos},
@@ -57,7 +57,7 @@
   auto=\cpagerefrange{refrange},
   auto=\Cpagerefrange{refrange},
 %   mkdir,
-  deactivate csname=pgfsys@getposition,
+  % deactivate csname=pgfsys@getposition,
 }
 \usepackage{chronos}
 \usetikzlibrary{arrows.meta,ext.paths.ortho,tikzmark,decorations.pathreplacing}
