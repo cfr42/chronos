@@ -26,7 +26,7 @@
 %%
 \pdfminorversion=7
 \RequirePackage{svn-prov}
-\ProvidesFileSVN{$Id: chronos.tex 10878 2025-02-27 07:05:05Z cfrees $}[v0.9 \revinfo]
+\ProvidesFileSVN{$Id: chronos.tex 10883 2025-02-27 23:29:01Z cfrees $}[v0.9 \revinfo]
 \GetFileInfoSVN*
 \let\chronosdocversion\fileversion
 \let\chronosdocbase\filebase
@@ -36,7 +36,7 @@
 \documentclass[10pt,british,a4paper]{ltxdoc}
 % \usepackage[dvipsnames,svgnames,rgb,x11names]{xcolor}
 \usepackage{svn-multi}
-\svnid{$Id: chronos.tex 10878 2025-02-27 07:05:05Z cfrees $}
+\svnid{$Id: chronos.tex 10883 2025-02-27 23:29:01Z cfrees $}
 \svnRegisterAuthor{cfrees}{Clea F. Rees}
 \usepackage[extract=python]{memoize}
 \mmzset{%
@@ -1363,13 +1363,42 @@
 {
   \property_ref:nn {t:lastpage}{page}
 }
+\keys_define:nn { chronos / doc }
+{
+  unknown .code:n = {
+    \cs_if_free:cT { \l_keys_key_str }
+    {
+      \tl_gset:cn { \l_keys_key_str } { #1 }
+    }
+  },
+}
+\NewDocumentCommand \chronosdocset { +m }
+{
+  \keys_set:nn { chronos / doc } { #1 }
+}
 \ExplSyntaxOff
+\chronosdocset{%
+  bug={\href{https://codeberg.org/cfr/chronos/issues}{\textsc{bugtracker}}},
+  codeberg={\href{https://codeberg.org/cfr/chronos}{\textsc{codeberg}}},
+  github={\href{https://github.com/cfr42/chronos}{\textsc{github}}},
+  ctan={\href{https://ctan.org/}{\textsc{ctan}}},
+}
+% \newcommand*{\lpack}[1]{\textsf{#1}}
+\title{\filebase}
+\author{Clea F. Rees\thanks{%
+    Bug tracker:
+    \href{https://codeberg.org/cfr/chronos/issues}{\url{codeberg.org/cfr/chronos/issues}}
+    \textbar{} Code:
+    \href{https://codeberg.org/cfr/chronos}{\url{codeberg.org/cfr/chronos}}
+    \textbar{} Mirror:
+    \href{https://github.com/cfr42/chronos}{\url{github.com/cfr42/chronos}}%
+}}
+% \date{\fileversion~\filedate}
+\date{\chronosdocdate}%
+\title{\chronosdocbase}%
 
 % END preamble
 \begin{document}
-\title{\chronosdocbase}%
-\author{Clea F. Rees\texorpdfstring{\thanks{reesc21 <at> cardiff <dot> ac <dot> uk}}{}}%
-\date{\chronosdocdate}%
 \newgeometry{headheight=12pt,scale=.8,marginparwidth=0pt,marginparsep=0pt}%
 \savegeometry{safonol}%
 \setlength\tewadjust{\marginparwidth+\marginparsep}%
