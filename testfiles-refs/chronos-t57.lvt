@@ -28,7 +28,7 @@
 \pdfminorversion=7
 \fi
 \RequirePackage{svn-prov}
-\ProvidesFileSVN{$Id: chronos-egs-bib.lvt 10851 2025-02-23 05:24:33Z cfrees $}[v0.1 \revinfo][\filebase DTX: TikZ Timelines]
+\ProvidesFileSVN{$Id: chronos-t57.lvt 10873 2025-02-27 03:21:31Z cfrees $}[v0.1 \revinfo][\filebase DTX: TikZ Timelines]
 \input regression-test.tex\relax
 \documentclass[british,a4paper,landscape]{article}
 \usepackage{babel}
