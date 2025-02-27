@@ -1,4 +1,4 @@
--- $Id: build.lua 10872 2025-02-27 03:08:00Z cfrees $
+-- $Id: build.lua 10875 2025-02-27 04:04:33Z cfrees $
 -- Build configuration for chronos
 --------------------------------------------------------------------------------
 maindir = maindir or "."
@@ -7,7 +7,8 @@ sourcedir = sourcedir or maindir
 ctanpkg = "chronos"
 module = "chronos"
 --------------------------------------------------------------------------------
-checkconfigs = { "build", "config-mem", "config-refs" }
+checkconfigs = { "build", "config-mem", "config-refs", "config-xetex" }
+checkengines = { "pdftex", "luatex" }
 checkopts = "-interaction=nonstopmode -cnf-line='TEXMFHOME=.' -cnf-line='TEXMFLOCAL=.' -cnf-line='TEXMFARCH=.'"
 manifestfile = "manifest.txt"
 sourcefiles = {"*.sty","chronos.tex"}

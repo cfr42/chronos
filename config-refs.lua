@@ -1,6 +1,7 @@
--- $Id: config-refs.lua 10859 2025-02-25 06:13:12Z cfrees $
+-- $Id: config-refs.lua 10875 2025-02-27 04:04:33Z cfrees $
 -- Build configuration for chronos
 testfiledir = "testfiles-refs"
+checkengines = { "pdftex", "xetex" , "luatex" }
 checkruns = 2
 -- l3build doc listing 5
 function runtest_tasks (name,run)
