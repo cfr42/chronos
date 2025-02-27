@@ -6,994 +6,999 @@ TEST 1: chronos-t39
 Package chronos Info: Timeline border height unset. Guessing an appropriate value. on input line ....
 Package chronos Info: I'm guessing you don't want bare marks on your timeline. If I'm wrong, specify step divisions to override my decision on input line ....
 > \box...=
-\hbox(80.58344+0.0)x341.43306
-.\hbox(80.58344+0.0)x341.43306
+\hbox(80.58344+0.0)x341.43306, direction TLT
+.\hbox(80.58344+0.0)x341.43306, direction TLT
 ..\glue 15.0
-..\hbox(0.0+0.0)x0.0, shifted -37.74773
-...\pdfliteral{q }
-...\pdfliteral{0 0 0 RG }
-...\pdfliteral{0 0 0 rg }
-...\pdfliteral{0.3985 w }
-...\pdfliteral{q }
-...\pdfliteral{Q }
-...\pdfliteral{q }
-...\hbox(0.0+0.0)x0.0
-....\hbox(0.0+0.0)x0.0
-.....\hbox(0.0+0.0)x0.0
-......\hbox(0.0+0.0)x0.0
-.......\hbox(0.0+0.0)x0.0
-........\hbox(0.0+0.0)x0.0
-.........\hbox(0.0+0.0)x0.0
-..........\hbox(0.0+0.0)x0.0
-...........\hbox(0.0+0.0)x0.0
-............\hbox(0.0+0.0)x0.0
-.............\hbox(0.0+0.0)x0.0
-..............\hbox(0.0+0.0)x0.0
-...............\hbox(0.0+0.0)x0.0
-................\hbox(0.0+0.0)x0.0
-.................\pdfliteral{q }
-.................\glue 0.0
-.................\glue 0.0
-.................\glue 0.0
-.................\glue 0.0
-.................\glue 0.0
-.................\pdfliteral{q }
-.................\hbox(0.0+0.0)x0.0
+..\hbox(0.0+0.0)x0.0, shifted -37.74773, direction TLT
+...\pdfliteral origin{q }
+...\pdfliteral origin{0 0 0 RG }
+...\pdfliteral origin{0 0 0 rg }
+...\pdfliteral origin{0.3985 w }
+...\pdfliteral origin{q }
+...\pdfliteral origin{Q }
+...\pdfliteral origin{q }
+...\hbox(0.0+0.0)x0.0, direction TLT
+....\hbox(0.0+0.0)x0.0, direction TLT
+.....\hbox(0.0+0.0)x0.0, direction TLT
+......\hbox(0.0+0.0)x0.0, direction TLT
+.......\hbox(0.0+0.0)x0.0, direction TLT
+........\hbox(0.0+0.0)x0.0, direction TLT
+.........\hbox(0.0+0.0)x0.0, direction TLT
+..........\hbox(0.0+0.0)x0.0, direction TLT
+...........\hbox(0.0+0.0)x0.0, direction TLT
+............\hbox(0.0+0.0)x0.0, direction TLT
+.............\hbox(0.0+0.0)x0.0, direction TLT
+..............\hbox(0.0+0.0)x0.0, direction TLT
+...............\hbox(0.0+0.0)x0.0, direction TLT
+................\hbox(0.0+0.0)x0.0, direction TLT
+.................\pdfliteral origin{q }
+.................\glue(\spaceskip) 0.0
+.................\glue(\spaceskip) 0.0
+.................\glue(\spaceskip) 0.0
+.................\glue(\spaceskip) 0.0
+.................\glue(\spaceskip) 0.0
+.................\pdfliteral origin{q }
+.................\hbox(0.0+0.0)x0.0, direction TLT
 ..................\glue 285.70406
-..................\hbox(0.0+0.0)x0.0, shifted -10.66977
-...................\pdfliteral{1.0 0.0 0.0 1.0 0.0 0.0 cm }
-...................\pdfliteral{q }
-...................\hbox(0.0+0.0)x0.0
-....................\hbox(0.0+0.0)x0.0
-.....................\pdfliteral{0 0 0 RG }
-.....................\pdfliteral{0 0 0 rg }
-.....................\hbox(0.0+0.0)x0.0
-......................\hbox(0.0+0.0)x0.0
-.....................\glue 0.0
-...................\pdfliteral{Q }
-...................\glue 0.0
+..................\hbox(0.0+0.0)x0.0, shifted -10.66977, direction TLT
+...................\pdfliteral origin{1.0 0.0 0.0 1.0 0.0 0.0 cm }
+...................\pdfliteral origin{q }
+...................\hbox(0.0+0.0)x0.0, direction TLT
+....................\hbox(0.0+0.0)x0.0, direction TLT
+.....................\pdfliteral origin{0 0 0 RG }
+.....................\pdfliteral origin{0 0 0 rg }
+.....................\hbox(0.0+0.0)x0.0, direction TLT
+......................\hbox(0.0+0.0)x0.0, direction TLT
+.....................\glue(\spaceskip) 0.0
+...................\pdfliteral origin{Q }
+...................\glue(\spaceskip) 0.0
 ..................\glue 0.0 plus 1.0fil minus 1.0fil
-.................\pdfliteral{Q }
-.................\glue 0.0
-.................\pdfliteral{Q }
-...............\glue 0.0
+.................\pdfliteral origin{Q }
+.................\glue(\spaceskip) 0.0
+.................\pdfliteral origin{Q }
+...............\glue(\spaceskip) 0.0
 ...............\glue 0.0 plus 1.0fil minus 1.0fil
-..............\glue 0.0
-..............\glue 0.0
-..............\glue 0.0
-..............\glue 0.0
-..............\glue 0.0
-..............\pdfliteral{q }
-..............\pdfliteral{1 0 0 RG }
-..............\pdfliteral{284.64034 11.12817 m }
-..............\pdfliteral{284.64034 15.31253 l }
-..............\pdfliteral{S }
-..............\glue 0.0
-..............\pdfliteral{Q }
+..............\glue(\spaceskip) 0.0
+..............\glue(\spaceskip) 0.0
+..............\glue(\spaceskip) 0.0
+..............\glue(\spaceskip) 0.0
+..............\glue(\spaceskip) 0.0
+..............\pdfliteral origin{q }
+..............\pdfliteral origin{1 0 0 RG }
+..............\pdfliteral origin{284.64034 11.12817 m }
+..............\pdfliteral origin{284.64034 15.31253 l }
+..............\pdfliteral origin{S }
+..............\glue(\spaceskip) 0.0
+..............\pdfliteral origin{Q }
 ..............\glue 0.0 plus 1.0fil minus 1.0fil
-.............\hbox(0.0+0.0)x0.0
-..............\hbox(0.0+0.0)x0.0
-...............\pdfliteral{q }
-...............\glue 0.0
-...............\glue 0.0
-...............\glue 0.0
-...............\glue 0.0
-...............\glue 0.0
-...............\pdfliteral{q }
-...............\hbox(0.0+0.0)x0.0
+.............\hbox(0.0+0.0)x0.0, direction TLT
+..............\hbox(0.0+0.0)x0.0, direction TLT
+...............\pdfliteral origin{q }
+...............\glue(\spaceskip) 0.0
+...............\glue(\spaceskip) 0.0
+...............\glue(\spaceskip) 0.0
+...............\glue(\spaceskip) 0.0
+...............\glue(\spaceskip) 0.0
+...............\pdfliteral origin{q }
+...............\hbox(0.0+0.0)x0.0, direction TLT
 ................\glue 283.1248
-................\hbox(0.0+0.0)x0.0, shifted -10.66977
-.................\pdfliteral{1.0 0.0 0.0 1.0 0.0 0.0 cm }
-.................\pdfliteral{q }
-.................\hbox(0.0+0.0)x0.0
-..................\hbox(0.0+0.0)x0.0
-...................\pdfliteral{0 0 0 RG }
-...................\pdfliteral{0 0 0 rg }
-...................\hbox(0.0+0.0)x0.0
-....................\hbox(0.0+0.0)x0.0
-...................\glue 0.0
-.................\pdfliteral{Q }
-.................\glue 0.0
+................\hbox(0.0+0.0)x0.0, shifted -10.66977, direction TLT
+.................\pdfliteral origin{1.0 0.0 0.0 1.0 0.0 0.0 cm }
+.................\pdfliteral origin{q }
+.................\hbox(0.0+0.0)x0.0, direction TLT
+..................\hbox(0.0+0.0)x0.0, direction TLT
+...................\pdfliteral origin{0 0 0 RG }
+...................\pdfliteral origin{0 0 0 rg }
+...................\hbox(0.0+0.0)x0.0, direction TLT
+....................\hbox(0.0+0.0)x0.0, direction TLT
+...................\glue(\spaceskip) 0.0
+.................\pdfliteral origin{Q }
+.................\glue(\spaceskip) 0.0
 ................\glue 0.0 plus 1.0fil minus 1.0fil
-...............\pdfliteral{Q }
-...............\glue 0.0
-...............\pdfliteral{Q }
-.............\glue 0.0
+...............\pdfliteral origin{Q }
+...............\glue(\spaceskip) 0.0
+...............\pdfliteral origin{Q }
+.............\glue(\spaceskip) 0.0
 .............\glue 0.0 plus 1.0fil minus 1.0fil
-............\glue 0.0
-............\glue 0.0
-............\glue 0.0
-............\glue 0.0
-............\glue 0.0
-............\pdfliteral{q }
-............\pdfliteral{1 0.648 0 RG }
-............\pdfliteral{282.07068 11.12817 m }
-............\pdfliteral{282.07068 20.29391 l }
-............\pdfliteral{S }
-............\glue 0.0
-............\pdfliteral{Q }
+............\glue(\spaceskip) 0.0
+............\glue(\spaceskip) 0.0
+............\glue(\spaceskip) 0.0
+............\glue(\spaceskip) 0.0
+............\glue(\spaceskip) 0.0
+............\pdfliteral origin{q }
+............\pdfliteral origin{1 0.648 0 RG }
+............\pdfliteral origin{282.07068 11.12817 m }
+............\pdfliteral origin{282.07068 20.29391 l }
+............\pdfliteral origin{S }
+............\glue(\spaceskip) 0.0
+............\pdfliteral origin{Q }
 ............\glue 0.0 plus 1.0fil minus 1.0fil
-...........\hbox(0.0+0.0)x0.0
-............\hbox(0.0+0.0)x0.0
-.............\pdfliteral{q }
-.............\glue 0.0
-.............\glue 0.0
-.............\glue 0.0
-.............\glue 0.0
-.............\glue 0.0
-.............\pdfliteral{q }
-.............\hbox(0.0+0.0)x0.0
+...........\hbox(0.0+0.0)x0.0, direction TLT
+............\hbox(0.0+0.0)x0.0, direction TLT
+.............\pdfliteral origin{q }
+.............\glue(\spaceskip) 0.0
+.............\glue(\spaceskip) 0.0
+.............\glue(\spaceskip) 0.0
+.............\glue(\spaceskip) 0.0
+.............\glue(\spaceskip) 0.0
+.............\pdfliteral origin{q }
+.............\hbox(0.0+0.0)x0.0, direction TLT
 ..............\glue 252.2373
-..............\hbox(0.0+0.0)x0.0, shifted 10.66977
-...............\pdfliteral{1.0 0.0 0.0 1.0 0.0 0.0 cm }
-...............\pdfliteral{q }
-...............\hbox(0.0+0.0)x0.0
-................\hbox(0.0+0.0)x0.0
-.................\pdfliteral{0 0 0 RG }
-.................\pdfliteral{0 0 0 rg }
-.................\hbox(0.0+0.0)x0.0
-..................\hbox(0.0+0.0)x0.0
-.................\glue 0.0
-...............\pdfliteral{Q }
-...............\glue 0.0
+..............\hbox(0.0+0.0)x0.0, shifted 10.66977, direction TLT
+...............\pdfliteral origin{1.0 0.0 0.0 1.0 0.0 0.0 cm }
+...............\pdfliteral origin{q }
+...............\hbox(0.0+0.0)x0.0, direction TLT
+................\hbox(0.0+0.0)x0.0, direction TLT
+.................\pdfliteral origin{0 0 0 RG }
+.................\pdfliteral origin{0 0 0 rg }
+.................\hbox(0.0+0.0)x0.0, direction TLT
+..................\hbox(0.0+0.0)x0.0, direction TLT
+.................\glue(\spaceskip) 0.0
+...............\pdfliteral origin{Q }
+...............\glue(\spaceskip) 0.0
 ..............\glue 0.0 plus 1.0fil minus 1.0fil
-.............\pdfliteral{Q }
-.............\glue 0.0
-.............\pdfliteral{Q }
-...........\glue 0.0
+.............\pdfliteral origin{Q }
+.............\glue(\spaceskip) 0.0
+.............\pdfliteral origin{Q }
+...........\glue(\spaceskip) 0.0
 ...........\glue 0.0 plus 1.0fil minus 1.0fil
-..........\glue 0.0
-..........\glue 0.0
-..........\glue 0.0
-..........\glue 0.0
-..........\glue 0.0
-..........\pdfliteral{q }
-..........\pdfliteral{1 0 0 RG }
-..........\pdfliteral{251.29819 -11.12817 m }
-..........\pdfliteral{251.29819 -15.31253 l }
-..........\pdfliteral{S }
-..........\glue 0.0
-..........\pdfliteral{Q }
+..........\glue(\spaceskip) 0.0
+..........\glue(\spaceskip) 0.0
+..........\glue(\spaceskip) 0.0
+..........\glue(\spaceskip) 0.0
+..........\glue(\spaceskip) 0.0
+..........\pdfliteral origin{q }
+..........\pdfliteral origin{1 0 0 RG }
+..........\pdfliteral origin{251.29819 -11.12817 m }
+..........\pdfliteral origin{251.29819 -15.31253 l }
+..........\pdfliteral origin{S }
+..........\glue(\spaceskip) 0.0
+..........\pdfliteral origin{Q }
 ..........\glue 0.0 plus 1.0fil minus 1.0fil
-.........\hbox(0.0+0.0)x0.0
-..........\hbox(0.0+0.0)x0.0
-...........\pdfliteral{q }
-...........\glue 0.0
-...........\glue 0.0
-...........\glue 0.0
-...........\glue 0.0
-...........\glue 0.0
-...........\pdfliteral{q }
-...........\hbox(0.0+0.0)x0.0
+.........\hbox(0.0+0.0)x0.0, direction TLT
+..........\hbox(0.0+0.0)x0.0, direction TLT
+...........\pdfliteral origin{q }
+...........\glue(\spaceskip) 0.0
+...........\glue(\spaceskip) 0.0
+...........\glue(\spaceskip) 0.0
+...........\glue(\spaceskip) 0.0
+...........\glue(\spaceskip) 0.0
+...........\pdfliteral origin{q }
+...........\hbox(0.0+0.0)x0.0, direction TLT
 ............\glue 241.94148
-............\hbox(0.0+0.0)x0.0, shifted -10.66977
-.............\pdfliteral{1.0 0.0 0.0 1.0 0.0 0.0 cm }
-.............\pdfliteral{q }
-.............\hbox(0.0+0.0)x0.0
-..............\hbox(0.0+0.0)x0.0
-...............\pdfliteral{0 0 0 RG }
-...............\pdfliteral{0 0 0 rg }
-...............\hbox(0.0+0.0)x0.0
-................\hbox(0.0+0.0)x0.0
-...............\glue 0.0
-.............\pdfliteral{Q }
-.............\glue 0.0
+............\hbox(0.0+0.0)x0.0, shifted -10.66977, direction TLT
+.............\pdfliteral origin{1.0 0.0 0.0 1.0 0.0 0.0 cm }
+.............\pdfliteral origin{q }
+.............\hbox(0.0+0.0)x0.0, direction TLT
+..............\hbox(0.0+0.0)x0.0, direction TLT
+...............\pdfliteral origin{0 0 0 RG }
+...............\pdfliteral origin{0 0 0 rg }
+...............\hbox(0.0+0.0)x0.0, direction TLT
+................\hbox(0.0+0.0)x0.0, direction TLT
+...............\glue(\spaceskip) 0.0
+.............\pdfliteral origin{Q }
+.............\glue(\spaceskip) 0.0
 ............\glue 0.0 plus 1.0fil minus 1.0fil
-...........\pdfliteral{Q }
-...........\glue 0.0
-...........\pdfliteral{Q }
-.........\glue 0.0
+...........\pdfliteral origin{Q }
+...........\glue(\spaceskip) 0.0
+...........\pdfliteral origin{Q }
+.........\glue(\spaceskip) 0.0
 .........\glue 0.0 plus 1.0fil minus 1.0fil
-........\glue 0.0
-........\glue 0.0
-........\glue 0.0
-........\glue 0.0
-........\glue 0.0
-........\pdfliteral{q }
-........\pdfliteral{1 1 0 RG }
-........\pdfliteral{241.0407 11.12817 m }
-........\pdfliteral{241.0407 20.29391 l }
-........\pdfliteral{S }
-........\glue 0.0
-........\pdfliteral{Q }
+........\glue(\spaceskip) 0.0
+........\glue(\spaceskip) 0.0
+........\glue(\spaceskip) 0.0
+........\glue(\spaceskip) 0.0
+........\glue(\spaceskip) 0.0
+........\pdfliteral origin{q }
+........\pdfliteral origin{1 1 0 RG }
+........\pdfliteral origin{241.0407 11.12817 m }
+........\pdfliteral origin{241.0407 20.29391 l }
+........\pdfliteral origin{S }
+........\glue(\spaceskip) 0.0
+........\pdfliteral origin{Q }
 ........\glue 0.0 plus 1.0fil minus 1.0fil
-.......\hbox(0.0+0.0)x0.0
-........\hbox(0.0+0.0)x0.0
-.........\pdfliteral{q }
-.........\glue 0.0
-.........\glue 0.0
-.........\glue 0.0
-.........\glue 0.0
-.........\glue 0.0
-.........\pdfliteral{q }
-.........\hbox(0.0+0.0)x0.0
+.......\hbox(0.0+0.0)x0.0, direction TLT
+........\hbox(0.0+0.0)x0.0, direction TLT
+.........\pdfliteral origin{q }
+.........\glue(\spaceskip) 0.0
+.........\glue(\spaceskip) 0.0
+.........\glue(\spaceskip) 0.0
+.........\glue(\spaceskip) 0.0
+.........\glue(\spaceskip) 0.0
+.........\pdfliteral origin{q }
+.........\hbox(0.0+0.0)x0.0, direction TLT
 ..........\glue 229.07346
-..........\hbox(0.0+0.0)x0.0, shifted 10.66977
-...........\pdfliteral{1.0 0.0 0.0 1.0 0.0 0.0 cm }
-...........\pdfliteral{q }
-...........\hbox(0.0+0.0)x0.0
-............\hbox(0.0+0.0)x0.0
-.............\pdfliteral{0 0 0 RG }
-.............\pdfliteral{0 0 0 rg }
-.............\hbox(0.0+0.0)x0.0
-..............\hbox(0.0+0.0)x0.0
-.............\glue 0.0
-...........\pdfliteral{Q }
-...........\glue 0.0
+..........\hbox(0.0+0.0)x0.0, shifted 10.66977, direction TLT
+...........\pdfliteral origin{1.0 0.0 0.0 1.0 0.0 0.0 cm }
+...........\pdfliteral origin{q }
+...........\hbox(0.0+0.0)x0.0, direction TLT
+............\hbox(0.0+0.0)x0.0, direction TLT
+.............\pdfliteral origin{0 0 0 RG }
+.............\pdfliteral origin{0 0 0 rg }
+.............\hbox(0.0+0.0)x0.0, direction TLT
+..............\hbox(0.0+0.0)x0.0, direction TLT
+.............\glue(\spaceskip) 0.0
+...........\pdfliteral origin{Q }
+...........\glue(\spaceskip) 0.0
 ..........\glue 0.0 plus 1.0fil minus 1.0fil
-.........\pdfliteral{Q }
-.........\glue 0.0
-.........\pdfliteral{Q }
-.......\glue 0.0
+.........\pdfliteral origin{Q }
+.........\glue(\spaceskip) 0.0
+.........\pdfliteral origin{Q }
+.......\glue(\spaceskip) 0.0
 .......\glue 0.0 plus 1.0fil minus 1.0fil
-......\glue 0.0
-......\glue 0.0
-......\glue 0.0
-......\glue 0.0
-......\glue 0.0
-......\pdfliteral{q }
-......\pdfliteral{1 0.648 0 RG }
-......\pdfliteral{228.22058 -11.12817 m }
-......\pdfliteral{228.22058 -15.31253 l }
-......\pdfliteral{S }
-......\glue 0.0
-......\pdfliteral{Q }
+......\glue(\spaceskip) 0.0
+......\glue(\spaceskip) 0.0
+......\glue(\spaceskip) 0.0
+......\glue(\spaceskip) 0.0
+......\glue(\spaceskip) 0.0
+......\pdfliteral origin{q }
+......\pdfliteral origin{1 0.648 0 RG }
+......\pdfliteral origin{228.22058 -11.12817 m }
+......\pdfliteral origin{228.22058 -15.31253 l }
+......\pdfliteral origin{S }
+......\glue(\spaceskip) 0.0
+......\pdfliteral origin{Q }
 ......\glue 0.0 plus 1.0fil minus 1.0fil
-.....\hbox(0.0+0.0)x0.0
-......\hbox(0.0+0.0)x0.0
-.......\pdfliteral{q }
-.......\glue 0.0
-.......\glue 0.0
-.......\glue 0.0
-.......\glue 0.0
-.......\glue 0.0
-.......\pdfliteral{q }
-.......\hbox(0.0+0.0)x0.0
+.....\hbox(0.0+0.0)x0.0, direction TLT
+......\hbox(0.0+0.0)x0.0, direction TLT
+.......\pdfliteral origin{q }
+.......\glue(\spaceskip) 0.0
+.......\glue(\spaceskip) 0.0
+.......\glue(\spaceskip) 0.0
+.......\glue(\spaceskip) 0.0
+.......\glue(\spaceskip) 0.0
+.......\pdfliteral origin{q }
+.......\hbox(0.0+0.0)x0.0, direction TLT
 ........\glue 133.83878
-........\hbox(0.0+0.0)x0.0, shifted -10.66977
-.........\pdfliteral{1.0 0.0 0.0 1.0 0.0 0.0 cm }
-.........\pdfliteral{q }
-.........\hbox(0.0+0.0)x0.0
-..........\hbox(0.0+0.0)x0.0
-...........\pdfliteral{0 0 0 RG }
-...........\pdfliteral{0 0 0 rg }
-...........\hbox(0.0+0.0)x0.0
-............\hbox(0.0+0.0)x0.0
-...........\glue 0.0
-.........\pdfliteral{Q }
-.........\glue 0.0
+........\hbox(0.0+0.0)x0.0, shifted -10.66977, direction TLT
+.........\pdfliteral origin{1.0 0.0 0.0 1.0 0.0 0.0 cm }
+.........\pdfliteral origin{q }
+.........\hbox(0.0+0.0)x0.0, direction TLT
+..........\hbox(0.0+0.0)x0.0, direction TLT
+...........\pdfliteral origin{0 0 0 RG }
+...........\pdfliteral origin{0 0 0 rg }
+...........\hbox(0.0+0.0)x0.0, direction TLT
+............\hbox(0.0+0.0)x0.0, direction TLT
+...........\glue(\spaceskip) 0.0
+.........\pdfliteral origin{Q }
+.........\glue(\spaceskip) 0.0
 ........\glue 0.0 plus 1.0fil minus 1.0fil
-.......\pdfliteral{Q }
-.......\glue 0.0
-.......\pdfliteral{Q }
-.....\glue 0.0
+.......\pdfliteral origin{Q }
+.......\glue(\spaceskip) 0.0
+.......\pdfliteral origin{Q }
+.....\glue(\spaceskip) 0.0
 .....\glue 0.0 plus 1.0fil minus 1.0fil
-....\glue 0.0
-....\glue 0.0
-....\glue 0.0
-....\glue 0.0
-....\glue 0.0
-....\pdfliteral{q }
-....\pdfliteral{0 0.5 0 RG }
-....\pdfliteral{133.34047 11.12817 m }
-....\pdfliteral{133.34047 20.29391 l }
-....\pdfliteral{S }
-....\glue 0.0
-....\pdfliteral{Q }
+....\glue(\spaceskip) 0.0
+....\glue(\spaceskip) 0.0
+....\glue(\spaceskip) 0.0
+....\glue(\spaceskip) 0.0
+....\glue(\spaceskip) 0.0
+....\pdfliteral origin{q }
+....\pdfliteral origin{0 0.5 0 RG }
+....\pdfliteral origin{133.34047 11.12817 m }
+....\pdfliteral origin{133.34047 20.29391 l }
+....\pdfliteral origin{S }
+....\glue(\spaceskip) 0.0
+....\pdfliteral origin{Q }
 ....\glue 0.0 plus 1.0fil minus 1.0fil
-...\pdfliteral{Q }
-...\pdfliteral{q }
-...\hbox(0.0+0.0)x0.0
-....\hbox(0.0+0.0)x0.0
-.....\hbox(0.0+0.0)x0.0
-......\hbox(0.0+0.0)x0.0
-.......\hbox(0.0+0.0)x0.0
-........\hbox(0.0+0.0)x0.0
-.........\hbox(0.0+0.0)x0.0
-..........\glue 0.0
-..........\glue 0.0
-..........\pdfliteral{q }
-..........\pdfliteral{-14.94415 7.08669 m }
-..........\pdfliteral{-14.94415 7.08669 m }
-..........\pdfliteral{-14.94415 10.63004 l }
-..........\pdfliteral{325.2177 10.63004 l }
-..........\pdfliteral{325.2177 7.08669 l }
-..........\pdfliteral{h }
-..........\pdfliteral{325.2177 10.63004 m }
-..........\pdfliteral{W }
-..........\pdfliteral{n }
-..........\pdfliteral{1 0 0 1 155.13676 8.85835 cm }
-..........\pdfliteral{1.000000000000000000 0.000000000000000000 0.0 1.000000000000000000 0.0 0.0 cm }
-..........\pdfliteral{6.80406 0 0 0.07086 0.0 0.0 cm }
-..........\pdfliteral{q }
-..........\hbox(0.0+0.0)x0.0
-...........\hbox(50.1875+50.1875)x50.1875
+...\pdfliteral origin{Q }
+...\pdfliteral origin{q }
+...\hbox(0.0+0.0)x0.0, direction TLT
+....\hbox(0.0+0.0)x0.0, direction TLT
+.....\hbox(0.0+0.0)x0.0, direction TLT
+......\hbox(0.0+0.0)x0.0, direction TLT
+.......\hbox(0.0+0.0)x0.0, direction TLT
+........\hbox(0.0+0.0)x0.0, direction TLT
+.........\hbox(0.0+0.0)x0.0, direction TLT
+..........\glue(\spaceskip) 0.0
+..........\glue(\spaceskip) 0.0
+..........\pdfliteral origin{q }
+..........\pdfliteral origin{-14.94415 7.08669 m }
+..........\pdfliteral origin{-14.94415 7.08669 m }
+..........\pdfliteral origin{-14.94415 10.63004 l }
+..........\pdfliteral origin{325.2177 10.63004 l }
+..........\pdfliteral origin{325.2177 7.08669 l }
+..........\pdfliteral origin{h }
+..........\pdfliteral origin{325.2177 10.63004 m }
+..........\pdfliteral origin{W }
+..........\pdfliteral origin{n }
+..........\pdfliteral origin{1 0 0 1 155.13676 8.85835 cm }
+..........\pdfliteral origin{1.000000000000000000 0.000000000000000000 0.0 1.000000000000000000 0.0 0.0 cm }
+..........\pdfliteral origin{6.80406 0 0 0.07086 0.0 0.0 cm }
+..........\pdfliteral origin{q }
+..........\hbox(0.0+0.0)x0.0, direction TLT
+...........\hbox(50.1875+50.1875)x50.1875, direction TLT
 ............\glue -50.1875
-............\hbox(100.375+0.0)x100.375, shifted 50.1875
-.............\hbox(100.375+0.0)x100.375
-..............\hbox(100.375+0.0)x100.375
+............\hbox(100.375+0.0)x100.375, shifted 50.1875, direction TLT
+.............\hbox(100.375+0.0)x100.375, direction TLT
+..............\hbox(100.375+0.0)x100.375, direction TLT
 ...............\box(100.375+0.0)x100.375
-..........\pdfliteral{Q }
-..........\glue 0.0
-..........\pdfliteral{Q }
-..........\glue 0.0
-..........\glue 0.0
-..........\pdfliteral{q }
-..........\pdfliteral{325.2177 -7.08669 m }
-..........\pdfliteral{325.2177 -7.08669 m }
-..........\pdfliteral{325.2177 -10.63004 l }
-..........\pdfliteral{-14.94415 -10.63004 l }
-..........\pdfliteral{-14.94415 -7.08669 l }
-..........\pdfliteral{h }
-..........\pdfliteral{-14.94415 -10.63004 m }
-..........\pdfliteral{W }
-..........\pdfliteral{n }
-..........\pdfliteral{1 0 0 1 155.13676 -8.85835 cm }
-..........\pdfliteral{1.000000000000000000 0.000000000000000000 0.0 1.000000000000000000 0.0 0.0 cm }
-..........\pdfliteral{6.80406 0 0 0.07086 0.0 0.0 cm }
-..........\pdfliteral{q }
-..........\hbox(0.0+0.0)x0.0
-...........\hbox(50.1875+50.1875)x50.1875
+..........\pdfliteral origin{Q }
+..........\glue(\spaceskip) 0.0
+..........\pdfliteral origin{Q }
+..........\glue(\spaceskip) 0.0
+..........\glue(\spaceskip) 0.0
+..........\pdfliteral origin{q }
+..........\pdfliteral origin{325.2177 -7.08669 m }
+..........\pdfliteral origin{325.2177 -7.08669 m }
+..........\pdfliteral origin{325.2177 -10.63004 l }
+..........\pdfliteral origin{-14.94415 -10.63004 l }
+..........\pdfliteral origin{-14.94415 -7.08669 l }
+..........\pdfliteral origin{h }
+..........\pdfliteral origin{-14.94415 -10.63004 m }
+..........\pdfliteral origin{W }
+..........\pdfliteral origin{n }
+..........\pdfliteral origin{1 0 0 1 155.13676 -8.85835 cm }
+..........\pdfliteral origin{1.000000000000000000 0.000000000000000000 0.0 1.000000000000000000 0.0 0.0 cm }
+..........\pdfliteral origin{6.80406 0 0 0.07086 0.0 0.0 cm }
+..........\pdfliteral origin{q }
+..........\hbox(0.0+0.0)x0.0, direction TLT
+...........\hbox(50.1875+50.1875)x50.1875, direction TLT
 ............\glue -50.1875
-............\hbox(100.375+0.0)x100.375, shifted 50.1875
-.............\hbox(100.375+0.0)x100.375
-..............\hbox(100.375+0.0)x100.375
+............\hbox(100.375+0.0)x100.375, shifted 50.1875, direction TLT
+.............\hbox(100.375+0.0)x100.375, direction TLT
+..............\hbox(100.375+0.0)x100.375, direction TLT
 ...............\box(100.375+0.0)x100.375
-..........\pdfliteral{Q }
-..........\glue 0.0
-..........\pdfliteral{Q }
-..........\glue 0.0
+..........\pdfliteral origin{Q }
+..........\glue(\spaceskip) 0.0
+..........\pdfliteral origin{Q }
+..........\glue(\spaceskip) 0.0
 ..........\glue 0.0 plus 1.0fil minus 1.0fil
-.........\glue 0.0
-.........\pdfliteral{q }
-.........\pdfliteral{1 0 0 RG }
-.........\pdfliteral{/pgf@CA.25 gs }
-.........\pdfliteral{/pgf@ca.25 gs }
-.........\pdfliteral{284.64034 7.08669 m }
-.........\pdfliteral{284.64034 10.63004 l }
-.........\pdfliteral{S }
-.........\hbox(0.0+0.0)x0.0
-..........\hbox(0.0+0.0)x0.0
-...........\pdfliteral{q }
-...........\glue 0.0
-...........\pdfliteral{Q }
-.........\glue 0.0
-.........\pdfliteral{Q }
+.........\glue(\spaceskip) 0.0
+.........\pdfliteral origin{q }
+.........\pdfliteral origin{1 0 0 RG }
+.........\pdfliteral origin{/pgf@CA.25 gs }
+.........\pdfliteral origin{/pgf@ca.25 gs }
+.........\pdfliteral origin{284.64034 7.08669 m }
+.........\pdfliteral origin{284.64034 10.63004 l }
+.........\pdfliteral origin{S }
+.........\hbox(0.0+0.0)x0.0, direction TLT
+..........\hbox(0.0+0.0)x0.0, direction TLT
+...........\pdfliteral origin{q }
+...........\glue(\spaceskip) 0.0
+...........\pdfliteral origin{Q }
+.........\glue(\spaceskip) 0.0
+.........\pdfliteral origin{Q }
 .........\glue 0.0 plus 1.0fil minus 1.0fil
-........\glue 0.0
-........\pdfliteral{q }
-........\pdfliteral{1 0.648 0 RG }
-........\pdfliteral{/pgf@CA.25 gs }
-........\pdfliteral{/pgf@ca.25 gs }
-........\pdfliteral{282.07068 7.08669 m }
-........\pdfliteral{282.07068 10.63004 l }
-........\pdfliteral{S }
-........\hbox(0.0+0.0)x0.0
-.........\hbox(0.0+0.0)x0.0
-..........\pdfliteral{q }
-..........\glue 0.0
-..........\pdfliteral{Q }
-........\glue 0.0
-........\pdfliteral{Q }
+........\glue(\spaceskip) 0.0
+........\pdfliteral origin{q }
+........\pdfliteral origin{1 0.648 0 RG }
+........\pdfliteral origin{/pgf@CA.25 gs }
+........\pdfliteral origin{/pgf@ca.25 gs }
+........\pdfliteral origin{282.07068 7.08669 m }
+........\pdfliteral origin{282.07068 10.63004 l }
+........\pdfliteral origin{S }
+........\hbox(0.0+0.0)x0.0, direction TLT
+.........\hbox(0.0+0.0)x0.0, direction TLT
+..........\pdfliteral origin{q }
+..........\glue(\spaceskip) 0.0
+..........\pdfliteral origin{Q }
+........\glue(\spaceskip) 0.0
+........\pdfliteral origin{Q }
 ........\glue 0.0 plus 1.0fil minus 1.0fil
-.......\glue 0.0
-.......\pdfliteral{q }
-.......\pdfliteral{1 0 0 RG }
-.......\pdfliteral{/pgf@CA.25 gs }
-.......\pdfliteral{/pgf@ca.25 gs }
-.......\pdfliteral{251.29819 -7.08669 m }
-.......\pdfliteral{251.29819 -10.63004 l }
-.......\pdfliteral{S }
-.......\hbox(0.0+0.0)x0.0
-........\hbox(0.0+0.0)x0.0
-.........\pdfliteral{q }
-.........\glue 0.0
-.........\pdfliteral{Q }
-.......\glue 0.0
-.......\pdfliteral{Q }
+.......\glue(\spaceskip) 0.0
+.......\pdfliteral origin{q }
+.......\pdfliteral origin{1 0 0 RG }
+.......\pdfliteral origin{/pgf@CA.25 gs }
+.......\pdfliteral origin{/pgf@ca.25 gs }
+.......\pdfliteral origin{251.29819 -7.08669 m }
+.......\pdfliteral origin{251.29819 -10.63004 l }
+.......\pdfliteral origin{S }
+.......\hbox(0.0+0.0)x0.0, direction TLT
+........\hbox(0.0+0.0)x0.0, direction TLT
+.........\pdfliteral origin{q }
+.........\glue(\spaceskip) 0.0
+.........\pdfliteral origin{Q }
+.......\glue(\spaceskip) 0.0
+.......\pdfliteral origin{Q }
 .......\glue 0.0 plus 1.0fil minus 1.0fil
-......\glue 0.0
-......\pdfliteral{q }
-......\pdfliteral{1 1 0 RG }
-......\pdfliteral{/pgf@CA.25 gs }
-......\pdfliteral{/pgf@ca.25 gs }
-......\pdfliteral{241.0407 7.08669 m }
-......\pdfliteral{241.0407 10.63004 l }
-......\pdfliteral{S }
-......\hbox(0.0+0.0)x0.0
-.......\hbox(0.0+0.0)x0.0
-........\pdfliteral{q }
-........\glue 0.0
-........\pdfliteral{Q }
-......\glue 0.0
-......\pdfliteral{Q }
+......\glue(\spaceskip) 0.0
+......\pdfliteral origin{q }
+......\pdfliteral origin{1 1 0 RG }
+......\pdfliteral origin{/pgf@CA.25 gs }
+......\pdfliteral origin{/pgf@ca.25 gs }
+......\pdfliteral origin{241.0407 7.08669 m }
+......\pdfliteral origin{241.0407 10.63004 l }
+......\pdfliteral origin{S }
+......\hbox(0.0+0.0)x0.0, direction TLT
+.......\hbox(0.0+0.0)x0.0, direction TLT
+........\pdfliteral origin{q }
+........\glue(\spaceskip) 0.0
+........\pdfliteral origin{Q }
+......\glue(\spaceskip) 0.0
+......\pdfliteral origin{Q }
 ......\glue 0.0 plus 1.0fil minus 1.0fil
-.....\glue 0.0
-.....\pdfliteral{q }
-.....\pdfliteral{1 0.648 0 RG }
-.....\pdfliteral{/pgf@CA.25 gs }
-.....\pdfliteral{/pgf@ca.25 gs }
-.....\pdfliteral{228.22058 -7.08669 m }
-.....\pdfliteral{228.22058 -10.63004 l }
-.....\pdfliteral{S }
-.....\hbox(0.0+0.0)x0.0
-......\hbox(0.0+0.0)x0.0
-.......\pdfliteral{q }
-.......\glue 0.0
-.......\pdfliteral{Q }
-.....\glue 0.0
-.....\pdfliteral{Q }
+.....\glue(\spaceskip) 0.0
+.....\pdfliteral origin{q }
+.....\pdfliteral origin{1 0.648 0 RG }
+.....\pdfliteral origin{/pgf@CA.25 gs }
+.....\pdfliteral origin{/pgf@ca.25 gs }
+.....\pdfliteral origin{228.22058 -7.08669 m }
+.....\pdfliteral origin{228.22058 -10.63004 l }
+.....\pdfliteral origin{S }
+.....\hbox(0.0+0.0)x0.0, direction TLT
+......\hbox(0.0+0.0)x0.0, direction TLT
+.......\pdfliteral origin{q }
+.......\glue(\spaceskip) 0.0
+.......\pdfliteral origin{Q }
+.....\glue(\spaceskip) 0.0
+.....\pdfliteral origin{Q }
 .....\glue 0.0 plus 1.0fil minus 1.0fil
-....\glue 0.0
-....\pdfliteral{q }
-....\pdfliteral{0 0.5 0 RG }
-....\pdfliteral{/pgf@CA.25 gs }
-....\pdfliteral{/pgf@ca.25 gs }
-....\pdfliteral{133.34047 7.08669 m }
-....\pdfliteral{133.34047 10.63004 l }
-....\pdfliteral{S }
-....\hbox(0.0+0.0)x0.0
-.....\hbox(0.0+0.0)x0.0
-......\pdfliteral{q }
-......\glue 0.0
-......\pdfliteral{Q }
-....\glue 0.0
-....\pdfliteral{Q }
+....\glue(\spaceskip) 0.0
+....\pdfliteral origin{q }
+....\pdfliteral origin{0 0.5 0 RG }
+....\pdfliteral origin{/pgf@CA.25 gs }
+....\pdfliteral origin{/pgf@ca.25 gs }
+....\pdfliteral origin{133.34047 7.08669 m }
+....\pdfliteral origin{133.34047 10.63004 l }
+....\pdfliteral origin{S }
+....\hbox(0.0+0.0)x0.0, direction TLT
+.....\hbox(0.0+0.0)x0.0, direction TLT
+......\pdfliteral origin{q }
+......\glue(\spaceskip) 0.0
+......\pdfliteral origin{Q }
+....\glue(\spaceskip) 0.0
+....\pdfliteral origin{Q }
 ....\glue 0.0 plus 1.0fil minus 1.0fil
-...\pdfliteral{Q }
-...\hbox(0.0+0.0)x0.0
-....\pdfliteral{q }
-....\pdfliteral{q }
-....\glue 0.0
-....\hbox(0.0+0.0)x0.0
-.....\hbox(0.0+0.0)x0.0
-......\pdfliteral{q }
-......\glue 0.0
-......\pdfliteral{Q }
-....\glue 0.0
-....\hbox(0.0+0.0)x0.0
-.....\hbox(0.0+0.0)x0.0
-......\pdfliteral{q }
-......\glue 0.0
-......\pdfliteral{Q }
-....\glue 0.0
-....\hbox(0.0+0.0)x0.0
-.....\hbox(0.0+0.0)x0.0
-......\pdfliteral{q }
-......\glue 0.0
-......\pdfliteral{Q }
-....\glue 0.0
-....\hbox(0.0+0.0)x0.0
-.....\hbox(0.0+0.0)x0.0
-......\pdfliteral{q }
-......\glue 0.0
-......\pdfliteral{Q }
-....\glue 0.0
-....\hbox(0.0+0.0)x0.0
-.....\hbox(0.0+0.0)x0.0
-......\pdfliteral{q }
-......\glue 0.0
-......\pdfliteral{Q }
-....\glue 0.0
-....\hbox(0.0+0.0)x0.0
-.....\hbox(0.0+0.0)x0.0
-......\pdfliteral{q }
-......\glue 0.0
-......\pdfliteral{Q }
-....\glue 0.0
-....\hbox(0.0+0.0)x0.0
-.....\hbox(0.0+0.0)x0.0
-......\pdfliteral{q }
-......\glue 0.0
-......\pdfliteral{Q }
-....\glue 0.0
-....\hbox(0.0+0.0)x0.0
-.....\hbox(0.0+0.0)x0.0
-......\pdfliteral{q }
-......\glue 0.0
-......\pdfliteral{Q }
-....\glue 0.0
-....\hbox(0.0+0.0)x0.0
-.....\hbox(0.0+0.0)x0.0
-......\pdfliteral{q }
-......\glue 0.0
-......\pdfliteral{Q }
-....\glue 0.0
-....\hbox(0.0+0.0)x0.0
-.....\hbox(0.0+0.0)x0.0
-......\pdfliteral{q }
-......\glue 0.0
-......\pdfliteral{Q }
-....\glue 0.0
-....\hbox(0.0+0.0)x0.0
-.....\hbox(0.0+0.0)x0.0
-......\pdfliteral{q }
-......\glue 0.0
-......\pdfliteral{Q }
-....\glue 0.0
-....\hbox(0.0+0.0)x0.0
-.....\hbox(0.0+0.0)x0.0
-......\pdfliteral{q }
-......\glue 0.0
-......\pdfliteral{Q }
-....\glue 0.0
-....\hbox(0.0+0.0)x0.0
-.....\hbox(0.0+0.0)x0.0
-......\pdfliteral{q }
-......\glue 0.0
-......\pdfliteral{Q }
-....\glue 0.0
-....\hbox(0.0+0.0)x0.0
-.....\hbox(0.0+0.0)x0.0
-......\pdfliteral{q }
-......\glue 0.0
-......\pdfliteral{Q }
-....\glue 0.0
-....\glue 0.0
-....\hbox(0.0+0.0)x0.0
-.....\hbox(0.0+0.0)x0.0
-......\pdfliteral{q }
-......\glue 0.0
-......\pdfliteral{Q }
-....\glue 0.0
-....\hbox(0.0+0.0)x0.0
-.....\hbox(0.0+0.0)x0.0
-......\pdfliteral{q }
-......\glue 0.0
-......\pdfliteral{Q }
-....\glue 0.0
-....\hbox(0.0+0.0)x0.0
-.....\hbox(0.0+0.0)x0.0
-......\pdfliteral{q }
-......\glue 0.0
-......\pdfliteral{Q }
-....\glue 0.0
-....\hbox(0.0+0.0)x0.0
-.....\hbox(0.0+0.0)x0.0
-......\pdfliteral{q }
-......\glue 0.0
-......\pdfliteral{Q }
-....\glue 0.0
-....\hbox(0.0+0.0)x0.0
-.....\hbox(0.0+0.0)x0.0
-......\pdfliteral{q }
-......\glue 0.0
-......\pdfliteral{Q }
-....\glue 0.0
-....\pdfliteral{q }
-....\pdfliteral{0.3985 w }
-....\glue 0.0
-....\pdfliteral{Q }
-....\pdfliteral{q }
-....\glue 0.0
-....\glue 0.0
-....\pdfliteral{q }
+...\pdfliteral origin{Q }
+...\hbox(0.0+0.0)x0.0, direction TLT
+....\pdfliteral origin{q }
+....\pdfliteral origin{q }
+....\glue(\spaceskip) 0.0
+....\hbox(0.0+0.0)x0.0, direction TLT
+.....\hbox(0.0+0.0)x0.0, direction TLT
+......\pdfliteral origin{q }
+......\glue(\spaceskip) 0.0
+......\pdfliteral origin{Q }
+....\glue(\spaceskip) 0.0
+....\hbox(0.0+0.0)x0.0, direction TLT
+.....\hbox(0.0+0.0)x0.0, direction TLT
+......\pdfliteral origin{q }
+......\glue(\spaceskip) 0.0
+......\pdfliteral origin{Q }
+....\glue(\spaceskip) 0.0
+....\hbox(0.0+0.0)x0.0, direction TLT
+.....\hbox(0.0+0.0)x0.0, direction TLT
+......\pdfliteral origin{q }
+......\glue(\spaceskip) 0.0
+......\pdfliteral origin{Q }
+....\glue(\spaceskip) 0.0
+....\hbox(0.0+0.0)x0.0, direction TLT
+.....\hbox(0.0+0.0)x0.0, direction TLT
+......\pdfliteral origin{q }
+......\glue(\spaceskip) 0.0
+......\pdfliteral origin{Q }
+....\glue(\spaceskip) 0.0
+....\hbox(0.0+0.0)x0.0, direction TLT
+.....\hbox(0.0+0.0)x0.0, direction TLT
+......\pdfliteral origin{q }
+......\glue(\spaceskip) 0.0
+......\pdfliteral origin{Q }
+....\glue(\spaceskip) 0.0
+....\hbox(0.0+0.0)x0.0, direction TLT
+.....\hbox(0.0+0.0)x0.0, direction TLT
+......\pdfliteral origin{q }
+......\glue(\spaceskip) 0.0
+......\pdfliteral origin{Q }
+....\glue(\spaceskip) 0.0
+....\hbox(0.0+0.0)x0.0, direction TLT
+.....\hbox(0.0+0.0)x0.0, direction TLT
+......\pdfliteral origin{q }
+......\glue(\spaceskip) 0.0
+......\pdfliteral origin{Q }
+....\glue(\spaceskip) 0.0
+....\hbox(0.0+0.0)x0.0, direction TLT
+.....\hbox(0.0+0.0)x0.0, direction TLT
+......\pdfliteral origin{q }
+......\glue(\spaceskip) 0.0
+......\pdfliteral origin{Q }
+....\glue(\spaceskip) 0.0
+....\hbox(0.0+0.0)x0.0, direction TLT
+.....\hbox(0.0+0.0)x0.0, direction TLT
+......\pdfliteral origin{q }
+......\glue(\spaceskip) 0.0
+......\pdfliteral origin{Q }
+....\glue(\spaceskip) 0.0
+....\hbox(0.0+0.0)x0.0, direction TLT
+.....\hbox(0.0+0.0)x0.0, direction TLT
+......\pdfliteral origin{q }
+......\glue(\spaceskip) 0.0
+......\pdfliteral origin{Q }
+....\glue(\spaceskip) 0.0
+....\hbox(0.0+0.0)x0.0, direction TLT
+.....\hbox(0.0+0.0)x0.0, direction TLT
+......\pdfliteral origin{q }
+......\glue(\spaceskip) 0.0
+......\pdfliteral origin{Q }
+....\glue(\spaceskip) 0.0
+....\hbox(0.0+0.0)x0.0, direction TLT
+.....\hbox(0.0+0.0)x0.0, direction TLT
+......\pdfliteral origin{q }
+......\glue(\spaceskip) 0.0
+......\pdfliteral origin{Q }
+....\glue(\spaceskip) 0.0
+....\hbox(0.0+0.0)x0.0, direction TLT
+.....\hbox(0.0+0.0)x0.0, direction TLT
+......\pdfliteral origin{q }
+......\glue(\spaceskip) 0.0
+......\pdfliteral origin{Q }
+....\glue(\spaceskip) 0.0
+....\hbox(0.0+0.0)x0.0, direction TLT
+.....\hbox(0.0+0.0)x0.0, direction TLT
+......\pdfliteral origin{q }
+......\glue(\spaceskip) 0.0
+......\pdfliteral origin{Q }
+....\glue(\spaceskip) 0.0
+....\glue(\spaceskip) 0.0
+....\hbox(0.0+0.0)x0.0, direction TLT
+.....\hbox(0.0+0.0)x0.0, direction TLT
+......\pdfliteral origin{q }
+......\glue(\spaceskip) 0.0
+......\pdfliteral origin{Q }
+....\glue(\spaceskip) 0.0
+....\hbox(0.0+0.0)x0.0, direction TLT
+.....\hbox(0.0+0.0)x0.0, direction TLT
+......\pdfliteral origin{q }
+......\glue(\spaceskip) 0.0
+......\pdfliteral origin{Q }
+....\glue(\spaceskip) 0.0
+....\hbox(0.0+0.0)x0.0, direction TLT
+.....\hbox(0.0+0.0)x0.0, direction TLT
+......\pdfliteral origin{q }
+......\glue(\spaceskip) 0.0
+......\pdfliteral origin{Q }
+....\glue(\spaceskip) 0.0
+....\hbox(0.0+0.0)x0.0, direction TLT
+.....\hbox(0.0+0.0)x0.0, direction TLT
+......\pdfliteral origin{q }
+......\glue(\spaceskip) 0.0
+......\pdfliteral origin{Q }
+....\glue(\spaceskip) 0.0
+....\hbox(0.0+0.0)x0.0, direction TLT
+.....\hbox(0.0+0.0)x0.0, direction TLT
+......\pdfliteral origin{q }
+......\glue(\spaceskip) 0.0
+......\pdfliteral origin{Q }
+....\glue(\spaceskip) 0.0
+....\pdfliteral origin{q }
+....\pdfliteral origin{0.3985 w }
+....\glue(\spaceskip) 0.0
+....\pdfliteral origin{Q }
+....\pdfliteral origin{q }
+....\glue(\spaceskip) 0.0
+....\glue(\spaceskip) 0.0
+....\pdfliteral origin{q }
 ....\pdfcolorstack 0 push {0 0 0 rg 0 0 0 RG}
-....\pdfliteral{-14.94415 7.08669 m }
-....\pdfliteral{-14.94415 7.08669 m }
-....\pdfliteral{-14.94415 -7.08669 l }
-....\pdfliteral{325.2177 -7.08669 l }
-....\pdfliteral{325.2177 7.08669 l }
-....\pdfliteral{h }
-....\pdfliteral{325.2177 -7.08669 m }
-....\pdfliteral{f }
-....\glue 0.0
+....\pdfliteral origin{-14.94415 7.08669 m }
+....\pdfliteral origin{-14.94415 7.08669 m }
+....\pdfliteral origin{-14.94415 -7.08669 l }
+....\pdfliteral origin{325.2177 -7.08669 l }
+....\pdfliteral origin{325.2177 7.08669 l }
+....\pdfliteral origin{h }
+....\pdfliteral origin{325.2177 -7.08669 m }
+....\pdfliteral origin{f }
+....\glue(\spaceskip) 0.0
 ....\pdfcolorstack 0 pop
-....\pdfliteral{Q }
-....\hbox(0.0+0.0)x0.0
-.....\hbox(0.0+0.0)x0.0
-......\pdfliteral{q }
-......\glue 0.0
-......\pdfliteral{Q }
-....\glue 0.0
-....\hbox(0.0+0.0)x0.0
-.....\hbox(0.0+0.0)x0.0
-......\pdfliteral{q }
-......\glue 0.0
-......\glue 0.0
-......\glue 0.0
-......\glue 0.0
-......\glue 0.0
-......\pdfliteral{q }
-......\hbox(0.0+0.0)x0.0
+....\pdfliteral origin{Q }
+....\hbox(0.0+0.0)x0.0, direction TLT
+.....\hbox(0.0+0.0)x0.0, direction TLT
+......\pdfliteral origin{q }
+......\glue(\spaceskip) 0.0
+......\pdfliteral origin{Q }
+....\glue(\spaceskip) 0.0
+....\hbox(0.0+0.0)x0.0, direction TLT
+.....\hbox(0.0+0.0)x0.0, direction TLT
+......\pdfliteral origin{q }
+......\glue(\spaceskip) 0.0
+......\glue(\spaceskip) 0.0
+......\glue(\spaceskip) 0.0
+......\glue(\spaceskip) 0.0
+......\glue(\spaceskip) 0.0
+......\pdfliteral origin{q }
+......\hbox(0.0+0.0)x0.0, direction TLT
 .......\glue -2.5
-.......\hbox(0.0+0.0)x0.0, shifted 3.39
-........\pdfliteral{1.0 0.0 0.0 1.0 0.0 0.0 cm }
-........\pdfliteral{q }
-........\hbox(0.0+0.0)x0.0
-.........\hbox(6.78+0.0)x5.0
-..........\pdfliteral{1 1 1 RG }
-..........\pdfliteral{1 1 1 rg }
-..........\hbox(6.78+0.0)x5.0
+.......\hbox(0.0+0.0)x0.0, shifted 3.39, direction TLT
+........\pdfliteral origin{1.0 0.0 0.0 1.0 0.0 0.0 cm }
+........\pdfliteral origin{q }
+........\hbox(0.0+0.0)x0.0, direction TLT
+.........\hbox(6.78+0.0)x5.0, direction TLT
+..........\pdfliteral origin{1 1 1 RG }
+..........\pdfliteral origin{1 1 1 rg }
+..........\hbox(6.78+0.0)x5.0, direction TLT
 ...........\pdfcolorstack 0 push {1 1 1 rg 1 1 1 RG}
-...........\hbox(6.78+0.0)x5.0
-............\hbox(6.78+0.0)x5.0
+...........\hbox(6.78+0.0)x5.0, direction TLT
+............\hbox(6.78+0.0)x5.0, direction TLT
 ...........\pdfcolorstack 0 pop
-..........\glue 0.0
-........\pdfliteral{Q }
-........\glue 0.0
+..........\glue(\spaceskip) 0.0
+........\pdfliteral origin{Q }
+........\glue(\spaceskip) 0.0
 .......\glue 0.0 plus 1.0fil minus 1.0fil
-......\pdfliteral{Q }
-......\glue 0.0
-......\pdfliteral{Q }
-....\glue 0.0
-....\hbox(0.0+0.0)x0.0
-.....\hbox(0.0+0.0)x0.0
-......\pdfliteral{q }
-......\glue 0.0
-......\pdfliteral{Q }
-....\glue 0.0
-....\hbox(0.0+0.0)x0.0
-.....\hbox(0.0+0.0)x0.0
-......\pdfliteral{q }
-......\glue 0.0
-......\pdfliteral{Q }
-....\glue 0.0
-....\hbox(0.0+0.0)x0.0
-.....\hbox(0.0+0.0)x0.0
-......\pdfliteral{q }
-......\glue 0.0
-......\glue 0.0
-......\glue 0.0
-......\glue 0.0
-......\glue 0.0
-......\pdfliteral{q }
-......\hbox(0.0+0.0)x0.0
+......\pdfliteral origin{Q }
+......\glue(\spaceskip) 0.0
+......\pdfliteral origin{Q }
+....\glue(\spaceskip) 0.0
+....\hbox(0.0+0.0)x0.0, direction TLT
+.....\hbox(0.0+0.0)x0.0, direction TLT
+......\pdfliteral origin{q }
+......\glue(\spaceskip) 0.0
+......\pdfliteral origin{Q }
+....\glue(\spaceskip) 0.0
+....\hbox(0.0+0.0)x0.0, direction TLT
+.....\hbox(0.0+0.0)x0.0, direction TLT
+......\pdfliteral origin{q }
+......\glue(\spaceskip) 0.0
+......\pdfliteral origin{Q }
+....\glue(\spaceskip) 0.0
+....\hbox(0.0+0.0)x0.0, direction TLT
+.....\hbox(0.0+0.0)x0.0, direction TLT
+......\pdfliteral origin{q }
+......\glue(\spaceskip) 0.0
+......\glue(\spaceskip) 0.0
+......\glue(\spaceskip) 0.0
+......\glue(\spaceskip) 0.0
+......\glue(\spaceskip) 0.0
+......\pdfliteral origin{q }
+......\hbox(0.0+0.0)x0.0, direction TLT
 .......\glue 14.73605
-.......\hbox(0.0+0.0)x0.0, shifted 3.47
-........\pdfliteral{1.0 0.0 0.0 1.0 0.0 0.0 cm }
-........\pdfliteral{q }
-........\hbox(0.0+0.0)x0.0
-.........\hbox(7.16+0.22)x22.0
-..........\pdfliteral{1 1 1 RG }
-..........\pdfliteral{1 1 1 rg }
-..........\hbox(7.16+0.22)x22.0
+.......\hbox(0.0+0.0)x0.0, shifted 3.47, direction TLT
+........\pdfliteral origin{1.0 0.0 0.0 1.0 0.0 0.0 cm }
+........\pdfliteral origin{q }
+........\hbox(0.0+0.0)x0.0, direction TLT
+.........\hbox(7.16+0.22)x22.0, direction TLT
+..........\pdfliteral origin{1 1 1 RG }
+..........\pdfliteral origin{1 1 1 rg }
+..........\hbox(7.16+0.22)x22.0, direction TLT
 ...........\pdfcolorstack 0 push {1 1 1 rg 1 1 1 RG}
-...........\hbox(7.16+0.22)x22.0
+...........\hbox(7.16+0.22)x22.0, direction TLT
 ............\TU/lmss/bx/n/10 1
 ............\TU/lmss/bx/n/10 9
 ............\TU/lmss/bx/n/10 0
 ............\TU/lmss/bx/n/10 0
 ...........\pdfcolorstack 0 pop
-..........\glue 0.0
-........\pdfliteral{Q }
-........\glue 0.0
+..........\glue(\spaceskip) 0.0
+........\pdfliteral origin{Q }
+........\glue(\spaceskip) 0.0
 .......\glue 0.0 plus 1.0fil minus 1.0fil
-......\pdfliteral{Q }
-......\glue 0.0
-......\pdfliteral{Q }
-....\glue 0.0
-....\glue 0.0
-....\glue 0.0
-....\glue 0.0
-....\pdfliteral{q }
-....\pdfliteral{1 1 1 RG }
-....\pdfliteral{25.64023 -7.19608 m }
-....\pdfliteral{25.64023 -7.08669 l }
-....\pdfliteral{S }
-....\glue 0.0
-....\pdfliteral{Q }
-....\glue 0.0
-....\glue 0.0
-....\glue 0.0
-....\pdfliteral{q }
-....\pdfliteral{1 1 1 RG }
-....\pdfliteral{25.64023 7.19608 m }
-....\pdfliteral{25.64023 7.08669 l }
-....\pdfliteral{S }
-....\glue 0.0
-....\pdfliteral{Q }
-....\hbox(0.0+0.0)x0.0
-.....\hbox(0.0+0.0)x0.0
-......\pdfliteral{q }
-......\glue 0.0
-......\pdfliteral{Q }
-....\glue 0.0
-....\hbox(0.0+0.0)x0.0
-.....\hbox(0.0+0.0)x0.0
-......\pdfliteral{q }
-......\glue 0.0
-......\pdfliteral{Q }
-....\glue 0.0
-....\hbox(0.0+0.0)x0.0
-.....\hbox(0.0+0.0)x0.0
-......\pdfliteral{q }
-......\glue 0.0
-......\glue 0.0
-......\glue 0.0
-......\glue 0.0
-......\glue 0.0
-......\pdfliteral{q }
-......\hbox(0.0+0.0)x0.0
+......\pdfliteral origin{Q }
+......\glue(\spaceskip) 0.0
+......\pdfliteral origin{Q }
+....\glue(\spaceskip) 0.0
+....\glue(\spaceskip) 0.0
+....\glue(\spaceskip) 0.0
+....\glue(\spaceskip) 0.0
+....\pdfliteral origin{q }
+....\pdfliteral origin{1 1 1 RG }
+....\pdfliteral origin{25.64023 -7.19608 m }
+....\pdfliteral origin{25.64023 -7.08669 l }
+....\pdfliteral origin{S }
+....\glue(\spaceskip) 0.0
+....\pdfliteral origin{Q }
+....\glue(\spaceskip) 0.0
+....\glue(\spaceskip) 0.0
+....\glue(\spaceskip) 0.0
+....\pdfliteral origin{q }
+....\pdfliteral origin{1 1 1 RG }
+....\pdfliteral origin{25.64023 7.19608 m }
+....\pdfliteral origin{25.64023 7.08669 l }
+....\pdfliteral origin{S }
+....\glue(\spaceskip) 0.0
+....\pdfliteral origin{Q }
+....\hbox(0.0+0.0)x0.0, direction TLT
+.....\hbox(0.0+0.0)x0.0, direction TLT
+......\pdfliteral origin{q }
+......\glue(\spaceskip) 0.0
+......\pdfliteral origin{Q }
+....\glue(\spaceskip) 0.0
+....\hbox(0.0+0.0)x0.0, direction TLT
+.....\hbox(0.0+0.0)x0.0, direction TLT
+......\pdfliteral origin{q }
+......\glue(\spaceskip) 0.0
+......\pdfliteral origin{Q }
+....\glue(\spaceskip) 0.0
+....\hbox(0.0+0.0)x0.0, direction TLT
+.....\hbox(0.0+0.0)x0.0, direction TLT
+......\pdfliteral origin{q }
+......\glue(\spaceskip) 0.0
+......\glue(\spaceskip) 0.0
+......\glue(\spaceskip) 0.0
+......\glue(\spaceskip) 0.0
+......\glue(\spaceskip) 0.0
+......\pdfliteral origin{q }
+......\hbox(0.0+0.0)x0.0, direction TLT
 .......\glue 79.08324
-.......\hbox(0.0+0.0)x0.0, shifted 3.47
-........\pdfliteral{1.0 0.0 0.0 1.0 0.0 0.0 cm }
-........\pdfliteral{q }
-........\hbox(0.0+0.0)x0.0
-.........\hbox(7.16+0.22)x22.0
-..........\pdfliteral{1 1 1 RG }
-..........\pdfliteral{1 1 1 rg }
-..........\hbox(7.16+0.22)x22.0
+.......\hbox(0.0+0.0)x0.0, shifted 3.47, direction TLT
+........\pdfliteral origin{1.0 0.0 0.0 1.0 0.0 0.0 cm }
+........\pdfliteral origin{q }
+........\hbox(0.0+0.0)x0.0, direction TLT
+.........\hbox(7.16+0.22)x22.0, direction TLT
+..........\pdfliteral origin{1 1 1 RG }
+..........\pdfliteral origin{1 1 1 rg }
+..........\hbox(7.16+0.22)x22.0, direction TLT
 ...........\pdfcolorstack 0 push {1 1 1 rg 1 1 1 RG}
-...........\hbox(7.16+0.22)x22.0
+...........\hbox(7.16+0.22)x22.0, direction TLT
 ............\TU/lmss/bx/n/10 1
 ............\TU/lmss/bx/n/10 9
 ............\TU/lmss/bx/n/10 2
 ............\TU/lmss/bx/n/10 5
 ...........\pdfcolorstack 0 pop
-..........\glue 0.0
-........\pdfliteral{Q }
-........\glue 0.0
+..........\glue(\spaceskip) 0.0
+........\pdfliteral origin{Q }
+........\glue(\spaceskip) 0.0
 .......\glue 0.0 plus 1.0fil minus 1.0fil
-......\pdfliteral{Q }
-......\glue 0.0
-......\pdfliteral{Q }
-....\glue 0.0
-....\glue 0.0
-....\glue 0.0
-....\glue 0.0
-....\pdfliteral{q }
-....\pdfliteral{1 1 1 RG }
-....\pdfliteral{89.74783 -7.19608 m }
-....\pdfliteral{89.74783 -7.08669 l }
-....\pdfliteral{S }
-....\glue 0.0
-....\pdfliteral{Q }
-....\glue 0.0
-....\glue 0.0
-....\glue 0.0
-....\pdfliteral{q }
-....\pdfliteral{1 1 1 RG }
-....\pdfliteral{89.74783 7.19608 m }
-....\pdfliteral{89.74783 7.08669 l }
-....\pdfliteral{S }
-....\glue 0.0
-....\pdfliteral{Q }
-....\hbox(0.0+0.0)x0.0
-.....\hbox(0.0+0.0)x0.0
-......\pdfliteral{q }
-......\glue 0.0
-......\pdfliteral{Q }
-....\glue 0.0
-....\hbox(0.0+0.0)x0.0
-.....\hbox(0.0+0.0)x0.0
-......\pdfliteral{q }
-......\glue 0.0
-......\pdfliteral{Q }
-....\glue 0.0
-....\hbox(0.0+0.0)x0.0
-.....\hbox(0.0+0.0)x0.0
-......\pdfliteral{q }
-......\glue 0.0
-......\glue 0.0
-......\glue 0.0
-......\glue 0.0
-......\glue 0.0
-......\pdfliteral{q }
-......\hbox(0.0+0.0)x0.0
+......\pdfliteral origin{Q }
+......\glue(\spaceskip) 0.0
+......\pdfliteral origin{Q }
+....\glue(\spaceskip) 0.0
+....\glue(\spaceskip) 0.0
+....\glue(\spaceskip) 0.0
+....\glue(\spaceskip) 0.0
+....\pdfliteral origin{q }
+....\pdfliteral origin{1 1 1 RG }
+....\pdfliteral origin{89.74783 -7.19608 m }
+....\pdfliteral origin{89.74783 -7.08669 l }
+....\pdfliteral origin{S }
+....\glue(\spaceskip) 0.0
+....\pdfliteral origin{Q }
+....\glue(\spaceskip) 0.0
+....\glue(\spaceskip) 0.0
+....\glue(\spaceskip) 0.0
+....\pdfliteral origin{q }
+....\pdfliteral origin{1 1 1 RG }
+....\pdfliteral origin{89.74783 7.19608 m }
+....\pdfliteral origin{89.74783 7.08669 l }
+....\pdfliteral origin{S }
+....\glue(\spaceskip) 0.0
+....\pdfliteral origin{Q }
+....\hbox(0.0+0.0)x0.0, direction TLT
+.....\hbox(0.0+0.0)x0.0, direction TLT
+......\pdfliteral origin{q }
+......\glue(\spaceskip) 0.0
+......\pdfliteral origin{Q }
+....\glue(\spaceskip) 0.0
+....\hbox(0.0+0.0)x0.0, direction TLT
+.....\hbox(0.0+0.0)x0.0, direction TLT
+......\pdfliteral origin{q }
+......\glue(\spaceskip) 0.0
+......\pdfliteral origin{Q }
+....\glue(\spaceskip) 0.0
+....\hbox(0.0+0.0)x0.0, direction TLT
+.....\hbox(0.0+0.0)x0.0, direction TLT
+......\pdfliteral origin{q }
+......\glue(\spaceskip) 0.0
+......\glue(\spaceskip) 0.0
+......\glue(\spaceskip) 0.0
+......\glue(\spaceskip) 0.0
+......\glue(\spaceskip) 0.0
+......\pdfliteral origin{q }
+......\hbox(0.0+0.0)x0.0, direction TLT
 .......\glue 143.43044
-.......\hbox(0.0+0.0)x0.0, shifted 3.47
-........\pdfliteral{1.0 0.0 0.0 1.0 0.0 0.0 cm }
-........\pdfliteral{q }
-........\hbox(0.0+0.0)x0.0
-.........\hbox(7.16+0.22)x22.0
-..........\pdfliteral{1 1 1 RG }
-..........\pdfliteral{1 1 1 rg }
-..........\hbox(7.16+0.22)x22.0
+.......\hbox(0.0+0.0)x0.0, shifted 3.47, direction TLT
+........\pdfliteral origin{1.0 0.0 0.0 1.0 0.0 0.0 cm }
+........\pdfliteral origin{q }
+........\hbox(0.0+0.0)x0.0, direction TLT
+.........\hbox(7.16+0.22)x22.0, direction TLT
+..........\pdfliteral origin{1 1 1 RG }
+..........\pdfliteral origin{1 1 1 rg }
+..........\hbox(7.16+0.22)x22.0, direction TLT
 ...........\pdfcolorstack 0 push {1 1 1 rg 1 1 1 RG}
-...........\hbox(7.16+0.22)x22.0
+...........\hbox(7.16+0.22)x22.0, direction TLT
 ............\TU/lmss/bx/n/10 1
 ............\TU/lmss/bx/n/10 9
 ............\TU/lmss/bx/n/10 5
 ............\TU/lmss/bx/n/10 0
 ...........\pdfcolorstack 0 pop
-..........\glue 0.0
-........\pdfliteral{Q }
-........\glue 0.0
+..........\glue(\spaceskip) 0.0
+........\pdfliteral origin{Q }
+........\glue(\spaceskip) 0.0
 .......\glue 0.0 plus 1.0fil minus 1.0fil
-......\pdfliteral{Q }
-......\glue 0.0
-......\pdfliteral{Q }
-....\glue 0.0
-....\glue 0.0
-....\glue 0.0
-....\glue 0.0
-....\pdfliteral{q }
-....\pdfliteral{1 1 1 RG }
-....\pdfliteral{153.85545 -7.19608 m }
-....\pdfliteral{153.85545 -7.08669 l }
-....\pdfliteral{S }
-....\glue 0.0
-....\pdfliteral{Q }
-....\glue 0.0
-....\glue 0.0
-....\glue 0.0
-....\pdfliteral{q }
-....\pdfliteral{1 1 1 RG }
-....\pdfliteral{153.85545 7.19608 m }
-....\pdfliteral{153.85545 7.08669 l }
-....\pdfliteral{S }
-....\glue 0.0
-....\pdfliteral{Q }
-....\hbox(0.0+0.0)x0.0
-.....\hbox(0.0+0.0)x0.0
-......\pdfliteral{q }
-......\glue 0.0
-......\pdfliteral{Q }
-....\glue 0.0
-....\hbox(0.0+0.0)x0.0
-.....\hbox(0.0+0.0)x0.0
-......\pdfliteral{q }
-......\glue 0.0
-......\pdfliteral{Q }
-....\glue 0.0
-....\hbox(0.0+0.0)x0.0
-.....\hbox(0.0+0.0)x0.0
-......\pdfliteral{q }
-......\glue 0.0
-......\glue 0.0
-......\glue 0.0
-......\glue 0.0
-......\glue 0.0
-......\pdfliteral{q }
-......\hbox(0.0+0.0)x0.0
+......\pdfliteral origin{Q }
+......\glue(\spaceskip) 0.0
+......\pdfliteral origin{Q }
+....\glue(\spaceskip) 0.0
+....\glue(\spaceskip) 0.0
+....\glue(\spaceskip) 0.0
+....\glue(\spaceskip) 0.0
+....\pdfliteral origin{q }
+....\pdfliteral origin{1 1 1 RG }
+....\pdfliteral origin{153.85545 -7.19608 m }
+....\pdfliteral origin{153.85545 -7.08669 l }
+....\pdfliteral origin{S }
+....\glue(\spaceskip) 0.0
+....\pdfliteral origin{Q }
+....\glue(\spaceskip) 0.0
+....\glue(\spaceskip) 0.0
+....\glue(\spaceskip) 0.0
+....\pdfliteral origin{q }
+....\pdfliteral origin{1 1 1 RG }
+....\pdfliteral origin{153.85545 7.19608 m }
+....\pdfliteral origin{153.85545 7.08669 l }
+....\pdfliteral origin{S }
+....\glue(\spaceskip) 0.0
+....\pdfliteral origin{Q }
+....\hbox(0.0+0.0)x0.0, direction TLT
+.....\hbox(0.0+0.0)x0.0, direction TLT
+......\pdfliteral origin{q }
+......\glue(\spaceskip) 0.0
+......\pdfliteral origin{Q }
+....\glue(\spaceskip) 0.0
+....\hbox(0.0+0.0)x0.0, direction TLT
+.....\hbox(0.0+0.0)x0.0, direction TLT
+......\pdfliteral origin{q }
+......\glue(\spaceskip) 0.0
+......\pdfliteral origin{Q }
+....\glue(\spaceskip) 0.0
+....\hbox(0.0+0.0)x0.0, direction TLT
+.....\hbox(0.0+0.0)x0.0, direction TLT
+......\pdfliteral origin{q }
+......\glue(\spaceskip) 0.0
+......\glue(\spaceskip) 0.0
+......\glue(\spaceskip) 0.0
+......\glue(\spaceskip) 0.0
+......\glue(\spaceskip) 0.0
+......\pdfliteral origin{q }
+......\hbox(0.0+0.0)x0.0, direction TLT
 .......\glue 207.77762
-.......\hbox(0.0+0.0)x0.0, shifted 3.47
-........\pdfliteral{1.0 0.0 0.0 1.0 0.0 0.0 cm }
-........\pdfliteral{q }
-........\hbox(0.0+0.0)x0.0
-.........\hbox(7.16+0.22)x22.0
-..........\pdfliteral{1 1 1 RG }
-..........\pdfliteral{1 1 1 rg }
-..........\hbox(7.16+0.22)x22.0
+.......\hbox(0.0+0.0)x0.0, shifted 3.47, direction TLT
+........\pdfliteral origin{1.0 0.0 0.0 1.0 0.0 0.0 cm }
+........\pdfliteral origin{q }
+........\hbox(0.0+0.0)x0.0, direction TLT
+.........\hbox(7.16+0.22)x22.0, direction TLT
+..........\pdfliteral origin{1 1 1 RG }
+..........\pdfliteral origin{1 1 1 rg }
+..........\hbox(7.16+0.22)x22.0, direction TLT
 ...........\pdfcolorstack 0 push {1 1 1 rg 1 1 1 RG}
-...........\hbox(7.16+0.22)x22.0
+...........\hbox(7.16+0.22)x22.0, direction TLT
 ............\TU/lmss/bx/n/10 1
 ............\TU/lmss/bx/n/10 9
 ............\TU/lmss/bx/n/10 7
 ............\TU/lmss/bx/n/10 5
 ...........\pdfcolorstack 0 pop
-..........\glue 0.0
-........\pdfliteral{Q }
-........\glue 0.0
+..........\glue(\spaceskip) 0.0
+........\pdfliteral origin{Q }
+........\glue(\spaceskip) 0.0
 .......\glue 0.0 plus 1.0fil minus 1.0fil
-......\pdfliteral{Q }
-......\glue 0.0
-......\pdfliteral{Q }
-....\glue 0.0
-....\glue 0.0
-....\glue 0.0
-....\glue 0.0
-....\pdfliteral{q }
-....\pdfliteral{1 1 1 RG }
-....\pdfliteral{217.96307 -7.19608 m }
-....\pdfliteral{217.96307 -7.08669 l }
-....\pdfliteral{S }
-....\glue 0.0
-....\pdfliteral{Q }
-....\glue 0.0
-....\glue 0.0
-....\glue 0.0
-....\pdfliteral{q }
-....\pdfliteral{1 1 1 RG }
-....\pdfliteral{217.96307 7.19608 m }
-....\pdfliteral{217.96307 7.08669 l }
-....\pdfliteral{S }
-....\glue 0.0
-....\pdfliteral{Q }
-....\hbox(0.0+0.0)x0.0
-.....\hbox(0.0+0.0)x0.0
-......\pdfliteral{q }
-......\glue 0.0
-......\pdfliteral{Q }
-....\glue 0.0
-....\hbox(0.0+0.0)x0.0
-.....\hbox(0.0+0.0)x0.0
-......\pdfliteral{q }
-......\glue 0.0
-......\pdfliteral{Q }
-....\glue 0.0
-....\hbox(0.0+0.0)x0.0
-.....\hbox(0.0+0.0)x0.0
-......\pdfliteral{q }
-......\glue 0.0
-......\glue 0.0
-......\glue 0.0
-......\glue 0.0
-......\glue 0.0
-......\pdfliteral{q }
-......\hbox(0.0+0.0)x0.0
+......\pdfliteral origin{Q }
+......\glue(\spaceskip) 0.0
+......\pdfliteral origin{Q }
+....\glue(\spaceskip) 0.0
+....\glue(\spaceskip) 0.0
+....\glue(\spaceskip) 0.0
+....\glue(\spaceskip) 0.0
+....\pdfliteral origin{q }
+....\pdfliteral origin{1 1 1 RG }
+....\pdfliteral origin{217.96307 -7.19608 m }
+....\pdfliteral origin{217.96307 -7.08669 l }
+....\pdfliteral origin{S }
+....\glue(\spaceskip) 0.0
+....\pdfliteral origin{Q }
+....\glue(\spaceskip) 0.0
+....\glue(\spaceskip) 0.0
+....\glue(\spaceskip) 0.0
+....\pdfliteral origin{q }
+....\pdfliteral origin{1 1 1 RG }
+....\pdfliteral origin{217.96307 7.19608 m }
+....\pdfliteral origin{217.96307 7.08669 l }
+....\pdfliteral origin{S }
+....\glue(\spaceskip) 0.0
+....\pdfliteral origin{Q }
+....\hbox(0.0+0.0)x0.0, direction TLT
+.....\hbox(0.0+0.0)x0.0, direction TLT
+......\pdfliteral origin{q }
+......\glue(\spaceskip) 0.0
+......\pdfliteral origin{Q }
+....\glue(\spaceskip) 0.0
+....\hbox(0.0+0.0)x0.0, direction TLT
+.....\hbox(0.0+0.0)x0.0, direction TLT
+......\pdfliteral origin{q }
+......\glue(\spaceskip) 0.0
+......\pdfliteral origin{Q }
+....\glue(\spaceskip) 0.0
+....\hbox(0.0+0.0)x0.0, direction TLT
+.....\hbox(0.0+0.0)x0.0, direction TLT
+......\pdfliteral origin{q }
+......\glue(\spaceskip) 0.0
+......\glue(\spaceskip) 0.0
+......\glue(\spaceskip) 0.0
+......\glue(\spaceskip) 0.0
+......\glue(\spaceskip) 0.0
+......\pdfliteral origin{q }
+......\hbox(0.0+0.0)x0.0, direction TLT
 .......\glue 272.1248
-.......\hbox(0.0+0.0)x0.0, shifted 3.47
-........\pdfliteral{1.0 0.0 0.0 1.0 0.0 0.0 cm }
-........\pdfliteral{q }
-........\hbox(0.0+0.0)x0.0
-.........\hbox(7.16+0.22)x22.0
-..........\pdfliteral{1 1 1 RG }
-..........\pdfliteral{1 1 1 rg }
-..........\hbox(7.16+0.22)x22.0
+.......\hbox(0.0+0.0)x0.0, shifted 3.47, direction TLT
+........\pdfliteral origin{1.0 0.0 0.0 1.0 0.0 0.0 cm }
+........\pdfliteral origin{q }
+........\hbox(0.0+0.0)x0.0, direction TLT
+.........\hbox(7.16+0.22)x22.0, direction TLT
+..........\pdfliteral origin{1 1 1 RG }
+..........\pdfliteral origin{1 1 1 rg }
+..........\hbox(7.16+0.22)x22.0, direction TLT
 ...........\pdfcolorstack 0 push {1 1 1 rg 1 1 1 RG}
-...........\hbox(7.16+0.22)x22.0
+...........\hbox(7.16+0.22)x22.0, direction TLT
 ............\TU/lmss/bx/n/10 2
 ............\TU/lmss/bx/n/10 0
 ............\TU/lmss/bx/n/10 0
 ............\TU/lmss/bx/n/10 0
 ...........\pdfcolorstack 0 pop
-..........\glue 0.0
-........\pdfliteral{Q }
-........\glue 0.0
+..........\glue(\spaceskip) 0.0
+........\pdfliteral origin{Q }
+........\glue(\spaceskip) 0.0
 .......\glue 0.0 plus 1.0fil minus 1.0fil
-......\pdfliteral{Q }
-......\glue 0.0
-......\pdfliteral{Q }
-....\glue 0.0
-....\glue 0.0
-....\glue 0.0
-....\glue 0.0
-....\pdfliteral{q }
-....\pdfliteral{1 1 1 RG }
-....\pdfliteral{282.07068 -7.19608 m }
-....\pdfliteral{282.07068 -7.08669 l }
-....\pdfliteral{S }
-....\glue 0.0
-....\pdfliteral{Q }
-....\glue 0.0
-....\glue 0.0
-....\glue 0.0
-....\pdfliteral{q }
-....\pdfliteral{1 1 1 RG }
-....\pdfliteral{282.07068 7.19608 m }
-....\pdfliteral{282.07068 7.08669 l }
-....\pdfliteral{S }
-....\glue 0.0
-....\pdfliteral{Q }
-....\glue 0.0
-....\pdfliteral{Q }
-....\pdfliteral{q }
-....\glue 0.0
-....\pdfliteral{Q }
-....\glue 0.0
-....\hbox(0.0+0.0)x0.0
-.....\hbox(0.0+0.0)x0.0
-......\pdfliteral{q }
-......\glue 0.0
-......\pdfliteral{Q }
-....\glue 0.0
-....\pdfliteral{q }
-....\pdfliteral{0.3985 w }
-....\glue 0.0
-....\pdfliteral{Q }
-....\hbox(0.0+0.0)x0.0
-.....\hbox(0.0+0.0)x0.0
-......\pdfliteral{q }
-......\glue 0.0
-......\pdfliteral{Q }
-....\glue 0.0
-....\pdfliteral{q }
-....\hbox(0.0+0.0)x0.0
-.....\hbox(0.0+0.0)x0.0
-......\pdfliteral{q }
-......\glue 0.0
-......\glue 0.0
-......\glue 0.0
-......\glue 0.0
-......\glue 0.0
-......\pdfliteral{q }
-......\hbox(0.0+0.0)x0.0
+......\pdfliteral origin{Q }
+......\glue(\spaceskip) 0.0
+......\pdfliteral origin{Q }
+....\glue(\spaceskip) 0.0
+....\glue(\spaceskip) 0.0
+....\glue(\spaceskip) 0.0
+....\glue(\spaceskip) 0.0
+....\pdfliteral origin{q }
+....\pdfliteral origin{1 1 1 RG }
+....\pdfliteral origin{282.07068 -7.19608 m }
+....\pdfliteral origin{282.07068 -7.08669 l }
+....\pdfliteral origin{S }
+....\glue(\spaceskip) 0.0
+....\pdfliteral origin{Q }
+....\glue(\spaceskip) 0.0
+....\glue(\spaceskip) 0.0
+....\glue(\spaceskip) 0.0
+....\pdfliteral origin{q }
+....\pdfliteral origin{1 1 1 RG }
+....\pdfliteral origin{282.07068 7.19608 m }
+....\pdfliteral origin{282.07068 7.08669 l }
+....\pdfliteral origin{S }
+....\glue(\spaceskip) 0.0
+....\pdfliteral origin{Q }
+....\glue(\spaceskip) 0.0
+....\pdfliteral origin{Q }
+....\pdfliteral origin{q }
+....\glue(\spaceskip) 0.0
+....\pdfliteral origin{Q }
+....\glue(\spaceskip) 0.0
+....\hbox(0.0+0.0)x0.0, direction TLT
+.....\hbox(0.0+0.0)x0.0, direction TLT
+......\pdfliteral origin{q }
+......\glue(\spaceskip) 0.0
+......\pdfliteral origin{Q }
+....\glue(\spaceskip) 0.0
+....\pdfliteral origin{q }
+....\pdfliteral origin{0.3985 w }
+....\glue(\spaceskip) 0.0
+....\pdfliteral origin{Q }
+....\hbox(0.0+0.0)x0.0, direction TLT
+.....\hbox(0.0+0.0)x0.0, direction TLT
+......\pdfliteral origin{q }
+......\glue(\spaceskip) 0.0
+......\pdfliteral origin{Q }
+....\glue(\spaceskip) 0.0
+....\pdfliteral origin{q }
+....\hbox(0.0+0.0)x0.0, direction TLT
+.....\hbox(0.0+0.0)x0.0, direction TLT
+......\pdfliteral origin{q }
+......\glue(\spaceskip) 0.0
+......\glue(\spaceskip) 0.0
+......\glue(\spaceskip) 0.0
+......\glue(\spaceskip) 0.0
+......\glue(\spaceskip) 0.0
+......\pdfliteral origin{q }
+......\hbox(0.0+0.0)x0.0, direction TLT
 .......\glue 271.47769
-.......\hbox(0.0+0.0)x0.0, shifted -28.78275
-........\pdfliteral{1.0 0.0 0.0 1.0 0.0 0.0 cm }
-........\pdfliteral{q }
-........\hbox(0.0+0.0)x0.0
-.........\hbox(5.528+9.58)x28.45274
-..........\pdfliteral{0 0 0 RG }
-..........\pdfliteral{0 0 0 rg }
-..........\hbox(5.528+9.58)x28.45274
-...........\vbox(5.528+9.58)x28.45274
-............\hbox(5.528+0.08)x28.45274, glue set 0.385
+.......\hbox(0.0+0.0)x0.0, shifted -28.78275, direction TLT
+........\pdfliteral origin{1.0 0.0 0.0 1.0 0.0 0.0 cm }
+........\pdfliteral origin{q }
+........\hbox(0.0+0.0)x0.0, direction TLT
+.........\hbox(5.528+9.58)x28.45274, direction TLT
+..........\pdfliteral origin{0 0 0 RG }
+..........\pdfliteral origin{0 0 0 rg }
+..........\hbox(5.528+9.58)x28.45274, direction TLT
+...........\vbox(5.528+9.58)x28.45274, direction TLT
+............\hbox(5.528+0.08)x28.45274, glue set 0.38539, direction TLT
 .............\glue(\leftskip) 0.0 plus 16.0
-.............\hbox(0.0+0.0)x0.0
-.............\hbox(0.0+0.0)x0.0
+.............\localpar
+..............\localinterlinepenalty=0
+..............\localbrokenpenalty=0
+..............\localleftbox=null
+..............\localrightbox=null
+.............\hbox(0.0+0.0)x0.0, direction TLT
+.............\hbox(0.0+0.0)x0.0, direction TLT
 .............\TU/lmss/m/n/8 F
 .............\TU/lmss/m/n/8 i
 .............\TU/lmss/m/n/8 r
@@ -1002,7 +1007,7 @@ Package chronos Info: I'm guessing you don't want bare marks on your timeline. I
 .............\glue(\rightskip) 0.0 plus 16.0
 ............\penalty 300
 ............\glue(\baselineskip) 3.892
-............\hbox(5.528+0.08)x28.45274, glue set 0.256
+............\hbox(5.528+0.08)x28.45274, glue set 0.25615, direction TLT
 .............\glue(\leftskip) 0.0 plus 16.0
 .............\TU/lmss/m/n/8 E
 .............\TU/lmss/m/n/8 v
@@ -1012,101 +1017,106 @@ Package chronos Info: I'm guessing you don't want bare marks on your timeline. I
 .............\penalty 10000
 .............\glue(\parfillskip) 0.0
 .............\glue(\rightskip) 0.0 plus 16.0
-..........\glue 0.0
-........\pdfliteral{Q }
-........\glue 0.0
+..........\glue(\spaceskip) 0.0
+........\pdfliteral origin{Q }
+........\glue(\spaceskip) 0.0
 .......\glue 0.0 plus 1.0fil minus 1.0fil
-......\pdfliteral{Q }
-......\glue 0.0
-......\pdfliteral{Q }
-....\glue 0.0
-....\glue 0.0
-....\pdfliteral{Q }
-....\pdfliteral{q }
-....\pdfliteral{0.3985 w }
-....\glue 0.0
-....\pdfliteral{Q }
-....\pdfliteral{q }
-....\hbox(0.0+0.0)x0.0
-.....\hbox(0.0+0.0)x0.0
-......\pdfliteral{q }
-......\glue 0.0
-......\glue 0.0
-......\glue 0.0
-......\glue 0.0
-......\glue 0.0
-......\pdfliteral{q }
-......\hbox(0.0+0.0)x0.0
+......\pdfliteral origin{Q }
+......\glue(\spaceskip) 0.0
+......\pdfliteral origin{Q }
+....\glue(\spaceskip) 0.0
+....\glue(\spaceskip) 0.0
+....\pdfliteral origin{Q }
+....\pdfliteral origin{q }
+....\pdfliteral origin{0.3985 w }
+....\glue(\spaceskip) 0.0
+....\pdfliteral origin{Q }
+....\pdfliteral origin{q }
+....\hbox(0.0+0.0)x0.0, direction TLT
+.....\hbox(0.0+0.0)x0.0, direction TLT
+......\pdfliteral origin{q }
+......\glue(\spaceskip) 0.0
+......\glue(\spaceskip) 0.0
+......\glue(\spaceskip) 0.0
+......\glue(\spaceskip) 0.0
+......\glue(\spaceskip) 0.0
+......\pdfliteral origin{q }
+......\hbox(0.0+0.0)x0.0, direction TLT
 .......\glue 285.70406
-.......\hbox(0.0+0.0)x0.0, shifted -15.86977
-........\pdfliteral{1.0 0.0 0.0 1.0 0.0 0.0 cm }
-........\pdfliteral{q }
-........\hbox(0.0+0.0)x0.0
-.........\hbox(0.0+0.0)x0.0
-..........\pdfliteral{0 0 0 RG }
-..........\pdfliteral{0 0 0 rg }
-..........\hbox(0.0+0.0)x0.0
-...........\hbox(0.0+0.0)x0.0
-..........\glue 0.0
-........\pdfliteral{Q }
-........\glue 0.0
+.......\hbox(0.0+0.0)x0.0, shifted -15.86977, direction TLT
+........\pdfliteral origin{1.0 0.0 0.0 1.0 0.0 0.0 cm }
+........\pdfliteral origin{q }
+........\hbox(0.0+0.0)x0.0, direction TLT
+.........\hbox(0.0+0.0)x0.0, direction TLT
+..........\pdfliteral origin{0 0 0 RG }
+..........\pdfliteral origin{0 0 0 rg }
+..........\hbox(0.0+0.0)x0.0, direction TLT
+...........\hbox(0.0+0.0)x0.0, direction TLT
+..........\glue(\spaceskip) 0.0
+........\pdfliteral origin{Q }
+........\glue(\spaceskip) 0.0
 .......\glue 0.0 plus 1.0fil minus 1.0fil
-......\pdfliteral{Q }
-......\glue 0.0
-......\pdfliteral{Q }
-....\glue 0.0
-....\glue 0.0
-....\pdfliteral{Q }
-....\glue 0.0
-....\glue 0.0
-....\glue 0.0
-....\glue 0.0
-....\pdfliteral{q }
-....\pdfliteral{0.3985 w }
-....\glue 0.0
-....\pdfliteral{Q }
-....\glue 0.0
-....\hbox(0.0+0.0)x0.0
-.....\hbox(0.0+0.0)x0.0
-......\pdfliteral{q }
-......\glue 0.0
-......\pdfliteral{Q }
-....\glue 0.0
-....\pdfliteral{q }
-....\pdfliteral{0.3985 w }
-....\glue 0.0
-....\pdfliteral{Q }
-....\hbox(0.0+0.0)x0.0
-.....\hbox(0.0+0.0)x0.0
-......\pdfliteral{q }
-......\glue 0.0
-......\pdfliteral{Q }
-....\glue 0.0
-....\pdfliteral{q }
-....\hbox(0.0+0.0)x0.0
-.....\hbox(0.0+0.0)x0.0
-......\pdfliteral{q }
-......\glue 0.0
-......\glue 0.0
-......\glue 0.0
-......\glue 0.0
-......\glue 0.0
-......\pdfliteral{q }
-......\hbox(0.0+0.0)x0.0
+......\pdfliteral origin{Q }
+......\glue(\spaceskip) 0.0
+......\pdfliteral origin{Q }
+....\glue(\spaceskip) 0.0
+....\glue(\spaceskip) 0.0
+....\pdfliteral origin{Q }
+....\glue(\spaceskip) 0.0
+....\glue(\spaceskip) 0.0
+....\glue(\spaceskip) 0.0
+....\glue(\spaceskip) 0.0
+....\pdfliteral origin{q }
+....\pdfliteral origin{0.3985 w }
+....\glue(\spaceskip) 0.0
+....\pdfliteral origin{Q }
+....\glue(\spaceskip) 0.0
+....\hbox(0.0+0.0)x0.0, direction TLT
+.....\hbox(0.0+0.0)x0.0, direction TLT
+......\pdfliteral origin{q }
+......\glue(\spaceskip) 0.0
+......\pdfliteral origin{Q }
+....\glue(\spaceskip) 0.0
+....\pdfliteral origin{q }
+....\pdfliteral origin{0.3985 w }
+....\glue(\spaceskip) 0.0
+....\pdfliteral origin{Q }
+....\hbox(0.0+0.0)x0.0, direction TLT
+.....\hbox(0.0+0.0)x0.0, direction TLT
+......\pdfliteral origin{q }
+......\glue(\spaceskip) 0.0
+......\pdfliteral origin{Q }
+....\glue(\spaceskip) 0.0
+....\pdfliteral origin{q }
+....\hbox(0.0+0.0)x0.0, direction TLT
+.....\hbox(0.0+0.0)x0.0, direction TLT
+......\pdfliteral origin{q }
+......\glue(\spaceskip) 0.0
+......\glue(\spaceskip) 0.0
+......\glue(\spaceskip) 0.0
+......\glue(\spaceskip) 0.0
+......\glue(\spaceskip) 0.0
+......\pdfliteral origin{q }
+......\hbox(0.0+0.0)x0.0, direction TLT
 .......\glue 268.89844
-.......\hbox(0.0+0.0)x0.0, shifted -33.78273
-........\pdfliteral{1.0 0.0 0.0 1.0 0.0 0.0 cm }
-........\pdfliteral{q }
-........\hbox(0.0+0.0)x0.0
-.........\hbox(5.72+9.58)x28.45274
-..........\pdfliteral{0 0 0 RG }
-..........\pdfliteral{0 0 0 rg }
-..........\hbox(5.72+9.58)x28.45274
-...........\vbox(5.72+9.58)x28.45274
-............\hbox(5.72+0.168)x28.45274, glue set 0.098
+.......\hbox(0.0+0.0)x0.0, shifted -33.78273, direction TLT
+........\pdfliteral origin{1.0 0.0 0.0 1.0 0.0 0.0 cm }
+........\pdfliteral origin{q }
+........\hbox(0.0+0.0)x0.0, direction TLT
+.........\hbox(5.72+9.58)x28.45274, direction TLT
+..........\pdfliteral origin{0 0 0 RG }
+..........\pdfliteral origin{0 0 0 rg }
+..........\hbox(5.72+9.58)x28.45274, direction TLT
+...........\vbox(5.72+9.58)x28.45274, direction TLT
+............\hbox(5.72+0.168)x28.45274, glue set 0.0984, direction TLT
 .............\glue(\leftskip) 0.0 plus 16.0
-.............\hbox(0.0+0.0)x0.0
-.............\hbox(0.0+0.0)x0.0
+.............\localpar
+..............\localinterlinepenalty=0
+..............\localbrokenpenalty=0
+..............\localleftbox=null
+..............\localrightbox=null
+.............\hbox(0.0+0.0)x0.0, direction TLT
+.............\hbox(0.0+0.0)x0.0, direction TLT
 .............\TU/lmss/m/n/8 S
 .............\TU/lmss/m/n/8 e
 .............\TU/lmss/m/n/8 c
@@ -1116,7 +1126,7 @@ Package chronos Info: I'm guessing you don't want bare marks on your timeline. I
 .............\glue(\rightskip) 0.0 plus 16.0
 ............\penalty 300
 ............\glue(\baselineskip) 3.804
-............\hbox(5.528+0.08)x28.45274, glue set 0.256
+............\hbox(5.528+0.08)x28.45274, glue set 0.25615, direction TLT
 .............\glue(\leftskip) 0.0 plus 16.0
 .............\TU/lmss/m/n/8 E
 .............\TU/lmss/m/n/8 v
@@ -1126,101 +1136,106 @@ Package chronos Info: I'm guessing you don't want bare marks on your timeline. I
 .............\penalty 10000
 .............\glue(\parfillskip) 0.0
 .............\glue(\rightskip) 0.0 plus 16.0
-..........\glue 0.0
-........\pdfliteral{Q }
-........\glue 0.0
+..........\glue(\spaceskip) 0.0
+........\pdfliteral origin{Q }
+........\glue(\spaceskip) 0.0
 .......\glue 0.0 plus 1.0fil minus 1.0fil
-......\pdfliteral{Q }
-......\glue 0.0
-......\pdfliteral{Q }
-....\glue 0.0
-....\glue 0.0
-....\pdfliteral{Q }
-....\pdfliteral{q }
-....\pdfliteral{0.3985 w }
-....\glue 0.0
-....\pdfliteral{Q }
-....\pdfliteral{q }
-....\hbox(0.0+0.0)x0.0
-.....\hbox(0.0+0.0)x0.0
-......\pdfliteral{q }
-......\glue 0.0
-......\glue 0.0
-......\glue 0.0
-......\glue 0.0
-......\glue 0.0
-......\pdfliteral{q }
-......\hbox(0.0+0.0)x0.0
+......\pdfliteral origin{Q }
+......\glue(\spaceskip) 0.0
+......\pdfliteral origin{Q }
+....\glue(\spaceskip) 0.0
+....\glue(\spaceskip) 0.0
+....\pdfliteral origin{Q }
+....\pdfliteral origin{q }
+....\pdfliteral origin{0.3985 w }
+....\glue(\spaceskip) 0.0
+....\pdfliteral origin{Q }
+....\pdfliteral origin{q }
+....\hbox(0.0+0.0)x0.0, direction TLT
+.....\hbox(0.0+0.0)x0.0, direction TLT
+......\pdfliteral origin{q }
+......\glue(\spaceskip) 0.0
+......\glue(\spaceskip) 0.0
+......\glue(\spaceskip) 0.0
+......\glue(\spaceskip) 0.0
+......\glue(\spaceskip) 0.0
+......\pdfliteral origin{q }
+......\hbox(0.0+0.0)x0.0, direction TLT
 .......\glue 283.1248
-.......\hbox(0.0+0.0)x0.0, shifted -20.86977
-........\pdfliteral{1.0 0.0 0.0 1.0 0.0 0.0 cm }
-........\pdfliteral{q }
-........\hbox(0.0+0.0)x0.0
-.........\hbox(0.0+0.0)x0.0
-..........\pdfliteral{0 0 0 RG }
-..........\pdfliteral{0 0 0 rg }
-..........\hbox(0.0+0.0)x0.0
-...........\hbox(0.0+0.0)x0.0
-..........\glue 0.0
-........\pdfliteral{Q }
-........\glue 0.0
+.......\hbox(0.0+0.0)x0.0, shifted -20.86977, direction TLT
+........\pdfliteral origin{1.0 0.0 0.0 1.0 0.0 0.0 cm }
+........\pdfliteral origin{q }
+........\hbox(0.0+0.0)x0.0, direction TLT
+.........\hbox(0.0+0.0)x0.0, direction TLT
+..........\pdfliteral origin{0 0 0 RG }
+..........\pdfliteral origin{0 0 0 rg }
+..........\hbox(0.0+0.0)x0.0, direction TLT
+...........\hbox(0.0+0.0)x0.0, direction TLT
+..........\glue(\spaceskip) 0.0
+........\pdfliteral origin{Q }
+........\glue(\spaceskip) 0.0
 .......\glue 0.0 plus 1.0fil minus 1.0fil
-......\pdfliteral{Q }
-......\glue 0.0
-......\pdfliteral{Q }
-....\glue 0.0
-....\glue 0.0
-....\pdfliteral{Q }
-....\glue 0.0
-....\glue 0.0
-....\glue 0.0
-....\glue 0.0
-....\pdfliteral{q }
-....\pdfliteral{0.3985 w }
-....\glue 0.0
-....\pdfliteral{Q }
-....\glue 0.0
-....\hbox(0.0+0.0)x0.0
-.....\hbox(0.0+0.0)x0.0
-......\pdfliteral{q }
-......\glue 0.0
-......\pdfliteral{Q }
-....\glue 0.0
-....\pdfliteral{q }
-....\pdfliteral{0.3985 w }
-....\glue 0.0
-....\pdfliteral{Q }
-....\hbox(0.0+0.0)x0.0
-.....\hbox(0.0+0.0)x0.0
-......\pdfliteral{q }
-......\glue 0.0
-......\pdfliteral{Q }
-....\glue 0.0
-....\pdfliteral{q }
-....\hbox(0.0+0.0)x0.0
-.....\hbox(0.0+0.0)x0.0
-......\pdfliteral{q }
-......\glue 0.0
-......\glue 0.0
-......\glue 0.0
-......\glue 0.0
-......\glue 0.0
-......\pdfliteral{q }
-......\hbox(0.0+0.0)x0.0
+......\pdfliteral origin{Q }
+......\glue(\spaceskip) 0.0
+......\pdfliteral origin{Q }
+....\glue(\spaceskip) 0.0
+....\glue(\spaceskip) 0.0
+....\pdfliteral origin{Q }
+....\glue(\spaceskip) 0.0
+....\glue(\spaceskip) 0.0
+....\glue(\spaceskip) 0.0
+....\glue(\spaceskip) 0.0
+....\pdfliteral origin{q }
+....\pdfliteral origin{0.3985 w }
+....\glue(\spaceskip) 0.0
+....\pdfliteral origin{Q }
+....\glue(\spaceskip) 0.0
+....\hbox(0.0+0.0)x0.0, direction TLT
+.....\hbox(0.0+0.0)x0.0, direction TLT
+......\pdfliteral origin{q }
+......\glue(\spaceskip) 0.0
+......\pdfliteral origin{Q }
+....\glue(\spaceskip) 0.0
+....\pdfliteral origin{q }
+....\pdfliteral origin{0.3985 w }
+....\glue(\spaceskip) 0.0
+....\pdfliteral origin{Q }
+....\hbox(0.0+0.0)x0.0, direction TLT
+.....\hbox(0.0+0.0)x0.0, direction TLT
+......\pdfliteral origin{q }
+......\glue(\spaceskip) 0.0
+......\pdfliteral origin{Q }
+....\glue(\spaceskip) 0.0
+....\pdfliteral origin{q }
+....\hbox(0.0+0.0)x0.0, direction TLT
+.....\hbox(0.0+0.0)x0.0, direction TLT
+......\pdfliteral origin{q }
+......\glue(\spaceskip) 0.0
+......\glue(\spaceskip) 0.0
+......\glue(\spaceskip) 0.0
+......\glue(\spaceskip) 0.0
+......\glue(\spaceskip) 0.0
+......\pdfliteral origin{q }
+......\hbox(0.0+0.0)x0.0, direction TLT
 .......\glue 238.01094
-.......\hbox(0.0+0.0)x0.0, shifted 24.75475
-........\pdfliteral{1.0 0.0 0.0 1.0 0.0 0.0 cm }
-........\pdfliteral{q }
-........\hbox(0.0+0.0)x0.0
-.........\hbox(5.552+9.58)x28.45274
-..........\pdfliteral{0 0 0 RG }
-..........\pdfliteral{0 0 0 rg }
-..........\hbox(5.552+9.58)x28.45274
-...........\vbox(5.552+9.58)x28.45274
-............\hbox(5.552+0.08)x28.45274, glue set 0.279
+.......\hbox(0.0+0.0)x0.0, shifted 24.75475, direction TLT
+........\pdfliteral origin{1.0 0.0 0.0 1.0 0.0 0.0 cm }
+........\pdfliteral origin{q }
+........\hbox(0.0+0.0)x0.0, direction TLT
+.........\hbox(5.552+9.58)x28.45274, direction TLT
+..........\pdfliteral origin{0 0 0 RG }
+..........\pdfliteral origin{0 0 0 rg }
+..........\hbox(5.552+9.58)x28.45274, direction TLT
+...........\vbox(5.552+9.58)x28.45274, direction TLT
+............\hbox(5.552+0.08)x28.45274, glue set 0.27914, direction TLT
 .............\glue(\leftskip) 0.0 plus 16.0
-.............\hbox(0.0+0.0)x0.0
-.............\hbox(0.0+0.0)x0.0
+.............\localpar
+..............\localinterlinepenalty=0
+..............\localbrokenpenalty=0
+..............\localleftbox=null
+..............\localrightbox=null
+.............\hbox(0.0+0.0)x0.0, direction TLT
+.............\hbox(0.0+0.0)x0.0, direction TLT
 .............\TU/lmss/m/n/8 T
 .............\TU/lmss/m/n/8 h
 .............\TU/lmss/m/n/8 i
@@ -1229,7 +1244,7 @@ Package chronos Info: I'm guessing you don't want bare marks on your timeline. I
 .............\glue(\rightskip) 0.0 plus 16.0
 ............\penalty 300
 ............\glue(\baselineskip) 3.892
-............\hbox(5.528+0.08)x28.45274, glue set 0.256
+............\hbox(5.528+0.08)x28.45274, glue set 0.25615, direction TLT
 .............\glue(\leftskip) 0.0 plus 16.0
 .............\TU/lmss/m/n/8 E
 .............\TU/lmss/m/n/8 v
@@ -1239,103 +1254,108 @@ Package chronos Info: I'm guessing you don't want bare marks on your timeline. I
 .............\penalty 10000
 .............\glue(\parfillskip) 0.0
 .............\glue(\rightskip) 0.0 plus 16.0
-..........\glue 0.0
-........\pdfliteral{Q }
-........\glue 0.0
+..........\glue(\spaceskip) 0.0
+........\pdfliteral origin{Q }
+........\glue(\spaceskip) 0.0
 .......\glue 0.0 plus 1.0fil minus 1.0fil
-......\pdfliteral{Q }
-......\glue 0.0
-......\pdfliteral{Q }
-....\glue 0.0
-....\glue 0.0
-....\pdfliteral{Q }
-....\pdfliteral{q }
-....\pdfliteral{0.3985 w }
-....\glue 0.0
-....\pdfliteral{Q }
-....\pdfliteral{q }
-....\hbox(0.0+0.0)x0.0
-.....\hbox(0.0+0.0)x0.0
-......\pdfliteral{q }
-......\glue 0.0
-......\glue 0.0
-......\glue 0.0
-......\glue 0.0
-......\glue 0.0
-......\pdfliteral{q }
-......\hbox(0.0+0.0)x0.0
+......\pdfliteral origin{Q }
+......\glue(\spaceskip) 0.0
+......\pdfliteral origin{Q }
+....\glue(\spaceskip) 0.0
+....\glue(\spaceskip) 0.0
+....\pdfliteral origin{Q }
+....\pdfliteral origin{q }
+....\pdfliteral origin{0.3985 w }
+....\glue(\spaceskip) 0.0
+....\pdfliteral origin{Q }
+....\pdfliteral origin{q }
+....\hbox(0.0+0.0)x0.0, direction TLT
+.....\hbox(0.0+0.0)x0.0, direction TLT
+......\pdfliteral origin{q }
+......\glue(\spaceskip) 0.0
+......\glue(\spaceskip) 0.0
+......\glue(\spaceskip) 0.0
+......\glue(\spaceskip) 0.0
+......\glue(\spaceskip) 0.0
+......\pdfliteral origin{q }
+......\hbox(0.0+0.0)x0.0, direction TLT
 .......\glue 252.2373
-.......\hbox(0.0+0.0)x0.0, shifted 15.86977
-........\pdfliteral{1.0 0.0 0.0 1.0 0.0 0.0 cm }
-........\pdfliteral{q }
-........\hbox(0.0+0.0)x0.0
-.........\hbox(0.0+0.0)x0.0
-..........\pdfliteral{0 0 0 RG }
-..........\pdfliteral{0 0 0 rg }
-..........\hbox(0.0+0.0)x0.0
-...........\hbox(0.0+0.0)x0.0
-..........\glue 0.0
-........\pdfliteral{Q }
-........\glue 0.0
+.......\hbox(0.0+0.0)x0.0, shifted 15.86977, direction TLT
+........\pdfliteral origin{1.0 0.0 0.0 1.0 0.0 0.0 cm }
+........\pdfliteral origin{q }
+........\hbox(0.0+0.0)x0.0, direction TLT
+.........\hbox(0.0+0.0)x0.0, direction TLT
+..........\pdfliteral origin{0 0 0 RG }
+..........\pdfliteral origin{0 0 0 rg }
+..........\hbox(0.0+0.0)x0.0, direction TLT
+...........\hbox(0.0+0.0)x0.0, direction TLT
+..........\glue(\spaceskip) 0.0
+........\pdfliteral origin{Q }
+........\glue(\spaceskip) 0.0
 .......\glue 0.0 plus 1.0fil minus 1.0fil
-......\pdfliteral{Q }
-......\glue 0.0
-......\pdfliteral{Q }
-....\glue 0.0
-....\glue 0.0
-....\pdfliteral{Q }
-....\glue 0.0
-....\glue 0.0
-....\glue 0.0
-....\glue 0.0
-....\pdfliteral{q }
-....\pdfliteral{0.3985 w }
-....\glue 0.0
-....\pdfliteral{Q }
-....\glue 0.0
-....\hbox(0.0+0.0)x0.0
-.....\hbox(0.0+0.0)x0.0
-......\pdfliteral{q }
-......\glue 0.0
-......\pdfliteral{Q }
-....\glue 0.0
-....\pdfliteral{q }
-....\pdfliteral{0.3985 w }
-....\glue 0.0
-....\pdfliteral{Q }
-....\hbox(0.0+0.0)x0.0
-.....\hbox(0.0+0.0)x0.0
-......\pdfliteral{q }
-......\glue 0.0
-......\pdfliteral{Q }
-....\glue 0.0
-....\pdfliteral{q }
-....\hbox(0.0+0.0)x0.0
-.....\hbox(0.0+0.0)x0.0
-......\pdfliteral{q }
-......\glue 0.0
-......\glue 0.0
-......\glue 0.0
-......\glue 0.0
-......\glue 0.0
-......\pdfliteral{q }
-......\hbox(0.0+0.0)x0.0
+......\pdfliteral origin{Q }
+......\glue(\spaceskip) 0.0
+......\pdfliteral origin{Q }
+....\glue(\spaceskip) 0.0
+....\glue(\spaceskip) 0.0
+....\pdfliteral origin{Q }
+....\glue(\spaceskip) 0.0
+....\glue(\spaceskip) 0.0
+....\glue(\spaceskip) 0.0
+....\glue(\spaceskip) 0.0
+....\pdfliteral origin{q }
+....\pdfliteral origin{0.3985 w }
+....\glue(\spaceskip) 0.0
+....\pdfliteral origin{Q }
+....\glue(\spaceskip) 0.0
+....\hbox(0.0+0.0)x0.0, direction TLT
+.....\hbox(0.0+0.0)x0.0, direction TLT
+......\pdfliteral origin{q }
+......\glue(\spaceskip) 0.0
+......\pdfliteral origin{Q }
+....\glue(\spaceskip) 0.0
+....\pdfliteral origin{q }
+....\pdfliteral origin{0.3985 w }
+....\glue(\spaceskip) 0.0
+....\pdfliteral origin{Q }
+....\hbox(0.0+0.0)x0.0, direction TLT
+.....\hbox(0.0+0.0)x0.0, direction TLT
+......\pdfliteral origin{q }
+......\glue(\spaceskip) 0.0
+......\pdfliteral origin{Q }
+....\glue(\spaceskip) 0.0
+....\pdfliteral origin{q }
+....\hbox(0.0+0.0)x0.0, direction TLT
+.....\hbox(0.0+0.0)x0.0, direction TLT
+......\pdfliteral origin{q }
+......\glue(\spaceskip) 0.0
+......\glue(\spaceskip) 0.0
+......\glue(\spaceskip) 0.0
+......\glue(\spaceskip) 0.0
+......\glue(\spaceskip) 0.0
+......\pdfliteral origin{q }
+......\hbox(0.0+0.0)x0.0, direction TLT
 .......\glue 227.71512
-.......\hbox(0.0+0.0)x0.0, shifted -33.78273
-........\pdfliteral{1.0 0.0 0.0 1.0 0.0 0.0 cm }
-........\pdfliteral{q }
-........\hbox(0.0+0.0)x0.0
-.........\hbox(5.552+9.58)x28.45274
-..........\pdfliteral{0 0 0 RG }
-..........\pdfliteral{0 0 0 rg }
-..........\hbox(5.552+9.58)x28.45274
-...........\vbox(5.552+9.58)x28.45274
-............\hbox(5.552+0.08)x28.45274, glue set 0.151
+.......\hbox(0.0+0.0)x0.0, shifted -33.78273, direction TLT
+........\pdfliteral origin{1.0 0.0 0.0 1.0 0.0 0.0 cm }
+........\pdfliteral origin{q }
+........\hbox(0.0+0.0)x0.0, direction TLT
+.........\hbox(5.552+9.58)x28.45274, direction TLT
+..........\pdfliteral origin{0 0 0 RG }
+..........\pdfliteral origin{0 0 0 rg }
+..........\hbox(5.552+9.58)x28.45274, direction TLT
+...........\vbox(5.552+9.58)x28.45274, direction TLT
+............\hbox(5.552+0.08)x28.45274, glue set 0.15065, direction TLT
 .............\glue(\leftskip) 0.0 plus 16.0
-.............\hbox(0.0+0.0)x0.0
-.............\hbox(0.0+0.0)x0.0
+.............\localpar
+..............\localinterlinepenalty=0
+..............\localbrokenpenalty=0
+..............\localleftbox=null
+..............\localrightbox=null
+.............\hbox(0.0+0.0)x0.0, direction TLT
+.............\hbox(0.0+0.0)x0.0, direction TLT
 .............\TU/lmss/m/n/8 F
-.............\kern-0.24
+.............\kern-0.24 (font)
 .............\TU/lmss/m/n/8 o
 .............\TU/lmss/m/n/8 u
 .............\TU/lmss/m/n/8 r
@@ -1344,7 +1364,7 @@ Package chronos Info: I'm guessing you don't want bare marks on your timeline. I
 .............\glue(\rightskip) 0.0 plus 16.0
 ............\penalty 300
 ............\glue(\baselineskip) 3.892
-............\hbox(5.528+0.08)x28.45274, glue set 0.256
+............\hbox(5.528+0.08)x28.45274, glue set 0.25615, direction TLT
 .............\glue(\leftskip) 0.0 plus 16.0
 .............\TU/lmss/m/n/8 E
 .............\TU/lmss/m/n/8 v
@@ -1354,101 +1374,106 @@ Package chronos Info: I'm guessing you don't want bare marks on your timeline. I
 .............\penalty 10000
 .............\glue(\parfillskip) 0.0
 .............\glue(\rightskip) 0.0 plus 16.0
-..........\glue 0.0
-........\pdfliteral{Q }
-........\glue 0.0
+..........\glue(\spaceskip) 0.0
+........\pdfliteral origin{Q }
+........\glue(\spaceskip) 0.0
 .......\glue 0.0 plus 1.0fil minus 1.0fil
-......\pdfliteral{Q }
-......\glue 0.0
-......\pdfliteral{Q }
-....\glue 0.0
-....\glue 0.0
-....\pdfliteral{Q }
-....\pdfliteral{q }
-....\pdfliteral{0.3985 w }
-....\glue 0.0
-....\pdfliteral{Q }
-....\pdfliteral{q }
-....\hbox(0.0+0.0)x0.0
-.....\hbox(0.0+0.0)x0.0
-......\pdfliteral{q }
-......\glue 0.0
-......\glue 0.0
-......\glue 0.0
-......\glue 0.0
-......\glue 0.0
-......\pdfliteral{q }
-......\hbox(0.0+0.0)x0.0
+......\pdfliteral origin{Q }
+......\glue(\spaceskip) 0.0
+......\pdfliteral origin{Q }
+....\glue(\spaceskip) 0.0
+....\glue(\spaceskip) 0.0
+....\pdfliteral origin{Q }
+....\pdfliteral origin{q }
+....\pdfliteral origin{0.3985 w }
+....\glue(\spaceskip) 0.0
+....\pdfliteral origin{Q }
+....\pdfliteral origin{q }
+....\hbox(0.0+0.0)x0.0, direction TLT
+.....\hbox(0.0+0.0)x0.0, direction TLT
+......\pdfliteral origin{q }
+......\glue(\spaceskip) 0.0
+......\glue(\spaceskip) 0.0
+......\glue(\spaceskip) 0.0
+......\glue(\spaceskip) 0.0
+......\glue(\spaceskip) 0.0
+......\pdfliteral origin{q }
+......\hbox(0.0+0.0)x0.0, direction TLT
 .......\glue 241.94148
-.......\hbox(0.0+0.0)x0.0, shifted -20.86977
-........\pdfliteral{1.0 0.0 0.0 1.0 0.0 0.0 cm }
-........\pdfliteral{q }
-........\hbox(0.0+0.0)x0.0
-.........\hbox(0.0+0.0)x0.0
-..........\pdfliteral{0 0 0 RG }
-..........\pdfliteral{0 0 0 rg }
-..........\hbox(0.0+0.0)x0.0
-...........\hbox(0.0+0.0)x0.0
-..........\glue 0.0
-........\pdfliteral{Q }
-........\glue 0.0
+.......\hbox(0.0+0.0)x0.0, shifted -20.86977, direction TLT
+........\pdfliteral origin{1.0 0.0 0.0 1.0 0.0 0.0 cm }
+........\pdfliteral origin{q }
+........\hbox(0.0+0.0)x0.0, direction TLT
+.........\hbox(0.0+0.0)x0.0, direction TLT
+..........\pdfliteral origin{0 0 0 RG }
+..........\pdfliteral origin{0 0 0 rg }
+..........\hbox(0.0+0.0)x0.0, direction TLT
+...........\hbox(0.0+0.0)x0.0, direction TLT
+..........\glue(\spaceskip) 0.0
+........\pdfliteral origin{Q }
+........\glue(\spaceskip) 0.0
 .......\glue 0.0 plus 1.0fil minus 1.0fil
-......\pdfliteral{Q }
-......\glue 0.0
-......\pdfliteral{Q }
-....\glue 0.0
-....\glue 0.0
-....\pdfliteral{Q }
-....\glue 0.0
-....\glue 0.0
-....\glue 0.0
-....\glue 0.0
-....\pdfliteral{q }
-....\pdfliteral{0.3985 w }
-....\glue 0.0
-....\pdfliteral{Q }
-....\glue 0.0
-....\hbox(0.0+0.0)x0.0
-.....\hbox(0.0+0.0)x0.0
-......\pdfliteral{q }
-......\glue 0.0
-......\pdfliteral{Q }
-....\glue 0.0
-....\pdfliteral{q }
-....\pdfliteral{0.3985 w }
-....\glue 0.0
-....\pdfliteral{Q }
-....\hbox(0.0+0.0)x0.0
-.....\hbox(0.0+0.0)x0.0
-......\pdfliteral{q }
-......\glue 0.0
-......\pdfliteral{Q }
-....\glue 0.0
-....\pdfliteral{q }
-....\hbox(0.0+0.0)x0.0
-.....\hbox(0.0+0.0)x0.0
-......\pdfliteral{q }
-......\glue 0.0
-......\glue 0.0
-......\glue 0.0
-......\glue 0.0
-......\glue 0.0
-......\pdfliteral{q }
-......\hbox(0.0+0.0)x0.0
+......\pdfliteral origin{Q }
+......\glue(\spaceskip) 0.0
+......\pdfliteral origin{Q }
+....\glue(\spaceskip) 0.0
+....\glue(\spaceskip) 0.0
+....\pdfliteral origin{Q }
+....\glue(\spaceskip) 0.0
+....\glue(\spaceskip) 0.0
+....\glue(\spaceskip) 0.0
+....\glue(\spaceskip) 0.0
+....\pdfliteral origin{q }
+....\pdfliteral origin{0.3985 w }
+....\glue(\spaceskip) 0.0
+....\pdfliteral origin{Q }
+....\glue(\spaceskip) 0.0
+....\hbox(0.0+0.0)x0.0, direction TLT
+.....\hbox(0.0+0.0)x0.0, direction TLT
+......\pdfliteral origin{q }
+......\glue(\spaceskip) 0.0
+......\pdfliteral origin{Q }
+....\glue(\spaceskip) 0.0
+....\pdfliteral origin{q }
+....\pdfliteral origin{0.3985 w }
+....\glue(\spaceskip) 0.0
+....\pdfliteral origin{Q }
+....\hbox(0.0+0.0)x0.0, direction TLT
+.....\hbox(0.0+0.0)x0.0, direction TLT
+......\pdfliteral origin{q }
+......\glue(\spaceskip) 0.0
+......\pdfliteral origin{Q }
+....\glue(\spaceskip) 0.0
+....\pdfliteral origin{q }
+....\hbox(0.0+0.0)x0.0, direction TLT
+.....\hbox(0.0+0.0)x0.0, direction TLT
+......\pdfliteral origin{q }
+......\glue(\spaceskip) 0.0
+......\glue(\spaceskip) 0.0
+......\glue(\spaceskip) 0.0
+......\glue(\spaceskip) 0.0
+......\glue(\spaceskip) 0.0
+......\pdfliteral origin{q }
+......\hbox(0.0+0.0)x0.0, direction TLT
 .......\glue 214.84709
-.......\hbox(0.0+0.0)x0.0, shifted 24.83475
-........\pdfliteral{1.0 0.0 0.0 1.0 0.0 0.0 cm }
-........\pdfliteral{q }
-........\hbox(0.0+0.0)x0.0
-.........\hbox(5.632+9.58)x28.45274
-..........\pdfliteral{0 0 0 RG }
-..........\pdfliteral{0 0 0 rg }
-..........\hbox(5.632+9.58)x28.45274
-...........\vbox(5.632+9.58)x28.45274
-............\hbox(5.632+0.08)x28.45274, glue set 0.359
+.......\hbox(0.0+0.0)x0.0, shifted 24.83475, direction TLT
+........\pdfliteral origin{1.0 0.0 0.0 1.0 0.0 0.0 cm }
+........\pdfliteral origin{q }
+........\hbox(0.0+0.0)x0.0, direction TLT
+.........\hbox(5.632+9.58)x28.45274, direction TLT
+..........\pdfliteral origin{0 0 0 RG }
+..........\pdfliteral origin{0 0 0 rg }
+..........\hbox(5.632+9.58)x28.45274, direction TLT
+...........\vbox(5.632+9.58)x28.45274, direction TLT
+............\hbox(5.632+0.08)x28.45274, glue set 0.3594, direction TLT
 .............\glue(\leftskip) 0.0 plus 16.0
-.............\hbox(0.0+0.0)x0.0
-.............\hbox(0.0+0.0)x0.0
+.............\localpar
+..............\localinterlinepenalty=0
+..............\localbrokenpenalty=0
+..............\localleftbox=null
+..............\localrightbox=null
+.............\hbox(0.0+0.0)x0.0, direction TLT
+.............\hbox(0.0+0.0)x0.0, direction TLT
 .............\TU/lmss/m/n/8 F
 .............\TU/lmss/m/n/8 i
 .............\TU/lmss/m/n/8 f
@@ -1457,7 +1482,7 @@ Package chronos Info: I'm guessing you don't want bare marks on your timeline. I
 .............\glue(\rightskip) 0.0 plus 16.0
 ............\penalty 300
 ............\glue(\baselineskip) 3.892
-............\hbox(5.528+0.08)x28.45274, glue set 0.256
+............\hbox(5.528+0.08)x28.45274, glue set 0.25615, direction TLT
 .............\glue(\leftskip) 0.0 plus 16.0
 .............\TU/lmss/m/n/8 E
 .............\TU/lmss/m/n/8 v
@@ -1467,101 +1492,106 @@ Package chronos Info: I'm guessing you don't want bare marks on your timeline. I
 .............\penalty 10000
 .............\glue(\parfillskip) 0.0
 .............\glue(\rightskip) 0.0 plus 16.0
-..........\glue 0.0
-........\pdfliteral{Q }
-........\glue 0.0
+..........\glue(\spaceskip) 0.0
+........\pdfliteral origin{Q }
+........\glue(\spaceskip) 0.0
 .......\glue 0.0 plus 1.0fil minus 1.0fil
-......\pdfliteral{Q }
-......\glue 0.0
-......\pdfliteral{Q }
-....\glue 0.0
-....\glue 0.0
-....\pdfliteral{Q }
-....\pdfliteral{q }
-....\pdfliteral{0.3985 w }
-....\glue 0.0
-....\pdfliteral{Q }
-....\pdfliteral{q }
-....\hbox(0.0+0.0)x0.0
-.....\hbox(0.0+0.0)x0.0
-......\pdfliteral{q }
-......\glue 0.0
-......\glue 0.0
-......\glue 0.0
-......\glue 0.0
-......\glue 0.0
-......\pdfliteral{q }
-......\hbox(0.0+0.0)x0.0
+......\pdfliteral origin{Q }
+......\glue(\spaceskip) 0.0
+......\pdfliteral origin{Q }
+....\glue(\spaceskip) 0.0
+....\glue(\spaceskip) 0.0
+....\pdfliteral origin{Q }
+....\pdfliteral origin{q }
+....\pdfliteral origin{0.3985 w }
+....\glue(\spaceskip) 0.0
+....\pdfliteral origin{Q }
+....\pdfliteral origin{q }
+....\hbox(0.0+0.0)x0.0, direction TLT
+.....\hbox(0.0+0.0)x0.0, direction TLT
+......\pdfliteral origin{q }
+......\glue(\spaceskip) 0.0
+......\glue(\spaceskip) 0.0
+......\glue(\spaceskip) 0.0
+......\glue(\spaceskip) 0.0
+......\glue(\spaceskip) 0.0
+......\pdfliteral origin{q }
+......\hbox(0.0+0.0)x0.0, direction TLT
 .......\glue 229.07346
-.......\hbox(0.0+0.0)x0.0, shifted 15.86977
-........\pdfliteral{1.0 0.0 0.0 1.0 0.0 0.0 cm }
-........\pdfliteral{q }
-........\hbox(0.0+0.0)x0.0
-.........\hbox(0.0+0.0)x0.0
-..........\pdfliteral{0 0 0 RG }
-..........\pdfliteral{0 0 0 rg }
-..........\hbox(0.0+0.0)x0.0
-...........\hbox(0.0+0.0)x0.0
-..........\glue 0.0
-........\pdfliteral{Q }
-........\glue 0.0
+.......\hbox(0.0+0.0)x0.0, shifted 15.86977, direction TLT
+........\pdfliteral origin{1.0 0.0 0.0 1.0 0.0 0.0 cm }
+........\pdfliteral origin{q }
+........\hbox(0.0+0.0)x0.0, direction TLT
+.........\hbox(0.0+0.0)x0.0, direction TLT
+..........\pdfliteral origin{0 0 0 RG }
+..........\pdfliteral origin{0 0 0 rg }
+..........\hbox(0.0+0.0)x0.0, direction TLT
+...........\hbox(0.0+0.0)x0.0, direction TLT
+..........\glue(\spaceskip) 0.0
+........\pdfliteral origin{Q }
+........\glue(\spaceskip) 0.0
 .......\glue 0.0 plus 1.0fil minus 1.0fil
-......\pdfliteral{Q }
-......\glue 0.0
-......\pdfliteral{Q }
-....\glue 0.0
-....\glue 0.0
-....\pdfliteral{Q }
-....\glue 0.0
-....\glue 0.0
-....\glue 0.0
-....\glue 0.0
-....\pdfliteral{q }
-....\pdfliteral{0.3985 w }
-....\glue 0.0
-....\pdfliteral{Q }
-....\glue 0.0
-....\hbox(0.0+0.0)x0.0
-.....\hbox(0.0+0.0)x0.0
-......\pdfliteral{q }
-......\glue 0.0
-......\pdfliteral{Q }
-....\glue 0.0
-....\pdfliteral{q }
-....\pdfliteral{0.3985 w }
-....\glue 0.0
-....\pdfliteral{Q }
-....\hbox(0.0+0.0)x0.0
-.....\hbox(0.0+0.0)x0.0
-......\pdfliteral{q }
-......\glue 0.0
-......\pdfliteral{Q }
-....\glue 0.0
-....\pdfliteral{q }
-....\hbox(0.0+0.0)x0.0
-.....\hbox(0.0+0.0)x0.0
-......\pdfliteral{q }
-......\glue 0.0
-......\glue 0.0
-......\glue 0.0
-......\glue 0.0
-......\glue 0.0
-......\pdfliteral{q }
-......\hbox(0.0+0.0)x0.0
+......\pdfliteral origin{Q }
+......\glue(\spaceskip) 0.0
+......\pdfliteral origin{Q }
+....\glue(\spaceskip) 0.0
+....\glue(\spaceskip) 0.0
+....\pdfliteral origin{Q }
+....\glue(\spaceskip) 0.0
+....\glue(\spaceskip) 0.0
+....\glue(\spaceskip) 0.0
+....\glue(\spaceskip) 0.0
+....\pdfliteral origin{q }
+....\pdfliteral origin{0.3985 w }
+....\glue(\spaceskip) 0.0
+....\pdfliteral origin{Q }
+....\glue(\spaceskip) 0.0
+....\hbox(0.0+0.0)x0.0, direction TLT
+.....\hbox(0.0+0.0)x0.0, direction TLT
+......\pdfliteral origin{q }
+......\glue(\spaceskip) 0.0
+......\pdfliteral origin{Q }
+....\glue(\spaceskip) 0.0
+....\pdfliteral origin{q }
+....\pdfliteral origin{0.3985 w }
+....\glue(\spaceskip) 0.0
+....\pdfliteral origin{Q }
+....\hbox(0.0+0.0)x0.0, direction TLT
+.....\hbox(0.0+0.0)x0.0, direction TLT
+......\pdfliteral origin{q }
+......\glue(\spaceskip) 0.0
+......\pdfliteral origin{Q }
+....\glue(\spaceskip) 0.0
+....\pdfliteral origin{q }
+....\hbox(0.0+0.0)x0.0, direction TLT
+.....\hbox(0.0+0.0)x0.0, direction TLT
+......\pdfliteral origin{q }
+......\glue(\spaceskip) 0.0
+......\glue(\spaceskip) 0.0
+......\glue(\spaceskip) 0.0
+......\glue(\spaceskip) 0.0
+......\glue(\spaceskip) 0.0
+......\pdfliteral origin{q }
+......\hbox(0.0+0.0)x0.0, direction TLT
 .......\glue 119.61241
-.......\hbox(0.0+0.0)x0.0, shifted -33.78273
-........\pdfliteral{1.0 0.0 0.0 1.0 0.0 0.0 cm }
-........\pdfliteral{q }
-........\hbox(0.0+0.0)x0.0
-.........\hbox(5.72+9.58)x28.45274
-..........\pdfliteral{0 0 0 RG }
-..........\pdfliteral{0 0 0 rg }
-..........\hbox(5.72+9.58)x28.45274
-...........\vbox(5.72+9.58)x28.45274
-............\hbox(5.72+0.168)x28.45274, glue set 0.323
+.......\hbox(0.0+0.0)x0.0, shifted -33.78273, direction TLT
+........\pdfliteral origin{1.0 0.0 0.0 1.0 0.0 0.0 cm }
+........\pdfliteral origin{q }
+........\hbox(0.0+0.0)x0.0, direction TLT
+.........\hbox(5.72+9.58)x28.45274, direction TLT
+..........\pdfliteral origin{0 0 0 RG }
+..........\pdfliteral origin{0 0 0 rg }
+..........\hbox(5.72+9.58)x28.45274, direction TLT
+...........\vbox(5.72+9.58)x28.45274, direction TLT
+............\hbox(5.72+0.168)x28.45274, glue set 0.32265, direction TLT
 .............\glue(\leftskip) 0.0 plus 16.0
-.............\hbox(0.0+0.0)x0.0
-.............\hbox(0.0+0.0)x0.0
+.............\localpar
+..............\localinterlinepenalty=0
+..............\localbrokenpenalty=0
+..............\localleftbox=null
+..............\localrightbox=null
+.............\hbox(0.0+0.0)x0.0, direction TLT
+.............\hbox(0.0+0.0)x0.0, direction TLT
 .............\TU/lmss/m/n/8 S
 .............\TU/lmss/m/n/8 i
 .............\TU/lmss/m/n/8 x
@@ -1570,7 +1600,7 @@ Package chronos Info: I'm guessing you don't want bare marks on your timeline. I
 .............\glue(\rightskip) 0.0 plus 16.0
 ............\penalty 300
 ............\glue(\baselineskip) 3.804
-............\hbox(5.528+0.08)x28.45274, glue set 0.256
+............\hbox(5.528+0.08)x28.45274, glue set 0.25615, direction TLT
 .............\glue(\leftskip) 0.0 plus 16.0
 .............\TU/lmss/m/n/8 E
 .............\TU/lmss/m/n/8 v
@@ -1580,75 +1610,75 @@ Package chronos Info: I'm guessing you don't want bare marks on your timeline. I
 .............\penalty 10000
 .............\glue(\parfillskip) 0.0
 .............\glue(\rightskip) 0.0 plus 16.0
-..........\glue 0.0
-........\pdfliteral{Q }
-........\glue 0.0
+..........\glue(\spaceskip) 0.0
+........\pdfliteral origin{Q }
+........\glue(\spaceskip) 0.0
 .......\glue 0.0 plus 1.0fil minus 1.0fil
-......\pdfliteral{Q }
-......\glue 0.0
-......\pdfliteral{Q }
-....\glue 0.0
-....\glue 0.0
-....\pdfliteral{Q }
-....\pdfliteral{q }
-....\pdfliteral{0.3985 w }
-....\glue 0.0
-....\pdfliteral{Q }
-....\pdfliteral{q }
-....\hbox(0.0+0.0)x0.0
-.....\hbox(0.0+0.0)x0.0
-......\pdfliteral{q }
-......\glue 0.0
-......\glue 0.0
-......\glue 0.0
-......\glue 0.0
-......\glue 0.0
-......\pdfliteral{q }
-......\hbox(0.0+0.0)x0.0
+......\pdfliteral origin{Q }
+......\glue(\spaceskip) 0.0
+......\pdfliteral origin{Q }
+....\glue(\spaceskip) 0.0
+....\glue(\spaceskip) 0.0
+....\pdfliteral origin{Q }
+....\pdfliteral origin{q }
+....\pdfliteral origin{0.3985 w }
+....\glue(\spaceskip) 0.0
+....\pdfliteral origin{Q }
+....\pdfliteral origin{q }
+....\hbox(0.0+0.0)x0.0, direction TLT
+.....\hbox(0.0+0.0)x0.0, direction TLT
+......\pdfliteral origin{q }
+......\glue(\spaceskip) 0.0
+......\glue(\spaceskip) 0.0
+......\glue(\spaceskip) 0.0
+......\glue(\spaceskip) 0.0
+......\glue(\spaceskip) 0.0
+......\pdfliteral origin{q }
+......\hbox(0.0+0.0)x0.0, direction TLT
 .......\glue 133.83878
-.......\hbox(0.0+0.0)x0.0, shifted -20.86977
-........\pdfliteral{1.0 0.0 0.0 1.0 0.0 0.0 cm }
-........\pdfliteral{q }
-........\hbox(0.0+0.0)x0.0
-.........\hbox(0.0+0.0)x0.0
-..........\pdfliteral{0 0 0 RG }
-..........\pdfliteral{0 0 0 rg }
-..........\hbox(0.0+0.0)x0.0
-...........\hbox(0.0+0.0)x0.0
-..........\glue 0.0
-........\pdfliteral{Q }
-........\glue 0.0
+.......\hbox(0.0+0.0)x0.0, shifted -20.86977, direction TLT
+........\pdfliteral origin{1.0 0.0 0.0 1.0 0.0 0.0 cm }
+........\pdfliteral origin{q }
+........\hbox(0.0+0.0)x0.0, direction TLT
+.........\hbox(0.0+0.0)x0.0, direction TLT
+..........\pdfliteral origin{0 0 0 RG }
+..........\pdfliteral origin{0 0 0 rg }
+..........\hbox(0.0+0.0)x0.0, direction TLT
+...........\hbox(0.0+0.0)x0.0, direction TLT
+..........\glue(\spaceskip) 0.0
+........\pdfliteral origin{Q }
+........\glue(\spaceskip) 0.0
 .......\glue 0.0 plus 1.0fil minus 1.0fil
-......\pdfliteral{Q }
-......\glue 0.0
-......\pdfliteral{Q }
-....\glue 0.0
-....\glue 0.0
-....\pdfliteral{Q }
-....\glue 0.0
-....\glue 0.0
-....\glue 0.0
-....\glue 0.0
-....\pdfliteral{q }
-....\pdfliteral{0.3985 w }
-....\glue 0.0
-....\pdfliteral{Q }
-....\glue 0.0
-....\glue 0.0
-....\pdfliteral{Q }
-....\glue 0.0
-....\pdfliteral{Q }
+......\pdfliteral origin{Q }
+......\glue(\spaceskip) 0.0
+......\pdfliteral origin{Q }
+....\glue(\spaceskip) 0.0
+....\glue(\spaceskip) 0.0
+....\pdfliteral origin{Q }
+....\glue(\spaceskip) 0.0
+....\glue(\spaceskip) 0.0
+....\glue(\spaceskip) 0.0
+....\glue(\spaceskip) 0.0
+....\pdfliteral origin{q }
+....\pdfliteral origin{0.3985 w }
+....\glue(\spaceskip) 0.0
+....\pdfliteral origin{Q }
+....\glue(\spaceskip) 0.0
+....\glue(\spaceskip) 0.0
+....\pdfliteral origin{Q }
+....\glue(\spaceskip) 0.0
+....\pdfliteral origin{Q }
 ....\glue 0.0 plus 1.0fil minus 1.0fil
-...\pdfliteral{q }
-...\pdfliteral{Q }
-...\pdfliteral{q }
-...\pdfliteral{Q }
-...\pdfliteral{n }
-...\pdfliteral{Q }
+...\pdfliteral origin{q }
+...\pdfliteral origin{Q }
+...\pdfliteral origin{q }
+...\pdfliteral origin{Q }
+...\pdfliteral origin{n }
+...\pdfliteral origin{Q }
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 ! OK.
 <argument> ...hift=10pt} \end {chronos}}\showbox \chronosbox 
-\OMIT \box \chronosbox \TIMO 
+                                                  \OMIT \box \chronosbox \TIMO 
 l. ...}
 ============================================================
 [1
