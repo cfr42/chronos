@@ -80,7 +80,7 @@ jobs:
         # if not tagging for release, archive the docs
         # o/w recheck & rebuild for ctan & archive the zip if successful
       - name: Archive docs
-        if: ${{ !(contains(github.ref_name, "chronos-[0-9].[0-9]")) }}
+        if: ${{ !(contains(github.ref_name, "chronos\-[0-9].[0-9]")) }}
       # dwyn o https://github.com/latex3/latex2e/blob/develop/.github/workflows/main.yaml
         uses: actions/upload-artifact@v4
         with:
@@ -90,11 +90,11 @@ jobs:
           retention-days: 30
       - name: Run l3build
       # only if releasing (and build succeeded) 
-        if: ${{ contains(github.ref_name, "chronos-[0-9].[0-9]") }}
+        if: ${{ contains(github.ref_name, "chronos\-[0-9].[0-9]") }}
         run: l3build ctan
       - name: Archive release zip
       # archive only if releasing (and build success)
-        if: ${{ contains(github.ref_name, "chronos-[0-9].[0-9]") }}
+        if: ${{ contains(github.ref_name, "chronos\-[0-9].[0-9]") }}
         # dwyn o https://github.com/latex3/latex2e/blob/develop/.github/workflows/main.yaml
         uses: actions/upload-artifact@v4
         with:
