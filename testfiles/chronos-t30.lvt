@@ -35,6 +35,9 @@
 \setlogokern{aT}{-0.05em}
 \usepackage{fontawesome}
 \usetikzlibrary{ext.paths.ortho}
+\ifxetex
+  \renewfontfamily{\FA}{FontAwesome.otf}
+\fi
 \begin{document}
 \START
 \arbennig
