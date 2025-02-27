@@ -1,4 +1,4 @@
--- $Id: build.lua 10878 2025-02-27 07:05:05Z cfrees $
+-- $Id: build.lua 10882 2025-02-27 08:46:17Z cfrees $
 -- Build configuration for chronos
 --------------------------------------------------------------------------------
 maindir = maindir or "."
@@ -26,7 +26,7 @@ uploadconfig = {
   uploader = "Clea F. Rees",
   license = "lppl1.3c",
   update = false,
-  summary = "TikZ-based package for drawing customisable timelines with pgfkeys-based configuration and support for colour schemes, styles and memoization.",
+  summary = "TikZ-based package for drawing customisable timelines with support for colour schemes, styles and memoization.",
   description = "The package supports drawing timelines and aims to be highly customisable. Extensive configuration options are offered via a standard key-value interface based on pgfkeys. Custom colour schemes and styles are supported, and the package includes documented examples of each. Memoization works out-of-the-box if the memoize package is loaded. The code was developed as a result of questions concerning difficulties in customising the output of existing packages for drawing timelines, which sometimes eschew pgfkeys and are often challenging to configure, even when based on PGF/TikZ.",
 	bugtracker = "https://codeberg.org/cfr/chronos/issues",
 	repository = {"https://codeberg.org/cfr/chronos", "https://github.com/cfr42/chronos"},
