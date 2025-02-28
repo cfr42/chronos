@@ -12,9 +12,9 @@ checkengines = { "pdftex", "luatex" }
 checkopts = "-interaction=nonstopmode -cnf-line='TEXMFHOME=.' -cnf-line='TEXMFLOCAL=.' -cnf-line='TEXMFARCH=.'"
 -- indexstyle = "gind.ist"
 manifestfile = "manifest.txt"
-sourcefiles = {"*.sty","chronos.tex"}
-tagfiles = { "*.dtx", "README.md", "*.sty", "chronos.tex", "manifest.txt" }
-typesetfiles = {"chronos.tex"}
+sourcefiles = {"*.dtx","*.ins","chronos.tex"}
+tagfiles = { "*.dtx", "README.md", "build.lua", "*.sty", "chronos.tex", "manifest.txt" }
+typesetfiles = {"chronos.tex", "chronos.dtx"}
 typesetopts = "-interaction=nonstopmode -cnf-line='TEXMFHOME=.' -cnf-line='TEXMFLOCAL=.' -cnf-line='TEXMFARCH=.'"
 typesetruns = 4
 --------------------------------------------------------------------------------
