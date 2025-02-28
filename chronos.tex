@@ -34,14 +34,12 @@
 \let\chronosdocdate\filedate
 % BEGIN preamble
 \documentclass[10pt,british,a4paper]{ltxdoc}
-% \usepackage[dvipsnames,svgnames,rgb,x11names]{xcolor}
 \usepackage{svn-multi}
 \svnid{$Id: chronos.tex 10883 2025-02-27 23:29:01Z cfrees $}
 \svnRegisterAuthor{cfrees}{Clea F. Rees}
 \usepackage[extract=python]{memoize}
 \mmzset{%
   prefix=memos/,
-%   path={dir=memos},
   auto=\cref{multiref},
   auto=\Cref{multiref},
   auto=\labelcref{multiref},
@@ -56,7 +54,6 @@
   auto=\crefrange{refrange},
   auto=\cpagerefrange{refrange},
   auto=\Cpagerefrange{refrange},
-%   mkdir,
   % deactivate csname=pgfsys@getposition,
 }
 \usepackage{chronos}
@@ -81,8 +78,6 @@
 \usepackage{tabularx}
 \usepackage{array}
 \usepackage{subcaption}
-% \usepackage{environ}
-% \usepackage{listings}
 \usepackage{csquotes}
   \MakeAutoQuote{‘}{’}
   \MakeAutoQuote*{“}{”}
@@ -96,14 +91,6 @@
 \newcommand*{\fycheck}{\checkmark}
 \newcommand*{\fycross}{--}
 \newcommand* \sqarrow {\reflectbox{\Pisymbol{psy}{191}}}
-% \usetikzlibrary{decorations.pathreplacing,arrows.meta,positioning,calc,arrows.meta,fit,backgrounds,tikzmark}
-% \tikzset{%
-%   nodiad/.style={text=#1, draw=#1, font=\footnotesize\scshape, align=left, shorten >=-1.5pt, shorten <=-1.5pt, {Circle[width=3pt, length=3pt, fill=#1]}-{Circle[width=3pt, length=3pt, fill=#1]}, fill=none},
-%   grwp/.style={fill opacity=.25, fill=#1, rounded corners, draw=#1},
-%   post grwp/.style={fill=white, postaction={fill opacity=.25, fill=#1}, draw=#1, rounded corners},
-% }
-% \usepackage{tcolorbox}
-% \tcbuselibrary{listings,xparse}%,breakable}% if you use skins, you need to disable externalisation for boxes which use the relevant options - gweler nodiadau/tex/tex.se/tcolorbox-coursepacket-exp.tex
 \usepackage[%
   loadHyperref=true,
   createIndexEntries=false,
@@ -1246,75 +1233,6 @@
 \setlength\tewadjust{\marginparwidth+\marginparsep-\paperwidth+\textwidth+\oddsidemargin+1in}
 \newlength\chronosdoctemplgth
 \setlength\chronosdoctemplgth{0pt}
-\makeatletter
-% \NewDocumentEnvironment {chronosdocee} { O {} m m +b }
-% {%
-%   \begin{figure}
-%     \centering
-%     \caption{#2}\label{#3}%
-%     \begin{chronoscode}[#1]
-%       #4
-%     \end{chronoscode}
-%     #4
-%   \end{figure}
-% }{}
-% \environbodyname\chronosbody
-% \NewEnviron{chronosdocee}[2]{%
-%   \begin{figure}
-%     \centering
-%     \caption{#1}\label{#2}%
-% %     \begin{chronoscode}
-% %       \chronosbody
-% %     \end{chronoscode}
-%     \chronosbody
-%   \end{figure}%  
-% }
-% \tcbset{%
-%   chronos ee/.style={
-%     colback=doc@demo@backcolor,
-%     colframe=doc@rulecolor,
-%     halign=center,
-%     fonttitle=\sffamily\plstyle\bfseries,
-%     sharpish corners,
-%     list entry={\protect\numberline{\thetcbcounter\textbar}#1},
-%     title={\fbox{\plstyle\thetcbcounter}\hskip 1.5em #1},
-% %     float,
-% %     floatplacement={!tbp},
-%   },
-%   chronos dew/.style={
-%     chronos ee=#1,
-%     grow to left by=\tewadjust,
-%   },
-%   cod chronos/.style={
-%     chronos ee=#1,
-%     listing style=lstchronos,
-%   },
-%   cod chronos dew/.style={
-%     cod chronos=#1,
-%     grow to left by=\tewadjust,
-%   },
-%   every float=\centering,
-% }
-\makeatother
-% \NewTColorBox[auto counter, crefname={box}{boxes}, Crefname={Box}{Boxes},]{chronosbox}{s O {} m }
-% {%
-%   IfBooleanTF={#1}{chronos dew=#3}{chronos ee=#3},
-%   #2,
-% }
-% \NewTCBListing[use counter from=chronosbox, crefname={box}{boxes}, Crefname={Box}{Boxes}]{codchronosbox}{ s O {} m }
-% {%
-%   IfBooleanTF={#1}{cod chronos dew=#3}{cod chronos=#3},
-%   listing side text,
-%   halign lower=center,
-%   #2,
-% }
-% \NewTCBListing[use counter from=chronosbox, crefname={box}{boxes}, Crefname={Box}{Boxes}]{codchronoshirbox}{ s O {} m }
-% {%
-%   IfBooleanTF={#1}{cod chronos dew=#3}{cod chronos=#3},
-%   listing above text,
-%   halign lower=center,
-%   #2,
-% }
 \newcommand*\TikZ{Ti\emph{k}Z}
 \newcommand*\PGF{PGF}
 \newcommand*\pgf{PGF}
