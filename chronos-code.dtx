@@ -32,8 +32,7 @@
 % ref. ateb Max Chernoff: https://tex.stackexchange.com/a/723294/
 \def\MakePrivateLetters{\makeatletter\ExplSyntaxOn\endlinechar13}
 \ExplSyntaxOff
-\ProvidesFileSVN{$Id: chronos.dtx 10838 2025-02-21 06:42:11Z cfrees $}[v0.0 \revinfo][\filename: \filebase]
-\revinfo][\filebase DTX: ]
+\ProvidesFileSVN{$Id: chronos.dtx 10838 2025-02-21 06:42:11Z cfrees $}[v0.0 \revinfo][\filebase DTX: Customisable TikZ-based timelines]
 \DefineFileInfoSVN[chronos]
 \documentclass[11pt,british]{ltxdoc}
 % l3doc loads fancyvrb
@@ -49,9 +48,7 @@
 \usepackage{babel}
 \usepackage{fancyhdr}
 \usepackage[plain]{fancyref}
-\usepackage{xcolor}
 \usepackage{xurl}
-% \urlstyle{tt}
 \urlstyle{sf}
 \usepackage{microtype}
 \usepackage[a4paper,headheight=14pt,marginparwidth=45mm,hmarginratio=4:1,vscale=.8,hscale=.7,verbose]{geometry}	% use 14pt for 11pt text, 15pt for 12pt text
@@ -5691,4 +5688,4 @@
 % 
 %\Finale
 % 
-%% vim: et:tw=0:sw=2:ts=2:
+%% vim: et:tw=0:sw=2:ts=2:foldmethod=marker:fmr=<<<,>>>:

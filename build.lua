@@ -14,7 +14,7 @@ checkopts = "-interaction=nonstopmode -cnf-line='TEXMFHOME=.' -cnf-line='TEXMFLO
 manifestfile = "manifest.txt"
 sourcefiles = {"*.dtx","*.ins","chronos.tex"}
 tagfiles = { "*.dtx", "README.md", "build.lua", "*.sty", "chronos.tex", "manifest.txt" }
-typesetfiles = {"chronos.tex", "chronos.dtx"}
+typesetfiles = {"*-doc.tex", "*-code.tex"}
 typesetopts = "-interaction=nonstopmode -cnf-line='TEXMFHOME=.' -cnf-line='TEXMFLOCAL=.' -cnf-line='TEXMFARCH=.'"
 typesetruns = 4
 --------------------------------------------------------------------------------
