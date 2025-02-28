@@ -13,7 +13,7 @@
 %% The Current Maintainer of this work is Clea F. Rees.
 %%
 %% This file may only be distributed together with a copy of the package
-%% prooftrees. You may however distribute the package prooftrees without
+%% chronos. You may however distribute the package chronos without
 %% such generated files.
 %%
 %% This work consists of all files listed in manifest.txt.
@@ -21,12 +21,12 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % arara: pdflatex: { synctex: true, shell: false }
 % makeindex -s gind.ist 
-% biber --output_format=bibtex --output_resolve prooftrees.bcf to generate .bib for upload
+% biber --output_format=bibtex --output_resolve chronos.bcf to generate .bib for upload
 % sed -i '/1977/s/DATE/YEAR'
 %%
 \pdfminorversion=7
 \RequirePackage{svn-prov}
-\ProvidesFileSVN{$Id: chronos.tex 10883 2025-02-27 23:29:01Z cfrees $}[v0.9 \revinfo]
+\ProvidesFileSVN{$Id: chronos.tex 10885 2025-02-28 21:34:09Z cfrees $}[v0.9 \revinfo]
 \GetFileInfoSVN*
 \let\chronosdocversion\fileversion
 \let\chronosdocbase\filebase
@@ -36,7 +36,7 @@
 \documentclass[10pt,british,a4paper]{ltxdoc}
 % \usepackage[dvipsnames,svgnames,rgb,x11names]{xcolor}
 \usepackage{svn-multi}
-\svnid{$Id: chronos.tex 10883 2025-02-27 23:29:01Z cfrees $}
+\svnid{$Id: chronos.tex 10885 2025-02-28 21:34:09Z cfrees $}
 \svnRegisterAuthor{cfrees}{Clea F. Rees}
 \usepackage[extract=python]{memoize}
 \mmzset{%
@@ -6942,7 +6942,7 @@ in \keyname[type=chronosstyle,link,no idx]{modern}'s definition, but why \emph{f
 Certain \keyslabelname{} require one or more additional doublings of hashes.
 Anytime you use an \texttt{every} \keylabelname{}, you need to double.
 Double double makes four, so we get \texttt{text=\#\#\#\#1}\footnote{%
-  For real fun with hashes, may I recommend \pkg{prooftrees} or \pkg{forest}?}.
+  For real fun with hashes, may I recommend \pkg{chronos} or \pkg{forest}?}.
 
 
 Elsewhere, a single doubling is generally sufficient, as shown in these lines from the definition of \keyname[type=chronosstyle,link,idx post=doubling of hashes in]{plain arrow}
