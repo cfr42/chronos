@@ -12,11 +12,12 @@ checkengines = { "pdftex", "luatex" }
 checkopts = "-interaction=nonstopmode -cnf-line='TEXMFHOME=.' -cnf-line='TEXMFLOCAL=.' -cnf-line='TEXMFARCH=.'"
 -- indexstyle = "gind.ist"
 manifestfile = "manifest.txt"
-sourcefiles = {"*.dtx","*.ins","chronos.tex"}
+-- sourcefiles = {"*.dtx","*.ins","chronos.tex"}
+sourcefiles = {"*.dtx","*.ins"}
 tagfiles = { "*.dtx", "README.md", "build.lua", "*.sty", "chronos.tex", "manifest.txt" }
 typesetfiles = {"*-doc.tex", "*-code.tex"}
 typesetopts = "-interaction=nonstopmode -cnf-line='TEXMFHOME=.' -cnf-line='TEXMFLOCAL=.' -cnf-line='TEXMFARCH=.'"
-typesetruns = 4
+typesetruns = 1 -- 4
 --------------------------------------------------------------------------------
 uploadconfig = {
   ctanPath = "/macros/latex/contrib/chronos",
