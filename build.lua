@@ -1,4 +1,4 @@
--- $Id: build.lua 10882 2025-02-27 08:46:17Z cfrees $
+-- $Id: build.lua 10887 2025-03-01 01:36:24Z cfrees $
 -- Build configuration for chronos
 --------------------------------------------------------------------------------
 maindir = maindir or "."
@@ -31,7 +31,7 @@ uploadconfig = {
 	bugtracker = "https://codeberg.org/cfr/chronos/issues",
 	repository = {"https://codeberg.org/cfr/chronos", "https://github.com/cfr42/chronos"},
   topic = {"diagrams", "pgf-tikz", "expl3", "calendar"},
-  note = "I'm not sure if it is permitted to suggest a new tag, but questions on TeX SE suggest 'timelines' or 'timeline' might be useful in search terms. I wouldn't call the diagrams this constructs a 'calendar' exactly, but I couldn't find an existing tag with a better fit. But I understand if you don't want to proliferate topics.",
+  note = "Thanks for noticing I'd left prooftrees references in this. Sorry about that. I do not know if you will accept this since I have not changed the name. However, I have checked with Karl and he thinks the existing name is OK, so maybe ...? Given TL are OK with it, I really don't see any compelling reason to break existing users' documents by changing an existing name already established on TeX SE. I hope this will be acceptable to you.",
 }
 --------------------------------------------------------------------------------
 date = "2023-2025"
