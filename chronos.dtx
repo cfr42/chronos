@@ -30,7 +30,7 @@
 %^^A ref. ateb Max Chernoff: https://tex.stackexchange.com/a/723294/
 \def\MyMakePrivateLetters{\makeatletter\ExplSyntaxOn\endlinechar13}
 \ExplSyntaxOff
-\ProvidesFileSVN{$Id: chronos.dtx 10883 2025-02-27 23:29:01Z cfrees $}[v0.9 \revinfo][\filebase DTX: ]
+\ProvidesFileSVN{$Id: chronos.dtx 10888 2025-03-01 19:43:22Z cfrees $}[v0.9 \revinfo][\filebase DTX: ]
 \DefineFileInfoSVN[chronos]
 \GetFileInfoSVN*
 \let\chronosdocversion\fileversion
@@ -1259,8 +1259,8 @@
   \renewcommand*\headrulewidth{0pt}}
 \setcounter{secnumdepth}{5}
 \patchcmd{\sectionmark}{\MakeUppercase}{}{\typeout{sectionmark patched OK!}}{\typeout{sectionmark patch failed!}}
-\patchcmd{\tableofcontents}{\MakeUppercase}{}{\typeout{sectionmark patched OK!}}{\typeout{sectionmark patch failed!}}
-\patchcmd{\tableofcontents}{\MakeUppercase\contentsname}{}{\typeout{sectionmark patched OK!}}{\typeout{sectionmark patch failed!}}
+\patchcmd{\HDorg@tableofcontents}{\MakeUppercase}{}{\typeout{sectionmark patched OK!}}{\typeout{sectionmark patch failed!}}
+\patchcmd{\HDorg@tableofcontents}{\MakeUppercase\contentsname}{}{\typeout{sectionmark patched OK!}}{\typeout{sectionmark patch failed!}}
 %^^A addaswyd o pethau-cfr.sty, cleveref.cfg
 \newlist{chronosmethod}{enumerate}{2}
 \setlist[chronosmethod,1]{label=\textbf{Method \arabic*:},ref=\arabic*,wide}
@@ -1315,6 +1315,7 @@
 \definecolor{strawberry}{rgb}{1.000,0.000,0.502}
 \definecolor{blueberry}{rgb}{0.000,0.000,1.000}
 \definecolor{moss}{rgb}{0.000,0.502,0.251}
+\makeatother
 %^^A END preamble >>>
 \begin{document}
 \let\MakePrivateLetters\MyMakePrivateLetters
@@ -7604,7 +7605,7 @@ mode=overlay}}.
 \RequirePackage{svn-prov}
 \def\GetFileBaseName#1-#2\nil{#1}
 \edef\MyFileBaseName{\expandafter\GetFileBaseName\jobname\nil}
-\ProvidesFileSVN[\MyFileBaseName-doc]{$Id: chronos.tex 10883 2025-02-27 23:29:01Z cfrees $}[v0.0 \revinfo]
+\ProvidesFileSVN[\MyFileBaseName-doc]{$Id: chronos.dtx 10888 2025-03-01 19:43:22Z cfrees $}[v0.0 \revinfo]
 \DefineFileInfoSVN
 \AddToHook{begindocument}{\OnlyDescription}
 \input{\MyFileBaseName.dtx}
@@ -7615,7 +7616,7 @@ mode=overlay}}.
 \RequirePackage{svn-prov}
 \def\GetFileBaseName#1-#2\nil{#1}
 \edef\MyFileBaseName{\expandafter\GetFileBaseName\jobname\nil}
-\ProvidesFileSVN[\MyFileBaseName-code]{$Id: chronos.tex 10883 2025-02-27 23:29:01Z cfrees $}[v0.0 \revinfo]
+\ProvidesFileSVN[\MyFileBaseName-code]{$Id: chronos.dtx 10888 2025-03-01 19:43:22Z cfrees $}[v0.0 \revinfo]
 \DefineFileInfoSVN
 \input{\MyFileBaseName.dtx}
 %</doc-code>

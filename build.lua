@@ -17,7 +17,7 @@ sourcefiles = {"*.dtx","*.ins"}
 tagfiles = { "*.dtx", "README.md", "build.lua", "*.sty", "chronos.tex", "manifest.txt" }
 typesetfiles = {"*-doc.tex", "*-code.tex"}
 typesetopts = "-interaction=nonstopmode -cnf-line='TEXMFHOME=.' -cnf-line='TEXMFLOCAL=.' -cnf-line='TEXMFARCH=.'"
-typesetruns = 1 -- 4
+typesetruns = 4 -- 4
 --------------------------------------------------------------------------------
 uploadconfig = {
   ctanPath = "/macros/latex/contrib/chronos",
