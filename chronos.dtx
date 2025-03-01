@@ -1375,7 +1375,6 @@
 %             step major years=1,
 %             step minor years=0,
 %             step divisions=4,
-%   %           timeline margin'=10pt,
 %           },
 %           text tags+={align=left,font=\sffamily},
 %           every text tag connectors+={fill=##1,circle,minimum size=2.5pt,inner sep=0pt,anchor=center},
@@ -6897,19 +6896,25 @@
 %     text tags={draw=####1,sharp corners,text opacity=1,fill opacity=1,draw opacity=1,drop shadow},
 % \end{codchronos}
 % \TeX{} will give you an error suggesting you haven't used \emph{enough} hashes, 
-% \begin{verbatim}
-% ! Illegal parameter number in definition of \tikz@temp.
-% <to be read again> 
-%                    1
-% l.113   ]
-%          
-% ? h
-% You meant to type ## instead of #, right?
-% Or maybe a } was forgotten somewhere earlier, and things
-% are all screwed up? I'm going to assume that you meant ##.
-% 
-% ? 
-% \end{verbatim}
+% \iffalse
+%<*verb>
+% \fi
+%    \begin{verbatim}
+! Illegal parameter number in definition of \tikz@temp.
+<to be read again>
+                   1
+l.113   ]
+        
+? h
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+?
+%    \end{verbatim}
+% \iffalse
+%</verb>
+% \fi
 % If you double the hashes \emph{again} (\texttt{\#\#\#\#\#\#\#\#1}), you'll get the same error.
 % The actual problem is that you've used too many.
 % \cywir\begin{chronoscode}
@@ -7244,24 +7249,36 @@
 % 
 % The output of \keyname[type=macro]{\cs{chronosshowpreset}} is unlikely to prove especially enlightening unless debugging \pkg{chronos}.
 % Here, for example, is the output when used at the start of a sample \enviro{chronos} environment, 
-% \begin{verbatim}
-%   The sequence \l__chronos_gosod_seq is empty
-% > .
-% \end{verbatim}
+% \iffalse
+%<*verb>
+% \fi
+%    \begin{verbatim}
+  The sequence \l__chronos_gosod_seq is empty
+> .
+%    \end{verbatim}
+% \iffalse
+%</verb>
+% \fi
 % and right after the optional argument has been processed,
-% \begin{verbatim}
-% The sequence \l__chronos_gosod_seq contains the items (without outer braces):
-% >  {angor@blynyddoedd}
-% >  {timeline@years}
-% >  {@digwyddiad@llawn}
-% >  {@byw@llawn}
-% >  {@parhad@llawn}
-% >  {markeras}
-% >  {llinell}
-% >  {cysylltiad}
-% >  {llinell amser}
-% >  {border}.
-% \end{verbatim}
+% \iffalse
+%<*verb>
+% \fi
+%    \begin{verbatim}
+The sequence \l__chronos_gosod_seq contains the items (without outer braces):
+>  {angor@blynyddoedd}
+>  {timeline@years}
+>  {@digwyddiad@llawn}
+>  {@byw@llawn}
+>  {@parhad@llawn}
+>  {markeras}
+>  {llinell}
+>  {cysylltiad}
+>  {llinell amser}
+>  {border}.
+%    \end{verbatim}
+% \iffalse
+%</verb>
+% \fi
 % So this user didn't specify any non-default settings in the document preamble or with \keyname[type=macro,idx post=not used\string\idxeg]{\cs{chronosset}}, but has either set or specified a \chronosstylelabelname{} which set various options for this particular \enviro{chronos} \envlabelname{}, which \pkg{chronos} should respect.
 % Note that the output tells us nothing about {what} has been chosen, but only \emph{that} an explicit choice has been made.
 % For example, \texttt{markeras} means the user has decided eras should or should not be marked on the \conceptname[idx post=identifying explicit choices]{timeline}, but does not tell us which.
@@ -7277,38 +7294,50 @@
 % There is no list of properties associated with \taglabelname{} \conceptname[type=tag,idx post=no associated list of properties]{main}.
 % 
 % Here's the output from \keyname[type=macro]{\cs{chronosshowfeatures}} inside a \enviro{chronos} \envlabelname{}, but outside any \taglabelname{} context,
-% \begin{verbatim}
-% The property list \l__chronos_prop contains the pairs (without outer braces):
-% >  {@tag}  =>  {{,/chronos/troi lliwiau=false,/chronos/blynyddoedd yn
-% unig,/chronos/heb gyfnodau,/chronos/troi lliwiau=true}}
-% >  {@cysylltwr@chronos}  =>  {{coordinate}}
-% >  {@cysylltwr@testun}  =>  {{anchor=center,inner sep=0pt,outer
-% sep=0pt,circle, anchor=center, draw=none, fill=none, minimum
-% size=\pgflinewidth }}
-% >  {@llinell}  =>  {{}}
-% >  {@testun}  =>  {{fill=chronos main background colour, text=####1, fill
-% opacity=.75, text opacity=1, draw=none, rounded corners, align=center,
-% font=\sffamily \footnotesize ,draw=####1,sharp corners,text opacity=1,fill
-% opacity=1,draw opacity=1,drop shadow}}
-% >  {@cysylltiad}  =>  {{draw=##1, {Triangle[width=0pt 3,reversed,length=0pt
-% 1.5]}-{Triangle[width=0pt 5,reversed,length=0pt 2.5]}}}.
-% \end{verbatim}
+% \iffalse
+%<*verb>
+% \fi
+%    \begin{verbatim}
+The property list \l__chronos_prop contains the pairs (without outer braces):
+>  {@tag}  =>  {{,/chronos/troi lliwiau=false,/chronos/blynyddoedd yn
+unig,/chronos/heb gyfnodau,/chronos/troi lliwiau=true}}
+>  {@cysylltwr@chronos}  =>  {{coordinate}}
+>  {@cysylltwr@testun}  =>  {{anchor=center,inner sep=0pt,outer
+sep=0pt,circle, anchor=center, draw=none, fill=none, minimum
+size=\pgflinewidth }}
+>  {@llinell}  =>  {{}}
+>  {@testun}  =>  {{fill=chronos main background colour, text=####1, fill
+opacity=.75, text opacity=1, draw=none, rounded corners, align=center,
+font=\sffamily \footnotesize ,draw=####1,sharp corners,text opacity=1,fill
+opacity=1,draw opacity=1,drop shadow}}
+>  {@cysylltiad}  =>  {{draw=##1, {Triangle[width=0pt 3,reversed,length=0pt
+1.5]}-{Triangle[width=0pt 5,reversed,length=0pt 2.5]}}}.
+%    \end{verbatim}
+% \iffalse
+%</verb>
+% \fi
 % and from \cs{chronosshowfeatures}\texttt{[event]},
-% \begin{verbatim}
-% The property list \l__chronos_digwyddiad_prop contains the pairs (without
-% outer braces):
-% >  {@cysylltwr@chronos}  =>  {{coordinate}}
-% >  {@cysylltwr@testun}  =>  {{circle, anchor=center, draw=none, fill=none,
-% minimum size=\pgflinewidth }}
-% >  {@testun}  =>  {{fill=chronos main background colour, text=##1, fill
-% opacity=.75, text opacity=1, draw=none, rounded corners, align=center,
-% font=\sffamily \footnotesize ,draw=##1,sharp corners,text opacity=1,fill
-% opacity=1,draw opacity=1,drop shadow}}
-% >  {@tag}  =>  {{/chronos/blynyddoedd yn unig,/chronos/heb
-% gyfnodau,/chronos/troi lliwiau=true}}
-% >  {@llinell}  =>  {{draw=chronos timeline foreground colour, thick, blend
-% mode=overlay}}.
-% \end{verbatim}
+% \iffalse
+%<*verb>
+% \fi
+%    \begin{verbatim}
+The property list \l__chronos_digwyddiad_prop contains the pairs (without
+outer braces):
+>  {@cysylltwr@chronos}  =>  {{coordinate}}
+>  {@cysylltwr@testun}  =>  {{circle, anchor=center, draw=none, fill=none,
+minimum size=\pgflinewidth }}
+>  {@testun}  =>  {{fill=chronos main background colour, text=##1, fill
+opacity=.75, text opacity=1, draw=none, rounded corners, align=center,
+font=\sffamily \footnotesize ,draw=##1,sharp corners,text opacity=1,fill
+opacity=1,draw opacity=1,drop shadow}}
+>  {@tag}  =>  {{/chronos/blynyddoedd yn unig,/chronos/heb
+gyfnodau,/chronos/troi lliwiau=true}}
+>  {@llinell}  =>  {{draw=chronos timeline foreground colour, thick, blend
+mode=overlay}}.
+%    \end{verbatim}
+% \iffalse
+%</verb>
+% \fi
 % 
 % 
 %% END sec:dadfygio
@@ -7459,95 +7488,107 @@
 %     \item\label{method:cy} This requires minimal changes to existing code.
 %     You will need to modify existing \conceptname[type=concept,idx as=timeline,idx post=combining package and \string\TeX{}\space SE code in single document with minimal changes]{timelines} to use the \enviro{chronos} \envlabelname{} if they are currently in \enviro{tikzpicture} \envslabelname{}.
 %     Then place the following code \emph{into the preamble} of your document:
-% \begin{verbatim}
-% \usepackage{chronos}
-% \makeatletter
-%% The following definitions **MUST** be in the premable.
-%% They will **NOT** work if placed after \begin{document} 
-%% or before \usepackage{chronos}.
-%% BEGIN \chronosevent
-% \NewDocumentCommand \chronosevent { O {} m O {} +m D () { \chronos@testun@yshift } }
-% {%  #1 [<connection options>] 
-%%   #2 {<date>} 
-%%   #3  [<text tag options>] 
-%%   #4 {<text>} 
-%%   #5 (<yshift>)
-%   \digwyddiad{%
-%     date=#2,
-%     name=#4,
-%     yshift=#5,
-%     text tag+={#3},
-%     connection+={#1},
-%   }%
-% }
-%% END \chronosevent
-%% BEGIN \chronosperiod
-% \NewDocumentCommand \chronosperiod { O {} m O {} m O {} +m D () { \chronos@testun@yshift } }
-% {%  #1 [<line options>] 
-%%   #2 {<start date>} 
-%%   #3 [<connection options>] 
-%%   #4 {<end date>} 
-%%   #5 [<text tag options>] 
-%%   #6 {<text>} 
-%%   #7 (<yshift>)
-%   \parhad{%
-%     start=#2,
-%     end=#4,
-%     name=#6,
-%     yshift=#7,
-%     connection+={#3},
-%     text tag+={#5},
-%     line+={#1},
-%   }%
-% }
-%% END \chronosperiod
-% \makeatother
-% \end{verbatim}
+% \iffalse
+%<*verb>
+% \fi
+%    \begin{verbatim}
+\usepackage{chronos}
+\makeatletter
+% The following definitions **MUST** be in the premable.
+% They will **NOT** work if placed after \begin{document}
+% or before \usepackage{chronos}.
+% BEGIN \chronosevent
+\NewDocumentCommand \chronosevent { O {} m O {} +m D () { \chronos@testun@yshift } }
+{%  #1 [<connection options>]
+%   #2 {<date>}
+%   #3  [<text tag options>]
+%   #4 {<text>}
+%   #5 (<yshift>)
+  \digwyddiad{%
+    date=#2,
+    name=#4,
+    yshift=#5,
+    text tag+={#3},
+    connection+={#1},
+  }%
+}
+% END \chronosevent
+% BEGIN \chronosperiod
+\NewDocumentCommand \chronosperiod { O {} m O {} m O {} +m D () { \chronos@testun@yshift } }
+{%  #1 [<line options>]
+%   #2 {<start date>}
+%   #3 [<connection options>]
+%   #4 {<end date>}
+%   #5 [<text tag options>]
+%   #6 {<text>}
+%   #7 (<yshift>)
+  \parhad{%
+    start=#2,
+    end=#4,
+    name=#6,
+    yshift=#7,
+    connection+={#3},
+    text tag+={#5},
+    line+={#1},
+  }%
+}
+% END \chronosperiod
+\makeatother
+%    \end{verbatim}
+% \iffalse
+%</verb>
+% \fi
 %     If you use this method, you \emph{cannot} use the key-value versions of \keyname[type=macro,idx post=method incompatible with key-value version of]{\cs{chronosevent},\cs{chronosperiod}}.
 %     Instead, you will need to use \keyname[type=macro,no link]{\cs{digwyddiad}} for events and \keyname[type=macro,no link]{\cs{parhad}} for periods when you wish to make use of the new features.
 %     \item\label{method:rename}\chronosdocidx[type=concept,font=\ConceptFont,idx post=combining package and \string\TeX{}\space SE code in single document with legacy names]{timeline} Alternatively, update all existing \envslabelname{} to use \enviro{chronos} as explained in \cref{method:cy}, if required.
 %     Then replace every occurrence of \keyname[type=macro,idx post=renaming \string\TeX{}\space SE version]{\cs{chronosevent},\cs{chronosperiod}} with \keyname[type=macro,no link]{\cs{chronoslegacyevent},\cs{chronoslegacyperiod}} and place the following in your document preamble\footnote{The location isn't crucial in this case, provided the definitions are read before you use them and after \pkg{chronos} is loaded, but it is bad practice to define new commands in the body of documents.}:
-% \begin{verbatim}
-% \usepackage{chronos}
-% \makeatletter
-%% BEGIN \chronoslegacyevent
-% \NewDocumentCommand \chronoslegacyevent { O {} m O {} +m D () { \chronos@testun@yshift } }
-% {%  #1 [<connection options>] 
-%%   #2 {<date>} 
-%%   #3  [<text tag options>] 
-%%   #4 {<text>} 
-%%   #5 (<yshift>)
-%   \chronosevent{%
-%     date=#2,
-%     name=#4,
-%     yshift=#5,
-%     text tag+={#3},
-%     connection+={#1},
-%   }%
-% }
-%% END \chronoslegacyevent
-%% BEGIN \chronoslegacyperiod
-% \NewDocumentCommand \chronoslegacyperiod { O {} m O {} m O {} +m D () { \chronos@testun@yshift } }
-% {%  #1 [<line options>] 
-%%   #2 {<start date>} 
-%%   #3 [<connection options>] 
-%%   #4 {<end date>} 
-%%   #5 [<text tag options>] 
-%%   #6 {<text>} 
-%%   #7 (<yshift>)
-%   \chronosperiod{%
-%     start=#2,
-%     end=#4,
-%     name=#6,
-%     yshift=#7,
-%     connection+={#3},
-%     text tag+={#5},
-%     line+={#1},
-%   }%
-% }
-%% END \chronoslegacyperiod
-% \makeatother
-% \end{verbatim}
+% \iffalse
+%<*verb>
+% \fi
+%    \begin{verbatim}
+\usepackage{chronos}
+\makeatletter
+% BEGIN \chronoslegacyevent
+\NewDocumentCommand \chronoslegacyevent { O {} m O {} +m D () { \chronos@testun@yshift } }
+{%  #1 [<connection options>]
+%   #2 {<date>}
+%   #3  [<text tag options>]
+%   #4 {<text>}
+%   #5 (<yshift>)
+  \chronosevent{%
+    date=#2,
+    name=#4,
+    yshift=#5,
+    text tag+={#3},
+    connection+={#1},
+  }%
+}
+% END \chronoslegacyevent
+% BEGIN \chronoslegacyperiod
+\NewDocumentCommand \chronoslegacyperiod { O {} m O {} m O {} +m D () { \chronos@testun@yshift } }
+{%  #1 [<line options>]
+%   #2 {<start date>}
+%   #3 [<connection options>]
+%   #4 {<end date>}
+%   #5 [<text tag options>]
+%   #6 {<text>}
+%   #7 (<yshift>)
+  \chronosperiod{%
+    start=#2,
+    end=#4,
+    name=#6,
+    yshift=#7,
+    connection+={#3},
+    text tag+={#5},
+    line+={#1},
+  }%
+}
+% END \chronoslegacyperiod
+\makeatother
+%    \end{verbatim}
+% \iffalse
+%</verb>
+% \fi
 %     This allows you to use \keyname[type=macro,idx post=method allowing use of key-value interface in]{\cs{chronosevent},\cs{chronosperiod}} with the key-value interface in new \conceptname[idx as=timeline,idx post=key-value interface]{timelines}.
 %   \end{chronosmethod}
 % \end{chronosmethod}
@@ -7556,25 +7597,10 @@
 %% END subsec:compat-texse
 %% END sec:compat
 % 
-% \section{Version History}\label{sec:hanes}
-%% BEGIN sec:hanes
+% \changes{v0.9}{2025-03-01}{First CTAN release.}
 % 
-% \subsection{0.9}\label{subsec:0.9}
-%% BEGIN subsec:0.9
+% \changes{v0.7?}{2023-07-01}{First repo release. (Ish.) Earlier versions were published informally on \href{https:tex.stackexchange.com}{\TeX{} StackExchange}.}
 % 
-% First CTAN release.
-% 
-%% END subsec:0.9
-% 
-% \subsection{Pre-0.9}\label{subsec:Pre-0.9}
-% 
-%% BEGIN subsec:pre-0.9
-% 
-% Earlier versions were published informally on \href{https:tex.stackexchange.com}{\TeX{} StackExchange}.
-% 
-%% END subsec:pre-0.9
-% 
-%% END sec:hanes
 % 
 % \MaybeStop{%
 % \PrintChanges
@@ -7590,7 +7616,7 @@
 \RequirePackage{svn-prov}
 \def\GetFileBaseName#1-#2\nil{#1}
 \edef\MyFileBaseName{\expandafter\GetFileBaseName\jobname\nil}
-\ProvidesFileSVN[\MyFileBaseName doc]{$Id:$}[v0.0 \revinfo]
+\ProvidesFileSVN[\MyFileBaseName doc]{$Id: chronos.tex 10883 2025-02-27 23:29:01Z cfrees $}[v0.0 \revinfo]
 \DefineFileInfoSVN
 \AddToHook{begindocument}{\OnlyDescription}
 \input{\MyFileBaseName.dtx}
@@ -7601,7 +7627,7 @@
 \RequirePackage{svn-prov}
 \def\GetFileBaseName#1-#2\nil{#1}
 \edef\MyFileBaseName{\expandafter\GetFileBaseName\jobname\nil}
-\ProvidesFileSVN[\MyFileBaseName code]{$Id:$}[v0.0 \revinfo]
+\ProvidesFileSVN[\MyFileBaseName code]{$Id: chronos.tex 10883 2025-02-27 23:29:01Z cfrees $}[v0.0 \revinfo]
 \DefineFileInfoSVN
 \input{\MyFileBaseName.dtx}
 %</doc-code>
