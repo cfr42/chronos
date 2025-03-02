@@ -30,7 +30,7 @@
 %^^A ref. ateb Max Chernoff: https://tex.stackexchange.com/a/723294/
 \def\MyMakePrivateLetters{\makeatletter\ExplSyntaxOn\endlinechar13}
 \ExplSyntaxOff
-\ProvidesFileSVN{$Id: chronos.dtx 10888 2025-03-01 19:43:22Z cfrees $}[v0.9 \revinfo][\filebase DTX: ]
+\ProvidesFileSVN{$Id: chronos.dtx 10890 2025-03-02 01:21:37Z cfrees $}[v0.9 \revinfo][\filebase DTX: ]
 \DefineFileInfoSVN[chronos]
 \GetFileInfoSVN*
 \let\chronosdocversion\fileversion
@@ -288,6 +288,7 @@
     \__chronosdoc_PrintDescribe_renew:nn { #1 } { ##1 }
   }
 }
+% XXX
 \cs_generate_variant:Nn \__chronosdoc_PrintDescribe_aux:n { V }
 \cs_new_nopar:Nn \__chronosdoc_hypertarget:nn 
 {
@@ -1318,12 +1319,14 @@
 \makeatother
 %^^A END preamble >>>
 \begin{document}
-\let\MakePrivateLetters\MyMakePrivateLetters
+%^^A paid â defnyddio'r llinell nesaf - lladdu gwagiau mewn enwau pethau yn \PrintDescribe pan i'r macro wedi cael ei greu gyda \NwwDocElements yn lle \NewDocElement ...
+%^^A \let\MakePrivateLetters\MyMakePrivateLetters
 \DocInput{\filename}
 %^^A\DocInput{\chronosdocbase-code.dtx}
 \end{document}
 %</driver>
 % \fi
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \newgeometry{headheight=12pt,scale=.8,marginparwidth=0pt,marginparsep=0pt}%
 % \savegeometry{safonol}%
 % \setlength\tewadjust{\marginparwidth+\marginparsep}%
@@ -1927,6 +1930,7 @@
 % 
 %^^A \hypersetup{next-anchor=boolkey:simple-colour-names}%
 % \DescribeBoolkey{simple colour names,no simple colour names,simple color names,no simple color names}\vals{true,false}\AfterLastParam
+%^^A \ExpandArgs {e} \DescribeBoolkey{simple colour names,no simple colour names,simple color names,no simple color names}\vals{true,false}\AfterLastParam
 % The only two options currently supported are \keyname[type=pkgopt,conj=or,no link]{\option{simple colour names},\option{simple color names}} and its complement \keyname[type=pkgopt,conj=or,no link]{\option{no simple colour names},\option{no simple color names}}.
 % The following are equivalent:
 % \begin{chronoscode}
@@ -2299,8 +2303,6 @@
 % \end{itemize}
 % 
 %^^A END subsubsec:secondary
-% 
-% 
 % 
 %^^A END subsec:mathau
 % 
@@ -7605,7 +7607,7 @@ mode=overlay}}.
 \RequirePackage{svn-prov}
 \def\GetFileBaseName#1-#2\nil{#1}
 \edef\MyFileBaseName{\expandafter\GetFileBaseName\jobname\nil}
-\ProvidesFileSVN[\MyFileBaseName-doc]{$Id: chronos.dtx 10888 2025-03-01 19:43:22Z cfrees $}[v0.0 \revinfo]
+\ProvidesFileSVN[\MyFileBaseName-doc]{$Id: chronos.dtx 10890 2025-03-02 01:21:37Z cfrees $}[v0.0 \revinfo]
 \DefineFileInfoSVN
 \AddToHook{begindocument}{\OnlyDescription}
 \input{\MyFileBaseName.dtx}
@@ -7616,7 +7618,7 @@ mode=overlay}}.
 \RequirePackage{svn-prov}
 \def\GetFileBaseName#1-#2\nil{#1}
 \edef\MyFileBaseName{\expandafter\GetFileBaseName\jobname\nil}
-\ProvidesFileSVN[\MyFileBaseName-code]{$Id: chronos.dtx 10888 2025-03-01 19:43:22Z cfrees $}[v0.0 \revinfo]
+\ProvidesFileSVN[\MyFileBaseName-code]{$Id: chronos.dtx 10890 2025-03-02 01:21:37Z cfrees $}[v0.0 \revinfo]
 \DefineFileInfoSVN
 \input{\MyFileBaseName.dtx}
 %</doc-code>
