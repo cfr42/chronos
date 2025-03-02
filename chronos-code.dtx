@@ -32,26 +32,26 @@
 % ref. ateb Max Chernoff: https://tex.stackexchange.com/a/723294/
 \def\MakePrivateLetters{\makeatletter\ExplSyntaxOn\endlinechar13}
 \ExplSyntaxOff
-\ProvidesFileSVN{$Id: chronos-code.dtx 10888 2025-03-01 19:43:22Z cfrees $}[v0.0 \revinfo][\filebase DTX: Customisable TikZ-based timelines]
-\DefineFileInfoSVN[chronos]
+\ProvidesFileSVN{$Id: chronos-code.dtx 10891 2025-03-02 07:31:39Z cfrees $}[v0.0 \revinfo][\filebase DTX: Customisable TikZ-based timelines]
+\DefineFileInfoSVN[chronoscode]
 \documentclass[11pt,british]{ltxdoc}
 % l3doc loads fancyvrb
 % fancyvrb overwrites svn-prov's macros without warning
 % restore \fileversion \filerev in case we're using l3doc
-\GetFileInfoSVN{chronos}
-\usepackage{chronos}
-\EnableCrossrefs
-\CodelineIndex
-\RecordChanges
-% \OnlyDescription
-\DoNotIndex{\verb,\ProvidesPackageSVN,\NeedsTeXFormat,\ProcessKeyOptions}
-\usepackage{babel}
-\usepackage{fancyhdr}
-\usepackage[plain]{fancyref}
-\usepackage{xurl}
-\urlstyle{sf}
-\usepackage{microtype}
-\usepackage[a4paper,headheight=14pt,marginparwidth=45mm,hmarginratio=4:1,vscale=.8,hscale=.7,verbose]{geometry}	% use 14pt for 11pt text, 15pt for 12pt text
+%^^A \GetFileInfoSVN{chronos}
+%^^A \usepackage{chronos}
+%^^A \EnableCrossrefs
+%^^A \CodelineIndex
+%^^A \RecordChanges
+%^^A \OnlyDescription
+%^^A \DoNotIndex{\verb,\ProvidesPackageSVN,\NeedsTeXFormat,\ProcessKeyOptions}
+%^^A \usepackage{babel}
+%^^A \usepackage{fancyhdr}
+%^^A \usepackage[plain]{fancyref}
+%^^A \usepackage{xurl}
+%^^A \urlstyle{sf}
+%^^A \usepackage{microtype}
+%^^A \usepackage[a4paper,headheight=14pt,marginparwidth=45mm,hmarginratio=4:1,vscale=.8,hscale=.7,verbose]{geometry}	% use 14pt for 11pt text, 15pt for 12pt text
 %^^A% addaswyd o chronos.tex
 %^^A\newlength\tewadjust
 %^^A\newlength\chronosdoctemplgth
@@ -90,7 +90,15 @@
 %^^A{%
 %^^A  {\ttfamily =\,\meta{#1}}%
 %^^A}
-%^^A\ExplSyntaxOn
+%^^A \ExplSyntaxOn
+%^^A \cs_new:Npn \chronosdoc_getfilebasename:w #1-#2\nil{#1}
+%^^A \tl_new:N \MyFileBaseName
+%^^A \tl_set:Ne \MyFileBaseName 
+%^^A {
+%^^A   \exp_after: \chronosdoc_getfilebasename:w \jobname-a\nil
+%^^A }
+%^^A \def\GetFileBaseName#1-#2\nil{#1}
+%^^A \edef\MyFileBaseName{\expandafter\GetFileBaseName\jobname\nil}
 %^^A\NewDocumentCommand \vals { m }
 %^^A{
 %^^A  {
@@ -111,7 +119,7 @@
 %^^A{
 %^^A  \keys_set:nn { chronos / doc } { #1 }
 %^^A}
-%^^A\ExplSyntaxOff
+%^^A \ExplSyntaxOff
 %^^A\chronosdocset{%
 %^^A  bug={\href{https://codeberg.org/cfr/REPO/issues}{\textsc{bugtracker}}},
 %^^A  codeberg={\href{https://codeberg.org/cfr/REPO}{\textsc{codeberg}}},
@@ -123,16 +131,16 @@
 %^^A\newcommand*{\fgroup}[1]{\textsf{#1}}
 %^^A\newcommand*{\fname}[1]{\textsf{#1}}
 %^^A\newcommand*{\file}[1]{\texttt{#1}}
-\title{\filebase}
-\author{Clea F. Rees\thanks{%
-    Bug tracker:
-    \href{https://codeberg.org/cfr/REPO/issues}{\url{codeberg.org/cfr/REPO/issues}}
-    \textbar{} Code:
-    \href{https://codeberg.org/cfr/REPO}{\url{codeberg.org/cfr/REPO}}
-    \textbar{} Mirror:
-    \href{https://github.com/cfr42/REPO}{\url{github.com/cfr42/REPO}}% 
-}}
-\date{\fileversion~\filedate}
+%^^A \title{\filebase}
+%^^A \author{Clea F. Rees\thanks{%
+%^^A     Bug tracker:
+%^^A     \href{https://codeberg.org/cfr/REPO/issues}{\url{codeberg.org/cfr/REPO/issues}}
+%^^A     \textbar{} Code:
+%^^A     \href{https://codeberg.org/cfr/REPO}{\url{codeberg.org/cfr/REPO}}
+%^^A     \textbar{} Mirror:
+%^^A     \href{https://github.com/cfr42/REPO}{\url{github.com/cfr42/REPO}}% 
+%^^A }}
+%^^A \date{\fileversion~\filedate}
 %^^A\pagestyle{fancy}
 %^^A\fancyhf{}
 %^^A\fancyhf[lh]{\itshape\filebase}
@@ -153,62 +161,56 @@
 %^^A\definecolor{blueberry}{rgb}{0.000,0.000,1.000}
 %^^A\definecolor{moss}{rgb}{0.000,0.502,0.251}
 \begin{document}
-\let\MakePrivateLetters\MyMakePrivateLetters
+%^^A \let\MakePrivateLetters\MyMakePrivateLetters
 \DocInput{\filename}
 \end{document}
 %</driver>
 % \fi
 %
-% \changes{v.9}{2025-02-27}{First \ctan{} release.}
+% \changes{v0.9}{2025-02-27}{First \ctan{} release.}
 % ^^A lua will replace v0.0 and 0000/00/00 when tagging
 % 
-% \maketitle\thispagestyle{empty}
-% \pdfinfo{%
-% 	/Creator		(TeX)
-% 	/Producer		(pdfTeX)
-% 	/Author			(Clea F. Rees)
-% 	/Title			(chronos)
-% 	/Subject		(TeX)
-% 	/Keywords		(TeX,LaTeX,Clea,Rees)}
-% \pdfcatalog{%
-% 	/URL				()
-% 	/PageMode	/UseOutlines}	
+%^^A \maketitle
+% 
 % \setlength{\parindent}{0pt}
 % \setlength{\parskip}{0.5em}
 % 
 % \begin{abstract}
-%   \noindent\lpack{chronos}
+%   \noindent\lpack{chronos} implementation.
 % \end{abstract}
 %
-% \tableofcontents
+%^^A \tableofcontents
+%^^A 
+%^^A \MaybeStop{%
+%^^A \PrintChanges
+%^^A \PrintIndex
+%^^A }
 % 
+%^^A doctools redefn of macrocode is singularly ineffective:
+%^^A the environment just ends up undefined 
+%^^A so fallback to restored l3p's 
+%^^A note that it causes problems with links to restore this in 
+%^^A begindocument
+% \let\macrocode\chronosdocmacrocode
+% \let\endmacrocode\endchronosdocmacrocode
 % 
-% \MaybeStop{%
-% \PrintChanges
-% \PrintIndex
-% }
-% 
-% \section{Implementation}
-%
-% You do not need to read the remainder of this document in order to install or use the package.
-%
 % \iffalse
 %<*sty>
 % \fi
 %    \begin{macrocode}
-\NeedsTeXFormat{LaTeX2e}
 \RequirePackage{svn-prov}
-\ProvidesPackageSVN[\filebase.sty]{$Id: chronos-code.dtx 10888 2025-03-01 19:43:22Z cfrees $}[v0.0 \revinfo]
+\def\GetFileBaseName#1-#2\nil{#1}
+\edef\MyFileBaseName{\expandafter\GetFileBaseName\jobname\nil}
+\ProvidesPackageSVN[\MyFileBaseName.sty]{$Id: chronos-code.dtx 10891 2025-03-02 07:31:39Z cfrees $}[v0.9 \revinfo]
 \DefineFileInfoSVN
 %    \end{macrocode}
 % \iffalse
 % ^^A Paid â defnyddio \GetFileInfoSVN*/\GetFileInfoSVN{} yn y fan hon!!
 % \fi
 %    \begin{macrocode}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \NeedsTeXFormat{LaTeX2e}[2021-11-15]
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%^^A copied verbatim, excepting format from Joseph Wright's' siunitx.sty under LPPL
+%^^A copied verbatim, excepting format from Joseph Wright's siunitx.sty under LPPL
 \@ifundefined{ExplLoaderFileDate}{%
   \RequirePackage{expl3}%
 }{}
@@ -224,8 +226,6 @@
   \endinput
 }%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\RequirePackage{svn-prov}
-\ProvidesPackageSVN[\filebase.sty]{$Id: chronos-code.dtx 10888 2025-03-01 19:43:22Z cfrees $}[v0.9 \revinfo]
 \ExplSyntaxOn
 \newif\ifchronos@enwaulliwsyml
 \keys_define:nn { chronos } %^^A <<<
@@ -5037,7 +5037,7 @@
 % \fi
 %    \begin{macrocode}
 \RequirePackage{chronos}
-\ProvidesPackageSVN[\chronosdocbase-lib-styles.sty]{$Id: chronos-code.dtx 10888 2025-03-01 19:43:22Z cfrees $}[v0.9 \revinfo]
+\ProvidesPackageSVN[\MyFileBaseName-lib-styles.sty]{$Id: chronos-code.dtx 10891 2025-03-02 07:31:39Z cfrees $}[v0.9 \revinfo]
 \pgfqkeys{/chronos}{%
 %^^A  BEGIN styles <<<
 %^^A  % BEGIN on line styles
@@ -5158,8 +5158,6 @@
     ce year label=CE,
     levels=3:3,
     no colour rotation,
-%^^A      period/line'={draw=##1,fill=none},
-%^^A      life/line'={fill=none},
     every connections'={draw=####1, -{Triangle[width=1.5pt, reversed, length=.75pt, fill=####1]}},
     every text tags'={fill opacity=.75, fill=####1!25, draw=####1, rounded corners, font=\footnotesize\sffamily, text=chronos timeline foreground colour},
     main/title={font=\sffamily\bfseries\LARGE, text=chronos main colour},
@@ -5542,7 +5540,7 @@
 % \fi
 %    \begin{macrocode}
 \RequirePackage{chronos}
-\ProvidesPackageSVN[\filebase.sty]{$Id: chronos-code.dtx 10888 2025-03-01 19:43:22Z cfrees $}[v0.9 \revinfo]
+\ProvidesPackageSVN[\MyFileBaseName-lib-colschemes.sty]{$Id: chronos-code.dtx 10891 2025-03-02 07:31:39Z cfrees $}[v0.9 \revinfo]
 %^^A  BEGIN cylluniau lliwiau | colour schemes <<<
 \chronosnewcolourscheme[default]{blues}{%
   timeline foreground=chronosDodgerBlue4,
