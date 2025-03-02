@@ -32,7 +32,7 @@
 % ref. ateb Max Chernoff: https://tex.stackexchange.com/a/723294/
 \def\MakePrivateLetters{\makeatletter\ExplSyntaxOn\endlinechar13}
 \ExplSyntaxOff
-\ProvidesFileSVN{$Id: chronos-code.dtx 10891 2025-03-02 07:31:39Z cfrees $}[v0.0 \revinfo][\filebase DTX: Customisable TikZ-based timelines]
+\ProvidesFileSVN{$Id: chronos-code.dtx 10893 2025-03-02 09:13:11Z cfrees $}[v0.0 \revinfo][\filebase DTX: Customisable TikZ-based timelines]
 \DefineFileInfoSVN[chronoscode]
 \documentclass[11pt,british]{ltxdoc}
 % l3doc loads fancyvrb
@@ -197,11 +197,13 @@
 % \iffalse
 %<*sty>
 % \fi
+% \begin{pkg}{chronos}
+% \LaTeXe{} package.
 %    \begin{macrocode}
 \RequirePackage{svn-prov}
 \def\GetFileBaseName#1-#2\nil{#1}
 \edef\MyFileBaseName{\expandafter\GetFileBaseName\jobname\nil}
-\ProvidesPackageSVN[\MyFileBaseName.sty]{$Id: chronos-code.dtx 10891 2025-03-02 07:31:39Z cfrees $}[v0.9 \revinfo]
+\ProvidesPackageSVN[\MyFileBaseName.sty]{$Id: chronos-code.dtx 10893 2025-03-02 09:13:11Z cfrees $}[v0.9 \revinfo]
 \DefineFileInfoSVN
 %    \end{macrocode}
 % \iffalse
@@ -272,7 +274,8 @@
 \RequirePackage{xcolor}
 %^^A mae fixedpointarithmetic eisiau fp
 \RequirePackage{tikz,etoolbox,pgfcalendar,calc,fp}% rwyt ti *eisiau* calc!
-\usetikzlibrary{arrows.meta,calc,positioning,fixedpointarithmetic,decorations.text,fit,shadows}
+\usetikzlibrary{arrows.meta,calc,positioning,fixedpointarithmetic,decorations.%
+  text,fit,shadows}
 \IfFileExists{tikzlibrarycfrforeground.code.tex}{%
   \usetikzlibrary{cfrforeground}%
 }{%
@@ -310,7 +313,10 @@
 \clist_new:N \g__chronos_lliwiau_theori_uchod_rhag_clist
 \clist_new:N \g__chronos_lliwiau_theori_isod_rhag_clist
 \clist_new:N \l__chronos_llythrennau_bach_clist
-\clist_set:Nn \l__chronos_llythrennau_bach_clist { a, an, and, as, but, for, if, in, is, of, on, the }
+\clist_set:Nn \l__chronos_llythrennau_bach_clist 
+{ 
+  a, an, and, as, but, for, if, in, is, of, on, the 
+}
 \clist_new:N \l__chronos_dyddiadau_coords_clist
 \clist_new:N \l__chronos_subheadings_clist
 \clist_new:N \g__chronos_century_subheadings_clist
@@ -339,7 +345,10 @@
 %^^A BEGIN regexes
 \regex_const:Nn \c__chronos_enw_regex { [^A-Za-z0-9\s\-] }
 \regex_const:Nn \c__chronos_enw_priflythren_cyntaf_regex { (^[^A-Za-z]*)([a-z]) }
-\regex_const:Nn \c__chronos_enw_diogelu_regex { ([\s\-\c{\\}][[:punct:]]*) ([^\s\-\c{\\}]*) (\b|\c{\\}) } % \s unrhyw space character \b word boundary
+\regex_const:Nn \c__chronos_enw_diogelu_regex 
+{ 
+  ([\s\-\c{\\}][[:punct:]]*) ([^\s\-\c{\\}]*) (\b|\c{\\}) 
+} % \s unrhyw space character \b word boundary
 %^^A \regex_const:Nn \c__chronos_pure_year_regex { ^ [\+\-]? \d+ \z }% \z = \Z = $ ($ yn newid popeth i maths yn ôl Kile!)
 \regex_const:Nn \c__chronos_curly_bracket { [ \{ \} ] }
 \regex_const:Nn \c__chronos_initial_minus { ^\- }
@@ -367,26 +376,38 @@
 %^^A BEGIN l3 keys
 \keys_define:nn { chronos / lliwiau }
 {
-  foreground .code:n = {\__chronos_color_set_from_existing:nn {chronos@prifliw}{#1}},
+  foreground .code:n = {\__chronos_color_set_from_existing:nn 
+    {chronos@prifliw}{#1}},
   foreground .groups:n = {core},
-  background .code:n = {\__chronos_color_set_from_existing:nn {chronos@prifliw@cefndir}{#1}},
+  background .code:n = {\__chronos_color_set_from_existing:nn 
+    {chronos@prifliw@cefndir}{#1}},
   background .groups:n = {core},
-  timeline ~ foreground .code:n = {\__chronos_color_set_from_existing:nn {chronos@lliw@llinell}{#1} 
+  timeline ~ foreground .code:n = {\__chronos_color_set_from_existing:nn 
+    {chronos@lliw@llinell}{#1} 
   },
   timeline ~ foreground .groups:n = {core ~ derivative},
-  timeline ~ background .code:n = {\__chronos_color_set_from_existing:nn {chronos@lliw@cefndir@llinell}{#1}},
+  timeline ~ background .code:n = {\__chronos_color_set_from_existing:nn 
+    {chronos@lliw@cefndir@llinell}{#1}},
   timeline ~ background .groups:n = {core ~ derivative},
-  timeline ~ border ~ outer  .code:n = {\__chronos_color_set_from_existing:nn {chronos@borderouter}{#1}},
+  timeline ~ border ~ outer  .code:n = {\__chronos_color_set_from_existing:nn 
+    {chronos@borderouter}{#1}},
   timeline ~ border ~ outer .groups:n = {core ~ border},
-  timeline ~ border ~ inner  .code:n = {\__chronos_color_set_from_existing:nn {chronos@borderinner}{#1}},
+  timeline ~ border ~ inner  .code:n = {\__chronos_color_set_from_existing:nn 
+    {chronos@borderinner}{#1}},
   timeline ~ border ~ inner .groups:n = {core ~ border},
-  timeline ~ border ~ middle  .code:n = {\__chronos_color_set_from_existing:nn {chronos@bordermiddle}{#1}},
+  timeline ~ border ~ middle  .code:n = {\__chronos_color_set_from_existing:nn 
+    {chronos@bordermiddle}{#1}},
   timeline ~ border ~ middle .groups:n = {core ~ border},
-  life / default .code:n = {\__chronos_color_set_from_existing:nn {chronos@byw@lliw@rhagosodedig}{#1}},
-  event / default .code:n = {\__chronos_color_set_from_existing:nn {chronos@digwyddiad@lliw@rhagosodedig}{#1}},
-  period / default .code:n = {\__chronos_color_set_from_existing:nn {chronos@parhad@lliw@rhagosodedig}{#1}},
-  theory / default .code:n = {\__chronos_color_set_from_existing:nn {chronos@theori@lliw@rhagosodedig}{#1}},
-  info / default .code:n = {\__chronos_color_set_from_existing:nn {chronos@gwybodaeth@lliw@rhagosodedig}{#1}},
+  life / default .code:n = {\__chronos_color_set_from_existing:nn 
+    {chronos@byw@lliw@rhagosodedig}{#1}},
+  event / default .code:n = {\__chronos_color_set_from_existing:nn 
+    {chronos@digwyddiad@lliw@rhagosodedig}{#1}},
+  period / default .code:n = {\__chronos_color_set_from_existing:nn 
+    {chronos@parhad@lliw@rhagosodedig}{#1}},
+  theory / default .code:n = {\__chronos_color_set_from_existing:nn 
+    {chronos@theori@lliw@rhagosodedig}{#1}},
+  info / default .code:n = {\__chronos_color_set_from_existing:nn 
+    {chronos@gwybodaeth@lliw@rhagosodedig}{#1}},
   default ~ above .clist_gset:N = \g__chronos_lliwiau_uchod_clist,
   default ~ below .clist_gset:N = \g__chronos_lliwiau_isod_clist,
   life /  above .clist_gset:N = \g__chronos_lliwiau_byw_uchod_clist,
@@ -599,15 +620,24 @@
 }
 \cs_new_protected_nopar:Nn \__chronos_enw_priflythrennu_eraill:n
 {
-  \clist_if_in:NnTF \l__chronos_llythrennau_bach_clist { #1 } { #1 } { \str_uppercase:n #1 }
+  \clist_if_in:NnTF \l__chronos_llythrennau_bach_clist { #1 } { #1 } 
+  { 
+    \str_uppercase:n #1 
+  }
 }
 \cs_new_protected_nopar:Nn \__chronos_enw_priflythrennu:n
 {
   \tl_set:Nn \l__chronos_tmpc_tl { #1 }
   \legacy_if:nF {chronos@felymae}
   {
-    \regex_replace_all:NnN \c__chronos_enw_diogelu_regex { \1 \c{__chronos_enw_priflythrennu_eraill:n} \cB{ \2 \cE} \3 } \l__chronos_tmpc_tl
-    \regex_replace_all:NnN \c__chronos_enw_priflythren_cyntaf_regex { \1 \c{str_uppercase:n}\2 } \l__chronos_tmpc_tl
+    \regex_replace_all:NnN \c__chronos_enw_diogelu_regex 
+    { 
+      \1 \c{__chronos_enw_priflythrennu_eraill:n} \cB{ \2 \cE} \3 
+    } \l__chronos_tmpc_tl
+    \regex_replace_all:NnN \c__chronos_enw_priflythren_cyntaf_regex 
+    { 
+      \1 \c{str_uppercase:n}\2 
+    } \l__chronos_tmpc_tl
   }
   \l__chronos_tmpc_tl
 }
@@ -631,7 +661,10 @@
   \cs_set_eq:NN \chronosset \@@chronosset
   \pgfsetlayers{\chronos@layers}% cadw newidiadau tu mewn i'r grwp
   \chronos@baselineskip=\baselineskip
-  \cs_if_free:NT \chronosbaselineskip { \cs_new_eq:NN \chronosbaselineskip \chronos@baselineskip }
+  \cs_if_free:NT \chronosbaselineskip 
+  { 
+    \cs_new_eq:NN \chronosbaselineskip \chronos@baselineskip 
+  }
   \int_gincr:N \g__chronos_int
 }
 %^^A END functions: containment
@@ -764,7 +797,10 @@
   {
     \clist_map_inline:nn { isod, uchod }
     {
-      \clist_gset_eq:cc { g__chronos_lliwiau_##1_####1_rhag_clist } { g__chronos_lliwiau_##1_####1_clist }
+      \clist_gset_eq:cc { g__chronos_lliwiau_##1_####1_rhag_clist } 
+      { 
+        g__chronos_lliwiau_##1_####1_clist 
+      }
     }
   }
   \clist_gset_eq:NN \g__chronos_lliwiau_isod_rhag_clist \g__chronos_lliwiau_isod_clist
@@ -776,7 +812,10 @@
   {
     \clist_map_inline:nn { isod, uchod }
     {
-      \clist_gset_eq:cc { g__chronos_lliwiau_##1_####1_clist } { g__chronos_lliwiau_##1_####1_rhag_clist }
+      \clist_gset_eq:cc { g__chronos_lliwiau_##1_####1_clist }
+      { 
+        g__chronos_lliwiau_##1_####1_rhag_clist 
+      }
     }
   }
   \clist_gset_eq:NN \g__chronos_lliwiau_isod_clist \g__chronos_lliwiau_isod_rhag_clist
@@ -791,12 +830,16 @@
     \clist_remove_duplicates:N \l__chronos_headings_clist
     \clist_map_inline:Nn \l__chronos_headings_clist
     {
-      \foreach \i/\j/\k in {##1} {\testunteitl[/chronos/@amseraumawr]{\i}{\j}{\k}(chronos ~ main ~ headings)}% paid â defnyddio ';' neu dim byd yma
+      \foreach \i/\j/\k in {##1} {%
+        \testunteitl[/chronos/@amseraumawr]{\i}{\j}{\k}(chronos ~ main ~ headings)}% paid â defnyddio ';' neu dim byd yma
       \legacy_if:nT { chronos@placeholders}
       {
         \scoped[on ~ chronos ~ foreground ~ layer]
         {
-          \foreach \i/\j/\k in {##1} {\draw [/chronos/placeholder ~ lines] (chronos ~ main ~ headings -| \j) edge ~ node {\j} (chronos ~ bottom -| \j) (chronos ~ main ~ headings -| \k) edge ~ node {\k} (chronos ~ bottom -| \k);}
+          \foreach \i/\j/\k in {##1} {\draw [/chronos/placeholder ~ lines] %
+            (chronos ~ main ~ headings -| \j) edge ~ node {\j} %
+            (chronos ~ bottom -| \j) (chronos ~ main ~ headings -| \k) %
+            edge ~ node {\k} (chronos ~ bottom -| \k);}
         }
       }
     }
@@ -819,7 +862,11 @@
       \seq_get_right:NN \l__chronos_tmpa_seq \l__chronos_tmpd_tl
       \int_set:Nn \l__chronos_tmpb_int { 100 * \l__chronos_tmpc_tl }
       \int_set:Nn \l__chronos_tmpa_int { \l__chronos_tmpb_int - 100 }
-      \testunteitl[/chronos/@amserau]{\l__chronos_tmpc_tl\l__chronos_tmpd_tl}[\l__chronos_tmpc_tl\textsuperscript{\l__chronos_tmpd_tl}c.]{chronos ~ year ~ \int_to_arabic:n {\l__chronos_tmpa_int}}{chronos ~ year ~ \int_to_arabic:n {\l__chronos_tmpb_int}}(chronos ~ lower ~ subheadings)% paid â defnyddio ';' neu dim byd yn y fan hon
+      \testunteitl[/chronos/@amserau]{\l__chronos_tmpc_tl\l__chronos_tmpd_tl}%
+      [\l__chronos_tmpc_tl\textsuperscript{\l__chronos_tmpd_tl}c.]%
+      {chronos ~ year ~ \int_to_arabic:n {\l__chronos_tmpa_int}}%
+      {chronos ~ year ~ \int_to_arabic:n {\l__chronos_tmpb_int}}%
+      (chronos ~ lower ~ subheadings)% paid â defnyddio ';' neu dim byd yn y fan hon
     }
   }
 }
@@ -828,7 +875,10 @@
 %^^A \__chronos_kex<whatever> functions just produce groups of pgf keys for the plain/prime/plus triple, standard/every, cy/en and combinations thereof
 %^^A tldr: reduce clutte/typing and facilitate changes/fixes (hopefully)
 \cs_new_protected_nopar:Nn \__chronos_kexpander:nnnn
-{% #1 enw (brif enw) | name (primary name) ; #2 llwybr/prop tag | path/prop tag ; #3 rhag | default (' or +) ; #4 tags
+{ % #1 enw (brif enw) | name (primary name) ; 
+  % #2 llwybr/prop tag | path/prop tag ; 
+  % #3 rhag | default (' or +) ; 
+  % #4 tags
   \pgfqkeys{/chronos} {
     #1'/.code={
       \pgfqkeys{/chronos}{#2/.style={##1}}
@@ -853,7 +903,11 @@
   }
 }
 \cs_new_protected_nopar:Nn \__chronos_kexpander:nnnnn
-{% #1 enw | name ; #2 enw saesneg | english name ; #3 llwybr/prop tag | path/property tag ; #4 rhag | default (' or +) ; #5 tags
+{ % #1 enw | name ; 
+  % #2 enw saesneg | english name ; 
+  % #3 llwybr/prop tag | path/property tag ; 
+  % #4 rhag | default (' or +) ; 
+  % #5 tags
   \__chronos_kexpander:nnnn { #1 } { #3 } { #4 } { #5 }
   \pgfqkeys{/chronos} {
     #2'/.forward ~ to=/chronos/#1',
@@ -865,7 +919,9 @@
   }
 }
 \cs_new_protected_nopar:Nn \__chronos_kexpandtotags:nnn
-{% #1 enw | name ; #2 enw saesneg | english name ; #3 rhag | default (' or +)
+{ % #1 enw | name ;
+  % #2 enw saesneg | english name ;
+  % #3 rhag | default (' or +)
   \pgfqkeys{/chronos} {
     every ~ #1'/.code={
       \__chronos_cadw_nodweddion:nnn {#1}{@tag}{##1}
@@ -901,19 +957,26 @@
   }
 }
 \cs_new_protected_nopar:Nn \__chronos_kextripler:nnnnn
-{% #1 enw | name ; #2 enw saesneg | english name ; #3 llwybr/prop tag | path/property tag ; #4 rhag | default ; #5 math e.e. style neu code | type e.g. style or code
+{ % #1 enw | name ;
+  % #2 enw saesneg | english name ;
+  % #3 llwybr/prop tag | path/property tag ;
+  % #4 rhag | default ;
+  % #5 math e.e. style neu code | type e.g. style or code
   \__chronos_kextripler:nnnn { #1 } { #3 } { #4 } { #5 }
   \__chronos_kexforwardtriple:nn { #1 } { #2 }
 }
 \cs_new_protected_nopar:Nn \__chronos_kexforwarder:nn
-{% #1 llwybr/enw | path/name ; #2 rhestr allweddau newydd | list of new keys
+{ % #1 llwybr/enw | path/name ;
+  % #2 rhestr allweddau newydd | list of new keys
   \clist_map_inline:nn { #2 }
   {
     \pgfqkeys{/chronos} { ##1/.forward ~ to=/chronos/#1 }
   }
 }
 \cs_new_protected_nopar:Nn \__chronos_kexforwarder:nnn
-{% #1 llwybr | path ; #2 enw | name ; #3 rhestr allweddau newydd ar yr un llwybr | list of new keys on the same path
+{ % #1 llwybr | path ;
+  % #2 enw | name ;
+  % #3 rhestr allweddau newydd ar yr un llwybr | list of new keys on the same path
   \clist_map_inline:nn { #3 }
   {
     \pgfqkeys{/chronos/#1} { ##1/.forward ~ to=/chronos/#1/#2 }
@@ -1070,7 +1133,8 @@
     }
   }
 }
-\NewDocumentCommand \chronos@dangos@lliwiau@rhag { s O { byw, digwyddiad, parhad, theori } D () { isod, uchod }  } 
+\NewDocumentCommand \chronos@dangos@lliwiau@rhag 
+{ s O { byw, digwyddiad, parhad, theori } D () { isod, uchod }  } 
 {
   \clist_set:Nn \l__chronos_tmpb_clist { #2 }
   \clist_set:Nn \l__chronos_tmpc_clist { #3 }
@@ -1092,7 +1156,8 @@
 \cs_new_eq:NN \chronosdangoslliwiau \chronos@dangos@lliwiau
 \cs_new_eq:NN \chronosdangoslliwiaurhag \chronos@dangos@lliwiau@rhag
 \newcommand* \chronos@dangos@fformatiaudyddiadau{%
-  \clist_map_inline:nn { \l__chronos_dateformat_tl, \l__chronos_yearformat_tl, \l__chronos_minoryearformat_tl}
+  \clist_map_inline:nn 
+  { \l__chronos_dateformat_tl, \l__chronos_yearformat_tl, \l__chronos_minoryearformat_tl}
   { \tl_show:N ##1 }
 }
 \cs_new_eq:NN \chronosdangosfformatiaudyddiadau \chronos@dangos@fformatiaudyddiadau
@@ -1151,7 +1216,9 @@
 %^^A \cs_new_eq:NN \chronos@legacy@if@set \legacy_if_set:nn
 \newcommand* \chronos@legacy@if@set [2] {\cs:w #1#2\cs_end:}
 \def\chronos@datetojulian@extractyear #1-#2-#3 {#1}
-\NewDocumentCommand \chronos@dangoslliw { s O {\chronos@temp@lliw} m }{\extractcolorspec{#3}{#2}\IfBooleanT{#1}{\show#2}}
+\NewDocumentCommand \chronos@dangoslliw 
+  { s O {\chronos@temp@lliw} m }
+  {\extractcolorspec{#3}{#2}\IfBooleanT{#1}{\show#2}}
 \cs_new_eq:NN \chronos@keymaker \__chronos_kexkeymaker:nnn
 %^^A END macros y paced
 %^^A BEGIN yn lle etoolbox
@@ -1889,7 +1956,6 @@
       llinell'/.code={\chronos@cadw@nodweddion{#1}{@llinell}{##1}},
       llinell+/.code={\chronos@ychwanegu@nodweddion{#1}{@llinell}{##1}},
       llinell/.forward to=/chronos/#1/llinell',
-%^^A    %   llinell={fill=##1},
       lliw/.store in/.expand once=\csname chronos@#1@lliw\endcsname,
 %^^A    %   lliw/.chronos tag lliw={#1}{lliw},
       lliw rhagosodedig/.store in/.expand once=\csname chronos@#1@lliw@rhagosodedig\endcsname,
@@ -1908,7 +1974,6 @@
       cysylltiad'/.code={\chronos@cadw@nodweddion{#1}{@cysylltiad}{##1}},
       cysylltiad+/.code={\chronos@ychwanegu@nodweddion{#1}{@cysylltiad}{##1}},
       cysylltiad/.forward to=/chronos/#1/cysylltiad',
-%^^A       cysylltiad={draw=##1},
       cysylltwr chronos'/.code={\chronos@cadw@nodweddion{#1}{@cysylltwr@chronos}{##1}},
       cysylltwr chronos+/.code={\chronos@ychwanegu@nodweddion{#1}{@cysylltwr@chronos}{##1}},
       cysylltwr chronos/.forward to=/chronos/#1/cysylltwr chronos+,
@@ -2435,8 +2500,12 @@
 \ExplSyntaxOff
 \pgfqkeys{/chronos}{%
 %^^A  BEGIN every (digwyddiad, byw, parhad, theori) <<<
-  every@cylch cylch theori/.style={fill=chronos@prifliw, draw=chronos@prifliw, even odd rule},
-  every@testun cylch theori/.style={decoration={text effects along path, text={#1}, text effects/.cd, fit text to path, text=chronos@prifliw@cefndir, characters={text along path, font=\scriptsize\scshape}}, decorate},
+  every@cylch cylch theori/.style={%
+    fill=chronos@prifliw, draw=chronos@prifliw, even odd rule},
+  every@testun cylch theori/.style={%
+    decoration={text effects along path, text={#1}, text effects/.cd,%
+      fit text to path, text=chronos@prifliw@cefndir,%
+      characters={text along path, font=\scriptsize\scshape}}, decorate},
   every byw isod/.code={\chronos@every@byw@isodtrue\chronos@every@byw@uchodfalse\chronos@byw@isodtrue},
   every digwyddiad isod/.code={\chronos@every@digwyddiad@isodtrue\chronos@every@digwyddiad@uchodfalse\chronos@digwyddiad@isodtrue},
   every parhad isod/.code={\chronos@every@parhad@isodtrue\chronos@every@parhad@uchodfalse\chronos@parhad@isodtrue},
@@ -2572,7 +2641,8 @@
     \chronos@blynyddoedduchodtrue
     \chronos@blynyddoeddisodfalse
     \pgfqkeys{/chronos/llinell amser}{%
-      timeline@years/.style={above, anchor=\chronos@timelineyearsanchor, yshift=.5*\chronos@height},
+      timeline@years/.style={%
+        above, anchor=\chronos@timelineyearsanchor, yshift=.5*\chronos@height},
       angor blynyddoedd=south,
     }%
   },
@@ -2582,7 +2652,8 @@
     \chronos@blynyddoedduchodfalse
     \chronos@blynyddoeddisodtrue
     \pgfqkeys{/chronos/llinell amser}{%
-      timeline@years/.style={below, anchor=\chronos@timelineyearsanchor, yshift=-.5*\chronos@height},
+      timeline@years/.style={%
+        below, anchor=\chronos@timelineyearsanchor, yshift=-.5*\chronos@height},
       angor blynyddoedd=north,
     }%
   },
@@ -2599,7 +2670,8 @@
   blynyddoedd/on line/.forward to=/chronos/llinell amser/blynyddoedd/ar y llinell,
   blynyddoedd/off line/.code={%    
     \IfBooleanExprTF {%
-      ! ( \LegacyBoolean {chronos@blynyddoedduchod} || \LegacyBoolean {chronos@blynyddoeddisod} )
+      ! ( \LegacyBoolean {chronos@blynyddoedduchod} %
+      || \LegacyBoolean {chronos@blynyddoeddisod} )
     }{%
       \pgfqkeys{/chronos/llinell amser}{blynyddoedd=uchod}%
     }{%
@@ -2641,11 +2713,18 @@
   nodau noeth/.default=true,
   nodau noeth/.chronos track={@bare},
   timeline bare marks/.forward to=/chronos/llinell amser/nodau noeth,
-  timeline@year@off@line/.style={text=chronos@lliw@llinell, text opacity=1, align=center, fill opacity=.75, anchor=\chronos@timelineyearsanchor},
-  timeline@mark@off@line/.style={draw=chronos@lliw@llinell, {Triangle[width=0pt 3,reversed,length=0pt 1.5]}-, thin, shorten >=-2.5pt},
-  timeline@minor@mark@off@line/.style={draw=chronos@lliw@llinell, {Triangle[width=0pt 3,reversed,length=0pt 1.5]}-, very thin, shorten >=-2.5pt},
+  timeline@year@off@line/.style={%
+    text=chronos@lliw@llinell, text opacity=1, align=center, %
+    fill opacity=.75, anchor=\chronos@timelineyearsanchor},
+  timeline@mark@off@line/.style={draw=chronos@lliw@llinell,%
+    {Triangle[width=0pt 3,reversed,length=0pt 1.5]}-, thin, shorten >=-2.5pt},
+  timeline@minor@mark@off@line/.style={draw=chronos@lliw@llinell,%
+    {Triangle[width=0pt 3,reversed,length=0pt 1.5]}-, very thin,%
+    shorten >=-2.5pt},
   era switch off line/.style={thick, shorten >=0pt},
-  timeline@bare@mark@off@line/.style={draw=chronos@lliw@llinell, {Triangle[width=0pt 3,reversed,length=0pt 1.5]}-, very thin, shorten >=-1.5pt},
+  timeline@bare@mark@off@line/.style={draw=chronos@lliw@llinell,%
+    {Triangle[width=0pt 3,reversed,length=0pt 1.5]}-, very thin,%
+    shorten >=-1.5pt},
   timeline@year@on@line/.style={text=chronos@lliw@llinell, anchor=center},
   timeline@mark@on@line/.style={draw=chronos@lliw@llinell},
   timeline@minor@mark@on@line/.style={draw=chronos@lliw@llinell, thin},
@@ -2712,15 +2791,20 @@
   troi lliwiau/.default=true,
   colour rotation/.forward to=/chronos/troi lliwiau,
   color rotation/.forward to=/chronos/troi lliwiau,
-  heb droi lliwiau/.code={\chronos@ychwanegu@nodweddion@rhag{@tag}{/chronos/troi lliwiau=false}%
+  heb droi lliwiau/.code={%
+    \chronos@ychwanegu@nodweddion@rhag{@tag}{/chronos/troi lliwiau=false}%
     \chronos@troilliwiaufalse
   },
   no colour rotation/.forward to=/chronos/heb droi lliwiau,
   no color rotation/.forward to=/chronos/heb droi lliwiau,
-  troi pob liw/.style={/chronos/.cd, byw/troi lliwiau=true, digwyddiad/troi lliwiau=true, parhad/troi lliwiau=true, theori/troi lliwiau=true, troi lliwiau=true},
+  troi pob liw/.style={/chronos/.cd, byw/troi lliwiau=true,%
+    digwyddiad/troi lliwiau=true, parhad/troi lliwiau=true, %
+    theori/troi lliwiau=true, troi lliwiau=true},
   rotate all colours/.forward to=/chronos/troi pob liw,
   rotate all colors/.forward to=/chronos/troi pob liw,
-  troi dim lliwiau/.style={/chronos/.cd, byw/troi lliwiau=false, digwyddiad/troi lliwiau=false, parhad/troi lliwiau=false, theori/troi lliwiau=false, heb droi lliwiau},
+  troi dim lliwiau/.style={/chronos/.cd, byw/troi lliwiau=false,%
+    digwyddiad/troi lliwiau=false, parhad/troi lliwiau=false,%
+    theori/troi lliwiau=false, heb droi lliwiau},
   rotate no colours/.forward to=/chronos/troi dim lliwiau,
   rotate no colors/.forward to=/chronos/troi dim lliwiau,
 %^^A  END lliwiau >>>
@@ -2900,21 +2984,28 @@
   },
   placeholders/on/.code={%
     \pgfqkeys{/chronos}{%
-      placeholder/.style={on chronos middle ground layer,fill opacity=.1,draw opacity=.25,text opacity=.5,/chronos/.cd,zap preactions,zap postactions},
+      placeholder/.style={on chronos middle ground layer,fill opacity=.1,%
+        draw opacity=.25,text opacity=.5,/chronos/.cd,zap preactions,%
+        zap postactions},
     }%
   },
   placeholders/.default=on,
   placeholders=off,
-  placeholder lines/.style={help lines, every node/.append style={rotate=-90,anchor=south,pos=.25,inner sep=0pt}},
+  placeholder lines/.style={help lines,%
+    every node/.append style={rotate=-90,anchor=south,pos=.25,inner sep=0pt}},
 %^^A  END placeholders >>>
 %^^A  BEGIN show coords <<<
   show coords/.is if=chronos@showcoords,
   show coords/.default=true,
   show nodes/.is if=chronos@shownodes,
   show nodes/.default=true,
-  show coordinate/.style n args=5{fill=#1, circle, anchor=center, inner sep=1pt, text=#1, pin={[#1, inner sep=0pt, pin edge={draw=#1}, pin distance=#4, #5]#2:#3}},
-  show coord/.style 2 args={/chronos/show coordinate={chronos@lliw@coord}{#1}{#2}{30pt}{}},
-  show node coord/.style 2 args={/chronos/show coordinate={chronos@lliw@node}{#1}{#2}{30pt}{}},
+  show coordinate/.style n args=5{fill=#1, circle, anchor=center,%
+    inner sep=1pt, text=#1, pin={[#1, inner sep=0pt, pin edge={draw=#1},%
+    pin distance=#4, #5]#2:#3}},
+  show coord/.style 2 args={%
+    /chronos/show coordinate={chronos@lliw@coord}{#1}{#2}{30pt}{}},
+  show node coord/.style 2 args={%
+    /chronos/show coordinate={chronos@lliw@node}{#1}{#2}{30pt}{}},
   show node/.style={},
   show bounding box/.is if=chronos@showbb,
   show bounding box/.default=true,
@@ -2928,7 +3019,10 @@
   show coordinate colour=red,
   show bb colour=chronosGreen,
 %^^A  END show coords>>>
-  dadfygio/.code={\pgfqkeys{/chronos}{placeholders,show coords,show node colour=blue,show coordinate colour=red,show bounding box,show nodes,show node/.style={draw=chronos@lliw@node}}},
+  dadfygio/.code={%
+    \pgfqkeys{/chronos}{%
+      placeholders,show coords,show node colour=blue,show coordinate colour=red,%
+      show bounding box,show nodes,show node/.style={draw=chronos@lliw@node}}},
   debug/.forward to=/chronos/dadfygio,
 %^^A  BEGIN digwyddiadau, bywydau, cysylltiadau rhwng y llinell a'r ddau
   enwau lliw syml/.is if=chronos@enwaulliwsyml,
@@ -3004,7 +3098,8 @@
     \chronos@parhad@cysylltiadfalse
   },
   no connectors/.code={%
-    \pgfqkeys{/chronos}{every cysylltwyr testun'={coordinate},every cysylltwyr chronos'={coordinate}}},
+    \pgfqkeys{/chronos}{every cysylltwyr testun'={coordinate},%
+      every cysylltwyr chronos'={coordinate}}},
   no text tag connectors/.code={%
     \pgfqkeys{/chronos}{every cysylltwyr testun'={coordinate}}},
 %^^A  BEGIN saesneg: digwyddiadau, bywydau, cysylltiadau rhwng y llinell a'r ddau
@@ -3046,19 +3141,34 @@
     \def\chronos@digwyddiad@fformatdyddiad{#1}%
     \chronos@ychwanegu@nodweddion{digwyddiad}{@tag}{/chronos/digwyddiad/fformat dyddiad={#1}}%
   },
-  fformat dyddiad/.chronos track={@digwyddiad@fformatiau@dyddiadau,@digwyddiad@cyfnodau,@digwyddiad@llawn},
-  dangos cyfnodau/@blynyddoedd yn unig/.code={\def\chronos@digwyddiad@fformatdyddiad{!Y\thinspace !E}},
-  dangos cyfnodau/@llawn/.code={\def\chronos@digwyddiad@fformatdyddiad{!d/!m/!Y\thinspace !E}},
-  dangos cyfnodau/llawn/.code={\pgfqkeys{/chronos/digwyddiad/dangos cyfnodau}{@llawn/.code={\def\chronos@digwyddiad@fformatdyddiad{#1}}}},
-  dangos cyfnodau/blynyddoedd yn unig/.code={\pgfqkeys{/chronos/digwyddiad/dangos cyfnodau}{@blynyddoedd yn unig/.code={\def\chronos@digwyddiad@fformatdyddiad{#1}}}},
+  fformat dyddiad/.chronos track={%
+    @digwyddiad@fformatiau@dyddiadau,@digwyddiad@cyfnodau,@digwyddiad@llawn},
+  dangos cyfnodau/@blynyddoedd yn unig/.code={%
+    \def\chronos@digwyddiad@fformatdyddiad{!Y\thinspace !E}},
+  dangos cyfnodau/@llawn/.code={%
+    \def\chronos@digwyddiad@fformatdyddiad{!d/!m/!Y\thinspace !E}},
+  dangos cyfnodau/llawn/.code={%
+    \pgfqkeys{/chronos/digwyddiad/dangos cyfnodau}{%
+      @llawn/.code={\def\chronos@digwyddiad@fformatdyddiad{#1}}}},
+  dangos cyfnodau/blynyddoedd yn unig/.code={%
+    \pgfqkeys{/chronos/digwyddiad/dangos cyfnodau}{%
+      @blynyddoedd yn unig/.code={\def\chronos@digwyddiad@fformatdyddiad{#1}}}},
   heb gyfnodau/@blynyddoedd yn unig/.code={\def\chronos@digwyddiad@fformatdyddiad{!Y}},
   heb gyfnodau/@llawn/.code={\def\chronos@digwyddiad@fformatdyddiad{!d/!m/!Y}},
-  heb gyfnodau/llawn/.code={\pgfqkeys{/chronos/digwyddiad/heb gyfnodau}{@llawn/.code={\def\chronos@digwyddiad@fformatdyddiad{#1}},@llawn/.show code}},
-  heb gyfnodau/blynyddoedd yn unig/.code={\pgfqkeys{/chronos/digwyddiad/heb gyfnodau}{@blynyddoedd yn unig/.code={\def\chronos@digwyddiad@fformatdyddiad{#1}}}},
-  dangos cyfnodau/.code={\chronos@ychwanegu@nodweddion{digwyddiad}{@tag}{/chronos/dangos cyfnodau}},
-  heb gyfnodau/.code={\chronos@ychwanegu@nodweddion{digwyddiad}{@tag}{/chronos/heb gyfnodau}},
-  dyddiadau llawn/.code={\chronos@ychwanegu@nodweddion{digwyddiad}{@tag}{/chronos/dyddiadau llawn}},
-  blynyddoedd yn unig/.code={\chronos@ychwanegu@nodweddion{digwyddiad}{@tag}{/chronos/blynyddoedd yn unig}},
+  heb gyfnodau/llawn/.code={%
+    \pgfqkeys{/chronos/digwyddiad/heb gyfnodau}{%
+      @llawn/.code={\def\chronos@digwyddiad@fformatdyddiad{#1}},@llawn/.show code}},
+  heb gyfnodau/blynyddoedd yn unig/.code={%
+    \pgfqkeys{/chronos/digwyddiad/heb gyfnodau}{%
+      @blynyddoedd yn unig/.code={\def\chronos@digwyddiad@fformatdyddiad{#1}}}},
+  dangos cyfnodau/.code={%
+    \chronos@ychwanegu@nodweddion{digwyddiad}{@tag}{/chronos/dangos cyfnodau}},
+  heb gyfnodau/.code={%
+    \chronos@ychwanegu@nodweddion{digwyddiad}{@tag}{/chronos/heb gyfnodau}},
+  dyddiadau llawn/.code={%
+    \chronos@ychwanegu@nodweddion{digwyddiad}{@tag}{/chronos/dyddiadau llawn}},
+  blynyddoedd yn unig/.code={%
+    \chronos@ychwanegu@nodweddion{digwyddiad}{@tag}{/chronos/blynyddoedd yn unig}},
   dangos cyfnodau/.chronos track={@digwyddiad@cyfnodau},
   dyddiadau llawn/.chronos track={@digwyddiad@llawn},
   heb gyfnodau/.chronos track={@digwyddiad@cyfnodau},
@@ -3191,7 +3301,11 @@
   angor/.forward to=/tikz/anchor,
   at/.code={\coordinate (chronos@prifdeitl@at) at (#1);},
   cynnwys enw/.store in=\chronos@prifdeitl@cynnwys,
-  llinellau teitl/.style={/tikz/.cd,draw=chronos@prifliw,inner xsep=0pt,#1,append after command={(main title.north west)--(main title.north east) (main title.south west)--(main title.south east)},draw=none},
+  llinellau teitl/.style={%
+    /tikz/.cd,draw=chronos@prifliw,inner xsep=0pt,#1,%
+    append after command={%
+      (main title.north west)--(main title.north east) (main title.south west)%
+      --(main title.south east)},draw=none},
 %^^A  BEGIN /chronos/prif saesneg
   /chronos/main/.chronos search=prif,
   name/.forward to=/chronos/prif/enw,
@@ -3232,11 +3346,29 @@
   /chronos/.cd,
 %^^A  BEGIN /chronos frâm, borders, cysylltwyr, llinellau, testunau etc.
   borders'/.code args={#1:#2:#3:#4:#5:#6}{% penawdau:pen:de:gwaelod:chwith:allanol
-    \chronos@border@penawdau=#1\chronos@border@pen=#2\chronos@border@de=#3\chronos@border@gwaelod=#4\chronos@border@chwith=#5\chronos@border@allanol=#6},
+    \chronos@border@penawdau=#1
+    \chronos@border@pen=#2
+    \chronos@border@de=#3
+    \chronos@border@gwaelod=#4
+    \chronos@border@chwith=#5
+    \chronos@border@allanol=#6
+  },
   borders'+/.code args={#1:#2:#3:#4:#5:#6}{% penawdau:pen:de:gwaelod:chwith:allanol
-    \advance\chronos@border@penawdau by #1 \advance\chronos@border@pen by #2 \advance\chronos@border@de by #3 \advance\chronos@border@gwaelod by #4 \advance\chronos@border@chwith by #5 \advance\chronos@border@allanol by #6 },
+    \advance\chronos@border@penawdau by #1 
+    \advance\chronos@border@pen by #2 
+    \advance\chronos@border@de by #3 
+    \advance\chronos@border@gwaelod by #4 
+    \advance\chronos@border@chwith by #5 
+    \advance\chronos@border@allanol by #6 
+  },
   borders'-/.code args={#1:#2:#3:#4:#5:#6}{% penawdau:pen:de:gwaelod:chwith:allanol
-    \advance\chronos@border@penawdau by -#1 \advance\chronos@border@pen by -#2 \advance\chronos@border@de by -#3 \advance\chronos@border@gwaelod by -#4 \advance\chronos@border@chwith by -#5 \advance\chronos@border@allanol by -#6 },
+    \advance\chronos@border@penawdau by -#1 
+    \advance\chronos@border@pen by -#2 
+    \advance\chronos@border@de by -#3 
+    \advance\chronos@border@gwaelod by -#4 
+    \advance\chronos@border@chwith by -#5 
+    \advance\chronos@border@allanol by -#6 
+  },
   cysylltwyr chronos={anchor=center,inner sep=0pt,outer sep=0pt},% oedd cylch chronos
   cysylltwyr testun={anchor=center,inner sep=0pt,outer sep=0pt},% oedd cylch
   prif gysylltwyr testun={},
@@ -3250,7 +3382,9 @@
   color scheme/.forward to=/chronos/cynllun lliwiau,
   lliwiau cronoleg/.code={%
     \chronos@lliwiau@cronoleg
-    \@ifpackageloaded{memoize}(\mmzset{csname meaning to context={chronos@lliwiau@cronoleg}}){}%
+    \@ifpackageloaded{memoize}{%
+      \mmzset{csname meaning to context={chronos@lliwiau@cronoleg}}%
+    }{}%
   },
   lliwiau rhagosodedig/.code={\chronos@lliwiau@rhagosodedig},
 %^^A  END cynlluniau lliwiau
@@ -3304,22 +3438,34 @@
     timeline ce label={CE},
     timeline bce label={BCE},
     cysylltiadau={draw=##1, opacity=.75, thick},
-    cysylltwyr testun={fill=##1, fill opacity=1, circle, minimum size=5pt, anchor=center, inner sep=0pt, outer sep=0pt},
+    cysylltwyr testun={fill=##1, fill opacity=1, circle, minimum size=5pt, %
+      anchor=center, inner sep=0pt, outer sep=0pt},
     cyffredin/cysylltiad/.style={draw=##1, opacity=.5, thick},
-    every cysylltwyr chronos={fill=####1, opacity=.75, circle, minimum size=2.5pt, anchor=center, inner sep=0pt, outer sep=0pt},
-    cyffredin/testun/.style={outer xsep=0pt, rounded corners=2pt, thick, text opacity=1, draw opacity=1, inner sep=2pt, fill opacity=.25, font=\scshape\footnotesize},
+    every cysylltwyr chronos={fill=####1, opacity=.75, circle, %
+      minimum size=2.5pt, anchor=center, inner sep=0pt, outer sep=0pt},
+    cyffredin/testun/.style={outer xsep=0pt, rounded corners=2pt, thick, %
+      text opacity=1, draw opacity=1, inner sep=2pt, fill opacity=.25,%
+      font=\scshape\footnotesize},
     digwyddiad/cysylltiad={/chronos/cyffredin/cysylltiad=##1},
     byw/cysylltiad={/chronos/cyffredin/cysylltiad=##1, opacity=.75},
     parhad/cysylltiad={/chronos/cyffredin/cysylltiad=##1},
     theori/cysylltiad={thick, draw=chronos@prifliw, double=chronos@prifliw@cefndir},
 %^^A %     digwyddiad/lliwiau isod={chronos@prifliw!75!chronos@prifliw@cefndir},
 %^^A %     digwyddiad/lliwiau uchod={chronos@prifliw!75!chronos@prifliw@cefndir},
-    theori/cysylltwr testun={fill=chronos@prifliw@cefndir, circle, minimum size=5pt, anchor=center, inner sep=0pt, outer sep=0pt, thick, draw=chronos@prifliw},
-    byw/testun={/chronos/cyffredin/testun, align=left, text=##1!50!black, fill=##1, draw=##1},
+    theori/cysylltwr testun={fill=chronos@prifliw@cefndir, circle, %
+      minimum size=5pt, anchor=center, inner sep=0pt, outer sep=0pt, thick, %
+      draw=chronos@prifliw},
+    byw/testun={/chronos/cyffredin/testun, align=left, text=##1!50!black, %
+      fill=##1, draw=##1},
 %^^A     every digwyddiad+={only text},% yn hawsach i toggle on na off felly paid ag analluogi fel rhagosodedig
-    digwyddiad/testun={/chronos/cyffredin/testun, align=left, text=##1!50!black, fill=##1, draw=##1},
-    parhad/testun={/chronos/cyffredin/testun, align=left, text=##1!50!black, fill=##1,  draw=##1},
-    theori/testun={/chronos/cyffredin/testun, align=center, inner sep=3pt, text=chronos@lliw@theori, fill=chronos@lliw@cefndir@theori, fill opacity=.8, draw=chronos@prifliw, double=chronos@prifliw@cefndir, font=\bfseries},
+    digwyddiad/testun={/chronos/cyffredin/testun, align=left, text=##1!50!black, %
+      fill=##1, draw=##1},
+    parhad/testun={/chronos/cyffredin/testun, align=left, text=##1!50!black, %
+      fill=##1,  draw=##1},
+    theori/testun={/chronos/cyffredin/testun, align=center, inner sep=3pt, %
+      text=chronos@lliw@theori, fill=chronos@lliw@cefndir@theori, %
+      fill opacity=.8, draw=chronos@prifliw, double=chronos@prifliw@cefndir, %
+      font=\bfseries},
     byw/llinell={fill=##1, fill opacity=.25, draw=none},
     digwyddiad/llinell={draw=##1, draw opacity=.25, fill=none},
     parhad/llinell={fill=##1, fill opacity=.25, draw=none},
@@ -3327,23 +3473,36 @@
     cysylltiad ar=middle ground,
 %^^A     byw/lliwiau isod o clist={lliwiau_isod},
 %^^A     byw/lliwiau uchod o clist={lliwiau_uchod},
-    theori/cylchau/label={align=center, inner sep=0pt, outer sep=0pt, font=\scriptsize\scshape, text=chronos@prifliw},
-    every cylch cylch theori'={fill=chronos@prifliw, draw=chronos@prifliw, thick, even odd rule, fill opacity=.8},
-    every testun cylch theori'={decoration={text effects along path, text={##1}, text effects/.cd, fit text to path, text=chronos@prifliw@cefndir, characters={text along path, font=\scriptsize\scshape}}, decorate},
+    theori/cylchau/label={align=center, inner sep=0pt, outer sep=0pt,%
+      font=\scriptsize\scshape, text=chronos@prifliw},
+    every cylch cylch theori'={fill=chronos@prifliw, draw=chronos@prifliw, %
+      thick, even odd rule, fill opacity=.8},
+    every testun cylch theori'={decoration={text effects along path, text={##1}, %
+        text effects/.cd, fit text to path, text=chronos@prifliw@cefndir, %
+        characters={text along path, font=\scriptsize\scshape}}, decorate},
     theori/cylchau/labels=:,
     theori/cylchau/circle texts=:,
     theori/cylchau/meintiau'=15pt:9pt,
-    gwybodaeth/label={/chronos/@amserau, font=\itshape\footnotesize, anchor=north, yshift=-2.5pt},% oedd pethau
-    gwybodaeth/testun={/chronos/cyffredin/testun, align=left, text=##1, outer sep=0pt, fill=chronos@lliw@cefndir@gwybodaeth, draw opacity=.8, text opacity=.8, font=\scriptsize, draw=chronos@prifliw},% oedd ee ? oedd testun ee?
+    gwybodaeth/label={/chronos/@amserau, font=\itshape\footnotesize, %
+      anchor=north, yshift=-2.5pt},% oedd pethau
+    gwybodaeth/testun={/chronos/cyffredin/testun, align=left, text=##1, %
+      outer sep=0pt, fill=chronos@lliw@cefndir@gwybodaeth, draw opacity=.8, %
+      text opacity=.8, font=\scriptsize, draw=chronos@prifliw},% oedd ee ? oedd testun ee?
     theori dash/.style={chronos@prifliw, opacity=.75, thick, densely dashed},
     theory dash/.link=/chronos/theori dash,
-    amserau={align=center, anchor=base, inner sep=0pt, outer sep=0pt, color=chronos@prifliw!75!chronos@prifliw@cefndir, opacity=.8, font=\bfseries\itshape\footnotesize},
-    amseraumawr={align=center, anchor=base, inner sep=0pt, outer sep=0pt, color=chronos@prifliw, opacity=.8, font=\bfseries},
-    prif/frame={inner sep=5pt, ultra thick, draw=chronos@prifliw, double=chronos@prifliw@cefndir, fill=none},% oedd chronos@prifliw@cefndir
-    prif/teitl={/chronos/prif/@frame, font=\Huge\bfseries, text=chronos@prifliw, anchor=center, align=center, rounded corners=5pt},
+    amserau={align=center, anchor=base, inner sep=0pt, outer sep=0pt, %
+      color=chronos@prifliw!75!chronos@prifliw@cefndir, opacity=.8, %
+      font=\bfseries\itshape\footnotesize},
+    amseraumawr={align=center, anchor=base, inner sep=0pt, outer sep=0pt, %
+      color=chronos@prifliw, opacity=.8, font=\bfseries},
+    prif/frame={inner sep=5pt, ultra thick, draw=chronos@prifliw, %
+      double=chronos@prifliw@cefndir, fill=none},% oedd chronos@prifliw@cefndir
+    prif/teitl={/chronos/prif/@frame, font=\Huge\bfseries, text=chronos@prifliw,%
+      anchor=center, align=center, rounded corners=5pt},
     borders'=55pt:0pt:105pt:15pt:7.5pt:5pt,
     headings drops'=10pt:10pt:7.5pt,
-    hawlfraint={font=\footnotesize\bfseries, inner sep=0pt, outer sep=0pt, chronos@prifliw, fill=chronos@prifliw@cefndir},
+    hawlfraint={font=\footnotesize\bfseries, inner sep=0pt, outer sep=0pt, %
+      chronos@prifliw, fill=chronos@prifliw@cefndir},
 %^^A     hawlfraint/cylchdroi=90,
 %^^A     hawlfraint/angor=west,
     llinellau={color=black!50, opacity=.5},
@@ -3360,7 +3519,8 @@
 \RequirePackage{chronos-lib-colschemes,chronos-lib-styles}
 %^^A BEGIN env y ddogfen <<<
 %^^A BEGIN chronos
-\NewDocumentEnvironment {chronos} { > { \TrimSpaces } O {} } {% http://tex.stackexchange.com/a/159856/ - Claudio Fiandrino
+\NewDocumentEnvironment {chronos} { > { \TrimSpaces } O {} } 
+{% http://tex.stackexchange.com/a/159856/ - Claudio Fiandrino
   \chronos@env@begin
   \begin{tikzpicture}[%
     align=center,
@@ -3393,13 +3553,24 @@
 %^^A     \chronosshowfeatures[gwybodaeth]}
   \IfBooleanExprT { \CSFreeBoolean \chronos@startyear || \CSFreeBoolean \chronos@endyear  }
     {%
-      \PackageError{chronos}{Missing start and/or end date for timeline.
-        I will attempt to fathom the concept of a timeline without time, but I predict unpredictable results}{You must specify both a start and end date. If I try to start at the beginning or finish at the end, I exceed TeX's maximum dimension. Besides, what if time is cyclical? My author didn't tell me how to draw a 3D timeline.}%
+      \PackageError{chronos}{%
+        Missing start and/or end date for timeline.
+        I will attempt to fathom the concept of a timeline without time, 
+        but I predict unpredictable results}%
+        {%
+          You must specify both a start and end date. 
+          If I try to start at the beginning or finish at the end, 
+            I exceed TeX's maximum dimension. 
+          Besides, what if time is cyclical? 
+          My author didn't tell me how to draw a 3D timeline.}%
       \IfFreeT \chronos@startyear {\chronos@set@date{1800}{01}{01}{start}}%
       \IfFreeT \chronos@endyear {\chronos@set@date{2050}{12}{31}{end}}%
     }%  
     \ifnum\thechronos@startdate>\thechronos@enddate
-      \PackageWarning{chronos}{Sorry, but I cannot reverse time. Perhaps you could ask a metaphysician? Setting end to start and start to end}%
+      \PackageWarning{chronos}{%
+        Sorry, but I cannot reverse time. 
+        Perhaps you could ask a metaphysician? 
+        Setting end to start and start to end}%
 %^^A    % paid ag anghofio am awto-cywiro yn functions chronos re. blwyddyn sero
       \setcounter{chronos@tempcnta}{\thechronos@startdate}%
       \setcounter{chronos@startdate}{\thechronos@enddate}%
@@ -3472,12 +3643,14 @@
         \ifchronos@yearsonline 
           \chronos@height=10mm
           \ifdim\chronos@borderheight=\pi pt
-            \PackageInfo{chronos}{Timeline border height unset. Guessing an appropriate value.}%
+            \PackageInfo{chronos}{%
+              Timeline border height unset. Guessing an appropriate value.}%
             \chronos@borderheight=2.5mm
           \fi
         \else % off line
           \ifdim\chronos@borderheight=\pi pt
-            \PackageInfo{chronos}{Timeline border height unset. Guessing an appropriate value.}%
+            \PackageInfo{chronos}{%
+              Timeline border height unset. Guessing an appropriate value.}%
             \chronos@height=1pt
             \chronos@borderheight=0pt
           \else
@@ -3486,7 +3659,8 @@
         \fi
       \fi % END \ifdim\chronos@height=\pi pt
       \ifdim\chronos@borderheight=\pi pt % angen height am hwn ; angen hwn am llinell yshift
-        \PackageInfo{chronos}{Timeline border height unset. Guessing an appropriate value.}%
+        \PackageInfo{chronos}{%
+          Timeline border height unset. Guessing an appropriate value.}%
         \ifchronos@yearsonline
           \pgfmathsetlength \chronos@borderheight {\chronos@height/4}
         \else
@@ -3526,7 +3700,8 @@
           \fi % END \ifdim\chronos@height<5pt 
         \fi % END \ifdim\chronos@llinell@yshift=\pi pt
       \fi % END ifchronos@yearsonline
-      \ifx\chronos@templlpl\chronos@templlplc \PackageWarning{chronos}{You've set the main colour and the main background colour to the same.}\fi
+      \ifx\chronos@templlpl\chronos@templlplc \PackageWarning{chronos}{%
+        You've set the main colour and the main background colour to the same.}\fi
       \ifnum\chronos@startyear=0\relax
         \chronos@yearzerotrue
       \else
@@ -3576,9 +3751,11 @@
 %^^A       \fi
 %^^A    % cofia!! \chronos@set@date a ffrindiau'n awto-cywiro am flwyddyn sero!!
 %^^A    % cofia! ti'n defnyddio **pgfcalendar** yn lle blynyddoedd nawr!!
-      \pgfmathsetmacro\chronos@unit{(\chronos@width-2*\chronos@timelinemargin-\chronos@dechrau@dechrau-\chronos@diwedd@diwedd)/(\thechronos@enddate-\thechronos@startdate)}%
+      \pgfmathsetmacro\chronos@unit{%
+        (\chronos@width-2*\chronos@timelinemargin-\chronos@dechrau@dechrau-\chronos@diwedd@diwedd)/(\thechronos@enddate-\thechronos@startdate)}%
 %^^A      \chronos@timelineunitlength \dimexpr\chronos@unit pt\relax% using this truncates the dimension and leads to visible inaccuracies e.g. 0.0003pt vs. 0.00031~pt makes a difference over 5,000 units or so!
-      \pgfmathsetmacro{\chronos@amser@diwedd}{(\thechronos@enddate-\thechronos@startdate)*\chronos@unit}%
+      \pgfmathsetmacro{\chronos@amser@diwedd}{%
+        (\thechronos@enddate-\thechronos@startdate)*\chronos@unit}%
       \addtolength{\chronos@dechrau@dechrau}{\chronos@timelinemargin}%
       \addtolength{\chronos@diwedd@diwedd}{\chronos@timelinemargin}%
       \path (0pt,0pt) ++(-\chronos@dechrau@dechrau,0pt) coordinate (chronos pre);% oedd chronos@dechrau
@@ -3590,7 +3767,9 @@
       \coordinate (chronos foot) at (0pt,-\chronos@outer@halfheight);
       \coordinate (chronos head) at (0pt,\chronos@outer@halfheight);
 %^^A    % chronos pre-top, chronos post-top, chronos pre-base, chronos post-base
-      \foreach \i/\j in {pre/top,post/top,pre/base,post/base,pre/head,post/head,pre/foot,post/foot} \coordinate (chronos \i-\j) at (chronos \i |- chronos \j);
+      \foreach \i/\j in {%
+        pre/top,post/top,pre/base,post/base,pre/head,post/head,pre/foot,post/foot%
+      } \coordinate (chronos \i-\j) at (chronos \i |- chronos \j);
       \coordinate (chronos start) at (0pt,0pt);% dal yn gywir?
       \coordinate (chronos origin) at (chronos start);% newid isod efaillai
       \coordinate (chronos end) at (\chronos@amser@diwedd pt,0pt);
@@ -3657,9 +3836,13 @@
             \IfExistTF \chronos@cam@blwyddyn@fach {%
               \let\chronos@cam@blwyddyn@fawr\chronos@cam@blwyddyn@fach
               \def\chronos@cam@blwyddyn@fach{0}%
-              \PackageWarning{chronos}{Using minor step year as step year and setting minor step year to zero}%
+              \PackageWarning{chronos}{%
+                Using minor step year as step year and setting minor step year to zero}%
             }{% 
-              \PackageWarning{chronos}{You have not specified how frequently years should be marked on the timeline. Guessing appropriate values. Set step major year and/or step minor year to specify}%
+              \PackageWarning{chronos}{%
+                You have not specified how frequently years should be marked on the timeline. 
+                Guessing appropriate values. 
+                Set step major year and/or step minor year to specify}%
               \ifnum\value{chronos@tempcnta}>1500
                 \def\chronos@cam@blwyddyn@fawr{500}%
                 \def\chronos@cam@blwyddyn@fach{100}%
@@ -3711,7 +3894,9 @@
           \IfExistF \chronos@camrhaniadau {% rhaid \chronos@marks@baretrue o achos y côd uchod
             \ifnum\value{chronos@tempcnta}<5
               \chronos@marks@baretrue
-              \PackageInfo{chronos}{I'm guessing you want bare marks on your timeline. If I'm wrong, specify step divisions=0 to override my decision}%
+              \PackageInfo{chronos}{%
+                I'm guessing you want bare marks on your timeline. 
+                If I'm wrong, specify step divisions=0 to override my decision}%
               \ifnum\value{chronos@tempcnta}>2
                 \def\chronos@camrhaniadau{4}%
               \else
@@ -3725,13 +3910,17 @@
               \ifchronos@marks@bare\relax
               \else
                 \chronos@marks@barefalse
-                \PackageInfo{chronos}{I'm guessing you don't want bare marks on your timeline. If I'm wrong, specify step divisions to override my decision}%
+                \PackageInfo{chronos}{%
+                  I'm guessing you don't want bare marks on your timeline. 
+                  If I'm wrong, specify step divisions to override my decision}%
               \fi
             \fi % <5
           }% \chronos@camrhaniadau
           \ifchronos@marks@bare
             \IfExistF \chronos@camrhaniadau {%
-              \PackageInfo{chronos}{You have requested bare marks but not specified how many. Guessing 4 per minor step. Set step divisions to specify}%
+              \PackageInfo{chronos}{%
+                You have requested bare marks but not specified how many. 
+                Guessing 4 per minor step. Set step divisions to specify}%
               \def\chronos@camrhaniadau{4}%
             }% \IfExistT \chronos@camrhaniadau
           \fi % \ifchronos@marks@bare
@@ -3771,7 +3960,9 @@
             \pgfmathparse{int(mod(\thechronos@startmarkyear,\chronos@tempv))}%
             \ifnum\pgfmathresult=0\relax
             \else
-              \PackageWarning{chronos}{You have explicitly requested years marked on your timeline which are not modulo the steps you have specified. I'm setting the year format to show full years, which should make the result a bit more intelligible.}%
+              \PackageWarning{chronos}{%
+                You have explicitly requested years marked on your timeline which are not modulo the steps you have specified. 
+                I'm setting the year format to show full years, which should make the result a bit more intelligible.}%
               \chronos@setminoryearformat{!Y}%
             \fi
           }% \IfFreeTF \chronos@stepfrom
@@ -3796,7 +3987,9 @@
                 \pgfmathparse{int(mod(12,\chronos@camrhaniadau))}%
                 \ifnum\pgfmathresult=0\relax
                 \else
-                  \PackageWarning{Since your timeline spans fewer than two years, step divisions must be a factor of 12. I will use 4 if you requested 5 and 6 otherwise}%
+                  \PackageWarning{%
+                    Since your timeline spans fewer than two years, step divisions must be a factor of 12. 
+                    I will use 4 if you requested 5 and 6 otherwise}%
                   \ifnum\pgfmathresult=5
                     \def\chronos@camrhaniadau{4}%
                   \else
@@ -5026,6 +5219,7 @@
 %^^A END macros y ddogfen >>>
 \chronos@presetfalse
 %    \end{macrocode}
+% \end{pkg}
 % \iffalse
 %</sty>
 % \fi
@@ -5035,9 +5229,11 @@
 % \iffalse
 %<*sty-styles>
 % \fi
+% \begin{pkg}{chronos-lib-styles}
+% Styles.
 %    \begin{macrocode}
 \RequirePackage{chronos}
-\ProvidesPackageSVN[\MyFileBaseName-lib-styles.sty]{$Id: chronos-code.dtx 10891 2025-03-02 07:31:39Z cfrees $}[v0.9 \revinfo]
+\ProvidesPackageSVN[\MyFileBaseName-lib-styles.sty]{$Id: chronos-code.dtx 10893 2025-03-02 09:13:11Z cfrees $}[v0.9 \revinfo]
 \pgfqkeys{/chronos}{%
 %^^A  BEGIN styles <<<
 %^^A  % BEGIN on line styles
@@ -5060,19 +5256,31 @@
       timeline minor mark={line width=.2pt, shorten <=-2pt, shorten >=0pt},
     },
     every chronos connectors'=coordinate,
-    every text tag connectors+={circle, anchor=center, draw=none, fill=none, minimum size=\pgflinewidth},
-    connections={draw=##1, {Triangle[width=0pt 3,reversed,length=0pt 1.5]}-{Triangle[width=0pt 5,reversed,length=0pt 2.5]}},
+    every text tag connectors+={circle, anchor=center, draw=none,%
+      fill=none, minimum size=\pgflinewidth},
+    connections={draw=##1, {Triangle[width=0pt 3,reversed,length=0pt 1.5]}-%
+      {Triangle[width=0pt 5,reversed,length=0pt 2.5]}},
     period/line={fill=chronos timeline foreground colour, blend mode=overlay},
     life/line={fill=chronos timeline foreground colour, blend mode=overlay},
     event/line={draw=chronos timeline foreground colour, thick, blend mode=overlay},
-    every text tags={fill=chronos main background colour, text=####1, fill opacity=.75, text opacity=1, draw=none, rounded corners, align=center, font=\sffamily\footnotesize},
+    every text tags={fill=chronos main background colour, text=####1,%
+      fill opacity=.75, text opacity=1, draw=none, rounded corners,%
+      align=center, font=\sffamily\footnotesize},
     only years,
     without eras,
     connections on=background,
-    subheadings style={align=center, anchor=base, inner sep=0pt, outer sep=0pt, text=chronos main colour!75!chronos main background colour, opacity=.8, font=\sffamily\footnotesize},
-    headings style={align=center, anchor=base, inner sep=0pt, outer sep=0pt, text=chronos main colour!75!chronos main background colour, opacity=.8, font=\sffamily\bfseries\small},
-    main/frame={inner sep=5pt, ultra thick, draw=chronos main colour, fill=none,},% oedd chronos@prifliw@cefndir
-    main/title={/chronos/main/@frame, font=\sffamily\huge\bfseries, text=chronos main colour, anchor=center, align=center, draw=chronos main colour,ultra thick,drop shadow,fill=chronos main background colour,fill opacity=1},
+    subheadings style={align=center, anchor=base, inner sep=0pt, outer sep=0pt,%
+      text=chronos main colour!75!chronos main background colour, opacity=.8,%
+      font=\sffamily\footnotesize},
+    headings style={align=center, anchor=base, inner sep=0pt, outer sep=0pt,%
+      text=chronos main colour!75!chronos main background colour, opacity=.8,%
+      font=\sffamily\bfseries\small},
+    main/frame={inner sep=5pt, ultra thick, draw=chronos main colour,%
+      fill=none,},% oedd chronos@prifliw@cefndir
+    main/title={/chronos/main/@frame, font=\sffamily\huge\bfseries, %
+      text=chronos main colour, anchor=center, align=center,%
+      draw=chronos main colour,ultra thick,drop shadow,%
+      fill=chronos main background colour,fill opacity=1},
     headings drops'=10pt:10pt:7.5pt,
     bce year label=BCE,
     ce year label=CE,
@@ -5084,9 +5292,12 @@
     modern,
     colour scheme=lavender,
     rotate all colours,
-    every text tags+={draw=####1,sharp corners,text opacity=1,fill opacity=1,draw opacity=1,drop shadow},
-    period/line+={top color=chronosSilver,bottom color=chronos timeline border outer colour,fill opacity=1},
-    life/line+={top color=chronosSilver,bottom color=chronos timeline border outer colour,fill opacity=1},
+    every text tags+={draw=####1,sharp corners,text opacity=1,%
+      fill opacity=1,draw opacity=1,drop shadow},
+    period/line+={top color=chronosSilver,%
+      bottom color=chronos timeline border outer colour,fill opacity=1},
+    life/line+={top color=chronosSilver,%
+      bottom color=chronos timeline border outer colour,fill opacity=1},
     main/title+={text=chronos main colour!75!chronosDarkGray},
   },
   serif on line/.style={%
@@ -5094,8 +5305,10 @@
     serif on line/.meaning to context,
     no colour rotation,
     colour scheme=default,
-    text tag connectors'={fill=##1, opacity=1, circle, minimum size=2.5pt, anchor=center, inner sep=0pt, outer sep=0pt},
-    chronos connectors'={fill=##1, opacity=.75, circle, minimum size=2.5pt, anchor=center, inner sep=0pt, outer sep=0pt},
+    text tag connectors'={fill=##1, opacity=1, circle, minimum size=2.5pt,%
+      anchor=center, inner sep=0pt, outer sep=0pt},
+    chronos connectors'={fill=##1, opacity=.75, circle, minimum size=2.5pt,%
+      anchor=center, inner sep=0pt, outer sep=0pt},
     timeline ce label={CE},
     timeline bce label={BCE},
     special date=none,
@@ -5106,8 +5319,10 @@
       timeline marks,
       timeline year={text=chronos timeline foreground colour, align=center},
       timeline mark={draw=chronos timeline foreground colour, thick, shorten >=2.5pt},
-      timeline minor mark={draw=chronos timeline foreground colour, thick, shorten >=3.5pt},
-      timeline bare mark={draw=chronos timeline foreground colour, semithick, shorten >=2pt, shorten <=2pt},
+      timeline minor mark={draw=chronos timeline foreground colour,%
+        thick, shorten >=3.5pt},
+      timeline bare mark={draw=chronos timeline foreground colour,%
+        semithick, shorten >=2pt, shorten <=2pt},
       minor years,
       step divisions=2,
       timeline line={chronos timeline background colour},
@@ -5115,8 +5330,10 @@
       minor step font=\normalfont\bfseries\small,
       eras font=\normalfont\bfseries,
     },
-    headings style={text=chronos main colour!75!chronos main background colour, font=\footnotesize\uishape},
-    subheadings style={font=\scriptsize\uishape,text=chronos main colour!75!chronos main background colour},
+    headings style={text=chronos main colour!75!chronos main background colour,%
+      font=\footnotesize\uishape},
+    subheadings style={font=\scriptsize\uishape,%
+      text=chronos main colour!75!chronos main background colour},
     event/text tag+={font=\small\scshape},
     period/text tag+={font=\small\scshape},
     life/text tag+={font=\small\scshape},
@@ -5158,11 +5375,15 @@
     ce year label=CE,
     levels=3:3,
     no colour rotation,
-    every connections'={draw=####1, -{Triangle[width=1.5pt, reversed, length=.75pt, fill=####1]}},
-    every text tags'={fill opacity=.75, fill=####1!25, draw=####1, rounded corners, font=\footnotesize\sffamily, text=chronos timeline foreground colour},
+    every connections'={draw=####1,%
+      -{Triangle[width=1.5pt, reversed, length=.75pt, fill=####1]}},
+    every text tags'={fill opacity=.75,%
+      fill=####1!25, draw=####1, rounded corners,%
+      font=\footnotesize\sffamily, text=chronos timeline foreground colour},
     main/title={font=\sffamily\bfseries\LARGE, text=chronos main colour},
     main/frame={draw=chronos main colour, line width=1pt, rounded corners},
-    headings style={font=\rmfamily\small\itshape,text=chronos main colour!75!chronos main background colour},
+    headings style={font=\rmfamily\small\itshape,%
+      text=chronos main colour!75!chronos main background colour},
     subheadings style={/chronos/@amseraumawr,font=\scriptsize\rmfamily\itshape},
     every lines+={fill=none,draw=none},
   },
@@ -5191,17 +5412,25 @@
     ce year label={CE},
     bce year label={BCE},
     text tag yshift'=-10pt,
-    every text tags+={fill=chronos main background colour,fill opacity=.25,text opacity=1,font=\sffamily\small},
-    every connections+={draw=####1,{Triangle[width=0pt 3,reversed,length=0pt 1.5]}-{Triangle[width=0pt 3,reversed,length=0pt 1.5]}},
+    every text tags+={fill=chronos main background colour,fill opacity=.25,%
+      text opacity=1,font=\sffamily\small},
+    every connections+={draw=####1,%
+      {Triangle[width=0pt 3,reversed,length=0pt 1.5]}-%
+      {Triangle[width=0pt 3,reversed,length=0pt 1.5]}},
     every event below,
     every period below,
     every life below,
     levels=0:3,
     frame,
-    headings style={font=\footnotesize\sffamily,text=chronos main colour!75!chronos main background colour},
+    headings style={font=\footnotesize\sffamily,%
+      text=chronos main colour!75!chronos main background colour},
     subheadings style={/chronos/@amseraumawr,font=\scriptsize\sffamily},
     main/frame={draw=chronos main colour!75!chronos main background colour,semithick},
-    main/title={/chronos/main/title lines={draw=chronos main colour!50!chronos main background colour,thick},text=chronos main colour!75!chronos main background colour,font=\Large\sffamily,},
+    main/title={/chronos/main/title lines={%
+        draw=chronos main colour!50!chronos main background colour,%
+        thick},%
+      text=chronos main colour!75!chronos main background colour,%
+      font=\Large\sffamily,},
     headings drops'=12pt:10pt:7.5pt,
     headings border'=30pt,
   },
@@ -5245,9 +5474,14 @@
     every period below,
     levels=0:3,
     frame,
-    headings style={font=\small\sffamily\plstyle,text=chronos main colour!80!chronos main background colour},
-    subheadings style={font=\footnotesize\sffamily\plstyle,text=chronos main colour!60!chronos main background colour},
-    main/frame={double=chronos timeline foreground colour!25!chronos timeline background colour,draw=chronos timeline foreground colour!75!chronos timeline background colour,thin},
+    headings style={font=\small\sffamily\plstyle,%
+      text=chronos main colour!80!chronos main background colour},
+    subheadings style={font=\footnotesize\sffamily\plstyle,%
+      text=chronos main colour!60!chronos main background colour},
+    main/frame={%
+      double=chronos timeline foreground colour!25!chronos timeline background colour,%
+      draw=chronos timeline foreground colour!75!chronos timeline background colour,%
+      thin},
     main/title={font=\sffamily\upshape\plstyle\bfseries\huge,text=chronos main colour},
   },
   blues below/.style={%
@@ -5265,17 +5499,24 @@
       step major year=100,
       dates=1550:2050,
       timeline height'=3pt,
-      timeline line={chronos timeline foreground colour,double=chronos timeline background colour,line width=\timelineht/3,double distance=\timelineht/3},
+      timeline line={chronos timeline foreground colour,%
+        double=chronos timeline background colour,%
+        line width=\timelineht/3,double distance=\timelineht/3},
       timeline arrow,
       conditional timeline arrow={%
-        timeline/timeline line+={Bar-Latex,shorten <=-\timelineht/3,shorten >=-3pt-2.1\timelineht},
+        timeline/timeline line+={Bar-Latex,shorten <=-\timelineht/3,%
+          shorten >=-3pt-2.1\timelineht},
         timeline/timeline width-={3pt+2.43\timelineht},
-        before headings+={\path (chronos post) -- ++(3pt+2.1\timelineht,0pt) coordinate (chronos arrow tip) (chronos pre) -- ++(-\timelineht/3,0pt) coordinate (chronos arrow tail);},
+        before headings+={\path (chronos post) -- ++(3pt+2.1\timelineht,0pt) %
+          coordinate (chronos arrow tip) (chronos pre) -- %
+          ++(-\timelineht/3,0pt) coordinate (chronos arrow tail);},
       }{},
       timeline mark={chronos timeline foreground colour,line width=.6pt,shorten >=-4pt},
-      timeline minor mark={chronos timeline foreground colour,line width=.5pt,shorten >=-3.5pt},
+      timeline minor mark={chronos timeline foreground colour,%
+        line width=.5pt,shorten >=-3.5pt},
       timeline bare mark={chronos timeline foreground colour,line width=.3pt,shorten >=-2.5pt},
-      timeline year={fill=none,text=chronos timeline foreground colour,rotate around={45:(chronos year \chronosyeari |- chronos top)}},
+      timeline year={fill=none,text=chronos timeline foreground colour,%
+        rotate around={45:(chronos year \chronosyeari |- chronos top)}},
       major step font=\sffamily\footnotesize\tlstyle,
       timeline years anchor=south west,
       minor step font=\sffamily\scriptsize\tlstyle,
@@ -5286,11 +5527,24 @@
     every life below,
     every period below,
     levels=0:3,
-    headings style+={text=chronos main colour!75!chronos main background colour,font=\small\itshape\bfseries},
-    subheadings style+={text=chronos main colour!75!chronos main background colour,font=\footnotesize\itshape},
-    main/title+={font=\LARGE,text=chronos timeline foreground colour,draw=chronos timeline background colour,semithick},
-    main/frame+={thick,draw,chronos timeline foreground colour,double=chronos timeline background colour},
-    copyright={font=\footnotesize\sffamily, inner sep=0pt, outer sep=0pt, text=chronos timeline foreground colour!50!chronos main background colour},
+    headings style+={%
+      text=chronos main colour!75!chronos main background colour,%
+      font=\small\itshape\bfseries,%
+    },
+    subheadings style+={%
+      text=chronos main colour!75!chronos main background colour,%
+      font=\footnotesize\itshape,%
+    },
+    main/title+={%
+      font=\LARGE,text=chronos timeline foreground colour,%
+      draw=chronos timeline background colour,semithick,%
+    },
+    main/frame+={%
+      thick,draw,chronos timeline foreground colour,%
+      double=chronos timeline background colour,%
+    },
+    copyright={font=\footnotesize\sffamily, inner sep=0pt, outer sep=0pt,%
+      text=chronos timeline foreground colour!50!chronos main background colour},
     copyright/rotate=90,
     copyright/tag anchor=north west,
   },
@@ -5302,7 +5556,10 @@
     blues below,
     timeline={%
       timeline years=below,
-      timeline year={fill=none,rotate around={-90:(chronos year \chronosyeari)},text=chronos timeline foreground colour},
+      timeline year={%
+        fill=none,rotate around={-90:(chronos year \chronosyeari)},%
+        text=chronos timeline foreground colour,%
+      },
       timeline years anchor=north west,
     },
     every event above,
@@ -5342,9 +5599,16 @@
     frame,
     every text tags+={font=\sffamily},
     main/frame={draw=chronos main colour,rounded corners=10pt,thick},
-    main/title={draw=chronos main colour,rounded corners=3pt,semithick,font=\sffamily\LARGE},
-    headings style={font=\itshape\small\bfseries,text=chronos main colour!50!chronos main background colour},
-    subheadings style={font=\itshape\small,text=chronos timeline foreground colour!50!chronos timeline background colour},
+    main/title={%
+      draw=chronos main colour,rounded corners=3pt,%
+      semithick,font=\sffamily\LARGE,%
+    },
+    headings style={%
+      font=\itshape\small\bfseries,%
+      text=chronos main colour!50!chronos main background colour,%
+    },
+    subheadings style={font=\itshape\small,%
+      text=chronos timeline foreground colour!50!chronos timeline background colour},
   },
   off line colour/.style={% ateb: https://tex.stackexchange.com/a/324106/
     /chronos/.cd,
@@ -5378,15 +5642,25 @@
       minor years=false,
       timeline bare marks=false,
     },
-    every text tags+={text=####1!75!black,font=\sffamily\scriptsize,fill=chronos main background colour,fill opacity=.75},
-    every connections+={draw=####1,{Triangle[width=0pt 3,reversed,length=0pt 1.5]}-{Triangle[width=0pt 3,reversed,length=0pt 1.5]}},
+    every text tags+={%
+      text=####1!75!black,font=\sffamily\scriptsize,%
+      fill=chronos main background colour,fill opacity=.75,%
+    },
+    every connections+={%
+      draw=####1,%
+      {Triangle[width=0pt 3,reversed,length=0pt 1.5]}-%
+      {Triangle[width=0pt 3,reversed,length=0pt 1.5]},%
+    },
     event/line'={},
     year format={!q!Y},
     event/date format={!q!Y},
     main/title={font=\sffamily\Large,text=chronos timeline foreground colour},
     chronos tikz+={%
       \ifchronos@timeline@showyears
-        \scoped[on chronos middle ground layer]{\fill [chronos main background colour, fill opacity=.75] (chronos pre) -| (chronos post |- chronos phantom year.south) -| cycle ;}
+        \scoped[on chronos middle ground layer]{%
+          \fill [chronos main background colour, fill opacity=.75] 
+          (chronos pre) -| (chronos post |- chronos phantom year.south) -| cycle ;
+        }
       \fi
     },
   },
@@ -5480,7 +5754,12 @@
     no colour rotation,
     event/default colour=chronos main colour,
     event years on line, 
-    main/title+={font=\sffamily\LARGE,text=chronos main colour,/chronos/main/title lines={draw=chronos timeline background colour,line width=1.5pt}},
+    main/title+={%
+      font=\sffamily\LARGE,text=chronos main colour,%
+      /chronos/main/title lines={%
+        draw=chronos timeline background colour,line width=1.5pt,%
+      }%
+    },
   },
   lines on line/.style={% https://tex.stackexchange.com/a/324453/
     /chronos/.cd,
@@ -5529,6 +5808,7 @@
 %^^A  % END styles >>>
 }
 %    \end{macrocode}
+% \end{pkg}
 % \iffalse
 %</sty-styles>
 % \fi
@@ -5538,15 +5818,22 @@
 % \iffalse
 %<*sty-colschemes>
 % \fi
+% \begin{pkg}{chronos-lib-colschemes}
+% Colour schemes.
 %    \begin{macrocode}
 \RequirePackage{chronos}
-\ProvidesPackageSVN[\MyFileBaseName-lib-colschemes.sty]{$Id: chronos-code.dtx 10891 2025-03-02 07:31:39Z cfrees $}[v0.9 \revinfo]
+\ProvidesPackageSVN[\MyFileBaseName-lib-colschemes.sty]{$Id: chronos-code.dtx 10893 2025-03-02 09:13:11Z cfrees $}[v0.9 \revinfo]
 %^^A  BEGIN cylluniau lliwiau | colour schemes <<<
 \chronosnewcolourscheme[default]{blues}{%
   timeline foreground=chronosDodgerBlue4,
   timeline background=chronosDodgerBlue2,
-  default below={chronosCerulean!50!chronosDodgerBlue4,chronosCerulean!50!chronosDodgerBlue3,chronosCerulean!50!chronosDodgerBlue2,chronosCerulean!50!chronosDodgerBlue1,chronosCerulean},
-  default above={chronosCerulean!50!chronosDodgerBlue4,chronosCerulean!50!chronosDodgerBlue3,chronosCerulean!50!chronosDodgerBlue2,chronosCerulean!50!chronosDodgerBlue1,chronosCerulean},
+  default below={%
+    chronosCerulean!50!chronosDodgerBlue4,chronosCerulean!50!chronosDodgerBlue3,%
+    chronosCerulean!50!chronosDodgerBlue2,chronosCerulean!50!chronosDodgerBlue1,%
+    chronosCerulean},
+  default above={chronosCerulean!50!chronosDodgerBlue4,%
+    chronosCerulean!50!chronosDodgerBlue3,chronosCerulean!50!chronosDodgerBlue2,%
+    chronosCerulean!50!chronosDodgerBlue1,chronosCerulean},
   foreground=chronosDodgerBlue4,
   background=white,
 }
@@ -5594,8 +5881,14 @@
   timeline border outer=chronosLavenderBlush4,
   foreground=chronosLavenderBlush4,
   background=chronosLavender,
-  default above={chronosLavenderBlush4!90!chronosMediumPurple!50!chronosDarkSlateGrey,chronosLavenderBlush3!90!chronosMediumPurple!50!chronosDarkSlateGrey,chronosLavenderBlush2!90!chronosMediumPurple!50!chronosDarkSlateGrey},
-  default below={chronosLavenderBlush2!90!chronosMediumPurple!50!chronosDarkSlateGrey,chronosLavenderBlush3!90!chronosMediumPurple!50!chronosDarkSlateGrey,chronosLavenderBlush4!90!chronosMediumPurple!50!chronosDarkSlateGrey},
+  default above={%
+    chronosLavenderBlush4!90!chronosMediumPurple!50!chronosDarkSlateGrey,%
+    chronosLavenderBlush3!90!chronosMediumPurple!50!chronosDarkSlateGrey,%
+    chronosLavenderBlush2!90!chronosMediumPurple!50!chronosDarkSlateGrey},
+  default below={%
+    chronosLavenderBlush2!90!chronosMediumPurple!50!chronosDarkSlateGrey,%
+    chronosLavenderBlush3!90!chronosMediumPurple!50!chronosDarkSlateGrey,%
+    chronosLavenderBlush4!90!chronosMediumPurple!50!chronosDarkSlateGrey},
 }
 \chronosnewcolourscheme[default]{modern}{%
   timeline foreground=chronosSilver,
@@ -5618,10 +5911,11 @@
 }
 %^^A  END cylluniau lliwiau | colour schemes >>>
 %    \end{macrocode}
+% \end{pkg}
 % \iffalse
 %</sty-colschemes>
 % \fi
 % 
 %\Finale
 % 
-%% vim: et:tw=0:sw=2:ts=2:foldmethod=marker:fmr=<<<,>>>:
+%^^A vim: et:tw=0:sw=2:ts=2:foldmethod=marker:fmr=<<<,>>>:
