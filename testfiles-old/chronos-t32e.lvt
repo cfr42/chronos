@@ -1,0 +1,59 @@
+% !TEX TS-program = pdflatex
+% !TEX encoding = UTF-8 Unicode
+% arara: pdflatex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% This is file `chronos-egs.lvt',
+%%
+%% Copyright (C) 2023-2025 Clea F. Rees.
+%% 
+%% This work may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3c
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%   https://www.latex-project.org/lppl.txt
+%% and version 1.3c or later is part of all distributions of LaTeX
+%% version 2008-05-04 or later.
+%% 
+%% This work has the LPPL maintenance status `maintained'.
+%% 
+%% The Current Maintainer of this work is Clea F. Rees.
+%% 
+%% This file may only be distributed together with a copy of the package
+%% chronos. 
+%% 
+%% This work consists of all files listed in manifest.txt.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{iftex}
+\ifpdftex
+\pdfminorversion=7
+\fi
+\RequirePackage{svn-prov}
+\ProvidesFileSVN{$Id: chronos-t32e.lvt 10850 2025-02-23 04:21:03Z cfrees $}[v0.0 \revinfo][\filebase DTX: TikZ Timelines]
+\input chronos-test-preamble.tex\relax
+\begin{document}
+\START
+\TEST{chronos-egs-t32e}{%
+  \setbox\chronosbox=\hbox{%
+    \begin{chronos}
+      [
+        dates=100:400,
+        period/default colour=blue,
+        event/default colour=green,
+        no colour rotation,
+        no simple colour names,
+      ]
+      \chronosperiod{name=Period 0,dates=100:200}
+      \chronosperiod{name=Period 1,default colour,dates=200:300}
+      \chronosperiod{name=Period 2,dates=300:400}
+      \chronosevent{name=Event 2,date=150,place below}
+      \chronosevent{name=Event 0,default colour=yellow,date=250}
+      \chronosevent{name=Event 1,colour=black,date=350}
+      % dylai'r llinell nesaf achosi wall pan dim enwau lliw syml yn cael ei alluogi
+      \draw [draw=Event 1] (0,0) -- ++(1,1);
+    \end{chronos}%
+  }%
+  \showbox\chronosbox
+}
+\END
+\end{document}
+
