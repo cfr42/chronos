@@ -30,7 +30,7 @@
 %^^A ref. ateb Max Chernoff: https://tex.stackexchange.com/a/723294/
 \def\MyMakePrivateLetters{\makeatletter\ExplSyntaxOn\endlinechar13}
 \ExplSyntaxOff
-\ProvidesFileSVN{$Id: chronos.dtx 10895 2025-03-02 20:13:25Z cfrees $}[v0.9 \revinfo][\filebase DTX: ]
+\ProvidesFileSVN{$Id: chronos.dtx 10898 2025-03-03 08:16:50Z cfrees $}[v0.9 \revinfo][\filebase DTX: ]
 \DefineFileInfoSVN[chronos]
 \GetFileInfoSVN*
 \let\chronosdocversion\fileversion
@@ -1328,8 +1328,11 @@
 %^^A \let\MakePrivateLetters\MyMakePrivateLetters
 \DocInput{\filename}
 %^^A\DocInput{\chronosdocbase-code.dtx}
-\def\mybasename#1.#2\nil{#1}
-\ExpandArgs {e} \DocInput{\expandafter\mybasename\filename.a\nil-code.dtx}
+\ifx\jobname\chronosdocbase\relax
+\else
+  \def\mybasename#1.#2\nil{#1}
+  \ExpandArgs {e} \DocInput{\expandafter\mybasename\filename.a\nil-code.dtx}
+\fi
 \end{document}
 %</driver>
 % \fi
@@ -7608,7 +7611,7 @@ mode=overlay}}.
 \RequirePackage{svn-prov}
 \def\GetFileBaseName#1-#2\nil{#1}
 \edef\MyFileBaseName{\expandafter\GetFileBaseName\jobname\nil}
-\ProvidesFileSVN[\MyFileBaseName-doc]{$Id: chronos.dtx 10895 2025-03-02 20:13:25Z cfrees $}[v0.0 \revinfo]
+\ProvidesFileSVN[\MyFileBaseName-doc]{$Id: chronos.dtx 10898 2025-03-03 08:16:50Z cfrees $}[v0.0 \revinfo]
 \DefineFileInfoSVN
 \AddToHook{begindocument}{\OnlyDescription}
 \input{\MyFileBaseName.dtx}
@@ -7619,7 +7622,7 @@ mode=overlay}}.
 \RequirePackage{svn-prov}
 \def\GetFileBaseName#1-#2\nil{#1}
 \edef\MyFileBaseName{\expandafter\GetFileBaseName\jobname\nil}
-\ProvidesFileSVN[\MyFileBaseName-imp]{$Id: chronos.dtx 10895 2025-03-02 20:13:25Z cfrees $}[v0.0 \revinfo]
+\ProvidesFileSVN[\MyFileBaseName-imp]{$Id: chronos.dtx 10898 2025-03-03 08:16:50Z cfrees $}[v0.0 \revinfo]
 \DefineFileInfoSVN
 \AddToHook{begindocument}{\AlsoImplementation}
 \input{\MyFileBaseName.dtx}

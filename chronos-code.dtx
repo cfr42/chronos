@@ -32,7 +32,7 @@
 % ref. ateb Max Chernoff: https://tex.stackexchange.com/a/723294/
 \def\MakePrivateLetters{\makeatletter\ExplSyntaxOn\endlinechar13}
 \ExplSyntaxOff
-\ProvidesFileSVN{$Id: chronos-code.dtx 10893 2025-03-02 09:13:11Z cfrees $}[v0.0 \revinfo][\filebase DTX: Customisable TikZ-based timelines]
+\ProvidesFileSVN{$Id: chronos-code.dtx 10898 2025-03-03 08:16:50Z cfrees $}[v0.0 \revinfo][\filebase DTX: Customisable TikZ-based timelines]
 \DefineFileInfoSVN[chronoscode]
 \documentclass[11pt,british]{ltxdoc}
 % l3doc loads fancyvrb
@@ -197,13 +197,13 @@
 % \iffalse
 %<*sty>
 % \fi
-% \begin{pkg}{chronos}
+% \begin{package}{chronos}
 % \LaTeXe{} package.
 %    \begin{macrocode}
 \RequirePackage{svn-prov}
 \def\GetFileBaseName#1-#2\nil{#1}
 \edef\MyFileBaseName{\expandafter\GetFileBaseName\jobname\nil}
-\ProvidesPackageSVN[\MyFileBaseName.sty]{$Id: chronos-code.dtx 10893 2025-03-02 09:13:11Z cfrees $}[v0.9 \revinfo]
+\ProvidesPackageSVN[\MyFileBaseName.sty]{$Id: chronos-code.dtx 10898 2025-03-03 08:16:50Z cfrees $}[v0.9 \revinfo]
 \DefineFileInfoSVN
 %    \end{macrocode}
 % \iffalse
@@ -212,11 +212,15 @@
 %    \begin{macrocode}
 \NeedsTeXFormat{LaTeX2e}[2021-11-15]
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%    \end{macrocode}
 %^^A copied verbatim, excepting format from Joseph Wright's siunitx.sty under LPPL
+%    \begin{macrocode}
 \@ifundefined{ExplLoaderFileDate}{%
   \RequirePackage{expl3}%
 }{}
+%    \end{macrocode}
 %^^A almost verbatim from siunitx.sty
+%    \begin{macrocode}
 \@ifl@t@r\ExplLoaderFileDate{2022-02-24}{%
 }{%
   \PackageError{chronos}{Support package expl3 too old}
@@ -231,6 +235,7 @@
 \ExplSyntaxOn
 \newif\ifchronos@enwaulliwsyml
 \keys_define:nn { chronos } %^^A <<<
+%    \begin{macrocode}
 {
   enwau~lliw~syml .legacy_if_set:n = chronos@enwaulliwsyml,
   enwau~lliw~syml .default:n = true,
@@ -252,7 +257,9 @@
   no~simple~color~names .default:n = true,
   no~simple~color~names .usage:n = general,
 } %^^A >>>
+%    \end{macrocode}
 %^^A Joseph Wright: from siunitx.sty ; https://chat.stackexchange.com/transcript/message/64327823#64327823
+%    \begin{macrocode}
 \providecommand \IfFormatAtLeastTF { \@ifl@t@r \fmtversion }
 \IfFormatAtLeastTF { 2022-06-01 }
 {
@@ -261,9 +268,11 @@
   \RequirePackage { l3keys2e }
   \ProcessKeysOptions { chronos }
 }
+%    \end{macrocode}
 %^^A if we require 2022-02-24 expl3 above what is this for?
 %^^A is it even possible to use that expl3 with somehow an older format?
 %^^A (wasn't expl3 in the format by then?)
+%    \begin{macrocode}
 \IfFormatAtLeastTF { 2020-10-01 }{
 }{
   \RequirePackage { xparse }
@@ -272,7 +281,9 @@
 }
 \ExplSyntaxOff
 \RequirePackage{xcolor}
+%    \end{macrocode}
 %^^A mae fixedpointarithmetic eisiau fp
+%    \begin{macrocode}
 \RequirePackage{tikz,etoolbox,pgfcalendar,calc,fp}% rwyt ti *eisiau* calc!
 \usetikzlibrary{arrows.meta,calc,positioning,fixedpointarithmetic,decorations.%
   text,fit,shadows}
@@ -281,17 +292,23 @@
 }{%
   \usetikzlibrary{backgrounds}%
 }
+%    \end{macrocode}
 %^^A BEGIN expl3 <<<
+%    \begin{macrocode}
 \ExplSyntaxOn
+%    \end{macrocode}
 %^^A BEGIN booleans
+%    \begin{macrocode}
 \bool_new:N \l__chronos_byw_troi_bool
 \bool_new:N \l__chronos_digwyddiad_troi_bool
 \bool_new:N \l__chronos_parhad_troi_bool
 \bool_new:N \l__chronos_theori_troi_bool
 \bool_new:N \l__chronos_gwybodaeth_troi_bool
 \bool_new:N \l__chronos_troi_bool
+%    \end{macrocode}
 %^^A END booleans
 %^^A BEGIN clists
+%    \begin{macrocode}
 \clist_new:N \g__chronos_lliwiau_uchod_clist
 \clist_new:N \g__chronos_lliwiau_isod_clist
 \clist_new:N \g__chronos_lliwiau_byw_uchod_clist
@@ -325,39 +342,53 @@
 \clist_new:N \g__chronos_tmpa_clist
 \clist_new:N \l__chronos_tmpb_clist
 \clist_new:N \l__chronos_tmpc_clist
+%    \end{macrocode}
 %^^A END clists
 %^^A BEGIN integers
+%    \begin{macrocode}
 \int_gzero_new:N \g__chronos_int
 \int_new:N \l__chronos_tmpa_int
 \int_new:N \l__chronos_tmpb_int
+%    \end{macrocode}
 %^^A END integers
 %^^A BEGIN prop
+%    \begin{macrocode}
 \prop_new:N \l__chronos_byw_prop
 \prop_new:N \l__chronos_digwyddiad_prop
 \prop_new:N \l__chronos_gwybodaeth_prop
 \prop_new:N \l__chronos_parhad_prop
 \prop_new:N \l__chronos_theori_prop
+%    \end{macrocode}
 %^^A \prop_new:N \l__chronos_cylchtheori_prop
+%    \begin{macrocode}
 \prop_new:N \l__chronos_rhagosedig_prop
 \prop_new:N \l__chronos_prop
 \prop_new:N \l__chronos_tmpa_prop
+%    \end{macrocode}
 %^^A END prop
 %^^A BEGIN regexes
+%    \begin{macrocode}
 \regex_const:Nn \c__chronos_enw_regex { [^A-Za-z0-9\s\-] }
 \regex_const:Nn \c__chronos_enw_priflythren_cyntaf_regex { (^[^A-Za-z]*)([a-z]) }
 \regex_const:Nn \c__chronos_enw_diogelu_regex 
 { 
   ([\s\-\c{\\}][[:punct:]]*) ([^\s\-\c{\\}]*) (\b|\c{\\}) 
 } % \s unrhyw space character \b word boundary
+%    \end{macrocode}
 %^^A \regex_const:Nn \c__chronos_pure_year_regex { ^ [\+\-]? \d+ \z }% \z = \Z = $ ($ yn newid popeth i maths yn ôl Kile!)
+%    \begin{macrocode}
 \regex_const:Nn \c__chronos_curly_bracket { [ \{ \} ] }
 \regex_const:Nn \c__chronos_initial_minus { ^\- }
+%    \end{macrocode}
 %^^A END regexes
 %^^A BEGIN seq
+%    \begin{macrocode}
 \seq_new:N \l__chronos_gosod_seq
 \seq_new:N \l__chronos_tmpa_seq
+%    \end{macrocode}
 %^^A END seq
 %^^A BEGIN token lists
+%    \begin{macrocode}
 \tl_new:N \l__chronos_lliw_tl
 \tl_new:N \l__chronos_date_tl
 \tl_new:N \l__chronos_dateformat_tl
@@ -372,8 +403,10 @@
 \tl_new:N \l__chronos_tmpb_tl
 \tl_new:N \l__chronos_tmpc_tl
 \tl_new:N \l__chronos_tmpd_tl
+%    \end{macrocode}
 %^^A END token lists
 %^^A BEGIN l3 keys
+%    \begin{macrocode}
 \keys_define:nn { chronos / lliwiau }
 {
   foreground .code:n = {\__chronos_color_set_from_existing:nn 
@@ -419,10 +452,12 @@
   theory / above .clist_gset:N = \g__chronos_lliwiau_theori_uchod_clist,
   theory / below .clist_gset:N = \g__chronos_lliwiau_theori_isod_clist,
 }
+%    \end{macrocode}
 %^^A END l3 keys
 %^^A BEGIN functions
 %^^A BEGIN functions : dyddiadau
 %^^A YY yn lle YYYY
+%    \begin{macrocode}
 \cs_new_protected_nopar:Npn \__chronos_year_shorten:n #1
 {
   \int_set:Nn \l__chronos_tmpa_int { \tl_count:n { #1 } }
@@ -453,8 +488,10 @@
 \cs_generate_variant:Nn \__chronos_year_shorten:n { V , v , x }
 \cs_new_protected_nopar:Npn \__chronos_year_semi_shorten:n #1
 {
+%    \end{macrocode}
 %^^A   \int_set:Nn \l__chronos_tmpb_int { \int_abs:n {#1} }
 %^^A   \tl_set:Nx \l__chronos_tmpc_tl { \int_to_arabic:n { \l__chronos_tmpb_int } }
+%    \begin{macrocode}
   \int_set:Nn \l__chronos_tmpa_int { \tl_count:n { #1 } }
   \int_compare:nTF
   {
@@ -465,8 +502,10 @@
   }
   {
     \__chronos_year_semi_shorten_aux:w #1 \q_stop % expl3 manual, 46 (w/q_stop?) ; \S\,5.7 Unbraced     
+%    \end{macrocode}
 %^^A     \exp_last_unbraced:NV \__chronos_year_semi_shorten_aux:w \l__chronos_tmpc_tl \q_stop % expl3 manual, 46 (w/q_stop?) ; \S\,5.7 Unbraced Expansion: osgoi \exp_after:wN ble sy'n bosibl (\exp_args:N* yn well 'na \exp_last_unbraced:N*? wn i ddim sut i ddefnyddio hynny beth bynnag)
 %^^A     \exp_after:wN \__chronos_year_semi_shorten_aux:w \l__chronos_tmpc_tl \q_stop % expl3 manuaal, 46
+%    \begin{macrocode}
   }
 }
 \cs_new_protected_nopar:Npn \__chronos_year_semi_shorten_aux:w #1 #2 #3 #4 \q_stop
@@ -476,7 +515,9 @@
 \cs_generate_variant:Nn \__chronos_year_semi_shorten:n { V , v , x }
 \cs_generate_variant:Nn \int_abs:n { v }
 \cs_generate_variant:Nn \tl_replace_all:Nnn { Nnx }
+%    \end{macrocode}
 %^^A dangos dyddiadau
+%    \begin{macrocode}
 \cs_new_protected_nopar:Npn \__chronos_show_date:n #1
 {% ateb Joseph Wright: http://tex.stackexchange.com/a/327642/ ; PD/CCO at https://tex.stackexchange.com/users/73/joseph-wright
   \tl_set_eq:NN \l__chronos_date_tl \l__chronos_dateformat_tl
@@ -587,8 +628,10 @@
 {
     \__chronos_set_date:nnnn {#1} {#2} {#3} {#5}
 }
+%    \end{macrocode}
 %^^A END functions : dyddiadau
 %^^A BEGIN functions : lliwiau
+%    \begin{macrocode}
 \cs_new_protected_nopar:Nn \__chronos_troilliwiau:nn
 {
   \clist_if_empty:cTF { g__chronos_lliwiau_#1_#2_clist }
@@ -601,6 +644,7 @@
   }
 }
 \cs_new_nopar:Nn \__chronos_color_set_from_existing:nn { \colorlet {#1} {#2} }
+%    \end{macrocode}
 %^^A \cs_new_protected_nopar:Nn \__chronos_darparu_lliw:nn
 %^^A {
 %^^A   \color_if_exist:nF { #1 } { \color_set_eq:nn { #1 } { #2 } }
@@ -608,6 +652,7 @@
 %^^A \cs_generate_variant:Nn \__chronos_darparu_lliw:nn { Vn }
 %^^A END functions : lliwiau
 %^^A BEGIN functions : enwau
+%    \begin{macrocode}
 \cs_new_protected_nopar:Nn \__chronos_creu_tikzname:n
 {
   \int_compare:nTF { \tl_count:n { #1 } < 2 }
@@ -642,6 +687,7 @@
   \l__chronos_tmpc_tl
 }
 \cs_generate_variant:Nn \__chronos_enw_priflythrennu:n { V,o }
+%    \end{macrocode}
 %^^A END functions : enwau
 %^^A BEGIN functions : coords purity
 %^^A \cs_generate_variant:Nn \regex_match:NnTF { Nx }
@@ -656,6 +702,7 @@
 %^^A }
 %^^A END functions : coords purity
 %^^A BEGIN functions: containment
+%    \begin{macrocode}
 \cs_new_protected_nopar:Nn \__chronos_at_begin:
 {
   \cs_set_eq:NN \chronosset \@@chronosset
@@ -667,9 +714,11 @@
   }
   \int_gincr:N \g__chronos_int
 }
+%    \end{macrocode}
 %^^A END functions: containment
 %^^A BEGIN functions: pgf keys
 %^^A BEGIN functions: pgf keys (prop)
+%    \begin{macrocode}
 \cs_new_protected_nopar:Nn \__chronos_cadw_nodweddion:nnn
 {% #1: tag #2 key #3 key-value list
   \prop_put:cnn { l__chronos_#1_prop } { #2 } { {#3} }
@@ -734,7 +783,9 @@
   {
     \tl_set:Nn \l__chronos_tmpd_tl { #2 }
     \regex_replace_all:nnN { \\ } { \\\\ } \l__chronos_tmpd_tl
+%    \end{macrocode}
 %^^A     \regex_replace_all:nnN { ( \cP ) } { \1\1 } \l__chronos_tmpd_tl
+%    \begin{macrocode}
     \regex_replace_once:nnN { \}\z } { , \u{l__chronos_tmpd_tl} \} } \l__chronos_tmpc_tl
     \prop_put:NnV \l__chronos_prop { #1 } \l__chronos_tmpc_tl
   }{
@@ -756,7 +807,9 @@
 \cs_generate_variant:Nn \prop_concat:NNN { NNc }
 \cs_new_protected_nopar:Nn \__chronos_gosod_nodweddion:n
 {
+%    \end{macrocode}
 %^^A  cadw status
+%    \begin{macrocode}
   \prop_set_eq:NN \l__chronos_rhagosedig_prop \l__chronos_prop
   \prop_concat:NNc \l__chronos_tmpa_prop \l__chronos_prop { l__chronos_#1_prop }
   \prop_set_eq:NN \l__chronos_prop \l__chronos_tmpa_prop
@@ -789,8 +842,10 @@
 {% \pgfqkeys{#1}{#2} = \pgfkeys{#1/.cd}{#2} ond yn gyflymach (Skillman a t 977)
   \pgfqkeys {/chronos} { #1/.style = #2 }
 }
+%    \end{macrocode}
 %^^A END functions: pgf keys (prop)
 %^^A BEGIN functions: pgf keys (lliwiau)
+%    \begin{macrocode}
 \cs_new_protected_nopar:Nn \__chronos_lliwiau_cadw_rhag:
 {
   \clist_map_inline:nn { byw, digwyddiad, parhad, theori }
@@ -821,8 +876,10 @@
   \clist_gset_eq:NN \g__chronos_lliwiau_isod_clist \g__chronos_lliwiau_isod_rhag_clist
   \clist_gset_eq:NN \g__chronos_lliwiau_uchod_clist \g__chronos_lliwiau_uchod_rhag_clist
 }
+%    \end{macrocode}
 %^^A END functions: pgf keys (lliwiau)
 %^^A BEGIN functions: pgf keys (headings)
+%    \begin{macrocode}
 \cs_new_protected_nopar:Nn \__chronos_at_end:
 {
   \clist_if_empty:NF \l__chronos_headings_clist
@@ -870,10 +927,12 @@
     }
   }
 }
+%    \end{macrocode}
 %^^A END functions: pgf keys (headings)
 %^^A BEGIN functions: pgf keys (keys)
 %^^A \__chronos_kex<whatever> functions just produce groups of pgf keys for the plain/prime/plus triple, standard/every, cy/en and combinations thereof
 %^^A tldr: reduce clutte/typing and facilitate changes/fixes (hopefully)
+%    \begin{macrocode}
 \cs_new_protected_nopar:Nn \__chronos_kexpander:nnnn
 { % #1 enw (brif enw) | name (primary name) ; 
   % #2 llwybr/prop tag | path/prop tag ; 
@@ -989,24 +1048,32 @@
     \pgfqkeys{/chronos/##1} { #1/.#2={#3} }
   }
 }
+%    \end{macrocode}
 %^^A END functions: pgf keys (keys)
 %^^A END functions: pgf keys
+%    \begin{macrocode}
 \cs_generate_variant:Nn \legacy_if:nTF { oTF }
+%    \end{macrocode}
 %^^A joseph wright: https://chat.stackexchange.com/transcript/message/65523217#65523217
+%    \begin{macrocode}
 \cs_new_eq:NN \__chronos_keys_set_exclude_groups:nnn \keys_set_exclude_groups:nnn
 \cs_if_exist:NF \__chronos_keys_set_exclude_groups:nnn
 {
   \cs_new_eq:NN \__chronos_keys_set_exclude_groups:nnn \keys_set_filter:nnn
 }
+%    \end{macrocode}
 %^^A END functions
 %^^A BEGIN macros y paced **mewnol hefyd!** | **internal also!**
 %^^A Ddylwn i ddefnyddio \NewDocumentCommand (ond *mewnol*?), \newcommand/\newcommand*, \def/\gdef/\edef/\xdef, \cs_new_eq:NN, \let neu rhywbeth arall??!!
+%    \begin{macrocode}
 \newcommand* \chronos@tikzprefix { \int_to_arabic:n { \g__chronos_int } }
 \cs_new_eq:NN \chronos@env@begin \__chronos_at_begin:
 \cs_new_eq:NN \chronos@setdateformat \__chronos_set_dateformat:n
 \cs_new_eq:NN \chronos@setyearformat \__chronos_set_yearformat:n
 \cs_new_eq:NN \chronos@setminoryearformat \__chronos_set_minoryearformat:n 
+%    \end{macrocode}
 %^^A for pgf/tikz convenience
+%    \begin{macrocode}
 \NewDocumentCommand \chronos@showdate { o m }
 {
   \group_begin:
@@ -1043,7 +1110,9 @@
     \__chronos_show_year:n { #2 }
   \group_end:
 }
+%    \end{macrocode}
 %^^A \cs_new_eq:NN \chronos@minoryearformat  
+%    \begin{macrocode}
 \newcommand* \chronos@minoryearformat { \l__chronos_minoryearformat_tl }
 \newcommand* \chronos@troilliwiau@uchod [1] [byw] {% O {byw}
   \__chronos_troilliwiau:nn { #1 } { uchod }
@@ -1065,17 +1134,21 @@
 }
 \cs_new_eq:NN \chronos@lliwiau@clear \__chronos_lliwiau_clirio:
 \cs_new_eq:NN \chronos@lliwiau@cadw@rhag \__chronos_lliwiau_cadw_rhag:
+%    \end{macrocode}
 %^^A enwau
+%    \begin{macrocode}
 \newcommand* \chronos@creu@tikzname [2] {% m m
   \__chronos_creu_tikzname:n { #2 }
   \expandafter\let\csname chronos@#1@tikzname\endcsname \l__chronos_tikzname_tl
 }
 \cs_new_eq:NN \chronos@enw@priflythrennu \__chronos_enw_priflythrennu:V 
 \cs_new_eq:NN \chronos@testunteitl@priflythrennu \__chronos_enw_priflythrennu:n 
+%    \end{macrocode}
 %^^A \NewDocumentCommand \chronos@coords@completion { m m }
 %^^A {
 %^^A   \__chronos_coords_complete:nn { #1 }{ #2 }
 %^^A }
+%    \begin{macrocode}
 \cs_new_eq:NN \chronos@cadw@nodweddion@rhag \__chronos_cadw_nodweddion_rhag:nn 
 \cs_new_eq:NN \chronos@cadw@nodweddion  \__chronos_cadw_nodweddion:nnn
 \cs_new_eq:NN \chronos@ychwanegu@nodweddion \__chronos_ychwanegu_nodweddion:nnn 
@@ -1112,7 +1185,9 @@
 }%
 \newcommand* \chronos@dangos@gosod { \seq_show:N \l__chronos_gosod_seq }%
 \newcommand* \chronos@if@gosodTF [3] { \seq_if_in:NnTF \l__chronos_gosod_seq { #1 } { #2 } { #3 } }%
+%    \end{macrocode}
 %^^A \newcommand* \chronos@if@gosodT [2] { \seq_if_in:NnT \l__chronos_gosod_seq { #1 } { #2 } }%
+%    \begin{macrocode}
 \newcommand* \chronos@if@gosodF [2] { \chronos@presettrue \seq_if_in:NnF \l__chronos_gosod_seq { #1 } { #2 } \chronos@presetfalse }%
 \NewDocumentCommand \chronos@dangos@lliwiau { s O { byw, digwyddiad, parhad, theori } D () { isod, uchod }  } 
 {
@@ -1211,54 +1286,82 @@
 \cs_new_eq:NN \chronos@at@end  \__chronos_at_end:  
 \cs_new_eq:NN \chronos@set@date@aux \__chronos_set_date_aux:n
 \cs_new_eq:NN \chronos@set@date \__chronos_set_date:nnnn  % blwyddyn; mis; dydd; tag for macro
+%    \end{macrocode}
 %^^A \newcommand* \chronos@if@lliw [3] { \color_if_exist:nTF { #1 } { #2 } { #3 } }
+%    \begin{macrocode}
 \cs_new_eq:NN \chronos@legacy@if \legacy_if:oTF 
+%    \end{macrocode}
 %^^A \cs_new_eq:NN \chronos@legacy@if@set \legacy_if_set:nn
+%    \begin{macrocode}
 \newcommand* \chronos@legacy@if@set [2] {\cs:w #1#2\cs_end:}
 \def\chronos@datetojulian@extractyear #1-#2-#3 {#1}
 \NewDocumentCommand \chronos@dangoslliw 
   { s O {\chronos@temp@lliw} m }
   {\extractcolorspec{#3}{#2}\IfBooleanT{#1}{\show#2}}
 \cs_new_eq:NN \chronos@keymaker \__chronos_kexkeymaker:nnn
+%    \end{macrocode}
 %^^A END macros y paced
 %^^A BEGIN yn lle etoolbox
 %^^A yn lle \ifundef o etoolbox
+%    \begin{macrocode}
 \cs_if_exist:NTF \IfFreeTF {\PackageWarning{chronos}{Refusing ~ to ~ overwrite ~ existing ~ \protect\IfFreeTF. ~ This ~ may ~ not ~ work} } { \cs_new_eq:NN  \IfFreeTF \cs_if_free:NTF }
 \cs_if_exist:NTF \IfFreeT {\PackageWarning{chronos}{Refusing ~ to ~ overwrite ~ existing ~ \protect\IfFreeT. ~ This ~ may ~ not ~ work} } { \cs_new_eq:NN  \IfFreeT \cs_if_free:NT }
 \cs_if_exist:NTF \IfFreeF {\PackageWarning{chronos}{Refusing ~ to ~ overwrite ~ existing ~ \protect\IfFreeF. ~ This ~ may ~ not ~ work} } { \cs_new_eq:NN  \IfFreeF \cs_if_free:NF }
+%    \end{macrocode}
 %^^A yn lle \ifdef o etoolbox
+%    \begin{macrocode}
 \cs_if_exist:NTF \IfExistTF {\PackageWarning{chronos}{Refusing ~ to ~ overwrite ~ existing ~ \protect\IfExistTF. ~ This ~ may ~ not ~ work} } { \cs_new_eq:NN  \IfExistTF \cs_if_exist:NTF }
 \cs_if_exist:NTF \IfExistT {\PackageWarning{chronos}{Refusing ~ to ~ overwrite ~ existing ~ \protect\IfExistT. ~ This ~ may ~ not ~ work} } { \cs_new_eq:NN  \IfExistT \cs_if_exist:NT }
 \cs_if_exist:NTF \IfExistF {\PackageWarning{chronos}{Refusing ~ to ~ overwrite ~ existing ~ \protect\IfExistF. ~ This ~ may ~ not ~ work} } { \cs_new_eq:NN  \IfExistF \cs_if_exist:NF }
+%    \end{macrocode}
 %^^A yn lle \ifcsundef o etoolbox
+%    \begin{macrocode}
 \cs_if_exist:NTF \IfCSFreeTF {\PackageWarning{chronos}{Refusing ~ to ~ overwrite ~ existing ~ \protect\IfCSFreeTF. ~ This ~ may ~ not ~ work} } { \cs_new_eq:NN  \IfCSFreeTF \cs_if_free:cTF }
 \cs_if_exist:NTF \IfCSFreeT {\PackageWarning{chronos}{Refusing ~ to ~ overwrite ~ existing ~ \protect\IfCSFreeT. ~ This ~ may ~ not ~ work} } { \cs_new_eq:NN  \IfCSFreeT \cs_if_free:cT }
 \cs_if_exist:NTF \IfCSFreeF {\PackageWarning{chronos}{Refusing ~ to ~ overwrite ~ existing ~ \protect\IfCSFreeF. ~ This ~ may ~ not ~ work} } { \cs_new_eq:NN  \IfCSFreeF \cs_if_free:cF }
+%    \end{macrocode}
 %^^A yn lle \ifcsdef o etoolbox
+%    \begin{macrocode}
 \cs_if_exist:NTF \IfCSExistTF {\PackageWarning{chronos}{Refusing ~ to ~ overwrite ~ existing ~ \protect\IfCSExistTF. ~ This ~ may ~ not ~ work} } { \cs_new_eq:NN  \IfCSExistTF \cs_if_exist:cTF }
 \cs_if_exist:NTF \IfCSExistT {\PackageWarning{chronos}{Refusing ~ to ~ overwrite ~ existing ~ \protect\IfCSExistT. ~ This ~ may ~ not ~ work} } { \cs_new_eq:NN  \IfCSExistT \cs_if_exist:cT }
 \cs_if_exist:NTF \IfCSExistF {\PackageWarning{chronos}{Refusing ~ to ~ overwrite ~ existing ~ \protect\IfCSExistF. ~ This ~ may ~ not ~ work} } { \cs_new_eq:NN  \IfCSExistF \cs_if_exist:cF }
+%    \end{macrocode}
 %^^A yn lle \undef o etoolbox
+%    \begin{macrocode}
 \cs_if_exist:NTF \Undefine {\PackageWarning{chronos}{Refusing ~ to ~ overwrite ~ existing ~ \protect\Undefine. ~ This ~ may ~ not ~ work} } { \cs_new_eq:NN  \Undefine \cs_undefine:N }
+%    \end{macrocode}
 %^^A yn lle \csletcs o etoolbox
+%    \begin{macrocode}
 \cs_if_exist:NTF \CSletCS {\PackageWarning{chronos}{Refusing ~ to ~ overwrite ~ existing ~ \protect\CSletCS. ~ This ~ may ~ not ~ work} } { \cs_new_eq:NN  \CSletCS \cs_set_eq:cc }
+%    \end{macrocode}
 %^^A yn lle \cslet o etoolbox
+%    \begin{macrocode}
 \cs_if_exist:NTF \CSlet {\PackageWarning{chronos}{Refusing ~ to ~ overwrite ~ existing ~ \protect\CSlet. ~ This ~ may ~ not ~ work} } { \cs_new_eq:NN  \CSlet \cs_set_eq:cN }
+%    \end{macrocode}
 %^^A yn lle \ifboolexpr o etoolbox (ish)
+%    \begin{macrocode}
 \cs_if_exist:NTF \IfBooleanExprTF {\PackageWarning{chronos}{Refusing ~ to ~ overwrite ~ existing ~ \protect\IfBooleanExprTF. ~ This ~ may ~ not ~ work} } { \cs_new_eq:NN  \IfBooleanExprTF \bool_if:nTF }
 \cs_if_exist:NTF \IfBooleanExprT {\PackageWarning{chronos}{Refusing ~ to ~ overwrite ~ existing ~ \protect\IfBooleanExprT. ~ This ~ may ~ not ~ work} } { \cs_new_eq:NN  \IfBooleanExprT \bool_if:nT }
 \cs_if_exist:NTF \IfBooleanExprF {\PackageWarning{chronos}{Refusing ~ to ~ overwrite ~ existing ~ \protect\IfBooleanExprF. ~ This ~ may ~ not ~ work} } { \cs_new_eq:NN  \IfBooleanExprF \bool_if:nF }
+%    \end{macrocode}
 %^^A yn lle bool o etoolbox (ish)
+%    \begin{macrocode}
 \cs_if_exist:NTF \LegacyBoolean {\PackageWarning{chronos}{Refusing ~ to ~ overwrite ~ existing ~ \protect\LegacyBoolean. ~ This ~ may ~ not ~ work} } { \cs_new_eq:NN  \LegacyBoolean \legacy_if_p:n }
+%    \end{macrocode}
 %^^A yn lle test o etoolbox (ish)
+%    \begin{macrocode}
 \cs_if_exist:NTF \CSFreeBoolean {\PackageWarning{chronos}{Refusing ~ to ~ overwrite ~ existing ~ \protect\CSFreeBoolean. ~ This ~ may ~ not ~ work} } { \cs_new_eq:NN  \CSFreeBoolean \cs_if_free_p:N }
+%    \end{macrocode}
 %^^A yn lle \ifnumcomp o etoolbox (ish)
+%    \begin{macrocode}
 \cs_if_exist:NTF \IntCompareBoolean {\PackageWarning{chronos}{Refusing ~ to ~ overwrite ~ existing ~ \protect\IntCompareBoolean. ~ This ~ may ~ not ~ work} } { \cs_new_eq:NN  \IntCompareBoolean \int_compare_p:nNn }
 \cs_if_exist:NTF \IfIntCompareTF {\PackageWarning{chronos}{Refusing ~ to ~ overwrite ~ existing ~ \protect\IfIntCompareTF. ~ This ~ may ~ not ~ work} } { \cs_new_eq:NN  \IfIntCompareTF \int_compare:nTF }
 \cs_if_exist:NTF \IfIntCompareT {\PackageWarning{chronos}{Refusing ~ to ~ overwrite ~ existing ~ \protect\IfIntCompareT. ~ This ~ may ~ not ~ work} } { \cs_new_eq:NN  \IfIntCompareT \int_compare:nT }
 \cs_if_exist:NTF \IfIntCompareF {\PackageWarning{chronos}{Refusing ~ to ~ overwrite ~ existing ~ \protect\IfIntCompareF. ~ This ~ may ~ not ~ work} } { \cs_new_eq:NN  \IfIntCompareF \int_compare:nF }
+%    \end{macrocode}
 %^^A END yn lle etoolbox
 %^^A BEGIN macros y paced cyhoeddus | public package macros
+%    \begin{macrocode}
 \NewDocumentCommand \chronosnewcolourscheme { O {rhagosedig} m m }
 {
   \group_begin:
@@ -1278,7 +1381,9 @@
       \__chronos_color_set_from_existing:nn { chronos@parhad@lliw@rhagosodedig } { chronos@prifliw } 
       \__chronos_color_set_from_existing:nn { chronos@theori@lliw@rhagosodedig } { chronos@prifliw } 
       \__chronos_color_set_from_existing:nn { chronos@gwybodaeth@lliw@rhagosodedig } { chronos@prifliw } 
+%    \end{macrocode}
 %^^A    % oedd \keys_set_filter:nnn
+%    \begin{macrocode}
       \__chronos_keys_set_exclude_groups:nnn { chronos / lliwiau } { core, core ~ derivative, core ~ border } { #3 }
       \@ifpackageloaded{memoize}
       {
@@ -1289,12 +1394,16 @@
   \group_end:
 }
 \cs_new_eq:NN \chronosnewcolorscheme \chronosnewcolourscheme
+%    \end{macrocode}
 %^^A END macros y paced cyhoeddus | public package macros
+%    \begin{macrocode}
 \ExplSyntaxOff
+%    \end{macrocode}
 %^^A END expl3 >>>
 %^^A BEGIN hydoedd 2e <<<
 %^^A \newlength{\chronos@amser@dechraulength}
 %^^A \newlength{\chronos@amser@diweddlength}
+%    \begin{macrocode}
 \newlength{\chronos@diwedd@diwedd}
 \newlength{\chronos@dechrau@dechrau}
 \newlength{\chronos@byw@border}
@@ -1303,12 +1412,16 @@
 \newlength{\chronos@byw@border@inv}
 \newlength{\chronos@parhad@border@inv}
 \newlength{\chronos@digwyddiad@border@inv}
+%    \end{macrocode}
 %^^A \newlength{\chronos@width}
+%    \begin{macrocode}
 \newlength{\chronos@templgtha}
 \newlength{\chronos@templgthb}
 \newlength{\chronos@templgthc}
+%    \end{macrocode}
 %^^A END hydoedd 2e >>>
 %^^A BEGIN dimens <<<
+%    \begin{macrocode}
 \newdimen\chronos@borderheight
 \newdimen\chronos@height
 \newdimen\chronos@width
@@ -1317,7 +1430,9 @@
 \newdimen\chronos@timelinemargin
 \newdimen\chronos@inner@halfheight
 \newdimen\chronos@outer@halfheight
+%    \end{macrocode}
 %^^A \newdimen\chronos@timelineunitlength
+%    \begin{macrocode}
 \newdimen\chronos@pgflinewidth@saved
 \newdimen\chronos@border@de
 \newdimen\chronos@border@chwith
@@ -1349,8 +1464,10 @@
 \chronos@border@chwith=0pt
 \chronos@cylchtheori@mawr=15pt
 \chronos@cylchtheori@bach=9pt
+%    \end{macrocode}
 %^^A END dimens >>>
 %^^A BEGIN rhifyddion 2e <<<
+%    \begin{macrocode}
 \newcounter{chronos@date}
 \newcounter{chronos@startdate}
 \newcounter{chronos@enddate}
@@ -1371,8 +1488,10 @@
 \newcounter{chronos@tempadate}
 \newcounter{chronos@tempbdate}
 \newcounter{chronos@bagpuss}
+%    \end{macrocode}
 %^^A END rhifyddion 2e >>>
 %^^A BEGIN amodol <<<
+%    \begin{macrocode}
 \newif\ifchronos@marks
 \chronos@markstrue
 \newif\ifchronos@marks@minor
@@ -1481,8 +1600,10 @@
 \chronos@phantomfalse
 \newif\ifchronostimelinearrow
 \chronostimelinearrowfalse
+%    \end{macrocode}
 %^^A END amodol >>>
 %^^A BEGIN pre-defined macros <<<
+%    \begin{macrocode}
 \let\chronos@coords\@empty
 \def\chronos@ce{CE}
 \def\chronos@bce{BCE}
@@ -1492,15 +1613,19 @@
 \def\chronos@ffont@camaumawr{\sffamily\bfseries}
 \def\chronos@ffont@camaubach{\sffamily}
 \def\chronos@ffont@cyfnodau{\sffamily\bfseries}
+%    \end{macrocode}
 %^^A \def\chronos@width{\textwidth}
+%    \begin{macrocode}
 \def\chronos@uchod{0}
 \def\chronos@isod{0}
+%    \end{macrocode}
 %^^A END pre-defined macros >>>
 
 %^^A addaswyd o ateb Martin Scharrer: https://tex.stackexchange.com/a/56405/
 %^^A i ddefnyddio \setto<dim> macros y tu mewn i lluniau tikz
 %^^A to use \setto<dim> macros inside tikz pictures
 %^^A LPPL permission: https://tex.stackexchange.com/users/2975/martin-scharrer
+%    \begin{macrocode}
 \let\orig@settodim\@settodim
 \let\chronos@settodim\@settodim
 \patchcmd{\chronos@settodim}{\setbox\@tempboxa\hbox}{\chronos@tikz@setbox}{}{}
@@ -1515,6 +1640,7 @@
 }
 
 %^^A BEGIN lliwiau <<<
+%    \begin{macrocode}
 \definecolorset{rgb}{chronos}{}{% xcolor.sty, x11names.def,svgnames.def
   Blue,0,0,1;%
   Blue3,0,0,.804;%
@@ -1563,7 +1689,9 @@
   Yellow,1,1,0;%
   darkgray,.25,.25,.25%
 }
+%    \end{macrocode}
 %^^A dvipsnames.def
+%    \begin{macrocode}
 \definecolor{chronosCerulean}      {cmyk}{0.94,0.11,0,0}
 \definecolor{chronosPeriwinkle}    {cmyk}{0.57,0.55,0,0}
 \definecolor{chronosWildStrawberry}{cmyk}{0,0.96,0.39,0}
@@ -1576,53 +1704,72 @@
   \chronos@lliwiau@uchod[digwyddiad]{chronosThistle4,chronosThistle4!.5!chronosThistle3,chronosThistle3,chronosThistle3!.5!chronosThistle2,chronosThistle2}%
   \chronos@lliwiau@isod[parhad]{chronosIvory4,chronosIvory4!.5!chronosIvory3,chronosIvory3,chronosIvory3!.5!chronosIvory2,chronosIvory2}%
   \chronos@lliwiau@uchod[parhad]{chronosMistyRose4,chronosMistyRose4!.5!chronosMistyRose3,chronosMistyRose3,chronosMistyRose3!.5!chronosMistyRose2,chronosMistyRose2}%
+%    \end{macrocode}
 %^^A  BEGIN lliwiau prif
+%    \begin{macrocode}
   \colorlet{chronos@prifliw}{black}% prifliw
   \colorlet{chronos@prifliw@cefndir}{white}% prifliw cefndir
   \colorlet{chronos@lliw@cefndir@llinell}{black}% oedd lliw cefndir amser?
   \colorlet{chronos@lliw@llinell}{white}% oedd lliw amser
+%    \end{macrocode}
 %^^A   \colorlet{chronos@lliw@cefndir}{white}% lliw cefndir
 %^^A  angen y ffurf gywir
 %^^A  yn wreiddiol, 'gwybodaeth' oedd theori ac 'ee' oedd gwybodaeth
+%    \begin{macrocode}
   \colorlet{chronos@lliw@theori}{white}%
   \colorlet{chronos@lliw@cefndir@theori}{black}%
   \colorlet{chronos@lliw@cefndir@gwybodaeth}{chronos@prifliw!25!chronos@prifliw@cefndir}% lliw cefndir ee = prifliw!25!prifliw cefndir
   \colorlet{chronos@lliw@gwybodaeth}{chronos@prifliw}% lliw ee = prifliw
+%    \end{macrocode}
 %^^A  \colorlet{chronos@lliw@symbolau@cefndir}{chronos@lliw@cefndir}% lliw symbolau cefndir = lliw cefndir
 %^^A  \colorlet{chronos@lliw@symbolau}{chronos@prifliw}% lliw symbolau = prifliw
 %^^A   \colorlet{lliw dig}{prifliw!75!prifliw cefndir}
 %^^A  END lliwiau prif
+%    \begin{macrocode}
 }
 \newcommand*\chronos@lliwiau@rhagosodedig{%
   \chronos@lliwiau@isod{chronosRed,chronosOrange,chronosYellow,chronosGreen,chronosBlue,chronosMidnightBlue,chronosViolet}%
   \chronos@lliwiau@uchod{chronosRed,chronosOrange,chronosYellow,chronosGreen,chronosBlue,chronosMidnightBlue,chronosViolet}%
+%    \end{macrocode}
 %^^A  BEGIN lliwiau prif
+%    \begin{macrocode}
   \colorlet{chronos@prifliw}{black}% prifliw
   \colorlet{chronos@prifliw@cefndir}{white}% prifliw cefndir
   \colorlet{chronos@lliw@cefndir@llinell}{black}% oedd lliw cefndir amser?
   \colorlet{chronos@lliw@llinell}{white}% oedd lliw amser
+%    \end{macrocode}
 %^^A   \colorlet{chronos@lliw@cefndir}{white}% lliw cefndir
 %^^A  angen y ffurf gywir
 %^^A  yn wreiddiol, 'gwybodaeth' oedd theori ac 'ee' oedd gwybodaeth
+%    \begin{macrocode}
   \colorlet{chronos@lliw@theori}{white}%
   \colorlet{chronos@lliw@cefndir@theori}{black}%
   \colorlet{chronos@lliw@cefndir@gwybodaeth}{chronos@prifliw!25!chronos@prifliw@cefndir}% lliw cefndir ee = prifliw!25!prifliw cefndir
   \colorlet{chronos@lliw@gwybodaeth}{chronos@prifliw}% lliw ee = prifliw
+%    \end{macrocode}
 %^^A  \colorlet{chronos@lliw@symbolau@cefndir}{chronos@lliw@cefndir}% lliw symbolau cefndir = lliw cefndir
 %^^A  \colorlet{chronos@lliw@symbolau}{chronos@prifliw}% lliw symbolau = prifliw
 %^^A   \colorlet{lliw dig}{prifliw!75!prifliw cefndir}
+%    \begin{macrocode}
   \colorlet{chronos@borderouter}{chronos@prifliw@cefndir}%
   \colorlet{chronos@borderinner}{chronos@lliw@cefndir@llinell}%
   \colorlet{chronos@bordermiddle}{chronos@borderouter!50!chronos@borderinner}%
+%    \end{macrocode}
 %^^A  END lliwiau prif
+%    \begin{macrocode}
 }
+%    \end{macrocode}
 %^^A END lliwiau >>>
 %^^A rhagosodedig
+%    \begin{macrocode}
 \chronos@lliwiau@rhagosodedig
 \let\chronos@lliwiau@default\chronos@lliwiau@rhagosedig
+%    \end{macrocode}
 %^^A \chronos@lliwiau@cronoleg
+%    \begin{macrocode}
 
 \NewDocumentCommand \testunteitl { O {/chronos/@amserau} m o m m r() }{% <<<
+%    \end{macrocode}
 %^^A   #1: opsiwn: style for node
 %^^A   #2: enw sy'n cael ei ddefnyddio dwywaith -> node name + node content (\chronos@testunteitl@priflythrennu)
 %^^A   #3: opsiwn: content y node 
@@ -1631,6 +1778,7 @@
 %^^A   #6: () required: node for vertical (y) placement
 %^^A   dibynnu ar (chronos main headings) a (chronos bottom)
 %^^A   \chronos@coords@completion{#3}{#4}%
+%    \begin{macrocode}
   \coordinate (chronos@coord@temp) at ($(#4)!1/2!(#5)$);
   \IfValueTF {#3}{\def\chronos@tempa{#3}}{\edef\chronos@tempa{\chronos@testunteitl@priflythrennu{#2}}}%
   \node (#2) [anchor=base,#1] at (#6 -| chronos@coord@temp) {\chronos@tempa};
@@ -1640,15 +1788,19 @@
     \end{scope}%
   \fi
 }% >>>
+%    \end{macrocode}
 
 %^^A BEGIN allweddau PGF/TikZ <<<
 %^^A BEGIN rhifau <<<
+%    \begin{macrocode}
 \pgfkeys{/pgf/number format,
   int detect,
   set thousands separator={},
 }
+%    \end{macrocode}
 %^^A END rhifau >>>
 %^^A BEGIN layers / haenennau / haenau <<<
+%    \begin{macrocode}
 \pgfqkeys{/chronos}{%
   declare layer/.code={%\DeclareDocumentCommand
     \pgfdeclarelayer{chronos #1}%
@@ -1663,7 +1815,9 @@
 \pgfqkeys{/chronos}{%
   create layer/.code={%
     \tikzset{%
+%    \end{macrocode}
 %^^A    % adapted from tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarybackgrounds.code.tex
+%    \begin{macrocode}
       on chronos #1 layer/.style={%
         execute at begin scope={%
           \pgfonlayer{chronos #1}%
@@ -1677,9 +1831,11 @@
   },
   create layer/.list={background,middle ground,foreground,overlay},
 }
+%    \end{macrocode}
 %^^A END layers / haenennau / haenau >>>
 %^^A BEGIN ychwanegu i siap rectangle <<<
 %^^A ateb Symbol 1: https://tex.stackexchange.com/a/385953/
+%    \begin{macrocode}
 \def\pgf@sm@shape@name{rectangle}
 \pgf@sh@savedanchor\middlenortheast{%
   \pgf@x=\the\wd\pgfnodeparttextbox%
@@ -1729,21 +1885,27 @@
 \tikzset{%
   /chronos/middle anchorborder/.is if=chronos@middleanchorborder,
 }
+%    \end{macrocode}
 %^^A END ychwanegu i siap rectangle >>>
 %^^A BEGIN \tikzset helpers <<<
+%    \begin{macrocode}
 \NewDocumentCommand \chronos@cyd@destun@init { s t {+} o m m } {% chronos context initialisation <<<
+%    \end{macrocode}
 %^^A   #1: peidiwch â gosod nodweddion o clists? | don't install properties from clists?
 %^^A   #2: setup dyddiadau? | dates?
 %^^A   #3: alt. path for filtering
 %^^A   #4: path & default path for filtering
 %^^A   #5: keys to process
+%    \begin{macrocode}
   \renewcommand* \chronos@ychwanegu@nodweddion [3]{\relax}%
   \renewcommand* \chronos@ychwanegu@nodweddion@rhag [2]{\relax}%
   \renewcommand* \chronos@cadw@nodweddion [3]{\relax}%
   \renewcommand* \chronos@cadw@nodweddion@rhag [2]{\relax}%
   \IfBooleanT {#2} {%
     \pgfqkeys{/chronos}{% paid ag ychwanegu i property lists rhagosodedig mewn cyd-destun lleoll
+%    \end{macrocode}
 %^^A    % don't add to default property lists in a local context
+%    \begin{macrocode}
       blynyddoedd yn unig/.code={%
         \chronos@dimondblynyddoeddtrue
         \ifchronos@dangoscyfnodau
@@ -1841,7 +2003,9 @@
   }{%
     \pgfkeysfiltered{/chronos/#4/.cd,/chronos/@tag,#5}% 
   }%
+%    \end{macrocode}
 %^^A   \show\chronos@cadw
+%    \begin{macrocode}
   \IfBooleanT {#2}{% set date formats, whether showing eras, whether using full dates
     \chronos@if@gosodF{@#4@fformatiau@dyddiadau}{%
       \ifchronos@dimondblynyddoedd
@@ -1860,9 +2024,13 @@
     }%
   }%
 }% >>>
+%    \end{macrocode}
 %^^A END \tikzset helpers >>>
+%    \begin{macrocode}
 \tikzset{% 
+%    \end{macrocode}
 %^^A  BEGIN handlers <<<
+%    \begin{macrocode}
   /handlers/.chronos dimen/.code={%
     \pgfkeysdef{\pgfkeyscurrentpath}{%
       \pgfmathparse{##1}%
@@ -1909,7 +2077,9 @@
     }%
   },
   /handlers/.chronos layer choice/.code={%
+%    \end{macrocode}
 %^^A  % \chronos@ychwanegu@gosod tracks the setting so if a user sets the layer explicitly, chronos won't override it
+%    \begin{macrocode}
     \edef\chronos@temppgfpath{\pgfkeyscurrentpath}%
     \pgfkeys{% set the layer to put all things of some kind on e.g. connections, lines, timeline border
       \pgfkeyscurrentpath/.is choice,
@@ -1942,13 +2112,19 @@
       },
     }%
   },
+%    \end{macrocode}
 %^^A  BEGIN /handlers/.chronos tag init
+%    \begin{macrocode}
   /handlers/.chronos tag init/.code 2 args={% initialise a chronos 'tag' e.g. life, event, period
     \pgfkeys{%
       \pgfkeyscurrentpath/.cd,
+%    \end{macrocode}
 %^^A    % english translations below
+%    \begin{macrocode}
       enw/.store in/.expand once=\csname chronos@#1@enw\endcsname,
+%    \end{macrocode}
 %^^A    % create a tikz-friendly version of name, in case name contains anything problematic
+%    \begin{macrocode}
       chronos@tikzname/.code={\chronos@creu@tikzname {#1}{##1}},
       enw/.forward to=/chronos/#1/chronos@tikzname,
       fel y mae/.is if=chronos@felymae,
@@ -1957,7 +2133,9 @@
       llinell+/.code={\chronos@ychwanegu@nodweddion{#1}{@llinell}{##1}},
       llinell/.forward to=/chronos/#1/llinell',
       lliw/.store in/.expand once=\csname chronos@#1@lliw\endcsname,
+%    \end{macrocode}
 %^^A    %   lliw/.chronos tag lliw={#1}{lliw},
+%    \begin{macrocode}
       lliw rhagosodedig/.store in/.expand once=\csname chronos@#1@lliw@rhagosodedig\endcsname,
       lliw rhagosodedig=chronos@prifliw,
       lliwiau uchod/.code={\chronos@lliwiau@uchod[#1]{##1}},
@@ -2018,10 +2196,14 @@
       testun yshift-/.code={\chronos@ychwanegu@nodweddion{#1}{@tag}{/chronos/testun yshift-=##1}},
       testun yshift'+/.code={\chronos@ychwanegu@nodweddion{#1}{@tag}{/chronos/testun yshift'+=##1}},
       testun yshift'-/.code={\chronos@ychwanegu@nodweddion{#1}{@tag}{/chronos/testun yshift'-=##1}},
+%    \end{macrocode}
 %^^A    % BEGIN saesneg: /chronos/#1
 %^^A       /chronos/#2/.cd,% yn anffodus dyw hyn ddim yn gweithio (not forwarded on pellach)
+%    \begin{macrocode}
       name/.forward to=/chronos/#1/enw,
+%    \end{macrocode}
 %^^A       at/.forward to=/chronos/#1/at, % paid â gwneud hwn! vicious circularity -> TeX capacity exceeded!!
+%    \begin{macrocode}
       as is/.forward to=/chronos/#1/fel y mae,
       colour/.forward to=/chronos/#1/lliw,
       color/.forward to=/chronos/#1/lliw,
@@ -2073,11 +2255,13 @@
       text content/.forward to=/chronos/#1/cynnwys testun,
       name content/.forward to=/chronos/#1/cynnwys enw,
       dates content/.forward to=/chronos/#1/cynnwys dyddiadau,
+%    \end{macrocode}
 %^^A       yshift/.forward to=/chronos/#1/yshift, % paid â gwneud hwn! vicious circularity -> TeX capacity exceeded!!
 %^^A       tag/.forward to=/chronos/#1/tag, % paid â gwneud hwn! vicious circularity -> TeX capacity exceeded!!
 %^^A       tag+/.forward to=/chronos/#1/tag+, % paid â gwneud hwn! vicious circularity -> TeX capacity exceeded!!
 %^^A    % END saesneg: /chronos/#1
 %^^A    % BEGIN shortcuts
+%    \begin{macrocode}
       /chronos/.cd,
       cysylltiad #1+/.forward to=/chronos/#1/cysylltiad+,
       cysylltiad #1'/.forward to=/chronos/#1/cysylltiad',
@@ -2097,7 +2281,9 @@
       testun #1+/.forward to=/chronos/#1/testun+,
       testun #1'/.forward to=/chronos/#1/testun',
       testun #1/.forward to=/chronos/#1/testun,
+%    \end{macrocode}
 %^^A    % BEGIN saesneg
+%    \begin{macrocode}
       #2 connection+/.forward to=/chronos/#1/cysylltiad+,
       #2 connection'/.forward to=/chronos/#1/cysylltiad',
       #2 connection/.forward to=/chronos/#1/cysylltiad,
@@ -2116,32 +2302,40 @@
       #2 text tag+/.forward to=/chronos/#1/testun+,
       #2 text tag'/.forward to=/chronos/#1/testun',
       #2 text tag/.forward to=/chronos/#1/testun,      
+%    \end{macrocode}
 %^^A    % END saesneg
 %^^A    % END shortcuts
+%    \begin{macrocode}
       /chronos/#2/.chronos search=#1,
       /chronos/#1/.chronos search=#2,% heb bwrpas | pointless
       /chronos/#1/.code={\pgfqkeys{/chronos/#1}{##1}},
       /chronos/#2/.forward to=/chronos/#1,
     }%
   },
+%    \end{macrocode}
 %^^A  END .chronos tag init
 %^^A  BEGIN /handlers/.chronos tag dyddiadau init
+%    \begin{macrocode}
   /handlers/.chronos tag dyddiadau init/.code args={#1:#2:#3:#4:#5:#6:#7:#8:#9}{% e.g. /chronos/byw/.chronos tag dyddiadau init=byw:geni:marw:bu farw:bufarw:geni:marw:birth:death
+%    \end{macrocode}
 %^^A  % for elements belonging to tags of types which span more than one date e.g. life, period
 %^^A  % we need 3 date formats (possibly all the same)
 %^^A  % the first is for the begin date when both dates belong to the same era
 %^^A  % the second is for the begin date when the eras differ
 %^^A  % the third is for the end date (regardless)
+%    \begin{macrocode}
     \pgfkeys{\pgfkeyscurrentpath/.cd,
       dyddiadau/.code args={##1:##2}{% angen y llinell nesaf am y saesneg yn unig
         \pgfqkeys{/chronos/#1}{#2=##1}% needed only for the english ?? (why?)
         \edef\tempa{##2}\edef\tempb{}\ifx\tempa\tempb\else\pgfqkeys{/chronos/#1}{#3=##2}\fi
       },
       #4/.is if=chronos@#5,
+%    \end{macrocode}
 %^^A    % paid â cheisio ddefnyddio macros yn lle allweddau yn y fan hon 
 %^^A    % don't try to use macros instead of keys here
 %^^A       #2/.code={\chronos@set@date@aux{##1-01-01-0@#6}},
 %^^A       #3/.code={\chronos@set@date@aux{##1-12-31-0@#7}\chronos@legacy@if@set{#5}{true}},
+%    \begin{macrocode}
       #2/.style={/chronos/set date aux/.expanded={##1-01-01-0@#6}},
       #3/.style={/chronos/set date aux/.expanded={##1-12-31-0@#7},/chronos/#1/#4=true},     
       #3={\year-\month-\day},
@@ -2227,7 +2421,9 @@
           }%
         }%
       },
+%    \end{macrocode}
 %^^A    % english translations below
+%    \begin{macrocode}
       blynyddoedd yn unig/.code={\chronos@ychwanegu@nodweddion{#1}{@tag}{/chronos/blynyddoedd yn unig}},
       dyddiadau llawn/.code={\chronos@ychwanegu@nodweddion{#1}{@tag}{/chronos/dyddiadau llawn}},
       dangos cyfnodau/.code={\chronos@ychwanegu@nodweddion{#1}{@tag}{/chronos/dangos cyfnodau}},
@@ -2238,7 +2434,9 @@
       blynyddoedd yn unig/.chronos track={@#1@llawn},
       ffont dyddiad/.code={\expandafter\def\csname chronos@#1@ffontdyddiad\endcsname{##1}},
       ffont dyddiad=,
+%    \end{macrocode}
 %^^A    % BEGIN saesneg: /chronos/#1
+%    \begin{macrocode}
       dates/.forward to=/chronos/#1/dyddiadau,
       #8/.forward to=/chronos/#1/#2,
       #9/.forward to=/chronos/#1/#3,
@@ -2258,52 +2456,76 @@
       without eras/.forward to=/chronos/#1/heb gyfnodau,
       show eras/.forward to=/chronos/#1/dangos cyfnodau,
       date font/.forward to=/chronos/#1/ffont dyddiad,
+%    \end{macrocode}
 %^^A    % END saesneg: /chronos/#1
+%    \begin{macrocode}
     }%
   },
+%    \end{macrocode}
 %^^A  END .chronos tag dyddiadau init
+%    \begin{macrocode}
   /handlers/.chronos key maker/.code n args=3{%
     \chronos@keymaker{#1}{#2}{#3}%
   },
+%    \end{macrocode}
 %^^A  END handlers >>>
 %^^A  BEGIN chronos (prif gôd)
+%    \begin{macrocode}
   chronos/.code={\PackageError{chronos}{%
     The key chronos is deprecated.\MessageBreak
     Use the environment chronos instead.}},
+%    \end{macrocode}
 %^^A  END chronos (prif gôd)
 %^^A  BEGIN byw | life (prif gôd)
+%    \begin{macrocode}
   byw/.code={\chronos@cyd@destun@init+{byw}{#1}},
   byw/.default={},
+%    \end{macrocode}
 %^^A  END byw (prif gôd)
 %^^A  BEGIN digwyddiad | event (prif gôd)
+%    \begin{macrocode}
   digwyddiad/.code={\chronos@cyd@destun@init+{digwyddiad}{#1}},
   digwyddiad/.default={},
+%    \end{macrocode}
 %^^A  END digwyddiad (prif gôd)
 %^^A  BEGIN parhad | period (prif gôd)
+%    \begin{macrocode}
   parhad/.code={\chronos@cyd@destun@init+{parhad}{#1}},
   parhad/.default={},
+%    \end{macrocode}
 %^^A  END parhad (prif gôd)
 %^^A  BEGIN theori | theory (prif gôd)
+%    \begin{macrocode}
   theori/.code={\chronos@cyd@destun@init{theori}{#1}\chronos@tag@cysylltufalse},
   theori/.default={},
+%    \end{macrocode}
 %^^A  END theori (prif gôd)
 %^^A  BEGIN cylch theori | theory circle (prif gôd) --- cylchau bychain heb gysylltiadau
+%    \begin{macrocode}
   cylch theori/.code={\chronos@cyd@destun@init[theori/cylchau]{theori}{#1}\chronos@tag@cysylltufalse},
   cylch theori/.default={},
+%    \end{macrocode}
 %^^A  END cylch theori (prif gôd)
 %^^A  BEGIN gwybodaeth | info (prif gôd)
+%    \begin{macrocode}
   gwybodaeth/.code={\chronos@cyd@destun@init{gwybodaeth}{#1}\chronos@tag@cysylltufalse},
   gwybodaeth/.default={},
+%    \end{macrocode}
 %^^A  END gwybodaeth (prif gôd)
 %^^A  BEGIN prif (teitl) main (title) (prif gôd) 
+%    \begin{macrocode}
   prif/.code={\chronos@cyd@destun@init*{prif}{#1}},
   prif/.default={},
+%    \end{macrocode}
 %^^A  END prif (teitl) (prif gôd)
 %^^A  BEGIN hawlfraint copyright (prif gôd) 
+%    \begin{macrocode}
   hawlfraint/.code={\chronos@cyd@destun@init*{hawlfraint}{#1}},
   hawlfraint/.default={},
+%    \end{macrocode}
 %^^A  END hawlfraint copyright (prif gôd)
 %^^A  BEGIN saesneg byw digwyddiad parhad theori cylch theori prif
+%    \begin{macrocode}
   life/.forward to=/tikz/byw,
   event/.forward to=/tikz/digwyddiad,
   period/.forward to=/tikz/parhad,
@@ -2312,8 +2534,10 @@
   main/.forward to=/tikz/prif,
   copyright/.forward to=/tikz/hawlfraint,
   copyleft/.forward to=/tikz/hawlfraint,
+%    \end{macrocode}
 %^^A  END saesneg byw digwyddiad parhad theori cylch theori prif
 %^^A  BEGIN top-level styles
+%    \begin{macrocode}
   chronos connect/.style args={#1:#2}{#1,/chronos/@cysylltiad=lliw #2},
   chronos create chronos connector/.style args={#1:#2}{#1,/chronos/@cysylltwr@chronos=lliw #2},
   chronos create text tag connector/.style args={#1:#2}{#1,/chronos/@cysylltwr@testun=lliw #2},
@@ -2325,8 +2549,10 @@
   chronos tikz outside bb'/.code={\pgfkeysdef{/chronos/@@tikz}{#1}},
   chronos tikz outside bb+/.code={\pgfqkeys{/chronos}{@@tikz/.append code={#1}}},
   chronos tikz outside bb/.forward to=/chronos tikz outside bb+,
+%    \end{macrocode}
 %^^A  END top-level styles
 %^^A  BEGIN llwybrau: /chronos /chronos/byw /chronos/digwyddiad /chronos/theori
+%    \begin{macrocode}
   /chronos/.search also={/chronos/llinell amser,/tikz,/pgf},
   /chronos/llinell amser/.search also={/chronos,/tikz,/pgf},
   /chronos/byw/.search also={/chronos,/tikz,/pgf},
@@ -2334,8 +2560,10 @@
   /chronos/parhad/.search also={/chronos,/tikz,/pgf},
   /chronos/theori/.search also={/chronos,/tikz,/pgf},
   /chronos/theori/cylchau/.search also={/chronos/theori,/chronos,/tikz,/pgf},
+%    \end{macrocode}
 %^^A  END llwybrau: /chronos /chronos/byw /chronos/digwyddiad /chronos/theori
 %^^A  BEGIN /chronos <<<
+%    \begin{macrocode}
   /chronos/.cd,
   @before@headings/.code={},
   before headings+/.code={\pgfqkeys{/chronos}{@before@headings/.append code={#1}}},
@@ -2351,10 +2579,14 @@
   tikz outside bb'/.forward to=/tikz/chronos tikz outside bb',
   tikz outside bb+/.forward to=/tikz/chronos tikz outside bb+,
   tikz outside bb/.forward to=/tikz/chronos tikz outside bb,
+%    \end{macrocode}
 %^^A  @tikz is for standard ; @@tikz ignores bb ; for both user code and chronos
+%    \begin{macrocode}
   @tikz/.style={},
   @@tikz/.style={},
+%    \end{macrocode}
 %^^A  @timeline@config is for indirect user code or overwritable chronos ; @@ is reserved for chronos
+%    \begin{macrocode}
   @timeline@config/.code={},
   @@timeline@config/.code={%
     \chronos@if@gosodF {@byw@cyfnodau} {\pgfqkeys{/chronos/byw}{dangos cyfnodau}}%
@@ -2371,7 +2603,9 @@
       \chronos@ychwanegu@nodweddion@rhestr^{byw,parhad}{@llinell}{draw=####1,thick,fill opacity=.75}%
       \chronos@ychwanegu@nodweddion@rhestr^{digwyddiad}{@llinell}{draw=####1,draw opacity=.75,fill=none}%
     \fi
+%    \end{macrocode}
 %^^A  % efaillai bod yn anghywir tan inni ailosod yn hwyrach!! | maybe wrong until we reset later!!
+%    \begin{macrocode}
     \let\timelineht\chronos@height
   },
   @style/.style={},
@@ -2399,12 +2633,16 @@
       border+={opacity=#1}}%
     \ifchronos@temp\chronos@presettrue\else\chronos@presetfalse\fi
   },
+%    \end{macrocode}
 %^^A  BEGIN dyddiadau (pgfcalendar)
+%    \begin{macrocode}
   set date aux/.code={% paid â geisio dorri hwn - mae'n torri pethau'n ddrwg ond *dim ond yn nifer bach o achosion felly rhy hawdd i feddwl bod popeth yn iawn ...
     \chronos@set@date@aux{#1}%
   },
+%    \end{macrocode}
 %^^A  END dyddiadau (pgfcalendar)
 %^^A  BEGIN teitlau, pennawdau, isbennawdau etc. <<<
+%    \begin{macrocode}
   headings+/.code={% 
     \chronos@headingstrue
     \chronos@to@clist+{headings}{#1}%
@@ -2473,16 +2711,22 @@
   frame/.default=true,
   frame uses bb/.is if=chronos@framedefnyddiobb,
   frame/.default=true,
+%    \end{macrocode}
 %^^A  END teitlau, pennawdau, isbennawdau etc. >>>
+%    \begin{macrocode}
 }
 \ExplSyntaxOn
+%    \end{macrocode}
 %^^A set up every byw, every byw', every byw+, every life, every life', every life+ etc.; #3 gives default (' or +)
+%    \begin{macrocode}
 \__chronos_kexpandtotags:nnn { byw } { life } { + }
 \__chronos_kexpandtotags:nnn { digwyddiad } { event } { + }
 \__chronos_kexpandtotags:nnn { parhad } { period } { + }
 \__chronos_kexpandtotags:nnn { theori } { theory } { + }
 \__chronos_kexpandtotags:nnn { gwybodaeth } { info } { + }
+%    \end{macrocode}
 %^^A like kexpander but without every keys
+%    \begin{macrocode}
 \__chronos_kextripler:nnnnn { every ~ cylch ~ cylch ~ theori } { every ~ theory ~ circle ~ text } { every@cylch ~ cylch ~ theori } { + } { style }
 \__chronos_kextripler:nnnnn { every ~ testun ~ cylch ~ theori } { every ~ theory ~ circle ~ circle } { every@testun ~ cylch ~ theori } { + } { style }
 \__chronos_kextripler:nnnnn { llinell ~ amser / llinell } { timeline ~ line } { llinell ~ amser / timeline@line } { ' } { style }
@@ -2499,7 +2743,9 @@
 \__chronos_kextripler:nnnn { theori / cylchau / label } { theori / cylchau / @label } { ' } { style }
 \ExplSyntaxOff
 \pgfqkeys{/chronos}{%
+%    \end{macrocode}
 %^^A  BEGIN every (digwyddiad, byw, parhad, theori) <<<
+%    \begin{macrocode}
   every@cylch cylch theori/.style={%
     fill=chronos@prifliw, draw=chronos@prifliw, even odd rule},
   every@testun cylch theori/.style={%
@@ -2512,18 +2758,24 @@
   every byw uchod/.code={\chronos@every@byw@uchodtrue\chronos@every@byw@isodfalse\chronos@byw@isodfalse},
   every digwyddiad uchod/.code={\chronos@every@digwyddiad@uchodtrue\chronos@every@digwyddiad@isodfalse\chronos@digwyddiad@isodfalse},
   every parhad uchod/.code={\chronos@every@parhad@uchodtrue\chronos@every@parhad@isodfalse\chronos@parhad@isodfalse},
+%    \end{macrocode}
 %^^A  BEGIN every (digwyddiad, byw, parhad, theori) saesneg
+%    \begin{macrocode}
   every life below/.forward to=/chronos/every byw isod,
   every period below/.forward to=/chronos/every parhad isod,
   every event below/.forward to=/chronos/every digwyddiad isod,
   every life above/.forward to=/chronos/every byw uchod,
   every period above/.forward to=/chronos/every parhad uchod,
   every event above/.forward to=/chronos/every digwyddiad uchod,
+%    \end{macrocode}
 %^^A  END every (digwyddiad, byw, parhad, theori) saesneg
 %^^A  END every (digwyddiad, byw, parhad, theori) >>>
+%    \begin{macrocode}
 }
 \tikzset{%
+%    \end{macrocode}
 %^^A  BEGIN llinell amser | timeline <<<
+%    \begin{macrocode}
   /chronos/llinell amser/.code={\pgfqkeys{/chronos/llinell amser}{#1}},
   /chronos/timeline/.forward to=/chronos/llinell amser,
   /chronos/timeline/.chronos search=llinell amser,
@@ -2548,32 +2800,42 @@
       },
     }%
   },
+%    \end{macrocode}
 %^^A  BEGIN ffontiau
+%    \begin{macrocode}
   ffont camau mawr/.store in=\chronos@ffont@camaumawr,
   ffont camau bach/.store in=\chronos@ffont@camaubach,
   ffont cyfnodau/.store in=\chronos@ffont@cyfnodau,
   ffont/.forward to=/chronos/llinell amser/ffont cyfnodau,
   ffont/.forward to=/chronos/llinell amser/ffont camau bach,
   ffont/.forward to=/chronos/llinell amser/ffont camau mawr,
+%    \end{macrocode}
 %^^A  BEGIN ffontiau saesneg
+%    \begin{macrocode}
   major step font/.forward to=/chronos/llinell amser/ffont camau mawr,
   minor step font/.forward to=/chronos/llinell amser/ffont camau bach,
   eras font/.forward to=/chronos/llinell amser/ffont cyfnodau,
   timeline font/.forward to=/chronos/llinell amser/ffont,
+%    \end{macrocode}
 %^^A  END ffontiau saesneg
 %^^A  END ffontiau
 %^^A  BEGIN llinell amser | timeline
 %^^A  BEGIN hydoedd % haenau  (dim dyfnder?)
+%    \begin{macrocode}
   border ar/.chronos layer choice=border,
   border ar=background,
   llinell amser ar/.chronos layer choice=llinell amser,
   llinell amser ar=foreground,
+%    \end{macrocode}
 %^^A  BEGIN hydoedd & haenau saesneg
+%    \begin{macrocode}
   border on/.forward to=/chronos/llinell amser/border ar,
   timeline on/.forward to=/chronos/llinell amser/llinell amser ar,
+%    \end{macrocode}
 %^^A  END hydoedd & haenau saesneg
 %^^A  END hydoedd & haenau
 %^^A  BEGIN dyddiadau
+%    \begin{macrocode}
   dyddiad diwedd/.style={%
     /chronos/@@timeline@config@diwedd/.code={%
       \pgfqkeys{/chronos}{set date aux/.expanded={#1-12-31-0@end}}%
@@ -2587,8 +2849,10 @@
   dyddiadau/.code args={#1:#2}{% angen y llinell nesaf am y saesneg yn unig <= ???!!
     \pgfqkeys{/chronos/llinell amser}{dyddiad dechrau=#1,dyddiad diwedd=#2}%
   },
+%    \end{macrocode}
 %^^A  END dyddiadau
 %^^A  BEGIN camau
+%    \begin{macrocode}
   cam blwyddyn fawr/.store in=\chronos@cam@blwyddyn@fawr, % oedd cam mawr
   cam blwyddyn fach/.store in=\chronos@cam@blwyddyn@fach, % oedd cam bach
   rhaniadau cam/.store in=\chronos@camrhaniadau,% cam rhaniadau % oedd camau bach / \chronos@minorsteps
@@ -2597,8 +2861,10 @@
     \pgfqkeys{/chronos/llinell amser}{cam blwyddyn fawr=#1}%
     \Undefine\chronos@cam@blwyddyn@fach
   },
+%    \end{macrocode}
 %^^A  END camau
 %^^A  BEGIN lliwiau y llinell amser
+%    \begin{macrocode}
   lliw mewnol y border/.chronos lliw=borderinner,
   timeline border inner colour/.forward to=/chronos/llinell amser/lliw mewnol y border,
   timeline border inner color/.forward to=/chronos/llinell amser/lliw mewnol y border,
@@ -2614,8 +2880,10 @@
   timeline foreground/.forward to=/chronos/llinell amser/blaendir,
   background/.forward to=/chronos/llinell amser/cefndir,
   foreground/.forward to=/chronos/llinell amser/blaendir,
+%    \end{macrocode}
 %^^A  END lliwiau y llinell amser
 %^^A  BEGIN nodau a blynyddoedd | marks and years
+%    \begin{macrocode}
   nodi cyfnodau/.is if=chronos@markeras,% cyfnodau ar y llinell amser
   @nodi cyfnodau/.code={\chronos@ychwanegu@gosod{markeras}},
   nodi cyfnodau/.forward to=/chronos/llinell amser/@nodi cyfnodau,
@@ -2624,7 +2892,9 @@
   timeline years set/.store in=\chronos@timelineyears,
   blynyddoedd/.is choice,
   timeline years/.forward to=/chronos/llinell amser/blynyddoedd,
+%    \end{macrocode}
 %^^A   blynyddoedd y llinell amser/.forward to=/chronos/llinell amser/blynyddoedd,
+%    \begin{macrocode}
   blynyddoedd/.forward to=/chronos/llinell amser/timeline years set,
   blynyddoedd/dim/.code={%
     \chronos@timeline@showyearsfalse
@@ -2755,11 +3025,15 @@
       timeline@year@off@line/.append style={#1},
     }%
   },
+%    \end{macrocode}
 %^^A  END nodau a blynyddoedd | marks and years
 %^^A  END llinell amser | timeline >>>
+%    \begin{macrocode}
 }
 \ExplSyntaxOn
+%    \end{macrocode}
 %^^A forward each key in #3 to the key in #2; all keys on /chronos/#1
+%    \begin{macrocode}
 \__chronos_kexforwarder:nnn { llinell ~ amser } { timeline ~ mark@too } { timeline ~ mark, timeline ~ all ~ marks }
 \__chronos_kexforwarder:nnn { llinell ~ amser } { timeline ~ minor ~ mark@too } { timeline ~ minor ~ mark, timeline ~ all ~ marks }
 \__chronos_kexforwarder:nnn { llinell ~ amser } { timeline ~ bare ~ mark@too } { timeline ~ bare ~ mark, timeline ~ all ~ marks }
@@ -2774,13 +3048,17 @@
 \__chronos_kexforwarder:nnn { llinell ~ amser } {camu ~ o ~ flwyddyn } { step ~ from ~ year }
 \ExplSyntaxOff
 \pgfqkeys{/chronos}{%
+%    \end{macrocode}
 %^^A  BEGIN testun
+%    \begin{macrocode}
   ce year label/.store in=\chronos@yearce,
   bce year label/.store in=\chronos@yearbce,
   timeline ce label/.store in=\chronos@ce,
   timeline bce label/.store in=\chronos@bce,
+%    \end{macrocode}
 %^^A  END testun  
 %^^A  BEGIN lliwiau <<<
+%    \begin{macrocode}
   cefndir/.chronos lliw=prifliw@cefndir,
   background/.forward to=/chronos/cefndir,
   blaendir/.chronos lliw=prifliw,
@@ -2807,8 +3085,10 @@
     theori/troi lliwiau=false, heb droi lliwiau},
   rotate no colours/.forward to=/chronos/troi dim lliwiau,
   rotate no colors/.forward to=/chronos/troi dim lliwiau,
+%    \end{macrocode}
 %^^A  END lliwiau >>>
 %^^A  BEGIN lefelau <<<
+%    \begin{macrocode}
   lefelau/.style args={#1:#2}{
 	/chronos/uchod=#1,
 	/chronos/isod=#2,
@@ -2817,8 +3097,10 @@
   lefelau at=chronos mid,
   uchod/.store in=\chronos@uchod,
   isod/.store in=\chronos@isod,
+%    \end{macrocode}
 %^^A  END lefelau >>>
 %^^A  BEGIN formats <<<
+%    \begin{macrocode}
   fformat dyddiad/.code={\chronos@setdateformat{#1}},
   date format/.forward to=/chronos/fformat dyddiad,
   year format/.code={\chronos@setyearformat{#1}},
@@ -2959,20 +3241,26 @@
   text tag yshift'+/.forward to=/chronos/testun yshift,
   text tag yshift+/.forward to=/chronos/testun yshift,
   special date/.code={\gdef\chronos@specialdate{#1}},
+%    \end{macrocode}
 %^^A  saesneg: /chronos (mwy uchod)
+%    \begin{macrocode}
   levels/.forward to=/chronos/lefelau,
   levels at/.forward to=/chronos/lefelau at,
+%    \end{macrocode}
 %^^A  END formats >>>
 %^^A  BEGIN placeholders <<<
 %^^A  ateb Qrrbrbirlbel https://tex.stackexchange.com/a/694967/
 %^^A  permission for LPPL: https://tex.stackexchange.com/questions/694799/how-can-i-disable-shadows-and-similar-preaction-postaction-effects-in-tikz-or/694967#comment1725164_694967
+%    \begin{macrocode}
   discard node/.code={% ^^A
     \setbox\pgfutil@tempboxa\box\pgfutil@voidb@x % empty out box
     \def\tikz@whichbox{\pgfutil@tempboxa}%
   },
   phantom node/.code=\tikz@addoption{% ateb Qrrbrbirlbel uchod ac ateb arall fe: https://tex.stackexchange.com/a/688111/ ; defnyddio yn lle \chronosphantom
     \expandafter\let\csname pgf@sh@boxes@\tikz@shape\endcsname\pgfutil@empty},
+%    \end{macrocode}
 %^^A  sylwad Qrrbrbirlbel: https://tex.stackexchange.com/questions/694799/how-can-i-disable-shadows-and-similar-preaction-postaction-effects-in-tikz-or?noredirect=1#comment1724762_694799
+%    \begin{macrocode}
   zap preactions/.code=\let\tikz@preactions\@empty,
   zap postactions/.code=\let\tikz@postactions\@empty,
   placeholders/.is choice,
@@ -2993,8 +3281,10 @@
   placeholders=off,
   placeholder lines/.style={help lines,%
     every node/.append style={rotate=-90,anchor=south,pos=.25,inner sep=0pt}},
+%    \end{macrocode}
 %^^A  END placeholders >>>
 %^^A  BEGIN show coords <<<
+%    \begin{macrocode}
   show coords/.is if=chronos@showcoords,
   show coords/.default=true,
   show nodes/.is if=chronos@shownodes,
@@ -3018,13 +3308,17 @@
   show node colour=blue,
   show coordinate colour=red,
   show bb colour=chronosGreen,
+%    \end{macrocode}
 %^^A  END show coords>>>
+%    \begin{macrocode}
   dadfygio/.code={%
     \pgfqkeys{/chronos}{%
       placeholders,show coords,show node colour=blue,show coordinate colour=red,%
       show bounding box,show nodes,show node/.style={draw=chronos@lliw@node}}},
   debug/.forward to=/chronos/dadfygio,
+%    \end{macrocode}
 %^^A  BEGIN digwyddiadau, bywydau, cysylltiadau rhwng y llinell a'r ddau
+%    \begin{macrocode}
   enwau lliw syml/.is if=chronos@enwaulliwsyml,
   enwau lliw syml/.default=true,
   dim enwau lliw syml/.code={\chronos@enwaulliwsymlfalse},
@@ -3041,12 +3335,16 @@
   llinell ar/.chronos layer choice=llinell,
   llinellau ar/.forward to=/chronos/llinell ar,
   llinell ar=middle ground,
+%    \end{macrocode}
 %^^A  bocses a chysylltiadau theori
 %^^A   cysylltwr theori/.style={anchor=center},% oedd cylch cysylltu
+%    \begin{macrocode}
   cysylltwyr theori/.forward to=/chronos/theori/cysylltwr testun,
+%    \end{macrocode}
 %^^A   {\pgfkeys{/chronos/theori/cysylltwr testun'={anchor=center, inner sep=0pt, outer sep=0pt,#1}}},% oedd cylchau cysylltu
 %^^A   cylchau theori/.code={\pgfqkeys{/chronos/theori/cylchau}{label cylch theori/.style={#1}}},
 %^^A   cylchau theori/.style={align=center, inner sep=0pt, outer sep=0pt, font=\scriptsize\scshape, text=chronos@prifliw},
+%    \begin{macrocode}
   theori dash/.style={},
   lliwiau uchod/.code={\chronos@lliwiau@uchod{#1}},
   lliwiau isod/.code={\chronos@lliwiau@isod{#1}},
@@ -3054,7 +3352,9 @@
   lliwiau isod o clist/.code={\chronos@global@eq@clist{lliwiau_isod}{#1}},
 }
 \ExplSyntaxOn
+%    \end{macrocode}
 %^^A set up /chronos/#1 with ' and + variants to set default #3; set up every #1 with ' and + variants to set default #1 and corresponding keys for tags in #5 ; use #4 as the default ; set up keys for forwarding using #2 as alias for #1
+%    \begin{macrocode}
 \__chronos_kexpander:nnnnn { llinellau } { lines } { @llinell } { ' } { byw, digwyddiad, parhad }
 \__chronos_kexpander:nnnnn { cysylltwyr  ~ chronos } { chronos ~ connectors } { @cysylltwr@chronos } { + } { byw, digwyddiad, parhad }
 \__chronos_kexpander:nnnnn { cysylltwyr ~ testun } { text ~ tag ~ connectors } { @cysylltwr@testun } { + } { byw, digwyddiad, parhad, theori }
@@ -3102,7 +3402,9 @@
       every cysylltwyr chronos'={coordinate}}},
   no text tag connectors/.code={%
     \pgfqkeys{/chronos}{every cysylltwyr testun'={coordinate}}},
+%    \end{macrocode}
 %^^A  BEGIN saesneg: digwyddiadau, bywydau, cysylltiadau rhwng y llinell a'r ddau
+%    \begin{macrocode}
   simple colour names/.forward to=/chronos/enwau lliw syml,
   simple color names/.forward to=/chronos/enwau lliw syml,
   no simple colour names/.forward to=/chronos/dim enwau lliw syml,
@@ -3120,18 +3422,24 @@
   colors below from clist/.forward to=/chronos/lliwiau isod o clist,
   lines on/.forward to=/chronos/llinell ar,
   line on/.forward to=/chronos/llinell ar,
+%    \end{macrocode}
 %^^A   line yshift/.forward to=/chronos/llinell yshift,
 %^^A  END saesneg: digwyddiadau, bywydau, cysylltiadau rhwng y llinell a'r ddau
 %^^A  END digwyddiadau, bywydau, cysylltiadau rhwng y llinell a'r ddau
 %^^A  END /chronos >>>
+%    \begin{macrocode}
 }
 \tikzset{%
+%    \end{macrocode}
 %^^A  BEGIN /chronos/byw
+%    \begin{macrocode}
   /chronos/byw/.chronos tag init={byw}{life},
   /chronos/byw/.chronos tag dyddiadau init=byw:geni:marw:bu farw:bufarw:geni:marw:birth:death,
   /chronos/byw/.cd,
+%    \end{macrocode}
 %^^A  END /chronos/byw
 %^^A  BEGIN /chronos/digwyddiad <<<
+%    \begin{macrocode}
   /chronos/digwyddiad/.chronos tag init={digwyddiad}{event},
   /chronos/digwyddiad/.cd,
   dyddiad/.style={/chronos/set date aux/.expanded={#1-01-01-0@dig}},
@@ -3173,7 +3481,9 @@
   dyddiadau llawn/.chronos track={@digwyddiad@llawn},
   heb gyfnodau/.chronos track={@digwyddiad@cyfnodau},
   blynyddoedd yn unig/.chronos track={@digwyddiad@llawn},
+%    \end{macrocode}
 %^^A  BEGIN saesneg: /chronos/digwyddiad
+%    \begin{macrocode}
   date/.forward to=/chronos/digwyddiad/dyddiad,
   date font/.forward to=/chronos/digwyddiad/ffont dyddiad,
   date format/.forward to=/chronos/digwyddiad/fformat dyddiad,
@@ -3185,38 +3495,50 @@
   show eras/full dates/.forward to=/chronos/digwyddiad/dangos cyfnodau/dyddiadau llawn,
   without eras/only years/.forward to=/chronos/digwyddiad/heb gyfnodau/blynyddoedd yn unig,
   without eras/full dates/.forward to=/chronos/digwyddiad/heb gyfnodau/dyddiadau llawn,
+%    \end{macrocode}
 %^^A  END saesneg: /chronos/digwyddiad
 %^^A  END /chronos/digwyddiad >>> 
 %^^A  BEGIN /chronos/parhad
+%    \begin{macrocode}
   /chronos/parhad/.chronos tag init={parhad}{period},
   /chronos/parhad/.chronos tag dyddiadau init=parhad:dechrau:diwedd:gorffenedig:gorffenedig:thing:otherthing:start:end,
   /chronos/parhad/.cd,
+%    \end{macrocode}
 %^^A  BEGIN saesneg: /chronos/parhad
 %^^A  END saesneg: /chronos/parhad
 %^^A  END /chronos/parhad
 %^^A  BEGIN /chronos/theori
+%    \begin{macrocode}
   /chronos/theori/.chronos tag init={theori}{theory},
   /chronos/theori/.cd,
+%    \end{macrocode}
 %^^A  BEGIN saesneg: /chronos/thoeri
 %^^A  END saesneg: /chronos/thoeri
 %^^A  BEGIN /chronos/theori/cylchau
+%    \begin{macrocode}
   /chronos/theori/cylchau/.cd,
   enw/.store in=\chronos@cylchtheori@enw,
+%    \end{macrocode}
 %^^A   fel y mae/.is if=chronos@felymae,
 %^^A   fel y mae/.default=true,
+%    \begin{macrocode}
   chronos@tikzname/.code={%
     \chronos@creu@tikzname {cylchtheori}{#1}
   },
   enw/.forward to=/chronos/theori/cylchau/chronos@tikzname,
+%    \end{macrocode}
 %^^A   angor/.store in=\chronos@cylchtheori@angor,
 %^^A   angor/.forward to=/tikz/anchor,
 %^^A   at/.code yn gweithio am \cylchtheori ond ni weithio am \byw etc.
+%    \begin{macrocode}
   at/.code={\coordinate (chronos@cylchtheori@at) at (#1);},
+%    \end{macrocode}
 %^^A   lliw/.store in=\chronos@cylchtheori@lliw,
 %^^A   meintiau/.style args={#1:#2}{
 %^^A 	/chronos/theori/cylchau/mawr=#1,
 %^^A 	/chronos/theori/cylchau/bach=#2,
 %^^A   },
+%    \begin{macrocode}
   meintiau/.chronos 2 dimens={\chronos@cylchtheori@mawr}{\chronos@cylchtheori@bach},
   mawr/.chronos dimen=\chronos@cylchtheori@mawr,
   bach/.chronos dimen=\chronos@cylchtheori@bach,
@@ -3232,20 +3554,28 @@
   },
   testun cylch uchod/.store in=\chronos@cylchtheori@circletext@uchod,
   testun cylch isod/.store in=\chronos@cylchtheori@circletext@isod,
+%    \end{macrocode}
 %^^A  BEGIN /chronos/theori/cylchau saesneg
+%    \begin{macrocode}
   /chronos/theory/circles/.chronos search=theori/cylchau,
   name/.forward to=/chronos/theori/cylchau/enw,
+%    \end{macrocode}
 %^^A   as is/.forward to=/chronos/theori/fel y mae,
 %^^A   tag anchor/.forward to=/chronos/theori/cylchau/angor,
+%    \begin{macrocode}
   sizes/.chronos 2 dimens={\chronos@cylchtheori@mawr}{\chronos@cylchtheori@bach},
+%    \end{macrocode}
 %^^A   sizes/.forward to=/chronos/theori/cylchau/meintiau,
 %^^A   theory circle label/.forward to=/chronos/theori/cylchau/label cylch theori,
+%    \begin{macrocode}
   circle texts/.forward to=/chronos/theori/cylchau/testunau cylch,
   labels/.forward to=/chronos/theori/cylchau/labeli,
+%    \end{macrocode}
 %^^A  END /chronos/theori/cylchau saesneg
 %^^A  END /chronos/theori/cylchau
 %^^A  END /chronos/theori
 %^^A  BEGIN /chronos/gwybodaeth
+%    \begin{macrocode}
   /chronos/gwybodaeth/.cd,
   enw/.store in=\chronos@gwybodaeth@enw,
   chronos@tikzname/.code={%
@@ -3274,7 +3604,9 @@
   tag/.forward to=/chronos/gwybodaeth/tag+,
   cynnwys testun/.store in=\chronos@cynnwys@testun,
   cynnwys enw/.store in=\chronos@cynnwys@enw,
+%    \end{macrocode}
 %^^A  BEGIN saesneg: /chronos/gwybodaeth
+%    \begin{macrocode}
   /chronos/info/.chronos search=gwybodaeth,
   name/.forward to=/chronos/gwybodaeth/enw,
   caption/.forward to=/chronos/gwybodaeth/capsiwn,
@@ -3288,9 +3620,11 @@
   tag anchor/.forward to=/chronos/gwybodaeth/angor,
   text content/.forward to=/chronos/gwybodaeth/cynnwys testun,
   name content/.forward to=/chronos/gwybodaeth/cynnwys enw,
+%    \end{macrocode}
 %^^A  END saesneg: /chronos/gwybodaeth
 %^^A  END /chronos/gwybodaeth
 %^^A  BEGIN /chronos/prif
+%    \begin{macrocode}
   /chronos/prif/.cd,
   enw/.store in=\chronos@prifdeitl@enw,
   chronos@tikzname/.code={%
@@ -3306,15 +3640,19 @@
     append after command={%
       (main title.north west)--(main title.north east) (main title.south west)%
       --(main title.south east)},draw=none},
+%    \end{macrocode}
 %^^A  BEGIN /chronos/prif saesneg
+%    \begin{macrocode}
   /chronos/main/.chronos search=prif,
   name/.forward to=/chronos/prif/enw,
   tag anchor/.forward to=/chronos/prif/angor,
   name content/.forward to=/chronos/prif/cynnwys enw,
   title lines/.forward to=/chronos/prif/llinellau teitl,
+%    \end{macrocode}
 %^^A  END /chronos/prif saesneg
 %^^A  END /chronos/prif
 %^^A  BEGIN /chronos/hawlfraint
+%    \begin{macrocode}
   /chronos/hawlfraint/.cd,
   enw/.store in=\chronos@hawlfraint@enw,
   chronos@tikzname/.code={%
@@ -3331,7 +3669,9 @@
   notis/.code={\def\chronos@hawlfraint@notis##1##2{#1}\show\chronos@hawlfraint@notis},
   copyleft/.is if=chronos@copyleft,
   copyleft/.default=true,
+%    \end{macrocode}
 %^^A  BEGIN /chronos/hawlfraint saesneg
+%    \begin{macrocode}
   /chronos/copyright/.chronos search=hawlfraint,
   /chronos/copyleft/.chronos search=hawlfraint,
   author/.forward to=/chronos/hawlfraint/awdur,
@@ -3341,10 +3681,14 @@
   rotate/.forward to=/chronos/hawlfraint/cylchdroi,
   tag anchor/.forward to=/chronos/hawlfraint/angor,
   year/.forward to=/chronos/hawlfraint/blwyddyn,
+%    \end{macrocode}
 %^^A  END /chronos/hawlfraint saesneg
 %^^A  END /chronos/hawlfraint
+%    \begin{macrocode}
   /chronos/.cd,
+%    \end{macrocode}
 %^^A  BEGIN /chronos frâm, borders, cysylltwyr, llinellau, testunau etc.
+%    \begin{macrocode}
   borders'/.code args={#1:#2:#3:#4:#5:#6}{% penawdau:pen:de:gwaelod:chwith:allanol
     \chronos@border@penawdau=#1
     \chronos@border@pen=#2
@@ -3375,8 +3719,10 @@
   @llinell/.style={},
   testunau+={outer sep=0pt,text=#1!75!black},% every eisiau ##
   cysylltiadau={draw=#1},
+%    \end{macrocode}
 %^^A  END /chronos frâm, borders, cysylltwyr, llinellau, testunau etc.
 %^^A  BEGIN cynlluniau lliwiau
+%    \begin{macrocode}
   cynllun lliwiau/.code={\csname chronos@lliwiau@#1\endcsname},
   colour scheme/.forward to=/chronos/cynllun lliwiau,
   color scheme/.forward to=/chronos/cynllun lliwiau,
@@ -3387,11 +3733,15 @@
     }{}%
   },
   lliwiau rhagosodedig/.code={\chronos@lliwiau@rhagosodedig},
+%    \end{macrocode}
 %^^A  END cynlluniau lliwiau
+%    \begin{macrocode}
 }
 
+%    \end{macrocode}
 %^^A END allweddau PGF/TikZ >>>
 %^^A BEGIN style cronoleg <<<
+%    \begin{macrocode}
 \pgfqkeys{/chronos}{%
   cronoleg/.style={% mewnol | internal
     /chronos/.cd,
@@ -3450,14 +3800,18 @@
     byw/cysylltiad={/chronos/cyffredin/cysylltiad=##1, opacity=.75},
     parhad/cysylltiad={/chronos/cyffredin/cysylltiad=##1},
     theori/cysylltiad={thick, draw=chronos@prifliw, double=chronos@prifliw@cefndir},
+%    \end{macrocode}
 %^^A %     digwyddiad/lliwiau isod={chronos@prifliw!75!chronos@prifliw@cefndir},
 %^^A %     digwyddiad/lliwiau uchod={chronos@prifliw!75!chronos@prifliw@cefndir},
+%    \begin{macrocode}
     theori/cysylltwr testun={fill=chronos@prifliw@cefndir, circle, %
       minimum size=5pt, anchor=center, inner sep=0pt, outer sep=0pt, thick, %
       draw=chronos@prifliw},
     byw/testun={/chronos/cyffredin/testun, align=left, text=##1!50!black, %
       fill=##1, draw=##1},
+%    \end{macrocode}
 %^^A     every digwyddiad+={only text},% yn hawsach i toggle on na off felly paid ag analluogi fel rhagosodedig
+%    \begin{macrocode}
     digwyddiad/testun={/chronos/cyffredin/testun, align=left, text=##1!50!black, %
       fill=##1, draw=##1},
     parhad/testun={/chronos/cyffredin/testun, align=left, text=##1!50!black, %
@@ -3471,8 +3825,10 @@
     parhad/llinell={fill=##1, fill opacity=.25, draw=none},
     llinell ar=main,
     cysylltiad ar=middle ground,
+%    \end{macrocode}
 %^^A     byw/lliwiau isod o clist={lliwiau_isod},
 %^^A     byw/lliwiau uchod o clist={lliwiau_uchod},
+%    \begin{macrocode}
     theori/cylchau/label={align=center, inner sep=0pt, outer sep=0pt,%
       font=\scriptsize\scshape, text=chronos@prifliw},
     every cylch cylch theori'={fill=chronos@prifliw, draw=chronos@prifliw, %
@@ -3503,8 +3859,10 @@
     headings drops'=10pt:10pt:7.5pt,
     hawlfraint={font=\footnotesize\bfseries, inner sep=0pt, outer sep=0pt, %
       chronos@prifliw, fill=chronos@prifliw@cefndir},
+%    \end{macrocode}
 %^^A     hawlfraint/cylchdroi=90,
 %^^A     hawlfraint/angor=west,
+%    \begin{macrocode}
     llinellau={color=black!50, opacity=.5},
     lefelau=10:10,
     special date=none,
@@ -3515,10 +3873,14 @@
     frame,
   },
 }
+%    \end{macrocode}
 %^^A END style cronoleg >>>
+%    \begin{macrocode}
 \RequirePackage{chronos-lib-colschemes,chronos-lib-styles}
+%    \end{macrocode}
 %^^A BEGIN env y ddogfen <<<
 %^^A BEGIN chronos
+%    \begin{macrocode}
 \NewDocumentEnvironment {chronos} { > { \TrimSpaces } O {} } 
 {% http://tex.stackexchange.com/a/159856/ - Claudio Fiandrino
   \chronos@env@begin
@@ -3541,6 +3903,7 @@
     @timeline@config/.code={},
     name prefix=\chronos@tikzprefix,
   ]%
+%    \end{macrocode}
 %^^A     \chronosshowpreset
 %^^A     \chronosshowfeatures
 %^^A %     
@@ -3551,6 +3914,7 @@
 %^^A     \chronosshowfeatures[parhad]
 %^^A     \chronosshowfeatures[theori]
 %^^A     \chronosshowfeatures[gwybodaeth]}
+%    \begin{macrocode}
   \IfBooleanExprT { \CSFreeBoolean \chronos@startyear || \CSFreeBoolean \chronos@endyear  }
     {%
       \PackageError{chronos}{%
@@ -3571,7 +3935,9 @@
         Sorry, but I cannot reverse time. 
         Perhaps you could ask a metaphysician? 
         Setting end to start and start to end}%
+%    \end{macrocode}
 %^^A    % paid ag anghofio am awto-cywiro yn functions chronos re. blwyddyn sero
+%    \begin{macrocode}
       \setcounter{chronos@tempcnta}{\thechronos@startdate}%
       \setcounter{chronos@startdate}{\thechronos@enddate}%
       \setcounter{chronos@enddate}{\thechronos@tempcnta}%
@@ -3725,7 +4091,9 @@
         \fi
       }% \chronos@if@gosodF{markeras}
       \ifchronos@markeras % BEGIN
+%    \end{macrocode}
 %^^A      % angen côd Martin Scharrer uchod
+%    \begin{macrocode}
         \ifnum\chronos@endyear>0 % Rmano: https://chat.stackexchange.com/transcript/message/64273912#64273912
           \settowidth\chronos@diwedd@diwedd{\chronos@ffont@cyfnodau\chronos@ce}%
           \addtolength{\chronos@diwedd@diwedd}{\chronos@eramargin}%
@@ -3739,6 +4107,7 @@
           \let\chronos@bce\relax
         \fi
       \fi % END \ifchronos@markeras
+%    \end{macrocode}
 %^^A       \ifchronos@yearsonline
 %^^A         {% rhag ofn rhywun wedi gosod line width gwahanol | in case somebody's set a different line width
 %^^A           % use a group to avoid setting timeline style globally
@@ -3751,9 +4120,12 @@
 %^^A       \fi
 %^^A    % cofia!! \chronos@set@date a ffrindiau'n awto-cywiro am flwyddyn sero!!
 %^^A    % cofia! ti'n defnyddio **pgfcalendar** yn lle blynyddoedd nawr!!
+%    \begin{macrocode}
       \pgfmathsetmacro\chronos@unit{%
         (\chronos@width-2*\chronos@timelinemargin-\chronos@dechrau@dechrau-\chronos@diwedd@diwedd)/(\thechronos@enddate-\thechronos@startdate)}%
+%    \end{macrocode}
 %^^A      \chronos@timelineunitlength \dimexpr\chronos@unit pt\relax% using this truncates the dimension and leads to visible inaccuracies e.g. 0.0003pt vs. 0.00031~pt makes a difference over 5,000 units or so!
+%    \begin{macrocode}
       \pgfmathsetmacro{\chronos@amser@diwedd}{%
         (\thechronos@enddate-\thechronos@startdate)*\chronos@unit}%
       \addtolength{\chronos@dechrau@dechrau}{\chronos@timelinemargin}%
@@ -3766,7 +4138,9 @@
       \coordinate (chronos base) at (0pt,-\chronos@inner@halfheight);% oedd chronos@depth
       \coordinate (chronos foot) at (0pt,-\chronos@outer@halfheight);
       \coordinate (chronos head) at (0pt,\chronos@outer@halfheight);
+%    \end{macrocode}
 %^^A    % chronos pre-top, chronos post-top, chronos pre-base, chronos post-base
+%    \begin{macrocode}
       \foreach \i/\j in {%
         pre/top,post/top,pre/base,post/base,pre/head,post/head,pre/foot,post/foot%
       } \coordinate (chronos \i-\j) at (chronos \i |- chronos \j);
@@ -3775,7 +4149,9 @@
       \coordinate (chronos end) at (\chronos@amser@diwedd pt,0pt);
       \coordinate (chronos mid) at ($(chronos pre)!.5!(chronos post)$);
       \coordinate (chronos mid-time) at ($(chronos start)!.5!(chronos end)$);
+%    \end{macrocode}
 %^^A    % styles which rotate labels need this earlier; reset here in case altered
+%    \begin{macrocode}
       \let\timelineht\chronos@height
       \begin{scope}[/chronos/chronos@border@haenen]
         \ifdim\chronos@borderheight>0pt
@@ -3785,20 +4161,30 @@
       \end{scope}% [/chronos/chronos@border@haenen]
       \begin{scope}[/chronos/chronos@llinell amser@haenen]
         \ifchronos@yearsonline
+%    \end{macrocode}
 %^^A        % fill the timeline if putting the years etc. onto it
+%    \begin{macrocode}
           \fill [chronos@lliw@cefndir@llinell,/chronos/llinell amser/timeline@line] (chronos pre-top) rectangle (chronos post-base);
+%    \end{macrocode}
 %^^A           \draw [chronos@lliw@cefndir@llinell,/chronos/llinell amser/timeline@line] (chronos pre-top) -- (chronos post-top) (chronos post-base) -- (chronos pre-base);
+%    \begin{macrocode}
         \else
+%    \end{macrocode}
 %^^A        % fel arall, draw
+%    \begin{macrocode}
           \draw [chronos@lliw@llinell,line width=\chronos@height,/chronos/llinell amser/timeline@line] (chronos pre) -- (chronos post);
+%    \end{macrocode}
 %^^A        % gweler ateb Qrrbrbirlbel: https://tex.stackexchange.com/a/701524/ i fy nghwestiwn: https://tex.stackexchange.com/q/701518/
+%    \begin{macrocode}
           \coordinate (tmpa) at (current bounding box.north);
           \coordinate (tmpb) at (current bounding box.south);
           \pgfresetboundingbox
           \path (chronos pre) -- (chronos post) -- (tmpa) -- (tmpb);
         \fi % \ifchronos@yearsonline
+%    \end{macrocode}
 %^^A      % prif label
 %^^A      % lau cyfnodau
+%    \begin{macrocode}
         \ifchronos@markeras % BEGIN
           \ifchronos@yearsonline
             \node (chronos bce) [text=chronos@lliw@llinell, font=\chronos@ffont@cyfnodau, inner xsep=0pt, xshift=-\chronos@eramargin, anchor=east] at (chronos start) {\chronos@bce};
@@ -4063,7 +4449,9 @@
               \chronos@global@to@clist*+{tmpa}{\thechronos@yeardate/\b/\i}%
             }% 
           }% \ifboolexpr { test {\ifnumcomp{\chronos@nextstep}{=}{\thechronos@startyear}} or test {\ifnumcomp{\chronos@nextstep}{=}{\thechronos@endyear}} }
+%    \end{macrocode}
 %^^A           \IfFreeF \bagpuss { \show\chronos@camrhaniadau \ifchronos@marks@bare\show\mebare\else\show\meclothed\fi \chronosshowpreset}
+%    \begin{macrocode}
           \foreach \d/\b/\chronosyeari [expand list, remember=\chronosyeari as \ilast (initially \pi), remember=\d as \dlast (initially \pi)] in {\chronos@global@from@clist{tmpa}}
           {% BEGIN \foreach \b ...
             \ifnum\d=\dlast\relax % BEGIN
@@ -4297,7 +4685,9 @@
           }%
         \fi
       \end{scope}% [/chronos/chronos@llinell amser@haenen] ?
+%    \end{macrocode}
 %^^A    % phantom nodes - haws i gosodi pethau
+%    \begin{macrocode}
       \begin{scope}[byw,every node/.append style={/chronos/@testun=chronos@prifliw,/chronos/placeholder}]%
         \ifnum\chronos@uchod>0
           \node (u1) [anchor=south west, yshift=\chronos@borderheight+2pt, alias=level 1] at (chronos top -| \chronos@lefelau@at) {\phantom{Enw}u1 \textbar{} level 1\\\phantom{1234}};
@@ -4385,7 +4775,9 @@
         \coordinate (chronos lower subheadings) at ($(chronos upper subheadings) - (0pt,\chronos@subheading@drop@isod)$);% oedd pwy2
         \coordinate (chronos@de) at ($(chronos post) + (\chronos@border@de,0pt)$);% oedd de
         \coordinate (chronos@chwith) at ($(chronos pre) + (-\chronos@border@chwith,0pt)$);% oedd chwith
+%    \end{macrocode}
 %^^A        \coordinate (chronos@chwith1) at ($(chronos pre) + (\chronos@border@chwith,0pt)$);% oedd chwith1
+%    \begin{macrocode}
       \fi % \ifchronos@headings
       \pgfqkeys{/chronos}{@before@headings}%
       \chronos@at@end
@@ -4463,7 +4855,9 @@
       \end{scope}%
     \fi % \ifchronos@showbb
   \end{tikzpicture}%
+%    \end{macrocode}
 %^^A  ailosod pethau rhagosodedig sy'n gosod gyda \g neu \global
+%    \begin{macrocode}
   \chronos@global@clear@to@clist{century_subheadings}%
   \chronos@lliwiau@clear
   \ifchronos@byw@isod@rhag \global\chronos@byw@isodtrue \else \global\chronos@byw@isodfalse\fi
@@ -4471,10 +4865,12 @@
   \ifchronos@parhad@isod@rhag \global\chronos@parhad@isodtrue \else \global\chronos@parhad@isodfalse\fi
   \let\chronosset\@chronosset
 }
+%    \end{macrocode}
 %^^A END chronos
 %^^A END env y ddogfen >>>
 %^^A BEGIN macros y ddogfen <<<
 %^^A BEGIN chronosset
+%    \begin{macrocode}
 \NewDocumentCommand \@chronosset { s m } {%
   \pgfqkeys{/chronos}{#2}%
   \IfBooleanF{#1}{%
@@ -4490,8 +4886,10 @@
   }%
 }
 \let\chronosset\@chronosset
+%    \end{macrocode}
 %^^A END chronosset
 %^^A BEGIN \byw
+%    \begin{macrocode}
 \NewDocumentCommand\byw { m }{%
   \begingroup
     \Undefine\chronos@byw@labelgeni
@@ -4509,7 +4907,9 @@
     \pgfmathsetmacro\chronos@temph{(\thechronos@genidate-\thechronos@startdate)*\chronos@unit}%
     \pgfmathsetmacro\chronos@tempk{(\thechronos@marwdate-\thechronos@startdate)*\chronos@unit}%
     \pgfmathsetmacro\chronos@templ{(\chronos@temph+\chronos@tempk)*\chronos@unit/2}%
+%    \end{macrocode}
 %^^A  % temporary coordinate accurate only for x
+%    \begin{macrocode}
     \coordinate (\chronos@byw@tikzname) at (\chronos@templ pt,0pt);
     \chronos@troilliwiau@tag{byw}%
     \chronos@gosodangor@tag{byw}%
@@ -4538,14 +4938,22 @@
       \def \chronos@cynnwys@testun {{\chronos@byw@ffonttestun\chronos@cynnwys@enw}\chronos@cynnwys@dyddiadau}%
     }%
     \chronos@creu@llinell {byw}{\chronos@temph pt}{\chronos@tempk pt}{geni}{marw}%
+%    \end{macrocode}
 %^^A  % final coordinate accurate for x and y
+%    \begin{macrocode}
     \coordinate (\chronos@byw@tikzname) at ($(\chronos@byw@tikzname{} geni)!1/2!(\chronos@byw@tikzname{} marw)$);
+%    \end{macrocode}
 %^^A  % creu cylcu ar y lein ; testun - prif node ; testun cylch ; prif gysylltiad
+%    \begin{macrocode}
     \chronos@creu@testun@tag{byw}{\chronos@cynnwys@testun}%
     \ifchronos@byw@cysylltiadtheori
+%    \end{macrocode}
 %^^A       \scoped[/chronos/middle anchorborder]{% ateb Symbol 1: https://tex.stackexchange.com/a/385953/
+%    \begin{macrocode}
         \chronos@angorau@theori{testun \chronos@byw@tikzname}{cysylltwr \chronos@byw@tikzname}[connector \chronos@byw@tikzname]{/chronos/@cysylltwr@testun=\chronos@byw@lliw}%
+%    \end{macrocode}
 %^^A       }%
+%    \begin{macrocode}
     \fi
     \ifchronos@every@byw@isod
       \global\chronos@byw@isodtrue
@@ -4558,8 +4966,10 @@
     \chronos@ailosod@nodweddion
   \endgroup
 }
+%    \end{macrocode}
 %^^A END \byw
 %^^A BEGIN \digwyddiad
+%    \begin{macrocode}
 \NewDocumentCommand\digwyddiad { m }{%
   \begingroup
     \Undefine\chronos@digwyddiad@angor
@@ -4570,10 +4980,14 @@
     \Undefine\chronos@cynnwys@enw
     \Undefine\chronos@cysylltwyr
     \chronos@digwyddiad@cysylltiadtheorifalse % rhag ofn
+%    \end{macrocode}
 %^^A  % oedd problem yn pasio every@digwyddiad i digwyddiad pan iddo fe'n cynnwys font=\unrhywbeth
+%    \begin{macrocode}
     \tikzset{digwyddiad={enw={??},#1}}%
     \pgfmathsetmacro\chronos@temph{(\thechronos@digdate-\thechronos@startdate)*\chronos@unit}%
+%    \end{macrocode}
 %^^A  % temporary coordinate accurate only for x
+%    \begin{macrocode}
     \coordinate (\chronos@digwyddiad@tikzname) at (\chronos@temph pt,0pt);
     \chronos@troilliwiau@tag{digwyddiad}%
     \chronos@gosodangor@tag{digwyddiad}%
@@ -4619,19 +5033,25 @@
         \def \chronos@cynnwys@testun {\chronos@cynnwys@dyddiadau\chronos@digwyddiad@ffonttestun\chronos@cynnwys@enw}%
       }%
     \fi
+%    \end{macrocode}
 %^^A  % marcio digwyddiad ar y lein
+%    \begin{macrocode}
     \begin{scope}[/chronos/chronos@llinell@haenen]% finalise coordinate placement
       \path [/chronos/@llinell=\chronos@digwyddiad@lliw] ({\chronos@temph pt,0} |- \chronos@border@coord) -- +(0pt,\chronos@digwyddiad@border) coordinate (\chronos@digwyddiad@tikzname);
       \ifchronos@eventdatessplit
         \path [/chronos/@llinell=\chronos@digwyddiad@lliw] ({\chronos@temph pt,0} |- \chronos@border@coord@inv) -- +(0pt,\chronos@digwyddiad@border@inv) coordinate (\chronos@digwyddiad@tikzname-inv);      
       \fi
     \end{scope}%
+%    \end{macrocode}
 %^^A  % creu cylcu ar y lein ; testun - prif node ; testun cylch ; prif gysylltiad
+%    \begin{macrocode}
     \ifchronos@eventdatessplit
       \chronos@creu@testun@tag*{digwyddiad}{\chronos@cynnwys@dyddiadau}% angen defnyddio  /chronos/event date split
     \fi
     \chronos@creu@testun@tag{digwyddiad}{\chronos@cynnwys@testun}%
+%    \end{macrocode}
 %^^A  % dyddiad arbennig
+%    \begin{macrocode}
     \ifchronos@eventyearsonline
       \edef\chronos@tempa{none}%
       \edef\chronos@tempb{\chronos@specialdate}%
@@ -4643,9 +5063,13 @@
       \scoped[/chronos/chronos@llinell amser@haenen]{\node [/chronos/event year on line] at (\chronos@temph pt,0pt) {\chronos@tempbd};}%
     \fi
     \ifchronos@digwyddiad@cysylltiadtheori
+%    \end{macrocode}
 %^^A       \scoped[/chronos/middle anchorborder]{% ateb Symbol 1: https://tex.stackexchange.com/a/385953/
+%    \begin{macrocode}
         \chronos@angorau@theori{testun \chronos@digwyddiad@tikzname}{cysylltwr \chronos@digwyddiad@tikzname}[connector \chronos@digwyddiad@tikzname]{/chronos/@cysylltwr@testun=\chronos@digwyddiad@lliw}%
+%    \end{macrocode}
 %^^A       }%
+%    \begin{macrocode}
     \fi
     \ifchronos@every@digwyddiad@isod
       \global\chronos@digwyddiad@isodtrue
@@ -4658,8 +5082,10 @@
     \chronos@ailosod@nodweddion
   \endgroup
 }
+%    \end{macrocode}
 %^^A END \digwyddiad
 %^^A BEGIN \parhad
+%    \begin{macrocode}
 \NewDocumentCommand\parhad { m }{%
   \begingroup
     \Undefine\chronos@parhad@labeldechrau
@@ -4677,7 +5103,9 @@
     \pgfmathsetmacro\chronos@temph{(\thechronos@thingdate-\thechronos@startdate)*\chronos@unit}%
     \pgfmathsetmacro\chronos@tempk{(\thechronos@otherthingdate-\thechronos@startdate)*\chronos@unit}%
     \pgfmathsetmacro\chronos@templ{(\chronos@temph+\chronos@tempk)*\chronos@unit/2}%
+%    \end{macrocode}
 %^^A  % temporary coordinate accurate only for x
+%    \begin{macrocode}
     \coordinate (\chronos@parhad@tikzname) at (\chronos@templ pt,0pt);
     \chronos@troilliwiau@tag{parhad}%
     \chronos@gosodangor@tag{parhad}%
@@ -4706,14 +5134,22 @@
       \def \chronos@cynnwys@testun {\chronos@parhad@ffontdyddiad\chronos@cynnwys@dyddiadau\chronos@parhad@ffonttestun\chronos@cynnwys@enw}%
     }%
     \chronos@creu@llinell {parhad}{\chronos@temph pt}{\chronos@tempk pt}{dechrau}{diwedd}%
+%    \end{macrocode}
 %^^A  % final coordinate placement
+%    \begin{macrocode}
     \coordinate (\chronos@parhad@tikzname) at ($(\chronos@parhad@tikzname{} dechrau)!1/2!(\chronos@parhad@tikzname{} diwedd)$);
+%    \end{macrocode}
 %^^A  % creu cylcu ar y lein ; testun ; testun cylch ; prif gysylltiad
+%    \begin{macrocode}
     \chronos@creu@testun@tag{parhad}{\chronos@cynnwys@testun}%
     \ifchronos@parhad@cysylltiadtheori
+%    \end{macrocode}
 %^^A       \scoped[/chronos/middle anchorborder]{% ateb Symbol 1: https://tex.stackexchange.com/a/385953/
+%    \begin{macrocode}
         \chronos@angorau@theori{testun \chronos@parhad@tikzname}{cysylltwr \chronos@parhad@tikzname}[connector \chronos@parhad@tikzname]{/chronos/@cysylltwr@testun=\chronos@parhad@lliw}%
+%    \end{macrocode}
 %^^A       }%
+%    \begin{macrocode}
     \fi
     \ifchronos@every@parhad@isod
       \global\chronos@parhad@isodtrue
@@ -4726,8 +5162,10 @@
     \chronos@ailosod@nodweddion
   \endgroup
 }
+%    \end{macrocode}
 %^^A END \parhad
 %^^A BEGIN \theori XXX
+%    \begin{macrocode}
 \NewDocumentCommand\theori { m }{%
   \begingroup
     \Undefine\chronos@theori@angor
@@ -4757,17 +5195,25 @@
       }%
       \def \chronos@cynnwys@testun {\chronos@cynnwys@enw}%
     }%
+%    \end{macrocode}
 %^^A  % creu testun (text tag)
+%    \begin{macrocode}
     \chronos@creu@testun@tag[alias=\chronos@theori@tikzname]{theori}{\chronos@theori@ffonttestun\chronos@cynnwys@testun}%
+%    \end{macrocode}
 %^^A     \begin{scope}[/chronos/middle anchorborder]% ateb Symbol 1: https://tex.stackexchange.com/a/385953/
+%    \begin{macrocode}
       \IfExistT \chronos@cysylltwyr{%
         \chronos@angorau@theori{\chronos@theori@enw}{cysylltwr \chronos@theori@enw}[connector \chronos@theori@enw]{/chronos/@cysylltwr@testun=\chronos@theori@lliw}}%
+%    \end{macrocode}
 %^^A     \end{scope}%
+%    \begin{macrocode}
     \chronos@ailosod@nodweddion
   \endgroup
 }
+%    \end{macrocode}
 %^^A END \theori
 %^^A BEGIN \chronos@angorau@theori
+%    \begin{macrocode}
 \NewDocumentCommand \chronos@angorau@theori{mmO{connector }m}{% #1 enw y prif node ; #2 enw yr angor cyntaf ; #4 style
   \ifchronos@phantom
     \PackageWarning{chronos}{Phantom tags cannot have connectors }%
@@ -4785,8 +5231,10 @@
     \end{scope}%
   \fi
 }
+%    \end{macrocode}
 %^^A END \chronos@angorau@theori
 %^^A BEGIN \cylchtheori - cylchau bychain yn lle bocses mawr
+%    \begin{macrocode}
 \NewDocumentCommand \cylchtheori { m } {%
   \begingroup
     \Undefine\chronos@cylchtheori@at
@@ -4794,7 +5242,9 @@
     \Undefine\chronos@cynnwys@enw
     \Undefine\chronos@cynnwys@dyddiadau
     \tikzset{cylch theori={enw={??},#1}}%
+%    \end{macrocode}
 %^^A  % ni all wneud y cam hwn a'r un nesaf gyda'i gilydd - wn i ddim yn siwr pam lai
+%    \begin{macrocode}
     \coordinate [/chronos/every@cylch cylch theori, /utils/exec=\pgfkeysalsofrom{\chronos@cadw}] (\chronos@cylchtheori@tikzname1) at  (chronos@cylchtheori@at);
     \path [/chronos/every@cylch cylch theori] (\chronos@cylchtheori@tikzname1) circle (\chronos@cylchtheori@bach) circle (\chronos@cylchtheori@mawr);
     \pgfmathsetlength\chronos@templgtha{\chronos@cylchtheori@bach+0.5pt}%
@@ -4812,8 +5262,10 @@
     \chronos@ailosod@nodweddion
   \endgroup
 }
+%    \end{macrocode}
 %^^A END \cylchtheori
 %^^A BEGIN \prifdeitl
+%    \begin{macrocode}
 \NewDocumentCommand \prifdeitl {  m }
 {% 
   \begingroup
@@ -4837,8 +5289,10 @@
     \fi
   \endgroup
 }
+%    \end{macrocode}
 %^^A END \prifdeitl
 %^^A BEGIN \gwybodaeth
+%    \begin{macrocode}
 \NewDocumentCommand \gwybodaeth { s m }{%
   \begingroup
     \Undefine\chronos@gwybodaeth@angor
@@ -4868,8 +5322,10 @@
     \chronos@ailosod@nodweddion
   \endgroup
 }
+%    \end{macrocode}
 %^^A END \gwybodaeth
 %^^A BEGIN \hawlfraint
+%    \begin{macrocode}
 \NewDocumentCommand \hawlfraint { m }
 {%
   \begingroup
@@ -4920,7 +5376,9 @@
       \def\chronos@hawlfraint@tikzname{hawlfraint}%
       \pgfqkeys{/chronos}{@tempd/.style={alias=copyright,alias=copyleft}}%
     }%
+%    \end{macrocode}
 %^^A     \draw node (\chronos@hawlfraint@tikzname) [draw=none,/chronos/@tempd, /chronos/@hawlfraint, anchor=\chronos@hawlfraint@angor,rotate/.expand once=\chronos@hawlfraint@cylchdroi,/utils/exec=\pgfkeysalsofrom{\chronos@cadw}] at (chronos@hawlfraint@at) {\chronos@hawlfraint@cynnwys};
+%    \begin{macrocode}
     \draw node (\chronos@hawlfraint@tikzname) [draw=none,/chronos/@tempd, /chronos/@hawlfraint, anchor=\chronos@hawlfraint@angor,rotate=\chronos@hawlfraint@cylchdroi,/utils/exec=\pgfkeysalsofrom{\chronos@cadw}] at (chronos@hawlfraint@at) {\chronos@hawlfraint@cynnwys};
     \ifchronos@showcoords
       \begin{scope}[on chronos overlay layer]
@@ -4936,8 +5394,10 @@
     \hawlfraint {#1}%
   \endgroup
 }
+%    \end{macrocode}
 %^^A END \hawlfraint
 %^^A BEGIN \chronos@dyddiadau@tag
+%    \begin{macrocode}
 \NewDocumentCommand \chronos@dyddiadau@tag{mmmmm}{% #1 : tag e.g. byw / parhad ; #2 first date counter e.g. geni / thing ; #3 first label e.g. geni / dechrau ; #4 second date counter e.g. marw / otherthing ; #5 second label e.g. marw / diwedd
   \IfCSExistTF{chronos@#1@label#3}{%
     \IfCSExistF{chronos@#1@label#5}{%
@@ -4978,8 +5438,10 @@
     \fi
   \fi
 }
+%    \end{macrocode}
 %^^A END \chronos@dyddiadau@tag
 %^^A BEGIN \chronos@gosodborder@tag
+%    \begin{macrocode}
 \NewDocumentCommand \chronos@gosodborder@tag{m}{%
   \csname ifchronos@#1@isod\endcsname
     \ifchronos@yearsonline
@@ -5007,8 +5469,10 @@
     \fi
   \fi
 }
+%    \end{macrocode}
 %^^A END \chronos@gosodborder@tag
 %^^A BEGIN \chronos@troilliwiau@tag & configure isod/uchod
+%    \begin{macrocode}
 \NewDocumentCommand \chronos@troilliwiau@tag{m}{%
   \IfCSExistTF {chronos@#1@at}{%
     \edef\chronos@tempj{\csname chronos@#1@at\endcsname}%
@@ -5069,8 +5533,10 @@
     \xglobal\colorlet{\chronos@tempg}{\chronos@tempb}%
   \fi
 }
+%    \end{macrocode}
 %^^A END \chronos@troilliwiau@tag
 %^^A BEGIN \chronos@gosodangor@tag
+%    \begin{macrocode}
 \NewDocumentCommand\chronos@gosodangor@tag{m}{%
   \IfCSExistTF{chronos@#1@angor}{%
     \expandafter\edef\expandafter\chronos@tempa\expandafter{\csname chronos@#1@angor\endcsname}%
@@ -5087,21 +5553,27 @@
     \fi
   }%
 }
+%    \end{macrocode}
 %^^A END \chronos@gosodangor@tag
 %^^A BEGIN \chronos@creu@llinell (parhad, byw)
+%    \begin{macrocode}
 \NewDocumentCommand \chronos@creu@llinell {mmmmm}{% fill (fallai draw)} llinell ar y llinell amser am dymor estynedig
+%    \end{macrocode}
 %^^A  #1 : tag e.g. byw
 %^^A  #2 : x dimen dechrau/geni
 %^^A  #3 : x dimen diwedd/marw
 %^^A  #4 : i greu enw cyntaf e.g. dechrau/geni
 %^^A  #5 : i greu'r ail enw e.g. diwedd/marw
+%    \begin{macrocode}
   \expandafter\let\expandafter\chronos@tempa\csname chronos@#1@tikzname\endcsname
   \edef\chronos@tempd{\csname chronos@#1@tikzname\endcsname-inv}%
   \expandafter\let\expandafter\chronos@tempb\csname chronos@#1@border\endcsname
   \expandafter\let\expandafter\chronos@tempc\csname chronos@#1@border@inv\endcsname
   \begin{scope}[/chronos/chronos@llinell@haenen]
     \ifchronos@yearsonline
+%    \end{macrocode}
 %^^A       \IfFreeF\bagpuss{\pgfkeys{/chronos/@llinell/.show code}}
+%    \begin{macrocode}
       \path [/chronos/@llinell/.expand once=\csname chronos@#1@lliw\endcsname] ({#2,0} |- \chronos@border@coord) -- +(0pt,\chronos@tempb) coordinate (\chronos@tempa{} #4) -| ({#3,0} |- \chronos@border@coord) coordinate [midway] (\chronos@tempa{} #5) -- cycle;
     \else
       \path [/chronos/@llinell/.expand once=\csname chronos@#1@lliw\endcsname] ({#2,0} |- \chronos@border@coord) ++(0pt,\chronos@tempb) ++(0pt,\chronos@llinell@yshift) coordinate (\chronos@tempa{} #4) -- ({#3,0} |- \chronos@tempa{} #4) coordinate  (\chronos@tempa{} #5);
@@ -5115,13 +5587,17 @@
     \fi
   \end{scope}%
 }
+%    \end{macrocode}
 %^^A END \chronos@creu@llinell (parhad, byw)
 %^^A BEGIN \chronos@creu@testun@tag
+%    \begin{macrocode}
 \NewDocumentCommand \chronos@creu@testun@tag{s O {} m +m}{% make text tag XXX
+%    \end{macrocode}
 %^^A  #1 : seren | star
 %^^A  #2 : allweddu ychwanegol | additional keys
 %^^A  #3 : tag e.g. byw
 %^^A  #4 : testun | text
+%    \begin{macrocode}
   \ifchronos@phantom
     \relax
   \else
@@ -5148,13 +5624,19 @@
       \coordinate (chronos@temp@coord) at (\chronos@tempb);
     }%
     \scoped[/chronos/middle anchorborder]{% ateb Symbol 1: https://tex.stackexchange.com/a/385953/
+%    \end{macrocode}
 %^^A    % fill opacity=0 -> problem ; fill=none -> dim problem; beth sy'n digwydd?
+%    \begin{macrocode}
       \node (testun \chronos@tempa) [/chronos/@testun/.expand once=\csname chronos@#3@lliw\endcsname, anchor=\chronos@tempc, /chronos/.cd,/utils/exec=\pgfkeysalsofrom{\chronos@cadw}, /chronos/chronos@tempb@style, /tikz/.cd, alias=tag \chronos@tempa, alias=text tag \chronos@tempa] at (chronos@temp@coord) {#4};}%
     \ifchronos@tag@cysylltu
+%    \end{macrocode}
 %^^A    % creu cylch ar y lein | make circle on timeline
+%    \begin{macrocode}
       \scoped[/chronos/chronos@cysylltiad@haenen]{\node (cysylltwr chronos \chronos@tempa) [/chronos/@cysylltwr@chronos/.expand once=\csname chronos@#3@lliw\endcsname, alias=chronos connector \chronos@tempa, alias=circle \chronos@tempa, alias=cylch \chronos@tempa] at (\chronos@tempa) {};}%
       \begin{scope}[/chronos/middle anchorborder]% ateb Symbol 1: https://tex.stackexchange.com/a/385953/
+%    \end{macrocode}
 %^^A      % creu cysylltwyr testun ar y node testun | make text connectors on the text node
+%    \begin{macrocode}
         \node (cysylltwr testun \chronos@tempa) [/chronos/@cysylltwr@testun/.expand once=\csname chronos@#3@lliw\endcsname,/chronos/@cysylltwr@testun@prif/.expand once=\csname chronos@#3@lliw\endcsname, alias=text tag connector \chronos@tempa, alias=prif gysylltwr \chronos@tempa, alias=main connector \chronos@tempa, alias=cysylltwr \chronos@tempa0, alias=testun cylch \chronos@tempa, alias=connector \chronos@tempa0] at (testun \chronos@tempa.middle \chronos@tempc) {};
       \end{scope}%
       \path (cysylltwr testun \chronos@tempa);
@@ -5163,19 +5645,25 @@
       \pgfgetlastxy{\chronos@templgthc}{\chronos@templgthb}%
       \ifdim\chronos@templgtha=\chronos@templgthc\def\chronos@tempe{--}\else\def\chronos@tempe{|-}\fi
       \ifbool{chronos@#3@cysylltiad}{%
+%    \end{macrocode}
 %^^A      % cysylltu llinell amser i node testun | connect timeline to text node
+%    \begin{macrocode}
         \scoped[/chronos/chronos@cysylltiad@haenen]{\draw [/chronos/@cysylltiad/.expand once=\csname chronos@#3@lliw\endcsname] (cysylltwr chronos \chronos@tempa) \chronos@tempe (cysylltwr testun \chronos@tempa) ;}%% oedd .\chronos@tempc
       }{}% ifchronos@#3@cysylltiad
     \fi % \ifchronos@tag@cysylltu
   \fi
+%    \end{macrocode}
 %^^A   \edef\chronos@tempa{\csname chronos@#3@tikzname\endcsname}%
 %^^A   \edef\chronos@tempb{lliw \csname chronos@#3@tikzname\endcsname}%
 %^^A   \colorlet{chronos@temp@lliw}{\chronos@tempb}%
 %^^A   \chronos@darparu@lliw{\chronos@tempa}{chronos@temp@lliw}%
 %^^A   \draw (cylch \chronos@tempa) |- (cysylltwr testun \chronos@tempa.\chronos@tempc) ;
+%    \begin{macrocode}
 }
+%    \end{macrocode}
 %^^A END \chronos@creu@testun@tag
 %^^A BEGIN aliases & (globalised) defaults
+%    \begin{macrocode}
 \AtEndPreamble{%
   \@ifpackageloaded{memoize}{%
     \mmzset{%
@@ -5215,11 +5703,13 @@
   \IfExistF \uishape {\let\uishape\itshape}%
   \IfExistF \textui {\DeclareTextFontCommand{\textui}{\uishape}}%
 }
+%    \end{macrocode}
 %^^A END aliases
 %^^A END macros y ddogfen >>>
+%    \begin{macrocode}
 \chronos@presetfalse
 %    \end{macrocode}
-% \end{pkg}
+% \end{package}
 % \iffalse
 %</sty>
 % \fi
@@ -5229,14 +5719,16 @@
 % \iffalse
 %<*sty-styles>
 % \fi
-% \begin{pkg}{chronos-lib-styles}
+% \begin{package}{chronos-lib-styles}
 % Styles.
 %    \begin{macrocode}
 \RequirePackage{chronos}
-\ProvidesPackageSVN[\MyFileBaseName-lib-styles.sty]{$Id: chronos-code.dtx 10893 2025-03-02 09:13:11Z cfrees $}[v0.9 \revinfo]
+\ProvidesPackageSVN[\MyFileBaseName-lib-styles.sty]{$Id: chronos-code.dtx 10898 2025-03-03 08:16:50Z cfrees $}[v0.9 \revinfo]
 \pgfqkeys{/chronos}{%
+%    \end{macrocode}
 %^^A  BEGIN styles <<<
 %^^A  % BEGIN on line styles
+%    \begin{macrocode}
   modern/.style={%
     /chronos/.cd,
     modern/.meaning to context,
@@ -5387,8 +5879,10 @@
     subheadings style={/chronos/@amseraumawr,font=\scriptsize\rmfamily\itshape},
     every lines+={fill=none,draw=none},
   },
+%    \end{macrocode}
 %^^A  % END on line styles
 %^^A  % BEGIN off line styles
+%    \begin{macrocode}
   somewhat plain/.style={%
     /chronos/.cd,
     somewhat plain/.meaning to context,
@@ -5670,7 +6164,9 @@
     /chronos/.cd,
     off line colour alt/.meaning to context,
     off line colour=#1,
+%    \end{macrocode}
 %^^A    % use cronoleg colours
+%    \begin{macrocode}
     colour scheme=offlinealt,
     rotate all colours,
     event/colours below from clist={lliwiau_byw_isod},
@@ -5737,8 +6233,10 @@
     frame,
     main/frame={draw},
   },
+%    \end{macrocode}
 %^^A  % END off line styles
 %^^A  % BEGIN no year styles
+%    \begin{macrocode}
   date centric/.style={%
     /chronos/.cd,
     date centric/.meaning to context,
@@ -5804,11 +6302,13 @@
     life/line+={line width=2pt,draw=##1},
   },
   plain arrow/.default=5mm,
+%    \end{macrocode}
 %^^A  % END no year styles
 %^^A  % END styles >>>
+%    \begin{macrocode}
 }
 %    \end{macrocode}
-% \end{pkg}
+% \end{package}
 % \iffalse
 %</sty-styles>
 % \fi
@@ -5818,12 +6318,14 @@
 % \iffalse
 %<*sty-colschemes>
 % \fi
-% \begin{pkg}{chronos-lib-colschemes}
+% \begin{package}{chronos-lib-colschemes}
 % Colour schemes.
 %    \begin{macrocode}
 \RequirePackage{chronos}
-\ProvidesPackageSVN[\MyFileBaseName-lib-colschemes.sty]{$Id: chronos-code.dtx 10893 2025-03-02 09:13:11Z cfrees $}[v0.9 \revinfo]
+\ProvidesPackageSVN[\MyFileBaseName-lib-colschemes.sty]{$Id: chronos-code.dtx 10898 2025-03-03 08:16:50Z cfrees $}[v0.9 \revinfo]
+%    \end{macrocode}
 %^^A  BEGIN cylluniau lliwiau | colour schemes <<<
+%    \begin{macrocode}
 \chronosnewcolourscheme[default]{blues}{%
   timeline foreground=chronosDodgerBlue4,
   timeline background=chronosDodgerBlue2,
@@ -5844,7 +6346,9 @@
 \chronosnewcolourscheme[cronoleg]{offlinealt}{%
   timeline foreground=blue!40,
 }
+%    \end{macrocode}
 %^^A  xcolor manual: 35
+%    \begin{macrocode}
 \definecolorseries{xcolor g2}{hsb}{grad}[hsb]{.575,1,1}{.987,-.234,0}
 \definecolorseries{xcolor s2}{hsb}{step}[hsb]{.575,1,1}{.11,-.05,0}
 \resetcolorseries{xcolor g2}
@@ -5909,9 +6413,9 @@
   theory/default=gray,
   info/default=gray,
 }
-%^^A  END cylluniau lliwiau | colour schemes >>>
 %    \end{macrocode}
-% \end{pkg}
+%^^A  END cylluniau lliwiau | colour schemes >>>
+% \end{package}
 % \iffalse
 %</sty-colschemes>
 % \fi
