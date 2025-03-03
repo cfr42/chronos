@@ -30,7 +30,7 @@
 %^^A ref. ateb Max Chernoff: https://tex.stackexchange.com/a/723294/
 \def\MyMakePrivateLetters{\makeatletter\ExplSyntaxOn\endlinechar13}
 \ExplSyntaxOff
-\ProvidesFileSVN{$Id: chronos.dtx 10898 2025-03-03 08:16:50Z cfrees $}[v0.9 \revinfo][\filebase DTX: ]
+\ProvidesFileSVN{$Id: chronos.dtx 10899 2025-03-03 19:23:04Z cfrees $}[v0.9 \revinfo][\filebase DTX: ]
 \DefineFileInfoSVN[chronos]
 \GetFileInfoSVN*
 \let\chronosdocversion\fileversion
@@ -99,6 +99,8 @@
 \newcommand* \sqarrow {\reflectbox{\Pisymbol{psy}{191}}}
 \let\chronosdocmacrocode\macrocode
 \let\endchronosdocmacrocode\endmacrocode
+\let\chronosdocenvironment\environment
+\let\endchronosdocenvironment\endenvironment
 \usepackage[%
   loadHyperref=true,
   createIndexEntries=false,
@@ -7611,7 +7613,7 @@ mode=overlay}}.
 \RequirePackage{svn-prov}
 \def\GetFileBaseName#1-#2\nil{#1}
 \edef\MyFileBaseName{\expandafter\GetFileBaseName\jobname\nil}
-\ProvidesFileSVN[\MyFileBaseName-doc]{$Id: chronos.dtx 10898 2025-03-03 08:16:50Z cfrees $}[v0.0 \revinfo]
+\ProvidesFileSVN[\MyFileBaseName-doc]{$Id: chronos.dtx 10899 2025-03-03 19:23:04Z cfrees $}[v0.0 \revinfo]
 \DefineFileInfoSVN
 \AddToHook{begindocument}{\OnlyDescription}
 \input{\MyFileBaseName.dtx}
@@ -7622,7 +7624,7 @@ mode=overlay}}.
 \RequirePackage{svn-prov}
 \def\GetFileBaseName#1-#2\nil{#1}
 \edef\MyFileBaseName{\expandafter\GetFileBaseName\jobname\nil}
-\ProvidesFileSVN[\MyFileBaseName-imp]{$Id: chronos.dtx 10898 2025-03-03 08:16:50Z cfrees $}[v0.0 \revinfo]
+\ProvidesFileSVN[\MyFileBaseName-imp]{$Id: chronos.dtx 10899 2025-03-03 19:23:04Z cfrees $}[v0.0 \revinfo]
 \DefineFileInfoSVN
 \AddToHook{begindocument}{\AlsoImplementation}
 \input{\MyFileBaseName.dtx}
