@@ -5739,7 +5739,7 @@
   \IfExistF \bcelabel {\let\bcelabel\chronos@bce}%
   \IfExistF \tlstyle {\let\tlstyle\upshape}%
   \IfExistF \plstyle {\let\plstyle\upshape}%
-  \IfExistF \sishape {\fontshape{scit}\selectfont}%
+  \IfExistF \sishape {\DeclareRobustCommand\sishape{\itshape\scshape}}%
   \IfExistF \textsi {\DeclareTextFontCommand{\textsi}{\sishape}}%
   \IfExistF \uishape {\let\uishape\itshape}%
   \IfExistF \textui {\DeclareTextFontCommand{\textui}{\uishape}}%
