@@ -30,7 +30,7 @@
 %^^A ref. ateb Max Chernoff: https://tex.stackexchange.com/a/723294/
 \def\MyMakePrivateLetters{\makeatletter\ExplSyntaxOn\endlinechar13}
 \ExplSyntaxOff
-\ProvidesFileSVN{$Id: chronos.dtx 10906 2025-03-04 03:56:59Z cfrees $}[v0.9 \revinfo][\filebase DTX: ]
+\ProvidesFileSVN{$Id: chronos.dtx 10907 2025-03-04 05:36:57Z cfrees $}[v0.9 \revinfo][\filebase DTX: ]
 \DefineFileInfoSVN[chronos]
 \GetFileInfoSVN*
 \let\chronosdocversion\fileversion
@@ -7612,10 +7612,10 @@ mode=overlay}}.
 \RequirePackage{svn-prov}
 \def\GetFileBaseName#1-#2\nil{#1}
 \edef\MyFileBaseName{\expandafter\GetFileBaseName\jobname\nil}
-\ProvidesFileSVN[\MyFileBaseName-doc]{$Id: chronos.dtx 10906 2025-03-04 03:56:59Z cfrees $}[v0.0 \revinfo]
+\ProvidesFileSVN[\MyFileBaseName-doc]{$Id: chronos.dtx 10907 2025-03-04 05:36:57Z cfrees $}[v0.0 \revinfo]
 \DefineFileInfoSVN
 \AddToHook{begindocument}{\OnlyDescription}
-\newif\ifchronoscodetoo
+\expandafter\newif\csname ifchronoscodetoo\endcsname
 \chronoscodetoofalse
 \input{\MyFileBaseName.dtx}
 %</doc>
@@ -7625,10 +7625,10 @@ mode=overlay}}.
 \RequirePackage{svn-prov}
 \def\GetFileBaseName#1-#2\nil{#1}
 \edef\MyFileBaseName{\expandafter\GetFileBaseName\jobname\nil}
-\ProvidesFileSVN[\MyFileBaseName-imp]{$Id: chronos.dtx 10906 2025-03-04 03:56:59Z cfrees $}[v0.0 \revinfo]
+\ProvidesFileSVN[\MyFileBaseName-imp]{$Id: chronos.dtx 10907 2025-03-04 05:36:57Z cfrees $}[v0.0 \revinfo]
 \DefineFileInfoSVN
 \AddToHook{begindocument}{\AlsoImplementation}
-\newif\ifchronoscodetoo
+\expandafter\newif\csname ifchronoscodetoo\endcsname
 \chronoscodetootrue
 \input{\MyFileBaseName.dtx}
 %</doc-code>
