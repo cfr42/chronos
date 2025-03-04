@@ -1330,11 +1330,16 @@
 %^^A \let\MakePrivateLetters\MyMakePrivateLetters
 \DocInput{\filename}
 %^^A\DocInput{\chronosdocbase-code.dtx}
+\expandafter\typeout{\jobname}
+\expandafter\typeout{\chronosdocbase}
 \ifx\jobname\chronosdocbase\relax
+  \typeout{\jobname\ matches base}
 \else
   \edef\tempa{\chronosdocbase -doc}%
   \ifx\jobname\tempa\relax
+    \typeout{\jobname\ matches base+doc}
   \else
+    \tyepout{\jobname\ matches neither base nor base+doc}
     \def\mybasename#1.#2\nil{#1}
     \ExpandArgs {e} \DocInput{\expandafter\mybasename\filename.a\nil-code.dtx}
   \fi

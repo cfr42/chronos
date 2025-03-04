@@ -82,7 +82,7 @@
 % \iffalse
 %<*sty>
 % \fi
-% \begin{package}{chronos}
+% \begin{package}{chronos}%^^A <<<
 % \LaTeXe{} package.
 %    \begin{macrocode}
 \RequirePackage{svn-prov}
@@ -98,13 +98,13 @@
 \NeedsTeXFormat{LaTeX2e}[2021-11-15]
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %    \end{macrocode}
-% copied verbatim, excepting format from Joseph Wright's siunitx.sty under LPPL
+% copied verbatim, excepting format from Joseph Wright's \path{siunitx.sty} under LPPL
 %    \begin{macrocode}
 \@ifundefined{ExplLoaderFileDate}{%
   \RequirePackage{expl3}%
 }{}
 %    \end{macrocode}
-% almost verbatim from siunitx.sty
+% almost verbatim from \path{siunitx.sty}
 %    \begin{macrocode}
 \@ifl@t@r\ExplLoaderFileDate{2022-02-24}{%
 }{%
@@ -120,7 +120,7 @@
 \ExplSyntaxOn
 \newif\ifchronos@enwaulliwsyml
 %    \end{macrocode}
-% \begin{pkgopt}{simple colour names,simple color names,no simple colour names,no simple color names}
+% \begin{key}{simple colour names,simple color names,no simple colour names,no simple color names}%^^A <<<
 %   Only a single option really.
 %    \begin{macrocode}
 \keys_define:nn { chronos } %^^A <<<
@@ -146,13 +146,13 @@
   no~simple~color~names .usage:n = general,
 } %^^A >>>
 %    \end{macrocode}
-% \end{pkgopt}
-% \begin{macro}{\IfFormatAtLeastTF}
-% Joseph Wright: from \file{siunitx.sty} ; \url{https://chat.stackexchange.com/transcript/message/64327823#64327823}
+% \end{key}%^^A >>>
+% \begin{macro}{\IfFormatAtLeastTF}%^^A <<<
+% Joseph Wright: from \path{siunitx.sty} ; \url{https://chat.stackexchange.com/transcript/message/64327823#64327823}
 %    \begin{macrocode}
 \providecommand \IfFormatAtLeastTF { \@ifl@t@r \fmtversion }
 %    \end{macrocode}
-% \end{macro}
+% \end{macro}%^^A >>>
 %    \begin{macrocode}
 \IfFormatAtLeastTF { 2022-06-01 }
 {
@@ -694,7 +694,7 @@
 \cs_new_protected_nopar:Nn \__chronos_gosod_nodweddion:n
 {
 %    \end{macrocode}
-%^^A  cadw status
+% cadw status \textbar{} save status
 %    \begin{macrocode}
   \prop_set_eq:NN \l__chronos_rhagosedig_prop \l__chronos_prop
   \prop_concat:NNc \l__chronos_tmpa_prop \l__chronos_prop { l__chronos_#1_prop }
@@ -816,9 +816,9 @@
 %    \end{macrocode}
 %^^A END functions: pgf keys (headings)
 %^^A BEGIN functions: pgf keys (keys)
-% \cs{__chronos_kex}<whatever> functions just produce groups of pgf keys for the plain/prime/plus triple, standard/every, cy/en and combinations thereof
+% \cs{__chronos_kex}\meta{whatever} functions just produce groups of pgf keys for the plain/prime/plus triple, standard/every, cy/en and combinations thereof
 %
-% tldr: reduce clutte/typing and facilitate changes/fixes (hopefully)
+% tldr: reduce clutter/typing and facilitate changes/fixes (hopefully)
 %    \begin{macrocode}
 \cs_new_protected_nopar:Nn \__chronos_kexpander:nnnn
 { % #1 enw (brif enw) | name (primary name) ; 
@@ -882,7 +882,10 @@
   }
 }
 \cs_new_protected_nopar:Nn \__chronos_kextripler:nnnn
-{% #1 enw | name ; #2 llwybr/prop tag | path/prop tag ; #3 rhag | default ; #4 math e.e. style neu code | type e.g. style or code
+{ % #1 enw | name ; 
+  % #2 llwybr/prop tag | path/prop tag ; 
+  % #3 rhag | default ; 
+  % #4 math e.e. style neu code | type e.g. style or code
   \pgfqkeys{/chronos} {
     #2/.#4={},
     #1+/.code={
@@ -952,7 +955,7 @@
 %^^A END functions >>>
 %^^A BEGIN macros y paced <<<
 % **mewnol hefyd!** \textbar{} **internal also!**
-% Ddylwn i ddefnyddio \NewDocumentCommand (ond *mewnol*?), \newcommand/\newcommand*, \def/\gdef/\edef/\xdef, \cs_new_eq:NN, \let neu rhywbeth arall??!!
+% Ddylwn i ddefnyddio \cs{NewDocumentCommand} (ond *mewnol*?), \cs{newcommand}/\cs{newcommand*}, \cs{def}/\cs{gdef}/\cs{edef}/\cs{xdef}, \cs_new_eq:NN, \cs{let} neu rhywbeth arall??!!
 %    \begin{macrocode}
 \newcommand* \chronos@tikzprefix { \int_to_arabic:n { \g__chronos_int } }
 \cs_new_eq:NN \chronos@env@begin \__chronos_at_begin:
@@ -1071,14 +1074,24 @@
     }
   } 
 }%
-\newcommand* \chronos@dangos@gosod { \seq_show:N \l__chronos_gosod_seq }%
-\newcommand* \chronos@if@gosodTF [3] { \seq_if_in:NnTF \l__chronos_gosod_seq { #1 } { #2 } { #3 } }%
+\newcommand* \chronos@dangos@gosod 
+{ 
+  \seq_show:N \l__chronos_gosod_seq
+}
+\newcommand* \chronos@if@gosodTF [3] 
+{ 
+  \seq_if_in:NnTF \l__chronos_gosod_seq { #1 } { #2 } { #3 } 
+}
 %    \end{macrocode}
 %^^A \newcommand* \chronos@if@gosodT [2] { \seq_if_in:NnT \l__chronos_gosod_seq { #1 } { #2 } }%
 %    \begin{macrocode}
-\newcommand* \chronos@if@gosodF [2] { \chronos@presettrue \seq_if_in:NnF \l__chronos_gosod_seq { #1 } { #2 } \chronos@presetfalse }%
-\NewDocumentCommand \chronos@dangos@lliwiau { s O { byw, digwyddiad, parhad, theori } D () { isod, uchod }  } 
+\newcommand* \chronos@if@gosodF [2] 
 {
+  \chronos@presettrue \seq_if_in:NnF \l__chronos_gosod_seq { #1 } { #2 } \chronos@presetfalse 
+}
+\NewDocumentCommand \chronos@dangos@lliwiau { 
+  s O { byw, digwyddiad, parhad, theori } D () { isod, uchod }  
+} {
   \clist_set:Nn \l__chronos_tmpb_clist { #2 }
   \clist_set:Nn \l__chronos_tmpc_clist { #3 }
   \clist_map_inline:Nn \l__chronos_tmpb_clist
@@ -1097,8 +1110,9 @@
   }
 }
 \NewDocumentCommand \chronos@dangos@lliwiau@rhag 
-{ s O { byw, digwyddiad, parhad, theori } D () { isod, uchod }  } 
-{
+{ 
+  s O { byw, digwyddiad, parhad, theori } D () { isod, uchod }  
+} {
   \clist_set:Nn \l__chronos_tmpb_clist { #2 }
   \clist_set:Nn \l__chronos_tmpc_clist { #3 }
   \clist_map_inline:Nn \l__chronos_tmpb_clist
@@ -5748,7 +5762,7 @@
 %    \begin{macrocode}
 \chronos@presetfalse
 %    \end{macrocode}
-% \end{package}
+% \end{package}%^^A >>>
 % \iffalse
 %</sty>
 % \fi
@@ -5758,17 +5772,20 @@
 % \iffalse
 %<*sty-styles>
 % \fi
-% \begin{package}{chronos-lib-styles}
+% \begin{package}{chronos-lib-styles}%^^A <<<
 % Styles.
 %    \begin{macrocode}
 \RequirePackage{chronos}
 \ProvidesPackageSVN[\MyFileBaseName-lib-styles.sty]{$Id: chronos-code.dtx 10903 2025-03-04 01:29:39Z cfrees $}[v0.9 \revinfo]
-\pgfqkeys{/chronos}{%
+\pgfqkeys{/chronos}{%^^A BEGIN styles <<<
 %    \end{macrocode}
-%^^A  BEGIN styles <<<
+% Styles come in three flavours: on-line, off-line and no-year.
+% \subsubsection{On-line}\label{subsubsec:cod-styles-online}
 %^^A  % BEGIN on line styles
+% \begin{chronosstyle}{modern,lavender menace,serif on line,rainbow serif,sober judge}
+% Years are marked on the timeline itself.
 %    \begin{macrocode}
-  modern/.style={%
+  modern/.style={% <<<
     /chronos/.cd,
     modern/.meaning to context,
     colour scheme=modern,
@@ -5816,8 +5833,8 @@
     bce year label=BCE,
     ce year label=CE,
     levels=3:3,
-  },
-  lavender menace/.style={%
+  },% >>>
+  lavender menace/.style={% <<<
     /chronos/.cd,
     lavender menace/.meaning to context,
     modern,
@@ -5830,8 +5847,8 @@
     life/line+={top color=chronosSilver,%
       bottom color=chronos timeline border outer colour,fill opacity=1},
     main/title+={text=chronos main colour!75!chronosDarkGray},
-  },
-  serif on line/.style={%
+  },% >>>
+  serif on line/.style={% <<<
     /chronos/.cd,
     serif on line/.meaning to context,
     no colour rotation,
@@ -5875,8 +5892,8 @@
     main/title={font=\Large\bfseries,text=chronos main colour,draw=none},
     frame,
     main/frame={draw=chronos timeline background colour, ultra thick},
-  },
-  rainbow serif/.style={%
+  },% >>>
+  rainbow serif/.style={% <<<
     /utils/exec={\selectcolormodel{rgb}},
     /chronos/.cd,
     rainbow serif/.meaning to context,
@@ -5890,8 +5907,8 @@
     },
     only years,
     without eras,
-  },
-  sober judge/.style={%
+  },% >>>
+  sober judge/.style={% <<<
     /chronos/.cd,
     sober judge/.meaning to context,
     colour scheme=sobriety,
@@ -5917,12 +5934,16 @@
       text=chronos main colour!75!chronos main background colour},
     subheadings style={/chronos/@amseraumawr,font=\scriptsize\rmfamily\itshape},
     every lines+={fill=none,draw=none},
-  },
+  },% >>>
 %    \end{macrocode}
+% \end{chronosstyle}
 %^^A  % END on line styles
+% \subsubsection{Off-line}\label{subsubsec:cod-styles-offline}
+% Years are marked somewhere off the timeline e.g.\ just above or below.
+% \begin{chronosstyle}{somewhat plain,contemporary 90,blues below,flipping blues,rotated 90,off line colour,off line colour alt,off line simple,simple arrow,event splitter}
 %^^A  % BEGIN off line styles
 %    \begin{macrocode}
-  somewhat plain/.style={%
+  somewhat plain/.style={%^^A <<<
     /chronos/.cd,
     somewhat plain/.meaning to context,
     no colour rotation,
@@ -5966,8 +5987,8 @@
       font=\Large\sffamily,},
     headings drops'=12pt:10pt:7.5pt,
     headings border'=30pt,
-  },
-  contemporary 90/.style={%
+  },%^^A >>>
+  contemporary 90/.style={%^^A <<<
     /chronos/.cd,
     contemporary 90/.meaning to context,
     colour scheme=contninety,
@@ -6016,8 +6037,8 @@
       draw=chronos timeline foreground colour!75!chronos timeline background colour,%
       thin},
     main/title={font=\sffamily\upshape\plstyle\bfseries\huge,text=chronos main colour},
-  },
-  blues below/.style={%
+  },%^^A >>>
+  blues below/.style={%^^A <<<
     /utils/exec={\selectcolormodel{rgb}},
     /chronos/.cd,
     blues below/.meaning to context,
@@ -6080,10 +6101,10 @@
       text=chronos timeline foreground colour!50!chronos main background colour},
     copyright/rotate=90,
     copyright/tag anchor=north west,
-  },
+  },%^^A >>>
   timeline year rotate/.code={%
   },
-  flipping blues/.style={%
+  flipping blues/.style={%^^A <<<
     /chronos/.cd,
     flipping blues/.meaning to context,
     blues below,
@@ -6099,8 +6120,8 @@
     every life above,
     every period above,
     levels=3:0,
-  },
-  rotated 45/.style={%
+  },%^^A >>>
+  rotated 45/.style={%^^A <<<
     /chronos/.cd,
     rotated 45/.meaning to context,
     colour scheme=default,
@@ -6142,8 +6163,8 @@
     },
     subheadings style={font=\itshape\small,%
       text=chronos timeline foreground colour!50!chronos timeline background colour},
-  },
-  off line colour/.style={% ateb: https://tex.stackexchange.com/a/324106/
+  },%^^A >>>
+  off line colour/.style={%^^A <<< ateb: https://tex.stackexchange.com/a/324106/
     /chronos/.cd,
     off line colour/.meaning to context,
     colour scheme=offlinebasic,
@@ -6196,31 +6217,31 @@
         }
       \fi
     },
-  },
+  },%^^A >>>
   off line colour/.default=20mm,
   off line color/.forward to=/chronos/off line colour,
-  off line colour alt/.style={%
+  off line colour alt/.style={%^^A <<<
     /chronos/.cd,
     off line colour alt/.meaning to context,
     off line colour=#1,
 %    \end{macrocode}
-%^^A    % use cronoleg colours
+% use cronoleg colours
 %    \begin{macrocode}
     colour scheme=offlinealt,
     rotate all colours,
     event/colours below from clist={lliwiau_byw_isod},
     event/colours above from clist={lliwiau_byw_uchod},
-  },
+  },%^^A >>>
   off line colour alt/.default=20mm,
   off line color alt/.forward to=/chronos/off line colour alt,
-  off line simple/.style={% https://tex.stackexchange.com/a/324106/
+  off line simple/.style={%^^A <<< https://tex.stackexchange.com/a/324106/
     /chronos/.cd,
     off line simple/.meaning to context,
     off line colour=#1,
     rotate no colours,
-  },
+  },%^^A >>>
   off line simple/.default=20mm,
-  simple arrow/.style={% https://tex.stackexchange.com/a/342699/
+  simple arrow/.style={%^^A <<< https://tex.stackexchange.com/a/342699/
     /chronos/.cd,
     simple arrow/.meaning to context,
     timeline={%
@@ -6247,9 +6268,9 @@
     no colour rotation,
     headings style={font=\footnotesize\itshape},
     subheadings style={font=\scriptsize\itshape},
-  },
+  },%^^A >>>
   simple arrow/.default=10mm,
-  event splitter/.style={% https://tex.stackexchange.com/a/325890/
+  event splitter/.style={%^^A <<< https://tex.stackexchange.com/a/325890/
     /chronos/.cd,
     event splitter/.meaning to context,
     no colour rotation,
@@ -6271,12 +6292,16 @@
     main/title={font=\sffamily\Large},
     frame,
     main/frame={draw},
-  },
+  },%^^A >>>
 %    \end{macrocode}
+% \end{chronosstyle}
 %^^A  % END off line styles
+% \subsubsection{No-year}\label{subsubsec:cod-styles-no-year}
+% Years are not marked.
 %^^A  % BEGIN no year styles
+% \begin{chronosstyle}{date centric,lines on line,plain arrow}
 %    \begin{macrocode}
-  date centric/.style={%
+  date centric/.style={%^^A <<<
     /chronos/.cd,
     date centric/.meaning to context,
     timeline={%
@@ -6297,8 +6322,8 @@
         draw=chronos timeline background colour,line width=1.5pt,%
       }%
     },
-  },
-  lines on line/.style={% https://tex.stackexchange.com/a/324453/
+  },%^^A >>>
+  lines on line/.style={%^^A <<< https://tex.stackexchange.com/a/324453/
     /chronos/.cd,
     lines on line/.meaning to context,
     rotate all colours,
@@ -6329,9 +6354,9 @@
     every life below,
     headings style={font=\footnotesize\bfseries},
     subheadings style={font=\footnotesize},
-  },
+  },%^^A >>>
   lines on line/.default=5mm,
-  plain arrow/.style={% https://tex.stackexchange.com/a/324453/
+  plain arrow/.style={%^^A <<< https://tex.stackexchange.com/a/324453/
     /chronos/.cd,
     plain arrow/.meaning to context,
     lines on line=#1,
@@ -6339,15 +6364,15 @@
     text tag yshift'=2.5pt,
     period/line+={line width=2pt,draw=##1},
     life/line+={line width=2pt,draw=##1},
-  },
+  },%^^A >>>
   plain arrow/.default=5mm,
 %    \end{macrocode}
+% \end{chronosstyle}
 %^^A  % END no year styles
-%^^A  % END styles >>>
 %    \begin{macrocode}
-}
+}%^^A  % END styles >>>
 %    \end{macrocode}
-% \end{package}
+% \end{package}%^^A >>>
 % \iffalse
 %</sty-styles>
 % \fi
@@ -6357,15 +6382,16 @@
 % \iffalse
 %<*sty-colschemes>
 % \fi
-% \begin{package}{chronos-lib-colschemes}
+% \begin{package}{chronos-lib-colschemes}%^^A <<<
 % Colour schemes.
 %    \begin{macrocode}
 \RequirePackage{chronos}
 \ProvidesPackageSVN[\MyFileBaseName-lib-colschemes.sty]{$Id: chronos-code.dtx 10903 2025-03-04 01:29:39Z cfrees $}[v0.9 \revinfo]
 %    \end{macrocode}
-%^^A  BEGIN cylluniau lliwiau | colour schemes <<<
+% \begin{colscheme}{blues,contninety,offlinealt,xcolseries,lavender,modern,offlinebasic,sobriety}%^^A <<< BEGIN cylluniau lliwiau | colour schemes
+% cylluniau lliwiau \textbar{} colour schemes 
 %    \begin{macrocode}
-\chronosnewcolourscheme[default]{blues}{%
+\chronosnewcolourscheme[default]{blues}{%^^A <<<
   timeline foreground=chronosDodgerBlue4,
   timeline background=chronosDodgerBlue2,
   default below={%
@@ -6377,22 +6403,22 @@
     chronosCerulean!50!chronosDodgerBlue1,chronosCerulean},
   foreground=chronosDodgerBlue4,
   background=white,
-}
-\chronosnewcolourscheme[default]{contninety}{%
+}%^^A >>>
+\chronosnewcolourscheme[default]{contninety}{%^^A <<<
   foreground=chronosdarkgray,
   timeline foreground=chronosdarkgray,
-}
-\chronosnewcolourscheme[cronoleg]{offlinealt}{%
+}%^^A >>>
+\chronosnewcolourscheme[cronoleg]{offlinealt}{%^^A <<<
   timeline foreground=blue!40,
-}
+}%^^A >>>
 %    \end{macrocode}
-%^^A  xcolor manual: 35
+% \lpack{xcolor} manual: 35
 %    \begin{macrocode}
 \definecolorseries{xcolor g2}{hsb}{grad}[hsb]{.575,1,1}{.987,-.234,0}
 \definecolorseries{xcolor s2}{hsb}{step}[hsb]{.575,1,1}{.11,-.05,0}
 \resetcolorseries{xcolor g2}
 \resetcolorseries{xcolor s2}
-\chronosnewcolourscheme[default]{xcolseries}{%
+\chronosnewcolourscheme[default]{xcolseries}{%^^A <<<
   default above={%
     xcolor s2!![0],xcolor s2!![1],xcolor s2!![2],xcolor s2!![3],%
     xcolor s2!![4],xcolor s2!![5],xcolor s2!![6],xcolor s2!![7],%
@@ -6415,8 +6441,8 @@
   period/default=chronosdarkgray,
   theory/default=chronosdarkgray,
   info/default=chronosdarkgray,
-}
-\chronosnewcolourscheme[default]{lavender}{%
+}%^^A >>>
+\chronosnewcolourscheme[default]{lavender}{%^^A <<<
   timeline foreground=chronosLavenderBlush4,
   timeline background=chronosLavender,
   timeline border inner=chronosLavenderBlush3,
@@ -6432,16 +6458,16 @@
     chronosLavenderBlush2!90!chronosMediumPurple!50!chronosDarkSlateGrey,%
     chronosLavenderBlush3!90!chronosMediumPurple!50!chronosDarkSlateGrey,%
     chronosLavenderBlush4!90!chronosMediumPurple!50!chronosDarkSlateGrey},
-}
-\chronosnewcolourscheme[default]{modern}{%
+}%^^A >>>
+\chronosnewcolourscheme[default]{modern}{%^^A <<<
   timeline foreground=chronosSilver,
-}
-\chronosnewcolourscheme[default]{offlinebasic}{%
+}%^^A >>>
+\chronosnewcolourscheme[default]{offlinebasic}{%^^A <<<
   timeline foreground=blue!40,
   foreground=black,
   background=white,
-}
-\chronosnewcolourscheme[default]{sobriety}{%
+}%^^A >>>
+\chronosnewcolourscheme[default]{sobriety}{%^^A <<<
   foreground=gray,
   background=white,
   timeline background=gray!50,
@@ -6451,10 +6477,10 @@
   period/default=gray,
   theory/default=gray,
   info/default=gray,
-}
+}%^^A >>>
 %    \end{macrocode}
-%^^A  END cylluniau lliwiau | colour schemes >>>
-% \end{package}
+% \end{colscheme}%^^A >>> END cylluniau lliwiau | colour schemes
+% \end{package}%^^A >>>
 % \iffalse
 %</sty-colschemes>
 % \fi
