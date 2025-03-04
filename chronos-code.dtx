@@ -32,7 +32,7 @@
 % ref. ateb Max Chernoff: https://tex.stackexchange.com/a/723294/
 \def\MakePrivateLetters{\makeatletter\ExplSyntaxOn\endlinechar13}
 \ExplSyntaxOff
-\ProvidesFileSVN{$Id: chronos-code.dtx 10904 2025-03-04 03:29:14Z cfrees $}[v0.0 \revinfo][\filebase DTX: Customisable TikZ-based timelines]
+\ProvidesFileSVN{$Id: chronos-code.dtx 10905 2025-03-04 03:34:14Z cfrees $}[v0.0 \revinfo][\filebase DTX: Customisable TikZ-based timelines]
 \DefineFileInfoSVN[chronoscode]
 \documentclass[11pt,british]{ltxdoc}
 % l3doc loads fancyvrb
@@ -88,7 +88,7 @@
 \RequirePackage{svn-prov}
 \def\GetFileBaseName#1-#2\nil{#1}
 \edef\MyFileBaseName{\expandafter\GetFileBaseName\jobname\nil}
-\ProvidesPackageSVN[\MyFileBaseName.sty]{$Id: chronos-code.dtx 10904 2025-03-04 03:29:14Z cfrees $}[v0.9 \revinfo]
+\ProvidesPackageSVN[\MyFileBaseName.sty]{$Id: chronos-code.dtx 10905 2025-03-04 03:34:14Z cfrees $}[v0.9 \revinfo]
 \DefineFileInfoSVN
 %    \end{macrocode}
 % \iffalse
@@ -1616,7 +1616,7 @@
 %   Yellow,%^^A
 %   darkgray%^^A
 % }
-% Copied from \file{xcolor.sty}, \file{x11names.def}, \file{svgnames.def}
+% Copied from \path{xcolor.sty}, \path{x11names.def}, \path{svgnames.def}
 %    \begin{macrocode}
 \definecolorset{rgb}{chronos}{}{% xcolor.sty, x11names.def, svgnames.def
   Blue,0,0,1;%
@@ -1669,7 +1669,7 @@
 %    \end{macrocode}
 % \end{colour}
 % \begin{colour}{chronosCerulean,chronosPeriwinkle,chronosWildStrawberry}
-% From \file{dvipsnames.def}
+% From \path{dvipsnames.def}
 %    \begin{macrocode}
 %^^A dvipsnames.def
 \definecolor{chronosCerulean}      {cmyk}{0.94,0.11,0,0}
@@ -1809,7 +1809,7 @@
   create layer/.code={%
     \tikzset{%
 %    \end{macrocode}
-% adapted from \file{tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarybackgrounds.code.tex}
+% adapted from \path{tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarybackgrounds.code.tex}
 %    \begin{macrocode}
       on chronos #1 layer/.style={%
         execute at begin scope={%
@@ -5776,7 +5776,7 @@
 % Styles.
 %    \begin{macrocode}
 \RequirePackage{chronos}
-\ProvidesPackageSVN[\MyFileBaseName-lib-styles.sty]{$Id: chronos-code.dtx 10904 2025-03-04 03:29:14Z cfrees $}[v0.9 \revinfo]
+\ProvidesPackageSVN[\MyFileBaseName-lib-styles.sty]{$Id: chronos-code.dtx 10905 2025-03-04 03:34:14Z cfrees $}[v0.9 \revinfo]
 \pgfqkeys{/chronos}{%^^A BEGIN styles <<<
 %    \end{macrocode}
 % Styles come in three flavours: on-line, off-line and no-year.
@@ -6386,7 +6386,7 @@
 % Colour schemes.
 %    \begin{macrocode}
 \RequirePackage{chronos}
-\ProvidesPackageSVN[\MyFileBaseName-lib-colschemes.sty]{$Id: chronos-code.dtx 10904 2025-03-04 03:29:14Z cfrees $}[v0.9 \revinfo]
+\ProvidesPackageSVN[\MyFileBaseName-lib-colschemes.sty]{$Id: chronos-code.dtx 10905 2025-03-04 03:34:14Z cfrees $}[v0.9 \revinfo]
 %    \end{macrocode}
 % \begin{colscheme}{blues,contninety,offlinealt,xcolseries,lavender,modern,offlinebasic,sobriety}%^^A <<< BEGIN cylluniau lliwiau | colour schemes
 % cylluniau lliwiau \textbar{} colour schemes 
