@@ -30,7 +30,7 @@
 %^^A ref. ateb Max Chernoff: https://tex.stackexchange.com/a/723294/
 \def\MyMakePrivateLetters{\makeatletter\ExplSyntaxOn\endlinechar13}
 \ExplSyntaxOff
-\ProvidesFileSVN{$Id: chronos.dtx 10903 2025-03-04 01:29:39Z cfrees $}[v0.9 \revinfo][\filebase DTX: ]
+\ProvidesFileSVN{$Id: chronos.dtx 10904 2025-03-04 03:29:14Z cfrees $}[v0.9 \revinfo][\filebase DTX: ]
 \DefineFileInfoSVN[chronos]
 \GetFileInfoSVN*
 \let\chronosdocversion\fileversion
@@ -1330,19 +1330,8 @@
 %^^A \let\MakePrivateLetters\MyMakePrivateLetters
 \DocInput{\filename}
 %^^A\DocInput{\chronosdocbase-code.dtx}
-\expandafter\typeout{\jobname}
-\expandafter\typeout{\chronosdocbase}
-\ifx\jobname\chronosdocbase\relax
-  \typeout{\jobname\ matches base}
-\else
-  \edef\tempa{\chronosdocbase -doc}%
-  \ifx\jobname\tempa\relax
-    \typeout{\jobname\ matches base+doc}
-  \else
-    \tyepout{\jobname\ matches neither base nor base+doc}
-    \def\mybasename#1.#2\nil{#1}
-    \ExpandArgs {e} \DocInput{\expandafter\mybasename\filename.a\nil-code.dtx}
-  \fi
+\ifchronoscodetoo
+  \ExpandArgs {e} \DocInput{\expandafter\mybasename\filename.a\nil-code.dtx}
 \fi
 \end{document}
 %</driver>
@@ -7622,9 +7611,11 @@ mode=overlay}}.
 \RequirePackage{svn-prov}
 \def\GetFileBaseName#1-#2\nil{#1}
 \edef\MyFileBaseName{\expandafter\GetFileBaseName\jobname\nil}
-\ProvidesFileSVN[\MyFileBaseName-doc]{$Id: chronos.dtx 10903 2025-03-04 01:29:39Z cfrees $}[v0.0 \revinfo]
+\ProvidesFileSVN[\MyFileBaseName-doc]{$Id: chronos.dtx 10904 2025-03-04 03:29:14Z cfrees $}[v0.0 \revinfo]
 \DefineFileInfoSVN
 \AddToHook{begindocument}{\OnlyDescription}
+\newif\ifchronoscodetoo
+\chronoscodetoofalse
 \input{\MyFileBaseName.dtx}
 %</doc>
 % \fi
@@ -7633,9 +7624,11 @@ mode=overlay}}.
 \RequirePackage{svn-prov}
 \def\GetFileBaseName#1-#2\nil{#1}
 \edef\MyFileBaseName{\expandafter\GetFileBaseName\jobname\nil}
-\ProvidesFileSVN[\MyFileBaseName-imp]{$Id: chronos.dtx 10903 2025-03-04 01:29:39Z cfrees $}[v0.0 \revinfo]
+\ProvidesFileSVN[\MyFileBaseName-imp]{$Id: chronos.dtx 10904 2025-03-04 03:29:14Z cfrees $}[v0.0 \revinfo]
 \DefineFileInfoSVN
 \AddToHook{begindocument}{\AlsoImplementation}
+\newif\ifchronoscodetoo
+\chronoscodetootrue
 \input{\MyFileBaseName.dtx}
 %</doc-code>
 % \fi
