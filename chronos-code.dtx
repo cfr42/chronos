@@ -32,8 +32,13 @@
 % ref. ateb Max Chernoff: https://tex.stackexchange.com/a/723294/
 \def\MakePrivateLetters{\makeatletter\ExplSyntaxOn\endlinechar13}
 \ExplSyntaxOff
-\ProvidesFileSVN{$Id: chronos-code.dtx 10905 2025-03-04 03:34:14Z cfrees $}[v0.0 \revinfo][\filebase DTX: Customisable TikZ-based timelines]
+\ProvidesFileSVN{$Id: chronos-code.dtx 10908 2025-03-05 06:16:55Z cfrees $}[v0.0 \revinfo][\filebase DTX: Customisable TikZ-based timelines]
 \DefineFileInfoSVN[chronoscode]
+\let\chronoscodeversion\fileversion
+\let\chronoscodebase\filebase
+\let\chronoscodeinfo\fileinfo
+\let\chronoscodedate\filedate
+\let\chronoscodefilename\filename
 \documentclass[11pt,british]{ltxdoc}
 % l3doc loads fancyvrb
 % fancyvrb overwrites svn-prov's macros without warning
@@ -49,9 +54,11 @@
 %^^A     \href{https://github.com/cfr42/REPO}{\url{github.com/cfr42/REPO}}% 
 %^^A }}
 %^^A \date{\fileversion~\filedate}
+\expandafter\newif\csname ifchronoscodetoo\endcsname
+\chronoscodetoofalse
 \begin{document}
 %^^A \let\MakePrivateLetters\MyMakePrivateLetters
-\DocInput{\filename}
+\DocInput{\chronoscodefilename}
 \end{document}
 %</driver>
 % \fi
@@ -59,13 +66,44 @@
 % \changes{v0.9}{2025-02-27}{First \ctan{} release.}
 % ^^A lua will replace v0.0 and 0000/00/00 when tagging
 % 
+%^^A \tracingassigns=1
+% \let\lpack\pkg
+% \ifchronoscodetoo
+%   \ProvidesFileSVN{$Id: chronos-code.dtx 10908 2025-03-05 06:16:55Z cfrees $}[v0.0 \revinfo]
+%   \DefineFileInfoSVN[chronoscode]
+%   \let\chronoscodeversion\fileversion
+%   \let\chronoscoderev\filerev
+%   \let\chronoscodebase\filebase
+%   \let\chronoscodeinfo\fileinfo
+%   \let\chronoscodedate\filedate
+%   \let\chronoscodefilename\filename
+% \fi
+% \typeout{bagpuss!}
+%^^A \makeatletter\edef\tempa{\thefootnote}\show\tempa\makeatother
+% \title{%
+%^^A   \lpack{\chronosfilebase} code \thefootnote%^^A\thanks{%
+%   \textsf{\chronosfilebase} code \thefootnote%^^A\thanks{%
+%^^A     This is file \texttt{\chronoscodefilename}.%
+%^^A   }%
+% }
+% \author{Clea F. Rees \thefootnote%^^A\thanks{%
+%^^A     Bug tracker:
+%^^A     \href{https://codeberg.org/cfr/chronos/issues}{\url{codeberg.org/cfr/chronos/issues}}
+%^^A     \textbar{} Code:
+%^^A     \href{https://codeberg.org/cfr/chronos}{\url{codeberg.org/cfr/chronos}}
+%^^A     \textbar{} Mirror:
+%^^A     \href{https://github.com/cfr42/chronos}{\url{github.com/cfr42/chronos}}%
+%^^A  }
+% }
+%^^A \date{\chronoscodedate}%
+% \date{\chronosfileversion\ (\textsc{svn} \chronosfilerev)}%
 % \maketitle
 % 
 % \setlength{\parindent}{0pt}
 % \setlength{\parskip}{0.5em}
 % 
 % \begin{abstract}
-%   \noindent\lpack{chronos} implementation.
+%   \noindent\lpack{\chronosfilebase} implementation.
 % \end{abstract}
 %
 %^^A doctools redefn of macrocode is singularly ineffective:
@@ -82,14 +120,14 @@
 % \iffalse
 %<*sty>
 % \fi
-% \begin{package}{chronos}%^^A <<<
+% \section[chronos]{\lpack{chronos}}\label{sec:cod-pkg}%^^A <<< (pkg)
 % \LaTeXe{} package.
 %    \begin{macrocode}
 \RequirePackage{svn-prov}
 \def\GetFileBaseName#1-#2\nil{#1}
 \edef\MyFileBaseName{\expandafter\GetFileBaseName\jobname\nil}
-\ProvidesPackageSVN[\MyFileBaseName.sty]{$Id: chronos-code.dtx 10905 2025-03-04 03:34:14Z cfrees $}[v0.9 \revinfo]
-\DefineFileInfoSVN
+\ProvidesPackageSVN[chronos.sty]{$Id: chronos-code.dtx 10908 2025-03-05 06:16:55Z cfrees $}[v0.9 \revinfo]
+\DefineFileInfoSVN[chronos]
 %    \end{macrocode}
 % \iffalse
 % ^^A Paid â defnyddio \GetFileInfoSVN*/\GetFileInfoSVN{} yn y fan hon!!
@@ -816,7 +854,7 @@
 %    \end{macrocode}
 %^^A END functions: pgf keys (headings)
 %^^A BEGIN functions: pgf keys (keys)
-% \cs{__chronos_kex}\meta{whatever} functions just produce groups of pgf keys for the plain/prime/plus triple, standard/every, cy/en and combinations thereof
+% \verb|\__chronos_kex|\meta{whatever} functions just produce groups of pgf keys for the plain/prime/plus triple, standard/every, cy/en and combinations thereof
 %
 % tldr: reduce clutter/typing and facilitate changes/fixes (hopefully)
 %    \begin{macrocode}
@@ -955,7 +993,7 @@
 %^^A END functions >>>
 %^^A BEGIN macros y paced <<<
 % **mewnol hefyd!** \textbar{} **internal also!**
-% Ddylwn i ddefnyddio \cs{NewDocumentCommand} (ond *mewnol*?), \cs{newcommand}/\cs{newcommand*}, \cs{def}/\cs{gdef}/\cs{edef}/\cs{xdef}, \cs_new_eq:NN, \cs{let} neu rhywbeth arall??!!
+% Ddylwn i ddefnyddio \cs{NewDocumentCommand} (ond *mewnol*?), \cs{newcommand}/\cs{newcommand*}, \cs{def}/\cs{gdef}/\cs{edef}/\cs{xdef}, \verb|cs_new_eq:NN|, \cs{let} neu rhywbeth arall??!!
 %    \begin{macrocode}
 \newcommand* \chronos@tikzprefix { \int_to_arabic:n { \g__chronos_int } }
 \cs_new_eq:NN \chronos@env@begin \__chronos_at_begin:
@@ -1275,7 +1313,7 @@
 %    \end{macrocode}
 % \end{macro}
 % \begin{macro}{\IntCompareBoolean,\IfIntCompareTF,\IfIntCompareT,\IfIntCompareF}
-% yn lle \texttt{\ifnumcomp} o etoolbox (ish) - instead of \texttt{\ifnumcomp} from \lpack{etoolbox}
+% yn lle \cs{ifnumcomp} o etoolbox (ish) - instead of \cs{ifnumcomp} from \lpack{etoolbox}
 %    \begin{macrocode}
 \cs_if_exist:NTF \IntCompareBoolean {\PackageWarning{chronos}{Refusing ~ to ~ overwrite ~ existing ~ \protect\IntCompareBoolean. ~ This ~ may ~ not ~ work} } { \cs_new_eq:NN  \IntCompareBoolean \int_compare_p:nNn }
 \cs_if_exist:NTF \IfIntCompareTF {\PackageWarning{chronos}{Refusing ~ to ~ overwrite ~ existing ~ \protect\IfIntCompareTF. ~ This ~ may ~ not ~ work} } { \cs_new_eq:NN  \IfIntCompareTF \int_compare:nTF }
@@ -3030,7 +3068,7 @@
 }
 \ExplSyntaxOn
 %    \end{macrocode}
-% forward each key in #3 to the key in #2; all keys on /chronos/#1
+% forward each key in \#3 to the key in \#2; all keys on /chronos/\#1
 %    \begin{macrocode}
 \__chronos_kexforwarder:nnn { llinell ~ amser } { timeline ~ mark@too } { timeline ~ mark, timeline ~ all ~ marks }
 \__chronos_kexforwarder:nnn { llinell ~ amser } { timeline ~ minor ~ mark@too } { timeline ~ minor ~ mark, timeline ~ all ~ marks }
@@ -4864,7 +4902,7 @@
     \fi % \ifchronos@showbb
   \end{tikzpicture}%
 %    \end{macrocode}
-% ailosod pethau rhagosodedig sy'n gosod gyda \g neu \global
+  % ailosod pethau rhagosodedig sy'n gosod gyda \cs{g} neu \cs{global}
 %    \begin{macrocode}
   \chronos@global@clear@to@clist{century_subheadings}%
   \chronos@lliwiau@clear
@@ -5762,21 +5800,20 @@
 %    \begin{macrocode}
 \chronos@presetfalse
 %    \end{macrocode}
-% \end{package}%^^A >>>
+% ^^A >>> chronos (pkg)
 % \iffalse
 %</sty>
 % \fi
 % 
-% \subsection{Styles}
 % 
 % \iffalse
 %<*sty-styles>
 % \fi
-% \begin{package}{chronos-lib-styles}%^^A <<<
+% \section[chronos-lib-styles]{\lpack{chronos-lib-styles}}\label{sec:cod-styles}%^^A <<< (pkg)
 % Styles.
 %    \begin{macrocode}
 \RequirePackage{chronos}
-\ProvidesPackageSVN[\MyFileBaseName-lib-styles.sty]{$Id: chronos-code.dtx 10905 2025-03-04 03:34:14Z cfrees $}[v0.9 \revinfo]
+\ProvidesPackageSVN[\MyFileBaseName-lib-styles.sty]{$Id: chronos-code.dtx 10908 2025-03-05 06:16:55Z cfrees $}[v0.9 \revinfo]
 \pgfqkeys{/chronos}{%^^A BEGIN styles <<<
 %    \end{macrocode}
 % Styles come in three flavours: on-line, off-line and no-year.
@@ -6372,21 +6409,19 @@
 %    \begin{macrocode}
 }%^^A  % END styles >>>
 %    \end{macrocode}
-% \end{package}%^^A >>>
+% ^^A >>> styles (pkg)
 % \iffalse
 %</sty-styles>
 % \fi
 % 
-% \subsection{Colour Schemes}
-% 
 % \iffalse
 %<*sty-colschemes>
 % \fi
-% \begin{package}{chronos-lib-colschemes}%^^A <<<
+% \section[chronos-lib-colschemes]{\lpack{chronos-lib-colschemes}}\label{sec:cod-colours}%^^A <<< (pkg)
 % Colour schemes.
 %    \begin{macrocode}
 \RequirePackage{chronos}
-\ProvidesPackageSVN[\MyFileBaseName-lib-colschemes.sty]{$Id: chronos-code.dtx 10905 2025-03-04 03:34:14Z cfrees $}[v0.9 \revinfo]
+\ProvidesPackageSVN[\MyFileBaseName-lib-colschemes.sty]{$Id: chronos-code.dtx 10908 2025-03-05 06:16:55Z cfrees $}[v0.9 \revinfo]
 %    \end{macrocode}
 % \begin{colscheme}{blues,contninety,offlinealt,xcolseries,lavender,modern,offlinebasic,sobriety}%^^A <<< BEGIN cylluniau lliwiau | colour schemes
 % cylluniau lliwiau \textbar{} colour schemes 
@@ -6480,7 +6515,7 @@
 }%^^A >>>
 %    \end{macrocode}
 % \end{colscheme}%^^A >>> END cylluniau lliwiau | colour schemes
-% \end{package}%^^A >>>
+% ^^A >>> colurs (pkg)
 % \iffalse
 %</sty-colschemes>
 % \fi

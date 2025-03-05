@@ -30,13 +30,15 @@
 %^^A ref. ateb Max Chernoff: https://tex.stackexchange.com/a/723294/
 \def\MyMakePrivateLetters{\makeatletter\ExplSyntaxOn\endlinechar13}
 \ExplSyntaxOff
-\ProvidesFileSVN{$Id: chronos.dtx 10907 2025-03-04 05:36:57Z cfrees $}[v0.9 \revinfo][\filebase DTX: ]
-\DefineFileInfoSVN[chronos]
+\ProvidesFileSVN{$Id: chronos.dtx 10908 2025-03-05 06:16:55Z cfrees $}[v0.9 \revinfo][\filebase\ DTX]
+\DefineFileInfoSVN[chronosdoc]
 \GetFileInfoSVN*
 \let\chronosdocversion\fileversion
+\let\chronosdocrev\filerev
 \let\chronosdocbase\filebase
 \let\chronosdocinfo\fileinfo
 \let\chronosdocdate\filedate
+\let\chronosdocfilename\filename
 %^^A BEGIN preamble <<<
 \documentclass[10pt,british,a4paper]{ltxdoc}
 \usepackage[extract=python]{memoize}
@@ -59,6 +61,13 @@
   % deactivate csname=pgfsys@getposition,
 }
 \usepackage{chronos}
+\GetFileInfoSVN{chronos}
+\let\chronosfileversion\fileversion
+\let\chronosfilerev\filerev
+\let\chronosfilebase\filebase
+\let\chronosfileinfo\fileinfo
+\let\chronosfiledate\filedate
+\let\chronosfilename\filename
 \EnableCrossrefs
 \CodelineIndex
 \RecordChanges
@@ -75,7 +84,7 @@
 \usepackage{verbatim}
 \usepackage{parskip}
 \usepackage{changepage}
-\usepackage{titling}
+^^A\usepackage{titling}% GWALL!!
 \usepackage{makeidx}
 \usepackage{pifont}
 \usepackage{amstext}
@@ -1242,11 +1251,6 @@
 \newcommand*\TikZ{Ti\emph{k}Z}
 \newcommand*\PGF{PGF}
 \newcommand*\pgf{PGF}
-\renewcommand\maketitlehookb{%
-  \begin{center}
-    Version \chronosdocversion{} \chronosdocinfo
-  \end{center}%
-}
 \pagestyle{fancy}
 \fancyhf{}
 \fancyhf[lh]{\textit{\leftmark}}
@@ -1299,6 +1303,10 @@
 {
   \keys_set:nn { chronos / doc } { #1 }
 }
+%^^A PAID â defnyddio \pkg yma!!
+%^^A neu \let\lpack\textsf neu ...
+%^^A \NewCommandCopy \lpack \textsf
+%^^A \text_declare_purify_equivalent:Nn \lpack { \use:n }
 \ExplSyntaxOff
 \chronosdocset{%
   bug={\href{https://codeberg.org/cfr/chronos/issues}{\textsc{bugtracker}}},
@@ -1306,33 +1314,22 @@
   github={\href{https://github.com/cfr42/chronos}{\textsc{github}}},
   ctan={\href{https://ctan.org/}{\textsc{ctan}}},
 }
-\let\lpack\pkg
-\title{\filebase}
-\author{Clea F. Rees\thanks{%
-    Bug tracker:
-    \href{https://codeberg.org/cfr/chronos/issues}{\url{codeberg.org/cfr/chronos/issues}}
-    \textbar{} Code:
-    \href{https://codeberg.org/cfr/chronos}{\url{codeberg.org/cfr/chronos}}
-    \textbar{} Mirror:
-    \href{https://github.com/cfr42/chronos}{\url{github.com/cfr42/chronos}}%
-}}
-%^^A%^^A \date{\fileversion~\filedate}
-\date{\chronosdocdate}%
-\title{\chronosdocbase}%
 \definecolor{strawberry}{rgb}{1.000,0.000,0.502}
 \definecolor{blueberry}{rgb}{0.000,0.000,1.000}
 \definecolor{moss}{rgb}{0.000,0.502,0.251}
 \def\@xobeysp{\leavevmode\penalty100\ }
 \makeatother
+\errorcontextlines=10
 %^^A END preamble >>>
 \begin{document}
 %^^A paid â defnyddio'r llinell nesaf - lladdu gwagiau mewn enwau pethau yn \PrintDescribe pan i'r macro wedi cael ei greu gyda \NwwDocElements yn lle \NewDocElement ...
 %^^A \let\MakePrivateLetters\MyMakePrivateLetters
-\DocInput{\filename}
+\DocInput{\chronosdocfilename}
 %^^A\DocInput{\chronosdocbase-code.dtx}
 \ifchronoscodetoo
-  \def\mybasename#1.#2\nil{#1}%
-  \ExpandArgs {e} \DocInput{\expandafter\mybasename\filename.a\nil-code.dtx}
+%^^A  \def\mybasename#1.#2\nil{#1}%
+%^^A  \ExpandArgs {e} \DocInput{\expandafter\mybasename\filename.a\nil-code.dtx}
+  \DocInput{\chronosfilebase-code.dtx}
 \fi
 \end{document}
 %</driver>
@@ -1343,15 +1340,33 @@
 % \setlength\tewadjust{\marginparwidth+\marginparsep}%
 % \fancyheadoffset[lh]{0pt}%^^A REQUIRED - do NOT remove this line!!
 % \pagenumbering{arabic}%
+%^^A \title{\lpack{\chronosfilebase}}
+%^^A \show\textsf
+%^^A \show\lpack
+%^^A \expandafter\show\csname textsf \endcsname
+%^^A \expandafter\show\csname lpack \endcsname
+%^^A \title{\lpack{\chronosfilebase}}
+% \title{\textsf{\chronosfilebase}}
+% \author{Clea F. Rees\thanks{%
+%     Bug tracker:
+%     \href{https://codeberg.org/cfr/chronos/issues}{\url{codeberg.org/cfr/chronos/issues}}
+%     \textbar{} Code:
+%     \href{https://codeberg.org/cfr/chronos}{\url{codeberg.org/cfr/chronos}}
+%     \textbar{} Mirror:
+%     \href{https://github.com/cfr42/chronos}{\url{github.com/cfr42/chronos}}%
+% }}
+%^^A%^^A \date{\fileversion~\filedate}
+% \date{\chronosfileversion\ (\textsc{svn} \chronosfilerev)}%
+%^^A \title{\chronosdocbase}%
 % \maketitle
 % \bigskip
 % \IfFreeT\bce{\let\bce\bceyearlabel}%
 % \IfFreeT\ce{\let\ce\ceyearlabel}%
 % 
 % \begin{abstract}
-%   \noindent \pkgname[link=false]{chronos} is a \LaTeXe{} package, based on \keyname[type=pkg,idx as=PGF,no link]{\PGF{}}/\keyname[type=pkg,idx as=TikZ,no link]{\TikZ{}}, designed to support the typesetting of diagrams illustrating timelines or chronologies.
+%   \noindent \pkgname[link=false]{chronos} is a \LaTeXe{} package, based on \keyname[type=pkg,idx as=PGF,no link]{\PGF{}}/\keyname[type=pkg,idx as=TikZ,no link]{\TikZ{}}, for typesetting timelines or chronologies.
 %   Externalisation is supported out-of-the-box with \pkg{memoize}.
-%   The package has developed from two sources: first, the creation of a timeline for use in teaching\footnote{See \href{https://tex.stackexchange.com/a/215082/}{this answer on \TeX{} StackExchange} or \href{https://cfrees.files.wordpress.com/2014/10/timeline-orig.pdf}{view the PDF}.} and, second, questions on \href{https://tex.stackexchange.com/}{tex.stackexchange.com} concerning obstacles encountered in using existing packages.
+%   The package developed from two sources: first, the creation of a timeline for use in teaching\footnote{See \href{https://tex.stackexchange.com/a/215082/}{this answer on \TeX{} StackExchange} or \href{https://cfrees.files.wordpress.com/2014/10/timeline-orig.pdf}{view the PDF}.} and, second, questions on \href{https://tex.stackexchange.com/}{tex.stackexchange.com} concerning obstacles encountered in using existing packages.
 %   This package might be considered an attempt to use the former to partially remedy the latter.
 %   It also means both the code and the user-interface contain strange and tangled regions where the wild errors may grow.
 % \end{abstract}
@@ -1982,7 +1997,6 @@
 %   }%
 % }
 % 
-%^^A \end{document}
 %^^A END sec:invoke
 % 
 % \loadgeometry{safonol}
@@ -1991,8 +2005,6 @@
 % 
 % \section{Chronos Anatomy}\label{sec:anatomy}
 %^^A BEGIN sec:anatomy
-%^^A \tikzexternalize
-%^^A \tikzsetnextfilename{anatomy-basics}%
 % \Cref{fig:anatomi} provides an overview of the configuration and anatomy of a \pkg{chronos} \conceptname[link,idx post=anatomy]{timeline}.
 % 
 % As explained in \cref{sec:invoke}, the \conceptname[link,no idx]{timeline} itself is constructed by the \keyname[link,type=env,idx post=as constructing \string\textconcept{timeline}]{chronos} \envlabelname{}, as determined by the \conceptname[type=concept,no idx,link]{\meta{chronos preamble}}, any prior use of \keyname[type=macro,idx post=effect on \string\textconcept{timeline}]{\cs{chronosset}} and fallback defaults.
@@ -7612,7 +7624,7 @@ mode=overlay}}.
 \RequirePackage{svn-prov}
 \def\GetFileBaseName#1-#2\nil{#1}
 \edef\MyFileBaseName{\expandafter\GetFileBaseName\jobname\nil}
-\ProvidesFileSVN[\MyFileBaseName-doc]{$Id: chronos.dtx 10907 2025-03-04 05:36:57Z cfrees $}[v0.0 \revinfo]
+\ProvidesFileSVN[\MyFileBaseName-doc]{$Id: chronos.dtx 10908 2025-03-05 06:16:55Z cfrees $}[v0.0 \revinfo]
 \DefineFileInfoSVN
 \AddToHook{begindocument}{\OnlyDescription}
 \expandafter\newif\csname ifchronoscodetoo\endcsname
@@ -7625,7 +7637,7 @@ mode=overlay}}.
 \RequirePackage{svn-prov}
 \def\GetFileBaseName#1-#2\nil{#1}
 \edef\MyFileBaseName{\expandafter\GetFileBaseName\jobname\nil}
-\ProvidesFileSVN[\MyFileBaseName-imp]{$Id: chronos.dtx 10907 2025-03-04 05:36:57Z cfrees $}[v0.0 \revinfo]
+\ProvidesFileSVN[\MyFileBaseName-imp]{$Id: chronos.dtx 10908 2025-03-05 06:16:55Z cfrees $}[v0.0 \revinfo]
 \DefineFileInfoSVN
 \AddToHook{begindocument}{\AlsoImplementation}
 \expandafter\newif\csname ifchronoscodetoo\endcsname
@@ -7634,6 +7646,9 @@ mode=overlay}}.
 %</doc-code>
 % \fi
 % 
+% \ifchronoscodetoo\relax
+% \else
 %\Finale
+% \fi
 % 
 %^^A vim: et:tw=0:sw=2:ts=2:foldmethod=marker:fmr=<<<,>>>:
