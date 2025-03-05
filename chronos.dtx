@@ -30,7 +30,7 @@
 %^^A ref. ateb Max Chernoff: https://tex.stackexchange.com/a/723294/
 \def\MyMakePrivateLetters{\makeatletter\ExplSyntaxOn\endlinechar13}
 \ExplSyntaxOff
-\ProvidesFileSVN{$Id: chronos.dtx 10909 2025-03-05 07:35:24Z cfrees $}[v0.9 \revinfo][\filebase\ DTX]
+\ProvidesFileSVN{$Id: chronos.dtx 10910 2025-03-05 08:15:25Z cfrees $}[v0.9 \revinfo][\filebase\ DTX]
 \DefineFileInfoSVN[chronosdoc]
 \GetFileInfoSVN*
 \let\chronosdocversion\fileversion
@@ -1128,10 +1128,10 @@
     \addcontentsline{toc}{section}{\indexname}%
     \emph{%
       Features are sorted by kind.
-      All references are to pages.
-      \textbf{Bold italics} indicate the main explanation of the macro, environment or key.
-      \textup{Upright numbers} refer to additional comments, discussion or examples\texsethanks*[help with indexing]{David Carlisle and Ulrike Fischer}{695555}.
-      \textup{\textdagger} indicates an example.%
+      Numbers written in bold italics refer to the pages containing the main descriptions of the corresponding entries.
+      Numbers underlined refer to the code lines where the entries are defined.
+      Upright numbers refer to pages containing additional comments, discussion or examples of usage or to usage in the code\texsethanks*[help with indexing]{David Carlisle and Ulrike Fischer}{695555}.
+      \textup{\textdagger} indicates an example of usage.%
     }\bigskip
   ]\chronosdocrestorefn
   \markboth{\indexname}%
@@ -7616,8 +7616,6 @@ mode=overlay}}.
 % \PrintIndex
 % }
 % 
-% \section{Implementation}
-%
 % You do not need to read the remainder of this document in order to install or use the package.
 %
 % \iffalse
@@ -7625,7 +7623,7 @@ mode=overlay}}.
 \RequirePackage{svn-prov}
 \def\GetFileBaseName#1-#2\nil{#1}
 \edef\MyFileBaseName{\expandafter\GetFileBaseName\jobname\nil}
-\ProvidesFileSVN[\MyFileBaseName-doc]{$Id: chronos.dtx 10909 2025-03-05 07:35:24Z cfrees $}[v0.0 \revinfo]
+\ProvidesFileSVN[\MyFileBaseName-doc]{$Id: chronos.dtx 10910 2025-03-05 08:15:25Z cfrees $}[v0.0 \revinfo]
 \DefineFileInfoSVN
 \AddToHook{begindocument}{\OnlyDescription}
 \expandafter\newif\csname ifchronoscodetoo\endcsname
@@ -7638,7 +7636,7 @@ mode=overlay}}.
 \RequirePackage{svn-prov}
 \def\GetFileBaseName#1-#2\nil{#1}
 \edef\MyFileBaseName{\expandafter\GetFileBaseName\jobname\nil}
-\ProvidesFileSVN[\MyFileBaseName-imp]{$Id: chronos.dtx 10909 2025-03-05 07:35:24Z cfrees $}[v0.0 \revinfo]
+\ProvidesFileSVN[\MyFileBaseName-imp]{$Id: chronos.dtx 10910 2025-03-05 08:15:25Z cfrees $}[v0.0 \revinfo]
 \DefineFileInfoSVN
 \AddToHook{begindocument}{\AlsoImplementation}
 \expandafter\newif\csname ifchronoscodetoo\endcsname
