@@ -32,7 +32,7 @@
 % ref. ateb Max Chernoff: https://tex.stackexchange.com/a/723294/
 \def\MakePrivateLetters{\makeatletter\ExplSyntaxOn\endlinechar13}
 \ExplSyntaxOff
-\ProvidesFileSVN{$Id: chronos-code.dtx 10908 2025-03-05 06:16:55Z cfrees $}[v0.0 \revinfo][\filebase DTX: Customisable TikZ-based timelines]
+\ProvidesFileSVN{$Id: chronos-code.dtx 10909 2025-03-05 07:35:24Z cfrees $}[v0.0 \revinfo][\filebase DTX: Customisable TikZ-based timelines]
 \DefineFileInfoSVN[chronoscode]
 \let\chronoscodeversion\fileversion
 \let\chronoscodebase\filebase
@@ -62,15 +62,14 @@
 \end{document}
 %</driver>
 % \fi
-%
+% \changes{v0.0}{2025-03-05}{Minimal code documentation.
+%   \lpack{docstrip} implementation.}
 % \changes{v0.9}{2025-02-27}{First \ctan{} release.}
 % ^^A lua will replace v0.0 and 0000/00/00 when tagging
-% 
-%^^A \tracingassigns=1
-% \let\lpack\pkg
 % \ifchronoscodetoo
-%   \ProvidesFileSVN{$Id: chronos-code.dtx 10908 2025-03-05 06:16:55Z cfrees $}[v0.0 \revinfo]
+%   \ProvidesFileSVN{$Id: chronos-code.dtx 10909 2025-03-05 07:35:24Z cfrees $}[v0.0 \revinfo]
 %   \DefineFileInfoSVN[chronoscode]
+%   \GetFileInfoSVN{chronoscode}
 %   \let\chronoscodeversion\fileversion
 %   \let\chronoscoderev\filerev
 %   \let\chronoscodebase\filebase
@@ -78,25 +77,21 @@
 %   \let\chronoscodedate\filedate
 %   \let\chronoscodefilename\filename
 % \fi
-% \typeout{bagpuss!}
-%^^A \makeatletter\edef\tempa{\thefootnote}\show\tempa\makeatother
-% \title{%
-%^^A   \lpack{\chronosfilebase} code \thefootnote%^^A\thanks{%
-%   \textsf{\chronosfilebase} code \thefootnote%^^A\thanks{%
-%^^A     This is file \texttt{\chronoscodefilename}.%
-%^^A   }%
+% \title{\lpack{\chronosfilebase} code\thanks{%
+%     This is file \texttt{\chronoscodefilename}.%
+%   }%
 % }
-% \author{Clea F. Rees \thefootnote%^^A\thanks{%
-%^^A     Bug tracker:
-%^^A     \href{https://codeberg.org/cfr/chronos/issues}{\url{codeberg.org/cfr/chronos/issues}}
-%^^A     \textbar{} Code:
-%^^A     \href{https://codeberg.org/cfr/chronos}{\url{codeberg.org/cfr/chronos}}
-%^^A     \textbar{} Mirror:
-%^^A     \href{https://github.com/cfr42/chronos}{\url{github.com/cfr42/chronos}}%
-%^^A  }
+% \author{Clea F. Rees\thanks{%
+%     Bug tracker:
+%     \href{https://codeberg.org/cfr/chronos/issues}{\url{codeberg.org/cfr/chronos/issues}}
+%     \textbar{} Code:
+%     \href{https://codeberg.org/cfr/chronos}{\url{codeberg.org/cfr/chronos}}
+%     \textbar{} Mirror:
+%     \href{https://github.com/cfr42/chronos}{\url{github.com/cfr42/chronos}}%
+%   }%
 % }
 %^^A \date{\chronoscodedate}%
-% \date{\chronosfileversion\ (\textsc{svn} \chronosfilerev)}%
+% \date{\chronoscodeversion\ (\textsc{svn} \chronoscoderev)}%
 % \maketitle
 % 
 % \setlength{\parindent}{0pt}
@@ -126,7 +121,7 @@
 \RequirePackage{svn-prov}
 \def\GetFileBaseName#1-#2\nil{#1}
 \edef\MyFileBaseName{\expandafter\GetFileBaseName\jobname\nil}
-\ProvidesPackageSVN[chronos.sty]{$Id: chronos-code.dtx 10908 2025-03-05 06:16:55Z cfrees $}[v0.9 \revinfo]
+\ProvidesPackageSVN[chronos.sty]{$Id: chronos-code.dtx 10909 2025-03-05 07:35:24Z cfrees $}[v0.9 \revinfo]
 \DefineFileInfoSVN[chronos]
 %    \end{macrocode}
 % \iffalse
@@ -5813,7 +5808,7 @@
 % Styles.
 %    \begin{macrocode}
 \RequirePackage{chronos}
-\ProvidesPackageSVN[\MyFileBaseName-lib-styles.sty]{$Id: chronos-code.dtx 10908 2025-03-05 06:16:55Z cfrees $}[v0.9 \revinfo]
+\ProvidesPackageSVN[\MyFileBaseName-lib-styles.sty]{$Id: chronos-code.dtx 10909 2025-03-05 07:35:24Z cfrees $}[v0.9 \revinfo]
 \pgfqkeys{/chronos}{%^^A BEGIN styles <<<
 %    \end{macrocode}
 % Styles come in three flavours: on-line, off-line and no-year.
@@ -6421,7 +6416,7 @@
 % Colour schemes.
 %    \begin{macrocode}
 \RequirePackage{chronos}
-\ProvidesPackageSVN[\MyFileBaseName-lib-colschemes.sty]{$Id: chronos-code.dtx 10908 2025-03-05 06:16:55Z cfrees $}[v0.9 \revinfo]
+\ProvidesPackageSVN[\MyFileBaseName-lib-colschemes.sty]{$Id: chronos-code.dtx 10909 2025-03-05 07:35:24Z cfrees $}[v0.9 \revinfo]
 %    \end{macrocode}
 % \begin{colscheme}{blues,contninety,offlinealt,xcolseries,lavender,modern,offlinebasic,sobriety}%^^A <<< BEGIN cylluniau lliwiau | colour schemes
 % cylluniau lliwiau \textbar{} colour schemes 

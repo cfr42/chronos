@@ -30,7 +30,7 @@
 %^^A ref. ateb Max Chernoff: https://tex.stackexchange.com/a/723294/
 \def\MyMakePrivateLetters{\makeatletter\ExplSyntaxOn\endlinechar13}
 \ExplSyntaxOff
-\ProvidesFileSVN{$Id: chronos.dtx 10908 2025-03-05 06:16:55Z cfrees $}[v0.9 \revinfo][\filebase\ DTX]
+\ProvidesFileSVN{$Id: chronos.dtx 10909 2025-03-05 07:35:24Z cfrees $}[v0.9 \revinfo][\filebase\ DTX]
 \DefineFileInfoSVN[chronosdoc]
 \GetFileInfoSVN*
 \let\chronosdocversion\fileversion
@@ -1305,8 +1305,16 @@
 }
 %^^A PAID â defnyddio \pkg yma!!
 %^^A neu \let\lpack\textsf neu ...
-%^^A \NewCommandCopy \lpack \textsf
-%^^A \text_declare_purify_equivalent:Nn \lpack { \use:n }
+\hook_gput_code:nnn { begindocument/end } { chronosdoc }
+{%^^A
+  \ExplSyntaxOn
+  \NewCommandCopy \lpack \textsf
+  \text_declare_purify_equivalent:Nn \lpack { \use:n }
+  \pdfstringdefDisableCommands{
+    \let\lpack\@firstofone
+  }
+  \ExplSyntaxOff
+}
 \ExplSyntaxOff
 \chronosdocset{%
   bug={\href{https://codeberg.org/cfr/chronos/issues}{\textsc{bugtracker}}},
@@ -1340,13 +1348,7 @@
 % \setlength\tewadjust{\marginparwidth+\marginparsep}%
 % \fancyheadoffset[lh]{0pt}%^^A REQUIRED - do NOT remove this line!!
 % \pagenumbering{arabic}%
-%^^A \title{\lpack{\chronosfilebase}}
-%^^A \show\textsf
-%^^A \show\lpack
-%^^A \expandafter\show\csname textsf \endcsname
-%^^A \expandafter\show\csname lpack \endcsname
-%^^A \title{\lpack{\chronosfilebase}}
-% \title{\textsf{\chronosfilebase}}
+% \title{\lpack{\chronosfilebase}}
 % \author{Clea F. Rees\thanks{%
 %     Bug tracker:
 %     \href{https://codeberg.org/cfr/chronos/issues}{\url{codeberg.org/cfr/chronos/issues}}
@@ -1355,7 +1357,6 @@
 %     \textbar{} Mirror:
 %     \href{https://github.com/cfr42/chronos}{\url{github.com/cfr42/chronos}}%
 % }}
-%^^A%^^A \date{\fileversion~\filedate}
 % \date{\chronosfileversion\ (\textsc{svn} \chronosfilerev)}%
 %^^A \title{\chronosdocbase}%
 % \maketitle
@@ -7624,7 +7625,7 @@ mode=overlay}}.
 \RequirePackage{svn-prov}
 \def\GetFileBaseName#1-#2\nil{#1}
 \edef\MyFileBaseName{\expandafter\GetFileBaseName\jobname\nil}
-\ProvidesFileSVN[\MyFileBaseName-doc]{$Id: chronos.dtx 10908 2025-03-05 06:16:55Z cfrees $}[v0.0 \revinfo]
+\ProvidesFileSVN[\MyFileBaseName-doc]{$Id: chronos.dtx 10909 2025-03-05 07:35:24Z cfrees $}[v0.0 \revinfo]
 \DefineFileInfoSVN
 \AddToHook{begindocument}{\OnlyDescription}
 \expandafter\newif\csname ifchronoscodetoo\endcsname
@@ -7637,7 +7638,7 @@ mode=overlay}}.
 \RequirePackage{svn-prov}
 \def\GetFileBaseName#1-#2\nil{#1}
 \edef\MyFileBaseName{\expandafter\GetFileBaseName\jobname\nil}
-\ProvidesFileSVN[\MyFileBaseName-imp]{$Id: chronos.dtx 10908 2025-03-05 06:16:55Z cfrees $}[v0.0 \revinfo]
+\ProvidesFileSVN[\MyFileBaseName-imp]{$Id: chronos.dtx 10909 2025-03-05 07:35:24Z cfrees $}[v0.0 \revinfo]
 \DefineFileInfoSVN
 \AddToHook{begindocument}{\AlsoImplementation}
 \expandafter\newif\csname ifchronoscodetoo\endcsname
