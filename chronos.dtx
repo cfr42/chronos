@@ -30,7 +30,7 @@
 %^^A ref. ateb Max Chernoff: https://tex.stackexchange.com/a/723294/
 \def\MyMakePrivateLetters{\makeatletter\ExplSyntaxOn\endlinechar13}
 \ExplSyntaxOff
-\ProvidesFileSVN{$Id: chronos.dtx 10910 2025-03-05 08:15:25Z cfrees $}[v0.9 \revinfo][\filebase\ DTX]
+\ProvidesFileSVN{$Id: chronos.dtx 10917 2025-03-06 21:07:12Z cfrees $}[v0.9 \revinfo][\filebase\ DTX]
 \DefineFileInfoSVN[chronosdoc]
 \GetFileInfoSVN*
 \let\chronosdocversion\fileversion
@@ -268,7 +268,7 @@
   ]{\text_titlecase:n { #1 } }{ #1 }
 }
 \cs_generate_variant:Nn \__chronosdoc_NewDocElement_aux:nn { VV }
-\cs_new_protected_nopar:Nn \__chronosdoc_PrintDescribe_renew:nn
+\cs_new_protected_nopar:Nn \__chronosdoc_PrintDescribe_renew:nn %^^A <<<
 {% addaswyd o doctools t18
   \strut \MacroFont 
   \color{doctools@ColorCodeNames} 
@@ -295,15 +295,26 @@
 }
 \cs_new_protected_nopar:Nn \__chronosdoc_PrintDescribe_aux:n 
 {
-  %% gweler ateb David Carlisle: https://tex.stackexchange.com/a/659828/ i gwestiwn rhywun arall am rhywbeth arall
+  %%^^A gweler ateb David Carlisle: https://tex.stackexchange.com/a/659828/ i gwestiwn rhywun arall am rhywbeth arall
   \ExpandArgs {c} \RenewDocumentCommand { PrintDescribe \text_titlecase:n {#1} } { m }
   { 
     \__chronosdoc_PrintDescribe_renew:nn { #1 } { ##1 }
   }
 }
-% XXX
 \cs_generate_variant:Nn \__chronosdoc_PrintDescribe_aux:n { V }
-\cs_new_nopar:Nn \__chronosdoc_hypertarget:nn 
+%^^A >>> 
+\cs_new_protected_nopar:Nn \__chronosdoc_PrintName_aux:n %^^A <<<
+{
+  \exp_args:Nc \RenewDocumentCommand { Print \text_titlecase:n {#1} Name } { m }
+  {
+    \strut \MacroFont
+    \color{doctools@ColorCodeNames}
+    \string ##1
+  }
+}
+\cs_generate_variant:Nn \__chronosdoc_PrintName_aux:n { V }
+%^^A >>>
+\cs_new_nopar:Nn \__chronosdoc_hypertarget:nn %^^A <<<
 {
   \bool_if:NTF \g__chronosdoc_enwau_ll_bool 
   { 
@@ -314,7 +325,8 @@
   \PackageInfo{chronosdoc}{Hypertarget ~ #1 ~ set}
 }
 \cs_generate_variant:Nn \__chronosdoc_hypertarget:nn { Vn }
-\cs_new_nopar:Nn \__chronosdoc_hyperlink:nn 
+% ^^A >>>
+\cs_new_nopar:Nn \__chronosdoc_hyperlink:nn %^^A <<<
 {
   \bool_if:NTF \g__chronosdoc_enwau_ll_bool 
   { 
@@ -325,7 +337,8 @@
   \PackageInfo{chronosdoc}{Hyperlinking ~ #2 ~ to ~ #1}
 }
 \cs_generate_variant:Nn \__chronosdoc_hyperlink:nn { Vn }
-\cs_new_protected_nopar:Nn \__chronosdoc_hyperlink:n
+%^^A >>>
+\cs_new_protected_nopar:Nn \__chronosdoc_hyperlink:n %^^A <<<
 {
   \group_begin:
     \tl_set:Nn \l__chronosdoc_tmpa_tl { #1 }
@@ -335,8 +348,9 @@
     \__chronosdoc_hyperlink:Vn \l__chronosdoc_tmpa_tl { #1 }
   \group_end:
 }
-\cs_new_protected_nopar:Nn \__chronosdoc_hypertargets:nnnN
-{% #1 type #2 list of prefixes  (possibly empty) #3 list of key names #4 text font command
+%^^A >>>
+\cs_new_protected_nopar:Nn \__chronosdoc_hypertargets:nnnN %^^A <<<
+{%^^A #1 type #2 list of prefixes  (possibly empty) #3 list of key names #4 text font command
   \group_begin:
     \bool_set_false:N \l_tmpb_bool
     \bool_if:NTF \g__chronosdoc_enwau_ll_bool
@@ -404,8 +418,9 @@
     \bool_gset_false:N \g__chronosdoc_enwau_ll_bool
   \group_end:
 }
-\cs_new_protected_nopar:Nn \__chronosdoc_hypertargets:nnn
-{% #1 type #2 list of prefixes  (possibly empty) #3 list of key names 
+%^^A >>>
+\cs_new_protected_nopar:Nn \__chronosdoc_hypertargets:nnn %^^A <<<
+{%^^A #1 type #2 list of prefixes  (possibly empty) #3 list of key names 
   \group_begin:
     \clist_if_empty:nTF { #2 }
     {
@@ -443,14 +458,16 @@
   \group_end:
 }
 \cs_generate_variant:Nn \__chronosdoc_hypertargets:nnn { VVV , VnV }
+%^^A >>>
 \cs_generate_variant:Nn \text_titlecase:n { V }
-\cs_new_protected_nopar:Nn \__chronosdoc_enwau_typeset:n
-{% #1 conjunction
+\cs_new_protected_nopar:Nn \__chronosdoc_enwau_typeset:n %^^A <<<
+{%^^A #1 conjunction
   \seq_use:Nnnn \l__chronosdoc_enwau_seq { ~ #1 ~ } { , ~ } { ~ #1 ~ }
   \bool_gset_false:N \g__chronosdoc_enwau_ll_bool
 }
-\cs_new_protected_nopar:Nn \__chronosdoc_enwau_aux:nn
-{% #1 rhestr allweddau/cydsyniadau #2 conjunction 
+%^^A >>>
+\cs_new_protected_nopar:Nn \__chronosdoc_enwau_aux:nn %^^A <<<
+{%^^A #1 rhestr allweddau/cydsyniadau #2 conjunction 
   \seq_set_from_clist:Nn \l_tmpa_seq { #1 }
   \__chronosdoc_seq_titlecase:N \l_tmpa_seq
   \bool_if:NTF \g__chronosdoc_enwau_ll_bool
@@ -468,6 +485,7 @@
   \bool_gset_false:N \g__chronosdoc_enwau_ll_bool
   \__chronosdoc_enwau_typeset:n { #2 }
 }
+%^^A >>>
 \cs_new_protected:Nn \__chronosdoc_seq_titlecase:N
 {
   \bool_if:NT \l__chronosdoc_uc_bool
@@ -477,8 +495,8 @@
     \seq_put_left:NV #1  \l_tmpb_tl 
   }  
 }
-\cs_new_protected_nopar:Nn \__chronosdoc_enwau_hyperlink:nnnn
-{%  #1 rhestr allweddau/cydsyniadau #2 conjunction #3 label e.e. boolkey #4  prefix e.e. empty
+\cs_new_protected_nopar:Nn \__chronosdoc_enwau_hyperlink:nnnn %^^A <<<
+{%^^A  #1 rhestr allweddau/cydsyniadau #2 conjunction #3 label e.e. boolkey #4  prefix e.e. empty
   \seq_set_from_clist:Nn \l_tmpa_seq { #1 }
   \bool_set_true:N \l_tmpb_bool
   \seq_set_map:NNn \l__chronosdoc_enwau_seq \l_tmpa_seq {
@@ -515,8 +533,9 @@
   }
   \__chronosdoc_enwau_typeset:n { #2 }
 }
-\cs_new_protected_nopar:Nn \__chronosdoc_enwau_hypertarget:nnnn
-{%  #1 rhestr allweddau/cydsyniadau #2 conjunction #3 label e.e. boolkey #4  prefix e.e. empty
+%^^A >>>
+\cs_new_protected_nopar:Nn \__chronosdoc_enwau_hypertarget:nnnn %^^A <<<
+{%^^A  #1 rhestr allweddau/cydsyniadau #2 conjunction #3 label e.e. boolkey #4  prefix e.e. empty
   \seq_set_from_clist:Nn \l_tmpa_seq { #1 }
   \bool_if:NTF \l__chronosdoc_uc_bool
   {
@@ -549,7 +568,8 @@
   }
   \__chronosdoc_enwau_typeset:n { #2 }
 }
-\cs_new_protected_nopar:Nn \__chronosdoc_enwau_idx_aux:Nn
+%^^A >>>
+\cs_new_protected_nopar:Nn \__chronosdoc_enwau_idx_aux:Nn %^^A <<<
 {
   \tl_set:Nx \l_tmpa_tl { \text_titlecase:v { #2slabelname } }
   \tl_set:Nv \l_tmpb_tl { #2slabelname }
@@ -597,10 +617,11 @@
     }
   }
 }
+%^^A >>>
 %^^A based on code courtesy of egreg: http://tex.stackexchange.com/a/240687/
 %^^A mangling is my own... (addaswyd - bron copïo-gludo - o cfr-coursepacket.cls)
 %^^A like trying to crochet with a chainsaw, but only needed a couple of times
-\cs_new_protected:Npn \__chronosdoc_troibocs:nnnn #1 #2 #3 #4 % angle % h dim % v dim % cynnwys y bocs
+\cs_new_protected:Npn \__chronosdoc_troibocs:nnnn #1 #2 #3 #4 %^^A angle % h dim % v dim % cynnwys y bocs %^^A <<<
 {
   \fp_set:Nn \l__chronosdoc_troibocs_fp { #1 }
   \hbox_set:Nn \l__chronosdoc_bocs_box { #4 }
@@ -639,65 +660,66 @@
   \leavevmode\box_use:N \l__chronosdoc_bocs_box
 }
 \cs_new_eq:NN \chronosdoctroibocs \__chronosdoc_troibocs:nnnn
+%^^A >>>
+%^^A <<< indexing
 \cs_new_protected_nopar:Nn \__chronosdoc_index_post_macro:nnnnn
-{% #1 idxtype #2 idxgroup #3 sanitised entry #4  idx entry #6 additional sub-level (with \levelchar) or empty
+{%^^A #1 idxtype #2 idxgroup #3 sanitised entry #4  idx entry #6 additional sub-level (with \levelchar) or empty
   \mbox{}%
   \doc@providetarget
-  %% ateb Heiko Oberdiek https://tex.stackexchange.com/a/412521/
+  %%^^A ateb Heiko Oberdiek https://tex.stackexchange.com/a/412521/
   \@bsphack
   \begingroup
   \@sanitize
-  \@wrindex{#1\actualchar\doctools@indexHeadFont{#2}:\levelchar#3\actualchar#4#5\doc@handleencap{discussion}}% sylwad Ulrike Fischer: https://tex.stackexchange.com/questions/695800/how-can-i-get-exactly-one-space-in-idx-i-know-how-to-get-two-or-none-but-not?noredirect=1#comment1727576_695800
+  \@wrindex{#1\actualchar\doctools@indexHeadFont{#2}:\levelchar#3\actualchar#4#5\doc@handleencap{discussion}}%^^A sylwad Ulrike Fischer: https://tex.stackexchange.com/questions/695800/how-can-i-get-exactly-one-space-in-idx-i-know-how-to-get-two-or-none-but-not?noredirect=1#comment1727576_695800
 }
 \cs_new_protected_nopar:Nn \__chronosdoc_index_pre_macro:nnnnnn
-{% #1 idxtype #2 idxgroup #3 sanitised entry #4 ffont #5 idx entry #6 intermediate level
+{%^^A #1 idxtype #2 idxgroup #3 sanitised entry #4 ffont #5 idx entry #6 intermediate level
   \mbox{}%
   \doc@providetarget
-  %% ateb Heiko Oberdiek https://tex.stackexchange.com/a/412521/
+  %%^^A ateb Heiko Oberdiek https://tex.stackexchange.com/a/412521/
   \@bsphack
   \begingroup
   \@sanitize
-  \@wrindex{#1\actualchar\doctools@indexHeadFont{#2}:\levelchar#6\levelchar#3\actualchar{\string#4\space #5}\doc@handleencap{discussion}}% sylwad Ulrike Fischer: https://tex.stackexchange.com/questions/695800/how-can-i-get-exactly-one-space-in-idx-i-know-how-to-get-two-or-none-but-not?noredirect=1#comment1727576_695800
+  \@wrindex{#1\actualchar\doctools@indexHeadFont{#2}:\levelchar#6\levelchar#3\actualchar{\string#4\space #5}\doc@handleencap{discussion}}%^^A sylwad Ulrike Fischer: https://tex.stackexchange.com/questions/695800/how-can-i-get-exactly-one-space-in-idx-i-know-how-to-get-two-or-none-but-not?noredirect=1#comment1727576_695800
 }
 \cs_new_protected_nopar:Nn \__chronosdoc_index_pre:nnnnnn
-{% #1 idxtype #2 idxgroup #3 sanitised entry #4 ffont #5 idx entry #6 intermediate level
+{%^^A #1 idxtype #2 idxgroup #3 sanitised entry #4 ffont #5 idx entry #6 intermediate level
   \mbox{}%
   \doc@providetarget
-  %% ateb Heiko Oberdiek https://tex.stackexchange.com/a/412521/
+  %%^^A ateb Heiko Oberdiek https://tex.stackexchange.com/a/412521/
   \@bsphack
   \begingroup
   \@sanitize
-  \@wrindex{#1\actualchar\doctools@indexHeadFont{#2}:\levelchar#6\levelchar#3\actualchar{\string#4\space #5}\doc@handleencap{discussion}}% sylwad Ulrike Fischer: https://tex.stackexchange.com/questions/695800/how-can-i-get-exactly-one-space-in-idx-i-know-how-to-get-two-or-none-but-not?noredirect=1#comment1727576_695800
+  \@wrindex{#1\actualchar\doctools@indexHeadFont{#2}:\levelchar#6\levelchar#3\actualchar{\string#4\space #5}\doc@handleencap{discussion}}%^^A sylwad Ulrike Fischer: https://tex.stackexchange.com/questions/695800/how-can-i-get-exactly-one-space-in-idx-i-know-how-to-get-two-or-none-but-not?noredirect=1#comment1727576_695800
 }
 \cs_new_protected_nopar:Nn \__chronosdoc_index_post:nnnnnn
-{% #1 idxtype #2 idxgroup #3 sanitised entry #4 ffont #5 idx entry #6 additional sub-level (with \levelchar) or empty
+{%^^A #1 idxtype #2 idxgroup #3 sanitised entry #4 ffont #5 idx entry #6 additional sub-level (with \levelchar) or empty
   \mbox{}%
   \doc@providetarget
-  %% ateb Heiko Oberdiek https://tex.stackexchange.com/a/412521/
+  %%^^A ateb Heiko Oberdiek https://tex.stackexchange.com/a/412521/
   \@bsphack
   \begingroup
   \@sanitize
-  \@wrindex{#1\actualchar\doctools@indexHeadFont{#2}:\levelchar#3\actualchar{\string#4\space #5}#6\doc@handleencap{discussion}}% sylwad Ulrike Fischer: https://tex.stackexchange.com/questions/695800/how-can-i-get-exactly-one-space-in-idx-i-know-how-to-get-two-or-none-but-not?noredirect=1#comment1727576_695800
+  \@wrindex{#1\actualchar\doctools@indexHeadFont{#2}:\levelchar#3\actualchar{\string#4\space #5}#6\doc@handleencap{discussion}}%^^A sylwad Ulrike Fischer: https://tex.stackexchange.com/questions/695800/how-can-i-get-exactly-one-space-in-idx-i-know-how-to-get-two-or-none-but-not?noredirect=1#comment1727576_695800
 }
 \cs_new_protected_nopar:Nn \__chronosdoc_index:nnnnn
-{% #1 idxtype #2 idxgroup #3 entry
+{%^^A #1 idxtype #2 idxgroup #3 entry
   \doc@providetarget
-  %% ateb Heiko Oberdiek https://tex.stackexchange.com/a/412521/
+  %%^^A ateb Heiko Oberdiek https://tex.stackexchange.com/a/412521/
   \@bsphack
   \begingroup
   \@sanitize
-  \@wrindex{#1\actualchar\doctools@indexHeadFont{#2}:\levelchar#3\actualchar{\string#4\space #5}\doc@handleencap{discussion}}% sylwad Ulrike Fischer: https://tex.stackexchange.com/questions/695800/how-can-i-get-exactly-one-space-in-idx-i-know-how-to-get-two-or-none-but-not?noredirect=1#comment1727576_695800
+  \@wrindex{#1\actualchar\doctools@indexHeadFont{#2}:\levelchar#3\actualchar{\string#4\space #5}\doc@handleencap{discussion}}%^^A sylwad Ulrike Fischer: https://tex.stackexchange.com/questions/695800/how-can-i-get-exactly-one-space-in-idx-i-know-how-to-get-two-or-none-but-not?noredirect=1#comment1727576_695800
 }
 \cs_new_protected_nopar:Nn \__chronosdoc_index:nn
-{% #1 idxtype #2 idxgroup #3 entry
+{%^^A #1 idxtype #2 idxgroup #3 entry
   \doc@providetarget
-  %% ateb Heiko Oberdiek https://tex.stackexchange.com/a/412521/
+  %%^^A ateb Heiko Oberdiek https://tex.stackexchange.com/a/412521/
   \@bsphack
   \begingroup
   \@sanitize
-  \@wrindex{#2\actualchar{\string#1\space #2}\doc@handleencap{discussion}}% sylwad Ulrike Fischer: https://tex.stackexchange.com/questions/695800/how-can-i-get-exactly-one-space-in-idx-i-know-how-to-get-two-or-none-but-not?noredirect=1#comment1727576_695800
+  \@wrindex{#2\actualchar{\string#1\space #2}\doc@handleencap{discussion}}%^^A sylwad Ulrike Fischer: https://tex.stackexchange.com/questions/695800/how-can-i-get-exactly-one-space-in-idx-i-know-how-to-get-two-or-none-but-not?noredirect=1#comment1727576_695800
 }
-\cs_generate_variant:Nn \text_titlecase:n { V }
 \cs_generate_variant:Nn \__chronosdoc_index:nn { Vn }
 \cs_generate_variant:Nn \__chronosdoc_index:nnnnn { VVVVn }
 \cs_generate_variant:Nn \__chronosdoc_index_pre:nnnnnn { VVVVnV }
@@ -708,8 +730,10 @@
 \cs_generate_variant:Nn \__chronosdoc_enwau_hypertarget:nnnn { nVVV }
 \cs_generate_variant:Nn \__chronosdoc_enwau_aux:nn { nV }
 \cs_generate_variant:Nn \__chronosdoc_enwau_idx_aux:Nn { NV }
+%^^A >>>
+\cs_generate_variant:Nn \text_titlecase:n { V }
 \cs_generate_variant:Nn \seq_set_from_clist:Nn { NV }
-\cs_new_protected_nopar:Nn \__chronosdoc_name:nn
+\cs_new_protected_nopar:Nn \__chronosdoc_name:nn %^^A <<<
 {
     \keys_set:nn { chronos doc / name } { #1  }
     \clist_if_empty:NT \l__chronosdoc_idx_as_clist { \clist_set:Nn \l__chronosdoc_idx_as_clist { #2 } }
@@ -736,7 +760,7 @@
       \seq_set_from_clist:NN \l__chronosdoc_enwau_seq \l__chronosdoc_idx_as_clist
       \__chronosdoc_enwau_idx_aux:NV \l__chronosdoc_enwau_seq \l__chronosdoc_type_tl
     }
-}
+}%^^A >>>
 \NewDocumentCommand \chronosdocidxfn { m }
 {
   \footnotemark
@@ -841,6 +865,7 @@
       }
     }
     \__chronosdoc_PrintDescribe_aux:V \l_tmpa_tl
+    \__chronosdoc_PrintName_aux:V \l_tmpa_tl
   }
 }
 \NewDocumentCommand \chronosdocidx { O {} m } % XXX
@@ -901,10 +926,12 @@
     printtype = \envlabelname{}
   ]{Env}{environment}%
   \RenewDocumentCommand \PrintDescribeMacro { m }
-  {% addaswyd o doctools t18
+  {%^^A addaswyd o doctools t18
     \__chronosdoc_PrintDescribe_renew:nn { macro } { \string #1 }
   }
   \__chronosdoc_PrintDescribe_aux:n { env }
+  \__chronosdoc_PrintName_aux:n { env }
+  \__chronosdoc_PrintName_aux:n { macro }
 }
 \NewDocumentCommand \chronosdoccreulabel { s O {#3} m }% creu lluosog ; enw llawn ; tag
 {%
@@ -7623,7 +7650,7 @@ mode=overlay}}.
 \RequirePackage{svn-prov}
 \def\GetFileBaseName#1-#2\nil{#1}
 \edef\MyFileBaseName{\expandafter\GetFileBaseName\jobname\nil}
-\ProvidesFileSVN[\MyFileBaseName-doc]{$Id: chronos.dtx 10910 2025-03-05 08:15:25Z cfrees $}[v0.0 \revinfo]
+\ProvidesFileSVN[\MyFileBaseName-doc]{$Id: chronos.dtx 10917 2025-03-06 21:07:12Z cfrees $}[v0.0 \revinfo]
 \DefineFileInfoSVN
 \AddToHook{begindocument}{\OnlyDescription}
 \expandafter\newif\csname ifchronoscodetoo\endcsname
@@ -7636,7 +7663,7 @@ mode=overlay}}.
 \RequirePackage{svn-prov}
 \def\GetFileBaseName#1-#2\nil{#1}
 \edef\MyFileBaseName{\expandafter\GetFileBaseName\jobname\nil}
-\ProvidesFileSVN[\MyFileBaseName-imp]{$Id: chronos.dtx 10910 2025-03-05 08:15:25Z cfrees $}[v0.0 \revinfo]
+\ProvidesFileSVN[\MyFileBaseName-imp]{$Id: chronos.dtx 10917 2025-03-06 21:07:12Z cfrees $}[v0.0 \revinfo]
 \DefineFileInfoSVN
 \AddToHook{begindocument}{\AlsoImplementation}
 \expandafter\newif\csname ifchronoscodetoo\endcsname

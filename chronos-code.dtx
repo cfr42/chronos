@@ -32,7 +32,7 @@
 % ref. ateb Max Chernoff: https://tex.stackexchange.com/a/723294/
 \def\MakePrivateLetters{\makeatletter\ExplSyntaxOn\endlinechar13}
 \ExplSyntaxOff
-\ProvidesFileSVN{$Id: chronos-code.dtx 10916 2025-03-06 08:15:13Z cfrees $}[v0.0 \revinfo][\filebase DTX: Customisable TikZ-based timelines]
+\ProvidesFileSVN{$Id: chronos-code.dtx 10917 2025-03-06 21:07:12Z cfrees $}[v0.0 \revinfo][\filebase DTX: Customisable TikZ-based timelines]
 \DefineFileInfoSVN[chronoscode]
 \let\chronoscodeversion\fileversion
 \let\chronoscodebase\filebase
@@ -67,7 +67,7 @@
 % \changes{v0.9}{2025-02-27}{First \ctan{} release.}
 % ^^A lua will replace v0.0 and 0000/00/00 when tagging
 % \ifchronoscodetoo
-%   \ProvidesFileSVN{$Id: chronos-code.dtx 10916 2025-03-06 08:15:13Z cfrees $}[v0.0 \revinfo]
+%   \ProvidesFileSVN{$Id: chronos-code.dtx 10917 2025-03-06 21:07:12Z cfrees $}[v0.0 \revinfo]
 %   \DefineFileInfoSVN[chronoscode]
 %   \GetFileInfoSVN{chronoscode}
 %   \let\chronoscodeversion\fileversion
@@ -144,7 +144,7 @@
 \RequirePackage{svn-prov}
 \def\GetFileBaseName#1-#2\nil{#1}
 \edef\MyFileBaseName{\expandafter\GetFileBaseName\jobname\nil}
-\ProvidesPackageSVN[chronos.sty]{$Id: chronos-code.dtx 10916 2025-03-06 08:15:13Z cfrees $}[v0.9 \revinfo]
+\ProvidesPackageSVN[chronos.sty]{$Id: chronos-code.dtx 10917 2025-03-06 21:07:12Z cfrees $}[v0.9 \revinfo]
 \DefineFileInfoSVN[chronos]
 %    \end{macrocode}
 % \iffalse
@@ -1103,12 +1103,16 @@
 }
 \NewDocumentCommand \chronos@lliwiau@uchod { o m }
 {
-  \IfValueTF { #1 } { \tl_set:Nn \l__chronos_tmpc_tl { _#1 } }{ \tl_clear:N \l__chronos_tmpc_tl }
+  \IfValueTF { #1 } 
+    { \tl_set:Nn \l__chronos_tmpc_tl { _#1 } }
+    { \tl_clear:N \l__chronos_tmpc_tl }
   \clist_gset:cn { g__chronos_lliwiau \l__chronos_tmpc_tl _uchod_clist } { #2 }
 }
 \NewDocumentCommand \chronos@lliwiau@isod { o m }
 {
-  \IfValueTF { #1 } { \tl_set:Nn \l__chronos_tmpc_tl { _#1 } }{ \tl_clear:N \l__chronos_tmpc_tl }
+  \IfValueTF { #1 } 
+    { \tl_set:Nn \l__chronos_tmpc_tl { _#1 } }
+    { \tl_clear:N \l__chronos_tmpc_tl }
   \clist_gset:cn { g__chronos_lliwiau \l__chronos_tmpc_tl _isod_clist } { #2 }
 }
 \cs_new_eq:NN \chronos@lliwiau@clear \__chronos_lliwiau_clirio:
@@ -1175,7 +1179,9 @@
 %    \begin{macrocode}
 \newcommand* \chronos@if@gosodF [2] 
 {
-  \chronos@presettrue \seq_if_in:NnF \l__chronos_gosod_seq { #1 } { #2 } \chronos@presetfalse 
+  \chronos@presettrue 
+  \seq_if_in:NnF \l__chronos_gosod_seq { #1 } { #2 } 
+  \chronos@presetfalse
 }
 \NewDocumentCommand \chronos@dangos@lliwiau { 
   s O { byw, digwyddiad, parhad, theori } D () { isod, uchod }  
@@ -6872,7 +6878,7 @@
 % Styles.
 %    \begin{macrocode}
 \RequirePackage{chronos}
-\ProvidesPackageSVN[\MyFileBaseName-lib-styles.sty]{$Id: chronos-code.dtx 10916 2025-03-06 08:15:13Z cfrees $}[v0.9 \revinfo]
+\ProvidesPackageSVN[\MyFileBaseName-lib-styles.sty]{$Id: chronos-code.dtx 10917 2025-03-06 21:07:12Z cfrees $}[v0.9 \revinfo]
 \pgfqkeys{/chronos}{%^^A BEGIN styles <<<
 %    \end{macrocode}
 % Styles come in three flavours: on-line, off-line and no-year.
@@ -7481,7 +7487,7 @@
 % Colour schemes.
 %    \begin{macrocode}
 \RequirePackage{chronos}
-\ProvidesPackageSVN[\MyFileBaseName-lib-colschemes.sty]{$Id: chronos-code.dtx 10916 2025-03-06 08:15:13Z cfrees $}[v0.9 \revinfo]
+\ProvidesPackageSVN[\MyFileBaseName-lib-colschemes.sty]{$Id: chronos-code.dtx 10917 2025-03-06 21:07:12Z cfrees $}[v0.9 \revinfo]
 %    \end{macrocode}
 % \begin{colscheme}{blues,contninety,offlinealt,xcolseries,lavender,modern,offlinebasic,sobriety}%^^A <<< BEGIN cylluniau lliwiau | colour schemes
 % cylluniau lliwiau \textbar{} colour schemes 
@@ -7580,6 +7586,9 @@
 %</sty-colschemes>
 % \fi
 % 
+% \loadgeometry{safonol}%
+% 
+% \fancyheadoffset[lh]{0pt}%
 %\Finale
 % 
 %^^A vim: et:tw=0:sw=2:ts=2:foldmethod=marker:fmr=<<<,>>>:
