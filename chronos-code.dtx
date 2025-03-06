@@ -32,7 +32,7 @@
 % ref. ateb Max Chernoff: https://tex.stackexchange.com/a/723294/
 \def\MakePrivateLetters{\makeatletter\ExplSyntaxOn\endlinechar13}
 \ExplSyntaxOff
-\ProvidesFileSVN{$Id: chronos-code.dtx 10915 2025-03-06 07:39:43Z cfrees $}[v0.0 \revinfo][\filebase DTX: Customisable TikZ-based timelines]
+\ProvidesFileSVN{$Id: chronos-code.dtx 10916 2025-03-06 08:15:13Z cfrees $}[v0.0 \revinfo][\filebase DTX: Customisable TikZ-based timelines]
 \DefineFileInfoSVN[chronoscode]
 \let\chronoscodeversion\fileversion
 \let\chronoscodebase\filebase
@@ -67,7 +67,7 @@
 % \changes{v0.9}{2025-02-27}{First \ctan{} release.}
 % ^^A lua will replace v0.0 and 0000/00/00 when tagging
 % \ifchronoscodetoo
-%   \ProvidesFileSVN{$Id: chronos-code.dtx 10915 2025-03-06 07:39:43Z cfrees $}[v0.0 \revinfo]
+%   \ProvidesFileSVN{$Id: chronos-code.dtx 10916 2025-03-06 08:15:13Z cfrees $}[v0.0 \revinfo]
 %   \DefineFileInfoSVN[chronoscode]
 %   \GetFileInfoSVN{chronoscode}
 %   \let\chronoscodeversion\fileversion
@@ -113,6 +113,9 @@
 %   If you are not me, it would therefore be useful to let me know.%
 % }.
 % 
+% \restoregeometry
+% \setlength\tewadjust{\marginparwidth+\marginparsep-\paperwidth+\textwidth+\oddsidemargin+1in}%
+% \fancyheadoffset[lh]{\tewadjust}%
 %^^A doctools redefn of macrocode is singularly ineffective:
 %^^A the environment just ends up undefined 
 %^^A so fallback to restored l3p's 
@@ -141,7 +144,7 @@
 \RequirePackage{svn-prov}
 \def\GetFileBaseName#1-#2\nil{#1}
 \edef\MyFileBaseName{\expandafter\GetFileBaseName\jobname\nil}
-\ProvidesPackageSVN[chronos.sty]{$Id: chronos-code.dtx 10915 2025-03-06 07:39:43Z cfrees $}[v0.9 \revinfo]
+\ProvidesPackageSVN[chronos.sty]{$Id: chronos-code.dtx 10916 2025-03-06 08:15:13Z cfrees $}[v0.9 \revinfo]
 \DefineFileInfoSVN[chronos]
 %    \end{macrocode}
 % \iffalse
@@ -2521,7 +2524,8 @@
       cysylltwyr+/.code={%^^A rhan o /chronos/#1; paid â ddileu fe!! | part of /chronos/#1; don't delete it!!
         \csname chronos@#1@cysylltiadtheoritrue\endcsname
         \IfExistTF \chronos@cysylltwyr {%
-          \expandafter\def\expandafter\chronos@cysylltwyr\expandafter{\chronos@cysylltwyr,##1}%
+          \expandafter\def\expandafter\chronos@cysylltwyr\expandafter{%
+            \chronos@cysylltwyr,##1}%
         }{\def \chronos@cysylltwyr{##1}}%
       },
       cysylltwyr'/.code={%
@@ -5710,7 +5714,7 @@
     \Undefine\chronos@cynnwys@dyddiadau
     \Undefine\chronos@cynnwys@enw
     \Undefine\chronos@cysylltwyr
-    \chronos@byw@cysylltiadtheorifalse % rhag ofn
+    \chronos@byw@cysylltiadtheorifalse %^^A rhag ofn
     \tikzset{byw={enw={??},marw={\year-\month-\day},bu farw=false,#1}}%
     \ifchronos@eventdatessplit
       \PackageInfo{chronos}{Setting split false for non-event.}%
@@ -5812,7 +5816,7 @@
     \Undefine\chronos@cynnwys@dyddiadau
     \Undefine\chronos@cynnwys@enw
     \Undefine\chronos@cysylltwyr
-    \chronos@digwyddiad@cysylltiadtheorifalse % rhag ofn
+    \chronos@digwyddiad@cysylltiadtheorifalse %^^A rhag ofn
 %    \end{macrocode}
 % oedd problem yn pasio every@digwyddiad i digwyddiad pan iddo fe'n cynnwys font=\cs{unrhywbeth}
 % \textbar{} there was a problem passing every@digwyddiad to digwyddiad (event) when it included \texttt{font=\bs something}
@@ -5976,7 +5980,7 @@
     \Undefine\chronos@cynnwys@dyddiadau
     \Undefine\chronos@cynnwys@enw
     \Undefine\chronos@cysylltwyr
-    \chronos@parhad@cysylltiadtheorifalse % rhag ofn
+    \chronos@parhad@cysylltiadtheorifalse %^^A rhag ofn
     \tikzset{parhad={enw={??},diwedd={\year-\month-\day},gorffenedig=false,#1}}%
     \ifchronos@eventdatessplit
       \PackageInfo{chronos}{Setting split false for non-event.}%
@@ -6065,7 +6069,7 @@
     \Undefine\chronos@cynnwys@enw
     \Undefine\chronos@cynnwys@dyddiadau
     \Undefine\chronos@cysylltwyr
-    \chronos@theori@cysylltiadtheorifalse % rhag ofn
+    \chronos@theori@cysylltiadtheorifalse %^^A rhag ofn
     \tikzset{theori={enw={??},#1}}%
     \chronos@troilliwiau@tag{theori}%
     \IfExistTF \chronos@theori@angor{%
@@ -6116,11 +6120,14 @@
 %   That is, anchors for \cs{chronostheory}.
 %   Should this be done this way?!
 %    \begin{macrocode}
-\NewDocumentCommand \chronos@angorau@theori{mmO{connector }m}{% #1 enw y prif node ; #2 enw yr angor cyntaf ; #4 style
+\NewDocumentCommand \chronos@angorau@theori{mmO{connector }m}{% 
+  % #1 enw y prif node ; 
+  % #2 enw yr angor cyntaf ; 
+  % #4 style
   \ifchronos@phantom
     \PackageWarning{chronos}{Phantom tags cannot have connectors }%
   \else
-    \begin{scope}[/chronos/middle anchorborder]% ateb Symbol 1: https://tex.stackexchange.com/a/385953/
+    \begin{scope}[/chronos/middle anchorborder]%^^A ateb Symbol 1: https://tex.stackexchange.com/a/385953/
       \setcounter{chronos@theori@countanchors}{0}%
       \@for \xx:=\chronos@cysylltwyr \do {%
         \stepcounter{chronos@theori@countanchors}%
@@ -6457,7 +6464,7 @@
       \chronos@tempfalse
     \fi
   \else
-    \ifnum\value{chronos@#2date}=\value{chronos@#4date}% only catches identical blynyddoedd - dal i edrych yn dwp pan dim ond blynyddoedd yn cael eu dangos & maen' nhw'n yr un peth
+    \ifnum\value{chronos@#2date}=\value{chronos@#4date}%^^A only catches identical blynyddoedd - dal i edrych yn dwp pan dim ond blynyddoedd yn cael eu dangos & maen' nhw'n yr un peth
       \chronos@temptrue
     \else
       \chronos@tempfalse
@@ -6474,25 +6481,33 @@
     \ifchronos@yearsonline
       \def\chronos@border@coord{chronos base}%
       \def\chronos@border@coord@inv{chronos top}%
-      \expandafter\setlength\csname chronos@#1@border\endcsname{-\chronos@borderheight}%
-      \expandafter\setlength\csname chronos@#1@border@inv\endcsname{\chronos@borderheight}%
+      \expandafter\setlength\csname chronos@#1@border\endcsname{%
+        -\chronos@borderheight}%
+      \expandafter\setlength\csname chronos@#1@border@inv\endcsname{%
+        \chronos@borderheight}%
     \else
       \def\chronos@border@coord{chronos top}%
       \def\chronos@border@coord@inv{chronos base}%
-      \expandafter\setlength\csname chronos@#1@border\endcsname{-\chronos@height}%
-      \expandafter\setlength\csname chronos@#1@border@inv\endcsname{\chronos@height}%
+      \expandafter\setlength\csname chronos@#1@border\endcsname{%
+        -\chronos@height}%
+      \expandafter\setlength\csname chronos@#1@border@inv\endcsname{%
+        \chronos@height}%
     \fi
   \else
     \ifchronos@yearsonline
       \def\chronos@border@coord{chronos top}%
       \def\chronos@border@coord@inv{chronos base}%
-      \expandafter\setlength\csname chronos@#1@border\endcsname{\chronos@borderheight}%
-      \expandafter\setlength\csname chronos@#1@border@inv\endcsname{-\chronos@borderheight}%
+      \expandafter\setlength\csname chronos@#1@border\endcsname{%
+        \chronos@borderheight}%
+      \expandafter\setlength\csname chronos@#1@border@inv\endcsname{%
+        -\chronos@borderheight}%
     \else
       \def\chronos@border@coord{chronos base}%
       \def\chronos@border@coord@inv{chronos top}%
-      \expandafter\setlength\csname chronos@#1@border\endcsname{\chronos@height}%
-      \expandafter\setlength\csname chronos@#1@border@inv\endcsname{-\chronos@height}%
+      \expandafter\setlength\csname chronos@#1@border\endcsname{%
+        \chronos@height}%
+      \expandafter\setlength\csname chronos@#1@border@inv\endcsname{%
+        -\chronos@height}%
     \fi
   \fi
 }
@@ -6516,10 +6531,11 @@
     \def\chronos@yshift@inv{-\chronos@yshift}%
   }{%
     \ifchronos@tag@cysylltu
-      \CSletCS {chronos@#1@at}{chronos@#1@tikzname}% uses temporary coordinate at this point but will be aligned horizontally
+      \CSletCS {chronos@#1@at}{chronos@#1@tikzname}%^^A uses temporary coordinate at this point but will be aligned horizontally
     \else
       \expandafter\def\csname chronos@#1@at\endcsname{chronos origin}%
-      \PackageWarning{chronos}{Aligning #1 text tag with (chronos origin). Set at to avoid this}%
+      \PackageWarning{chronos}{Aligning #1 text tag with (chronos origin). 
+        Set at to avoid this}%
     \fi
     \ifdim\chronos@yshift>0pt\relax
       \expandafter\global\csname chronos@#1@isodfalse\endcsname
@@ -6530,7 +6546,10 @@
         \def\chronos@yshift@inv{-\chronos@yshift}%
       \else
         \ifdim\chronos@testun@yshift=0pt\relax
-          \PackageWarning{chronos}{Tag will be placed at the timeline's vertical centre. Set non-zero yshift or text tag yshift or set at to avoid this}%
+          \PackageWarning{chronos}{%
+            Tag will be placed at the timeline's vertical centre. 
+            Set non-zero yshift or text tag yshift or set at to avoid this%
+          }%
         \fi
         \chronos@legacy@if{chronos@#1@isod}{% cheat!
           \pretocmd\chronos@cadw{yshift=-\chronos@testun@yshift,}{}{}%
@@ -6542,7 +6561,7 @@
       \fi % if yshift<0pt
     \fi % if yshift>0pt
   }%
-  \IfCSFreeT{chronos@#1@lliw}{% \ifcsunef is T even if cs is \relax (unlike \ifcsdef which is also T if cs is \relax)
+  \IfCSFreeT{chronos@#1@lliw}{%^^A \ifcsunef is T even if cs is \relax (unlike \ifcsdef which is also T if cs is \relax)
     \expandafter\ifchronos@troilliwiau
       \csname ifchronos@#1@isod\endcsname
         \chronos@troilliwiau@isod[#1]
@@ -6713,7 +6732,7 @@
           alias=cylch \chronos@tempa
         ] at (\chronos@tempa) {};%
       }%
-      \begin{scope}[/chronos/middle anchorborder]% ateb Symbol 1: https://tex.stackexchange.com/a/385953/
+      \begin{scope}[/chronos/middle anchorborder]%^^A ateb Symbol 1: https://tex.stackexchange.com/a/385953/
 %    \end{macrocode}
 % creu cysylltwyr testun ar y node testun \textbar{} make text connectors on the text node
 %    \begin{macrocode}
@@ -6853,7 +6872,7 @@
 % Styles.
 %    \begin{macrocode}
 \RequirePackage{chronos}
-\ProvidesPackageSVN[\MyFileBaseName-lib-styles.sty]{$Id: chronos-code.dtx 10915 2025-03-06 07:39:43Z cfrees $}[v0.9 \revinfo]
+\ProvidesPackageSVN[\MyFileBaseName-lib-styles.sty]{$Id: chronos-code.dtx 10916 2025-03-06 08:15:13Z cfrees $}[v0.9 \revinfo]
 \pgfqkeys{/chronos}{%^^A BEGIN styles <<<
 %    \end{macrocode}
 % Styles come in three flavours: on-line, off-line and no-year.
@@ -7462,7 +7481,7 @@
 % Colour schemes.
 %    \begin{macrocode}
 \RequirePackage{chronos}
-\ProvidesPackageSVN[\MyFileBaseName-lib-colschemes.sty]{$Id: chronos-code.dtx 10915 2025-03-06 07:39:43Z cfrees $}[v0.9 \revinfo]
+\ProvidesPackageSVN[\MyFileBaseName-lib-colschemes.sty]{$Id: chronos-code.dtx 10916 2025-03-06 08:15:13Z cfrees $}[v0.9 \revinfo]
 %    \end{macrocode}
 % \begin{colscheme}{blues,contninety,offlinealt,xcolseries,lavender,modern,offlinebasic,sobriety}%^^A <<< BEGIN cylluniau lliwiau | colour schemes
 % cylluniau lliwiau \textbar{} colour schemes 
