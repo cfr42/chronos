@@ -32,7 +32,7 @@
 % ref. ateb Max Chernoff: https://tex.stackexchange.com/a/723294/
 \def\MakePrivateLetters{\makeatletter\ExplSyntaxOn\endlinechar13}
 \ExplSyntaxOff
-\ProvidesFileSVN{$Id: chronos-code.dtx 10911 2025-03-06 02:08:06Z cfrees $}[v0.0 \revinfo][\filebase DTX: Customisable TikZ-based timelines]
+\ProvidesFileSVN{$Id: chronos-code.dtx 10913 2025-03-06 05:45:03Z cfrees $}[v0.0 \revinfo][\filebase DTX: Customisable TikZ-based timelines]
 \DefineFileInfoSVN[chronoscode]
 \let\chronoscodeversion\fileversion
 \let\chronoscodebase\filebase
@@ -67,7 +67,7 @@
 % \changes{v0.9}{2025-02-27}{First \ctan{} release.}
 % ^^A lua will replace v0.0 and 0000/00/00 when tagging
 % \ifchronoscodetoo
-%   \ProvidesFileSVN{$Id: chronos-code.dtx 10911 2025-03-06 02:08:06Z cfrees $}[v0.0 \revinfo]
+%   \ProvidesFileSVN{$Id: chronos-code.dtx 10913 2025-03-06 05:45:03Z cfrees $}[v0.0 \revinfo]
 %   \DefineFileInfoSVN[chronoscode]
 %   \GetFileInfoSVN{chronoscode}
 %   \let\chronoscodeversion\fileversion
@@ -123,6 +123,8 @@
 % \let\endmacrocode\endchronosdocmacrocode
 % \let\environment\chronosdocenvironment
 % \let\endenvironment\endchronosdocenvironment
+% \let\OrigMakePrivateLetters\MakePrivateLetters
+% \let\MakePrivateLetters\MyMakePrivateLetters
 % 
 % \iffalse
 %<*sty>
@@ -133,7 +135,7 @@
 \RequirePackage{svn-prov}
 \def\GetFileBaseName#1-#2\nil{#1}
 \edef\MyFileBaseName{\expandafter\GetFileBaseName\jobname\nil}
-\ProvidesPackageSVN[chronos.sty]{$Id: chronos-code.dtx 10911 2025-03-06 02:08:06Z cfrees $}[v0.9 \revinfo]
+\ProvidesPackageSVN[chronos.sty]{$Id: chronos-code.dtx 10913 2025-03-06 05:45:03Z cfrees $}[v0.9 \revinfo]
 \DefineFileInfoSVN[chronos]
 %    \end{macrocode}
 % \iffalse
@@ -6845,7 +6847,7 @@
 % Styles.
 %    \begin{macrocode}
 \RequirePackage{chronos}
-\ProvidesPackageSVN[\MyFileBaseName-lib-styles.sty]{$Id: chronos-code.dtx 10911 2025-03-06 02:08:06Z cfrees $}[v0.9 \revinfo]
+\ProvidesPackageSVN[\MyFileBaseName-lib-styles.sty]{$Id: chronos-code.dtx 10913 2025-03-06 05:45:03Z cfrees $}[v0.9 \revinfo]
 \pgfqkeys{/chronos}{%^^A BEGIN styles <<<
 %    \end{macrocode}
 % Styles come in three flavours: on-line, off-line and no-year.
@@ -6956,7 +6958,7 @@
     life/text tag+={font=\small\scshape},
     period/line+={fill=##1, fill opacity=.25},
     life/line+={fill=##1, fill opacity=.25},
-    every text tags+={text=####1!75!black},% add global default o/w ignored (ond nid eisiau inner sep=0pt)
+    every text tags+={text=####1!75!black},%^^A add global default o/w ignored (ond nid eisiau inner sep=0pt)
     levels=3:3,
     main/title={font=\Large\bfseries,text=chronos main colour,draw=none},
     frame,
@@ -7137,7 +7139,8 @@
       timeline mark={chronos timeline foreground colour,line width=.6pt,shorten >=-4pt},
       timeline minor mark={chronos timeline foreground colour,%
         line width=.5pt,shorten >=-3.5pt},
-      timeline bare mark={chronos timeline foreground colour,line width=.3pt,shorten >=-2.5pt},
+      timeline bare mark={%
+        chronos timeline foreground colour,line width=.3pt,shorten >=-2.5pt},
       timeline year={fill=none,text=chronos timeline foreground colour,%
         rotate around={45:(chronos year \chronosyeari |- chronos top)}},
       major step font=\sffamily\footnotesize\tlstyle,
@@ -7453,7 +7456,7 @@
 % Colour schemes.
 %    \begin{macrocode}
 \RequirePackage{chronos}
-\ProvidesPackageSVN[\MyFileBaseName-lib-colschemes.sty]{$Id: chronos-code.dtx 10911 2025-03-06 02:08:06Z cfrees $}[v0.9 \revinfo]
+\ProvidesPackageSVN[\MyFileBaseName-lib-colschemes.sty]{$Id: chronos-code.dtx 10913 2025-03-06 05:45:03Z cfrees $}[v0.9 \revinfo]
 %    \end{macrocode}
 % \begin{colscheme}{blues,contninety,offlinealt,xcolseries,lavender,modern,offlinebasic,sobriety}%^^A <<< BEGIN cylluniau lliwiau | colour schemes
 % cylluniau lliwiau \textbar{} colour schemes 
