@@ -32,7 +32,7 @@
 % ref. ateb Max Chernoff: https://tex.stackexchange.com/a/723294/
 \def\MakePrivateLetters{\makeatletter\ExplSyntaxOn\endlinechar13}
 \ExplSyntaxOff
-\ProvidesFileSVN{$Id: chronos-code.dtx 10917 2025-03-06 21:07:12Z cfrees $}[v0.0 \revinfo][\filebase DTX: Customisable TikZ-based timelines]
+\ProvidesFileSVN{$Id: chronos-code.dtx 10918 2025-03-06 22:22:52Z cfrees $}[v0.0 \revinfo][\filebase DTX: Customisable TikZ-based timelines]
 \DefineFileInfoSVN[chronoscode]
 \let\chronoscodeversion\fileversion
 \let\chronoscodebase\filebase
@@ -67,7 +67,7 @@
 % \changes{v0.9}{2025-02-27}{First \ctan{} release.}
 % ^^A lua will replace v0.0 and 0000/00/00 when tagging
 % \ifchronoscodetoo
-%   \ProvidesFileSVN{$Id: chronos-code.dtx 10917 2025-03-06 21:07:12Z cfrees $}[v0.0 \revinfo]
+%   \ProvidesFileSVN{$Id: chronos-code.dtx 10918 2025-03-06 22:22:52Z cfrees $}[v0.0 \revinfo]
 %   \DefineFileInfoSVN[chronoscode]
 %   \GetFileInfoSVN{chronoscode}
 %   \let\chronoscodeversion\fileversion
@@ -144,7 +144,7 @@
 \RequirePackage{svn-prov}
 \def\GetFileBaseName#1-#2\nil{#1}
 \edef\MyFileBaseName{\expandafter\GetFileBaseName\jobname\nil}
-\ProvidesPackageSVN[chronos.sty]{$Id: chronos-code.dtx 10917 2025-03-06 21:07:12Z cfrees $}[v0.9 \revinfo]
+\ProvidesPackageSVN[chronos.sty]{$Id: chronos-code.dtx 10918 2025-03-06 22:22:52Z cfrees $}[v0.9 \revinfo]
 \DefineFileInfoSVN[chronos]
 %    \end{macrocode}
 % \iffalse
@@ -5147,7 +5147,8 @@
                     \chronos@cam@modtrue
                   \else
                     \IfBooleanExprT {%
-                      ! \LegacyBoolean {chronos@yearzero} && \IntCompareBoolean {\chronosyeari}={1}
+                      ! \LegacyBoolean {chronos@yearzero} && 
+                      \IntCompareBoolean {\chronosyeari}={1}
                     }{%
                       \pgfmathparse{int(mod((\chronosyeari-1),\chronos@cam@blwyddyn@fawr))}%
                       \ifnum\pgfmathresult=0\relax
@@ -5158,21 +5159,28 @@
                 \fi % \ifnum\chronos@cam@blwyddyn@fach=0
                 \ifchronos@cam@mod
                   \pgfqkeys{/chronos}{%
-                    temp@on/.style={/chronos/llinell amser/timeline@mark@on@line},
-                    temp@off/.style={/chronos/llinell amser/timeline@mark@off@line},
+                    temp@on/.style={%
+                      /chronos/llinell amser/timeline@mark@on@line},
+                    temp@off/.style={%
+                      /chronos/llinell amser/timeline@mark@off@line},
                   }%
                   \let\chronos@tempff\chronos@ffont@camaumawr
                   \def\chronos@temph{}%
                 \else
                   \pgfqkeys{/chronos}{%
-                    temp@on/.style={/chronos/llinell amser/timeline@minor@mark@on@line},
-                    temp@off/.style={/chronos/llinell amser/timeline@minor@mark@off@line},
+                    temp@on/.style={%
+                      /chronos/llinell amser/timeline@minor@mark@on@line},
+                    temp@off/.style={%
+                      /chronos/llinell amser/timeline@minor@mark@off@line},
                   }%
                   \let\chronos@tempff\chronos@ffont@camaubach
                   \xdef\chronos@temph{\chronos@minoryearformat}%
                   \ifchronos@marks@minor\chronos@markstrue\else\chronos@marksfalse\fi
-                \fi % \ifchronos@cam@mod
-                \ifchronos@markateraswitch % \ifchronos@temp tracks whether we draw a node (T) or coordinate (F)
+                \fi %^^A \ifchronos@cam@mod
+%    \end{macrocode}
+% \cs{ifchronos@temp} tracks whether we draw a node (T) or coordinate (F)
+%    \begin{macrocode}
+                \ifchronos@markateraswitch %
                   \ifnum\b=0 
                     \chronos@tempfalse
                   \else 
@@ -5182,20 +5190,26 @@
                 \else 
                   \chronos@temptrue
                 \fi
-                \ifchronos@yearsonline % BEGIN ifchronos@yearsonline
-                  \ifchronos@temp % BEGIN if labelling era switch or not switching here, use a node
+%    \end{macrocode}
+% BEGIN \cs{ifchronos@yearsonline} \dots
+%    \begin{macrocode}
+                \ifchronos@yearsonline 
+%    \end{macrocode}
+% if labelling era switch or not switching here, use a node
+%    \begin{macrocode}
+                  \ifchronos@temp 
                     \node (chronos year \chronosyeari) [%
                       /chronos/llinell amser/timeline@years,%
                       /chronos/llinell amser/timeline@year@on@line,%
                       font=\chronos@tempff%
                     ] at (chronos year \chronosyeari) 
                       {\chronos@showyear[\chronos@temph]{\chronosyeari}};
-                  \fi % END \ifchronos@temp
-                  \ifchronos@marks % BEGIN
+                  \fi %^^A END \ifchronos@temp
+                  \ifchronos@marks %^^A BEGIN
                     \path [/chronos/temp@on] (chronos year \chronosyeari.south) -- 
-                      (chronos year \chronosyeari |- chronos base);% rhag ofn rotate (pwy sy'n gwybod?)
+                      (chronos year \chronosyeari |- chronos base);%^^A rhag ofn rotate (pwy sy'n gwybod?)
                     \path [/chronos/temp@on] (chronos year \chronosyeari.north) -- 
-                      (chronos year \chronosyeari |- chronos top);% rhag ofn rotate (pwy sy'n gwybod?)
+                      (chronos year \chronosyeari |- chronos top);%^^A rhag ofn rotate (pwy sy'n gwybod?)
                     \ifchronos@marks@bare % BEGIN
                       \ifnum\dlast=\pi\relax % BEGIN
                       \else
@@ -5205,8 +5219,10 @@
                           {%
                             \path [%
                               /chronos/llinell amser/timeline@bare@mark@on@line%
-                            ] ([xshift={-\n*\chronos@tempg pt}]chronos year \chronosyeari |- chronos phantom year.south)
-                              -- ([xshift={-\n*\chronos@tempg pt}]chronos year \chronosyeari |- chronos phantom year.north);
+                            ] ([xshift={-\n*\chronos@tempg pt}]chronos year 
+                              \chronosyeari |- chronos phantom year.south)
+                              -- ([xshift={-\n*\chronos@tempg pt}]chronos year 
+                              \chronosyeari |- chronos phantom year.north);
                           }%
                           \ifnum\b=\chronos@nextstep % BEGIN
                             \path (chronos year \ilast);
@@ -5261,7 +5277,10 @@
                     \fi % END \ifchronos@marks@bare
                   \fi % END \ifchronos@marks
                 \else % chronos@yearsonline yw F
-                  \ifchronos@temp % BEGIN if labelling era switch or not switching here, use a node
+%    \end{macrocode}
+% if labelling era switch or not switching here, use a node
+%    \begin{macrocode}
+                  \ifchronos@temp 
                     \node (chronos node year \chronosyeari) [%
                       /chronos/llinell amser/timeline@years,%
                       /chronos/llinell amser/timeline@year@off@line,%
@@ -5277,8 +5296,8 @@
                       fill=none%
                     ] at (chronos year \chronosyeari) 
                       {\phantom{\chronos@showyear[\chronos@temph]{\chronosyeari}}};
-                  \fi % END % \ifchronos@temp
-                  \ifchronos@marks % BEGIN 
+                  \fi %^^A END % \ifchronos@temp
+                  \ifchronos@marks %^^A BEGIN 
                     \ifchronos@temp
                     \else
                       \ifnum\b=0
@@ -5288,7 +5307,7 @@
                           /chronos/llinell amser/era switch off line%
                         ] (\chronos@tempa pt,0pt)  -- 
                           (chronos node year \chronosyeari.center -| chronos year \chronosyeari) 
-                          ;% rhag ofn rotate
+                          ;%^^A rhag ofn rotate
                         \chronos@temptrue
                       \fi
                     \fi
@@ -5299,7 +5318,8 @@
                     \else
                       \ifchronos@marks@bare % BEGIN
                         \ifnum\chronos@camrhaniadau>1
-                          \foreach \m  [evaluate=\m as \n using {int(\m-1)}] in {2,...,\chronos@camrhaniadau}
+                          \foreach \m  [evaluate=\m as \n using {int(\m-1)}] in
+                            {2,...,\chronos@camrhaniadau}
                             \path [%
                               shorten <=.5*\chronos@height, 
                               /chronos/llinell amser/timeline@bare@mark@off@line%
@@ -5385,7 +5405,7 @@
 %    \end{macrocode}
 % phantom nodes - haws i gosodi pethau \textbar\ easy to install things
 %    \begin{macrocode}
-      \begin{scope}[%
+      \begin{scope}[%^^A <<< byw,every node etc.
           byw,every node/.append style={%
             /chronos/@testun=chronos@prifliw,/chronos/placeholder%
           }%
@@ -5429,7 +5449,7 @@
             \fi
           \end{scope}%[on chronos overlay layer]
         \fi
-      \end{scope}% [byw,every node/.append style={/chronos/@testun=chronos@prifliw,/chronos/placeholder}]% ?
+      \end{scope}%^^A >>> byw, every node etc.
       \let\ceyearlabel\chronos@yearce
       \let\bceyearlabel\chronos@yearbce
       \let\celabel\chronos@ce
@@ -5437,7 +5457,10 @@
       \let\timelineborderht\chronos@borderheight
       \let\timelinewd\chronos@width
       \let\lineyshift\chronos@llinell@yshift
-}{% oedd yn execute at end picture={...}
+%    \end{macrocode}
+% At the end of \texttt{chronos} \dots
+%    \begin{macrocode}
+}{%^^A oedd yn execute at end picture={...}
       \ifchronos@frame
         \ifchronos@headings\relax
         \else
@@ -5922,7 +5945,7 @@
 % \textbar{} create circle (or other mark) on timeline ; text tag ; text tag circle (connector) ; main connection
 %    \begin{macrocode}
     \ifchronos@eventdatessplit
-      \chronos@creu@testun@tag*{digwyddiad}{\chronos@cynnwys@dyddiadau}% angen defnyddio  /chronos/event date split
+      \chronos@creu@testun@tag*{digwyddiad}{\chronos@cynnwys@dyddiadau}%^^A angen defnyddio  /chronos/event date split
     \fi
     \chronos@creu@testun@tag{digwyddiad}{\chronos@cynnwys@testun}%
 %    \end{macrocode}
@@ -6025,17 +6048,24 @@
           \ifchronos@temp
             \def \chronos@cynnwys@dyddiadau {\chronos@parhad@labeldechrau\\}%
           \else
-            \def \chronos@cynnwys@dyddiadau {\chronos@parhad@labeldechrau--\chronos@parhad@labeldiwedd\\}%
+            \def \chronos@cynnwys@dyddiadau {%
+              \chronos@parhad@labeldechrau--\chronos@parhad@labeldiwedd\\}%
           \fi
         \fi
       }%
-      \def \chronos@cynnwys@testun {\chronos@parhad@ffontdyddiad\chronos@cynnwys@dyddiadau\chronos@parhad@ffonttestun\chronos@cynnwys@enw}%
+      \def \chronos@cynnwys@testun {%
+        \chronos@parhad@ffontdyddiad
+        \chronos@cynnwys@dyddiadau
+        \chronos@parhad@ffonttestun
+        \chronos@cynnwys@enw
+      }%
     }%
     \chronos@creu@llinell {parhad}{\chronos@temph pt}{\chronos@tempk pt}{dechrau}{diwedd}%
 %    \end{macrocode}
 % final coordinate placement
 %    \begin{macrocode}
-    \coordinate (\chronos@parhad@tikzname) at ($(\chronos@parhad@tikzname{} dechrau)!1/2!(\chronos@parhad@tikzname{} diwedd)$);
+    \coordinate (\chronos@parhad@tikzname) at 
+      ($(\chronos@parhad@tikzname{} dechrau)!1/2!(\chronos@parhad@tikzname{} diwedd)$);
 %    \end{macrocode}
 % creu cylch ar y lein ; testun ; testun cylch ; prif gysylltiad
 % \textbar{} create circle (or other mark) on timeline ; text tag ; text tag circle (connector) ; main connection
@@ -6045,7 +6075,9 @@
 %    \end{macrocode}
 %^^A       \scoped[/chronos/middle anchorborder]{% ateb Symbol 1: https://tex.stackexchange.com/a/385953/
 %    \begin{macrocode}
-        \chronos@angorau@theori{testun \chronos@parhad@tikzname}{cysylltwr \chronos@parhad@tikzname}[connector \chronos@parhad@tikzname]{/chronos/@cysylltwr@testun=\chronos@parhad@lliw}%
+        \chronos@angorau@theori{testun \chronos@parhad@tikzname}%
+          {cysylltwr \chronos@parhad@tikzname}[connector \chronos@parhad@tikzname]%
+          {/chronos/@cysylltwr@testun=\chronos@parhad@lliw}%
 %    \end{macrocode}
 %^^A       }%
 %    \begin{macrocode}
@@ -6055,7 +6087,11 @@
     \else\ifchronos@every@parhad@uchod
         \global\chronos@parhad@isodfalse
       \else
-        \ifchronos@parhad@isod\global\chronos@parhad@isodfalse\else\global\chronos@parhad@isodtrue\fi
+        \ifchronos@parhad@isod
+          \global\chronos@parhad@isodfalse
+        \else
+          \global\chronos@parhad@isodtrue
+        \fi
       \fi
     \fi
     \chronos@ailosod@nodweddion
@@ -6878,7 +6914,7 @@
 % Styles.
 %    \begin{macrocode}
 \RequirePackage{chronos}
-\ProvidesPackageSVN[\MyFileBaseName-lib-styles.sty]{$Id: chronos-code.dtx 10917 2025-03-06 21:07:12Z cfrees $}[v0.9 \revinfo]
+\ProvidesPackageSVN[\MyFileBaseName-lib-styles.sty]{$Id: chronos-code.dtx 10918 2025-03-06 22:22:52Z cfrees $}[v0.9 \revinfo]
 \pgfqkeys{/chronos}{%^^A BEGIN styles <<<
 %    \end{macrocode}
 % Styles come in three flavours: on-line, off-line and no-year.
@@ -7487,7 +7523,7 @@
 % Colour schemes.
 %    \begin{macrocode}
 \RequirePackage{chronos}
-\ProvidesPackageSVN[\MyFileBaseName-lib-colschemes.sty]{$Id: chronos-code.dtx 10917 2025-03-06 21:07:12Z cfrees $}[v0.9 \revinfo]
+\ProvidesPackageSVN[\MyFileBaseName-lib-colschemes.sty]{$Id: chronos-code.dtx 10918 2025-03-06 22:22:52Z cfrees $}[v0.9 \revinfo]
 %    \end{macrocode}
 % \begin{colscheme}{blues,contninety,offlinealt,xcolseries,lavender,modern,offlinebasic,sobriety}%^^A <<< BEGIN cylluniau lliwiau | colour schemes
 % cylluniau lliwiau \textbar{} colour schemes 
