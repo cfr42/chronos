@@ -1803,11 +1803,14 @@
 %^^A   \chronos@coords@completion{#3}{#4}%
 %    \begin{macrocode}
   \coordinate (chronos@coord@temp) at ($(#4)!1/2!(#5)$);
-  \IfValueTF {#3}{\def\chronos@tempa{#3}}{\edef\chronos@tempa{\chronos@testunteitl@priflythrennu{#2}}}%
+  \IfValueTF {#3}{\def\chronos@tempa{#3}}{%
+    \edef\chronos@tempa{\chronos@testunteitl@priflythrennu{#2}}%
+  }%
   \node (#2) [anchor=base,#1] at (#6 -| chronos@coord@temp) {\chronos@tempa};
   \ifchronos@shownodes
     \begin{scope}[on chronos overlay layer]
-      \draw [help lines, draw=chronos@lliw@node] (#2.north east) -| (#2.south west) -| cycle;
+      \draw [help lines, draw=chronos@lliw@node] (#2.north east) 
+        -| (#2.south west) -| cycle;
     \end{scope}%
   \fi
 }% >>>
@@ -1834,9 +1837,24 @@
   declare layer/.list={background,middle ground,foreground,overlay},
 }
 \IfFileExists{tikzlibrarycfrforeground.code.tex}{%
-  \def\chronos@layers{background,chronos background,chronos middle ground,main,chronos foreground,chronos overlay,foreground}%
+  \def\chronos@layers{%
+    background,%
+    chronos background,%
+    chronos middle ground,%
+    main,%
+    chronos foreground,%
+    chronos overlay,%
+    foreground%
+  }%
 }{%
-  \def\chronos@layers{background,chronos background,chronos middle ground,main,chronos foreground,chronos overlay}%
+  \def\chronos@layers{%
+    background,%
+    chronos background,%
+    chronos middle ground,%
+    main,%
+    chronos foreground,%
+    chronos overlay%
+  }%
 }
 \pgfqkeys{/chronos}{%
   create layer/.code={%
@@ -3720,7 +3738,7 @@
 %    \end{macrocode}
 %^^A BEGIN /chronos frâm, borders, cysylltwyr, llinellau, testunau etc.
 %    \begin{macrocode}
-  borders'/.code args={#1:#2:#3:#4:#5:#6}{% penawdau:pen:de:gwaelod:chwith:allanol
+  borders'/.code args={#1:#2:#3:#4:#5:#6}{%^^A penawdau:pen:de:gwaelod:chwith:allanol
     \chronos@border@penawdau=#1
     \chronos@border@pen=#2
     \chronos@border@de=#3
@@ -3728,7 +3746,7 @@
     \chronos@border@chwith=#5
     \chronos@border@allanol=#6
   },
-  borders'+/.code args={#1:#2:#3:#4:#5:#6}{% penawdau:pen:de:gwaelod:chwith:allanol
+  borders'+/.code args={#1:#2:#3:#4:#5:#6}{%^^A penawdau:pen:de:gwaelod:chwith:allanol
     \advance\chronos@border@penawdau by #1 
     \advance\chronos@border@pen by #2 
     \advance\chronos@border@de by #3 
@@ -3736,7 +3754,7 @@
     \advance\chronos@border@chwith by #5 
     \advance\chronos@border@allanol by #6 
   },
-  borders'-/.code args={#1:#2:#3:#4:#5:#6}{% penawdau:pen:de:gwaelod:chwith:allanol
+  borders'-/.code args={#1:#2:#3:#4:#5:#6}{%^^A penawdau:pen:de:gwaelod:chwith:allanol
     \advance\chronos@border@penawdau by -#1 
     \advance\chronos@border@pen by -#2 
     \advance\chronos@border@de by -#3 
@@ -3744,11 +3762,11 @@
     \advance\chronos@border@chwith by -#5 
     \advance\chronos@border@allanol by -#6 
   },
-  cysylltwyr chronos={anchor=center,inner sep=0pt,outer sep=0pt},% oedd cylch chronos
-  cysylltwyr testun={anchor=center,inner sep=0pt,outer sep=0pt},% oedd cylch
+  cysylltwyr chronos={anchor=center,inner sep=0pt,outer sep=0pt},%^^A oedd cylch chronos
+  cysylltwyr testun={anchor=center,inner sep=0pt,outer sep=0pt},%^^A oedd cylch
   prif gysylltwyr testun={},
   @llinell/.style={},
-  testunau+={outer sep=0pt,text=#1!75!black},% every eisiau ##
+  testunau+={outer sep=0pt,text=#1!75!black},%^^A every eisiau ##
   cysylltiadau={draw=#1},
 %    \end{macrocode}
 %^^A END /chronos frâm, borders, cysylltwyr, llinellau, testunau etc.
@@ -3997,7 +4015,7 @@
         \chronos@if@gosodF{llinell}{\pgfqkeys{/chronos}{llinell ar=middle ground}}%
         \chronos@if@gosodF{llinell amser}{\pgfqkeys{/chronos}{llinell amser ar=main}}%
         \chronos@if@gosodF{cysylltiad}{\pgfqkeys{/chronos}{cysylltiad ar=background}}%
-        \ifdim\chronos@llinell@yshift=\pi pt % rhag: llunio ar y border | default: draw on the border
+        \ifdim\chronos@llinell@yshift=\pi pt %^^A rhag: llunio ar y border | default: draw on the border
           \chronos@llinell@yshift=0pt %
         \fi
         \ifchronostimelinearrow
@@ -4039,8 +4057,9 @@
       \providecolor{chronos lliw llinell amser border canol}{named}{chronos@bordermiddle}%
       \colorlet{chronos current tag colour}{chronos@prifliw}%
       \colorlet{chronos current tag color}{chronos@prifliw}%
-      \ifdim\chronos@height=\pi pt % BEGIN
-        \PackageInfo{chronos}{Timeline height unset. Guessing an appropriate value.}%
+      \ifdim\chronos@height=\pi pt %^^A BEGIN
+        \PackageInfo{chronos}{Timeline height unset. 
+          Guessing an appropriate value.}%
         \ifchronos@yearsonline 
           \chronos@height=10mm
           \ifdim\chronos@borderheight=\pi pt
@@ -4059,7 +4078,7 @@
           \fi
         \fi
       \fi % END \ifdim\chronos@height=\pi pt
-      \ifdim\chronos@borderheight=\pi pt % angen height am hwn ; angen hwn am llinell yshift
+      \ifdim\chronos@borderheight=\pi pt %^^A angen height am hwn ; angen hwn am llinell yshift
         \PackageInfo{chronos}{%
           Timeline border height unset. Guessing an appropriate value.}%
         \ifchronos@yearsonline
@@ -4068,39 +4087,39 @@
           \chronos@borderheight=0pt
         \fi
       \fi
-      \ifchronos@yearsonline % BEGIN \ifchronos@yearsonline
+      \ifchronos@yearsonline %^^A BEGIN \ifchronos@yearsonline
       \else
         \pgfqkeys{/chronos/timeline}{do timeline arrow}%
-        \ifdim\chronos@llinell@yshift=\pi pt % BEGIN
-          \ifdim\chronos@height<5pt % BEGIN
-            \ifdim\chronos@borderheight<.5pt % BEGIN
-              \ifchronos@blynyddoeddisod% BEGIN
+        \ifdim\chronos@llinell@yshift=\pi pt %^^A BEGIN
+          \ifdim\chronos@height<5pt %^^A BEGIN
+            \ifdim\chronos@borderheight<.5pt %^^A BEGIN
+              \ifchronos@blynyddoeddisod%^^A BEGIN
                 \chronos@llinell@yshift=5pt
               \else
-                \ifchronos@blynyddoedduchod% BEGIN
+                \ifchronos@blynyddoedduchod%^^A BEGIN
                   \chronos@llinell@yshift=-5pt
-                \fi % END \ifchronos@blynyddoedduchod
-              \fi % END \ifchronos@blynyddoeddisod
+                \fi %^^A END \ifchronos@blynyddoedduchod
+              \fi %^^A END \ifchronos@blynyddoeddisod
             \else
-              \ifchronos@blynyddoeddisod % BEGIN
+              \ifchronos@blynyddoeddisod %^^A BEGIN
                 \chronos@llinell@yshift=\chronos@borderheight
               \else
-                \ifchronos@blynyddoedduchod % BEGIN
+                \ifchronos@blynyddoedduchod %^^A BEGIN
                   \chronos@llinell@yshift=-\chronos@borderheight
-                \fi % END \ifchronos@blynyddoedduchod
-              \fi % END % \ifchronos@blynyddoeddisod
-            \fi % END \ifdim\chronos@borderheight<.5pt
+                \fi %^^A END \ifchronos@blynyddoedduchod
+              \fi %^^A END % \ifchronos@blynyddoeddisod
+            \fi %^^A END \ifdim\chronos@borderheight<.5pt
           \else
-            \ifchronos@blynyddoeddisod % BEGIN
+            \ifchronos@blynyddoeddisod %^^A BEGIN
               \chronos@llinell@yshift=2pt
             \else
-              \ifchronos@blynyddoedduchod % BEGIN
+              \ifchronos@blynyddoedduchod %^^A BEGIN
                 \chronos@llinell@yshift=-2pt
-              \fi % END \ifchronos@blynyddoedduchod
-            \fi % END  \ifchronos@blynyddoeddisod
-          \fi % END \ifdim\chronos@height<5pt 
-        \fi % END \ifdim\chronos@llinell@yshift=\pi pt
-      \fi % END ifchronos@yearsonline
+              \fi %^^A END \ifchronos@blynyddoedduchod
+            \fi %^^A END  \ifchronos@blynyddoeddisod
+          \fi %^^A END \ifdim\chronos@height<5pt 
+        \fi %^^A END \ifdim\chronos@llinell@yshift=\pi pt
+      \fi %^^A END ifchronos@yearsonline
       \ifx\chronos@templlpl\chronos@templlplc \PackageWarning{chronos}{%
         You've set the main colour and the main background colour to the same.}\fi
       \ifnum\chronos@startyear=0\relax
@@ -4129,13 +4148,13 @@
 %    \end{macrocode}
 % angen côd Martin Scharrer uchod - needs the above code by Martin Scharrer
 %    \begin{macrocode}
-        \ifnum\chronos@endyear>0 % Rmano: https://chat.stackexchange.com/transcript/message/64273912#64273912
+        \ifnum\chronos@endyear>0 %^^A Rmano: https://chat.stackexchange.com/transcript/message/64273912#64273912
           \settowidth\chronos@diwedd@diwedd{\chronos@ffont@cyfnodau\chronos@ce}%
           \addtolength{\chronos@diwedd@diwedd}{\chronos@eramargin}%
         \else
           \let\chronos@ce\relax
         \fi
-        \ifnum\chronos@startyear<0 % Rmano: https://chat.stackexchange.com/transcript/message/64273912#64273912
+        \ifnum\chronos@startyear<0 %^^A Rmano: https://chat.stackexchange.com/transcript/message/64273912#64273912
           \settowidth\chronos@dechrau@dechrau{\chronos@ffont@cyfnodau\chronos@bce}%
           \addtolength{\chronos@dechrau@dechrau}{\chronos@eramargin}%
         \else
@@ -4163,7 +4182,9 @@
 % (but I have no idea what I meant by this \dots)
 %    \begin{macrocode}
       \pgfmathsetmacro\chronos@unit{%
-        (\chronos@width-2*\chronos@timelinemargin-\chronos@dechrau@dechrau-\chronos@diwedd@diwedd)/(\thechronos@enddate-\thechronos@startdate)}%
+        (\chronos@width-2*\chronos@timelinemargin-\chronos@dechrau@dechrau-%
+        \chronos@diwedd@diwedd)/(\thechronos@enddate-\thechronos@startdate)%
+      }%
 %    \end{macrocode}
 %^^A      \chronos@timelineunitlength \dimexpr\chronos@unit pt\relax% using this truncates the dimension and leads to visible inaccuracies e.g. 0.0003pt vs. 0.00031~pt makes a difference over 5,000 units or so!
 %    \begin{macrocode}
@@ -4171,12 +4192,13 @@
         (\thechronos@enddate-\thechronos@startdate)*\chronos@unit}%
       \addtolength{\chronos@dechrau@dechrau}{\chronos@timelinemargin}%
       \addtolength{\chronos@diwedd@diwedd}{\chronos@timelinemargin}%
-      \path (0pt,0pt) ++(-\chronos@dechrau@dechrau,0pt) coordinate (chronos pre);% oedd chronos@dechrau
-      \path (\chronos@amser@diwedd pt,0pt) ++(\chronos@diwedd@diwedd,0pt) coordinate (chronos post);% oedd chronos@diwedd
+      \path (0pt,0pt) ++(-\chronos@dechrau@dechrau,0pt) coordinate (chronos pre);%^^A oedd chronos@dechrau
+      \path (\chronos@amser@diwedd pt,0pt) ++(\chronos@diwedd@diwedd,0pt) 
+        coordinate (chronos post);%^^A oedd chronos@diwedd
       \chronos@inner@halfheight \dimexpr0.5\dimexpr\chronos@height\relax%
       \chronos@outer@halfheight \dimexpr\chronos@inner@halfheight+\dimexpr\chronos@borderheight\relax%
-      \coordinate (chronos top) at (0pt,\chronos@inner@halfheight);% oedd chronos@height
-      \coordinate (chronos base) at (0pt,-\chronos@inner@halfheight);% oedd chronos@depth
+      \coordinate (chronos top) at (0pt,\chronos@inner@halfheight);%^^A oedd chronos@height
+      \coordinate (chronos base) at (0pt,-\chronos@inner@halfheight);%^^A oedd chronos@depth
       \coordinate (chronos foot) at (0pt,-\chronos@outer@halfheight);
       \coordinate (chronos head) at (0pt,\chronos@outer@halfheight);
 %    \end{macrocode}
@@ -4196,8 +4218,18 @@
       \let\timelineht\chronos@height
       \begin{scope}[/chronos/chronos@border@haenen]
         \ifdim\chronos@borderheight>0pt
-          \path [top color=chronos@borderouter, bottom color=chronos@borderinner, middle color=chronos@bordermiddle, /chronos/llinell amser/timeline@border] (chronos pre-top) rectangle (chronos post-head);
-          \path [bottom color=chronos@borderouter, top color=chronos@borderinner, middle color=chronos@bordermiddle, /chronos/llinell amser/timeline@border] (chronos post-base) rectangle (chronos pre-foot);
+          \path [%
+            top color=chronos@borderouter,%
+            bottom color=chronos@borderinner,%
+            middle color=chronos@bordermiddle,%
+            /chronos/llinell amser/timeline@border%
+          ] (chronos pre-top) rectangle (chronos post-head);
+          \path [%
+            bottom color=chronos@borderouter,%
+            top color=chronos@borderinner,%
+            middle color=chronos@bordermiddle,%
+            /chronos/llinell amser/timeline@border%
+          ] (chronos post-base) rectangle (chronos pre-foot);
         \fi
       \end{scope}% [/chronos/chronos@border@haenen]
       \begin{scope}[/chronos/chronos@llinell amser@haenen]
@@ -4205,7 +4237,10 @@
 %    \end{macrocode}
 % fill the timeline if putting the years etc. onto it
 %    \begin{macrocode}
-          \fill [chronos@lliw@cefndir@llinell,/chronos/llinell amser/timeline@line] (chronos pre-top) rectangle (chronos post-base);
+          \fill [%
+            chronos@lliw@cefndir@llinell,%
+            /chronos/llinell amser/timeline@line%
+          ] (chronos pre-top) rectangle (chronos post-base);
 %    \end{macrocode}
 %^^A           \draw [chronos@lliw@cefndir@llinell,/chronos/llinell amser/timeline@line] (chronos pre-top) -- (chronos post-top) (chronos post-base) -- (chronos pre-base);
 %    \begin{macrocode}
@@ -4213,9 +4248,13 @@
 %    \end{macrocode}
 % fel arall, draw
 %    \begin{macrocode}
-          \draw [chronos@lliw@llinell,line width=\chronos@height,/chronos/llinell amser/timeline@line] (chronos pre) -- (chronos post);
+          \draw [%
+            chronos@lliw@llinell,%
+            line width=\chronos@height,%
+            /chronos/llinell amser/timeline@line%
+          ] (chronos pre) -- (chronos post);
 %    \end{macrocode}
-% gweler ateb Qrrbrbirlbel: https://tex.stackexchange.com/a/701524/ i fy nghwestiwn: https://tex.stackexchange.com/q/701518/
+% gweler ateb Qrrbrbirlbel: \url{https://tex.stackexchange.com/a/701524/} i fy nghwestiwn: \url{https://tex.stackexchange.com/q/701518/}
 %    \begin{macrocode}
           \coordinate (tmpa) at (current bounding box.north);
           \coordinate (tmpb) at (current bounding box.south);
@@ -4228,13 +4267,39 @@
 %    \begin{macrocode}
         \ifchronos@markeras % BEGIN
           \ifchronos@yearsonline
-            \node (chronos bce) [text=chronos@lliw@llinell, font=\chronos@ffont@cyfnodau, inner xsep=0pt, xshift=-\chronos@eramargin, anchor=east] at (chronos start) {\chronos@bce};
-            \node (chronos ce) [text=chronos@lliw@llinell, font=\chronos@ffont@cyfnodau, inner xsep=0pt, xshift=\chronos@eramargin, anchor=west] at (chronos end) {\chronos@ce};
+            \node (chronos bce) [%
+              text=chronos@lliw@llinell,%
+              font=\chronos@ffont@cyfnodau,%
+              inner xsep=0pt,%
+              xshift=-\chronos@eramargin,%
+              anchor=east%
+            ] at (chronos start) {\chronos@bce};
+            \node (chronos ce) [%
+              text=chronos@lliw@llinell,%
+              font=\chronos@ffont@cyfnodau,%
+              inner xsep=0pt,%
+              xshift=\chronos@eramargin,%
+              anchor=west%
+            ] at (chronos end) {\chronos@ce};
           \else 
             \settowidth \chronos@templgthc {\chronos@ffont@cyfnodau\chronos@bce}%
-            \node (chronos bce) [/chronos/llinell amser/timeline@years, /chronos/llinell amser/timeline@year@off@line, text=chronos@lliw@llinell, font=\chronos@ffont@cyfnodau, inner xsep=0pt, xshift=-\chronos@eramargin-.5\chronos@templgthc] at (chronos start) {\chronos@bce};
+            \node (chronos bce) [%
+              /chronos/llinell amser/timeline@years,%
+              /chronos/llinell amser/timeline@year@off@line,%
+              text=chronos@lliw@llinell,%
+              font=\chronos@ffont@cyfnodau,%
+              inner xsep=0pt,%
+              xshift=-\chronos@eramargin-.5\chronos@templgthc%
+            ] at (chronos start) {\chronos@bce};
             \settowidth \chronos@templgthc {\chronos@ffont@cyfnodau\chronos@ce}%
-            \node (chronos ce) [/chronos/llinell amser/timeline@years, /chronos/llinell amser/timeline@year@off@line, text=chronos@lliw@llinell, font=\chronos@ffont@cyfnodau, inner xsep=0pt, xshift=\chronos@eramargin+.5\chronos@templgthc] at (chronos end) {\chronos@ce};
+            \node (chronos ce) [%
+              /chronos/llinell amser/timeline@years,%
+              /chronos/llinell amser/timeline@year@off@line,%
+              text=chronos@lliw@llinell,%
+              font=\chronos@ffont@cyfnodau,%
+              inner xsep=0pt,%
+              xshift=\chronos@eramargin+.5\chronos@templgthc%
+            ] at (chronos end) {\chronos@ce};
           \fi
         \fi % END \ifchronos@markeras
         \ifchronos@timeline@showyears % BEGIN
@@ -4252,9 +4317,14 @@
                 \PackageWarning{chronos}{Setting minor step year to zero}%
               \else
                 \IfBooleanExprT {%
-                  (\IntCompareBoolean {\chronos@cam@blwyddyn@fach} > {0}) && ! (\LegacyBoolean {chronos@minoryears}) && ! (\LegacyBoolean {chronos@marks@minor}) && (\LegacyBoolean {chronos@marks@bare})
+                  (\IntCompareBoolean {\chronos@cam@blwyddyn@fach} > {0}) && 
+                  ! (\LegacyBoolean {chronos@minoryears}) && 
+                  ! (\LegacyBoolean {chronos@marks@minor}) && 
+                  (\LegacyBoolean {chronos@marks@bare})
                 }{%
-                  \PackageWarning{chronos}{Setting minor step year to zero so your marks are evenly spaced}%
+                  \PackageWarning{chronos}{%
+                    Setting minor step year to zero so your marks are evenly spaced%
+                  }%
                   \def\chronos@cam@blwyddyn@fach{0}%
                 }%
               \fi
@@ -4264,12 +4334,16 @@
               \let\chronos@cam@blwyddyn@fawr\chronos@cam@blwyddyn@fach
               \def\chronos@cam@blwyddyn@fach{0}%
               \PackageWarning{chronos}{%
-                Using minor step year as step year and setting minor step year to zero}%
+                Using minor step year as step year and setting minor step %
+                  year to zero%
+              }%
             }{% 
               \PackageWarning{chronos}{%
-                You have not specified how frequently years should be marked on the timeline. 
+                You have not specified how frequently years should be marked %
+                  on the timeline. 
                 Guessing appropriate values. 
-                Set step major year and/or step minor year to specify}%
+                Set step major year and/or step minor year to specify%
+              }%
               \ifnum\value{chronos@tempcnta}>1500
                 \def\chronos@cam@blwyddyn@fawr{500}%
                 \def\chronos@cam@blwyddyn@fach{100}%
@@ -4317,8 +4391,12 @@
               \fi
             \fi
           }%
-          \ifnum\chronos@cam@blwyddyn@fach=0 \let\chronos@tempv\chronos@cam@blwyddyn@fawr \else \let\chronos@tempv\chronos@cam@blwyddyn@fach \fi
-          \IfExistF \chronos@camrhaniadau {% rhaid \chronos@marks@baretrue o achos y côd uchod
+          \ifnum\chronos@cam@blwyddyn@fach=0 
+            \let\chronos@tempv\chronos@cam@blwyddyn@fawr
+          \else 
+              \let\chronos@tempv\chronos@cam@blwyddyn@fach 
+          \fi
+          \IfExistF \chronos@camrhaniadau {%^^A rhaid \chronos@marks@baretrue o achos y côd uchod
             \ifnum\value{chronos@tempcnta}<5
               \chronos@marks@baretrue
               \PackageInfo{chronos}{%
@@ -4364,16 +4442,23 @@
                 \stepcounter{chronos@startmarkyear}%
               \fi % \ifx\chronos@startmonth\tempa
             \fi % \ifnum\thechronos@startyear=\thechronos@endyear
-            \pgfmathsetmacro\chronos@tempremainder{int(mod(\thechronos@startmarkyear,\chronos@tempv))}%
+            \pgfmathsetmacro\chronos@tempremainder{%
+              int(mod(\thechronos@startmarkyear,\chronos@tempv))}%
             \ifnum\chronos@tempremainder=0\relax
             \else
-              \IfBooleanExprTF { ! (\LegacyBoolean{chronos@yearzero}) && (\IntCompareBoolean{\thechronos@startmarkyear}{=}{1}) }{%
+              \IfBooleanExprTF {%
+                ! (\LegacyBoolean{chronos@yearzero}) && 
+                (\IntCompareBoolean{\thechronos@startmarkyear}{=}{1}) %
+              }{%
                 \setcounter{chronos@startmarkyear}{0}% => 1 fel chronos@startmarkyear
               }{%
                 \ifnum\chronos@tempremainder<0
-                  \pgfmathsetcounter{chronos@startmarkyear}{int(\thechronos@startmarkyear-\chronos@tempremainder)}%
+                  \pgfmathsetcounter{chronos@startmarkyear}{%
+                    int(\thechronos@startmarkyear-\chronos@tempremainder)}%
                 \else
-                  \pgfmathparse{int(\thechronos@startmarkyear-\chronos@tempremainder+\chronos@tempv)}%
+                  \pgfmathparse{%
+                    int(\thechronos@startmarkyear-\chronos@tempremainder+\chronos@tempv)%
+                  }%
                   \ifnum\pgfmathresult>\thechronos@endyear
                     \PackageWarning{chronos}{Ignoring steps}%
                   \else
@@ -4388,25 +4473,50 @@
             \ifnum\pgfmathresult=0\relax
             \else
               \PackageWarning{chronos}{%
-                You have explicitly requested years marked on your timeline which are not modulo the steps you have specified. 
-                I'm setting the year format to show full years, which should make the result a bit more intelligible.}%
+                You have explicitly requested years marked on your timeline %
+                which are not modulo the steps you have specified. 
+                I'm setting the year format to show full years, which should %
+                make the result a bit more intelligible.%
+              }%
               \chronos@setminoryearformat{!Y}%
             \fi
           }% \IfFreeTF \chronos@stepfrom
           \ifnum\chronos@cam@blwyddyn@fach=0
-            \pgfmathsetmacro\chronos@nextstep{int(((\thechronos@startmarkyear+\chronos@cam@blwyddyn@fawr)>\thechronos@endyear) ? \thechronos@endyear : (\thechronos@startmarkyear+\chronos@cam@blwyddyn@fawr))}%
+            \pgfmathsetmacro\chronos@nextstep{%
+              int(((\thechronos@startmarkyear+\chronos@cam@blwyddyn@fawr)>\thechronos@endyear) 
+              ? \thechronos@endyear : 
+              (\thechronos@startmarkyear+\chronos@cam@blwyddyn@fawr))%
+            }%
           \else
-            \pgfmathsetmacro\chronos@nextstep{int(((\thechronos@startmarkyear+\chronos@cam@blwyddyn@fach)>\thechronos@endyear) ? \thechronos@endyear : (\thechronos@startmarkyear+\chronos@cam@blwyddyn@fach))}%
+            \pgfmathsetmacro\chronos@nextstep{%
+              int(((\thechronos@startmarkyear+\chronos@cam@blwyddyn@fach)>\thechronos@endyear) 
+              ? \thechronos@endyear : 
+              (\thechronos@startmarkyear+\chronos@cam@blwyddyn@fach))%
+            }%
           \fi
           \chronos@global@clear@to@clist{tmpa}{}%
-          \IfExistT \chronos@camrhaniadau {\pgfmathsetmacro \chronos@tempml{int(\chronos@camrhaniadau-1)}}%
-          \ifchronos@yearzero\setcounter{chronos@tempcnta}{1}\else\setcounter{chronos@tempcnta}{0}\fi
+          \IfExistT \chronos@camrhaniadau 
+            {\pgfmathsetmacro \chronos@tempml{int(\chronos@camrhaniadau-1)}}%
+          \ifchronos@yearzero
+            \setcounter{chronos@tempcnta}{1}
+          \else
+            \setcounter{chronos@tempcnta}{0}%
+          \fi
           \IfBooleanExprTF {%
-             (\IntCompareBoolean{\chronos@nextstep}{=}{\thechronos@startmarkyear}) || !  (\IntCompareBoolean{\chronos@nextstep}{<}{\thechronos@endyear}) || ( (  (\IntCompareBoolean{\chronos@nextstep}{=}{0}) ||  (\IntCompareBoolean{\thechronos@startmarkyear}{=}{0}) ) &&  (\IntCompareBoolean{\thechronos@startmarkyear}{<}{-\thechronos@endyear}) && ! \LegacyBoolean {chronos@yearzero} )
-          }{% osgoi infinite loop yn pgf \foreach isod
-            \setcounter{chronos@tempcntb}{\thechronos@endyear}\addtocounter{chronos@tempcntb}{-\thechronos@startyear}%
+             (\IntCompareBoolean{\chronos@nextstep}{=}{\thechronos@startmarkyear})
+             || !  (\IntCompareBoolean{\chronos@nextstep}{<}{\thechronos@endyear}) 
+             || ( (  (\IntCompareBoolean{\chronos@nextstep}{=}{0}) ||  
+             (\IntCompareBoolean{\thechronos@startmarkyear}{=}{0}) ) &&  
+             (\IntCompareBoolean{\thechronos@startmarkyear}{<}{-\thechronos@endyear}) 
+             && ! \LegacyBoolean {chronos@yearzero} )
+          }{%^^A osgoi infinite loop yn pgf \foreach isod
+            \setcounter{chronos@tempcntb}{\thechronos@endyear}%
+            \addtocounter{chronos@tempcntb}{-\thechronos@startyear}%
             \IfBooleanExprT {%
-              ! \LegacyBoolean {chronos@yearzero} &&  (\IntCompareBoolean{\thechronos@startmarkyear}{>}{-\thechronos@endyear}) &&   (  (\IntCompareBoolean{\chronos@nextstep}{=}{0}) ||  (\IntCompareBoolean{\thechronos@startmarkyear}{=}{0}) )
+              ! \LegacyBoolean {chronos@yearzero} &&  
+              (\IntCompareBoolean{\thechronos@startmarkyear}{>}{-\thechronos@endyear}) 
+              &&   (  (\IntCompareBoolean{\chronos@nextstep}{=}{0}) ||  
+              (\IntCompareBoolean{\thechronos@startmarkyear}{=}{0}) )
             } {\addtocounter{chronos@tempcntb}{-1}}%
             \ifnum\thechronos@tempcntb<2
               \IfExistTF \chronos@camrhaniadau 
@@ -4415,7 +4525,8 @@
                 \ifnum\pgfmathresult=0\relax
                 \else
                   \PackageWarning{%
-                    Since your timeline spans fewer than two years, step divisions must be a factor of 12. 
+                    Since your timeline spans fewer than two years, %
+                    step divisions must be a factor of 12. 
                     I will use 4 if you requested 5 and 6 otherwise}%
                   \ifnum\pgfmathresult=5
                     \def\chronos@camrhaniadau{4}%
@@ -4429,7 +4540,9 @@
                 \ifnum\chronos@startday>1 \stepcounter{chronos@tempcntb}\fi
                 \edef\chronos@tmpstartmonth{\thechronos@tempcntb}%
                 \IfBooleanExprF {%
-                  (\IntCompareBoolean{\chronos@tmpstartmonth}{=}{\chronos@endmonth}) && (\IntCompareBoolean{\thechronos@startyear}{=}{\thechronos@endyear})
+                  (\IntCompareBoolean{\chronos@tmpstartmonth}{=}{\chronos@endmonth}) 
+                  && 
+                  (\IntCompareBoolean{\thechronos@startyear}{=}{\thechronos@endyear})
                 }
                 {%
                   \pgfmathsetcounter{chronos@tempcntc}{int{12/\chronos@camrhaniadau}}%
@@ -4437,7 +4550,8 @@
                   \ifnum\thechronos@tempcntb>11
                     \edef\chronos@tempu{\chronos@tmpstartmonth,12}%
                   \else
-                    \edef\chronos@tempu{\chronos@tmpstartmonth,\thechronos@tempcntb,...,12}%
+                    \edef\chronos@tempu{%
+                      \chronos@tmpstartmonth,\thechronos@tempcntb,...,12}%
                   \fi
                   \foreach \m [expand list] in {\chronos@tempu}%
                   {%
@@ -4446,9 +4560,13 @@
                       \breakforeach
                     \else
                       \ifnum\m=1
-                        \chronos@global@to@clist*+{tmpa}{\thechronos@tempadate/\thechronos@startyear/\thechronos@startyear}%
+                        \chronos@global@to@clist*+{tmpa}{%
+                          \thechronos@tempadate/\thechronos@startyear/\thechronos@startyear%
+                        }%
                       \else
-                        \chronos@global@to@clist*+{tmpa}{\thechronos@tempadate/-5000/\thechronos@startyear}%
+                        \chronos@global@to@clist*+{tmpa}{%
+                          \thechronos@tempadate/-5000/\thechronos@startyear%
+                        }%
                       \fi % \m=1
                     \fi % \thechronos@tempadate>\thechronos@enddate
                   }% \foreach \m in {\chronos@tmpstartmonth,...,12}
@@ -4459,41 +4577,56 @@
                     \else
                       \edef\chronos@tempu{1,\thechronos@tempcntc}%
                     \fi
-                    \foreach \m [expand list] in {\chronos@tempu} % {1,...,\chronos@endmonth}
+                    \foreach \m [expand list] in {\chronos@tempu} %^^A {1,...,\chronos@endmonth}
                     {%
-                      \chronos@set@date {\thechronos@endyear}{\m}{01}{tempa}% awto-cywiro am flwyddyn sero
+                      \chronos@set@date {\thechronos@endyear}{\m}{01}{tempa}%^^A awto-cywiro am flwyddyn sero
                       \ifnum\thechronos@tempadate>\thechronos@enddate
                         \breakforeach
                       \else
                         \ifnum\m=1
-                          \chronos@global@to@clist*+{tmpa}{\thechronos@tempadate/\thechronos@endyear/\thechronos@endyear}%
+                          \chronos@global@to@clist*+{tmpa}{%
+                            \thechronos@tempadate/\thechronos@endyear/\thechronos@endyear%
+                          }%
                         \else
-                          \chronos@global@to@clist*+{tmpa}{\thechronos@tempadate/-5000/\thechronos@endyear}%
-                        \fi % \m=1
-                      \fi % \thechronos@tempadate>\thechronos@enddate
-                    }% \foreach \m in {1,...,\chronos@endmonth}
+                          \chronos@global@to@clist*+{tmpa}{%
+                            \thechronos@tempadate/-5000/\thechronos@endyear%
+                          }%
+                        \fi %^^A \m=1
+                      \fi %^^A \thechronos@tempadate>\thechronos@enddate
+                    }%^^A \foreach \m in {1,...,\chronos@endmonth}
                   \fi % \thechronos@startyear<\thechronos@endyear
-                  }% \ifboolexpr { test {\ifnum\thechronos@tmpstartmonth=\thechronos@endmonth} and test {\ifnum\thechronos@startyear=\thechronos@endyear} }
-              }{% \IfExistTF \chronos@camrhaniadau F
-                \chronos@global@to@clist*+{tmpa}{\thechronos@startdate/\thechronos@startmarkyear/\thechronos@startmarkyear,\thechronos@enddate/\thechronos@endyear/\thechronos@endyear}%
-              }% \IfExistTF \chronos@camrhaniadau
+                  }%^^A \ifboolexpr { test {\ifnum\thechronos@tmpstartmonth=\thechronos@endmonth} and test {\ifnum\thechronos@startyear=\thechronos@endyear} }
+              }{%^^A \IfExistTF \chronos@camrhaniadau F
+                \chronos@global@to@clist*+{tmpa}{%
+                  \thechronos@startdate/\thechronos@startmarkyear/\thechronos@startmarkyear,%
+                  \thechronos@enddate/\thechronos@endyear/\thechronos@endyear%
+                }%
+              }%^^A \IfExistTF \chronos@camrhaniadau
               \chronos@marks@barefalse
             \else
-              \foreach \b [evaluate=\b as \i using {((\b==0)&&(\thechronos@tempcnta==0)) ? 1 : int(\b)}] in {\thechronos@startmarkyear,\thechronos@endyear} {%
-                \chronos@set@date{\i}{01}{01}{year}% awto-cywiro am flwyddyn sero
+              \foreach \b [%
+                evaluate=\b as \i using {((\b==0)&&(\thechronos@tempcnta==0)) ? 1 : int(\b)}%
+              ] in {\thechronos@startmarkyear,\thechronos@endyear} {%
+                \chronos@set@date{\i}{01}{01}{year}%^^A awto-cywiro am flwyddyn sero
                 \chronos@global@to@clist*+{tmpa}{\thechronos@yeardate/\b/\i}%
               }% 
             \fi % \ifnum\thechronos@tempcntb<2
           }{%
-            \foreach \b [evaluate=\b as \i using {((\b==0)&&(\thechronos@tempcnta==0)) ? 1 : int(\b)}] in {\thechronos@startmarkyear,\chronos@nextstep,...,\thechronos@endyear} {%
+            \foreach \b [%
+              evaluate=\b as \i using {((\b==0)&&(\thechronos@tempcnta==0)) ? 1 : int(\b)}%
+            ] in {\thechronos@startmarkyear,\chronos@nextstep,...,\thechronos@endyear} {%
               \chronos@set@date{\i}{01}{01}{year}% awto-cywiro am flwyddyn sero
               \chronos@global@to@clist*+{tmpa}{\thechronos@yeardate/\b/\i}%
             }% 
-          }% \ifboolexpr { test {\ifnumcomp{\chronos@nextstep}{=}{\thechronos@startyear}} or test {\ifnumcomp{\chronos@nextstep}{=}{\thechronos@endyear}} }
+          }%^^A \ifboolexpr { test {\ifnumcomp{\chronos@nextstep}{=}{\thechronos@startyear}} or test {\ifnumcomp{\chronos@nextstep}{=}{\thechronos@endyear}} }
 %    \end{macrocode}
 %^^A           \IfFreeF \bagpuss { \show\chronos@camrhaniadau \ifchronos@marks@bare\show\mebare\else\show\meclothed\fi \chronosshowpreset}
 %    \begin{macrocode}
-          \foreach \d/\b/\chronosyeari [expand list, remember=\chronosyeari as \ilast (initially \pi), remember=\d as \dlast (initially \pi)] in {\chronos@global@from@clist{tmpa}}
+          \foreach \d/\b/\chronosyeari [%
+            expand list,%
+            remember=\chronosyeari as \ilast (initially \pi),%
+            remember=\d as \dlast (initially \pi)%
+          ] in {\chronos@global@from@clist{tmpa}}
           {% BEGIN \foreach \b ...
             \ifnum\d=\dlast\relax % BEGIN
             \else
@@ -4506,16 +4639,32 @@
               \ifnum\dlast=\pi
                 \let\chronos@tempff\chronos@ffont@camaubach
                 \ifchronos@yearsonline
-                \node (chronos phantom year) [rotate around/.style={}, rotate/.style={}, /chronos/llinell amser/timeline@years, /chronos/llinell amser/timeline@year@on@line, font=\chronos@tempff] at (chronos start) {\phantom{1}};
+                \node (chronos phantom year) [%
+                  rotate around/.style={},%
+                  rotate/.style={},%
+                  /chronos/llinell amser/timeline@years,%
+                  /chronos/llinell amser/timeline@year@on@line,%
+                  font=\chronos@tempff%
+                ] at (chronos start) {\phantom{1}};
                 \else
-                \node (chronos phantom year) [rotate around/.style={}, rotate/.style={}, /chronos/llinell amser/timeline@years, /chronos/llinell amser/timeline@year@off@line, font=\chronos@tempff, fill=none] at (chronos start) {\phantom{\chronos@showyear[\chronos@minoryearformat]{1}}};
+                \node (chronos phantom year) [%
+                  rotate around/.style={},%
+                  rotate/.style={},%
+                  /chronos/llinell amser/timeline@years,%
+                  /chronos/llinell amser/timeline@year@off@line,%
+                  font=\chronos@tempff,%
+                  fill=none%
+                ] at (chronos start) 
+                  {\phantom{\chronos@showyear[\chronos@minoryearformat]{1}}};
                 \fi
               \fi % \ifnum\dlast=\pi
               \ifnum\b=-5000
                 \ifchronos@yearsonline
-                  \path [/chronos/temp@on] (chronos phantom year.south -| chronos date \d) -- (chronos phantom year.north -| chronos date \d);
+                  \path [/chronos/temp@on] (chronos phantom year.south -| chronos date \d) -- 
+                    (chronos phantom year.north -| chronos date \d);
                 \else
-                  \path [/chronos/temp@off] (chronos date \d)  -- ( chronos date \d |- chronos phantom year.\chronos@timelineyearsanchor) ;
+                  \path [/chronos/temp@off] (chronos date \d)  -- 
+                    ( chronos date \d |- chronos phantom year.\chronos@timelineyearsanchor) ;
                 \fi
               \else % \ifnum\b=-5000
                 \coordinate (chronos year \chronosyeari) at (\chronos@tempa pt,0pt);
@@ -4536,7 +4685,9 @@
                 \fi % \ifnum\b=\thechronos@startmarkyear
                 \ifnum\b=\chronos@nextstep
                   \ifchronos@marks@bare
-                    \pgfmathsetmacro\chronos@tempg{((\d-\chronos@firstmarkedyeardate)*\chronos@unit)/\chronos@camrhaniadau}%
+                    \pgfmathsetmacro\chronos@tempg{%
+                      ((\d-\chronos@firstmarkedyeardate)*\chronos@unit)/\chronos@camrhaniadau%
+                    }%
                     \global\let\chronos@tempg\chronos@tempg
                   \fi
                 \fi % \ifnum\b=\chronos@nextstep
@@ -4585,29 +4736,44 @@
                 \fi
                 \ifchronos@yearsonline % BEGIN ifchronos@yearsonline
                   \ifchronos@temp % BEGIN if labelling era switch or not switching here, use a node
-                    \node (chronos year \chronosyeari) [/chronos/llinell amser/timeline@years, /chronos/llinell amser/timeline@year@on@line, font=\chronos@tempff] at (chronos year \chronosyeari) {\chronos@showyear[\chronos@temph]{\chronosyeari}};
+                    \node (chronos year \chronosyeari) [%
+                      /chronos/llinell amser/timeline@years,%
+                      /chronos/llinell amser/timeline@year@on@line,%
+                      font=\chronos@tempff%
+                    ] at (chronos year \chronosyeari) 
+                      {\chronos@showyear[\chronos@temph]{\chronosyeari}};
                   \fi % END \ifchronos@temp
                   \ifchronos@marks % BEGIN
-                    \path [/chronos/temp@on] (chronos year \chronosyeari.south) -- (chronos year \chronosyeari |- chronos base);% rhag ofn rotate (pwy sy'n gwybod?)
-                    \path [/chronos/temp@on] (chronos year \chronosyeari.north) --  (chronos year \chronosyeari |- chronos top);% rhag ofn rotate (pwy sy'n gwybod?)
+                    \path [/chronos/temp@on] (chronos year \chronosyeari.south) -- 
+                      (chronos year \chronosyeari |- chronos base);% rhag ofn rotate (pwy sy'n gwybod?)
+                    \path [/chronos/temp@on] (chronos year \chronosyeari.north) -- 
+                      (chronos year \chronosyeari |- chronos top);% rhag ofn rotate (pwy sy'n gwybod?)
                     \ifchronos@marks@bare % BEGIN
                       \ifnum\dlast=\pi\relax % BEGIN
                       \else
                         \ifnum\chronos@camrhaniadau>1 % BEGIN
-                          \foreach \m [evaluate=\m as \n using {int(\m-1)}] in {2,...,\chronos@camrhaniadau}
+                          \foreach \m [evaluate=\m as \n using {int(\m-1)}] 
+                            in {2,...,\chronos@camrhaniadau}
                           {%
-                            \path [/chronos/llinell amser/timeline@bare@mark@on@line] ([xshift={-\n*\chronos@tempg pt}]chronos year \chronosyeari |- chronos phantom year.south) -- ([xshift={-\n*\chronos@tempg pt}]chronos year \chronosyeari |- chronos phantom year.north);
+                            \path [%
+                              /chronos/llinell amser/timeline@bare@mark@on@line%
+                            ] ([xshift={-\n*\chronos@tempg pt}]chronos year \chronosyeari |- chronos phantom year.south)
+                              -- ([xshift={-\n*\chronos@tempg pt}]chronos year \chronosyeari |- chronos phantom year.north);
                           }%
                           \ifnum\b=\chronos@nextstep % BEGIN
                             \path (chronos year \ilast);
                             \pgfgetlastxy{\chronos@tempgx}{\chronos@tempgy}%
-                            \setlength \chronos@templgtha{\chronos@tempgx-\chronos@tempg pt}%
+                            \setlength \chronos@templgtha{%
+                              \chronos@tempgx-\chronos@tempg pt}%
                             \ifdim\chronos@templgtha<0pt\relax % BEGIN
                             \else
                               \foreach \n in {1,...,\chronos@tempml}
                               {%
                                 \coordinate (a) at (\chronos@templgtha,0pt);
-                                \path [/chronos/llinell amser/timeline@bare@mark@on@line]  (a |- chronos phantom year.south) -- (a |- chronos phantom year.north);
+                                \path [%
+                                  /chronos/llinell amser/timeline@bare@mark@on@line%
+                                ]  (a |- chronos phantom year.south) -- 
+                                  (a |- chronos phantom year.north);
                                 \addtolength \chronos@templgtha{-\chronos@tempg pt}%
                                 \ifdim\chronos@templgtha<0pt 
                                   \breakforeach
@@ -4629,7 +4795,11 @@
                               \foreach \n in {1,...,\chronos@tempml}
                               {%
                                 \coordinate (a) at (\chronos@templgtha,0pt);
-                                \path [/chronos/llinell amser/timeline@bare@mark@on@line]  (a |- chronos phantom year.south) -- (a |- chronos phantom year.north);
+                                \path [%
+                                  /chronos/llinell amser/timeline@bare@mark@on@line%
+                                ]  
+                                  (a |- chronos phantom year.south) -- 
+                                  (a |- chronos phantom year.north);
                                 \addtolength \chronos@templgtha{\chronos@tempg pt}%
                                 \ifdim\chronos@templgtha>\chronos@tempgx 
                                   \breakforeach
@@ -4644,25 +4814,50 @@
                   \fi % END \ifchronos@marks
                 \else % chronos@yearsonline yw F
                   \ifchronos@temp % BEGIN if labelling era switch or not switching here, use a node
-                    \node (chronos node year \chronosyeari) [/chronos/llinell amser/timeline@years, /chronos/llinell amser/timeline@year@off@line, font=\chronos@tempff] at (chronos year \chronosyeari) {\chronos@showyear[\chronos@temph]{\chronosyeari}};
+                    \node (chronos node year \chronosyeari) [%
+                      /chronos/llinell amser/timeline@years,%
+                      /chronos/llinell amser/timeline@year@off@line,%
+                      font=\chronos@tempff%
+                    ] at (chronos year \chronosyeari) 
+                      {\chronos@showyear[\chronos@temph]{\chronosyeari}};
                   \else
-                    \node (chronos node year \chronosyeari) [/chronos/llinell amser/timeline@years, /chronos/llinell amser/timeline@year@off@line, font=\chronos@ffont@camaumawr, draw=none, fill=none] at (chronos year \chronosyeari) {\phantom{\chronos@showyear[\chronos@temph]{\chronosyeari}}};
+                    \node (chronos node year \chronosyeari) [%
+                      /chronos/llinell amser/timeline@years,%
+                      /chronos/llinell amser/timeline@year@off@line,%
+                      font=\chronos@ffont@camaumawr,%
+                      draw=none,%
+                      fill=none%
+                    ] at (chronos year \chronosyeari) 
+                      {\phantom{\chronos@showyear[\chronos@temph]{\chronosyeari}}};
                   \fi % END % \ifchronos@temp
                   \ifchronos@marks % BEGIN 
                     \ifchronos@temp
                     \else
                       \ifnum\b=0
-                        \path [shorten <=.5*\chronos@height, /chronos/temp@off, /chronos/llinell amser/era switch off line] (\chronos@tempa pt,0pt)  -- (chronos node year \chronosyeari.center -| chronos year \chronosyeari) ;% rhag ofn rotate
+                        \path [%
+                          shorten <=.5*\chronos@height,
+                          /chronos/temp@off,
+                          /chronos/llinell amser/era switch off line%
+                        ] (\chronos@tempa pt,0pt)  -- 
+                          (chronos node year \chronosyeari.center -| chronos year \chronosyeari) 
+                          ;% rhag ofn rotate
                         \chronos@temptrue
                       \fi
                     \fi
-                      \path [shorten <=.5*\chronos@height, /chronos/temp@off] (\chronos@tempa pt,0pt)  -- (chronos node year \chronosyeari.\chronos@timelineyearsanchor -| chronos year \chronosyeari) ;
+                      \path [shorten <=.5*\chronos@height, /chronos/temp@off] 
+                        (\chronos@tempa pt,0pt)  -- 
+                        (chronos node year \chronosyeari.\chronos@timelineyearsanchor -| chronos year \chronosyeari) ;
                     \ifnum\dlast=\pi\relax
                     \else
                       \ifchronos@marks@bare % BEGIN
                         \ifnum\chronos@camrhaniadau>1
                           \foreach \m  [evaluate=\m as \n using {int(\m-1)}] in {2,...,\chronos@camrhaniadau}
-                            \path [shorten <=.5*\chronos@height, /chronos/llinell amser/timeline@bare@mark@off@line] ([xshift={-\n*\chronos@tempg pt}]\chronos@tempa pt,0pt) coordinate (\chronosyeari-\n) -- (\chronosyeari-\n |- chronos node year \chronosyeari.\chronos@timelineyearsanchor);
+                            \path [%
+                              shorten <=.5*\chronos@height, 
+                              /chronos/llinell amser/timeline@bare@mark@off@line%
+                            ] ([xshift={-\n*\chronos@tempg pt}]\chronos@tempa pt,0pt) 
+                              coordinate (\chronosyeari-\n) -- 
+                              (\chronosyeari-\n |- chronos node year \chronosyeari.\chronos@timelineyearsanchor);
                           \ifnum\b=\chronos@nextstep % BEGIN
                             \path (chronos year \ilast);
                             \pgfgetlastxy{\chronos@tempgx}{\chronos@tempgy}%
@@ -4671,7 +4866,11 @@
                             \else
                               \foreach \n in {1,...,\chronos@tempml}
                               {%
-                                \path [shorten <=.5*\chronos@height, /chronos/llinell amser/timeline@bare@mark@off@line] (\chronos@templgtha,0pt) coordinate (a) -- (a |- chronos node year \chronosyeari.\chronos@timelineyearsanchor);
+                                \path [%
+                                  shorten <=.5*\chronos@height,
+                                  /chronos/llinell amser/timeline@bare@mark@off@line%
+                                ] (\chronos@templgtha,0pt) coordinate (a) -- 
+                                  (a |- chronos node year \chronosyeari.\chronos@timelineyearsanchor);
                                 \addtolength \chronos@templgtha{-\chronos@tempg pt}%
                                 \ifdim\chronos@templgtha<0pt \breakforeach\fi
                                 \global\chronos@templgtha\chronos@templgtha
@@ -4690,9 +4889,16 @@
                             \else
                               \foreach \n in {1,...,\chronos@tempml}
                               {%
-                                \path [shorten <=.5*\chronos@height, /chronos/llinell amser/timeline@bare@mark@off@line,magenta] (\chronos@templgtha,0pt) coordinate (a) -- (a |- chronos node year \chronosyeari.\chronos@timelineyearsanchor);
+                                \path [%
+                                  shorten <=.5*\chronos@height,%
+                                  /chronos/llinell amser/timeline@bare@mark@off@line,%
+                                  magenta%
+                                ] (\chronos@templgtha,0pt) coordinate (a) -- 
+                                  (a |- chronos node year \chronosyeari.\chronos@timelineyearsanchor);
                                 \addtolength \chronos@templgtha{\chronos@tempg pt}%
-                                \ifdim\chronos@templgtha>\chronos@tempgx \breakforeach\fi
+                                \ifdim\chronos@templgtha>\chronos@tempgx 
+                                  \breakforeach
+                                \fi
                                 \global\chronos@templgtha\chronos@templgtha
                               }%
                             \fi % END \ifdim\chronos@templgtha<0pt                        
@@ -4711,7 +4917,9 @@
         \else
           \foreach \i in \chronos@coords {%
             \chronos@set@date{\i}{01}{01}{tempa}% awto-cywiro am flwyddyn sero
-            \pgfmathsetmacro\chronos@temph{(\thechronos@tempadate-\thechronos@startdate)*\chronos@unit}%
+            \pgfmathsetmacro\chronos@temph{%
+              (\thechronos@tempadate-\thechronos@startdate)*\chronos@unit%
+            }%
             \edef\chronos@tempa{\chronos@tempayear}\edef\chronos@tempb{\i}%
             \ifx\chronos@tempa\chronos@tempb
               \coordinate (chronos year \i) at (\chronos@temph pt,0pt);
@@ -4729,26 +4937,47 @@
 %    \end{macrocode}
 % phantom nodes - haws i gosodi pethau \textbar\ easy to install things
 %    \begin{macrocode}
-      \begin{scope}[byw,every node/.append style={/chronos/@testun=chronos@prifliw,/chronos/placeholder}]%
+      \begin{scope}[%
+          byw,every node/.append style={%
+            /chronos/@testun=chronos@prifliw,/chronos/placeholder%
+          }%
+        ]%
         \ifnum\chronos@uchod>0
-          \node (u1) [anchor=south west, yshift=\chronos@borderheight+2pt, alias=level 1] at (chronos top -| \chronos@lefelau@at) {\phantom{Enw}u1 \textbar{} level 1\\\phantom{1234}};
+          \node (u1) [%
+            anchor=south west, yshift=\chronos@borderheight+2pt, alias=level 1%
+          ] at (chronos top -| \chronos@lefelau@at) 
+            {\phantom{Enw}u1 \textbar{} level 1\\\phantom{1234}};
           \ifnum\chronos@uchod>1
-            \foreach \i [count=\ino] in {2,...,\chronos@uchod} \node (u\i) [anchor=south west, alias=level \i] at (u\ino.north west) {\phantom{Enw}u\i{} \textbar{} level \i\\\phantom{1234}};
+            \foreach \i [count=\ino] in {2,...,\chronos@uchod} 
+              \node (u\i) [anchor=south west, alias=level \i] at 
+                (u\ino.north west) {%
+                  \phantom{Enw}u\i{} \textbar{} level \i\\\phantom{1234}%
+                };
           \fi
         \fi
         \ifnum\chronos@isod>0
-          \node (i1) [anchor=north west, yshift=-\chronos@borderheight-2pt, alias=level -1] at (chronos base -| \chronos@lefelau@at) {\phantom{Enw}i1 \textbar{} level -1\\\phantom{1234}};
+          \node (i1) [%
+            anchor=north west, yshift=-\chronos@borderheight-2pt, alias=level -1%
+          ] at (chronos base -| \chronos@lefelau@at) 
+            {\phantom{Enw}i1 \textbar{} level -1\\\phantom{1234}};
           \ifnum\chronos@isod>1
-            \foreach \i [count=\ino] in {2,...,\chronos@isod} \node (i\i) [anchor=north west, alias=level -\i] at (i\ino.south west) {\phantom{Enw}i\i{} \textbar{} level -\i\\\phantom{1234}};
+            \foreach \i [count=\ino] in {2,...,\chronos@isod} 
+              \node (i\i) [anchor=north west, alias=level -\i] at 
+                (i\ino.south west) 
+                {\phantom{Enw}i\i{} \textbar{} level -\i\\\phantom{1234}};
           \fi
         \fi
         \ifchronos@showcoords
           \begin{scope}[on chronos overlay layer]
             \ifnum\chronos@uchod>0
-              \foreach \i in {1,...,\chronos@uchod} \draw [help lines, draw=chronos@lliw@node] (u\i.north east) -| (u\i.south west) -| cycle;
+              \foreach \i in {1,...,\chronos@uchod} 
+                \draw [help lines, draw=chronos@lliw@node] (u\i.north east) 
+                  -| (u\i.south west) -| cycle;
             \fi
             \ifnum\chronos@isod>0
-              \foreach \i in {1,...,\chronos@isod} \draw [help lines, draw=chronos@lliw@node] (i\i.north east) -| (i\i.south west) -| cycle;            
+              \foreach \i in {1,...,\chronos@isod} 
+                \draw [help lines, draw=chronos@lliw@node] 
+                  (i\i.north east) -| (i\i.south west) -| cycle;
             \fi
           \end{scope}%[on chronos overlay layer]
         \fi
@@ -4786,16 +5015,22 @@
         \fi
         \ifnum\chronos@uchod=0
           \coordinate (u0) at (current bounding box.north);
-          \PackageWarning{chronos}{Placing (u0) at (current bounding box.north) for headings placement.}%
+          \PackageWarning{chronos}{%
+            Placing (u0) at (current bounding box.north) for headings placement.%
+          }%
         \fi
         \ifdim\chronos@border@penawdau=\pi pt
           \IfIntCompareTF {\chronos@uchod > 0}
           {%    
             \chronos@border@penawdau=15pt
-            \PackageWarning{chronos}{Allowing 15pt plus headings and subheadings drops for headings.}%
+            \PackageWarning{chronos}{%
+              Allowing 15pt plus headings and subheadings drops for headings.%
+            }%
           }{%
             \chronos@border@penawdau=5pt
-            \PackageWarning{chronos}{Allowing 5pt plus headings and subheadings drops for headings.}%
+            \PackageWarning{chronos}{%
+              Allowing 5pt plus headings and subheadings drops for headings.%
+            }%
           }%
           \advance \chronos@border@penawdau by \chronos@heading@drop
           \advance \chronos@border@penawdau by \chronos@subheading@drop@uchod
@@ -4803,19 +5038,27 @@
         \fi
         \ifnum\chronos@isod=0
           \coordinate (i0) at (current bounding box.south);
-          \PackageWarning{chronos}{Placing (i0) at (current bounding box.south) for structural purposes.}%
+          \PackageWarning{chronos}{%
+            Placing (i0) at (current bounding box.south) for structural purposes.%
+          }%
         \fi
         \chronos@templgtha=\chronos@border@penawdau
         \advance\chronos@templgtha by \chronos@border@pen
-        \coordinate (chronos margin top) at ($(u\chronos@uchod.north -| chronos post) + (0pt,\chronos@templgtha)$);
+        \coordinate (chronos margin top) at 
+          ($(u\chronos@uchod.north -| chronos post) + (0pt,\chronos@templgtha)$);
         \chronos@templgtha=\chronos@border@pen
         \advance\chronos@templgtha by \chronos@heading@drop
-        \coordinate (chronos main headings) at ($(chronos margin top) - (0pt,\chronos@templgtha)$);% oedd pen & gwahanol
-        \coordinate (chronos bottom) at ($(i\chronos@isod.south) + (0pt,-\chronos@border@gwaelod)$);% oedd gwaelod
-        \coordinate (chronos upper subheadings) at ($(chronos main headings) - (0pt,\chronos@subheading@drop@uchod)$);% oedd pwy1
-        \coordinate (chronos lower subheadings) at ($(chronos upper subheadings) - (0pt,\chronos@subheading@drop@isod)$);% oedd pwy2
+        \coordinate (chronos main headings) at 
+          ($(chronos margin top) - (0pt,\chronos@templgtha)$);% oedd pen & gwahanol
+        \coordinate (chronos bottom) at 
+          ($(i\chronos@isod.south) + (0pt,-\chronos@border@gwaelod)$);% oedd gwaelod
+        \coordinate (chronos upper subheadings) at 
+          ($(chronos main headings) - (0pt,\chronos@subheading@drop@uchod)$);% oedd pwy1
+        \coordinate (chronos lower subheadings) at 
+          ($(chronos upper subheadings) - (0pt,\chronos@subheading@drop@isod)$);% oedd pwy2
         \coordinate (chronos@de) at ($(chronos post) + (\chronos@border@de,0pt)$);% oedd de
-        \coordinate (chronos@chwith) at ($(chronos pre) + (-\chronos@border@chwith,0pt)$);% oedd chwith
+        \coordinate (chronos@chwith) at 
+          ($(chronos pre) + (-\chronos@border@chwith,0pt)$);% oedd chwith
 %    \end{macrocode}
 %^^A        \coordinate (chronos@chwith1) at ($(chronos pre) + (\chronos@border@chwith,0pt)$);% oedd chwith1
 %    \begin{macrocode}
@@ -4826,11 +5069,17 @@
       \ifchronos@frame
         \scoped[on chronos background layer]{%
           \ifchronos@framedefnyddiobb % if frame uses bb
-            \node (chronos frame) [fit=(current bounding box), /chronos/prif/@frame] {};
+            \node (chronos frame) [%
+              fit=(current bounding box), /chronos/prif/@frame%
+            ] {};
           \else
-            \node (chronos frame) [fit=(chronos margin top -| chronos@de) (chronos bottom -| chronos@chwith), /chronos/prif/@frame] {};
+            \node (chronos frame) [fit=(chronos margin top -| chronos@de) 
+              (chronos bottom -| chronos@chwith), /chronos/prif/@frame] {};
           \fi % \ifchronos@framedefnyddiobb
-          \path (chronos frame.south west) ++(-\chronos@border@allanol,-\chronos@border@allanol) |- (chronos frame.north east) -- ++(\chronos@border@allanol,\chronos@border@allanol);
+          \path (chronos frame.south west) 
+            ++(-\chronos@border@allanol,-\chronos@border@allanol) |- 
+            (chronos frame.north east) -- 
+            ++(\chronos@border@allanol,\chronos@border@allanol);
         }%
       \fi % \ifchronos@frame
       \pgfqkeys{/chronos}{@tikz}%
@@ -4840,24 +5089,47 @@
     \ifchronos@showcoords
       \begin{scope}[on chronos overlay layer]
         \foreach \i/\j in {%
-          chronos foot/-55, chronos head/north, chronos base/-25, chronos top/120, 
-          chronos start/85, chronos end/85, 
-          chronos pre/west, chronos post/east, 
-          chronos pre-top/175, chronos post-top/15, chronos pre-base/south west, chronos post-base/south east, 
-          chronos pre-head/155, chronos post-head/north east, chronos pre-foot/south, chronos post-foot/south,
-          chronos origin/-85,
-          chronos mid/90,
+          chronos foot/-55,%
+          chronos head/north,%
+          chronos base/-25,%
+          chronos top/120,%
+          chronos start/85,%
+          chronos end/85,%
+          chronos pre/west,%
+          chronos post/east,%
+          chronos pre-top/175,%
+          chronos post-top/15,%
+          chronos pre-base/south west,%
+          chronos post-base/south east,%
+          chronos pre-head/155,%
+          chronos post-head/north east,%
+          chronos pre-foot/south,%
+          chronos post-foot/south,%
+          chronos origin/-85,%
+          chronos mid/90,%
           chronos mid-time/-90%
         }
         \node [/chronos/show coord={\j}{\i}] at (\i) {}; 
         \ifchronos@timeline@showyears
-          \node [/chronos/show coord={45}{chronos first marked year}] at (chronos first marked year) {};
+          \node [/chronos/show coord={45}{chronos first marked year}] at 
+            (chronos first marked year) {};
         \fi
         \ifchronos@headings
-          \foreach \i/\j in {chronos main headings/east, chronos bottom/north, chronos upper subheadings/east, chronos lower subheadings/east, chronos margin top/north}
+          \foreach \i/\j in {%
+            chronos main headings/east,%
+            chronos bottom/north,%
+            chronos upper subheadings/east,%
+            chronos lower subheadings/east,%
+            chronos margin top/north%
+          }
           \node [/chronos/show coord={\j}{\i}] at (\i) {};
         \fi
-        \node (chronos@gwybodaeth@coords) [below=2.5pt of current bounding box.south west, anchor=north west, every pin, text=chronos@lliw@coord] {\textbullet{} coordinates};
+        \node (chronos@gwybodaeth@coords) [%
+          below=2.5pt of current bounding box.south west,%
+          anchor=north west,%
+          every pin,%
+          text=chronos@lliw@coord%
+        ] {\textbullet{} coordinates};
       \end{scope}%
     \fi % \ifchronos@showcoords
     \ifchronos@shownodes
@@ -4865,32 +5137,64 @@
         \ifchronos@markeras
           \foreach \i/\j in {chronos bce/south, chronos ce/-95} 
           {%
-            \draw [help lines, draw=chronos@lliw@node] (\i.north west) -| (\i.south east) -| cycle;
+            \draw [help lines, draw=chronos@lliw@node] (\i.north west) -| 
+              (\i.south east) -| cycle;
             \node [/chronos/show node coord={\j}{\i}] at (\i) {};
           }%
         \fi % \ifchronos@markeras
         \ifchronos@frame
-            \draw [help lines, draw=chronos@lliw@node] (chronos frame.north west) -| (chronos frame.south east) -| cycle;
-            \node [/chronos/show node coord={north}{chronos frame}] at (chronos frame.north) {};
+          \draw [help lines, draw=chronos@lliw@node] (chronos frame.north west)
+            -| (chronos frame.south east) -| cycle;
+          \node [/chronos/show node coord={north}{chronos frame}] at 
+            (chronos frame.north) {};
         \fi % \ifchronos@frame
         \ifchronos@showcoords
-          \node (chronos@gwybodaeth@nodes) [right=of chronos@gwybodaeth@coords.base east, anchor=base west, every pin, text=chronos@lliw@node] {\textbullet{} nodes};
+          \node (chronos@gwybodaeth@nodes) [%
+            right=of chronos@gwybodaeth@coords.base east,%
+            anchor=base west,%
+            every pin,%
+            text=chronos@lliw@node%
+          ] {\textbullet{} nodes};
         \else
-          \node (chronos@gwybodaeth@nodes) [below=2.5pt of current bounding box.south west, anchor=north west, every pin, text=chronos@lliw@node] {\textbullet{} nodes};        
+          \node (chronos@gwybodaeth@nodes) [%
+            below=2.5pt of current bounding box.south west,%
+            anchor=north west,%
+            every pin,%
+            text=chronos@lliw@node%
+          ] {\textbullet{} nodes};        
         \fi % \ifchronos@showcoords
       \end{scope}%
     \fi % \ifchronos@shownodes
     \ifchronos@showbb
       \begin{scope}[on chronos overlay layer]
-        \draw [help lines,draw=chronos@lliw@bb] (current bounding box.north east) -| (current bounding box.south west) -| cycle;
-        \node [/chronos/show coordinate={chronos@lliw@bb}{90}{bounding box}{15pt}{}] at (current bounding box.120) {};
+        \draw [help lines,draw=chronos@lliw@bb]
+          (current bounding box.north east) -| (current bounding box.south west)
+            -| cycle;
+        \node [%
+          /chronos/show coordinate={chronos@lliw@bb}{90}{bounding box}{15pt}{}%
+        ] at (current bounding box.120) {};
         \ifchronos@shownodes
-          \node (chronos@gwybodaeth@bb) [right=of chronos@gwybodaeth@nodes.base east, anchor=base west, every pin, text=chronos@lliw@bb] {\textbullet{} bounding box};
+          \node (chronos@gwybodaeth@bb) [%
+            right=of chronos@gwybodaeth@nodes.base east,%
+            anchor=base west,%
+            every pin,%
+            text=chronos@lliw@bb%
+          ] {\textbullet{} bounding box};
         \else
           \ifchronos@showcoords
-            \node (chronos@gwybodaeth@bb) [right=of chronos@gwybodaeth@coords.base east, anchor=base west, every pin, text=chronos@lliw@bb] {\textbullet{} bounding box};
+            \node (chronos@gwybodaeth@bb) [%
+              right=of chronos@gwybodaeth@coords.base east,%
+              anchor=base west,%
+              every pin,%
+              text=chronos@lliw@bb%
+            ] {\textbullet{} bounding box};
           \else
-            \node (chronos@gwybodaeth@bb) [below=2.5pt of current bounding box.south west, anchor=north west, every pin, text=chronos@lliw@bb] {\textbullet{} bounding box};        
+            \node (chronos@gwybodaeth@bb) [%
+              below=2.5pt of current bounding box.south west,%
+              anchor=north west,%
+              every pin,%
+              text=chronos@lliw@bb%
+            ] {\textbullet{} bounding box};        
           \fi % \ifchronos@showcoords
         \fi % \ifchronos@shownodes
       \end{scope}%
@@ -4901,9 +5205,21 @@
 %    \begin{macrocode}
   \chronos@global@clear@to@clist{century_subheadings}%
   \chronos@lliwiau@clear
-  \ifchronos@byw@isod@rhag \global\chronos@byw@isodtrue \else \global\chronos@byw@isodfalse\fi
-  \ifchronos@digwyddiad@isod@rhag \global\chronos@digwyddiad@isodtrue \else \global\chronos@digwyddiad@isodfalse\fi
-  \ifchronos@parhad@isod@rhag \global\chronos@parhad@isodtrue \else \global\chronos@parhad@isodfalse\fi
+  \ifchronos@byw@isod@rhag
+    \global\chronos@byw@isodtrue
+  \else 
+    \global\chronos@byw@isodfalse
+  \fi
+  \ifchronos@digwyddiad@isod@rhag
+    \global\chronos@digwyddiad@isodtrue
+  \else 
+    \global\chronos@digwyddiad@isodfalse
+  \fi
+  \ifchronos@parhad@isod@rhag 
+    \global\chronos@parhad@isodtrue
+  \else 
+    \global\chronos@parhad@isodfalse
+  \fi
   \let\chronosset\@chronosset
 }
 %    \end{macrocode}
@@ -4916,9 +5232,21 @@
 \NewDocumentCommand \@chronosset { s m } {%
   \pgfqkeys{/chronos}{#2}%
   \IfBooleanF{#1}{%
-    \ifchronos@byw@isod\chronos@byw@isod@rhagtrue\else\chronos@byw@isod@rhagfalse\fi
-    \ifchronos@digwyddiad@isod\chronos@digwyddiad@isod@rhagtrue\else\chronos@digwyddiad@isod@rhagfalse\fi
-    \ifchronos@parhad@isod\chronos@parhad@isod@rhagtrue\else\chronos@parhad@isod@rhagfalse\fi
+    \ifchronos@byw@isod
+      \chronos@byw@isod@rhagtrue
+    \else
+      \chronos@byw@isod@rhagfalse
+    \fi
+    \ifchronos@digwyddiad@isod
+      \chronos@digwyddiad@isod@rhagtrue
+    \else
+      \chronos@digwyddiad@isod@rhagfalse
+    \fi
+    \ifchronos@parhad@isod
+      \chronos@parhad@isod@rhagtrue
+    \else
+      \chronos@parhad@isod@rhagfalse
+    \fi
     \chronos@lliwiau@cadw@rhag}}
 \NewDocumentCommand \@@chronosset { s m }
 {%
@@ -4946,10 +5274,19 @@
     \Undefine\chronos@cysylltwyr
     \chronos@byw@cysylltiadtheorifalse % rhag ofn
     \tikzset{byw={enw={??},marw={\year-\month-\day},bu farw=false,#1}}%
-    \ifchronos@eventdatessplit\PackageInfo{chronos}{Setting split false for non-event.}\chronos@eventdatessplitfalse\fi
-    \pgfmathsetmacro\chronos@temph{(\thechronos@genidate-\thechronos@startdate)*\chronos@unit}%
-    \pgfmathsetmacro\chronos@tempk{(\thechronos@marwdate-\thechronos@startdate)*\chronos@unit}%
-    \pgfmathsetmacro\chronos@templ{(\chronos@temph+\chronos@tempk)*\chronos@unit/2}%
+    \ifchronos@eventdatessplit
+      \PackageInfo{chronos}{Setting split false for non-event.}%
+      \chronos@eventdatessplitfalse
+    \fi
+    \pgfmathsetmacro\chronos@temph{%
+      (\thechronos@genidate-\thechronos@startdate)*\chronos@unit
+    }%
+    \pgfmathsetmacro\chronos@tempk{%
+      (\thechronos@marwdate-\thechronos@startdate)*\chronos@unit
+    }%
+    \pgfmathsetmacro\chronos@templ{%
+      (\chronos@temph+\chronos@tempk)*\chronos@unit/2%
+    }%
 %    \end{macrocode}
 % temporary coordinate accurate only for x
 %    \begin{macrocode}
@@ -4972,19 +5309,27 @@
           \ifchronos@bufarw\relax\else\def\chronos@byw@labelmarw{}\fi
           \chronos@dyddiadau@tag{byw}{geni}{geni}{marw}{marw}%
           \ifchronos@temp
-            \def \chronos@cynnwys@dyddiadau {\\\chronos@byw@ffontdyddiad\chronos@byw@labelmarw}%
+            \def \chronos@cynnwys@dyddiadau {%
+              \\\chronos@byw@ffontdyddiad\chronos@byw@labelmarw
+            }%
           \else
-            \def \chronos@cynnwys@dyddiadau {\\\chronos@byw@ffontdyddiad\chronos@byw@labelgeni--\chronos@byw@labelmarw}%
+            \def \chronos@cynnwys@dyddiadau {%
+              \\\chronos@byw@ffontdyddiad\chronos@byw@labelgeni
+              --\chronos@byw@labelmarw
+            }%
           \fi
         \fi
       }%
-      \def \chronos@cynnwys@testun {{\chronos@byw@ffonttestun\chronos@cynnwys@enw}\chronos@cynnwys@dyddiadau}%
+      \def \chronos@cynnwys@testun {%
+        {\chronos@byw@ffonttestun\chronos@cynnwys@enw}\chronos@cynnwys@dyddiadau
+      }%
     }%
     \chronos@creu@llinell {byw}{\chronos@temph pt}{\chronos@tempk pt}{geni}{marw}%
 %    \end{macrocode}
 % final coordinate accurate for x and y
 %    \begin{macrocode}
-    \coordinate (\chronos@byw@tikzname) at ($(\chronos@byw@tikzname{} geni)!1/2!(\chronos@byw@tikzname{} marw)$);
+    \coordinate (\chronos@byw@tikzname) at 
+      ($(\chronos@byw@tikzname{} geni)!1/2!(\chronos@byw@tikzname{} marw)$);
 %    \end{macrocode}
 % creu cylcu ar y lein ; testun - prif node ; testun cylch ; prif gysylltiad
 %    \begin{macrocode}
@@ -4993,7 +5338,9 @@
 %    \end{macrocode}
 %^^A       \scoped[/chronos/middle anchorborder]{% ateb Symbol 1: https://tex.stackexchange.com/a/385953/
 %    \begin{macrocode}
-        \chronos@angorau@theori{testun \chronos@byw@tikzname}{cysylltwr \chronos@byw@tikzname}[connector \chronos@byw@tikzname]{/chronos/@cysylltwr@testun=\chronos@byw@lliw}%
+        \chronos@angorau@theori{testun \chronos@byw@tikzname}%
+          {cysylltwr \chronos@byw@tikzname}[connector \chronos@byw@tikzname]%
+          {/chronos/@cysylltwr@testun=\chronos@byw@lliw}%
 %    \end{macrocode}
 %^^A       }%
 %    \begin{macrocode}
@@ -5003,7 +5350,11 @@
     \else\ifchronos@every@byw@uchod
         \global\chronos@byw@isodfalse
       \else
-        \ifchronos@byw@isod\global\chronos@byw@isodfalse\else\global\chronos@byw@isodtrue\fi
+        \ifchronos@byw@isod
+          \global\chronos@byw@isodfalse
+        \else
+          \global\chronos@byw@isodtrue
+        \fi
       \fi
     \fi
     \chronos@ailosod@nodweddion
@@ -5029,7 +5380,9 @@
 % \textbar{} there was a problem passing every@digwyddiad to digwyddiad (event) when it included \texttt{font=\bs something}
 %    \begin{macrocode}
     \tikzset{digwyddiad={enw={??},#1}}%
-    \pgfmathsetmacro\chronos@temph{(\thechronos@digdate-\thechronos@startdate)*\chronos@unit}%
+    \pgfmathsetmacro\chronos@temph{%
+      (\thechronos@digdate-\thechronos@startdate)*\chronos@unit
+    }%
 %    \end{macrocode}
 % temporary coordinate accurate only for x
 %    \begin{macrocode}
@@ -5041,20 +5394,34 @@
       \ifchronos@onlytext\relax
         \IfExistF \chronos@cynnwys@testun {%
           \IfExistTF  \chronos@cynnwys@enw {%
-            \def\chronos@cynnwys@testun {\chronos@digwyddiad@ffonttestun\chronos@cynnwys@enw}
+            \def\chronos@cynnwys@testun {%
+              \chronos@digwyddiad@ffonttestun
+              \chronos@cynnwys@enw
+            }
           }{%
-            \def \chronos@cynnwys@testun {\chronos@digwyddiad@ffonttestun\chronos@enw@priflythrennu{\chronos@digwyddiad@enw}}%
+            \def \chronos@cynnwys@testun {%
+              \chronos@digwyddiad@ffonttestun
+              \chronos@enw@priflythrennu{\chronos@digwyddiad@enw}%
+            }%
           }%
         }%
       \else
         \IfExistF \chronos@cynnwys@testun {%
           \IfExistF \chronos@cynnwys@dyddiadau {%
-            \def \chronos@cynnwys@dyddiadau {\chronos@showdate@cs[chronos@digwyddiad@fformatdyddiad]{dig}}%
+            \def \chronos@cynnwys@dyddiadau {%
+              \chronos@showdate@cs[chronos@digwyddiad@fformatdyddiad]{dig}%
+            }%
           }%
           \IfExistTF  \chronos@cynnwys@enw {%
-            \def\chronos@cynnwys@testun {\chronos@digwyddiad@ffonttestun\chronos@cynnwys@enw}
+            \def\chronos@cynnwys@testun {%
+              \chronos@digwyddiad@ffonttestun
+              \chronos@cynnwys@enw
+            }
           }{%
-            \def \chronos@cynnwys@testun {\chronos@digwyddiad@ffonttestun\chronos@enw@priflythrennu{\chronos@digwyddiad@enw}}%
+            \def \chronos@cynnwys@testun {%
+              \chronos@digwyddiad@ffonttestun
+              \chronos@enw@priflythrennu{\chronos@digwyddiad@enw}%
+            }%
           }%
         }%
       \fi
@@ -5064,27 +5431,42 @@
         \let\chronos@cynnwys@enw\relax
       }{%
         \IfExistF {\chronos@cynnwys@enw}{%
-          \def \chronos@cynnwys@enw {\chronos@enw@priflythrennu{\chronos@digwyddiad@enw}}%
+          \def \chronos@cynnwys@enw {%
+            \chronos@enw@priflythrennu{\chronos@digwyddiad@enw}%
+          }%
         }%
         \IfExistTF \chronos@cynnwys@dyddiadau {%
           \apptocmd \chronos@cynnwys@dyddiadau {\\}{}{}%
-          \pretocmd \chronos@cynnwys@dyddiadau {\chronos@digwyddiad@ffontdyddiad}{}{}%
+          \pretocmd \chronos@cynnwys@dyddiadau 
+            {\chronos@digwyddiad@ffontdyddiad}{}{}%
         }{%
           \ifchronos@onlytext\let\chronos@cynnwys@dyddiadau\relax
           \else
-            \def \chronos@cynnwys@dyddiadau {\chronos@digwyddiad@ffontdyddiad\chronos@showdate@cs[chronos@digwyddiad@fformatdyddiad]{dig}\\}%
+            \def \chronos@cynnwys@dyddiadau {%
+              \chronos@digwyddiad@ffontdyddiad
+              \chronos@showdate@cs[chronos@digwyddiad@fformatdyddiad]{dig}\\%
+            }%
           \fi
         }%
-        \def \chronos@cynnwys@testun {\chronos@cynnwys@dyddiadau\chronos@digwyddiad@ffonttestun\chronos@cynnwys@enw}%
+        \def \chronos@cynnwys@testun {%
+          \chronos@cynnwys@dyddiadau
+          \chronos@digwyddiad@ffonttestun
+          \chronos@cynnwys@enw
+        }%
       }%
     \fi
 %    \end{macrocode}
 % marcio digwyddiad ar y lein \textbar{} mark event on line
 %    \begin{macrocode}
     \begin{scope}[/chronos/chronos@llinell@haenen]% finalise coordinate placement
-      \path [/chronos/@llinell=\chronos@digwyddiad@lliw] ({\chronos@temph pt,0} |- \chronos@border@coord) -- +(0pt,\chronos@digwyddiad@border) coordinate (\chronos@digwyddiad@tikzname);
+      \path [/chronos/@llinell=\chronos@digwyddiad@lliw] ({\chronos@temph pt,0}
+        |- \chronos@border@coord) -- +(0pt,\chronos@digwyddiad@border) 
+        coordinate (\chronos@digwyddiad@tikzname);
       \ifchronos@eventdatessplit
-        \path [/chronos/@llinell=\chronos@digwyddiad@lliw] ({\chronos@temph pt,0} |- \chronos@border@coord@inv) -- +(0pt,\chronos@digwyddiad@border@inv) coordinate (\chronos@digwyddiad@tikzname-inv);      
+        \path [/chronos/@llinell=\chronos@digwyddiad@lliw] 
+          ({\chronos@temph pt,0} |- \chronos@border@coord@inv) -- 
+          +(0pt,\chronos@digwyddiad@border@inv) coordinate 
+          (\chronos@digwyddiad@tikzname-inv);      
       \fi
     \end{scope}%
 %    \end{macrocode}
@@ -5102,17 +5484,25 @@
       \edef\chronos@tempa{none}%
       \edef\chronos@tempb{\chronos@specialdate}%
       \ifx\chronos@tempa\chronos@tempb
-        \def\chronos@tempbd{\chronos@showdate@cs[chronos@digwyddiad@fformatdyddiad]{dig}}%
+        \def\chronos@tempbd{%
+          \chronos@showdate@cs[chronos@digwyddiad@fformatdyddiad]{dig}%
+        }%
       \else
         \let\chronos@tempbd\chronos@specialdate\gdef\chronos@specialdate{none}%
       \fi
-      \scoped[/chronos/chronos@llinell amser@haenen]{\node [/chronos/event year on line] at (\chronos@temph pt,0pt) {\chronos@tempbd};}%
+      \scoped[/chronos/chronos@llinell amser@haenen]{%
+        \node [/chronos/event year on line] at (\chronos@temph pt,0pt)
+          {\chronos@tempbd};%
+      }%
     \fi
     \ifchronos@digwyddiad@cysylltiadtheori
 %    \end{macrocode}
 %^^A       \scoped[/chronos/middle anchorborder]{% ateb Symbol 1: https://tex.stackexchange.com/a/385953/
 %    \begin{macrocode}
-        \chronos@angorau@theori{testun \chronos@digwyddiad@tikzname}{cysylltwr \chronos@digwyddiad@tikzname}[connector \chronos@digwyddiad@tikzname]{/chronos/@cysylltwr@testun=\chronos@digwyddiad@lliw}%
+        \chronos@angorau@theori{testun \chronos@digwyddiad@tikzname}%
+          {cysylltwr \chronos@digwyddiad@tikzname}%
+          [connector \chronos@digwyddiad@tikzname]%
+          {/chronos/@cysylltwr@testun=\chronos@digwyddiad@lliw}%
 %    \end{macrocode}
 %^^A       }%
 %    \begin{macrocode}
@@ -5122,7 +5512,11 @@
     \else\ifchronos@every@digwyddiad@uchod
         \global\chronos@digwyddiad@isodfalse
       \else
-        \ifchronos@digwyddiad@isod\global\chronos@digwyddiad@isodfalse\else\global\chronos@digwyddiad@isodtrue\fi
+        \ifchronos@digwyddiad@isod
+          \global\chronos@digwyddiad@isodfalse
+        \else
+          \global\chronos@digwyddiad@isodtrue
+        \fi
       \fi
     \fi
     \chronos@ailosod@nodweddion
@@ -5146,10 +5540,19 @@
     \Undefine\chronos@cysylltwyr
     \chronos@parhad@cysylltiadtheorifalse % rhag ofn
     \tikzset{parhad={enw={??},diwedd={\year-\month-\day},gorffenedig=false,#1}}%
-    \ifchronos@eventdatessplit\PackageInfo{chronos}{Setting split false for non-event.}\chronos@eventdatessplitfalse\fi
-    \pgfmathsetmacro\chronos@temph{(\thechronos@thingdate-\thechronos@startdate)*\chronos@unit}%
-    \pgfmathsetmacro\chronos@tempk{(\thechronos@otherthingdate-\thechronos@startdate)*\chronos@unit}%
-    \pgfmathsetmacro\chronos@templ{(\chronos@temph+\chronos@tempk)*\chronos@unit/2}%
+    \ifchronos@eventdatessplit
+      \PackageInfo{chronos}{Setting split false for non-event.}%
+      \chronos@eventdatessplitfalse
+    \fi
+    \pgfmathsetmacro\chronos@temph{%
+      (\thechronos@thingdate-\thechronos@startdate)*\chronos@unit
+    }%
+    \pgfmathsetmacro\chronos@tempk{%
+      (\thechronos@otherthingdate-\thechronos@startdate)*\chronos@unit
+    }%
+    \pgfmathsetmacro\chronos@templ{%
+      (\chronos@temph+\chronos@tempk)*\chronos@unit/2%
+    }%
 %    \end{macrocode}
 % temporary coordinate accurate only for x
 %    \begin{macrocode}
@@ -5234,7 +5637,11 @@
         \def\chronos@cysylltwyr{\chronos@theori@angor}%
       }%
     }{%
-      \ifchronos@theori@isod\def\chronos@theori@angor{north}\else\def\chronos@theori@angor{south}\fi
+      \ifchronos@theori@isod
+        \def\chronos@theori@angor{north}%
+      \else
+        \def\chronos@theori@angor{south}
+      \fi
     }%
     \IfExistTF \chronos@cynnwys@testun {%
       \let\chronos@cynnwys@enw\relax
@@ -5247,12 +5654,18 @@
 %    \end{macrocode}
 % creu testun \textbar{} text tag
 %    \begin{macrocode}
-    \chronos@creu@testun@tag[alias=\chronos@theori@tikzname]{theori}{\chronos@theori@ffonttestun\chronos@cynnwys@testun}%
+    \chronos@creu@testun@tag[alias=\chronos@theori@tikzname]{theori}{%
+      \chronos@theori@ffonttestun\chronos@cynnwys@testun}%
 %    \end{macrocode}
 %^^A     \begin{scope}[/chronos/middle anchorborder]% ateb Symbol 1: https://tex.stackexchange.com/a/385953/
 %    \begin{macrocode}
       \IfExistT \chronos@cysylltwyr{%
-        \chronos@angorau@theori{\chronos@theori@enw}{cysylltwr \chronos@theori@enw}[connector \chronos@theori@enw]{/chronos/@cysylltwr@testun=\chronos@theori@lliw}}%
+        \chronos@angorau@theori{\chronos@theori@enw}{%
+          cysylltwr \chronos@theori@enw
+        }[connector \chronos@theori@enw]{%
+          /chronos/@cysylltwr@testun=\chronos@theori@lliw
+        }%
+      }%
 %    \end{macrocode}
 %^^A     \end{scope}%
 %    \begin{macrocode}
@@ -5274,9 +5687,16 @@
       \@for \xx:=\chronos@cysylltwyr \do {%
         \stepcounter{chronos@theori@countanchors}%
         \ifnum\value{chronos@theori@countanchors}=1%
-          \node (#2) [#4, alias=#2\thechronos@theori@countanchors, alias=#3, alias=#3\thechronos@theori@countanchors] at (#1.middle \xx) {};
+          \node (#2) [%
+            #4,%
+            alias=#2\thechronos@theori@countanchors,%
+            alias=#3,%
+            alias=#3\thechronos@theori@countanchors
+          ] at (#1.middle \xx) {};
         \else
-          \node (#2\thechronos@theori@countanchors) [#4, alias=#3\thechronos@theori@countanchors] at (#1.middle \xx) {};
+          \node (#2\thechronos@theori@countanchors) [%
+            #4, alias=#3\thechronos@theori@countanchors
+          ] at (#1.middle \xx) {};
         \fi
       }%
     \end{scope}%
@@ -5297,20 +5717,45 @@
 %    \end{macrocode}
 %^^A  % ni all wneud y cam hwn a'r un nesaf gyda'i gilydd - wn i ddim yn siwr pam lai
 %    \begin{macrocode}
-    \coordinate [/chronos/every@cylch cylch theori, /utils/exec=\pgfkeysalsofrom{\chronos@cadw}] (\chronos@cylchtheori@tikzname1) at  (chronos@cylchtheori@at);
-    \path [/chronos/every@cylch cylch theori] (\chronos@cylchtheori@tikzname1) circle (\chronos@cylchtheori@bach) circle (\chronos@cylchtheori@mawr);
+    \coordinate [%
+      /chronos/every@cylch cylch theori,%
+      /utils/exec=\pgfkeysalsofrom{\chronos@cadw}%
+    ] (\chronos@cylchtheori@tikzname1) at  (chronos@cylchtheori@at);
+    \path [/chronos/every@cylch cylch theori] (\chronos@cylchtheori@tikzname1) 
+      circle (\chronos@cylchtheori@bach) circle (\chronos@cylchtheori@mawr);
     \pgfmathsetlength\chronos@templgtha{\chronos@cylchtheori@bach+0.5pt}%
     \pgfmathsetlength\chronos@templgthc{\chronos@cylchtheori@mawr-0.5pt}%
     \pgfmathsetlength\chronos@templgthb{\chronos@cylchtheori@mawr+2pt}%
-    \coordinate (\chronos@cylchtheori@tikzname2) at ($(\chronos@cylchtheori@tikzname1) - (\chronos@templgtha,0)$);
-    \coordinate (\chronos@cylchtheori@tikzname3) at ($(\chronos@cylchtheori@tikzname1) - (\chronos@templgthc,0)$);
-    \coordinate (\chronos@cylchtheori@tikzname4) at ($(\chronos@cylchtheori@tikzname1) + (0,\chronos@templgthb)$);
-    \coordinate (\chronos@cylchtheori@tikzname5) at ($(\chronos@cylchtheori@tikzname1) - (0,\chronos@templgthb)$);
-    \path [/chronos/every@testun cylch theori/.expanded={\ \chronos@cylchtheori@circletext@uchod\ }] (\chronos@cylchtheori@tikzname2) arc (180:0:\chronos@templgtha);
-    \path [/chronos/every@testun cylch theori/.expanded={\chronos@cylchtheori@circletext@isod}] (\chronos@cylchtheori@tikzname3) arc (180:360:\chronos@templgthc);
-    \node (label above \chronos@cylchtheori@tikzname) [anchor=south, /chronos/theori/cylchau/@label] at (\chronos@cylchtheori@tikzname4) {\chronos@cylchtheori@label@uchod};
-    \node (label below \chronos@cylchtheori@tikzname) [anchor=north, /chronos/theori/cylchau/@label] at (\chronos@cylchtheori@tikzname5) {\chronos@cylchtheori@label@isod};
-    \node (\chronos@cylchtheori@tikzname) [fit=(label below \chronos@cylchtheori@tikzname) (label above \chronos@cylchtheori@tikzname) (\chronos@cylchtheori@tikzname4) (\chronos@cylchtheori@tikzname5)] {};
+    \coordinate (\chronos@cylchtheori@tikzname2) at 
+      ($(\chronos@cylchtheori@tikzname1) - (\chronos@templgtha,0)$);
+    \coordinate (\chronos@cylchtheori@tikzname3) at 
+      ($(\chronos@cylchtheori@tikzname1) - (\chronos@templgthc,0)$);
+    \coordinate (\chronos@cylchtheori@tikzname4) at 
+      ($(\chronos@cylchtheori@tikzname1) + (0,\chronos@templgthb)$);
+    \coordinate (\chronos@cylchtheori@tikzname5) at 
+      ($(\chronos@cylchtheori@tikzname1) - (0,\chronos@templgthb)$);
+    \path [%
+      /chronos/every@testun cylch theori/.expanded={%
+        \ \chronos@cylchtheori@circletext@uchod\ %
+      }%
+    ] (\chronos@cylchtheori@tikzname2) arc (180:0:\chronos@templgtha);
+    \path [%
+      /chronos/every@testun cylch theori/.expanded={%
+        \chronos@cylchtheori@circletext@isod
+      }%
+    ] (\chronos@cylchtheori@tikzname3) arc (180:360:\chronos@templgthc);
+    \node (label above \chronos@cylchtheori@tikzname) [%
+      anchor=south, /chronos/theori/cylchau/@label
+    ] at (\chronos@cylchtheori@tikzname4) {\chronos@cylchtheori@label@uchod};
+    \node (label below \chronos@cylchtheori@tikzname) [%
+      anchor=north, /chronos/theori/cylchau/@label
+    ] at (\chronos@cylchtheori@tikzname5) {\chronos@cylchtheori@label@isod};
+    \node (\chronos@cylchtheori@tikzname) [%
+      fit=(label below \chronos@cylchtheori@tikzname) 
+        (label above \chronos@cylchtheori@tikzname) 
+        (\chronos@cylchtheori@tikzname4) 
+        (\chronos@cylchtheori@tikzname5)%
+    ] {};
     \chronos@ailosod@nodweddion
   \endgroup
 }
@@ -5332,12 +5777,28 @@
       \def\chronos@prifdeitl@tikzname{prif deitl}%
       \pgfqkeys{/chronos}{@tempd/.style={alias=main title}}%
     }%
-    \IfFreeT {\chronos@prifdeitl@cynnwys}{\def\chronos@prifdeitl@cynnwys{\chronos@enw@priflythrennu{\chronos@prifdeitl@enw}}}%
-    \draw node (\chronos@prifdeitl@tikzname) [draw=none,/chronos/@tempd, /chronos/prif/@teitl, anchor=\chronos@prifdeitl@angor, /utils/exec=\pgfkeysalsofrom{\chronos@cadw}] at (chronos@prifdeitl@at) {\chronos@prifdeitl@cynnwys};
+    \IfFreeT {\chronos@prifdeitl@cynnwys}{%
+      \def\chronos@prifdeitl@cynnwys{%
+        \chronos@enw@priflythrennu{\chronos@prifdeitl@enw}%
+      }%
+    }%
+    \draw node (\chronos@prifdeitl@tikzname) [%
+      draw=none,%
+      /chronos/@tempd,%
+      /chronos/prif/@teitl,%
+      anchor=\chronos@prifdeitl@angor,%
+      /utils/exec=\pgfkeysalsofrom{\chronos@cadw}%
+    ] at (chronos@prifdeitl@at) {\chronos@prifdeitl@cynnwys};
     \ifchronos@showcoords
       \begin{scope}[on chronos overlay layer]
-        \draw [help lines, draw=chronos@lliw@node] (\chronos@prifdeitl@tikzname.north east) -| (\chronos@prifdeitl@tikzname.south west) -| cycle;
-        \node [/chronos/show coordinate={chronos show node colour}{0}{\chronos@prifdeitl@tikzname}{10pt}{align=center}] at (\chronos@prifdeitl@tikzname.east) {};
+        \draw [help lines, draw=chronos@lliw@node] 
+          (\chronos@prifdeitl@tikzname.north east) -| 
+          (\chronos@prifdeitl@tikzname.south west) -| cycle;
+        \node [%
+          /chronos/show coordinate={chronos show node colour}{0}{%
+            \chronos@prifdeitl@tikzname
+          }{10pt}{align=center}%
+        ] at (\chronos@prifdeitl@tikzname.east) {};
       \end{scope}%
     \fi
   \endgroup
@@ -5357,12 +5818,30 @@
     \tikzset{gwybodaeth={enw={??},#2}}%
     \IfExistF \chronos@gwybodaeth@angor{\def\chronos@gwybodaeth@angor{west}}%%
     \IfExistF \chronos@gwybodaeth@capsiwn {%
-      \def \chronos@gwybodaeth@capsiwn {\chronos@enw@priflythrennu{\chronos@gwybodaeth@enw}}%
+      \def \chronos@gwybodaeth@capsiwn {%
+        \chronos@enw@priflythrennu{\chronos@gwybodaeth@enw}%
+      }%
     }%
-    \IfExistF \chronos@gwybodaeth@lliw {\let\chronos@gwybodaeth@lliw\chronos@gwybodaeth@lliw@rhagosodedig}%
-    \node (testun \chronos@gwybodaeth@tikzname) [/chronos/@testun=\chronos@gwybodaeth@lliw, anchor=\chronos@gwybodaeth@angor, /chronos/.cd, /utils/exec=\pgfkeysalsofrom{\chronos@cadw}, alias=tag \chronos@gwybodaeth@tikzname, alias=text tag \chronos@gwybodaeth@tikzname, alias=\chronos@gwybodaeth@tikzname] at (\chronos@gwybodaeth@at) {\chronos@cynnwys@testun};
+    \IfExistF \chronos@gwybodaeth@lliw {%
+      \let\chronos@gwybodaeth@lliw\chronos@gwybodaeth@lliw@rhagosodedig
+    }%
+    \node (testun \chronos@gwybodaeth@tikzname) [%
+      /chronos/@testun=\chronos@gwybodaeth@lliw,%
+      anchor=\chronos@gwybodaeth@angor,%
+      /chronos/.cd,%
+      /utils/exec=\pgfkeysalsofrom{\chronos@cadw},%
+      alias=tag \chronos@gwybodaeth@tikzname,%
+      alias=text tag \chronos@gwybodaeth@tikzname,%
+      alias=\chronos@gwybodaeth@tikzname
+    ] at (\chronos@gwybodaeth@at) {\chronos@cynnwys@testun};
     \IfBooleanF {#1}{%
-      \node (capsiwn \chronos@gwybodaeth@tikzname) [/chronos/gwybodaeth/@label, alias=enw \chronos@gwybodaeth@tikzname, alias=name \chronos@gwybodaeth@tikzname, alias=label \chronos@gwybodaeth@tikzname, alias=caption \chronos@gwybodaeth@tikzname] at (\chronos@gwybodaeth@tikzname.south) {\chronos@gwybodaeth@capsiwn};
+      \node (capsiwn \chronos@gwybodaeth@tikzname) [%
+        /chronos/gwybodaeth/@label,%
+        alias=enw \chronos@gwybodaeth@tikzname,%
+        alias=name \chronos@gwybodaeth@tikzname,%
+        alias=label \chronos@gwybodaeth@tikzname,%
+        alias=caption \chronos@gwybodaeth@tikzname
+      ] at (\chronos@gwybodaeth@tikzname.south) {\chronos@gwybodaeth@capsiwn};
     }%
     \edef\chronos@tempa{lliw \chronos@gwybodaeth@tikzname}%
     \edef\chronos@tempe{colour \chronos@gwybodaeth@tikzname}%
@@ -5401,7 +5880,11 @@
       \PackageWarning{chronos}{Placing copyright notice at bottom left }%
     }%
     \IfExistF {\chronos@hawlfraint@cynnwys}{%
-      \IfBooleanExprTF { \CSFreeBoolean \chronos@hawlfraint@enw || ! (\CSFreeBoolean \chronos@hawlfraint@awdur) || ! (\CSFreeBoolean \chronos@hawlfraint@blwyddyn) }{%
+      \IfBooleanExprTF { 
+        \CSFreeBoolean \chronos@hawlfraint@enw 
+        || ! (\CSFreeBoolean \chronos@hawlfraint@awdur) 
+        || ! (\CSFreeBoolean \chronos@hawlfraint@blwyddyn) 
+      }{%
         \IfExistF {\chronos@hawlfraint@awdur}{%
           \IfExistTF {\svnauthor} {%
             \IfExistTF {\svnFullAuthor} {%
@@ -5420,13 +5903,27 @@
             \let\chronos@hawlfraint@blwyddyn\today
           }%
         }%
-        \def\chronos@hawlfraint@cynnwys{\chronos@hawlfraint@notis{\chronos@hawlfraint@blwyddyn}{\chronos@hawlfraint@awdur}}%
+        \def\chronos@hawlfraint@cynnwys{%
+          \chronos@hawlfraint@notis{%
+            \chronos@hawlfraint@blwyddyn
+          }{%
+            \chronos@hawlfraint@awdur
+          }%
+        }%
       }{%
-        \def\chronos@hawlfraint@cynnwys{\chronos@hawlfraint@notis{\chronos@hawlfraint@blwyddyn}{\chronos@enw@priflythrennu{\chronos@hawlfraint@enw}}}%
+        \def\chronos@hawlfraint@cynnwys{%
+          \chronos@hawlfraint@notis{\chronos@hawlfraint@blwyddyn}{%
+            \chronos@enw@priflythrennu{\chronos@hawlfraint@enw}%
+          }%
+        }%
       }%
     }%
     \IfExistTF{\chronos@hawlfraint@tikzname}{%
-      \pgfqkeys{/chronos}{@tempd/.style={alias=hawlfraint,alias=copyright,alias=copyleft}}%
+      \pgfqkeys{/chronos}{@tempd/.style={%
+        alias=hawlfraint,%
+        alias=copyright,%
+        alias=copyleft%
+      }}%
     }{%
       \def\chronos@hawlfraint@tikzname{hawlfraint}%
       \pgfqkeys{/chronos}{@tempd/.style={alias=copyright,alias=copyleft}}%
@@ -5434,11 +5931,24 @@
 %    \end{macrocode}
 %^^A     \draw node (\chronos@hawlfraint@tikzname) [draw=none,/chronos/@tempd, /chronos/@hawlfraint, anchor=\chronos@hawlfraint@angor,rotate/.expand once=\chronos@hawlfraint@cylchdroi,/utils/exec=\pgfkeysalsofrom{\chronos@cadw}] at (chronos@hawlfraint@at) {\chronos@hawlfraint@cynnwys};
 %    \begin{macrocode}
-    \draw node (\chronos@hawlfraint@tikzname) [draw=none,/chronos/@tempd, /chronos/@hawlfraint, anchor=\chronos@hawlfraint@angor,rotate=\chronos@hawlfraint@cylchdroi,/utils/exec=\pgfkeysalsofrom{\chronos@cadw}] at (chronos@hawlfraint@at) {\chronos@hawlfraint@cynnwys};
+    \draw node (\chronos@hawlfraint@tikzname) [%
+      draw=none,%
+      /chronos/@tempd,%
+      /chronos/@hawlfraint,%
+      anchor=\chronos@hawlfraint@angor,%
+      rotate=\chronos@hawlfraint@cylchdroi,%
+      /utils/exec=\pgfkeysalsofrom{\chronos@cadw}%
+    ] at (chronos@hawlfraint@at) {\chronos@hawlfraint@cynnwys};
     \ifchronos@showcoords
       \begin{scope}[on chronos overlay layer]
-        \draw [help lines, draw=chronos@lliw@node] (\chronos@hawlfraint@tikzname.north east) -| (\chronos@hawlfraint@tikzname.south west) -| cycle;
-        \node [/chronos/show coordinate={chronos show node colour}{0}{\chronos@hawlfraint@tikzname}{10pt}{align=center}] at (\chronos@hawlfraint@tikzname.east) {};
+        \draw [help lines, draw=chronos@lliw@node] 
+          (\chronos@hawlfraint@tikzname.north east) -| 
+          (\chronos@hawlfraint@tikzname.south west) -| cycle;
+        \node [%
+          /chronos/show coordinate={chronos show node colour}{0}{%
+            \chronos@hawlfraint@tikzname
+          }{10pt}{align=center}%
+        ] at (\chronos@hawlfraint@tikzname.east) {};
       \end{scope}%
     \fi
   \endgroup
@@ -5467,24 +5977,36 @@
 %^^A #5 second label e.g. marw / diwedd
   \IfCSExistTF{chronos@#1@label#3}{%
     \IfCSExistF{chronos@#1@label#5}{%
-      \expandafter\def\csname chronos@#1@label#5\endcsname{\chronos@showdate@cs[chronos@#1@fformat#5]{#4}}%
+      \expandafter\def\csname chronos@#1@label#5\endcsname{%
+        \chronos@showdate@cs[chronos@#1@fformat#5]{#4}%
+      }%
     }%
   }{%
     \IfCSExistF{chronos@#1@label#5}{% creu label yr ail ddyddiad
-      \expandafter\def\csname chronos@#1@label#5\endcsname{\chronos@showdate@cs[chronos@#1@fformat#5]{#4}}%
+      \expandafter\def\csname chronos@#1@label#5\endcsname{%
+        \chronos@showdate@cs[chronos@#1@fformat#5]{#4}%
+      }%
     }%
     \edef\tempa{}\edef\tempb{\csname chronos@#1@label#5\endcsname}%
     \ifx\tempa\tempb
-      \expandafter\def\csname chronos@#1@label#3\endcsname{\chronos@showdate@cs[chronos@#1@fformat#3@cyfnodau]{#2}}%
+      \expandafter\def\csname chronos@#1@label#3\endcsname{%
+        \chronos@showdate@cs[chronos@#1@fformat#3@cyfnodau]{#2}%
+      }%
     \else
       \expandafter\ifnum\csname chronos@#2year\endcsname<0
         \expandafter\ifnum\csname chronos@#4year\endcsname<0
-          \expandafter\def\csname chronos@#1@label#3\endcsname{\chronos@showdate@cs[chronos@#1@fformat#3@cyfnod]{#2}}%
+          \expandafter\def\csname chronos@#1@label#3\endcsname{%
+            \chronos@showdate@cs[chronos@#1@fformat#3@cyfnod]{#2}%
+          }%
         \else
-          \expandafter\def\csname chronos@#1@label#3\endcsname{\chronos@showdate@cs[chronos@#1@fformat#3@cyfnodau]{#2}}%
+          \expandafter\def\csname chronos@#1@label#3\endcsname{%
+            \chronos@showdate@cs[chronos@#1@fformat#3@cyfnodau]{#2}%
+          }%
         \fi
       \else
-        \expandafter\def\csname chronos@#1@label#3\endcsname{\chronos@showdate@cs[chronos@#1@fformat#3@cyfnod]{#2}}%
+        \expandafter\def\csname chronos@#1@label#3\endcsname{%
+          \chronos@showdate@cs[chronos@#1@fformat#3@cyfnod]{#2}%
+        }%
       \fi
     \fi
   }%
@@ -5538,10 +6060,10 @@
 }
 %    \end{macrocode}
 % \end{macro}%^^A >>> \chronos@gosodborder@tag
-% \begin{macro}{\chronos@troilliwiau@tag}%^^A <<< & configure isod/uchod
+% \begin{macro}{\chronos@troilliwiau@tag}%^^A <<< & configure isod/uchod 
 %   Internal macro to rotate colours and configure below/above split, as applicable. 
 %    \begin{macrocode}
-\NewDocumentCommand \chronos@troilliwiau@tag{m}{%
+\NewDocumentCommand \chronos@troilliwiau@tag{m}{%^^A <<<
   \IfCSExistTF {chronos@#1@at}{%
     \edef\chronos@tempj{\csname chronos@#1@at\endcsname}%
     \path (\chronos@tempj) ++(0pt,\chronos@yshift);
@@ -5584,8 +6106,14 @@
   }%
   \IfCSFreeT{chronos@#1@lliw}{% \ifcsunef is T even if cs is \relax (unlike \ifcsdef which is also T if cs is \relax)
     \expandafter\ifchronos@troilliwiau
-      \csname ifchronos@#1@isod\endcsname\chronos@troilliwiau@isod[#1]\else\chronos@troilliwiau@uchod[#1]\fi
-    \else\CSletCS{chronos@#1@lliw}{chronos@#1@lliw@rhagosodedig}\fi
+      \csname ifchronos@#1@isod\endcsname
+        \chronos@troilliwiau@isod[#1]
+      \else
+        \chronos@troilliwiau@uchod[#1]%
+      \fi
+    \else
+      \CSletCS{chronos@#1@lliw}{chronos@#1@lliw@rhagosodedig}%
+    \fi
   }%
   \edef\chronos@tempa{lliw \csname chronos@#1@tikzname\endcsname}%
   \edef\chronos@tempb{\csname chronos@#1@lliw\endcsname}%
@@ -5600,17 +6128,31 @@
     \edef\chronos@tempg{\csname chronos@#1@tikzname\endcsname}%
     \xglobal\colorlet{\chronos@tempg}{\chronos@tempb}%
   \fi
-}
+}%^^A >>>
 %    \end{macrocode}
 % \end{macro}%^^A >>> \chronos@troilliwiau@tag
 % \begin{macro}{\chronos@gosod@angor@tag}%^^A <<< 
 %   Internal macro to add connector to tag anchors. 
 %    \begin{macrocode}
-\NewDocumentCommand\chronos@gosodangor@tag{m}{%
+\NewDocumentCommand\chronos@gosodangor@tag{m}{%i^^A <<<
   \IfCSExistTF{chronos@#1@angor}{%
-    \expandafter\edef\expandafter\chronos@tempa\expandafter{\csname chronos@#1@angor\endcsname}%
-    \foreach \i/\j in {north/south,south/north,east/west,west/east,north west/south east,south east/north west,north east/south west,south west/north east}{%
-      \edef\chronos@tempb{\i}\ifx\chronos@tempa\chronos@tempb\global\CSlet{chronos@#1@invanchor}\j\breakforeach\fi
+    \expandafter\edef\expandafter\chronos@tempa\expandafter{%
+      \csname chronos@#1@angor\endcsname
+    }%
+    \foreach \i/\j in {%
+      north/south,%
+      south/north,%
+      east/west,%
+      west/east,%
+      north west/south east,%
+      south east/north west,%
+      north east/south west,%
+      south west/north east%
+    }{%
+      \edef\chronos@tempb{\i}%
+      \ifx\chronos@tempa\chronos@tempb
+        \global\CSlet{chronos@#1@invanchor}\j\breakforeach
+      \fi
     }%
   }{%
     \csname ifchronos@#1@isod\endcsname
@@ -5621,13 +6163,13 @@
       \expandafter\def\csname chronos@#1@invanchor\endcsname {north}%
     \fi
   }%
-}
+}%^^A >>>
 %    \end{macrocode}
 % \end{macro}%^^A >>>
 % \begin{macro}{\chronos@creu@llinell}%^^A <<< parhad, byw
 %   Internal macro to put new life or period on timeline. 
 %    \begin{macrocode}
-\NewDocumentCommand \chronos@creu@llinell {mmmmm}{% fill (fallai draw)} llinell ar y llinell amser am dymor estynedig
+\NewDocumentCommand \chronos@creu@llinell {mmmmm}{%^^A <<< fill (fallai draw)} llinell ar y llinell amser am dymor estynedig
 %    \end{macrocode}
 %^^A  #1 : tag e.g. byw
 %^^A  #2 : x dimen dechrau/geni
@@ -5644,25 +6186,39 @@
 %    \end{macrocode}
 %^^A       \IfFreeF\bagpuss{\pgfkeys{/chronos/@llinell/.show code}}
 %    \begin{macrocode}
-      \path [/chronos/@llinell/.expand once=\csname chronos@#1@lliw\endcsname] ({#2,0} |- \chronos@border@coord) -- +(0pt,\chronos@tempb) coordinate (\chronos@tempa{} #4) -| ({#3,0} |- \chronos@border@coord) coordinate [midway] (\chronos@tempa{} #5) -- cycle;
+      \path [/chronos/@llinell/.expand once=\csname chronos@#1@lliw\endcsname] %
+        ({#2,0} |- \chronos@border@coord) -- +(0pt,\chronos@tempb) coordinate %
+        (\chronos@tempa{} #4) -| ({#3,0} |- \chronos@border@coord) coordinate %
+        [midway] (\chronos@tempa{} #5) -- cycle;
     \else
-      \path [/chronos/@llinell/.expand once=\csname chronos@#1@lliw\endcsname] ({#2,0} |- \chronos@border@coord) ++(0pt,\chronos@tempb) ++(0pt,\chronos@llinell@yshift) coordinate (\chronos@tempa{} #4) -- ({#3,0} |- \chronos@tempa{} #4) coordinate  (\chronos@tempa{} #5);
+      \path [/chronos/@llinell/.expand once=\csname chronos@#1@lliw\endcsname] %
+        ({#2,0} |- \chronos@border@coord) ++(0pt,\chronos@tempb) %
+        ++(0pt,\chronos@llinell@yshift) coordinate (\chronos@tempa{} #4) -- %
+        ({#3,0} |- \chronos@tempa{} #4) coordinate  (\chronos@tempa{} #5);
     \fi
     \ifchronos@eventdatessplit
       \ifchronos@yearsonline
-        \path [/chronos/@llinell/.expand once=\csname chronos@#1@lliw\endcsname] ({#2,0} |- \chronos@border@coord@inv) -- +(0pt,\chronos@tempc) coordinate (\chronos@tempd{} #4) -| ({#3,0} |- \chronos@border@coord@inv) coordinate [midway] (\chronos@tempd{} #5) -- cycle;
+        \path [/chronos/@llinell/.expand once=\csname chronos@#1@lliw\endcsname] %
+          ({#2,0} |- \chronos@border@coord@inv) -- +(0pt,\chronos@tempc) %
+          coordinate (\chronos@tempd{} #4) -| ({#3,0} |- \chronos@border@coord@inv) %
+          coordinate [midway] (\chronos@tempd{} #5) %
+          -- cycle;
       \else
-        \path [/chronos/@llinell/.expand once=\csname chronos@#1@lliw\endcsname] ({#2,0} |- \chronos@border@coord@inv) ++(0pt,\chronos@tempc) ++(0pt,-\chronos@llinell@yshift) coordinate (\chronos@tempd{} #4) -- ({#3,0} |- \chronos@tempd{} #4) coordinate [midway] (\chronos@tempd{} #5);
+        \path [/chronos/@llinell/.expand once=\csname chronos@#1@lliw\endcsname] %
+          ({#2,0} |- \chronos@border@coord@inv) ++(0pt,\chronos@tempc) %
+          ++(0pt,-\chronos@llinell@yshift) coordinate (\chronos@tempd{} #4) -- %
+          ({#3,0} |- \chronos@tempd{} #4) coordinate [midway] %
+          (\chronos@tempd{} #5);
       \fi
     \fi
   \end{scope}%
-}
+}%^^A >>>
 %    \end{macrocode}
 % \end{macro}%^^A >>> \chronos@creu@llinell (parhad, byw)
 % \begin{macro}{\chronos@creu@testun@tag}%^^A <<< 
 %   Internal macro to create text tags. 
 %    \begin{macrocode}
-\NewDocumentCommand \chronos@creu@testun@tag{s O {} m +m}{% make text tag XXX
+\NewDocumentCommand \chronos@creu@testun@tag{s O {} m +m}{%^^A <<< make text tag
 %    \end{macrocode}
 %^^A  #1 : seren | star
 %^^A  #2 : allweddu ychwanegol | additional keys
@@ -5698,28 +6254,61 @@
 %    \end{macrocode}
 %^^A    % fill opacity=0 -> problem ; fill=none -> dim problem; beth sy'n digwydd?
 %    \begin{macrocode}
-      \node (testun \chronos@tempa) [/chronos/@testun/.expand once=\csname chronos@#3@lliw\endcsname, anchor=\chronos@tempc, /chronos/.cd,/utils/exec=\pgfkeysalsofrom{\chronos@cadw}, /chronos/chronos@tempb@style, /tikz/.cd, alias=tag \chronos@tempa, alias=text tag \chronos@tempa] at (chronos@temp@coord) {#4};}%
+      \node (testun \chronos@tempa) [%
+        /chronos/@testun/.expand once=\csname chronos@#3@lliw\endcsname,%
+        anchor=\chronos@tempc,%
+        /chronos/.cd,/utils/exec=\pgfkeysalsofrom{\chronos@cadw},%
+        /chronos/chronos@tempb@style,%
+        /tikz/.cd,%
+        alias=tag \chronos@tempa,%
+        alias=text tag \chronos@tempa
+    ] at (chronos@temp@coord) {#4};}%
     \ifchronos@tag@cysylltu
 %    \end{macrocode}
 % creu cylch ar y lein \textbar{} make circle on timeline
 %    \begin{macrocode}
-      \scoped[/chronos/chronos@cysylltiad@haenen]{\node (cysylltwr chronos \chronos@tempa) [/chronos/@cysylltwr@chronos/.expand once=\csname chronos@#3@lliw\endcsname, alias=chronos connector \chronos@tempa, alias=circle \chronos@tempa, alias=cylch \chronos@tempa] at (\chronos@tempa) {};}%
+      \scoped[/chronos/chronos@cysylltiad@haenen]{%
+        \node (cysylltwr chronos \chronos@tempa) [%
+          /chronos/@cysylltwr@chronos/.expand once=\csname chronos@#3@lliw\endcsname,%
+          alias=chronos connector \chronos@tempa,%
+          alias=circle \chronos@tempa,%
+          alias=cylch \chronos@tempa
+        ] at (\chronos@tempa) {};%
+      }%
       \begin{scope}[/chronos/middle anchorborder]% ateb Symbol 1: https://tex.stackexchange.com/a/385953/
 %    \end{macrocode}
 % creu cysylltwyr testun ar y node testun \textbar{} make text connectors on the text node
 %    \begin{macrocode}
-        \node (cysylltwr testun \chronos@tempa) [/chronos/@cysylltwr@testun/.expand once=\csname chronos@#3@lliw\endcsname,/chronos/@cysylltwr@testun@prif/.expand once=\csname chronos@#3@lliw\endcsname, alias=text tag connector \chronos@tempa, alias=prif gysylltwr \chronos@tempa, alias=main connector \chronos@tempa, alias=cysylltwr \chronos@tempa0, alias=testun cylch \chronos@tempa, alias=connector \chronos@tempa0] at (testun \chronos@tempa.middle \chronos@tempc) {};
+        \node (cysylltwr testun \chronos@tempa) [%
+          /chronos/@cysylltwr@testun/.expand once=\csname chronos@#3@lliw\endcsname,%
+          /chronos/@cysylltwr@testun@prif/.expand once=\csname chronos@#3@lliw\endcsname,%
+          alias=text tag connector \chronos@tempa,%
+          alias=prif gysylltwr \chronos@tempa,%
+          alias=main connector \chronos@tempa,%
+          alias=cysylltwr \chronos@tempa0,%
+          alias=testun cylch \chronos@tempa,%
+          alias=connector \chronos@tempa0
+        ] at (testun \chronos@tempa.middle \chronos@tempc) {};
       \end{scope}%
       \path (cysylltwr testun \chronos@tempa);
       \pgfgetlastxy{\chronos@templgtha}{\chronos@templgthb}%
       \path (cysylltwr chronos \chronos@tempa);
       \pgfgetlastxy{\chronos@templgthc}{\chronos@templgthb}%
-      \ifdim\chronos@templgtha=\chronos@templgthc\def\chronos@tempe{--}\else\def\chronos@tempe{|-}\fi
+      \ifdim\chronos@templgtha=\chronos@templgthc
+        \def\chronos@tempe{--}
+      \else
+        \def\chronos@tempe{|-}
+      \fi
       \ifbool{chronos@#3@cysylltiad}{%
 %    \end{macrocode}
 % cysylltu llinell amser i node testun \textbar{} connect timeline to text node
 %    \begin{macrocode}
-        \scoped[/chronos/chronos@cysylltiad@haenen]{\draw [/chronos/@cysylltiad/.expand once=\csname chronos@#3@lliw\endcsname] (cysylltwr chronos \chronos@tempa) \chronos@tempe (cysylltwr testun \chronos@tempa) ;}%% oedd .\chronos@tempc
+        \scoped[/chronos/chronos@cysylltiad@haenen]{%
+          \draw [%
+            /chronos/@cysylltiad/.expand once=\csname chronos@#3@lliw\endcsname
+          ] (cysylltwr chronos \chronos@tempa) \chronos@tempe 
+          (cysylltwr testun \chronos@tempa) ;%
+        }%% oedd .\chronos@tempc
       }{}% ifchronos@#3@cysylltiad
     \fi % \ifchronos@tag@cysylltu
   \fi
@@ -5730,7 +6319,7 @@
 %^^A   \chronos@darparu@lliw{\chronos@tempa}{chronos@temp@lliw}%
 %^^A   \draw (cylch \chronos@tempa) |- (cysylltwr testun \chronos@tempa.\chronos@tempc) ;
 %    \begin{macrocode}
-}
+}%^^A >>>
 %    \end{macrocode}
 % \end{macro}%^^A >>> \chronos@creu@testun@tag
 % \begin{macro}{\chronosevent,\chronoslife,\chronosperiod,\chronosinfo,\chronostheory,\chronostheorycircle,\chronosmaintitle,\chronoscopyright,\chronosshowpreset,\chronosshowcolour,\chronosshowcolor,\chronosshowfeatures}%^^A <<<  aliases & (globalised) defaults
@@ -5745,9 +6334,21 @@
   }{% nid yw hyn yn memoizable byth bynnag
     \pgfkeys{/handlers/.meaning to context/.code={}}%
   }%
-  \ifchronos@byw@isod\chronos@byw@isod@rhagtrue\else\chronos@byw@isod@rhagfalse\fi
-  \ifchronos@digwyddiad@isod\chronos@digwyddiad@isod@rhagtrue\else\chronos@digwyddiad@isod@rhagfalse\fi
-  \ifchronos@parhad@isod\chronos@parhad@isod@rhagtrue\else\chronos@parhad@isod@rhagfalse\fi
+  \ifchronos@byw@isod
+    \chronos@byw@isod@rhagtrue
+  \else
+    \chronos@byw@isod@rhagfalse
+  \fi
+  \ifchronos@digwyddiad@isod
+    \chronos@digwyddiad@isod@rhagtrue
+  \else
+    \chronos@digwyddiad@isod@rhagfalse
+  \fi
+  \ifchronos@parhad@isod
+    \chronos@parhad@isod@rhagtrue
+  \else
+    \chronos@parhad@isod@rhagfalse
+  \fi
   \chronos@lliwiau@cadw@rhag
   \IfExistF \chronosevent{\let\chronosevent\digwyddiad}%
   \IfExistF \chronoslife{\let\chronoslife\byw}%
@@ -5765,7 +6366,13 @@
 % \begin{macro}{\chronosshowfeatures}
 %   Debugging.
 %    \begin{macrocode}
-  \ProvideDocumentCommand \chronosshowfeatures { o }{\IfValueTF {#1} {\chronos@dangos@nodweddion{#1}}{\chronos@dangos@nodweddion@rhag}}%
+  \ProvideDocumentCommand \chronosshowfeatures { o }{%
+    \IfValueTF {#1} {%
+      \chronos@dangos@nodweddion{#1}
+    }{%
+      \chronos@dangos@nodweddion@rhag
+    }%
+  }%
 %    \end{macrocode}
 % \end{macro}
 %   Required colours for \cs{chronosshowfeatures}. 
