@@ -1,4 +1,4 @@
--- $Id: build.lua 10926 2025-03-07 16:55:42Z cfrees $
+-- $Id: build.lua 10928 2025-03-07 21:32:14Z cfrees $
 -- Build configuration for chronos
 --------------------------------------------------------------------------------
 maindir = maindir or "."
