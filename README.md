@@ -1,4 +1,4 @@
-$Id: README.md 10872 2025-02-27 03:08:00Z cfrees $
+$Id: README.md 10925 2025-03-07 15:07:59Z cfrees $
 
 # chronos
 
@@ -53,7 +53,7 @@ Bug reports, feature requests etc. should be filed at
 
 
 Clea F. Rees
-Version 0.9
-2025-02-27
+Version 0.9.1
+2025-03-07
 
 vim: et:tw=80:ts=2:
