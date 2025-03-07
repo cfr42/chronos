@@ -1,4 +1,4 @@
--- $Id: build.lua 10919 2025-03-06 22:23:32Z cfrees $
+-- $Id: build.lua 10926 2025-03-07 16:55:42Z cfrees $
 -- Build configuration for chronos
 --------------------------------------------------------------------------------
 maindir = maindir or "."
@@ -22,7 +22,7 @@ typesetruns = 4 -- 4
 uploadconfig = {
   ctanPath = "/macros/latex/contrib/chronos",
   pkg = "chronos",
-  version = "v0.9",
+  version = "v0.9.1",
   author = "Clea F. Rees",
   uploader = "Clea F. Rees",
   license = "lppl1.3c",
@@ -32,7 +32,7 @@ uploadconfig = {
 	bugtracker = "https://codeberg.org/cfr/chronos/issues",
 	repository = {"https://codeberg.org/cfr/chronos", "https://github.com/cfr42/chronos"},
   topic = {"diagrams", "pgf-tikz", "expl3", "calendar"},
-  note = "Thanks for noticing I'd left prooftrees references in this. Sorry about that. I do not know if you will accept this since I have not changed the name. However, I have checked with Karl and he thinks the existing name is OK, so maybe ...? Given TL are OK with it, I really don't see any compelling reason to break existing users' documents by changing an existing name already established on TeX SE. I hope this will be acceptable to you.",
+  -- note = "",
 }
 --------------------------------------------------------------------------------
 date = "2023-2025"
