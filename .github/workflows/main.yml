@@ -64,8 +64,8 @@ jobs:
           fail-on-cache-miss: true
       - name: Set PATH
         run: echo $HOME/texlive/bin/x86_64-linux >> $GITHUB_PATH
-      - name: Run l3build
-        run: l3build ctan
+      - name: Run tests
+        run: l3build check
         # https://github.com/latex3/hyperref/blob/adc36adbc3650db73329469b43afb0ee86e3c807/.github/workflows/main.yaml
       - name: Archive failed test output
         # what does this do exactly? (runs even if previous fails)
@@ -75,9 +75,11 @@ jobs:
           name: testfiles-chronos
           # Decide how long to keep the test output artifact:
           # retention-days: 3
+      - name: Create docs
+        run: l3build doc
       # if build succeeded, then:
         # if not tagging for release, archive the docs
-        # o/w recheck & rebuild for ctan & archive the zip if successful
+        # o/w manifest & recheck & rebuild for ctan & archive the zip if successful
       - name: Archive docs
       # https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions
         if: ${{ ! startsWith(github.ref, 'refs/tags/') }}
@@ -88,6 +90,14 @@ jobs:
           path: ./*.pdf
           # Decide how long to keep the test output artefact:
           retention-days: 30
+      - name: Create manifest
+      # only if releasing (and success)
+        if: ${{ startsWith(github.ref, 'refs/tags/') }}
+        run: l3build manifest
+      - name: Create upload archive
+      # only if releasing (and success)
+        if: ${{ startsWith(github.ref, 'refs/tags/') }}
+        run: l3build ctan
       - name: Archive release zip
       # archive only if releasing (and build success)
         if: ${{ startsWith(github.ref, 'refs/tags/') }}
