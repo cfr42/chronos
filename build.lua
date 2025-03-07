@@ -37,7 +37,55 @@ uploadconfig = {
 --------------------------------------------------------------------------------
 date = "2023-2025"
 if direxists(sourcedir .. "/../adnoddau/l3build") then
-  dofile(sourcedir .. "/../adnoddau/l3build/manifest.lua")
   dofile(sourcedir .. "/../adnoddau/l3build/tag.lua")
+end
+print(man)
+if fileexists(maindir .. "/manifest.lua") then
+  dofile(maindir .. "/manifest.lua")
+print(man)
+elseif direxists(sourcedir .. "/../adnoddau/l3build") then
+  dofile(sourcedir .. "/../adnoddau/l3build/manifest.lua")
+print(man)
+end
+print(man)
+function manifest_setup ()
+  unpack()
+  local buildscripts,moretests,srcchksuppfiles = man.list_tests()
+  local groups = {
+    {
+      subheading = "Source files",
+    },
+    {
+      name = "Package files",
+      dir = sourcefiledir,
+      files = {"*.dtx","*.ins","*.md"},
+      exclude = {derivedfiles},
+    },
+    {
+      name = "Development files",
+      dir = testfiledir,
+      files = {"*" .. lvtext, "*" .. lveext, "*" .. tlgext, "*" .. pvtext, "*" .. tpfext, "*.dtx", "*.ins", "*.tex"},
+      description = buildscripts .. srcchksuppfiles .. moretests,
+    },
+    {
+      subheading = "Derived files",
+    },
+    {
+      name = "Package files",
+      dir = unpackdir,
+      files = {"*.cls","*.sty","*.tex","*.txt"},
+      exclude = sourcefiles,
+      description = "* manifest.txt",
+    },
+    {
+      name = "Typeset documentation",
+      -- files = {typesetfiles,typesetdemofiles},
+      files = {"*.pdf"},
+      excludefiles = {".","..","chronos-eg.pdf"},
+      dir = sourcefiledir,
+      -- rename = {"%.%w+$",".pdf"},
+    },
+  }
+  return groups
 end
 -- vim: ts=2:sw=2:et:

@@ -90,10 +90,10 @@ jobs:
           path: ./*.pdf
           # Decide how long to keep the test output artefact:
           retention-days: 30
-      - name: Create manifest
-      # only if releasing (and success)
-        if: ${{ startsWith(github.ref, 'refs/tags/') }}
-        run: l3build manifest
+      # - name: Create manifest
+      # # only if releasing (and success)
+        # if: ${{ startsWith(github.ref, 'refs/tags/') }}
+        # run: l3build manifest
       - name: Create upload archive
       # only if releasing (and success)
         if: ${{ startsWith(github.ref, 'refs/tags/') }}
