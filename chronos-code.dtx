@@ -32,7 +32,7 @@
 % ref. ateb Max Chernoff: https://tex.stackexchange.com/a/723294/
 \def\MakePrivateLetters{\makeatletter\ExplSyntaxOn\endlinechar13}
 \ExplSyntaxOff
-\ProvidesFileSVN{$Id: chronos-code.dtx 10923 2025-03-07 07:20:57Z cfrees $}[v0.0 \revinfo][\filebase DTX: Customisable TikZ-based timelines]
+\ProvidesFileSVN{$Id: chronos-code.dtx 10924 2025-03-07 07:40:21Z cfrees $}[v0.0 \revinfo][\filebase DTX: Customisable TikZ-based timelines]
 \DefineFileInfoSVN[chronoscode]
 \let\chronoscodeversion\fileversion
 \let\chronoscodebase\filebase
@@ -67,7 +67,7 @@
 % \changes{v0.9}{2025-02-27}{First \ctan{} release.}
 % ^^A lua will replace v0.0 and 0000/00/00 when tagging
 % \ifchronoscodetoo
-%   \ProvidesFileSVN{$Id: chronos-code.dtx 10923 2025-03-07 07:20:57Z cfrees $}[v0.0 \revinfo]
+%   \ProvidesFileSVN{$Id: chronos-code.dtx 10924 2025-03-07 07:40:21Z cfrees $}[v0.0 \revinfo]
 %   \DefineFileInfoSVN[chronoscode]
 %   \GetFileInfoSVN{chronoscode}
 %   \let\chronoscodeversion\fileversion
@@ -146,7 +146,7 @@
 \RequirePackage{svn-prov}
 \def\GetFileBaseName#1-#2\nil{#1}
 \edef\MyFileBaseName{\expandafter\GetFileBaseName\jobname\nil}
-\ProvidesPackageSVN[chronos.sty]{$Id: chronos-code.dtx 10923 2025-03-07 07:20:57Z cfrees $}[v0.9 \revinfo]
+\ProvidesPackageSVN[chronos.sty]{$Id: chronos-code.dtx 10924 2025-03-07 07:40:21Z cfrees $}[v0.9 \revinfo]
 \DefineFileInfoSVN[chronos]
 %    \end{macrocode}
 % \iffalse
@@ -4474,7 +4474,7 @@
         \chronos@if@gosodF{llinell amser}{\pgfqkeys{/chronos}{llinell amser ar=main}}%
         \chronos@if@gosodF{cysylltiad}{\pgfqkeys{/chronos}{cysylltiad ar=background}}%
 %    \end{macrocode}
-% rhag: llunio ar y border | default: draw on the border
+% rhag: llunio ar y border \textbar{} default: draw on the border
 %    \begin{macrocode}
         \ifdim\chronos@llinell@yshift=\pi pt 
           \chronos@llinell@yshift=0pt %
@@ -6758,12 +6758,10 @@
 %   Internal macro to create text tags. 
 %    \begin{macrocode}
 \NewDocumentCommand \chronos@creu@testun@tag{s O {} m +m}{%^^A <<< make text tag
-%    \end{macrocode}
-%^^A  #1 : seren | star
-%^^A  #2 : allweddu ychwanegol | additional keys
-%^^A  #3 : tag e.g. byw
-%^^A  #4 : testun | text
-%    \begin{macrocode}
+  % #1 : seren | star
+  % #2 : allweddu ychwanegol | additional keys
+  % #3 : tag e.g. byw
+  % #4 : testun | text
   \ifchronos@phantom
     \relax
   \else
@@ -6962,7 +6960,7 @@
 % Styles.
 %    \begin{macrocode}
 \RequirePackage{chronos}
-\ProvidesPackageSVN[\MyFileBaseName-lib-styles.sty]{$Id: chronos-code.dtx 10923 2025-03-07 07:20:57Z cfrees $}[v0.9 \revinfo]
+\ProvidesPackageSVN[\MyFileBaseName-lib-styles.sty]{$Id: chronos-code.dtx 10924 2025-03-07 07:40:21Z cfrees $}[v0.9 \revinfo]
 \pgfqkeys{/chronos}{%^^A BEGIN styles <<<
 %    \end{macrocode}
 % Styles come in three flavours: on-line, off-line and no-year.
@@ -7571,7 +7569,7 @@
 % Colour schemes.
 %    \begin{macrocode}
 \RequirePackage{chronos}
-\ProvidesPackageSVN[\MyFileBaseName-lib-colschemes.sty]{$Id: chronos-code.dtx 10923 2025-03-07 07:20:57Z cfrees $}[v0.9 \revinfo]
+\ProvidesPackageSVN[\MyFileBaseName-lib-colschemes.sty]{$Id: chronos-code.dtx 10924 2025-03-07 07:40:21Z cfrees $}[v0.9 \revinfo]
 %    \end{macrocode}
 % \begin{colscheme}{blues,contninety,offlinealt,xcolseries,lavender,modern,offlinebasic,sobriety}%^^A <<< BEGIN cylluniau lliwiau | colour schemes
 % cylluniau lliwiau \textbar{} colour schemes 
