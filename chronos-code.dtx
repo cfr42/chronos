@@ -32,7 +32,7 @@
 % ref. ateb Max Chernoff: https://tex.stackexchange.com/a/723294/
 \def\MakePrivateLetters{\makeatletter\ExplSyntaxOn\endlinechar13}
 \ExplSyntaxOff
-\ProvidesFileSVN{$Id: chronos-code.dtx 10920 2025-03-07 02:27:42Z cfrees $}[v0.0 \revinfo][\filebase DTX: Customisable TikZ-based timelines]
+\ProvidesFileSVN{$Id: chronos-code.dtx 10921 2025-03-07 06:07:43Z cfrees $}[v0.0 \revinfo][\filebase DTX: Customisable TikZ-based timelines]
 \DefineFileInfoSVN[chronoscode]
 \let\chronoscodeversion\fileversion
 \let\chronoscodebase\filebase
@@ -67,7 +67,7 @@
 % \changes{v0.9}{2025-02-27}{First \ctan{} release.}
 % ^^A lua will replace v0.0 and 0000/00/00 when tagging
 % \ifchronoscodetoo
-%   \ProvidesFileSVN{$Id: chronos-code.dtx 10920 2025-03-07 02:27:42Z cfrees $}[v0.0 \revinfo]
+%   \ProvidesFileSVN{$Id: chronos-code.dtx 10921 2025-03-07 06:07:43Z cfrees $}[v0.0 \revinfo]
 %   \DefineFileInfoSVN[chronoscode]
 %   \GetFileInfoSVN{chronoscode}
 %   \let\chronoscodeversion\fileversion
@@ -146,7 +146,7 @@
 \RequirePackage{svn-prov}
 \def\GetFileBaseName#1-#2\nil{#1}
 \edef\MyFileBaseName{\expandafter\GetFileBaseName\jobname\nil}
-\ProvidesPackageSVN[chronos.sty]{$Id: chronos-code.dtx 10920 2025-03-07 02:27:42Z cfrees $}[v0.9 \revinfo]
+\ProvidesPackageSVN[chronos.sty]{$Id: chronos-code.dtx 10921 2025-03-07 06:07:43Z cfrees $}[v0.9 \revinfo]
 \DefineFileInfoSVN[chronos]
 %    \end{macrocode}
 % \iffalse
@@ -458,7 +458,10 @@
     #1
   }
   {
-    \__chronos_year_semi_shorten_aux:w #1 \q_stop % expl3 manual, 46 (w/q_stop?) ; \S\,5.7 Unbraced     
+%    \end{macrocode}
+% \lpack{expl3} manual, 46 (w/q_stop?) ; \S\,5.7 Unbraced     
+%    \begin{macrocode}
+    \__chronos_year_semi_shorten_aux:w #1 \q_stop 
 %    \end{macrocode}
 %^^A     \exp_last_unbraced:NV \__chronos_year_semi_shorten_aux:w \l__chronos_tmpc_tl \q_stop % expl3 manual, 46 (w/q_stop?) ; \S\,5.7 Unbraced Expansion: osgoi \exp_after:wN ble sy'n bosibl (\exp_args:N* yn well 'na \exp_last_unbraced:N*? wn i ddim sut i ddefnyddio hynny beth bynnag)
 %^^A     \exp_after:wN \__chronos_year_semi_shorten_aux:w \l__chronos_tmpc_tl \q_stop % expl3 manuaal, 46
@@ -473,10 +476,12 @@
 \cs_generate_variant:Nn \int_abs:n { v }
 \cs_generate_variant:Nn \tl_replace_all:Nnn { Nnx }
 %    \end{macrocode}
-%^^A dangos dyddiadau
+% dangos dyddiadau \textbar{} show dates
+% 
+% ateb Joseph Wright: \url{http://tex.stackexchange.com/a/327642/} ; PD/CCO at \url{https://tex.stackexchange.com/users/73/joseph-wright}
 %    \begin{macrocode}
 \cs_new_protected_nopar:Npn \__chronos_show_date:n #1
-{% ateb Joseph Wright: \url{http://tex.stackexchange.com/a/327642/} ; PD/CCO at \url{https://tex.stackexchange.com/users/73/joseph-wright}
+{% 
   \tl_set_eq:NN \l__chronos_date_tl \l__chronos_dateformat_tl
   \tl_replace_all:Nnx \l__chronos_date_tl { !a }
     { \pgfcalendarweekdayshortname{\thechronos@weekday} }
@@ -3746,7 +3751,10 @@
     \setbox\pgfutil@tempboxa\box\pgfutil@voidb@x % empty out box
     \def\tikz@whichbox{\pgfutil@tempboxa}%
   },
-  phantom node/.code=\tikz@addoption{% ateb Qrrbrbirlbel uchod ac ateb arall fe: https://tex.stackexchange.com/a/688111/ ; defnyddio yn lle \chronosphantom
+%    \end{macrocode}
+% ateb Qrrbrbirlbel uchod ac ateb arall fe: \url{https://tex.stackexchange.com/a/688111/} ; defnyddio yn lle \cs{chronosphantom}
+%    \begin{macrocode}
+  phantom node/.code=\tikz@addoption{% 
     \expandafter\let\csname pgf@sh@boxes@\tikz@shape\endcsname\pgfutil@empty},
 %    \end{macrocode}
 % sylwad Qrrbrbirlbel: \url{https://tex.stackexchange.com/questions/694799/how-can-i-disable-shadows-and-similar-preaction-postaction-effects-in-tikz-or?noredirect=1#comment1724762_694799}
@@ -4455,28 +4463,34 @@
       \let\chronos@endday\chronos@tmpstartday
     \fi
     \begin{scope}[/chronos/@style]
-      \extractcolorspec{chronos@lliw@llinell}{\chronos@templlll}%\show\chronos@templlll%
-      \extractcolorspec{chronos@lliw@cefndir@llinell}{\chronos@templlllc}%\show\chronos@templlllc%
-      \extractcolorspec{white}{\chronos@templlw}%\show\chronos@templlw%
-      \extractcolorspec{chronos@prifliw}{\chronos@templlpl}%\show\chronos@templlpl%
-      \extractcolorspec{chronos@prifliw@cefndir}{\chronos@templlplc}%\show\chronos@templlplc%
+      \extractcolorspec{chronos@lliw@llinell}{\chronos@templlll}%^^A \show\chronos@templlll
+      \extractcolorspec{chronos@lliw@cefndir@llinell}{\chronos@templlllc}%^^A \show\chronos@templlllc
+      \extractcolorspec{white}{\chronos@templlw}%^^A \show\chronos@templlw
+      \extractcolorspec{chronos@prifliw}{\chronos@templlpl}%^^A \show\chronos@templlpl
+      \extractcolorspec{chronos@prifliw@cefndir}{\chronos@templlplc}%^^A \show\chronos@templlplc
       \ifchronos@yearsonline % BEGIN
         \chronos@if@gosodF{border}{\pgfqkeys{/chronos}{border ar=middle ground}}%
         \chronos@if@gosodF{llinell}{\pgfqkeys{/chronos}{llinell ar=middle ground}}%
         \chronos@if@gosodF{llinell amser}{\pgfqkeys{/chronos}{llinell amser ar=main}}%
         \chronos@if@gosodF{cysylltiad}{\pgfqkeys{/chronos}{cysylltiad ar=background}}%
-        \ifdim\chronos@llinell@yshift=\pi pt %^^A rhag: llunio ar y border | default: draw on the border
+%    \end{macrocode}
+% rhag: llunio ar y border | default: draw on the border
+%    \begin{macrocode}
+        \ifdim\chronos@llinell@yshift=\pi pt 
           \chronos@llinell@yshift=0pt %
         \fi
         \ifchronostimelinearrow
           \chronostimelinearrowfalse
-          \PackageWarning{chronos}{A timeline arrow requires a suitable off line style}
+          \PackageWarning{chronos}{%
+            A timeline arrow requires a suitable off line style}
         \fi
       \else
         \chronos@if@gosodF{border}{\pgfqkeys{/chronos}{border ar=middle ground}}%
         \chronos@if@gosodF{llinell}{\pgfqkeys{/chronos}{llinell ar=main}}%
-        \chronos@if@gosodF{llinell amser}{\pgfqkeys{/chronos}{llinell amser ar=main}}%
-        \chronos@if@gosodF{cysylltiad}{\pgfqkeys{/chronos}{cysylltiad ar=background}}%
+        \chronos@if@gosodF{llinell amser}{\pgfqkeys{/chronos}%
+          {llinell amser ar=main}}%
+        \chronos@if@gosodF{cysylltiad}{\pgfqkeys{/chronos}%
+          {cysylltiad ar=background}}%
         \ifx\chronos@templlll\chronos@templlplc
           \ifx\chronos@templlll\chronos@templlw
             \colorlet{chronos@lliw@llinell}{chronos@prifliw}%
@@ -4485,26 +4499,44 @@
         \fi
       \fi
       \providecolor{chronos main colour}{named}{chronos@prifliw}%
-      \providecolor{chronos main background colour}{named}{chronos@prifliw@cefndir}%
+      \providecolor{chronos main background colour}{named}%
+        {chronos@prifliw@cefndir}%
       \providecolor{chronos main color}{named}{chronos@prifliw}%
-      \providecolor{chronos main background color}{named}{chronos@prifliw@cefndir}%
+      \providecolor{chronos main background color}{named}%
+        {chronos@prifliw@cefndir}%
       \providecolor{chronos prifliw}{named}{chronos@prifliw}%
-      \providecolor{chronos prifliw cefndir}{named}{chronos@prifliw@cefndir}%
-      \providecolor{chronos timeline foreground colour}{named}{chronos@lliw@llinell}%
-      \providecolor{chronos timeline background colour}{named}{chronos@lliw@cefndir@llinell}%
-      \providecolor{chronos timeline foreground color}{named}{chronos@lliw@llinell}%
-      \providecolor{chronos timeline background color}{named}{chronos@lliw@cefndir@llinell}%
-      \providecolor{chronos lliw llinell amser blaendir}{named}{chronos@lliw@llinell}%
-      \providecolor{chronos lliw llinell amser cefndir}{named}{chronos@lliw@cefndir@llinell}%
-      \providecolor{chronos timeline border inner colour}{named}{chronos@borderinner}%
-      \providecolor{chronos timeline border outer colour}{named}{chronos@borderouter}%
-      \providecolor{chronos timeline border middle colour}{named}{chronos@bordermiddle}%
-      \providecolor{chronos timeline border inner color}{named}{chronos@borderinner}%
-      \providecolor{chronos timeline border outer color}{named}{chronos@borderouter}%
-      \providecolor{chronos timeline border middle color}{named}{chronos@bordermiddle}%
-      \providecolor{chronos lliw llinell amser border mewnol}{named}{chronos@borderinner}%
-      \providecolor{chronos lliw llinell amser border allanol}{named}{chronos@borderouter}%
-      \providecolor{chronos lliw llinell amser border canol}{named}{chronos@bordermiddle}%
+      \providecolor{chronos prifliw cefndir}{named}%
+        {chronos@prifliw@cefndir}%
+      \providecolor{chronos timeline foreground colour}{named}%
+        {chronos@lliw@llinell}%
+      \providecolor{chronos timeline background colour}{named}%
+        {chronos@lliw@cefndir@llinell}%
+      \providecolor{chronos timeline foreground color}{named}%
+        {chronos@lliw@llinell}%
+      \providecolor{chronos timeline background color}{named}%
+        {chronos@lliw@cefndir@llinell}%
+      \providecolor{chronos lliw llinell amser blaendir}{named}%
+        {chronos@lliw@llinell}%
+      \providecolor{chronos lliw llinell amser cefndir}{named}%
+        {chronos@lliw@cefndir@llinell}%
+      \providecolor{chronos timeline border inner colour}{named}%
+        {chronos@borderinner}%
+      \providecolor{chronos timeline border outer colour}{named}%
+        {chronos@borderouter}%
+      \providecolor{chronos timeline border middle colour}{named}%
+        {chronos@bordermiddle}%
+      \providecolor{chronos timeline border inner color}{named}
+        {chronos@borderinner}%
+      \providecolor{chronos timeline border outer color}{named}
+        {chronos@borderouter}%
+      \providecolor{chronos timeline border middle color}{named}
+        {chronos@bordermiddle}%
+      \providecolor{chronos lliw llinell amser border mewnol}{named}
+        {chronos@borderinner}%
+      \providecolor{chronos lliw llinell amser border allanol}{named}
+        {chronos@borderouter}%
+      \providecolor{chronos lliw llinell amser border canol}{named}
+        {chronos@bordermiddle}%
       \colorlet{chronos current tag colour}{chronos@prifliw}%
       \colorlet{chronos current tag color}{chronos@prifliw}%
       \ifdim\chronos@height=\pi pt %^^A BEGIN
@@ -4597,14 +4629,19 @@
       \ifchronos@markeras % BEGIN
 %    \end{macrocode}
 % angen côd Martin Scharrer uchod - needs the above code by Martin Scharrer
+%
+% Rmano: \url{https://chat.stackexchange.com/transcript/message/64273912#64273912}
 %    \begin{macrocode}
-        \ifnum\chronos@endyear>0 %^^A Rmano: https://chat.stackexchange.com/transcript/message/64273912#64273912
+        \ifnum\chronos@endyear>0 
           \settowidth\chronos@diwedd@diwedd{\chronos@ffont@cyfnodau\chronos@ce}%
           \addtolength{\chronos@diwedd@diwedd}{\chronos@eramargin}%
         \else
           \let\chronos@ce\relax
         \fi
-        \ifnum\chronos@startyear<0 %^^A Rmano: https://chat.stackexchange.com/transcript/message/64273912#64273912
+%    \end{macrocode}
+% Rmano: \url{https://chat.stackexchange.com/transcript/message/64273912#64273912}
+%    \begin{macrocode}
+        \ifnum\chronos@startyear<0 
           \settowidth\chronos@dechrau@dechrau{\chronos@ffont@cyfnodau\chronos@bce}%
           \addtolength{\chronos@dechrau@dechrau}{\chronos@eramargin}%
         \else
@@ -5055,7 +5092,8 @@
               \chronos@marks@barefalse
             \else
               \foreach \b [%
-                evaluate=\b as \i using {((\b==0)&&(\thechronos@tempcnta==0)) ? 1 : int(\b)}%
+                evaluate=\b as \i using {%
+                  ((\b==0)&&(\thechronos@tempcnta==0)) ? 1 : int(\b)}%
               ] in {\thechronos@startmarkyear,\thechronos@endyear} {%
                 \chronos@set@date{\i}{01}{01}{year}%^^A awto-cywiro am flwyddyn sero
                 \chronos@global@to@clist*+{tmpa}{\thechronos@yeardate/\b/\i}%
@@ -5063,8 +5101,11 @@
             \fi % \ifnum\thechronos@tempcntb<2
           }{%
             \foreach \b [%
-              evaluate=\b as \i using {((\b==0)&&(\thechronos@tempcnta==0)) ? 1 : int(\b)}%
-            ] in {\thechronos@startmarkyear,\chronos@nextstep,...,\thechronos@endyear} {%
+              evaluate=\b as \i using {%
+                ((\b==0)&&(\thechronos@tempcnta==0)) ? 1 : int(\b)}%
+            ] in {%
+              \thechronos@startmarkyear,\chronos@nextstep,...,\thechronos@endyear%
+            } {%
               \chronos@set@date{\i}{01}{01}{year}% awto-cywiro am flwyddyn sero
               \chronos@global@to@clist*+{tmpa}{\thechronos@yeardate/\b/\i}%
             }% 
@@ -5110,11 +5151,13 @@
               \fi % \ifnum\dlast=\pi
               \ifnum\b=-5000
                 \ifchronos@yearsonline
-                  \path [/chronos/temp@on] (chronos phantom year.south -| chronos date \d) -- 
+                  \path [/chronos/temp@on] 
+                    (chronos phantom year.south -| chronos date \d) -- 
                     (chronos phantom year.north -| chronos date \d);
                 \else
                   \path [/chronos/temp@off] (chronos date \d)  -- 
-                    ( chronos date \d |- chronos phantom year.\chronos@timelineyearsanchor) ;
+                    ( chronos date \d |- chronos phantom year.\chronos@timelineyearsanchor) 
+                    ;
                 \fi
               \else % \ifnum\b=-5000
                 \coordinate (chronos year \chronosyeari) at (\chronos@tempa pt,0pt);
@@ -5129,7 +5172,10 @@
                     \ifchronos@yearzero\relax
                     \else
                       \coordinate (chronos origin) at (\chronos@tempa pt,0pt);
-                      \coordinate (chronos year 0) at (chronos year 1);% make \foreach loops work straightforwardly (not used in main code)
+%    \end{macrocode}
+% make \cs{foreach} loops work straightforwardly (not used in main code)
+%    \begin{macrocode}
+                      \coordinate (chronos year 0) at (chronos year 1);
                     \fi % \ifchronos@yearzero
                   \fi % \ifnum\chronosyeari=1
                 \fi % \ifnum\b=\thechronos@startmarkyear
@@ -5177,7 +5223,11 @@
                   }%
                   \let\chronos@tempff\chronos@ffont@camaubach
                   \xdef\chronos@temph{\chronos@minoryearformat}%
-                  \ifchronos@marks@minor\chronos@markstrue\else\chronos@marksfalse\fi
+                  \ifchronos@marks@minor
+                    \chronos@markstrue
+                  \else
+                    \chronos@marksfalse
+                  \fi
                 \fi %^^A \ifchronos@cam@mod
 %    \end{macrocode}
 % \cs{ifchronos@temp} tracks whether we draw a node (T) or coordinate (F)
@@ -5253,7 +5303,8 @@
                           \ifnum\chronos@tempny>\thechronos@endyear % BEGIN
                             \path (chronos year \chronosyeari);
                             \pgfgetlastxy{\chronos@tempgx}{\chronos@tempgy}%
-                            \setlength \chronos@templgtha{\chronos@tempgx+\chronos@tempg pt}%
+                            \setlength \chronos@templgtha{%
+                              \chronos@tempgx+\chronos@tempg pt}%
                             \path (chronos end);
                             \pgfgetlastxy{\chronos@tempgx}{\chronos@tempgy}%
                             \ifdim\chronos@templgtha>\chronos@tempgx\relax % BEGIN
@@ -5331,7 +5382,8 @@
                           \ifnum\b=\chronos@nextstep % BEGIN
                             \path (chronos year \ilast);
                             \pgfgetlastxy{\chronos@tempgx}{\chronos@tempgy}%
-                            \setlength \chronos@templgtha{\chronos@tempgx-\chronos@tempg pt}%
+                            \setlength \chronos@templgtha{%
+                              \chronos@tempgx-\chronos@tempg pt}%
                             \ifdim\chronos@templgtha<0pt\relax % BEGIN
                             \else
                               \foreach \n in {1,...,\chronos@tempml}
@@ -5352,7 +5404,8 @@
                           \ifnum\chronos@tempny>\thechronos@endyear % BEGIN
                             \path (chronos year \chronosyeari);
                             \pgfgetlastxy{\chronos@tempgx}{\chronos@tempgy}%
-                            \setlength \chronos@templgtha{\chronos@tempgx+\chronos@tempg pt}%
+                            \setlength \chronos@templgtha{%
+                              \chronos@tempgx+\chronos@tempg pt}%
                             \path (chronos end);
                             \pgfgetlastxy{\chronos@tempgx}{\chronos@tempgy}%
                             \ifdim\chronos@templgtha>\chronos@tempgx\relax % BEGIN
@@ -5808,9 +5861,6 @@
 %    \begin{macrocode}
     \chronos@creu@testun@tag{byw}{\chronos@cynnwys@testun}%
     \ifchronos@byw@cysylltiadtheori
-%    \end{macrocode}
-%^^A       \scoped[/chronos/middle anchorborder]{% ateb Symbol 1: https://tex.stackexchange.com/a/385953/
-%    \begin{macrocode}
         \chronos@angorau@theori{testun \chronos@byw@tikzname}%
           {cysylltwr \chronos@byw@tikzname}[connector \chronos@byw@tikzname]%
           {/chronos/@cysylltwr@testun=\chronos@byw@lliw}%
@@ -5969,9 +6019,6 @@
       }%
     \fi
     \ifchronos@digwyddiad@cysylltiadtheori
-%    \end{macrocode}
-%^^A       \scoped[/chronos/middle anchorborder]{% ateb Symbol 1: https://tex.stackexchange.com/a/385953/
-%    \begin{macrocode}
         \chronos@angorau@theori{testun \chronos@digwyddiad@tikzname}%
           {cysylltwr \chronos@digwyddiad@tikzname}%
           [connector \chronos@digwyddiad@tikzname]%
@@ -6074,15 +6121,9 @@
 %    \begin{macrocode}
     \chronos@creu@testun@tag{parhad}{\chronos@cynnwys@testun}%
     \ifchronos@parhad@cysylltiadtheori
-%    \end{macrocode}
-%^^A       \scoped[/chronos/middle anchorborder]{% ateb Symbol 1: https://tex.stackexchange.com/a/385953/
-%    \begin{macrocode}
         \chronos@angorau@theori{testun \chronos@parhad@tikzname}%
           {cysylltwr \chronos@parhad@tikzname}[connector \chronos@parhad@tikzname]%
           {/chronos/@cysylltwr@testun=\chronos@parhad@lliw}%
-%    \end{macrocode}
-%^^A       }%
-%    \begin{macrocode}
     \fi
     \ifchronos@every@parhad@isod
       \global\chronos@parhad@isodtrue
@@ -6142,9 +6183,6 @@
 %    \begin{macrocode}
     \chronos@creu@testun@tag[alias=\chronos@theori@tikzname]{theori}{%
       \chronos@theori@ffonttestun\chronos@cynnwys@testun}%
-%    \end{macrocode}
-%^^A     \begin{scope}[/chronos/middle anchorborder]% ateb Symbol 1: https://tex.stackexchange.com/a/385953/
-%    \begin{macrocode}
       \IfExistT \chronos@cysylltwyr{%
         \chronos@angorau@theori{\chronos@theori@enw}{%
           cysylltwr \chronos@theori@enw
@@ -6152,9 +6190,6 @@
           /chronos/@cysylltwr@testun=\chronos@theori@lliw
         }%
       }%
-%    \end{macrocode}
-%^^A     \end{scope}%
-%    \begin{macrocode}
     \chronos@ailosod@nodweddion
   \endgroup
 }
@@ -6171,7 +6206,10 @@
   \ifchronos@phantom
     \PackageWarning{chronos}{Phantom tags cannot have connectors }%
   \else
-    \begin{scope}[/chronos/middle anchorborder]%^^A ateb Symbol 1: https://tex.stackexchange.com/a/385953/
+%    \end{macrocode}
+% ateb Symbol 1: \url{https://tex.stackexchange.com/a/385953/}
+%    \begin{macrocode}
+    \begin{scope}[/chronos/middle anchorborder]
       \setcounter{chronos@theori@countanchors}{0}%
       \@for \xx:=\chronos@cysylltwyr \do {%
         \stepcounter{chronos@theori@countanchors}%
@@ -6751,9 +6789,14 @@
         chronos@tempb@style/.style={#2}}%
       \coordinate (chronos@temp@coord) at (\chronos@tempb);
     }%
-    \scoped[/chronos/middle anchorborder]{% ateb Symbol 1: https://tex.stackexchange.com/a/385953/
 %    \end{macrocode}
-%^^A    % fill opacity=0 -> problem ; fill=none -> dim problem; beth sy'n digwydd?
+% ateb Symbol 1: \url{https://tex.stackexchange.com/a/385953/}
+%    \begin{macrocode}
+    \scoped[/chronos/middle anchorborder]{% 
+%    \end{macrocode}
+% \verb|fill opacity=0 -> problem| ; \verb|fill=none -> dim problem|; beth sy'n digwydd?
+%
+% for some reason \verb|fill opacity=0| causes a problem, whereas \verb|fill=none| does not, but why?
 %    \begin{macrocode}
       \node (testun \chronos@tempa) [%
         /chronos/@testun/.expand once=\csname chronos@#3@lliw\endcsname,%
@@ -6776,7 +6819,10 @@
           alias=cylch \chronos@tempa
         ] at (\chronos@tempa) {};%
       }%
-      \begin{scope}[/chronos/middle anchorborder]%^^A ateb Symbol 1: https://tex.stackexchange.com/a/385953/
+%    \end{macrocode}
+%  ateb Symbol 1: \url{https://tex.stackexchange.com/a/385953/}
+%    \begin{macrocode}
+      \begin{scope}[/chronos/middle anchorborder]%
 %    \end{macrocode}
 % creu cysylltwyr testun ar y node testun \textbar{} make text connectors on the text node
 %    \begin{macrocode}
@@ -6916,7 +6962,7 @@
 % Styles.
 %    \begin{macrocode}
 \RequirePackage{chronos}
-\ProvidesPackageSVN[\MyFileBaseName-lib-styles.sty]{$Id: chronos-code.dtx 10920 2025-03-07 02:27:42Z cfrees $}[v0.9 \revinfo]
+\ProvidesPackageSVN[\MyFileBaseName-lib-styles.sty]{$Id: chronos-code.dtx 10921 2025-03-07 06:07:43Z cfrees $}[v0.9 \revinfo]
 \pgfqkeys{/chronos}{%^^A BEGIN styles <<<
 %    \end{macrocode}
 % Styles come in three flavours: on-line, off-line and no-year.
@@ -7525,7 +7571,7 @@
 % Colour schemes.
 %    \begin{macrocode}
 \RequirePackage{chronos}
-\ProvidesPackageSVN[\MyFileBaseName-lib-colschemes.sty]{$Id: chronos-code.dtx 10920 2025-03-07 02:27:42Z cfrees $}[v0.9 \revinfo]
+\ProvidesPackageSVN[\MyFileBaseName-lib-colschemes.sty]{$Id: chronos-code.dtx 10921 2025-03-07 06:07:43Z cfrees $}[v0.9 \revinfo]
 %    \end{macrocode}
 % \begin{colscheme}{blues,contninety,offlinealt,xcolseries,lavender,modern,offlinebasic,sobriety}%^^A <<< BEGIN cylluniau lliwiau | colour schemes
 % cylluniau lliwiau \textbar{} colour schemes 
