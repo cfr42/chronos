@@ -30,7 +30,7 @@
 %^^A ref. ateb Max Chernoff: https://tex.stackexchange.com/a/723294/
 \def\MyMakePrivateLetters{\makeatletter\ExplSyntaxOn\endlinechar13}
 \ExplSyntaxOff
-\ProvidesFileSVN{$Id: chronos.dtx 10917 2025-03-06 21:07:12Z cfrees $}[v0.9 \revinfo][\filebase\ DTX]
+\ProvidesFileSVN{$Id: chronos.dtx 10920 2025-03-07 02:27:42Z cfrees $}[v0.9 \revinfo][\filebase\ DTX]
 \DefineFileInfoSVN[chronosdoc]
 \GetFileInfoSVN*
 \let\chronosdocversion\fileversion
@@ -1101,6 +1101,7 @@
   \group_end:
 }
 \NewDocumentCommand \idxeg { } {\textrm{\textdagger}}%  \string\textrm{(e.g.)
+\cs_new_eq:NN \IfTLEqualF \tl_if_eq:eeF
 \ExplSyntaxOff
 \DeclareRobustCommand \ConceptFont {%
   \not@math@alphabet\ConceptFont\relax
@@ -1157,18 +1158,21 @@
       Features are sorted by kind.
       Numbers written in bold italics refer to the pages containing the main descriptions of the corresponding entries.
       Numbers underlined refer to the code lines where the entries are defined.
-      Upright numbers refer to pages containing additional comments, discussion or examples of usage or to usage in the code\texsethanks*[help with indexing]{David Carlisle and Ulrike Fischer}{695555}.
+      Upright numbers refer to pages containing additional comments, discussion or examples of usage or to line numbers for usage in the code\texsethanks*[help with indexing]{David Carlisle and Ulrike Fischer}{695555}.
       \textup{\textdagger} indicates an example of usage.%
     }\bigskip
   ]\chronosdocrestorefn
-  \markboth{\indexname}%
-  {\indexname}%
-  \pagestyle{fancyplain}%
-  \thispagestyle{plain}%
+  \markboth{\indexname}{}%
+%^^A  {\indexname}%
+  \pagestyle{fancy}%
+  \thispagestyle{fancy}%
   \parindent\z@
   \parskip\z@ \@plus .3\p@\relax
   \let\item\@idxitem}
 {}
+\renewcommand\glossary@prologue{%
+  \section *{{\changehistoryname}}\markboth {{\changehistoryname}}{}%
+}
 \lstdefinestyle{lstchronos}{% modified from style used by doctools.sty for the latexcode environment
   style=lstDemoStyleLaTeXCode,%lstDemoStyleLaTeXCode,%lstDocStyleBase,
   gobble=2,
@@ -1278,15 +1282,25 @@
 \newcommand*\TikZ{Ti\emph{k}Z}
 \newcommand*\PGF{PGF}
 \newcommand*\pgf{PGF}
-\pagestyle{fancy}
-\fancyhf{}
-\fancyhf[lh]{\textit{\leftmark}}
-\fancyhf[rh]{\textit{\rightmark}}
-\fancyhf[cf]{\textit{--- \thepage{} of \lastpage{} ---}}
+\fancypagestyle{fancy}{%
+  \fancyhf{}%
+  \fancyhf[lh]{\textit{\leftmark}}%
+  \fancyhf[rh]{%
+%^^A    \IfTLEqualF { \leftmark } { \rightmark } {\textit{\rightmark}}%
+   \ifx\leftmark\rightmark\relax
+   \else
+     \textit{\rightmark}%
+   \fi
+  }%
+  \fancyhf[cf]{\textit{--- \thepage{} of \lastpage{} ---}}%
+  \let\headrulewidth\chronosdocheadrulewidth
+}
 \fancypagestyle{fancyplain}{%
   \fancyhf{}%
   \fancyhf[lh]{\textit{\leftmark}}%
-  \renewcommand*\headrulewidth{0pt}%
+  \fancyhf[rh]{\textit{\rightmark}}%
+%^^A   \renewcommand*\headrulewidth{0pt}%
+  \let\headrulewidth\chronosdocheadrulewidth
   \fancyhf[cf]{\textit{--- \thepage{} of \lastpage{} ---}}}
 \fancypagestyle{plain}{%
   \fancyhf{}%
@@ -1295,6 +1309,12 @@
 \fancypagestyle{fancyempty}{%
   \fancyhf{}%
   \renewcommand*\headrulewidth{0pt}}
+\AddToHookNext{begindocument/end}
+{%
+  \let\chronosdocheadrulewidth\headrulewidth
+  \pagestyle{fancy}%
+  \thispagestyle{plain}%
+}
 \setcounter{secnumdepth}{5}
 \patchcmd{\sectionmark}{\MakeUppercase}{}{\typeout{sectionmark patched OK!}}{\typeout{sectionmark patch failed!}}
 \patchcmd{\HDorg@tableofcontents}{\MakeUppercase}{}{\typeout{sectionmark patched OK!}}{\typeout{sectionmark patch failed!}}
@@ -2029,7 +2049,7 @@
 % 
 % \loadgeometry{safonol}
 % \setlength\tewadjust{\marginparwidth+\marginparsep}%
-% \fancyheadoffset[lh]{0pt}% REQUIRED - do NOT remove this line!!
+% \fancyheadoffset[lh]{0pt}%^^A REQUIRED - do NOT remove this line!!
 % 
 % \section{Chronos Anatomy}\label{sec:anatomy}
 %^^A BEGIN sec:anatomy
@@ -2547,6 +2567,9 @@
 % \restoregeometry
 % \setlength\tewadjust{\marginparwidth+\marginparsep-\paperwidth+\textwidth+\oddsidemargin+1in}%
 % \fancyheadoffset[lh]{\tewadjust}%
+%^^A pam bo angen??!!
+% \pagestyle{fancy}
+% \thispagestyle{fancy}
 % 
 % \section{Chronos Schemes and Styles}\label{sec:schemes-styles}
 %^^A BEGIN sec:schemes-styles
@@ -7639,6 +7662,12 @@ mode=overlay}}.
 % 
 % 
 % \MaybeStop{%
+%^^A \loadgeometry{safonol}%
+%^^A \setlength\tewadjust{\marginparwidth+\marginparsep}%
+%^^A \fancyheadoffset[lh]{0pt}%^^A REQUIRED - do NOT remove this line!!
+%^^A \pagestyle{fancy}%
+%^^A \thispagestyle{fancyplain}%
+% \def\glossaryname{Change History}%
 % \PrintChanges
 % \PrintIndex
 % }
@@ -7650,7 +7679,7 @@ mode=overlay}}.
 \RequirePackage{svn-prov}
 \def\GetFileBaseName#1-#2\nil{#1}
 \edef\MyFileBaseName{\expandafter\GetFileBaseName\jobname\nil}
-\ProvidesFileSVN[\MyFileBaseName-doc]{$Id: chronos.dtx 10917 2025-03-06 21:07:12Z cfrees $}[v0.0 \revinfo]
+\ProvidesFileSVN[\MyFileBaseName-doc]{$Id: chronos.dtx 10920 2025-03-07 02:27:42Z cfrees $}[v0.0 \revinfo]
 \DefineFileInfoSVN
 \AddToHook{begindocument}{\OnlyDescription}
 \expandafter\newif\csname ifchronoscodetoo\endcsname
@@ -7663,7 +7692,7 @@ mode=overlay}}.
 \RequirePackage{svn-prov}
 \def\GetFileBaseName#1-#2\nil{#1}
 \edef\MyFileBaseName{\expandafter\GetFileBaseName\jobname\nil}
-\ProvidesFileSVN[\MyFileBaseName-imp]{$Id: chronos.dtx 10917 2025-03-06 21:07:12Z cfrees $}[v0.0 \revinfo]
+\ProvidesFileSVN[\MyFileBaseName-imp]{$Id: chronos.dtx 10920 2025-03-07 02:27:42Z cfrees $}[v0.0 \revinfo]
 \DefineFileInfoSVN
 \AddToHook{begindocument}{\AlsoImplementation}
 \expandafter\newif\csname ifchronoscodetoo\endcsname
