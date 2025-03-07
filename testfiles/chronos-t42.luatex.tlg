@@ -544,6 +544,7 @@ Package chronos Info: I'm guessing you want bare marks on your timeline. If I'm 
 ......\glue(\spaceskip) 0.0
 ......\pdfliteral origin{Q }
 ....\glue(\spaceskip) 0.0
+....\glue(\spaceskip) 0.0
 ....\pdfliteral origin{q }
 ....\glue(\spaceskip) 0.0
 ....\pdfliteral origin{q }
@@ -674,6 +675,7 @@ Package chronos Info: I'm guessing you want bare marks on your timeline. If I'm 
 ....\glue(\spaceskip) 0.0
 ....\glue(\spaceskip) 0.0
 ....\pdfliteral origin{Q }
+....\glue(\spaceskip) 0.0
 ....\glue(\spaceskip) 0.0
 ....\glue(\spaceskip) 0.0
 ....\pdfliteral origin{q }

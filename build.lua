@@ -1,4 +1,4 @@
--- $Id: build.lua 10887 2025-03-01 01:36:24Z cfrees $
+-- $Id: build.lua 10919 2025-03-06 22:23:32Z cfrees $
 -- Build configuration for chronos
 --------------------------------------------------------------------------------
 maindir = maindir or "."
@@ -12,11 +12,12 @@ checkengines = { "pdftex", "luatex" }
 checkopts = "-interaction=nonstopmode -cnf-line='TEXMFHOME=.' -cnf-line='TEXMFLOCAL=.' -cnf-line='TEXMFARCH=.'"
 -- indexstyle = "gind.ist"
 manifestfile = "manifest.txt"
-sourcefiles = {"*.sty","chronos.tex"}
-tagfiles = { "*.dtx", "README.md", "*.sty", "chronos.tex", "manifest.txt" }
-typesetfiles = {"chronos.tex"}
+-- sourcefiles = {"*.dtx","*.ins","chronos.tex"}
+sourcefiles = {"*.dtx","*.ins"}
+tagfiles = { "*.dtx", "README.md", "build.lua", "*.sty", "chronos.tex", "manifest.txt" }
+typesetfiles = {"*-doc.tex", "*-imp.tex"}
 typesetopts = "-interaction=nonstopmode -cnf-line='TEXMFHOME=.' -cnf-line='TEXMFLOCAL=.' -cnf-line='TEXMFARCH=.'"
-typesetruns = 4
+typesetruns = 4 -- 4
 --------------------------------------------------------------------------------
 uploadconfig = {
   ctanPath = "/macros/latex/contrib/chronos",

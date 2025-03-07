@@ -539,6 +539,7 @@ Package chronos Info: I'm guessing you want bare marks on your timeline. If I'm 
 ......\glue 0.0
 ......\special{pdf:code Q }
 ....\glue 0.0
+....\glue 0.0
 ....\hbox(0.0+0.0)x0.0
 .....\hbox(0.0+0.0)x0.0
 ......\special{pdf:code q }
@@ -860,6 +861,7 @@ Package chronos Info: I'm guessing you want bare marks on your timeline. If I'm 
 ....\glue 0.0
 ....\glue 0.0
 ....\glue 0.0
+....\glue 0.0
 ....\special{pdf:code q }
 ....\special{pdf:code 0.3985 w }
 ....\glue 0.0
@@ -870,6 +872,7 @@ Package chronos Info: I'm guessing you want bare marks on your timeline. If I'm 
 ......\special{pdf:code q }
 ......\glue 0.0
 ......\special{pdf:code Q }
+....\glue 0.0
 ....\glue 0.0
 ....\special{pdf:code q }
 ....\special{pdf:code 0.3985 w }
@@ -989,6 +992,7 @@ Package chronos Info: I'm guessing you want bare marks on your timeline. If I'm 
 ....\glue 0.0
 ....\glue 0.0
 ....\special{pdf:code Q }
+....\glue 0.0
 ....\glue 0.0
 ....\glue 0.0
 ....\glue 0.0
@@ -1151,6 +1155,7 @@ Package chronos Info: I'm guessing you want bare marks on your timeline. If I'm 
 ....\glue 0.0
 ....\glue 0.0
 ....\special{pdf:code Q }
+....\glue 0.0
 ....\glue 0.0
 ....\glue 0.0
 ....\glue 0.0

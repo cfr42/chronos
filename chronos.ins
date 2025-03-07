@@ -1,0 +1,70 @@
+%% $Id: chronos.ins 10891 2025-03-02 07:31:39Z cfrees $
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% chronos.ins
+%% Additions and changes Copyright (C) 2024-2025 Clea F. Rees.
+%% Code from skeleton.ins Copyright (C) 2015-2024 Scott Pakin (see below).
+%%
+%% This work may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3c
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%   https://www.latex-project.org/lppl.txt
+%% and version 1.3c or later is part of all distributions of LaTeX
+%% version 2008-05-04 or later.
+%%
+%% This work has the LPPL maintenance status `maintained'.
+%%
+%% The Current Maintainer of this work is Clea F. Rees.
+%%
+%% This work consists of all files listed in manifest.txt.
+%%
+%% The file chronos.ins is a derived work under the terms of the
+%% LPPL. It is based on version 2.4 of skeleton.ins which is part of 
+%% dtxtut by Scott Pakin. A copy of dtxtut, including the 
+%% unmodified version of skeleton.ins is available from
+%% https://www.ctan.org/pkg/dtxtut and released under the LPPL.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input docstrip.tex
+\keepsilent
+
+%% ???
+\usedir{tex/latex/chronos}
+
+\declarepreamble\safonol
+-------------------------------------------------
+Copyright (C) 2023-2025 Clea F. Rees.
+
+This work may be distributed and/or modified under the
+conditions of the LaTeX Project Public License, either version 1.3c
+of this license or (at your option) any later version.
+The latest version of this license is in
+  https://www.latex-project.org/lppl.txt
+and version 1.3c or later is part of all distributions of LaTeX
+version 2008-05-04 or later.
+
+This work has the LPPL maintenance status `maintained'.
+
+The Current Maintainer of this work is Clea F. Rees.
+
+This file may only be distributed together with a copy of the package
+chronos. You may however distribute the package chronos without
+such generated files.
+
+This work consists of all files listed in manifest.txt.
+-------------------------------------------------
+\endpreamble
+
+\askonceonly
+
+\usepreamble\safonol
+
+\generate{\file{chronos.sty}{\from{chronos-code.dtx}{sty}}
+  \file{chronos-lib-colschemes.sty}{\from{chronos-code.dtx}{sty-colschemes}}
+  \file{chronos-lib-styles.sty}{\from{chronos-code.dtx}{sty-styles}}
+  \file{chronos-doc.tex}{\from{chronos.dtx}{doc}}
+  \file{chronos-imp.tex}{\from{chronos.dtx}{doc-code}}
+}
+
+
+\endbatchfile
