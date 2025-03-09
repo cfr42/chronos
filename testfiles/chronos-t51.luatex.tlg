@@ -1377,7 +1377,7 @@ Package chronos Info: Timeline border height unset. Guessing an appropriate valu
 ...\pdfliteral origin{Q }
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 ! OK.
-<argument> ...or=west, ] \end {chronos}}\showbox \chronosbox 
+<argument> ...\end {chronos}}\showbox \chronosbox 
                                                   \OMIT \box \chronosbox \TIMO 
 l. ...}
 ============================================================

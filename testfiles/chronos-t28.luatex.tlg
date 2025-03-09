@@ -1142,7 +1142,7 @@ Package chronos Info: I'm guessing you want bare marks on your timeline. If I'm 
 ...\pdfliteral origin{Q }
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 ! OK.
-<argument> ...0pt,30pt); \end {chronos}}\showbox \chronosbox 
+<argument> ...\end {chronos}}\showbox \chronosbox 
                                                   \OMIT \box \chronosbox \TIMO 
 l. ...}
 ============================================================
