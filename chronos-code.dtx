@@ -32,7 +32,7 @@
 % ref. ateb Max Chernoff: https://tex.stackexchange.com/a/723294/
 \def\MakePrivateLetters{\makeatletter\ExplSyntaxOn\endlinechar13}
 \ExplSyntaxOff
-\ProvidesFileSVN{$Id: chronos-code.dtx 10925 2025-03-07 15:07:59Z cfrees $}[v0.9.1 \revinfo][\filebase DTX: Customisable TikZ-based timelines]
+\ProvidesFileSVN{$Id: chronos-code.dtx 10944 2025-03-15 06:47:56Z cfrees $}[v0.9.1 \revinfo][\filebase DTX: Customisable TikZ-based timelines]
 \DefineFileInfoSVN[chronoscode]
 \let\chronoscodeversion\fileversion
 \let\chronoscodebase\filebase
@@ -67,7 +67,7 @@
 % \changes{v0.9}{2025-02-27}{First \ctan{} release.}
 % ^^A lua will replace v0.0 and 0000/00/00 when tagging
 % \ifchronoscodetoo
-%   \ProvidesFileSVN{$Id: chronos-code.dtx 10925 2025-03-07 15:07:59Z cfrees $}[v0.9.1 \revinfo]
+%   \ProvidesFileSVN{$Id: chronos-code.dtx 10944 2025-03-15 06:47:56Z cfrees $}[v0.9.1 \revinfo]
 %   \DefineFileInfoSVN[chronoscode]
 %   \GetFileInfoSVN{chronoscode}
 %   \let\chronoscodeversion\fileversion
@@ -144,9 +144,7 @@
 % \LaTeXe{} package.
 %    \begin{macrocode}
 \RequirePackage{svn-prov}
-\def\GetFileBaseName#1-#2\nil{#1}
-\edef\MyFileBaseName{\expandafter\GetFileBaseName\jobname\nil}
-\ProvidesPackageSVN[chronos.sty]{$Id: chronos-code.dtx 10925 2025-03-07 15:07:59Z cfrees $}[v0.9.1 \revinfo]
+\ProvidesPackageSVN[chronos.sty]{$Id: chronos-code.dtx 10944 2025-03-15 06:47:56Z cfrees $}[v0.9.1 \revinfo]
 \DefineFileInfoSVN[chronos]
 %    \end{macrocode}
 % \iffalse
@@ -6958,9 +6956,10 @@
 % \fi
 % \section[chronos-lib-styles]{\lpack{chronos-lib-styles}}\label{sec:cod-styles}%^^A <<< (pkg)
 % Styles.
+% \changes{v0.9.2}{2025-03-15}{Fix info reported for \texttt{chronos-lib-styles.sty}.}
 %    \begin{macrocode}
 \RequirePackage{chronos}
-\ProvidesPackageSVN[\MyFileBaseName-lib-styles.sty]{$Id: chronos-code.dtx 10925 2025-03-07 15:07:59Z cfrees $}[v0.9.1 \revinfo]
+\ProvidesPackageSVN[chronos-lib-styles.sty]{$Id: chronos-code.dtx 10944 2025-03-15 06:47:56Z cfrees $}[v0.9.1.2 \revinfo]
 \pgfqkeys{/chronos}{%^^A BEGIN styles <<<
 %    \end{macrocode}
 % Styles come in three flavours: on-line, off-line and no-year.
@@ -7567,9 +7566,10 @@
 % \fi
 % \section[chronos-lib-colschemes]{\lpack{chronos-lib-colschemes}}\label{sec:cod-colours}%^^A <<< (pkg)
 % Colour schemes.
+% \changes{v0.9.2}{2025-03-15}{Fix info reported for \texttt{chronos-lib-styles.sty}.}
 %    \begin{macrocode}
 \RequirePackage{chronos}
-\ProvidesPackageSVN[\MyFileBaseName-lib-colschemes.sty]{$Id: chronos-code.dtx 10925 2025-03-07 15:07:59Z cfrees $}[v0.9.1 \revinfo]
+\ProvidesPackageSVN[chronos-lib-colschemes.sty]{$Id: chronos-code.dtx 10944 2025-03-15 06:47:56Z cfrees $}[v0.9.1.2 \revinfo]
 %    \end{macrocode}
 % \begin{colscheme}{blues,contninety,offlinealt,xcolseries,lavender,modern,offlinebasic,sobriety}%^^A <<< BEGIN cylluniau lliwiau | colour schemes
 % cylluniau lliwiau \textbar{} colour schemes 
