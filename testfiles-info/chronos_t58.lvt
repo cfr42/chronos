@@ -1,0 +1,39 @@
+% !TEX TS-program = pdflatex
+% !TEX encoding = UTF-8 Unicode
+% arara: pdflatex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% This is file `chronos-egs.lvt',
+%%
+%% Copyright (C) 2023-2025 Clea F. Rees.
+%% 
+%% This work may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3c
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%   https://www.latex-project.org/lppl.txt
+%% and version 1.3c or later is part of all distributions of LaTeX
+%% version 2008-05-04 or later.
+%% 
+%% This work has the LPPL maintenance status `maintained'.
+%% 
+%% The Current Maintainer of this work is Clea F. Rees.
+%% 
+%% This file may only be distributed together with a copy of the package
+%% chronos. 
+%% 
+%% This work consists of all files listed in manifest.txt.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{svn-prov}
+\ProvidesFileSVN{$Id: chronos_t58.lvt 10948 2025-03-16 03:10:16Z cfrees $}[v0.1 \revinfo][\filebase: package info self-contained]
+\input regression-test.tex\relax
+% TeXnicien_de_surface: https://codeberg.org/cfr/chronos/issues/3#issue-1054526
+\documentclass{article}
+\usepackage{chronos}
+\begin{document}
+\START
+\SEPARATOR
+\TYPE{TEST 1: chronos-t58}
+\SEPARATOR
+\NEWLINE
+\SEPARATOR
+\end{document}
