@@ -32,7 +32,7 @@
 % ref. ateb Max Chernoff: https://tex.stackexchange.com/a/723294/
 \def\MakePrivateLetters{\makeatletter\ExplSyntaxOn\endlinechar13}
 \ExplSyntaxOff
-\ProvidesFileSVN{$Id: chronos-code.dtx 10946 2025-03-15 07:57:17Z cfrees $}[v0.9.2 \revinfo][\filebase DTX: Customisable TikZ-based timelines]
+\ProvidesFileSVN{$Id: chronos-code.dtx 11054 2025-07-10 13:50:51Z cfrees $}[v0.9.2 \revinfo][\filebase DTX: Customisable TikZ-based timelines]
 \DefineFileInfoSVN[chronoscode]
 \let\chronoscodeversion\fileversion
 \let\chronoscodebase\filebase
@@ -67,7 +67,7 @@
 % \changes{v0.9}{2025-02-27}{First \ctan{} release.}
 % ^^A lua will replace v0.0 and 0000/00/00 when tagging
 % \ifchronoscodetoo
-%   \ProvidesFileSVN{$Id: chronos-code.dtx 10946 2025-03-15 07:57:17Z cfrees $}[v0.9.2 \revinfo]
+%   \ProvidesFileSVN{$Id: chronos-code.dtx 11054 2025-07-10 13:50:51Z cfrees $}[v0.9.2 \revinfo]
 %   \DefineFileInfoSVN[chronoscode]
 %   \GetFileInfoSVN{chronoscode}
 %   \let\chronoscodeversion\fileversion
@@ -144,7 +144,7 @@
 % \LaTeXe{} package.
 %    \begin{macrocode}
 \RequirePackage{svn-prov}
-\ProvidesPackageSVN[chronos.sty]{$Id: chronos-code.dtx 10946 2025-03-15 07:57:17Z cfrees $}[v0.9.2 \revinfo]
+\ProvidesPackageSVN[chronos.sty]{$Id: chronos-code.dtx 11054 2025-07-10 13:50:51Z cfrees $}[v0.9.2 \revinfo]
 \DefineFileInfoSVN[chronos]
 %    \end{macrocode}
 % \iffalse
@@ -1552,6 +1552,7 @@
 \newdimen\chronos@subheading@drop@isod
 \newdimen\chronos@heading@drop
 \newdimen\chronos@llinell@yshift
+\newdimen\chronos@llinell@add@yshift
 \newdimen\chronos@testun@yshift
 \newdimen\chronos@baselineskip
 \newdimen\chronos@cylchtheori@mawr
@@ -1562,6 +1563,7 @@
 \chronos@height=\pi pt
 \chronos@borderheight=\pi pt
 \chronos@llinell@yshift=\pi pt
+\chronos@llinell@add@yshift=0pt
 \chronos@timelinemargin=15pt
 \chronos@eramargin=15pt
 \chronos@border@allanol=5pt
@@ -2488,6 +2490,7 @@
       llinell'/.code={\chronos@cadw@nodweddion{#1}{@llinell}{##1}},
       llinell+/.code={\chronos@ychwanegu@nodweddion{#1}{@llinell}{##1}},
       llinell/.forward to=/chronos/#1/llinell',
+      llinell add yshift/.chronos dimen=\chronos@llinell@add@yshift,
       lliw/.store in/.expand once=\csname chronos@#1@lliw\endcsname,
 %    \end{macrocode}
 %^^A    %   lliw/.chronos tag lliw={#1}{lliw},
@@ -2615,6 +2618,7 @@
       line/.forward to=/chronos/#1/llinell,
       line'/.forward to=/chronos/#1/llinell',
       line+/.forward to=/chronos/#1/llinell+,
+      line add yshift/.chronos dimen=\chronos@llinell@add@yshift,
       only text/.forward to=/chronos/#1/testun yn unig,
       text tag/.forward to=/chronos/#1/testun,
       text tag'/.forward to=/chronos/#1/testun',
@@ -2871,6 +2875,10 @@
 %    \begin{macrocode}
   byw/.code={\chronos@cyd@destun@init+{byw}{#1}},
   byw/.default={},
+  byw/at geni/.style={/chronos/byw/at=geni \chronos@byw@tizkname},
+  byw/at marw/.style={/chronos/byw/at=marw \chronos@byw@tikzname},
+  byw/at birth/.forward to=/chronos/byw/at geni,
+  byw/at death/.forward to=/chronos/byw/at marw,
 %    \end{macrocode}
 %^^A END byw (prif gôd)
 %^^A BEGIN digwyddiad | event (prif gôd)
@@ -2883,6 +2891,10 @@
 %    \begin{macrocode}
   parhad/.code={\chronos@cyd@destun@init+{parhad}{#1}},
   parhad/.default={},
+  parhad/at dechrau/.style={/chronos/parhad/at=dechrau \chronos@parhad@tizkname},
+  parhad/at diwedd/.style={/chronos/parhad/at=diwedd \chronos@parhad@tikzname},
+  parhad/at start/.forward to=/chronos/parhad/at dechrau,
+  parhad/at end/.forward to=/chronos/parhad/at diwedd,
 %    \end{macrocode}
 %^^A END parhad (prif gôd)
 %^^A BEGIN theori | theory (prif gôd)
@@ -5815,6 +5827,12 @@
 % temporary coordinate accurate only for x
 %    \begin{macrocode}
     \coordinate (\chronos@byw@tikzname) at (\chronos@templ pt,0pt);
+%    \end{macrocode}
+% \changes{v0.0}{2025-07-09}{Add helper coordinates for placing things relative to life/period lines, including provisional coordinates for getting \texttt{x} only.}
+% These are exposed publicly, as they are useful, but they are only correct for \texttt{x} during \texttt{life} creation.
+%    \begin{macrocode}
+    \coordinate [alias=birth \chronos@byw@tikzname] (geni \chronos@byw@tikzname) at (\chronos@temph pt,0pt);
+    \coordinate [alias=death \chronos@byw@tikzname] (marw \chronos@byw@tikzname) at (\chronos@tempk pt,0pt);
     \chronos@troilliwiau@tag{byw}%
     \chronos@gosodangor@tag{byw}%
     \chronos@gosodborder@tag{byw}%
@@ -5848,11 +5866,15 @@
         {\chronos@byw@ffonttestun\chronos@cynnwys@enw}\chronos@cynnwys@dyddiadau
       }%
     }%
-    \chronos@creu@llinell {byw}{\chronos@temph pt}{\chronos@tempk pt}{geni}{marw}%
+    \chronos@creu@llinell {byw}{\chronos@temph pt}{\chronos@tempk pt}{geni}{marw}{birth}{death}%
 %    \end{macrocode}
 % final coordinate accurate for x and y
+%
+% \changes{v0.0}{2025-07-10}{Adjust reference coordinate placement for additional line shift.}
+% Subtract additional line shift so reference coordinate is offset by standard distance from timeline (0pt or \texttt{yshift}).
+% For most styles, \cs{chronos@llinell@add@yshift} is \texttt{0pt}.
 %    \begin{macrocode}
-    \coordinate (\chronos@byw@tikzname) at 
+    \coordinate [yshift=-\chronos@llinell@add@yshift] (\chronos@byw@tikzname) at 
       ($(\chronos@byw@tikzname{} geni)!1/2!(\chronos@byw@tikzname{} marw)$);
 %    \end{macrocode}
 % creu cylcu ar y lein ; testun - prif node ; testun cylch ; prif gysylltiad
@@ -6072,9 +6094,15 @@
       (\chronos@temph+\chronos@tempk)*\chronos@unit/2%
     }%
 %    \end{macrocode}
-% temporary coordinate accurate only for x
+% temporary coordinates accurate only for x
 %    \begin{macrocode}
     \coordinate (\chronos@parhad@tikzname) at (\chronos@templ pt,0pt);
+%    \end{macrocode}
+% \changes{v0.0}{2025-07-09}{Add helper coordinates for placing things relative to life/period lines, including provisional coordinates for getting \texttt{x} only.}
+% These are exposed publicly, as they are useful, but they are only correct for \texttt{x} during \texttt{period} creation.
+%    \begin{macrocode}
+    \coordinate [alias=start \chronos@parhad@tikzname] (dechrau \chronos@parhad@tikzname) at (\chronos@temph pt,0pt);
+    \coordinate [alias=end \chronos@parhad@tikzname] (diwedd \chronos@parhad@tikzname) at (\chronos@tempk pt,0pt);
     \chronos@troilliwiau@tag{parhad}%
     \chronos@gosodangor@tag{parhad}%
     \chronos@gosodborder@tag{parhad}%
@@ -6107,11 +6135,15 @@
         \chronos@cynnwys@enw
       }%
     }%
-    \chronos@creu@llinell {parhad}{\chronos@temph pt}{\chronos@tempk pt}{dechrau}{diwedd}%
+    \chronos@creu@llinell {parhad}{\chronos@temph pt}{\chronos@tempk pt}{dechrau}{diwedd}{start}{end}%
 %    \end{macrocode}
 % final coordinate placement
+%
+% \changes{v0.0}{2025-07-10}{Adjust reference coordinate placement for additional line shift.}
+% Subtract additional line shift so reference coordinate is offset by standard distance from timeline (0pt or \texttt{yshift}).
+% For most styles, \cs{chronos@llinell@add@yshift} is \texttt{0pt}.
 %    \begin{macrocode}
-    \coordinate (\chronos@parhad@tikzname) at 
+    \coordinate [yshift=-\chronos@llinell@add@yshift] (\chronos@parhad@tikzname) at 
       ($(\chronos@parhad@tikzname{} dechrau)!1/2!(\chronos@parhad@tikzname{} diwedd)$);
 %    \end{macrocode}
 % creu cylch ar y lein ; testun ; testun cylch ; prif gysylltiad
@@ -6706,18 +6738,21 @@
 % \begin{macro}{\chronos@creu@llinell}%^^A <<< parhad, byw
 %   Internal macro to put new life or period on timeline. 
 %    \begin{macrocode}
-\NewDocumentCommand \chronos@creu@llinell {mmmmm}{%^^A <<< fill (fallai draw)} llinell ar y llinell amser am dymor estynedig
+\NewDocumentCommand \chronos@creu@llinell {mmmmmmm}{%^^A <<< fill (fallai draw)} llinell ar y llinell amser am dymor estynedig
 %    \end{macrocode}
 %^^A  #1 : tag e.g. byw
 %^^A  #2 : x dimen dechrau/geni
 %^^A  #3 : x dimen diwedd/marw
 %^^A  #4 : i greu enw cyntaf e.g. dechrau/geni
 %^^A  #5 : i greu'r ail enw e.g. diwedd/marw
+%^^A  #6 : i greu alias cyntaf e.g. start/birth
+%^^A  #7 : i greu'r ail alias e.g. end/death
 %    \begin{macrocode}
   \expandafter\let\expandafter\chronos@tempa\csname chronos@#1@tikzname\endcsname
   \edef\chronos@tempd{\csname chronos@#1@tikzname\endcsname-inv}%
   \expandafter\let\expandafter\chronos@tempb\csname chronos@#1@border\endcsname
   \expandafter\let\expandafter\chronos@tempc\csname chronos@#1@border@inv\endcsname
+  \advance\chronos@llinell@yshift by \chronos@llinell@add@yshift
   \begin{scope}[/chronos/chronos@llinell@haenen]
     \ifchronos@yearsonline
 %    \end{macrocode}
@@ -6748,7 +6783,13 @@
           (\chronos@tempd{} #5);
       \fi
     \fi
+%    \end{macrocode}
+% \changes{v0.0}{2025-07-09}{Add helper coordinates for placing things relative to life/period lines, including provisional coordinates for getting \texttt{x} only.}
+% Re-define the start/end coordinates to correct \texttt{y}.
+%    \begin{macrocode}
   \end{scope}%
+  \coordinate [alias=#6 \chronos@tempa] (#4 \chronos@tempa) at (\chronos@tempa{} #4);
+  \coordinate [alias=#7 \chronos@tempa] (#5 \chronos@tempa) at (\chronos@tempa{} #5);
 }%^^A >>>
 %    \end{macrocode}
 % \end{macro}%^^A >>> \chronos@creu@llinell (parhad, byw)
@@ -6959,7 +7000,7 @@
 % \changes{v0.9.2}{2025-03-15}{Fix info reported for \texttt{chronos-lib-styles.sty}.}
 %    \begin{macrocode}
 \RequirePackage{chronos}
-\ProvidesPackageSVN[chronos-lib-styles.sty]{$Id: chronos-code.dtx 10946 2025-03-15 07:57:17Z cfrees $}[v0.9.2 \revinfo]
+\ProvidesPackageSVN[chronos-lib-styles.sty]{$Id: chronos-code.dtx 11054 2025-07-10 13:50:51Z cfrees $}[v0.9.2 \revinfo]
 \pgfqkeys{/chronos}{%^^A BEGIN styles <<<
 %    \end{macrocode}
 % Styles come in three flavours: on-line, off-line and no-year.
@@ -7569,7 +7610,7 @@
 % \changes{v0.9.2}{2025-03-15}{Fix info reported for \texttt{chronos-lib-styles.sty}.}
 %    \begin{macrocode}
 \RequirePackage{chronos}
-\ProvidesPackageSVN[chronos-lib-colschemes.sty]{$Id: chronos-code.dtx 10946 2025-03-15 07:57:17Z cfrees $}[v0.9.2 \revinfo]
+\ProvidesPackageSVN[chronos-lib-colschemes.sty]{$Id: chronos-code.dtx 11054 2025-07-10 13:50:51Z cfrees $}[v0.9.2 \revinfo]
 %    \end{macrocode}
 % \begin{colscheme}{blues,contninety,offlinealt,xcolseries,lavender,modern,offlinebasic,sobriety}%^^A <<< BEGIN cylluniau lliwiau | colour schemes
 % cylluniau lliwiau \textbar{} colour schemes 
