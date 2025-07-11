@@ -24,7 +24,7 @@
 %% This work consists of all files listed in manifest.txt.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \RequirePackage{svn-prov}
-\ProvidesFileSVN{$Id: chronos_t58.lvt 10948 2025-03-16 03:10:16Z cfrees $}[v0.1 \revinfo][\filebase: package info self-contained]
+\ProvidesFileSVN{$Id: chronos-info.lvt 11061 2025-07-11 13:12:03Z cfrees $}[v0.1 \revinfo][\filebase: package info self-contained]
 \input regression-test.tex\relax
 % TeXnicien_de_surface: https://codeberg.org/cfr/chronos/issues/3#issue-1054526
 \documentclass{article}
@@ -32,7 +32,7 @@
 \begin{document}
 \START
 \SEPARATOR
-\TYPE{TEST 1: chronos-t58}
+\TYPE{TEST 1: chronos-info}
 \SEPARATOR
 \NEWLINE
 \SEPARATOR

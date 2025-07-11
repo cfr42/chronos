@@ -1,12 +1,12 @@
 This is a generated file for the l3build validation system.
 Don't change this file in any respect.
 ============================================================
-TEST 1: chronos-t57
+TEST 1: chronos-refs
 ============================================================
 Package chronos Info: Timeline border height unset. Guessing an appropriate value. on input line ....
 Package chronos Warning: You have not specified how frequently years should be marked on the timeline. Guessing appropriate values. Set step major year and/or step minor year to specify on input line ....
 Package chronos Info: I'm guessing you don't want bare marks on your timeline. If I'm wrong, specify step divisions to override my decision on input line ....
 ============================================================
 [1
-] (chronos-t57.aux)
-Package logreq Info: Writing requests to 'chronos-t57.run.xml'.
+] (chronos-refs.aux)
+Package logreq Info: Writing requests to 'chronos-refs.run.xml'.

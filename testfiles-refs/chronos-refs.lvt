@@ -28,7 +28,7 @@
 \pdfminorversion=7
 \fi
 \RequirePackage{svn-prov}
-\ProvidesFileSVN{$Id: chronos-t57.lvt 10873 2025-02-27 03:21:31Z cfrees $}[v0.1 \revinfo][\filebase DTX: TikZ Timelines]
+\ProvidesFileSVN{$Id: chronos-refs.lvt 11059 2025-07-11 13:04:44Z cfrees $}[v0.1 \revinfo][\filebase DTX: TikZ Timelines]
 \input regression-test.tex\relax
 \documentclass[british,a4paper,landscape]{article}
 \usepackage{babel}
@@ -43,7 +43,7 @@
 \centering
 \START
 % ateb: https://tex.stackexchange.com/a/703431/
-\TEST{chronos-t57}{%
+\TEST{chronos-refs}{%
   \showoutput
   \begin{chronos}
     [
