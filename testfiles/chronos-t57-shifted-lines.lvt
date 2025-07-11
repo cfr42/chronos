@@ -1,0 +1,126 @@
+% !TEX TS-program = pdflatex
+% !TEX encoding = UTF-8 Unicode
+% arara: pdflatex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% This is file `chronos-egs.lvt',
+%%
+%% Copyright (C) 2023-2025 Clea F. Rees.
+%% 
+%% This work may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3c
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%   https://www.latex-project.org/lppl.txt
+%% and version 1.3c or later is part of all distributions of LaTeX
+%% version 2008-05-04 or later.
+%% 
+%% This work has the LPPL maintenance status `maintained'.
+%% 
+%% The Current Maintainer of this work is Clea F. Rees.
+%% 
+%% This file may only be distributed together with a copy of the package
+%% chronos. 
+%% 
+%% This work consists of all files listed in manifest.txt.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{iftex}
+\ifpdftex
+\pdfminorversion=7
+\fi
+\RequirePackage{svn-prov}
+\ProvidesFileSVN{$Id: chronos-t57-shifted-lines.lvt 11055 2025-07-11 01:46:52Z cfrees $}[v0.1 \revinfo][\filebase DTX: TikZ Timelines]
+% \input testfiles/support/chronos-test-preamble.tex\relax
+\input chronos-test-preamble.tex\relax
+\makeatletter
+\chronosset{%
+  shifted lines/.style={ 
+    /utils/exec={\selectcolormodel{rgb}},
+    /chronos/.cd,
+    shifted lines/.meaning to context,
+    colour scheme=xcolseries,
+    rotate all colours,
+    timeline={%
+      timeline height=2pt,
+      major step font=\footnotesize,
+      minor years=false,
+      timeline width=150mm,
+      step major years=5,
+      timeline years=off line,
+      timeline years=below,
+      timeline mark={chronos timeline foreground colour,thick},
+      timeline year={text=chronos timeline foreground colour,fill=none},
+      timeline years anchor=north,
+    },
+    every event above,
+    every period above,
+    every life above,
+    only years,
+    without eras,
+    no connectors,
+    every connections+={%
+      draw=####1,
+      -,
+    },
+    every text tags+={text=####1!75!black,font=\footnotesize,align=left},
+    % period/tag+={at={start \chronos@parhad@tikzname},tag anchor=south west,},
+    period/tag+={at aux=start,tag anchor=south west,},
+    % period/tag+={at start,tag anchor=south west,},
+    % life/tag+={at={birth \chronos@byw@tikzname},tag anchor=south west,},
+    life/tag+={at aux=birth,tag anchor=south west,},
+    % life/tag+={at birth,tag anchor=south west,},
+    period/connection+={shorten <=-\chronos@llinell@yshift@base},
+    life/connection+={shorten <=-\chronos@llinell@yshift@base},
+    % shifted lines yshift orig/.code={%
+      % \chronos@shiftedlines@yshift@orig=##1
+    % },
+    % /chronos/line yshift/.forward to=/chronos/shifted lines yshift orig,
+    % /chronos/linnell yshift/.forward to=/chronos/shifted lines yshift orig,
+    line yshift=5pt,
+    % event/tag+={tag anchor=south west,connector=south},
+    connections on=background,
+  },
+}
+\makeatother
+\begin{document}
+\START
+\vfill
+
+\TEST{chronos-t57-shifted-lines}{%
+  \setbox\chronosbox=\hbox{%
+    \begin{chronos}
+      [
+        shifted lines,
+        timeline={
+          start date=1760-01-01,
+          end date=1800-01-01,
+        % timeline marks,
+        % timeline years=on line,
+        % timeline border height=5pt,
+        },
+        % event text tag+={text width=40mm},
+        % only text,
+        % text tag yshift=0pt,
+        % line yshift=25pt,
+      ]
+      \chronosevent{date={1789},name=declaration of the rights of man and of the citizen,yshift=40pt}
+    \chronosperiod{dates={1789}:{1799},name=french revolution,line add yshift=10pt}
+      % \chronosevent{date={1793},name=declaration of the rights of man and citizen,yshift=20pt}
+      % \chronosevent{date={1793},name=\emph{the age of reason},yshift=90pt}
+    \chronosperiod{dates={1765}:{1783},name=american revolution,line add yshift=40pt,}
+    \chronosperiod{dates={1765}:{1783},name=another revolution,}
+      % \chronosevent{date={1776},name=declaration of independence,yshift=10pt}
+      % \chronosevent{date={1776},name=\emph{common sense},yshift=5pt}
+      % \chronosevent{date={1791},name=\emph{rights of man},yshift=5pt}
+      % \chronosevent{date={1787},name=constitution,yshift=5pt}
+    \chronoslife{dates={1789}:{1791},name=bill of rights,line add yshift=60pt}
+      % \chronosevent{date={1795},name=\emph{agrarian justice},yshift=10pt}
+    \end{chronos}%
+  }%
+  \showbox\chronosbox
+  \OMIT
+  \box\chronosbox
+  \TIMO
+}
+
+% \END does weird things to transparency
+\end{document}
