@@ -1,25 +1,32 @@
-# This is a basic workflow to help you get started with Actions
+# main.yml
+# automatic testing for chronos
 
 # https://github.com/latex3/hyperref/blob/adc36adbc3650db73329469b43afb0ee86e3c807/.github/workflows/main.yaml
 # https://github.com/josephwright/siunitx/blob/main/.github/workflows/main.yaml
 
-name: Automatic Checks
+name: Automatic Checks for chronos
 
-# Controls when the workflow will run
 on:
   push:
     branches: 
       - "*"
     tags:
       - "*"
+    paths:
+      - '**'
+      - '!**.md'
+      - '!**.txt'
+      - '!.github/workflows/*.yml'
+      - '!.github/actions/**'
+      - '.github/workflows/main.yml'
+      - '!licences/**'
+      - '!test/**'
   pull_request:
     branches: 
       - "*"
-
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
 
   # addaswyd o https://github.com/latex3/latex2e/blob/develop/.github/workflows/main.yaml
@@ -29,82 +36,98 @@ jobs:
     name: Update TeX Live cache
     outputs: 
       cache_key: ${{ steps.texlive.outputs.cache_key }}
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout repo
         uses: actions/checkout@v4
       - name: Install TeX Live
         id: texlive
         uses: zauguin/install-texlive@v4
         with:
-          # List the required TeX Live packages in a separate file to allow reuse in
-          # different workflows.
           package_file: .github/tl_packages
 
-  l3build-ctan:
-    # The type of runner that the job will run on
+  chronos:
+    if: ${{ !cancelled() }}
     runs-on: ubuntu-latest
+    name: "Test build: chronos"
     needs: texlive-cache
-    name: "Build: chronos"
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
+    outputs:
+      ctan_chronos_output: ${{ steps.build.outputs.ctan_ret }}
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v4
+      - name: Checkout repo
+        uses: actions/checkout@v4
+      - name: Build ctan
+        id: build 
+        # uses: cfr42/nfssext/.github/actions/nfssext-autocheck-action@ea5f7f84650de08a34e8693460b81fdb0ed1b2cf
+        uses: cfr42/nfssext/.github/actions/nfssext-autocheck-action@ea5f7f84650de08a34e8693460b81fdb0ed1b2cf
+        with:
+          # https://github.com/josephwright/siunitx/blob/549cad913591b92a3a199b7477a325866303bf29/.github/workflows/main.yaml
+          # We need Ghostscript for XeTeX tests.
+          extra_packages: ghostscript python3-pdfrw
+          module: chronos
+          # release: ${{ startsWith(github.ref, 'refs/tags/') }}
+          texlive_cache_key: ${{ needs.texlive-cache.outputs.cache_key }}
+          working_directory: ./
+      - name: Save ctan build results
+        if: ${{ !cancelled() }}
+        id: save-outputs
+        shell: bash
+        env: 
+          CTAN_RET: ${{ steps.build.outputs.ctan_ret }}
+        run: |
+          allan=0
+          [[ ${CTAN_RET} != 0 ]] && allan=1
+          exit $allan
 
-      # https://github.com/josephwright/siunitx/blob/549cad913591b92a3a199b7477a325866303bf29/.github/workflows/main.yaml
-      # We need Ghostscript for XeTeX tests.
-      - run: sudo apt-get update && sudo apt-get install ghostscript python3-pdfrw
-      - name: Restore TeX Live from cache
-        uses: actions/cache/restore@v4
-        with: 
-          path: ~/texlive
-          key: ${{ needs.texlive-cache.outputs.cache_key }}
-          fail-on-cache-miss: true
-      - name: Set PATH
-        run: echo $HOME/texlive/bin/x86_64-linux >> $GITHUB_PATH
-      - name: Run tests
-        run: l3build check
-        # https://github.com/latex3/hyperref/blob/adc36adbc3650db73329469b43afb0ee86e3c807/.github/workflows/main.yaml
-      - name: Archive failed test output
-        # what does this do exactly? (runs even if previous fails)
-        if: ${{ always() }}
-        uses: zauguin/l3build-failure-artifacts@v1
-        with:
-          name: testfiles-chronos
-          # Decide how long to keep the test output artifact:
-          # retention-days: 3
-      - name: Create docs
-        run: l3build doc
-      # if build succeeded, then:
-        # if not tagging for release, archive the docs
-        # o/w manifest & recheck & rebuild for ctan & archive the zip if successful
-      - name: Archive docs
-      # https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions
-        if: ${{ ! startsWith(github.ref, 'refs/tags/') }}
-      # dwyn o https://github.com/latex3/latex2e/blob/develop/.github/workflows/main.yaml
-        uses: actions/upload-artifact@v4
-        with:
-          name: docs-chronos
-          path: ./*.pdf
-          # Decide how long to keep the test output artefact:
-          retention-days: 30
-      # - name: Create manifest
+      # - run: sudo apt-get update && sudo apt-get install ghostscript python3-pdfrw
+      # - name: Restore TeX Live from cache
+      #   uses: actions/cache/restore@v4
+      #   with: 
+      #     path: ~/texlive
+      #     key: ${{ needs.texlive-cache.outputs.cache_key }}
+      #     fail-on-cache-miss: true
+      # - name: Set PATH
+      #   run: echo $HOME/texlive/bin/x86_64-linux >> $GITHUB_PATH
+      # - name: Run tests
+      #   run: l3build check
+      #   # https://github.com/latex3/hyperref/blob/adc36adbc3650db73329469b43afb0ee86e3c807/.github/workflows/main.yaml
+      # - name: Archive failed test output
+      #   # what does this do exactly? (runs even if previous fails)
+      #   if: ${{ always() }}
+      #   uses: zauguin/l3build-failure-artifacts@v1
+      #   with:
+      #     name: testfiles-chronos
+      #     # Decide how long to keep the test output artifact:
+      #     # retention-days: 3
+      # - name: Create docs
+      #   run: l3build doc
+      # # if build succeeded, then:
+      #   # if not tagging for release, archive the docs
+      #   # o/w manifest & recheck & rebuild for ctan & archive the zip if successful
+      # - name: Archive docs
+      # # https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions
+      #   if: ${{ ! startsWith(github.ref, 'refs/tags/') }}
+      # # dwyn o https://github.com/latex3/latex2e/blob/develop/.github/workflows/main.yaml
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: docs-chronos
+      #     path: ./*.pdf
+      #     # Decide how long to keep the test output artefact:
+      #     retention-days: 30
+      # # - name: Create manifest
+      # # # only if releasing (and success)
+      #   # if: ${{ startsWith(github.ref, 'refs/tags/') }}
+      #   # run: l3build manifest
+      # - name: Create upload archive
       # # only if releasing (and success)
-        # if: ${{ startsWith(github.ref, 'refs/tags/') }}
-        # run: l3build manifest
-      - name: Create upload archive
-      # only if releasing (and success)
-        if: ${{ startsWith(github.ref, 'refs/tags/') }}
-        run: l3build ctan
-      - name: Archive release zip
-      # archive only if releasing (and build success)
-        if: ${{ startsWith(github.ref, 'refs/tags/') }}
-        # dwyn o https://github.com/latex3/latex2e/blob/develop/.github/workflows/main.yaml
-        uses: actions/upload-artifact@v4
-        with:
-          name: ctan-chronos-${{ github.ref_name }}
-          path: ./*.zip
-          # Decide how long to keep the test output artefact:
-          retention-days: 30
+      #   if: ${{ startsWith(github.ref, 'refs/tags/') }}
+      #   run: l3build ctan
+      # - name: Archive release zip
+      # # archive only if releasing (and build success)
+      #   if: ${{ startsWith(github.ref, 'refs/tags/') }}
+      #   # dwyn o https://github.com/latex3/latex2e/blob/develop/.github/workflows/main.yaml
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: ctan-chronos-${{ github.ref_name }}
+      #     path: ./*.zip
+      #     # Decide how long to keep the test output artefact:
+      #     retention-days: 30

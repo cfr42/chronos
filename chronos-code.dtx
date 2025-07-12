@@ -32,7 +32,7 @@
 % ref. ateb Max Chernoff: https://tex.stackexchange.com/a/723294/
 \def\MakePrivateLetters{\makeatletter\ExplSyntaxOn\endlinechar13}
 \ExplSyntaxOff
-\ProvidesFileSVN{$Id: chronos-code.dtx 11063 2025-07-11 15:34:27Z cfrees $}[v0.9.2 \revinfo][\filebase DTX: Customisable TikZ-based timelines]
+\ProvidesFileSVN{$Id: chronos-code.dtx 11068 2025-07-12 15:02:58Z cfrees $}[v0.9.2 \revinfo][\filebase DTX: Customisable TikZ-based timelines]
 \DefineFileInfoSVN[chronoscode]
 \let\chronoscodeversion\fileversion
 \let\chronoscodebase\filebase
@@ -67,7 +67,7 @@
 % \changes{v0.9}{2025-02-27}{First \ctan{} release.}
 % ^^A lua will replace v0.0 and 0000/00/00 when tagging
 % \ifchronoscodetoo
-%   \ProvidesFileSVN{$Id: chronos-code.dtx 11063 2025-07-11 15:34:27Z cfrees $}[v0.9.2 \revinfo]
+%   \ProvidesFileSVN{$Id: chronos-code.dtx 11068 2025-07-12 15:02:58Z cfrees $}[v0.9.2 \revinfo]
 %   \DefineFileInfoSVN[chronoscode]
 %   \GetFileInfoSVN{chronoscode}
 %   \let\chronoscodeversion\fileversion
@@ -144,7 +144,7 @@
 % \LaTeXe{} package.
 %    \begin{macrocode}
 \RequirePackage{svn-prov}
-\ProvidesPackageSVN[chronos.sty]{$Id: chronos-code.dtx 11063 2025-07-11 15:34:27Z cfrees $}[v0.9.2 \revinfo]
+\ProvidesPackageSVN[chronos.sty]{$Id: chronos-code.dtx 11068 2025-07-12 15:02:58Z cfrees $}[v0.9.2 \revinfo]
 \DefineFileInfoSVN[chronos]
 %    \end{macrocode}
 % \iffalse
@@ -2014,19 +2014,18 @@
 \chronos@lliwiau@rhagosodedig
 \let\chronos@lliwiau@default\chronos@lliwiau@rhagosedig
 %    \end{macrocode}
-%^^A \chronos@lliwiau@cronoleg
 % \begin{macro}{\testunteitl}%^^A <<<
-% Main title tag.
+%   Main title tag.
+% 
+%   \#1: opsiwn: style for node
+%   \#2: enw sy'n cael ei ddefnyddio dwywaith -> node name + node content (\cs{chronos@testunteitl@priflythrennu})
+%   \#3: opsiwn: content y node 
+%   \#4: first node for horizontal (x) placement
+%   \#5: second node for horizontal (x) placement (average taken)
+%   \#6: () required: node for vertical (y) placement
 %    \begin{macrocode}
-
 \NewDocumentCommand \testunteitl { O {/chronos/@amserau} m o m m r() }{%^^A <<<
 %    \end{macrocode}
-%^^A   #1: opsiwn: style for node
-%^^A   #2: enw sy'n cael ei ddefnyddio dwywaith -> node name + node content (\chronos@testunteitl@priflythrennu)
-%^^A   #3: opsiwn: content y node 
-%^^A   #4: first node for horizontal (x) placement
-%^^A   #5: second node for horizontal (x) placement (average taken)
-%^^A   #6: () required: node for vertical (y) placement
 %^^A   dibynnu ar (chronos main headings) a (chronos bottom)
 %^^A   \chronos@coords@completion{#3}{#4}%
 %    \begin{macrocode}
@@ -2215,14 +2214,15 @@
 %^^A END ychwanegu i siap rectangle >>>
 %^^A BEGIN \tikzset helpers <<<
 % Context initialisation.
+%
+%   \#1: peidiwch â gosod nodweddion o clists? \textbar{} don't install properties from clists?
+%   \#2: setup dyddiadau? \textbar{} dates?
+%   \#3: alt.\ path for filtering
+%   \#4: path \& default path for filtering
+%   \#5: keys to process
 %    \begin{macrocode}
 \NewDocumentCommand \chronos@cyd@destun@init { s t {+} o m m } {% chronos context initialisation <<<
 %    \end{macrocode}
-%^^A   #1: peidiwch â gosod nodweddion o clists? | don't install properties from clists?
-%^^A   #2: setup dyddiadau? | dates?
-%^^A   #3: alt. path for filtering
-%^^A   #4: path & default path for filtering
-%^^A   #5: keys to process
 %    \begin{macrocode}
   \renewcommand* \chronos@ychwanegu@nodweddion [3]{\relax}%
   \renewcommand* \chronos@ychwanegu@nodweddion@rhag [2]{\relax}%
@@ -2582,7 +2582,7 @@
       testun yshift'-/.code={%
         \chronos@ychwanegu@nodweddion{#1}{@tag}{/chronos/testun yshift'-=##1}},
 %    \end{macrocode}
-%^^A    % begin saesneg: /chronos/#1
+% begin saesneg: \verb|/chronos/#1|
 %^^A       /chronos/#2/.cd,% yn anffodus dyw hyn ddim yn gweithio (not forwarded on pellach)
 %    \begin{macrocode}
       name/.forward to=/chronos/#1/enw,
@@ -2645,7 +2645,7 @@
 %^^A       yshift/.forward to=/chronos/#1/yshift, % paid â gwneud hwn! vicious circularity -> tex capacity exceeded!!
 %^^A       tag/.forward to=/chronos/#1/tag, % paid â gwneud hwn! vicious circularity -> tex capacity exceeded!!
 %^^A       tag+/.forward to=/chronos/#1/tag+, % paid â gwneud hwn! vicious circularity -> tex capacity exceeded!!
-% end saesneg: /chronos/#1
+% end saesneg: \verb|/chronos/#1|
 %
 % begin shortcuts
 %    \begin{macrocode}
@@ -2840,7 +2840,7 @@
       \expandafter\def\csname chronos@#1@ffontdyddiad\endcsname{##1}},
       ffont dyddiad=,
 %    \end{macrocode}
-%^^A    % begin saesneg: /chronos/#1
+%  begin saesneg: \verb|/chronos/#1|
 %    \begin{macrocode}
       dates/.forward to=/chronos/#1/dyddiadau,
       #8/.forward to=/chronos/#1/#2,
@@ -2862,7 +2862,7 @@
       show eras/.forward to=/chronos/#1/dangos cyfnodau,
       date font/.forward to=/chronos/#1/ffont dyddiad,
 %    \end{macrocode}
-% end saesneg: /chronos/#1
+% end saesneg: \verb|/chronos/#1|
 %    \begin{macrocode}
     }%
   },
@@ -3863,7 +3863,7 @@
 }
 \ExplSyntaxOn
 %    \end{macrocode}
-%^^A set up /chronos/#1 with ' and + variants to set default #3; set up every #1 with ' and + variants to set default #1 and corresponding keys for tags in #5 ; use #4 as the default ; set up keys for forwarding using #2 as alias for #1
+% set up /chronos/\#1 with \textquotesingle{} and + variants to set default \#3; set up every \#1 with \textquotesingle{} and + variants to set default \#1 and corresponding keys for tags in \#5 ; use \#4 as the default ; set up keys for forwarding using \#2 as alias for \#1
 %    \begin{macrocode}
 \__chronos_kexpander:nnnnn { llinellau } { lines } { @llinell } { ' }
   { byw, digwyddiad, parhad }
@@ -6528,13 +6528,14 @@
 % \end{macro}%^^A >>>
 % \begin{macro}{\chronos@dyddiadau@tag}%^^A <<< \chronos@dyddiadau@tag
 %   Internal macro to figure out date format for tags.
+% 
+%   \#1 : tag e.g.~byw / parhad ;
+%   \#2 first date counter e.g.~geni / thing ;
+%   \#3 first label e.g.~geni / dechrau ;
+%   \#4 second date counter e.g.~marw / otherthing ;
+%   \#5 second label e.g.~marw / diwedd
 %    \begin{macrocode}
 \NewDocumentCommand \chronos@dyddiadau@tag{mmmmm}{%
-%^^A #1 : tag e.g. byw / parhad ;
-%^^A #2 first date counter e.g. geni / thing ;
-%^^A #3 first label e.g. geni / dechrau ;
-%^^A #4 second date counter e.g. marw / otherthing ;
-%^^A #5 second label e.g. marw / diwedd
   \IfCSExistTF{chronos@#1@label#3}{%
     \IfCSExistF{chronos@#1@label#5}{%
       \expandafter\def\csname chronos@#1@label#5\endcsname{%
@@ -6740,16 +6741,17 @@
 % \end{macro}%^^A >>>
 % \begin{macro}{\chronos@creu@llinell}%^^A <<< parhad, byw
 %   Internal macro to put new life or period on timeline. 
+%
+%   \#1 : tag e.g.~byw
+%   \#2 : x dimen dechrau/geni
+%   \#3 : x dimen diwedd/marw
+%   \#4 : i greu enw cyntaf e.g.~dechrau/geni
+%   \#5 : i greu'r ail enw e.g.~diwedd/marw
+%   \#6 : i greu alias cyntaf e.g.~start/birth
+%   \#7 : i greu'r ail alias e.g.~end/death
 %    \begin{macrocode}
 \NewDocumentCommand \chronos@creu@llinell {mmmmmmm}{%^^A <<< fill (fallai draw)} llinell ar y llinell amser am dymor estynedig
 %    \end{macrocode}
-%^^A  #1 : tag e.g. byw
-%^^A  #2 : x dimen dechrau/geni
-%^^A  #3 : x dimen diwedd/marw
-%^^A  #4 : i greu enw cyntaf e.g. dechrau/geni
-%^^A  #5 : i greu'r ail enw e.g. diwedd/marw
-%^^A  #6 : i greu alias cyntaf e.g. start/birth
-%^^A  #7 : i greu'r ail alias e.g. end/death
 %    \begin{macrocode}
   \expandafter\let\expandafter\chronos@tempa\csname chronos@#1@tikzname\endcsname
   \edef\chronos@tempd{\csname chronos@#1@tikzname\endcsname-inv}%
@@ -7003,7 +7005,7 @@
 % \changes{v0.9.2}{2025-03-15}{Fix info reported for \texttt{chronos-lib-styles.sty}.}
 %    \begin{macrocode}
 \RequirePackage{chronos}
-\ProvidesPackageSVN[chronos-lib-styles.sty]{$Id: chronos-code.dtx 11063 2025-07-11 15:34:27Z cfrees $}[v0.9.2 \revinfo]
+\ProvidesPackageSVN[chronos-lib-styles.sty]{$Id: chronos-code.dtx 11068 2025-07-12 15:02:58Z cfrees $}[v0.9.2 \revinfo]
 \pgfqkeys{/chronos}{%^^A BEGIN styles <<<
 %    \end{macrocode}
 % Styles come in three flavours: on-line, off-line and no-year.
@@ -7613,7 +7615,7 @@
 % \changes{v0.9.2}{2025-03-15}{Fix info reported for \texttt{chronos-lib-styles.sty}.}
 %    \begin{macrocode}
 \RequirePackage{chronos}
-\ProvidesPackageSVN[chronos-lib-colschemes.sty]{$Id: chronos-code.dtx 11063 2025-07-11 15:34:27Z cfrees $}[v0.9.2 \revinfo]
+\ProvidesPackageSVN[chronos-lib-colschemes.sty]{$Id: chronos-code.dtx 11068 2025-07-12 15:02:58Z cfrees $}[v0.9.2 \revinfo]
 %    \end{macrocode}
 % \begin{colscheme}{blues,contninety,offlinealt,xcolseries,lavender,modern,offlinebasic,sobriety}%^^A <<< BEGIN cylluniau lliwiau | colour schemes
 % cylluniau lliwiau \textbar{} colour schemes 
