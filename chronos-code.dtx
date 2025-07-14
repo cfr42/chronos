@@ -32,7 +32,7 @@
 % ref. ateb Max Chernoff: https://tex.stackexchange.com/a/723294/
 \def\MakePrivateLetters{\makeatletter\ExplSyntaxOn\endlinechar13}
 \ExplSyntaxOff
-\ProvidesFileSVN{$Id: chronos-code.dtx 11068 2025-07-12 15:02:58Z cfrees $}[v0.9.2 \revinfo][\filebase DTX: Customisable TikZ-based timelines]
+\ProvidesFileSVN{$Id: chronos-code.dtx 11069 2025-07-14 01:52:39Z cfrees $}[v0.9.2 \revinfo][\filebase DTX: Customisable TikZ-based timelines]
 \DefineFileInfoSVN[chronoscode]
 \let\chronoscodeversion\fileversion
 \let\chronoscodebase\filebase
@@ -67,7 +67,7 @@
 % \changes{v0.9}{2025-02-27}{First \ctan{} release.}
 % ^^A lua will replace v0.0 and 0000/00/00 when tagging
 % \ifchronoscodetoo
-%   \ProvidesFileSVN{$Id: chronos-code.dtx 11068 2025-07-12 15:02:58Z cfrees $}[v0.9.2 \revinfo]
+%   \ProvidesFileSVN{$Id: chronos-code.dtx 11069 2025-07-14 01:52:39Z cfrees $}[v0.9.2 \revinfo]
 %   \DefineFileInfoSVN[chronoscode]
 %   \GetFileInfoSVN{chronoscode}
 %   \let\chronoscodeversion\fileversion
@@ -144,7 +144,7 @@
 % \LaTeXe{} package.
 %    \begin{macrocode}
 \RequirePackage{svn-prov}
-\ProvidesPackageSVN[chronos.sty]{$Id: chronos-code.dtx 11068 2025-07-12 15:02:58Z cfrees $}[v0.9.2 \revinfo]
+\ProvidesPackageSVN[chronos.sty]{$Id: chronos-code.dtx 11069 2025-07-14 01:52:39Z cfrees $}[v0.9.2 \revinfo]
 \DefineFileInfoSVN[chronos]
 %    \end{macrocode}
 % \iffalse
@@ -440,7 +440,7 @@
 {
   #3 #4
 }
-\cs_generate_variant:Nn \__chronos_year_shorten:n { V , v , x }
+\cs_generate_variant:Nn \__chronos_year_shorten:n { V , v , e }
 \cs_new_protected_nopar:Npn \__chronos_year_semi_shorten:n #1
 {
 %    \end{macrocode}
@@ -470,9 +470,9 @@
 {
   #2 #3 #4
 }
-\cs_generate_variant:Nn \__chronos_year_semi_shorten:n { V , v , x }
+\cs_generate_variant:Nn \__chronos_year_semi_shorten:n { V , v , e }
 \cs_generate_variant:Nn \int_abs:n { v }
-\cs_generate_variant:Nn \tl_replace_all:Nnn { Nnx }
+\cs_generate_variant:Nn \tl_replace_all:Nnn { Nne }
 %    \end{macrocode}
 % dangos dyddiadau \textbar{} show dates
 % 
@@ -481,46 +481,46 @@
 \cs_new_protected_nopar:Npn \__chronos_show_date:n #1
 {% 
   \tl_set_eq:NN \l__chronos_date_tl \l__chronos_dateformat_tl
-  \tl_replace_all:Nnx \l__chronos_date_tl { !a }
+  \tl_replace_all:Nne \l__chronos_date_tl { !a }
     { \pgfcalendarweekdayshortname{\thechronos@weekday} }
-  \tl_replace_all:Nnx \l__chronos_date_tl { !A }
+  \tl_replace_all:Nne \l__chronos_date_tl { !A }
     { \pgfcalendarweekdayname{\thechronos@weekday} }
-  \tl_replace_all:Nnx \l__chronos_date_tl { !b }
+  \tl_replace_all:Nne \l__chronos_date_tl { !b }
     { \pgfcalendarmonthshortname{\csname chronos@#1month\endcsname} }
-  \tl_replace_all:Nnx \l__chronos_date_tl { !B }
+  \tl_replace_all:Nne \l__chronos_date_tl { !B }
     { \pgfcalendarmonthname{\csname chronos@#1month\endcsname} }
-  \tl_replace_all:Nnx \l__chronos_date_tl { !c }
-    { \__chronos_year_semi_shorten:x { \int_abs:v { chronos@#1year } } }
-  \tl_replace_all:Nnx \l__chronos_date_tl { !d }
+  \tl_replace_all:Nne \l__chronos_date_tl { !c }
+    { \__chronos_year_semi_shorten:e { \int_abs:v { chronos@#1year } } }
+  \tl_replace_all:Nne \l__chronos_date_tl { !d }
     { \csname chronos@#1day\endcsname }
-  \tl_replace_all:Nnx \l__chronos_date_tl { !E }
+  \tl_replace_all:Nne \l__chronos_date_tl { !E }
     { \__chronos_dateformat_era:v { chronos@#1year } }
-  \tl_replace_all:Nnx \l__chronos_date_tl { !m }
+  \tl_replace_all:Nne \l__chronos_date_tl { !m }
     { \csname chronos@#1month\endcsname }
-  \tl_replace_all:Nnx \l__chronos_date_tl { !q }
+  \tl_replace_all:Nne \l__chronos_date_tl { !q }
     { \__chronos_dateformat_sign:v { chronos@#1year } }
-  \tl_replace_all:Nnx \l__chronos_date_tl { !Q }
+  \tl_replace_all:Nne \l__chronos_date_tl { !Q }
     { \__chronos_dateformat_signs:v { chronos@#1year } }
-  \tl_replace_all:Nnx \l__chronos_date_tl { !y }
-    { \__chronos_year_shorten:x { \int_abs:v { chronos@#1year } } }
-  \tl_replace_all:Nnx \l__chronos_date_tl { !Y }
+  \tl_replace_all:Nne \l__chronos_date_tl { !y }
+    { \__chronos_year_shorten:e { \int_abs:v { chronos@#1year } } }
+  \tl_replace_all:Nne \l__chronos_date_tl { !Y }
     { \int_abs:v { chronos@#1year } }
   \l__chronos_date_tl
 }
 \cs_new_protected_nopar:Npn \__chronos_show_year:n #1
 {% ateb Joseph Wright: \url{http://tex.stackexchange.com/a/327642/} ; PD/CCO at \url{https://tex.stackexchange.com/users/73/joseph-wright}
   \tl_set_eq:NN \l__chronos_year_tl \l__chronos_yearformat_tl
-  \tl_replace_all:Nnx \l__chronos_year_tl { !c }
-    { \__chronos_year_semi_shorten:x { \int_abs:n { #1 } } }
-  \tl_replace_all:Nnx \l__chronos_year_tl { !E }
+  \tl_replace_all:Nne \l__chronos_year_tl { !c }
+    { \__chronos_year_semi_shorten:e { \int_abs:n { #1 } } }
+  \tl_replace_all:Nne \l__chronos_year_tl { !E }
     { \__chronos_dateformat_era:n { #1 } }
-  \tl_replace_all:Nnx \l__chronos_year_tl { !q }
+  \tl_replace_all:Nne \l__chronos_year_tl { !q }
     { \__chronos_dateformat_sign:n { #1 } }
-  \tl_replace_all:Nnx \l__chronos_year_tl { !Q }
+  \tl_replace_all:Nne \l__chronos_year_tl { !Q }
     { \__chronos_dateformat_signs:n { #1 } }
-  \tl_replace_all:Nnx \l__chronos_year_tl { !y }
-    { \__chronos_year_shorten:x { \int_abs:n { #1 } } }
-  \tl_replace_all:Nnx \l__chronos_year_tl { !Y }
+  \tl_replace_all:Nne \l__chronos_year_tl { !y }
+    { \__chronos_year_shorten:e { \int_abs:n { #1 } } }
+  \tl_replace_all:Nne \l__chronos_year_tl { !Y }
     { \int_abs:n { #1 } }
   \l__chronos_year_tl
 }
@@ -574,7 +574,7 @@
 \cs_generate_variant:Nn \regex_match:NnTF { NVTF }
 \cs_new_protected_nopar:Nn \__chronos_set_date_aux:n 
 {
-  \tl_set:Nx \l__chronos_tmpc_tl { #1 }
+  \tl_set:Ne \l__chronos_tmpc_tl { #1 }
   \regex_replace_all:NnN \c__chronos_curly_bracket {} \l__chronos_tmpc_tl
   \regex_match:NVTF \c__chronos_initial_minus \l__chronos_tmpc_tl 
   {
@@ -1252,14 +1252,14 @@
   {
     \IfBooleanTF { #1 }
     {
-      \clist_gput_right:cx { g__chronos_#3_clist } { #4 }
+      \clist_gput_right:ce { g__chronos_#3_clist } { #4 }
     }{
       \clist_gput_right:co { g__chronos_#3_clist } { #4 }
     }
   }{
     \IfBooleanTF { #1 }
     {
-      \clist_gset:cx { g__chronos_#3_clist } { #4 }
+      \clist_gset:ce { g__chronos_#3_clist } { #4 }
     }{
       \clist_gset:co { g__chronos_#3_clist } { #4 }
     }
@@ -7005,7 +7005,7 @@
 % \changes{v0.9.2}{2025-03-15}{Fix info reported for \texttt{chronos-lib-styles.sty}.}
 %    \begin{macrocode}
 \RequirePackage{chronos}
-\ProvidesPackageSVN[chronos-lib-styles.sty]{$Id: chronos-code.dtx 11068 2025-07-12 15:02:58Z cfrees $}[v0.9.2 \revinfo]
+\ProvidesPackageSVN[chronos-lib-styles.sty]{$Id: chronos-code.dtx 11069 2025-07-14 01:52:39Z cfrees $}[v0.9.2 \revinfo]
 \pgfqkeys{/chronos}{%^^A BEGIN styles <<<
 %    \end{macrocode}
 % Styles come in three flavours: on-line, off-line and no-year.
@@ -7615,7 +7615,7 @@
 % \changes{v0.9.2}{2025-03-15}{Fix info reported for \texttt{chronos-lib-styles.sty}.}
 %    \begin{macrocode}
 \RequirePackage{chronos}
-\ProvidesPackageSVN[chronos-lib-colschemes.sty]{$Id: chronos-code.dtx 11068 2025-07-12 15:02:58Z cfrees $}[v0.9.2 \revinfo]
+\ProvidesPackageSVN[chronos-lib-colschemes.sty]{$Id: chronos-code.dtx 11069 2025-07-14 01:52:39Z cfrees $}[v0.9.2 \revinfo]
 %    \end{macrocode}
 % \begin{colscheme}{blues,contninety,offlinealt,xcolseries,lavender,modern,offlinebasic,sobriety}%^^A <<< BEGIN cylluniau lliwiau | colour schemes
 % cylluniau lliwiau \textbar{} colour schemes 
