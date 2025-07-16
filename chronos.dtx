@@ -30,7 +30,7 @@
 %^^A ref. ateb Max Chernoff: https://tex.stackexchange.com/a/723294/
 \def\MyMakePrivateLetters{\makeatletter\ExplSyntaxOn\endlinechar13}
 \ExplSyntaxOff
-\ProvidesFileSVN{$Id: chronos.dtx 11063 2025-07-11 15:34:27Z cfrees $}[v0.9.2 \revinfo][\filebase\ DTX]
+\ProvidesFileSVN{$Id: chronos.dtx 11089 2025-07-18 15:02:38Z cfrees $}[v0.9.2 \revinfo][\filebase\ DTX]
 \DefineFileInfoSVN[chronosdoc]
 \GetFileInfoSVN*
 \let\chronosdocversion\fileversion
@@ -76,7 +76,7 @@
 \usepackage{babel}
 \usepackage{geometry}
 \usepackage{fancyhdr}
-\usepackage{enumitem}
+\usepackage[inline]{enumitem}
 \usepackage{calc}
 \usepackage{rotating}
 \usepackage{floatpag}
@@ -7706,7 +7706,7 @@ mode=overlay}}.
 \RequirePackage{svn-prov}
 \def\GetFileBaseName#1-#2\nil{#1}
 \edef\MyFileBaseName{\expandafter\GetFileBaseName\jobname\nil}
-\ProvidesFileSVN[\MyFileBaseName-doc]{$Id: chronos.dtx 11063 2025-07-11 15:34:27Z cfrees $}[v0.9.1 \revinfo]
+\ProvidesFileSVN[\MyFileBaseName-doc]{$Id: chronos.dtx 11089 2025-07-18 15:02:38Z cfrees $}[v0.9.1 \revinfo]
 \DefineFileInfoSVN
 \AddToHook{begindocument}{\OnlyDescription}
 \expandafter\newif\csname ifchronoscodetoo\endcsname
@@ -7719,7 +7719,7 @@ mode=overlay}}.
 \RequirePackage{svn-prov}
 \def\GetFileBaseName#1-#2\nil{#1}
 \edef\MyFileBaseName{\expandafter\GetFileBaseName\jobname\nil}
-\ProvidesFileSVN[\MyFileBaseName-imp]{$Id: chronos.dtx 11063 2025-07-11 15:34:27Z cfrees $}[v0.9.1 \revinfo]
+\ProvidesFileSVN[\MyFileBaseName-imp]{$Id: chronos.dtx 11089 2025-07-18 15:02:38Z cfrees $}[v0.9.1 \revinfo]
 \DefineFileInfoSVN
 \AddToHook{begindocument}{\AlsoImplementation}
 \expandafter\newif\csname ifchronoscodetoo\endcsname
