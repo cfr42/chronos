@@ -1,0 +1,18 @@
+This is a generated file for the l3build validation system.
+Don't change this file in any respect.
+============================================================
+TEST 1: chronos-00-sanity
+============================================================
+> \box...=
+\hbox(7.16+2.04999)x51.81
+.\TU/lmr/m/n/10 Hylo,
+.\glue 3.33 plus 2.08124 minus 0.888
+.\TU/lmr/m/n/10 Byd!
+.\glue 4.44 plus 4.99498 minus 0.37
+! OK.
+<argument> ...x {Hylo, Byd! }\showbox \chronosbox 
+                                                  \OMIT \box \chronosbox \TIMO 
+l. ...}
+============================================================
+[1
+] (chronos-00-sanity.aux)

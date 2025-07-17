@@ -1,0 +1,25 @@
+This is a generated file for the l3build validation system.
+Don't change this file in any respect.
+============================================================
+TEST 1: chronos-00-sanity
+============================================================
+> \box...=
+\hbox(7.16+2.05)x51.81, direction TLT
+.\TU/lmr/m/n/10 H
+.\TU/lmr/m/n/10 y
+.\TU/lmr/m/n/10 l
+.\TU/lmr/m/n/10 o
+.\TU/lmr/m/n/10 ,
+.\glue(\spaceskip) 3.33 plus 2.08124 minus 0.888
+.\TU/lmr/m/n/10 B
+.\TU/lmr/m/n/10 y
+.\TU/lmr/m/n/10 d
+.\TU/lmr/m/n/10 !
+.\glue(\spaceskip) 4.44 plus 4.99498 minus 0.37
+! OK.
+<argument> ...x {Hylo, Byd! }\showbox \chronosbox 
+                                                  \OMIT \box \chronosbox \TIMO 
+l. ...}
+============================================================
+[1
+] (chronos-00-sanity.aux)
