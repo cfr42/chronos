@@ -28,8 +28,9 @@
 \pdfminorversion=7
 \fi
 \RequirePackage{svn-prov}
-\ProvidesFileSVN{$Id: chronos-t37.lvt 10873 2025-02-27 03:21:31Z cfrees $}[v0.1 \revinfo][\filebase DTX: TikZ Timelines]
+\ProvidesFileSVN{$Id: chronos-t37.lvt 11080 2025-07-17 15:49:33Z cfrees $}[v0.1 \revinfo][\filebase DTX: TikZ Timelines]
 \input chronos-test-preamble.tex\relax
+\colorlet{bcol1}{blue}
 \begin{document}
 \START
 \vfill
@@ -69,7 +70,6 @@
 }
 \vfill
 
-\colorlet{bcol}{blue}
 
 % \END does weird things to transparency
 \end{document}
