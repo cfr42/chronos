@@ -57,8 +57,8 @@ jobs:
         uses: actions/checkout@v4
       - name: Build ctan
         id: build 
-        # uses: cfr42/nfssext/.github/actions/nfssext-autocheck-action@ea5f7f84650de08a34e8693460b81fdb0ed1b2cf
-        uses: cfr42/nfssext/.github/actions/nfssext-autocheck-action@ea5f7f84650de08a34e8693460b81fdb0ed1b2cf
+        # uses: cfr42/nfssext/.github/actions/nfssext-autocheck-action@0c64d7e74dac45271b04904fda6ceedc162d476f
+        uses: cfr42/nfssext/.github/actions/nfssext-autocheck-action@0c64d7e74dac45271b04904fda6ceedc162d476f
         with:
           # https://github.com/josephwright/siunitx/blob/549cad913591b92a3a199b7477a325866303bf29/.github/workflows/main.yaml
           # We need Ghostscript for XeTeX tests.
