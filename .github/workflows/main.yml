@@ -46,7 +46,7 @@ jobs:
           package_file: .github/tl_packages
 
   chronos:
-    if: ${{ !cancelled() }}
+    # don't run if previous job failed (default)
     runs-on: ubuntu-latest
     name: "Test build: chronos"
     needs: texlive-cache
