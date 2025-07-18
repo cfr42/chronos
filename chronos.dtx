@@ -30,7 +30,7 @@
 %^^A ref. ateb Max Chernoff: https://tex.stackexchange.com/a/723294/
 \def\MyMakePrivateLetters{\makeatletter\ExplSyntaxOn\endlinechar13}
 \ExplSyntaxOff
-\ProvidesFileSVN{$Id: chronos.dtx 11089 2025-07-18 15:02:38Z cfrees $}[v0.9.2 \revinfo][\filebase\ DTX]
+\ProvidesFileSVN{$Id: chronos.dtx 11090 2025-07-18 18:44:45Z cfrees $}[v0.9.2 \revinfo][\filebase\ DTX]
 \DefineFileInfoSVN[chronosdoc]
 \GetFileInfoSVN*
 \let\chronosdocversion\fileversion
@@ -5718,7 +5718,7 @@
 %
 % Cf.~\keyname[type=dimkey]{line yshift}.
 %
-% \DescribeMacro{\lineyshift}The \keyname[no idx,link,link to=\meta{tag}/line yshift,type=dimkey]{line yshift}.
+% \DescribeMacro{\lineyshift}The \keyname[no idx,link,link to=line yshift,type=dimkey]{line yshift}.
 % This macro is available \emph{only within the \conceptname[link,type=concept]{\meta{timeline specification}}}.
 % 
 % 
@@ -5987,7 +5987,7 @@
 %
 % Cf.~\keyname[type=dimkey]{line add yshift}.
 %
-% \DescribeMacro{\lineyshift}The \keyname[no idx,link,link to=\meta{tag}/line yshift,type=dimkey]{line yshift}.
+% \DescribeMacro{\lineyshift}The \keyname[no idx,link,link to=line yshift,type=dimkey]{line yshift}.
 % This macro is available \emph{only within the \conceptname[link,type=concept]{\meta{timeline specification}}}.
 % 
 % \DescribeKey{\meta{tag}/text tag,\meta{tag}/text tag+,\meta{tag}/text tag\textquotesingle}\valmarg{key-value list} \chronosdochypertargets{key}{life,event,period,theory,info}{text tag,text tag+,text tag\textquotesingle}\fortags{life,event,period,theory,info}\AfterLastParam
@@ -7706,7 +7706,7 @@ mode=overlay}}.
 \RequirePackage{svn-prov}
 \def\GetFileBaseName#1-#2\nil{#1}
 \edef\MyFileBaseName{\expandafter\GetFileBaseName\jobname\nil}
-\ProvidesFileSVN[\MyFileBaseName-doc]{$Id: chronos.dtx 11089 2025-07-18 15:02:38Z cfrees $}[v0.9.1 \revinfo]
+\ProvidesFileSVN[\MyFileBaseName-doc]{$Id: chronos.dtx 11090 2025-07-18 18:44:45Z cfrees $}[v0.9.1 \revinfo]
 \DefineFileInfoSVN
 \AddToHook{begindocument}{\OnlyDescription}
 \expandafter\newif\csname ifchronoscodetoo\endcsname
@@ -7719,7 +7719,7 @@ mode=overlay}}.
 \RequirePackage{svn-prov}
 \def\GetFileBaseName#1-#2\nil{#1}
 \edef\MyFileBaseName{\expandafter\GetFileBaseName\jobname\nil}
-\ProvidesFileSVN[\MyFileBaseName-imp]{$Id: chronos.dtx 11089 2025-07-18 15:02:38Z cfrees $}[v0.9.1 \revinfo]
+\ProvidesFileSVN[\MyFileBaseName-imp]{$Id: chronos.dtx 11090 2025-07-18 18:44:45Z cfrees $}[v0.9.1 \revinfo]
 \DefineFileInfoSVN
 \AddToHook{begindocument}{\AlsoImplementation}
 \expandafter\newif\csname ifchronoscodetoo\endcsname
