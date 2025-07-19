@@ -60,11 +60,15 @@ jobs:
         # uses: cfr42/nfssext/.github/actions/nfssext-autocheck-action@0c64d7e74dac45271b04904fda6ceedc162d476f
         uses: cfr42/nfssext/.github/actions/nfssext-autocheck-action@0a96ab2a01797c8e846f99b51be56924e3133ebaa
         with:
+          ctan: true
           # https://github.com/josephwright/siunitx/blob/549cad913591b92a3a199b7477a325866303bf29/.github/workflows/main.yaml
           # We need Ghostscript for XeTeX tests.
           extra_packages: ghostscript python3-pdfrw
+          manifest: true
           module: chronos
           # release: ${{ startsWith(github.ref, 'refs/tags/') }}
+          release: ${{ contains(github.ref_name, 'chronos-') }}
+          tds: false
           texlive_cache_key: ${{ needs.texlive-cache.outputs.cache_key }}
           working_directory: ./
       - name: Save ctan build results
@@ -72,10 +76,22 @@ jobs:
         id: save-outputs
         shell: bash
         env: 
-          CTAN_RET: ${{ steps.build.outputs.ctan_ret }}
+          checkret: ${{ steps.build.outputs.check_ret }}
+          ctanret: ${{ steps.build.outputs.ctan_ret }}
+          ctanrelret: ${{ steps.build.outputs.ctanrel_ret }}
+          docret: ${{ steps.build.outputs.doc_ret }}
+          manifestret: ${{ steps.build.outputs.manifest_ret }}
+          releasing: ${{ contains(github.ref_name, 'chronos-') }}
+          releaseret: ${{ steps.build.outputs.release_ret }}
         run: |
           allan=0
-          [[ ${CTAN_RET} != 0 ]] && allan=1
+          [[ $checkret != 0 && $ctanret != 0 ]] && allan=1
+          [[ $docret != 0 && $ctanret != 0 ]] && allan=1
+          if [ $releasing != "false" ]
+          then
+            [[ $ctanret == 0 || $ctanrelret == 0 ]] || allan=1
+            [[ $releaseret == 0 && $manifestret == 0 ]] || allan=1
+          fi
           exit $allan
 
       # - run: sudo apt-get update && sudo apt-get install ghostscript python3-pdfrw
