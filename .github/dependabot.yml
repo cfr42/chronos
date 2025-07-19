@@ -10,14 +10,14 @@ updates:
   - package-ecosystem: "github-actions" # See documentation for possible values
     directory: "/" # Location of package manifests
     schedule:
-      interval: "weekly"
-    ignore:
-      - dependency-name: "cfr42/nfssext/*"
+      # interval: "weekly"
+    # ignore:
+    #   - dependency-name: "cfr42/nfssext/*"
     #   - dependency-name: "nfssext-autocheck-action"
-  - package-ecosystem: "github-actions"
-    directory: "/"
-    allow:
-      - dependency-name: "cfr42/nfssext/*"
+  # - package-ecosystem: "github-actions"
+  #   directory: "/"
+    # allow:
+    #   - dependency-name: "cfr42/nfssext/*"
       # - dependency-name: "nfssext-autocheck-action"
     schedule:
       interval: "cron"
