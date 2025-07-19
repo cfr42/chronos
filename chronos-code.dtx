@@ -33,7 +33,7 @@
 % ref. ateb Max Chernoff: https://tex.stackexchange.com/a/723294/
 \def\MakePrivateLetters{\makeatletter\ExplSyntaxOn\endlinechar13}
 \ExplSyntaxOff
-\ProvidesFileSVN{$Id: chronos-code.dtx 11088 2025-07-18 12:07:56Z cfrees $}[v0.9.2 \revinfo][\filebase DTX: Customisable TikZ-based timelines]
+\ProvidesFileSVN{$Id: chronos-code.dtx 11092 2025-07-19 01:42:24Z cfrees $}[v0.9.2 \revinfo][\filebase DTX: Customisable TikZ-based timelines]
 \DefineFileInfoSVN[chronoscode]
 \let\chronoscodeversion\fileversion
 \let\chronoscodebase\filebase
@@ -70,7 +70,7 @@
 % \changes{v0.9}{2025-02-27}{First \ctan{} release.}
 % ^^A lua will replace v0.0 and 0000/00/00 when tagging
 % \ifchronoscodetoo
-%   \ProvidesFileSVN{$Id: chronos-code.dtx 11088 2025-07-18 12:07:56Z cfrees $}[v0.9.2 \revinfo]
+%   \ProvidesFileSVN{$Id: chronos-code.dtx 11092 2025-07-19 01:42:24Z cfrees $}[v0.9.2 \revinfo]
 %   \DefineFileInfoSVN[chronoscode]
 %   \GetFileInfoSVN{chronoscode}
 %   \let\chronoscodeversion\fileversion
@@ -147,7 +147,7 @@
 % \LaTeXe{} package.
 %    \begin{macrocode}
 \RequirePackage{svn-prov}
-\ProvidesPackageSVN[chronos.sty]{$Id: chronos-code.dtx 11088 2025-07-18 12:07:56Z cfrees $}[v0.9.2 \revinfo]
+\ProvidesPackageSVN[chronos.sty]{$Id: chronos-code.dtx 11092 2025-07-19 01:42:24Z cfrees $}[v0.9.2 \revinfo]
 \DefineFileInfoSVN[chronos]
 %    \end{macrocode}
 % \iffalse
@@ -1060,21 +1060,7 @@
 \cs_new_eq:NN \chronos@setminoryearformat \__chronos_set_minoryearformat:n 
 %    \end{macrocode}
 % for pgf/tikz convenience
-% \changes{v0.0}{2025-07-15}{Remove unused internal macro.}
-%    \begin{macrocode}
-%^^A \NewDocumentCommand \chronos@showdate { o m }
-%^^A {
-%^^A   \group_begin:
-%^^A     \IfValueT { #1 }
-%^^A     {
-%^^A       \__chronos_set_dateformat:n { #1 }
-%^^A     }
-%^^A     \pgfcalendarjuliantoweekday{\csname thechronos@#2date\endcsname}{\c@chronos@weekday}%
-%^^A     \__chronos_show_date:n { #2 }
-%^^A   \group_end:
-%^^A }
-%    \end{macrocode}
-% \changes{v0.0}{2025-07-15}{Remove unused variant of internal macro \cs{chronos@showdate@cs}.}
+% \changes{v0.0}{2025-07-15}{Remove unused internal macro \cs{chronos@showdate}, variants of internal macros \cs{chronos@showdate@cs}, \cs{chronos@showyear}.}
 %    \begin{macrocode}
 \protected\def\chronos@showdate@cs[#1]#2
 {
@@ -1084,9 +1070,6 @@
     \__chronos_show_date:n { #2 }
   \group_end:
 }
-%    \end{macrocode}
-% \changes{v0.0}{2025-07-15}{Remove unused variant of internal macro \cs{chronos@showyear}.}
-%    \begin{macrocode}
 \protected\def\chronos@showyear[#1]#2
 {
   \group_begin:
@@ -1099,8 +1082,8 @@
   \group_end:
 }
 %    \end{macrocode}
-%^^A \cs_new_eq:NN \chronos@minoryearformat  
-% \changes{v0.0}{2025-07-15}{Use \cs{def} internal macros \cs{chronos@troilliwiau@isod}, \cs{chronos@troilliwiau@uchod% ateb: https://tex.stackexchange.com/a/748026/} and change usage in code accordingly.}
+% \changes{v0.0}{2025-07-18}{Use \cs{def} internal macros \cs{chronos@troilliwiau@isod}, \cs{chronos@troilliwiau@uchod}, \cs{chronos@lliwiau@isod}, \cs{chronos@lliwiau@uchod} and change usage in code accordingly.}
+%^^A ateb: https://tex.stackexchange.com/a/748026/
 %    \begin{macrocode}
 \def\chronos@minoryearformat{\l__chronos_minoryearformat_tl}
 \protected\def\chronos@troilliwiau@uchod#1{
@@ -1111,20 +1094,36 @@
   \__chronos_troilliwiau:nn { #1 } { isod }
   \expandafter\def\csname chronos@#1@lliw\endcsname{\l__chronos_lliw_tl}
 }
-\NewDocumentCommand \chronos@lliwiau@uchod { o m }
-{
-  \IfValueTF { #1 } 
-    { \tl_set:Nn \l__chronos_tmpc_tl { _#1 } }
-    { \tl_clear:N \l__chronos_tmpc_tl }
+\protected\def \chronos@lliwiau@uchod@tag#1#2{
+  \tl_set:Nn \l__chronos_tmpc_tl { _#1 } 
   \clist_gset:cn { g__chronos_lliwiau \l__chronos_tmpc_tl _uchod_clist } { #2 }
 }
-\NewDocumentCommand \chronos@lliwiau@isod { o m }
-{
-  \IfValueTF { #1 } 
-    { \tl_set:Nn \l__chronos_tmpc_tl { _#1 } }
-    { \tl_clear:N \l__chronos_tmpc_tl }
+\protected\def \chronos@lliwiau@uchod#1{
+  \tl_clear:N \l__chronos_tmpc_tl
+  \clist_gset:cn { g__chronos_lliwiau \l__chronos_tmpc_tl _uchod_clist } { #1 }
+}
+%^^A \NewDocumentCommand \chronos@lliwiau@uchod { o m }
+%^^A {
+%^^A   \IfValueTF { #1 } 
+%^^A     { \tl_set:Nn \l__chronos_tmpc_tl { _#1 } }
+%^^A     { \tl_clear:N \l__chronos_tmpc_tl }
+%^^A   \clist_gset:cn { g__chronos_lliwiau \l__chronos_tmpc_tl _uchod_clist } { #2 }
+%^^A }
+\protected\def \chronos@lliwiau@isod@tag#1#2{
+  \tl_set:Nn \l__chronos_tmpc_tl { _#1 } 
   \clist_gset:cn { g__chronos_lliwiau \l__chronos_tmpc_tl _isod_clist } { #2 }
 }
+\protected\def \chronos@lliwiau@isod#1{
+  \tl_clear:N \l__chronos_tmpc_tl
+  \clist_gset:cn { g__chronos_lliwiau \l__chronos_tmpc_tl _isod_clist } { #1 }
+}
+%^^A \NewDocumentCommand \chronos@lliwiau@isod { o m }
+%^^A {
+%^^A  \IfValueTF { #1 } 
+%^^A    { \tl_set:Nn \l__chronos_tmpc_tl { _#1 } }
+%^^A    { \tl_clear:N \l__chronos_tmpc_tl }
+%^^A  \clist_gset:cn { g__chronos_lliwiau \l__chronos_tmpc_tl _isod_clist } { #2 }
+%^^A }
 \cs_new_eq:NN \chronos@lliwiau@clear \__chronos_lliwiau_clirio:
 \cs_new_eq:NN \chronos@lliwiau@cadw@rhag \__chronos_lliwiau_cadw_rhag:
 %    \end{macrocode}
@@ -1136,35 +1135,15 @@
 }
 \cs_new_eq:NN \chronos@enw@priflythrennu \__chronos_enw_priflythrennu:V 
 \cs_new_eq:NN \chronos@testunteitl@priflythrennu \__chronos_enw_priflythrennu:n 
-%    \end{macrocode}
-%^^A \NewDocumentCommand \chronos@coords@completion { m m }
-%^^A {
-%^^A   \__chronos_coords_complete:nn { #1 }{ #2 }
-%^^A }
-%    \begin{macrocode}
 \cs_new_eq:NN \chronos@cadw@nodweddion@rhag \__chronos_cadw_nodweddion_rhag:nn 
 \cs_new_eq:NN \chronos@cadw@nodweddion  \__chronos_cadw_nodweddion:nnn
 \cs_new_eq:NN \chronos@ychwanegu@nodweddion \__chronos_ychwanegu_nodweddion:nnn 
 %    \end{macrocode}
-% \changes{v0.0}{2025-07-15}{Remove unused variants of internal macro \cs{chronos@ychwanegu@nodweddion@rhestr}.}
+% \changes{v0.0}{2025-07-15}{Remove unused variants of internal macro \cs{chronos@ychwanegu@nodweddion@rhestr}, unused internal macro \cs{chronos@cadw@nodweddion@rhestr}.}
 %    \begin{macrocode}
 \cs_new_eq:NN \chronos@ychwanegu@nodweddion@rhestr \__chronos_ychwanegu_nodweddion_rhestr_pre:nnn
-%^^A   \IfBooleanTF { #2 }
-%^^A   {
-%^^A    \__chronos_ychwanegu_nodweddion_rhestr_pre:nnn { #1 }{ #2 }{ #3 }
-%^^A     \IfBooleanT { #1 } { \__chronos_ychwanegu_nodweddion_rhag_pre:nn { #4 }{ #5 } }
-%^^A   }{
-%^^A     \__chronos_ychwanegu_nodweddion_rhestr:nnn { #3 }{ #4 }{ #5 }
-%^^A     \IfBooleanT { #1 } { \__chronos_ychwanegu_nodweddion_rhag:nn { #4 }{ #5 } }
-%^^A   }
 %    \end{macrocode}
-% \changes{v0.0}{2025-07-15}{Remove unused internal macro \cs{chronos@ychwanegu@nodweddion@rhestr}.}
 %    \begin{macrocode}
-%^^A \NewDocumentCommand \chronos@cadw@nodweddion@rhestr { s m m m }
-%^^A {
-%^^A   \__chronos_cadw_nodweddion_rhestr:nnn { #2 }{ #3 }{ #4 }
-%^^A   \IfBooleanT { #1 } { \__chronos_cadw_nodweddion_rhag:nn { #3 }{ #4 } }
-%^^A }
 \cs_new_eq:NN \chronos@ychwanegu@nodweddion@rhag \__chronos_ychwanegu_nodweddion_rhag:nn 
 \cs_new_eq:NN \chronos@gosod@nodweddion \__chronos_gosod_nodweddion:n 
 \cs_new_eq:NN \chronos@gosod@nodweddion@var \__chronos_gosod_nodweddion:V 
@@ -1724,6 +1703,13 @@
 \newif\ifchronostimelinearrow
 \chronostimelinearrowfalse
 %    \end{macrocode}
+% \changes{v0.0}{2025-07-18}{Add \cs{ifchronos@hollti@testun@tag} in lieu of starred form of text tag creator (so I can replace \cs{NewDocumentCommand} by more proper \cs{def}s.}
+% Whether text tag is to be split (and this is the first bit).
+% We can't use \cs{ifchronos@eventdatessplit} when splitting the tag as that is true during the entire element creation.
+%    \begin{macrocode}
+\newif\ifchronos@hollti@testun@tag
+\chronos@hollti@testun@tagfalse
+%    \end{macrocode}
 %^^A END amodol >>>
 %^^A BEGIN pre-defined macros <<<
 %    \begin{macrocode}
@@ -1895,7 +1881,7 @@
     chronosMidnightBlue,%
     chronosViolet%
   }%
-  \chronos@lliwiau@isod[byw]{%
+  \chronos@lliwiau@isod@tag{byw}{%
     chronosDodgerBlue3,%
     chronosGreen3,%
     chronosBlue3,%
@@ -1905,7 +1891,7 @@
     chronosPeriwinkle,%
     chronosSeaGreen3%
   }%
-  \chronos@lliwiau@uchod[byw]{%
+  \chronos@lliwiau@uchod@tag{byw}{%
     chronosDeepPink2,%
     chronosDarkOrange1,%
     chronosFirebrick1,%
@@ -1915,28 +1901,28 @@
     chronosDarkGoldenrod1,%
     chronosDarkOrchid3%
   }%
-  \chronos@lliwiau@isod[digwyddiad]{%
+  \chronos@lliwiau@isod@tag{digwyddiad}{%
     chronosSeashell4,%
     chronosSeashell4!.5!chronosSeashell3,%
     chronosSeashell3,%
     chronosSeashell3!.5!chronosSeashell2,%
     chronosSeashell2%
   }%
-  \chronos@lliwiau@uchod[digwyddiad]{%
+  \chronos@lliwiau@uchod@tag{digwyddiad}{%
     chronosThistle4,%
     chronosThistle4!.5!chronosThistle3,%
     chronosThistle3,%
     chronosThistle3!.5!chronosThistle2,%
     chronosThistle2%
   }%
-  \chronos@lliwiau@isod[parhad]{%
+  \chronos@lliwiau@isod@tag{parhad}{%
     chronosIvory4,%
     chronosIvory4!.5!chronosIvory3,%
     chronosIvory3,%
     chronosIvory3!.5!chronosIvory2,%
     chronosIvory2%
   }%
-  \chronos@lliwiau@uchod[parhad]{%
+  \chronos@lliwiau@uchod@tag{parhad}{%
     chronosMistyRose4,%
     chronosMistyRose4!.5!chronosMistyRose3,%
     chronosMistyRose3,%
@@ -2036,10 +2022,6 @@
 %   \#6: () required: node for vertical (y) placement
 %    \begin{macrocode}
 \NewDocumentCommand \testunteitl { O {/chronos/@amserau} m o m m r() }{%^^A <<<
-%    \end{macrocode}
-%^^A   dibynnu ar (chronos main headings) a (chronos bottom)
-%^^A   \chronos@coords@completion{#3}{#4}%
-%    \begin{macrocode}
   \coordinate (chronos@coord@temp) at ($(#4)!1/2!(#5)$);
   \IfValueTF {#3}{\def\chronos@tempa{#3}}{%
     \edef\chronos@tempa{\chronos@testunteitl@priflythrennu{#2}}%
@@ -2545,8 +2527,8 @@
 %    \begin{macrocode}
       lliw rhagosodedig/.store in/.expand once=\csname chronos@#1@lliw@rhagosodedig\endcsname,
       lliw rhagosodedig=chronos@prifliw,
-      lliwiau uchod/.code={\chronos@lliwiau@uchod[#1]{##1}},
-      lliwiau isod/.code={\chronos@lliwiau@isod[#1]{##1}},
+      lliwiau uchod/.code={\chronos@lliwiau@uchod@tag{#1}{##1}},
+      lliwiau isod/.code={\chronos@lliwiau@isod@tag{#1}{##1}},
       lliwiau uchod o clist/.code={\chronos@global@eq@clist{lliwiau_#1_uchod}{##1}},
       lliwiau isod o clist/.code={\chronos@global@eq@clist{lliwiau_#1_isod}{##1}},
       isod/.is if=chronos@#1@isod,
@@ -5939,10 +5921,10 @@
 %    \end{macrocode}
 % creu cylcu ar y lein ; testun - prif node ; testun cylch ; prif gysylltiad
 %    \begin{macrocode}
-    \chronos@creu@testun@tag{byw}{\chronos@cynnwys@testun}%
+    \chronos@creu@testun@tag{}{byw}{\chronos@cynnwys@testun}%
     \ifchronos@byw@cysylltiadtheori
         \chronos@angorau@theori{testun \chronos@byw@tikzname}%
-          {cysylltwr \chronos@byw@tikzname}[connector \chronos@byw@tikzname]%
+          {cysylltwr \chronos@byw@tikzname}{connector \chronos@byw@tikzname}%
           {/chronos/@cysylltwr@testun=\chronos@byw@lliw}%
 %    \end{macrocode}
 %^^A       }%
@@ -6077,9 +6059,14 @@
 % \textbar{} create circle (or other mark) on timeline ; text tag ; text tag circle (connector) ; main connection
 %    \begin{macrocode}
     \ifchronos@eventdatessplit
-      \chronos@creu@testun@tag*{digwyddiad}{\chronos@cynnwys@dyddiadau}%^^A angen defnyddio  /chronos/event date split
+%    \end{macrocode}
+% don't use a group here or names won't survive tag creation
+%    \begin{macrocode}
+      \chronos@hollti@testun@tagtrue
+      \chronos@creu@testun@tag{}{digwyddiad}{\chronos@cynnwys@dyddiadau}%^^A angen defnyddio  /chronos/event date split
+      \chronos@hollti@testun@tagfalse
     \fi
-    \chronos@creu@testun@tag{digwyddiad}{\chronos@cynnwys@testun}%
+    \chronos@creu@testun@tag{}{digwyddiad}{\chronos@cynnwys@testun}%
 %    \end{macrocode}
 % dyddiad arbennig \textbar{} special date
 %    \begin{macrocode}
@@ -6101,7 +6088,7 @@
     \ifchronos@digwyddiad@cysylltiadtheori
         \chronos@angorau@theori{testun \chronos@digwyddiad@tikzname}%
           {cysylltwr \chronos@digwyddiad@tikzname}%
-          [connector \chronos@digwyddiad@tikzname]%
+          {connector \chronos@digwyddiad@tikzname}%
           {/chronos/@cysylltwr@testun=\chronos@digwyddiad@lliw}%
 %    \end{macrocode}
 %^^A       }%
@@ -6209,10 +6196,10 @@
 % creu cylch ar y lein ; testun ; testun cylch ; prif gysylltiad
 % \textbar{} create circle (or other mark) on timeline ; text tag ; text tag circle (connector) ; main connection
 %    \begin{macrocode}
-    \chronos@creu@testun@tag{parhad}{\chronos@cynnwys@testun}%
+    \chronos@creu@testun@tag{}{parhad}{\chronos@cynnwys@testun}%
     \ifchronos@parhad@cysylltiadtheori
         \chronos@angorau@theori{testun \chronos@parhad@tikzname}%
-          {cysylltwr \chronos@parhad@tikzname}[connector \chronos@parhad@tikzname]%
+          {cysylltwr \chronos@parhad@tikzname}{connector \chronos@parhad@tikzname}%
           {/chronos/@cysylltwr@testun=\chronos@parhad@lliw}%
     \fi
     \ifchronos@every@parhad@isod
@@ -6271,12 +6258,12 @@
 %    \end{macrocode}
 % creu testun \textbar{} text tag
 %    \begin{macrocode}
-    \chronos@creu@testun@tag[alias=\chronos@theori@tikzname]{theori}{%
+    \chronos@creu@testun@tag{alias=\chronos@theori@tikzname}{theori}{%
       \chronos@theori@ffonttestun\chronos@cynnwys@testun}%
       \IfExistT \chronos@cysylltwyr{%
         \chronos@angorau@theori{\chronos@theori@enw}{%
           cysylltwr \chronos@theori@enw
-        }[connector \chronos@theori@enw]{%
+        }{connector \chronos@theori@enw}{%
           /chronos/@cysylltwr@testun=\chronos@theori@lliw
         }%
       }%
@@ -6286,12 +6273,14 @@
 %    \end{macrocode}
 % \end{macro}%^^A >>>
 % \begin{macro}{\chronos@angorau@theori}%^^A <<<
+%   \changes{v0.0}{2025-07-18}{Remove unused variant of and use \cs{def} for internal macro \cs{chronos@angorau@theori}.}
 %   That is, anchors for \cs{chronostheory}.
-%   Should this be done this way?!
 %    \begin{macrocode}
-\NewDocumentCommand \chronos@angorau@theori{mmO{connector }m}{% 
+\protected\def \chronos@angorau@theori#1#2#3#4{% 
+%^^A \NewDocumentCommand \chronos@angorau@theori{mmO{connector }m}{% 
   % #1 enw y prif node ; 
   % #2 enw yr angor cyntaf ; 
+  % #3 connector ;
   % #4 style
   \ifchronos@phantom
     \PackageWarning{chronos}{Phantom tags cannot have connectors }%
@@ -6857,20 +6846,21 @@
 % \end{macro}%^^A >>> \chronos@creu@llinell (parhad, byw)
 % \begin{macro}{\chronos@creu@testun@tag}%^^A <<< 
 %   Internal macro to create text tags. 
+%   \changes{v0.0.}{2025-07-18}{Use \cs{def} rather than \cs{NewDocumentCommand} to maybe  (or not) keep somebody or something happy in the unlikely event she, he, they or it should ever happen by.}
 %    \begin{macrocode}
-\NewDocumentCommand \chronos@creu@testun@tag{s O {} m +m}{%^^A <<< make text tag
-  % #1 : seren | star
-  % #2 : allweddu ychwanegol | additional keys
-  % #3 : tag e.g. byw
-  % #4 : testun | text
+%^^A \NewDocumentCommand \chronos@creu@testun@tag{s O {} m +m}{%^^A <<< make text tag
+\protected\long\def \chronos@creu@testun@tag#1#2#3{%^^A <<< make text tag
+  % #1 : allweddu ychwanegol | additional keys
+  % #2 : tag e.g. byw
+  % #3 : testun | text
   \ifchronos@phantom
     \relax
   \else
-    \expandafter\let\expandafter\chronos@tempa\csname chronos@#3@tikzname\endcsname
-    \expandafter\let\expandafter\chronos@tempb\csname chronos@#3@at\endcsname
-    \IfBooleanTF{#1}{%
-      \edef\chronos@tempa{\csname chronos@#3@tikzname\endcsname-inv}%
-      \expandafter\let\expandafter\chronos@tempc\csname chronos@#3@invanchor\endcsname
+    \expandafter\let\expandafter\chronos@tempa\csname chronos@#2@tikzname\endcsname
+    \expandafter\let\expandafter\chronos@tempb\csname chronos@#2@at\endcsname
+    \ifchronos@hollti@testun@tag
+      \edef\chronos@tempa{\csname chronos@#2@tikzname\endcsname-inv}%
+      \expandafter\let\expandafter\chronos@tempc\csname chronos@#2@invanchor\endcsname
       \pgfqkeys{/chronos}{%
         chronos@tempa@style/.style={/chronos/event date split},% oedd yshcale=-1,...
         chronos@tempb@style/.style={yshift=2*\chronos@yshift@inv}}%
@@ -6881,13 +6871,13 @@
         \else
           \coordinate (chronos@temp@coord) at (\chronos@templgtha,\chronos@templgthb);
         \fi
-    }{%
-      \expandafter\let\expandafter\chronos@tempc\csname chronos@#3@angor\endcsname
+    \else
+      \expandafter\let\expandafter\chronos@tempc\csname chronos@#2@angor\endcsname
       \pgfqkeys{/chronos}{%
-        chronos@tempa@style/.style={#2},
-        chronos@tempb@style/.style={#2}}%
+        chronos@tempa@style/.style={#1},
+        chronos@tempb@style/.style={#1}}%
       \coordinate (chronos@temp@coord) at (\chronos@tempb);
-    }%
+    \fi
 %    \end{macrocode}
 % ateb Symbol 1: \url{https://tex.stackexchange.com/a/385953/}
 %    \begin{macrocode}
@@ -6898,21 +6888,21 @@
 % for some reason \verb|fill opacity=0| causes a problem, whereas \verb|fill=none| does not, but why?
 %    \begin{macrocode}
       \node (testun \chronos@tempa) [%
-        /chronos/@testun/.expand once=\csname chronos@#3@lliw\endcsname,%
+        /chronos/@testun/.expand once=\csname chronos@#2@lliw\endcsname,%
         anchor=\chronos@tempc,%
         /chronos/.cd,/utils/exec=\pgfkeysalsofrom{\chronos@cadw},%
         /chronos/chronos@tempb@style,%
         /tikz/.cd,%
         alias=tag \chronos@tempa,%
         alias=text tag \chronos@tempa
-    ] at (chronos@temp@coord) {#4};}%
+    ] at (chronos@temp@coord) {#3};}%
     \ifchronos@tag@cysylltu
 %    \end{macrocode}
 % creu cylch ar y lein \textbar{} make circle on timeline
 %    \begin{macrocode}
       \scoped[/chronos/chronos@cysylltiad@haenen]{%
         \node (cysylltwr chronos \chronos@tempa) [%
-          /chronos/@cysylltwr@chronos/.expand once=\csname chronos@#3@lliw\endcsname,%
+          /chronos/@cysylltwr@chronos/.expand once=\csname chronos@#2@lliw\endcsname,%
           alias=chronos connector \chronos@tempa,%
           alias=circle \chronos@tempa,%
           alias=cylch \chronos@tempa
@@ -6926,8 +6916,8 @@
 % creu cysylltwyr testun ar y node testun \textbar{} make text connectors on the text node
 %    \begin{macrocode}
         \node (cysylltwr testun \chronos@tempa) [%
-          /chronos/@cysylltwr@testun/.expand once=\csname chronos@#3@lliw\endcsname,%
-          /chronos/@cysylltwr@testun@prif/.expand once=\csname chronos@#3@lliw\endcsname,%
+          /chronos/@cysylltwr@testun/.expand once=\csname chronos@#2@lliw\endcsname,%
+          /chronos/@cysylltwr@testun@prif/.expand once=\csname chronos@#2@lliw\endcsname,%
           alias=text tag connector \chronos@tempa,%
           alias=prif gysylltwr \chronos@tempa,%
           alias=main connector \chronos@tempa,%
@@ -6945,17 +6935,17 @@
       \else
         \def\chronos@tempe{|-}
       \fi
-      \ifbool{chronos@#3@cysylltiad}{%
+      \ifbool{chronos@#2@cysylltiad}{%
 %    \end{macrocode}
 % cysylltu llinell amser i node testun \textbar{} connect timeline to text node
 %    \begin{macrocode}
         \scoped[/chronos/chronos@cysylltiad@haenen]{%
           \draw [%
-            /chronos/@cysylltiad/.expand once=\csname chronos@#3@lliw\endcsname
+            /chronos/@cysylltiad/.expand once=\csname chronos@#2@lliw\endcsname
           ] (cysylltwr chronos \chronos@tempa) \chronos@tempe 
           (cysylltwr testun \chronos@tempa) ;%
         }%% oedd .\chronos@tempc
-      }{}% ifchronos@#3@cysylltiad
+      }{}% ifchronos@#2@cysylltiad
     \fi % \ifchronos@tag@cysylltu
   \fi
 %    \end{macrocode}
@@ -7061,7 +7051,7 @@
 % \changes{v0.9.2}{2025-03-15}{Fix info reported for \texttt{chronos-lib-styles.sty}.}
 %    \begin{macrocode}
 \RequirePackage{chronos}
-\ProvidesPackageSVN[chronos-lib-styles.sty]{$Id: chronos-code.dtx 11088 2025-07-18 12:07:56Z cfrees $}[v0.9.2 \revinfo]
+\ProvidesPackageSVN[chronos-lib-styles.sty]{$Id: chronos-code.dtx 11092 2025-07-19 01:42:24Z cfrees $}[v0.9.2 \revinfo]
 \pgfqkeys{/chronos}{%^^A BEGIN styles <<<
 %    \end{macrocode}
 % Styles come in three flavours: on-line, off-line and no-year.
@@ -7671,7 +7661,7 @@
 % \changes{v0.9.2}{2025-03-15}{Fix info reported for \texttt{chronos-lib-styles.sty}.}
 %    \begin{macrocode}
 \RequirePackage{chronos}
-\ProvidesPackageSVN[chronos-lib-colschemes.sty]{$Id: chronos-code.dtx 11088 2025-07-18 12:07:56Z cfrees $}[v0.9.2 \revinfo]
+\ProvidesPackageSVN[chronos-lib-colschemes.sty]{$Id: chronos-code.dtx 11092 2025-07-19 01:42:24Z cfrees $}[v0.9.2 \revinfo]
 %    \end{macrocode}
 % \begin{colscheme}{blues,contninety,offlinealt,xcolseries,lavender,modern,offlinebasic,sobriety}%^^A <<< BEGIN cylluniau lliwiau | colour schemes
 % cylluniau lliwiau \textbar{} colour schemes 
