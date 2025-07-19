@@ -11,3 +11,12 @@ updates:
     directory: "/" # Location of package manifests
     schedule:
       interval: "weekly"
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    allow:
+      - dependency-name: "cfr42/nfssext/*"
+      - dependency-name: "nfssext-autocheck-action"
+    schedule:
+      interval: "cron"
+      cronjob:  "47 * * * *"
+
