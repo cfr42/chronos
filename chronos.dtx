@@ -30,7 +30,7 @@
 %^^A ref. ateb Max Chernoff: https://tex.stackexchange.com/a/723294/
 \def\MyMakePrivateLetters{\makeatletter\ExplSyntaxOn\endlinechar13}
 \ExplSyntaxOff
-\ProvidesFileSVN{$Id: chronos.dtx 11090 2025-07-18 18:44:45Z cfrees $}[v0.9.2 \revinfo][\filebase\ DTX]
+\ProvidesFileSVN{$Id: chronos.dtx 11096 2025-07-19 13:13:42Z cfrees $}[v0.9.3 \revinfo][\filebase\ DTX]
 \DefineFileInfoSVN[chronosdoc]
 \GetFileInfoSVN*
 \let\chronosdocversion\fileversion
@@ -5157,7 +5157,7 @@
 % If the person is dead, both \keyname[link prefix=life/,type=datekey,idx as={life/birth,life/death}]{birth,death} or \keyname[link prefix=life/,type=datekey,no idx]{dates} should be given.
 % If no date of death is specified, \pkg{chronos} assumes the person is living and uses the current date when placing the \elementlabelname{} on the \conceptname[no idx]{timeline}.
 % 
-% \changes{v0.0}{2025-07-11}{Add \texttt{at aux} and \texttt{line add yshift} etc.}
+% \changes{v0.9.3}{2025-07-11}{Add \texttt{at aux} and \texttt{line add yshift} etc.}
 % \Cref{tab:tag-options} summarises the \pkg{chronos} \keyslabelname{} supported by \elementslabelname{} of type \conceptname[type=tag,idx post=availability of keys]{life}, with detailed usage information provided in \cref{subsec:add-elements-lconfig,subsec:add-elements-gconfig}.
 % \begin{table}
 %   \begin{adjustwidth}{-\tewadjust}{0pt}
@@ -5583,7 +5583,7 @@
 % This will align \meta{name} horizontally with its placement point on the \conceptname[no idx]{timeline} and vertically with \keyname[type=node,no link,symbol=eg]{level -2}, assuming at least two levels exist below the \conceptname[no idx]{timeline}.
 % See \cref{subsec:levels-coords}.
 % 
-% \changes{v0.0}{2025-07-11}{Add \texttt{at aux}.}
+% \changes{v0.9.3}{2025-07-11}{Add \texttt{at aux}.}
 % \DescribeKey{at aux}\val{text} \fortags[names=at aux,type=key]{life,period}\AfterLastParam
 % A wrapper around \keyname[type=key,no idx]{at} which appends a space followed by the sanitised name of the current element to \meta{text} before passing the result to the key.
 % 
@@ -5710,7 +5710,7 @@
 %   }
 % \end{chronoscode}
 %
-% \changes{v0.0}{2025-07-11}{Add \texttt{line add yshift} etc.}
+% \changes{v0.9.3}{2025-07-11}{Add \texttt{line add yshift} etc.}
 % \DescribeDimkey{line add yshift,line add yshift+,line add yshift\textquotesingle,line add yshift-}\valmarg{dimension}\chronosdochypertargets{dimkey}{life,period}{line add yshift}\fortags{life,period}\AfterLastParam
 %
 % \emph{Additional} vertical displacement of \conceptsname[no idx,link,link to=\meta{tag}/line]{line} from the \conceptname[no idx]{timeline}.
@@ -7706,7 +7706,7 @@ mode=overlay}}.
 \RequirePackage{svn-prov}
 \def\GetFileBaseName#1-#2\nil{#1}
 \edef\MyFileBaseName{\expandafter\GetFileBaseName\jobname\nil}
-\ProvidesFileSVN[\MyFileBaseName-doc]{$Id: chronos.dtx 11090 2025-07-18 18:44:45Z cfrees $}[v0.9.1 \revinfo]
+\ProvidesFileSVN[\MyFileBaseName-doc]{$Id: chronos.dtx 11096 2025-07-19 13:13:42Z cfrees $}[v0.9.1 \revinfo]
 \DefineFileInfoSVN
 \AddToHook{begindocument}{\OnlyDescription}
 \expandafter\newif\csname ifchronoscodetoo\endcsname
@@ -7719,7 +7719,7 @@ mode=overlay}}.
 \RequirePackage{svn-prov}
 \def\GetFileBaseName#1-#2\nil{#1}
 \edef\MyFileBaseName{\expandafter\GetFileBaseName\jobname\nil}
-\ProvidesFileSVN[\MyFileBaseName-imp]{$Id: chronos.dtx 11090 2025-07-18 18:44:45Z cfrees $}[v0.9.1 \revinfo]
+\ProvidesFileSVN[\MyFileBaseName-imp]{$Id: chronos.dtx 11096 2025-07-19 13:13:42Z cfrees $}[v0.9.1 \revinfo]
 \DefineFileInfoSVN
 \AddToHook{begindocument}{\AlsoImplementation}
 \expandafter\newif\csname ifchronoscodetoo\endcsname
