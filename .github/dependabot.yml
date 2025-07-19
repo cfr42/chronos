@@ -11,8 +11,8 @@ updates:
     directory: "/" # Location of package manifests
     schedule:
       interval: "weekly"
-    # ignore:
-    #   - dependency-name: "cfr42/nfssext/*"
+    ignore:
+      - dependency-name: "cfr42/nfssext/*"
     #   - dependency-name: "nfssext-autocheck-action"
   - package-ecosystem: "github-actions"
     directory: "/"
