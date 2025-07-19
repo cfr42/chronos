@@ -18,6 +18,7 @@ on:
       - '!**.txt'
       - '!.github/workflows/*.yml'
       - '!.github/actions/**'
+      - '!.github/dependabot.yml'
       - '.github/workflows/main.yml'
       - '!licences/**'
       - '!test/**'
@@ -57,8 +58,8 @@ jobs:
         uses: actions/checkout@v4
       - name: Build ctan
         id: build 
-        uses: cfr42/nfssext/.github/actions/nfssext-autocheck-action@0c64d7e74dac45271b04904fda6ceedc162d476f
-        # uses: cfr42/nfssext/.github/actions/nfssext-autocheck-action@030403863dc0c69e961fdbd765321b75a34178911
+        # uses: cfr42/nfssext/.github/actions/nfssext-autocheck-action@0c64d7e74dac45271b04904fda6ceedc162d476f
+        uses: cfr42/nfssext/.github/actions/nfssext-autocheck-action@ad1a3747e8b25fccf49732b66b7b13a55e784757
         with:
           ctan: true
           # https://github.com/josephwright/siunitx/blob/549cad913591b92a3a199b7477a325866303bf29/.github/workflows/main.yaml
@@ -94,26 +95,9 @@ jobs:
           fi
           exit $allan
 
-      # - run: sudo apt-get update && sudo apt-get install ghostscript python3-pdfrw
-      # - name: Restore TeX Live from cache
-      #   uses: actions/cache/restore@v4
-      #   with: 
-      #     path: ~/texlive
-      #     key: ${{ needs.texlive-cache.outputs.cache_key }}
-      #     fail-on-cache-miss: true
-      # - name: Set PATH
-      #   run: echo $HOME/texlive/bin/x86_64-linux >> $GITHUB_PATH
       # - name: Run tests
       #   run: l3build check
       #   # https://github.com/latex3/hyperref/blob/adc36adbc3650db73329469b43afb0ee86e3c807/.github/workflows/main.yaml
-      # - name: Archive failed test output
-      #   # what does this do exactly? (runs even if previous fails)
-      #   if: ${{ always() }}
-      #   uses: zauguin/l3build-failure-artifacts@v1
-      #   with:
-      #     name: testfiles-chronos
-      #     # Decide how long to keep the test output artifact:
-      #     # retention-days: 3
       # - name: Create docs
       #   run: l3build doc
       # # if build succeeded, then:
