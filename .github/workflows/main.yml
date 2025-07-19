@@ -59,7 +59,7 @@ jobs:
       - name: Build ctan
         id: build 
         # uses: cfr42/nfssext/.github/actions/nfssext-autocheck-action@0c64d7e74dac45271b04904fda6ceedc162d476f
-        uses: cfr42/nfssext/.github/actions/nfssext-autocheck-action@ad1a3747e8b25fccf49732b66b7b13a55e784757
+        uses: cfr42/nfssext/.github/actions/nfssext-autocheck-action@8b330471077db75c98a6afe7709a0d65aafd3d88
         with:
           ctan: true
           # https://github.com/josephwright/siunitx/blob/549cad913591b92a3a199b7477a325866303bf29/.github/workflows/main.yaml
