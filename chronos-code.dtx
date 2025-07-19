@@ -33,7 +33,7 @@
 % ref. ateb Max Chernoff: https://tex.stackexchange.com/a/723294/
 \def\MakePrivateLetters{\makeatletter\ExplSyntaxOn\endlinechar13}
 \ExplSyntaxOff
-\ProvidesFileSVN{$Id: chronos-code.dtx 11092 2025-07-19 01:42:24Z cfrees $}[v0.9.2 \revinfo][\filebase DTX: Customisable TikZ-based timelines]
+\ProvidesFileSVN{$Id: chronos-code.dtx 11094 2025-07-19 12:03:49Z cfrees $}[v0.9.2 \revinfo][\filebase DTX: Customisable TikZ-based timelines]
 \DefineFileInfoSVN[chronoscode]
 \let\chronoscodeversion\fileversion
 \let\chronoscodebase\filebase
@@ -70,7 +70,7 @@
 % \changes{v0.9}{2025-02-27}{First \ctan{} release.}
 % ^^A lua will replace v0.0 and 0000/00/00 when tagging
 % \ifchronoscodetoo
-%   \ProvidesFileSVN{$Id: chronos-code.dtx 11092 2025-07-19 01:42:24Z cfrees $}[v0.9.2 \revinfo]
+%   \ProvidesFileSVN{$Id: chronos-code.dtx 11094 2025-07-19 12:03:49Z cfrees $}[v0.9.2 \revinfo]
 %   \DefineFileInfoSVN[chronoscode]
 %   \GetFileInfoSVN{chronoscode}
 %   \let\chronoscodeversion\fileversion
@@ -147,7 +147,7 @@
 % \LaTeXe{} package.
 %    \begin{macrocode}
 \RequirePackage{svn-prov}
-\ProvidesPackageSVN[chronos.sty]{$Id: chronos-code.dtx 11092 2025-07-19 01:42:24Z cfrees $}[v0.9.2 \revinfo]
+\ProvidesPackageSVN[chronos.sty]{$Id: chronos-code.dtx 11094 2025-07-19 12:03:49Z cfrees $}[v0.9.2 \revinfo]
 \DefineFileInfoSVN[chronos]
 %    \end{macrocode}
 % \iffalse
@@ -1051,7 +1051,6 @@
 %^^A END functions >>>
 %^^A BEGIN macros y paced <<<
 % **mewnol hefyd!** \textbar{} **internal also!**
-% Ddylwn i ddefnyddio \cs{NewDocumentCommand} (ond *mewnol*?), \cs{newcommand}/\cs{newcommand*}, \cs{def}/\cs{gdef}/\cs{edef}/\cs{xdef}, \verb|cs_new_eq:NN|, \cs{let} neu rhywbeth arall??!!
 %    \begin{macrocode}
 \newcommand* \chronos@tikzprefix { \int_to_arabic:n { \g__chronos_int } }
 \cs_new_eq:NN \chronos@env@begin \__chronos_at_begin:
@@ -1102,13 +1101,6 @@
   \tl_clear:N \l__chronos_tmpc_tl
   \clist_gset:cn { g__chronos_lliwiau \l__chronos_tmpc_tl _uchod_clist } { #1 }
 }
-%^^A \NewDocumentCommand \chronos@lliwiau@uchod { o m }
-%^^A {
-%^^A   \IfValueTF { #1 } 
-%^^A     { \tl_set:Nn \l__chronos_tmpc_tl { _#1 } }
-%^^A     { \tl_clear:N \l__chronos_tmpc_tl }
-%^^A   \clist_gset:cn { g__chronos_lliwiau \l__chronos_tmpc_tl _uchod_clist } { #2 }
-%^^A }
 \protected\def \chronos@lliwiau@isod@tag#1#2{
   \tl_set:Nn \l__chronos_tmpc_tl { _#1 } 
   \clist_gset:cn { g__chronos_lliwiau \l__chronos_tmpc_tl _isod_clist } { #2 }
@@ -1117,13 +1109,6 @@
   \tl_clear:N \l__chronos_tmpc_tl
   \clist_gset:cn { g__chronos_lliwiau \l__chronos_tmpc_tl _isod_clist } { #1 }
 }
-%^^A \NewDocumentCommand \chronos@lliwiau@isod { o m }
-%^^A {
-%^^A  \IfValueTF { #1 } 
-%^^A    { \tl_set:Nn \l__chronos_tmpc_tl { _#1 } }
-%^^A    { \tl_clear:N \l__chronos_tmpc_tl }
-%^^A  \clist_gset:cn { g__chronos_lliwiau \l__chronos_tmpc_tl _isod_clist } { #2 }
-%^^A }
 \cs_new_eq:NN \chronos@lliwiau@clear \__chronos_lliwiau_clirio:
 \cs_new_eq:NN \chronos@lliwiau@cadw@rhag \__chronos_lliwiau_cadw_rhag:
 %    \end{macrocode}
@@ -1168,15 +1153,20 @@
   \seq_if_in:NnTF \l__chronos_gosod_seq { #1 } { #2 } { #3 } 
 }
 %    \end{macrocode}
-%^^A \newcommand* \chronos@if@gosodT [2] { \seq_if_in:NnT \l__chronos_gosod_seq { #1 } { #2 } }%
+% \begin{macro}{\chronos@if@gosodF}
+%   Conditionalise on property installation.
+%   \changes{v0.0}{2025-07-18}{Switch to \cs{def}.}
 %    \begin{macrocode}
-\newcommand* \chronos@if@gosodF [2] 
+\def\chronos@if@gosodF#1#2 
 {
   \chronos@presettrue 
   \seq_if_in:NnF \l__chronos_gosod_seq { #1 } { #2 } 
   \chronos@presetfalse
 }
 %    \end{macrocode}
+% \end{macro}
+% \begin{macro}{\chronosdangoslliwiau}
+%   Becomes \cs{chronosshowcolours}.
 % \changes{v0.0}{2025-07-15}{Eliminate unused internal macros \cs{chronos@dangos@lliwiau} and \cs{chronos@dangos@lliwiau@rhag}.}
 %    \begin{macrocode}
 \NewDocumentCommand \chronosdangoslliwiau { 
@@ -1199,6 +1189,11 @@
     }
   }
 }
+%    \end{macrocode}
+% \end{macro}
+% \begin{macro}{\chronosdangoslliwiaurhag}
+%   For showing default colours.
+%    \begin{macrocode}
 \NewDocumentCommand \chronosdangoslliwiaurhag 
 { 
   s O { byw, digwyddiad, parhad, theori } D () { isod, uchod }  
@@ -1220,6 +1215,11 @@
     }
   }
 }
+%    \end{macrocode}
+% \end{macro}
+% \begin{macro}{\chronos@dangos@fformatiaudyddiadau,\chronosdangosfformatiaudyddiadau}
+%   Macros for showing date formats.
+%    \begin{macrocode}
 \newcommand* \chronos@dangos@fformatiaudyddiadau{%
   \clist_map_inline:nn 
   { \l__chronos_dateformat_tl, \l__chronos_yearformat_tl, \l__chronos_minoryearformat_tl}
@@ -1227,6 +1227,9 @@
 }
 \cs_new_eq:NN \chronosdangosfformatiaudyddiadau \chronos@dangos@fformatiaudyddiadau
 %    \end{macrocode}
+% \end{macro}
+% \begin{macro}{\chronos@to@clist,\chronos@to@clist@append,\chronos@global@to@clist,\chronos@globall@to@clist@append,\chronos@global@to@clist@star@append,\chronos@global@clear@to@clist,\chronos@from@clist,\chronos@global@from@clist,\chronos@global@eq@clist,\chronos@dangos@clist}
+%   Wrappers for \lpack{l3clist} functions.
 %   \changes{v0.0}{2025-07-15}{Eliminate \lpack{xparse} macros for internal commands. (According to \TeX{} SE chat this is The Right Thing To Do).}
 %    \begin{macrocode}
 \protected\def\chronos@to@clist#1#2{%^^A m m }
@@ -1263,15 +1266,17 @@
   \clist_gset_eq:cc { g__chronos_#1_clist } { g__chronos_#2_clist }
 }
 \def\chronos@dangos@clist#1{ \clist_show:c { #1_clist } }
+%    \end{macrocode}
+% \end{macro}
+%   Internal 2e wrappers for internal functions.
+%    \begin{macrocode}
 \cs_new_eq:NN \chronos@at@end  \__chronos_at_end:  
 \cs_new_eq:NN \chronos@set@date@aux \__chronos_set_date_aux:n
 \cs_new_eq:NN \chronos@set@date \__chronos_set_date:nnnn  % blwyddyn; mis; dydd; tag for macro
 %    \end{macrocode}
-%^^A \newcommand* \chronos@if@lliw [3] { \color_if_exist:nTF { #1 } { #2 } { #3 } }
 %    \begin{macrocode}
 \cs_new_eq:NN \chronos@legacy@if \legacy_if:oTF 
 %    \end{macrocode}
-%^^A \cs_new_eq:NN \chronos@legacy@if@set \legacy_if_set:nn
 %    \begin{macrocode}
 \def\chronos@legacy@if@set#1#2{\cs:w #1#2\cs_end:}
 \def\chronos@datetojulian@extractyear #1-#2-#3 {#1}
@@ -1294,6 +1299,8 @@
 %^^A END macros y paced >>>
 %^^A BEGIN yn lle etoolbox <<<
 % \begin{macro}{\IfFreeTF,\IfFreeT,\IfFreeF}
+%   2e document-level wrappers for \lpack{expl3} alternatives to \lpack{etoolbox} macros.
+% 
 % yn lle \cs{ifundef} o etoolbox - instead of \cs{ifundef} from \lpack{etoolbox}
 %    \begin{macrocode}
 \cs_if_exist:NTF \IfFreeTF {\PackageWarning{chronos}{
@@ -1593,6 +1600,7 @@
 %    \end{macrocode}
 %^^A END rhifyddion 2e >>>
 %^^A BEGIN amodol <<<
+% Internal pre/2e booleans.
 %    \begin{macrocode}
 \newif\ifchronos@marks
 \chronos@markstrue
@@ -2208,12 +2216,6 @@
 %^^A BEGIN \tikzset helpers <<<
 % Context initialisation.
 %
-%^^A    \#1: peidiwch â gosod nodweddion o clists? \textbar{} don't install properties from clists?
-%^^A    \#2: setup dyddiadau? \textbar{} dates?
-%^^A    \#3: alt.\ path for filtering
-%^^A    \#4: path \& default path for filtering
-%^^A    \#5: keys to process
-%^^A \NewDocumentCommand \chronos@cyd@destun@init { s t {+} o m m } {% chronos context initialisation <<<
 %   \changes{v0.0}{2025-07-15}{Eliminate \lpack{xparse} macros for internal commands. (According to \TeX{} SE chat this is The Right Thing To Do).}
 %
 % Now have up to six stages of config, application and one auxiliary.
@@ -4690,16 +4692,6 @@
         \fi
       \fi % END \ifchronos@markeras
 %    \end{macrocode}
-%^^A       \ifchronos@yearsonline
-%^^A         {% rhag ofn rhywun wedi gosod line width gwahanol | in case somebody's set a different line width
-%^^A           % use a group to avoid setting timeline style globally
-%^^A           \pgfqkeys{/pgf}{key filters/defined/.install key filter}%
-%^^A           \pgfkeysfiltered{/chronos/llinell amser/timeline@line}%
-%^^A           % so we need to take the line width out in a global dimen
-%^^A           \global\chronos@tmpdimenb=\pgflinewidth
-%^^A         }% & adjust the timeline width accordingly
-%^^A         \advance \chronos@width by -\chronos@tmpdimenb
-%^^A       \fi
 % cofia!! \cs{chronos@set@date} a ffrindiau'n awto-cywiro am flwyddyn sero!!
 %
 % remember!! \cs{chronos@set@date} and friends auto-correct for year zero!!
@@ -6277,7 +6269,6 @@
 %   That is, anchors for \cs{chronostheory}.
 %    \begin{macrocode}
 \protected\def \chronos@angorau@theori#1#2#3#4{% 
-%^^A \NewDocumentCommand \chronos@angorau@theori{mmO{connector }m}{% 
   % #1 enw y prif node ; 
   % #2 enw yr angor cyntaf ; 
   % #3 connector ;
@@ -6848,7 +6839,6 @@
 %   Internal macro to create text tags. 
 %   \changes{v0.0.}{2025-07-18}{Use \cs{def} rather than \cs{NewDocumentCommand} to maybe  (or not) keep somebody or something happy in the unlikely event she, he, they or it should ever happen by.}
 %    \begin{macrocode}
-%^^A \NewDocumentCommand \chronos@creu@testun@tag{s O {} m +m}{%^^A <<< make text tag
 \protected\long\def \chronos@creu@testun@tag#1#2#3{%^^A <<< make text tag
   % #1 : allweddu ychwanegol | additional keys
   % #2 : tag e.g. byw
@@ -7051,7 +7041,7 @@
 % \changes{v0.9.2}{2025-03-15}{Fix info reported for \texttt{chronos-lib-styles.sty}.}
 %    \begin{macrocode}
 \RequirePackage{chronos}
-\ProvidesPackageSVN[chronos-lib-styles.sty]{$Id: chronos-code.dtx 11092 2025-07-19 01:42:24Z cfrees $}[v0.9.2 \revinfo]
+\ProvidesPackageSVN[chronos-lib-styles.sty]{$Id: chronos-code.dtx 11094 2025-07-19 12:03:49Z cfrees $}[v0.9.2 \revinfo]
 \pgfqkeys{/chronos}{%^^A BEGIN styles <<<
 %    \end{macrocode}
 % Styles come in three flavours: on-line, off-line and no-year.
@@ -7661,7 +7651,7 @@
 % \changes{v0.9.2}{2025-03-15}{Fix info reported for \texttt{chronos-lib-styles.sty}.}
 %    \begin{macrocode}
 \RequirePackage{chronos}
-\ProvidesPackageSVN[chronos-lib-colschemes.sty]{$Id: chronos-code.dtx 11092 2025-07-19 01:42:24Z cfrees $}[v0.9.2 \revinfo]
+\ProvidesPackageSVN[chronos-lib-colschemes.sty]{$Id: chronos-code.dtx 11094 2025-07-19 12:03:49Z cfrees $}[v0.9.2 \revinfo]
 %    \end{macrocode}
 % \begin{colscheme}{blues,contninety,offlinealt,xcolseries,lavender,modern,offlinebasic,sobriety}%^^A <<< BEGIN cylluniau lliwiau | colour schemes
 % cylluniau lliwiau \textbar{} colour schemes 
