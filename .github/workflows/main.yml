@@ -68,7 +68,8 @@ jobs:
           # https://github.com/josephwright/siunitx/blob/549cad913591b92a3a199b7477a325866303bf29/.github/workflows/main.yaml
           # We need Ghostscript for XeTeX tests.
           extra_packages: ghostscript python3-pdfrw
-          manifest: true
+          # cannot be built on github
+          manifest: false
           module: chronos
           # release: ${{ startsWith(github.ref, 'refs/tags/') }}
           release: ${{ contains(github.ref_name, 'chronos-') }}
