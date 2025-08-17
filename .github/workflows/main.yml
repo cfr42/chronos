@@ -62,7 +62,7 @@ jobs:
         # uses: cfr42/nfssext/.github/actions/nfssext-autocheck-action@ad1a3747e8b25fccf49732b66b7b13a55e784757
         # uses: cfr42/nfssext/.github/actions/nfssext-autocheck-action@8b330471077db75c98a6afe7709a0d65aafd3d88
         # uses: cfr42/nfssext/.github/actions/nfssext-autocheck-action@b7cb9d4e33730cb120008be9b3a905662ef78653
-        uses: cfr42/nfssext/.github/actions/nfssext-autocheck-action@81db5bdaf0d89014b332dd1be4f6f1ba75bc0143
+        uses: cfr42/nfssext/.github/actions/nfssext-autocheck-action@eeab7fc024553e35584805f40af881812b7e09a6
         with:
           ctan: true
           # https://github.com/josephwright/siunitx/blob/549cad913591b92a3a199b7477a325866303bf29/.github/workflows/main.yaml
