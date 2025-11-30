@@ -30,7 +30,7 @@
 %^^A ref. ateb Max Chernoff: https://tex.stackexchange.com/a/723294/
 \def\MyMakePrivateLetters{\makeatletter\ExplSyntaxOn\endlinechar13}
 \ExplSyntaxOff
-\ProvidesFileSVN{$Id: chronos.dtx 11114 2025-08-14 14:15:08Z cfrees $}[v0.9.3 \revinfo][\filebase\ DTX]
+\ProvidesFileSVN{$Id: chronos.dtx 11373 2025-11-30 06:28:44Z cfrees $}[v0.9.3 \revinfo][\filebase\ DTX]
 \DefineFileInfoSVN[chronosdoc]
 \GetFileInfoSVN*
 \let\chronosdocversion\fileversion
@@ -41,6 +41,8 @@
 \let\chronosdocfilename\filename
 %^^A BEGIN preamble <<<
 \documentclass[10pt,british,a4paper]{ltxdoc}
+% ltnews42 / ateb David Carlisle: https://tex.stackexchange.com/a/754799/ (sylwad Ulrike Fischer rhywle ond alla i ddim canfod o hyd iddo fe)
+\partokencontext=0
 \usepackage[extract=python]{memoize}
 \mmzset{%
   prefix=memos/,
@@ -7707,7 +7709,7 @@ mode=overlay}}.
 \RequirePackage{svn-prov}
 \def\GetFileBaseName#1-#2\nil{#1}
 \edef\MyFileBaseName{\expandafter\GetFileBaseName\jobname\nil}
-\ProvidesFileSVN[\MyFileBaseName-doc]{$Id: chronos.dtx 11114 2025-08-14 14:15:08Z cfrees $}[v0.9.1 \revinfo]
+\ProvidesFileSVN[\MyFileBaseName-doc]{$Id: chronos.dtx 11373 2025-11-30 06:28:44Z cfrees $}[v0.9.1 \revinfo]
 \DefineFileInfoSVN
 \AddToHook{begindocument}{\OnlyDescription}
 \expandafter\newif\csname ifchronoscodetoo\endcsname
@@ -7720,7 +7722,7 @@ mode=overlay}}.
 \RequirePackage{svn-prov}
 \def\GetFileBaseName#1-#2\nil{#1}
 \edef\MyFileBaseName{\expandafter\GetFileBaseName\jobname\nil}
-\ProvidesFileSVN[\MyFileBaseName-imp]{$Id: chronos.dtx 11114 2025-08-14 14:15:08Z cfrees $}[v0.9.1 \revinfo]
+\ProvidesFileSVN[\MyFileBaseName-imp]{$Id: chronos.dtx 11373 2025-11-30 06:28:44Z cfrees $}[v0.9.1 \revinfo]
 \DefineFileInfoSVN
 \AddToHook{begindocument}{\AlsoImplementation}
 \expandafter\newif\csname ifchronoscodetoo\endcsname
