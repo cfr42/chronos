@@ -69,7 +69,6 @@ Package chronos Info: Timeline border height unset. Guessing an appropriate valu
 ...........\glue 0.0
 ...........\glue 0.0
 ...........\glue 0.0
-...........\glue 0.0
 ...........\special{pdf:code q }
 ...........\special{pdf:code 0.5 0.5 0.5 RG }
 ...........\glue 0.0
@@ -143,7 +142,6 @@ Package chronos Info: Timeline border height unset. Guessing an appropriate valu
 .........\glue 0.0
 .........\glue 0.0
 .........\glue 0.0
-.........\glue 0.0
 .........\special{pdf:code q }
 .........\special{pdf:code 0.5 0.5 0.5 RG }
 .........\glue 0.0
@@ -202,7 +200,6 @@ Package chronos Info: Timeline border height unset. Guessing an appropriate valu
 .......\glue 0.0
 .......\glue 0.0
 .......\glue 0.0
-.......\glue 0.0
 .......\special{pdf:code q }
 .......\special{pdf:code 0.5 0.5 0.5 RG }
 .......\glue 0.0
@@ -256,7 +253,6 @@ Package chronos Info: Timeline border height unset. Guessing an appropriate valu
 ........\special{pdf:code Q }
 ......\glue 0.0
 ......\glue 0.0 plus 1.0fil minus 1.0fil
-.....\glue 0.0
 .....\glue 0.0
 .....\glue 0.0
 .....\glue 0.0
