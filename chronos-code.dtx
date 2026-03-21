@@ -1,7 +1,7 @@
 % \iffalse meta-comment
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % chronos.dtx
-% Additions and changes Copyright (C) 2024-2025 Clea F. Rees.
+% Additions and changes Copyright (C) 2024-2026 Clea F. Rees.
 % Code from skeleton.dtx Copyright (C) 2015-2024 Scott Pakin (see below).
 %
 % This work may be distributed and/or modified under the
@@ -33,7 +33,7 @@
 % ref. ateb Max Chernoff: https://tex.stackexchange.com/a/723294/
 \def\MakePrivateLetters{\makeatletter\ExplSyntaxOn\endlinechar13}
 \ExplSyntaxOff
-\ProvidesFileSVN{$Id: chronos-code.dtx 11795 2026-03-21 01:48:43Z cfrees $}[v0.9.3 \revinfo][\filebase DTX: Customisable TikZ-based timelines]
+\ProvidesFileSVN{$Id: chronos-code.dtx 11796 2026-03-21 15:58:01Z cfrees $}[v0.9.3 \revinfo][\filebase DTX: Customisable TikZ-based timelines]
 \DefineFileInfoSVN[chronoscode]
 \let\chronoscodeversion\fileversion
 \let\chronoscodebase\filebase
@@ -70,7 +70,7 @@
 % \changes{v0.9}{2025-02-27}{First \ctan{} release.}
 % ^^A lua will replace v0.0 and 0000/00/00 when tagging
 % \ifchronoscodetoo
-%   \ProvidesFileSVN{$Id: chronos-code.dtx 11795 2026-03-21 01:48:43Z cfrees $}[v0.9.3 \revinfo]
+%   \ProvidesFileSVN{$Id: chronos-code.dtx 11796 2026-03-21 15:58:01Z cfrees $}[v0.9.3 \revinfo]
 %   \DefineFileInfoSVN[chronoscode]
 %   \GetFileInfoSVN{chronoscode}
 %   \let\chronoscodeversion\fileversion
@@ -147,7 +147,7 @@
 % \LaTeXe{} package.
 %    \begin{macrocode}
 \RequirePackage{svn-prov}
-\ProvidesPackageSVN[chronos.sty]{$Id: chronos-code.dtx 11795 2026-03-21 01:48:43Z cfrees $}[v0.9.3 \revinfo]
+\ProvidesPackageSVN[chronos.sty]{$Id: chronos-code.dtx 11796 2026-03-21 15:58:01Z cfrees $}[v0.9.3 \revinfo]
 \DefineFileInfoSVN[chronos]
 %    \end{macrocode}
 % \iffalse
@@ -1081,7 +1081,7 @@
   \group_end:
 }
 %    \end{macrocode}
-% \changes{v0.9.3}{2025-07-18}{Use \cs{def} internal macros \cs{chronos@troilliwiau@isod}, \cs{chronos@troilliwiau@uchod}, \cs{chronos@lliwiau@isod}, \cs{chronos@lliwiau@uchod} and change usage in code accordingly.}
+% \changes{v0.9.3}{2025-07-18}{Use \cs{def}\ internal macros \cs{chronos@troilliwiau@isod}, \cs{chronos@troilliwiau@uchod}, \cs{chronos@lliwiau@isod}, \cs{chronos@lliwiau@uchod}\ and change usage in code accordingly.}
 %^^A ateb: https://tex.stackexchange.com/a/748026/
 %    \begin{macrocode}
 \def\chronos@minoryearformat{\l__chronos_minoryearformat_tl}
@@ -1167,7 +1167,7 @@
 % \end{macro}
 % \begin{macro}{\chronosdangoslliwiau}
 %   Becomes \cs{chronosshowcolours}.
-% \changes{v0.9.3}{2025-07-15}{Eliminate unused internal macros \cs{chronos@dangos@lliwiau} and \cs{chronos@dangos@lliwiau@rhag}.}
+% \changes{v0.9.3}{2025-07-15}{Eliminate unused internal macros \cs{chronos@dangos@lliwiau}\ and \cs{chronos@dangos@lliwiau@rhag}.}
 %    \begin{macrocode}
 \NewDocumentCommand \chronosdangoslliwiau { 
   s O { byw, digwyddiad, parhad, theori } D () { isod, uchod }  
@@ -1711,7 +1711,7 @@
 \newif\ifchronostimelinearrow
 \chronostimelinearrowfalse
 %    \end{macrocode}
-% \changes{v0.9.3}{2025-07-18}{Add \cs{ifchronos@hollti@testun@tag} in lieu of starred form of text tag creator (so I can replace \cs{NewDocumentCommand} by more proper \cs{def}s.}
+% \changes{v0.9.3}{2025-07-18}{Add \cs{ifchronos@hollti@testun@tag}\ in lieu of starred form of text tag creator (so I can replace \cs{NewDocumentCommand}\ by more proper \cs{def}s.}
 % Whether text tag is to be split (and this is the first bit).
 % We can't use \cs{ifchronos@eventdatessplit} when splitting the tag as that is true during the entire element creation.
 %    \begin{macrocode}
@@ -5907,7 +5907,7 @@
 %
 % \changes{v0.9.3}{2025-07-10}{Adjust reference coordinate placement for additional line shift.}
 % Subtract additional line shift so reference coordinate is offset by standard distance from timeline (0pt or \texttt{yshift}).
-% For most styles, \cs{chronos@llinell@add@yshift} is \texttt{0pt}.
+% For most styles, \cs{chronos@llinell@add@yshift}\ is \texttt{0pt}.
 %    \begin{macrocode}
     \coordinate [yshift=-\chronos@llinell@add@yshift] (\chronos@byw@tikzname) at 
       ($(\chronos@byw@tikzname{} geni)!1/2!(\chronos@byw@tikzname{} marw)$);
@@ -6181,7 +6181,7 @@
 %
 % \changes{v0.9.3}{2025-07-10}{Adjust reference coordinate placement for additional line shift.}
 % Subtract additional line shift so reference coordinate is offset by standard distance from timeline (0pt or \texttt{yshift}).
-% For most styles, \cs{chronos@llinell@add@yshift} is \texttt{0pt}.
+% For most styles, \cs{chronos@llinell@add@yshift}\ is \texttt{0pt}.
 %    \begin{macrocode}
     \coordinate [yshift=-\chronos@llinell@add@yshift] (\chronos@parhad@tikzname) at 
       ($(\chronos@parhad@tikzname{} dechrau)!1/2!(\chronos@parhad@tikzname{} diwedd)$);
@@ -6266,7 +6266,7 @@
 %    \end{macrocode}
 % \end{macro}%^^A >>>
 % \begin{macro}{\chronos@angorau@theori}%^^A <<<
-%   \changes{v0.9.3}{2025-07-18}{Remove unused variant of and use \cs{def} for internal macro \cs{chronos@angorau@theori}.}
+%   \changes{v0.9.3}{2025-07-18}{Remove unused variant of and use \cs{def}\ for internal macro \cs{chronos@angorau@theori}.}
 %   That is, anchors for \cs{chronostheory}.
 %    \begin{macrocode}
 \protected\def \chronos@angorau@theori#1#2#3#4{% 
@@ -6838,7 +6838,7 @@
 % \end{macro}%^^A >>> \chronos@creu@llinell (parhad, byw)
 % \begin{macro}{\chronos@creu@testun@tag}%^^A <<< 
 %   Internal macro to create text tags. 
-%   \changes{v0.9.3}{2025-07-18}{Use \cs{def} rather than \cs{NewDocumentCommand} to maybe  (or not) keep somebody or something happy in the unlikely event she, he, they or it should ever happen by.}
+%   \changes{v0.9.3}{2025-07-18}{Use \cs{def}\ rather than \cs{NewDocumentCommand}\ to maybe  (or not) keep somebody or something happy in the unlikely event she, he, they or it should ever happen by.}
 %    \begin{macrocode}
 \protected\long\def \chronos@creu@testun@tag#1#2#3{%^^A <<< make text tag
   % #1 : allweddu ychwanegol | additional keys
@@ -7042,7 +7042,7 @@
 % \changes{v0.9.2}{2025-03-15}{Fix info reported for \texttt{chronos-lib-styles.sty}.}
 %    \begin{macrocode}
 \RequirePackage{chronos}
-\ProvidesPackageSVN[chronos-lib-styles.sty]{$Id: chronos-code.dtx 11795 2026-03-21 01:48:43Z cfrees $}[v0.9.3 \revinfo]
+\ProvidesPackageSVN[chronos-lib-styles.sty]{$Id: chronos-code.dtx 11796 2026-03-21 15:58:01Z cfrees $}[v0.9.3 \revinfo]
 \pgfqkeys{/chronos}{%^^A BEGIN styles <<<
 %    \end{macrocode}
 % Styles come in three flavours: on-line, off-line and no-year.
@@ -7652,7 +7652,7 @@
 % \changes{v0.9.2}{2025-03-15}{Fix info reported for \texttt{chronos-lib-styles.sty}.}
 %    \begin{macrocode}
 \RequirePackage{chronos}
-\ProvidesPackageSVN[chronos-lib-colschemes.sty]{$Id: chronos-code.dtx 11795 2026-03-21 01:48:43Z cfrees $}[v0.9.3 \revinfo]
+\ProvidesPackageSVN[chronos-lib-colschemes.sty]{$Id: chronos-code.dtx 11796 2026-03-21 15:58:01Z cfrees $}[v0.9.3 \revinfo]
 %    \end{macrocode}
 % \begin{colscheme}{blues,contninety,offlinealt,xcolseries,lavender,modern,offlinebasic,sobriety}%^^A <<< BEGIN cylluniau lliwiau | colour schemes
 % cylluniau lliwiau \textbar{} colour schemes 
