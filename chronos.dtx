@@ -1,6 +1,6 @@
 % \iffalse meta-comment
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Copyright 2023-2025 Clea F. Rees
+% Copyright 2023-2026 Clea F. Rees
 %
 % This work may be distributed and/or modified under the
 % conditions of the LaTeX Project Public License, either version 1.3c
@@ -30,7 +30,7 @@
 %^^A ref. ateb Max Chernoff: https://tex.stackexchange.com/a/723294/
 \def\MyMakePrivateLetters{\makeatletter\ExplSyntaxOn\endlinechar13}
 \ExplSyntaxOff
-\ProvidesFileSVN{$Id: chronos.dtx 11373 2025-11-30 06:28:44Z cfrees $}[v0.9.3 \revinfo][\filebase\ DTX]
+\ProvidesFileSVN{$Id: chronos.dtx 11797 2026-03-21 16:01:38Z cfrees $}[v0.9.4 \revinfo][\filebase\ DTX]
 \DefineFileInfoSVN[chronosdoc]
 \GetFileInfoSVN*
 \let\chronosdocversion\fileversion
@@ -1756,7 +1756,7 @@
 % We're going to use the \chronosstylelabelname{} \keyname[type=chronosstyle,idx post=in example \string\textconcept{timeline}\string\idxeg]{cronoleg}, which puts year markers on the \conceptname[link,no idx]{timeline} itself.
 % We decide we'd like large markers every 500 years and a smaller marker halfway between each pair of larger ones.
 % We might, therefore, try
-% \changes{v0.0}{2025-08-14}{Update key names in example.}
+% \changes{v0.9.4}{2025-08-14}{Update key names in example.}
 % \begin{chronoscode}
 % \begin{chronos}
 %   [
@@ -7709,7 +7709,7 @@ mode=overlay}}.
 \RequirePackage{svn-prov}
 \def\GetFileBaseName#1-#2\nil{#1}
 \edef\MyFileBaseName{\expandafter\GetFileBaseName\jobname\nil}
-\ProvidesFileSVN[\MyFileBaseName-doc]{$Id: chronos.dtx 11373 2025-11-30 06:28:44Z cfrees $}[v0.9.1 \revinfo]
+\ProvidesFileSVN[\MyFileBaseName-doc]{$Id: chronos.dtx 11797 2026-03-21 16:01:38Z cfrees $}[v0.9.4 \revinfo]
 \DefineFileInfoSVN
 \AddToHook{begindocument}{\OnlyDescription}
 \expandafter\newif\csname ifchronoscodetoo\endcsname
@@ -7722,7 +7722,7 @@ mode=overlay}}.
 \RequirePackage{svn-prov}
 \def\GetFileBaseName#1-#2\nil{#1}
 \edef\MyFileBaseName{\expandafter\GetFileBaseName\jobname\nil}
-\ProvidesFileSVN[\MyFileBaseName-imp]{$Id: chronos.dtx 11373 2025-11-30 06:28:44Z cfrees $}[v0.9.1 \revinfo]
+\ProvidesFileSVN[\MyFileBaseName-imp]{$Id: chronos.dtx 11797 2026-03-21 16:01:38Z cfrees $}[v0.9.4 \revinfo]
 \DefineFileInfoSVN
 \AddToHook{begindocument}{\AlsoImplementation}
 \expandafter\newif\csname ifchronoscodetoo\endcsname

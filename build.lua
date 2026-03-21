@@ -1,4 +1,4 @@
--- $Id: build.lua 11098 2025-07-20 12:06:29Z cfrees $
+-- $Id: build.lua 11797 2026-03-21 16:01:38Z cfrees $
 -- Build configuration for chronos
 --------------------------------------------------------------------------------
 maindir = maindir or "."
@@ -23,7 +23,7 @@ typesetruns = 5 -- 4
 uploadconfig = {
   ctanPath = "/macros/latex/contrib/chronos",
   pkg = "chronos",
-  version = "v0.9.3",
+  version = "v0.9.4",
   author = "Clea F. Rees",
   uploader = "Clea F. Rees",
   license = "lppl1.3c",
@@ -36,7 +36,7 @@ uploadconfig = {
   -- note = "",
 }
 --------------------------------------------------------------------------------
-date = "2023-2025"
+date = "2023-2026"
 if direxists(sourcedir .. "/../adnoddau/l3build") then
   dofile(sourcedir .. "/../adnoddau/l3build/tag.lua")
 end
