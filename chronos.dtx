@@ -30,7 +30,7 @@
 %^^A ref. ateb Max Chernoff: https://tex.stackexchange.com/a/723294/
 \def\MyMakePrivateLetters{\makeatletter\ExplSyntaxOn\endlinechar13}
 \ExplSyntaxOff
-\ProvidesFileSVN{$Id: chronos.dtx 11797 2026-03-21 16:01:38Z cfrees $}[v0.9.4 \revinfo][\filebase\ DTX]
+\ProvidesFileSVN{$Id: chronos.dtx 11818 2026-03-26 00:40:37Z cfrees $}[v0.9.4 \revinfo][\filebase\ DTX]
 \DefineFileInfoSVN[chronosdoc]
 \GetFileInfoSVN*
 \let\chronosdocversion\fileversion
@@ -1136,8 +1136,8 @@
 \chronosdoccreulabel[bool]{boolean}
 \chronosdoccreulabel{label}
 \newcommand*\PrintLabelName[2][\normalfont\normalsize\normalcolor]{#1#2}
-\newcommand*\liblabelname{pgf/ti\string\emph{k}z library}
-\newcommand*\libslabelname{pgf/ti\string\emph{k}z libraries}
+\newcommand*\liblabelname{library}
+\newcommand*\libslabelname{libraries}
 \newcommand*\pgfkeylabelname{pgf/ti\string\emph{k}z key}
 \newcommand*\keyval[1]{\texttt{#1}}
 \NewDocElements{%
@@ -7709,7 +7709,7 @@ mode=overlay}}.
 \RequirePackage{svn-prov}
 \def\GetFileBaseName#1-#2\nil{#1}
 \edef\MyFileBaseName{\expandafter\GetFileBaseName\jobname\nil}
-\ProvidesFileSVN[\MyFileBaseName-doc]{$Id: chronos.dtx 11797 2026-03-21 16:01:38Z cfrees $}[v0.9.4 \revinfo]
+\ProvidesFileSVN[\MyFileBaseName-doc]{$Id: chronos.dtx 11818 2026-03-26 00:40:37Z cfrees $}[v0.9.4 \revinfo]
 \DefineFileInfoSVN
 \AddToHook{begindocument}{\OnlyDescription}
 \expandafter\newif\csname ifchronoscodetoo\endcsname
@@ -7722,7 +7722,7 @@ mode=overlay}}.
 \RequirePackage{svn-prov}
 \def\GetFileBaseName#1-#2\nil{#1}
 \edef\MyFileBaseName{\expandafter\GetFileBaseName\jobname\nil}
-\ProvidesFileSVN[\MyFileBaseName-imp]{$Id: chronos.dtx 11797 2026-03-21 16:01:38Z cfrees $}[v0.9.4 \revinfo]
+\ProvidesFileSVN[\MyFileBaseName-imp]{$Id: chronos.dtx 11818 2026-03-26 00:40:37Z cfrees $}[v0.9.4 \revinfo]
 \DefineFileInfoSVN
 \AddToHook{begindocument}{\AlsoImplementation}
 \expandafter\newif\csname ifchronoscodetoo\endcsname
