@@ -33,7 +33,7 @@
 % ref. ateb Max Chernoff: https://tex.stackexchange.com/a/723294/
 \def\MakePrivateLetters{\makeatletter\ExplSyntaxOn\endlinechar13}
 \ExplSyntaxOff
-\ProvidesFileSVN{$Id: chronos-code.dtx 11837 2026-04-01 04:40:07Z cfrees $}[v0.9.4 \revinfo][\filebase DTX: Customisable TikZ-based timelines]
+\ProvidesFileSVN{$Id: chronos-code.dtx 11839 2026-04-01 18:53:01Z cfrees $}[v0.9.4 \revinfo][\filebase DTX: Customisable TikZ-based timelines]
 \DefineFileInfoSVN[chronoscode]
 \let\chronoscodeversion\fileversion
 \let\chronoscodebase\filebase
@@ -70,7 +70,7 @@
 % \changes{v0.9}{2025-02-27}{First \ctan{} release.}
 % ^^A lua will replace v0.0 and 0000/00/00 when tagging
 % \ifchronoscodetoo
-%   \ProvidesFileSVN{$Id: chronos-code.dtx 11837 2026-04-01 04:40:07Z cfrees $}[v0.9.4 \revinfo]
+%   \ProvidesFileSVN{$Id: chronos-code.dtx 11839 2026-04-01 18:53:01Z cfrees $}[v0.9.4 \revinfo]
 %   \DefineFileInfoSVN[chronoscode]
 %   \GetFileInfoSVN{chronoscode}
 %   \let\chronoscodeversion\fileversion
@@ -147,7 +147,7 @@
 % \LaTeXe{} package.
 %    \begin{macrocode}
 \RequirePackage{svn-prov}
-\ProvidesPackageSVN[chronos.sty]{$Id: chronos-code.dtx 11837 2026-04-01 04:40:07Z cfrees $}[v0.9.4 \revinfo]
+\ProvidesPackageSVN[chronos.sty]{$Id: chronos-code.dtx 11839 2026-04-01 18:53:01Z cfrees $}[v0.9.4 \revinfo]
 \DefineFileInfoSVN[chronos]
 %    \end{macrocode}
 % \iffalse
@@ -6953,7 +6953,7 @@
 %   Aliases and globalised defaults.
 %   Note these are the documented forms.
 %    \begin{macrocode}
-\AtEndPreamble{%
+\AddToHook{begindocument}{%
   \@ifpackageloaded{memoize}{%
     \mmzset{%
       auto={chronos}{memoize},
@@ -7042,7 +7042,7 @@
 % \changes{v0.9.2}{2025-03-15}{Fix info reported for \texttt{chronos-lib-styles.sty}.}
 %    \begin{macrocode}
 \RequirePackage{chronos}
-\ProvidesPackageSVN[chronos-lib-styles.sty]{$Id: chronos-code.dtx 11837 2026-04-01 04:40:07Z cfrees $}[v0.9.4 \revinfo]
+\ProvidesPackageSVN[chronos-lib-styles.sty]{$Id: chronos-code.dtx 11839 2026-04-01 18:53:01Z cfrees $}[v0.9.4 \revinfo]
 \pgfqkeys{/chronos}{%^^A BEGIN styles <<<
 %    \end{macrocode}
 % Styles come in three flavours: on-line, off-line and no-year.
@@ -7652,7 +7652,7 @@
 % \changes{v0.9.2}{2025-03-15}{Fix info reported for \texttt{chronos-lib-styles.sty}.}
 %    \begin{macrocode}
 \RequirePackage{chronos}
-\ProvidesPackageSVN[chronos-lib-colschemes.sty]{$Id: chronos-code.dtx 11837 2026-04-01 04:40:07Z cfrees $}[v0.9.4 \revinfo]
+\ProvidesPackageSVN[chronos-lib-colschemes.sty]{$Id: chronos-code.dtx 11839 2026-04-01 18:53:01Z cfrees $}[v0.9.4 \revinfo]
 %    \end{macrocode}
 % \begin{colscheme}{blues,contninety,offlinealt,xcolseries,lavender,modern,offlinebasic,sobriety}%^^A <<< BEGIN cylluniau lliwiau | colour schemes
 % cylluniau lliwiau \textbar{} colour schemes 
