@@ -30,7 +30,7 @@
 %^^A ref. ateb Max Chernoff: https://tex.stackexchange.com/a/723294/
 \def\MyMakePrivateLetters{\makeatletter\ExplSyntaxOn\endlinechar13}
 \ExplSyntaxOff
-\ProvidesFileSVN{$Id: chronos.dtx 11818 2026-03-26 00:40:37Z cfrees $}[v0.9.4 \revinfo][\filebase\ DTX]
+\ProvidesFileSVN{$Id: chronos.dtx 11837 2026-04-01 04:40:07Z cfrees $}[v0.9.4 \revinfo][\filebase\ DTX]
 \DefineFileInfoSVN[chronosdoc]
 \GetFileInfoSVN*
 \let\chronosdocversion\fileversion
@@ -1400,11 +1400,11 @@
 % \title{\lpack{\chronosfilebase}}
 % \author{Clea F. Rees\thanks{%
 %     Bug tracker:
-%     \href{https://codeberg.org/cfr/chronos/issues}{\url{codeberg.org/cfr/chronos/issues}}
+%     \href{https://codeberg.org/cfr/chronos/issues}{codeberg.org/cfr/chronos/issues}
 %     \textbar{} Code:
-%     \href{https://codeberg.org/cfr/chronos}{\url{codeberg.org/cfr/chronos}}
+%     \href{https://codeberg.org/cfr/chronos}{codeberg.org/cfr/chronos}
 %     \textbar{} Mirror:
-%     \href{https://github.com/cfr42/chronos}{\url{github.com/cfr42/chronos}}%
+%     \href{https://github.com/cfr42/chronos}{github.com/cfr42/chronos}%
 % }}
 % \date{\chronosfileversion\ (\textsc{svn} \chronosfilerev)}%
 %^^A \title{\chronosdocbase}%
@@ -7709,7 +7709,7 @@ mode=overlay}}.
 \RequirePackage{svn-prov}
 \def\GetFileBaseName#1-#2\nil{#1}
 \edef\MyFileBaseName{\expandafter\GetFileBaseName\jobname\nil}
-\ProvidesFileSVN[\MyFileBaseName-doc]{$Id: chronos.dtx 11818 2026-03-26 00:40:37Z cfrees $}[v0.9.4 \revinfo]
+\ProvidesFileSVN[\MyFileBaseName-doc]{$Id: chronos.dtx 11837 2026-04-01 04:40:07Z cfrees $}[v0.9.4 \revinfo]
 \DefineFileInfoSVN
 \AddToHook{begindocument}{\OnlyDescription}
 \expandafter\newif\csname ifchronoscodetoo\endcsname
@@ -7722,7 +7722,7 @@ mode=overlay}}.
 \RequirePackage{svn-prov}
 \def\GetFileBaseName#1-#2\nil{#1}
 \edef\MyFileBaseName{\expandafter\GetFileBaseName\jobname\nil}
-\ProvidesFileSVN[\MyFileBaseName-imp]{$Id: chronos.dtx 11818 2026-03-26 00:40:37Z cfrees $}[v0.9.4 \revinfo]
+\ProvidesFileSVN[\MyFileBaseName-imp]{$Id: chronos.dtx 11837 2026-04-01 04:40:07Z cfrees $}[v0.9.4 \revinfo]
 \DefineFileInfoSVN
 \AddToHook{begindocument}{\AlsoImplementation}
 \expandafter\newif\csname ifchronoscodetoo\endcsname
