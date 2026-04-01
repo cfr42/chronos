@@ -30,7 +30,7 @@
 %^^A ref. ateb Max Chernoff: https://tex.stackexchange.com/a/723294/
 \def\MyMakePrivateLetters{\makeatletter\ExplSyntaxOn\endlinechar13}
 \ExplSyntaxOff
-\ProvidesFileSVN{$Id: chronos.dtx 11837 2026-04-01 04:40:07Z cfrees $}[v0.9.4 \revinfo][\filebase\ DTX]
+\ProvidesFileSVN{$Id: chronos.dtx 11838 2026-04-01 07:39:03Z cfrees $}[v0.9.4 \revinfo][\filebase\ DTX]
 \DefineFileInfoSVN[chronosdoc]
 \GetFileInfoSVN*
 \let\chronosdocversion\fileversion
@@ -1438,7 +1438,10 @@
 %       \centering
 %       \hypersetup{urlcolor=chronos current tag colour!75!black}%^^A
 %       \mmzset{disable}%^^A galluogi hyperlinks
-%         \begin{chronos}
+%       \protected\def\texseans#1{%
+%         \textsuperscript{[\href{https://tex.stackexchange.com/a/#1/}{#1}]}%
+%       }%
+%       \begin{chronos}
 %         [
 %           blues below,
 %           timeline={%^^A
@@ -1492,34 +1495,34 @@
 %           tag right={9}{wphil},
 %           date={2014-11-16},
 %           name=wphil,
-%           name content={\href{https://cfrees.files.wordpress.com/2014/10/timeline-orig.pdf}{Western Philosophy} \href{https://cfrees.files.wordpress.com/2014/10/timeline-orig.pdf}{Timeline} Finalised: \texseans*{215082}},
+%           name content={\href{https://cfrees.files.wordpress.com/2014/10/timeline-orig.pdf}{Western Philosophy} \href{https://cfrees.files.wordpress.com/2014/10/timeline-orig.pdf}{Timeline} Finalised\texseans{215082}},
 %         }
 %         \chronosevent{
 %           date={2016-03-26},
 %           name=first,
-%           name content={Not-\pkgname[no link]{chronosys}: \texseans*{300910}},
+%           name content={Not-\pkgname[no link]{chronosys}\texseans{300910}},
 %           tag right={8}{first}
 %         }
 %         \chronosevent{
 %           date={2016-06-02},
 %           name=second,
-%           name content={Second not-\pkgname[no link,no idx]{chronosys}: \texseans*{312735}},
+%           name content={Second not-\pkgname[no link,no idx]{chronosys}\texseans{312735}},
 %           tag right={7}{second},
 %         }
 %         \chronosevent{
 %           date={2016-08-10},
 %           name=siml,
-%           name content={\keyname[type=chronosstyle,idx post=development]{off line simple}: \texseans*{324106}},
+%           name content={\keyname[type=chronosstyle,idx post=development]{off line simple}\texseans{324106}},
 %           tag right={6}{siml},
 %         }
 %         \chronosevent{
-%           name content={\keyname[type=chronosstyle,idx post=development]{date centric}: \texseans*{324448}},
+%           name content={\keyname[type=chronosstyle,idx post=development]{date centric}\texseans{324448}},
 %           date={2016-08-12},
 %           name=dcentric,
 %           tag right={5}{dcentric},
 %         }
 %         \chronosevent{
-%           name content={\keyname[type=chronosstyle,idx post=development]{lines on line}: \texseans*{324453}},
+%           name content={\keyname[type=chronosstyle,idx post=development]{lines on line}\texseans{324453}},
 %           name=lol,
 %           date={2016-08-12},
 %           tag right={4}{lol},
@@ -1527,32 +1530,32 @@
 %         \chronosevent{
 %           date={2016-08-12},
 %           name=dformats,
-%           name content={Date Formats: \texseans*{324454}},
+%           name content={Date Formats\texseans{324454}},
 %           tag right={3}{dformats},
 %         }
 %         \chronosevent{
 %           date={2016-08-15},
 %           name=zero,
-%           name content={No Year Zero: \texseans*{324857}},
+%           name content={No Year Zero\texseans{324857}},
 %           tag right={2}{zero},
 %         }
 %         \chronosevent{
 %           date={2016-08-21},
 %           name=split,
-%           name content={\keyname[type=chronosstyle,idx post=development]{event splitter}: \texseans*{325890}},
+%           name content={\keyname[type=chronosstyle,idx post=development]{event splitter}\texseans{325890}},
 %           tag post=10,
 %         }
 %         \chronosevent{
 %           date={2016-12-06},
 %           name=dformats2,
-%           name content={Date Formats: \texseans*{342699}},
+%           name content={Date Formats\texseans{342699}},
 %           tag post=9,
 %           xshift=-5pt,
 %         }
 %         \chronosevent{
 %           date={2016-12-16},
 %           name=noeth,
-%           name content={Bare Marks: \texseans*{349236}},
+%           name content={Bare Marks\texseans{349236}},
 %           tag anchor=north west,
 %           at=text tag dformats2.west |- i8.south,
 %           anchor=south west,
@@ -1563,7 +1566,7 @@
 %         \chronosevent{
 %           date={2016-12-26},
 %           name=hol,
-%           name content={\keyname[type=cls,no link]{\cls{happyholidays.cls}}:\\\texseans*{345673}\\\texseans*{345674}},
+%           name content={\keyname[type=cls,no link]{\cls{happyholidays.cls}}\\\texseans{345673}\texseans{345674}},
 %           tag anchor=north west,
 %           at=text tag dformats2.west |- i7.south,
 %           anchor=south west,
@@ -1578,20 +1581,31 @@
 %           \draw [chronos connect=event:\i] (chronos connector \i) |- (b -| a) |- (text tag connector \i);
 %         }
 %         \chronosevent{
-%           date={{\chronosdocyear}-{\chronosdocmonth}-{\chronosdocday}},
+%           date={2025-03-01},
 %           name content={First CTAN Release},
 %           name=ctan,
 %           tag left={1}{ctan},
+%           font=\sffamily,
+%           connectors={south},
+%         }
+%         \chronosevent{
+%           date={{\chronosdocyear}-{\chronosdocmonth}-{\chronosdocday}},
+%           name content={Current Release},
+%           name=curr,
+%           tag left={1}{curr},
 %           font=\sffamily\bfseries,
 %           connectors={west,south},
+%           at=curr |- i2.south,
+%           anchor=south east,
 %         }
-%         \draw [chronos connect=event:hol] (connector hol1) -| ([xshift=5pt,yshift=5pt]tag hol.north east) coordinate (g) -| ([xshift=-5pt]tag hol.west |- connector ctan1.90) coordinate [midway] (h) -- (connector ctan1);
+%         \draw [chronos connect=event:ctan] (connector ctan1) -- ++(0pt,-5pt) -| (connector curr1);
+%         \draw [chronos connect=event:hol] (connector hol1) -| ([xshift=5pt,yshift=5pt]tag hol.north east) coordinate (g) -| ([xshift=-25pt]connector curr1.90) coordinate [midway] (h) -- (connector curr1);
 %         \foreach \i/\j/\n in {%^^A
 %           noeth/5pt/112,%^^A
 %           dformats2/5pt/135,
 %           split/2.5pt/157%^^A
 %         } {%^^A
-%           \draw [chronos connect=event:\i] (connector \i1) -- ++(\j,0pt) |- ([xshift=2.5pt,yshift=2.5pt]h) coordinate [midway] (g) coordinate (h) -- (h |- connector ctan1.\n) -- (connector ctan1);
+%           \draw [chronos connect=event:\i] (connector \i1) -- ++(\j,0pt) |- ([xshift=2.5pt,yshift=2.5pt]h) coordinate [midway] (g) coordinate (h) -- (h |- connector curr1.\n) -- (connector curr1);
 %         }
 %         \foreach \i/\j/\k/\l/\m in {%^^A
 %           zero/20pt/5pt/5pt/180,%^^A
@@ -1604,7 +1618,7 @@
 %           \coordinate (a) at ([xshift=\j]chronos year 2020);
 %           \coordinate (b) at ([yshift=-\k]level -11.north);
 %           \coordinate (c) at ([xshift=\l]chronos end);
-%           \draw [chronos connect=event:\i] (connector \i1) -| (a |- b) -| ([yshift=2.5pt]h -| c) -- ([xshift=2.5pt,yshift=2.5pt]h) coordinate (h) -- (h |- connector ctan1.\m) -- (connector ctan1);
+%           \draw [chronos connect=event:\i] (connector \i1) -| (a |- b) -| ([yshift=2.5pt]h -| c) -- ([xshift=2.5pt,yshift=2.5pt]h) coordinate (h) -- (h |- connector curr1.\m) -- (connector curr1);
 %         }
 %         \foreach \i/\j/\k/\l in {%^^A
 %           second/10pt/17.5pt/west,
@@ -1616,7 +1630,7 @@
 %         {
 %           \coordinate (a) at ([xshift=\j]chronos year 2020);
 %           \coordinate (b) at ([yshift=-\k]level -11.north);
-%           \draw [chronos connect=event:\i] (connector \i1) -| (a |- b) -| ([yshift=2.5pt,xshift=2pt]c |- h) coordinate (c) coordinate (h) -- (h -| connector ctan2.\l) -- (connector ctan2);
+%           \draw [chronos connect=event:\i] (connector \i1) -| (a |- b) -| ([yshift=2.5pt,xshift=2pt]c |- h) coordinate (c) coordinate (h) -- (h -| connector curr2.\l) -- (connector curr2);
 %         }
 %         \coordinate (a) at ($(first)!.5!(wphil)$);
 %         \chronosmaintitle{%^^A
@@ -7709,7 +7723,7 @@ mode=overlay}}.
 \RequirePackage{svn-prov}
 \def\GetFileBaseName#1-#2\nil{#1}
 \edef\MyFileBaseName{\expandafter\GetFileBaseName\jobname\nil}
-\ProvidesFileSVN[\MyFileBaseName-doc]{$Id: chronos.dtx 11837 2026-04-01 04:40:07Z cfrees $}[v0.9.4 \revinfo]
+\ProvidesFileSVN[\MyFileBaseName-doc]{$Id: chronos.dtx 11838 2026-04-01 07:39:03Z cfrees $}[v0.9.4 \revinfo]
 \DefineFileInfoSVN
 \AddToHook{begindocument}{\OnlyDescription}
 \expandafter\newif\csname ifchronoscodetoo\endcsname
@@ -7722,7 +7736,7 @@ mode=overlay}}.
 \RequirePackage{svn-prov}
 \def\GetFileBaseName#1-#2\nil{#1}
 \edef\MyFileBaseName{\expandafter\GetFileBaseName\jobname\nil}
-\ProvidesFileSVN[\MyFileBaseName-imp]{$Id: chronos.dtx 11837 2026-04-01 04:40:07Z cfrees $}[v0.9.4 \revinfo]
+\ProvidesFileSVN[\MyFileBaseName-imp]{$Id: chronos.dtx 11838 2026-04-01 07:39:03Z cfrees $}[v0.9.4 \revinfo]
 \DefineFileInfoSVN
 \AddToHook{begindocument}{\AlsoImplementation}
 \expandafter\newif\csname ifchronoscodetoo\endcsname
