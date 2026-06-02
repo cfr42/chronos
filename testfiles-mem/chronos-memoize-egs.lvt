@@ -28,7 +28,7 @@
   \pdfminorversion=7
 \fi
 \RequirePackage{svn-prov}
-\ProvidesFileSVN{$Id: chronos-memoize-egs.lvt 10894 2025-03-02 19:51:48Z cfrees $}[v0.0 \revinfo][\filebase: memoization test]
+\ProvidesFileSVN{$Id: chronos-memoize-egs.lvt 11933 2026-06-02 20:52:14Z cfrees $}[v0.0 \revinfo][\filebase: memoization test]
 \input regression-test.tex\relax
 \documentclass[a4paper]{article}
 \START
@@ -43,6 +43,25 @@
   }%
 }
 \OMIT
+\ExplSyntaxOn
+% Joseph Wright: \url{https://chat.stackexchange.com/transcript/message/69011532#69011532}.
+% fixes latex2e gh issue #2110
+\IfFormatAtLeastTF { 2026-06-01 }{
+  \IfFormatAtLeastF { 2026-11-01 }{
+    \DeclareDocumentCommand \DeclareUnknownKeyHandler { O { \@currname } +m }
+    {
+      \cs_set_protected:cpn { __keys_unknown_handler_ #1 :nn } ##1##2 {#2}
+      \__keys_options_expand_module:Nn \keys_define:ne {#1}
+      {
+        unknown .code:n =
+        \exp_not:N \exp_args:NV
+        \exp_not:c { __keys_unknown_handler_ #1 :nn }
+        \exp_not:N \l_keys_key_str {##1}
+      }
+    }
+  }
+}{}
+\ExplSyntaxOff
 \usepackage[extract=python]{memoize}
 \usepackage{chronos}
 \usepackage[landscape,scale=1]{geometry}

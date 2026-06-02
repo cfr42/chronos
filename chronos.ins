@@ -1,7 +1,7 @@
-%% $Id: chronos.ins 10891 2025-03-02 07:31:39Z cfrees $
+%% $Id: chronos.ins 11933 2026-06-02 20:52:14Z cfrees $
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% chronos.ins
-%% Additions and changes Copyright (C) 2024-2025 Clea F. Rees.
+%% Additions and changes Copyright (C) 2024-2026 Clea F. Rees.
 %% Code from skeleton.ins Copyright (C) 2015-2024 Scott Pakin (see below).
 %%
 %% This work may be distributed and/or modified under the
@@ -33,7 +33,7 @@
 
 \declarepreamble\safonol
 -------------------------------------------------
-Copyright (C) 2023-2025 Clea F. Rees.
+Copyright (C) 2023-2026 Clea F. Rees.
 
 This work may be distributed and/or modified under the
 conditions of the LaTeX Project Public License, either version 1.3c
@@ -62,6 +62,7 @@ This work consists of all files listed in manifest.txt.
 \generate{\file{chronos.sty}{\from{chronos-code.dtx}{sty}}
   \file{chronos-lib-colschemes.sty}{\from{chronos-code.dtx}{sty-colschemes}}
   \file{chronos-lib-styles.sty}{\from{chronos-code.dtx}{sty-styles}}
+  \file{tikzlibraryscriptfix.code.tex}{\from{chronos-code.dtx}{lib-scriptfix}}
   \file{chronos-doc.tex}{\from{chronos.dtx}{doc}}
   \file{chronos-imp.tex}{\from{chronos.dtx}{doc-code}}
 }

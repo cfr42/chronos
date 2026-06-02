@@ -1,4 +1,4 @@
--- $Id: build.lua 11797 2026-03-21 16:01:38Z cfrees $
+-- $Id: build.lua 11933 2026-06-02 20:52:14Z cfrees $
 -- Build configuration for chronos
 --------------------------------------------------------------------------------
 maindir = maindir or "."
@@ -12,10 +12,11 @@ checkengines = { "pdftex", "luatex" }
 checkopts = "-interaction=nonstopmode -cnf-line='TEXMFHOME=.' -cnf-line='TEXMFLOCAL=.' -cnf-line='TEXMFARCH=.'"
 excludetests = { "chronos-scratch", "chronos-egs" }
 -- indexstyle = "gind.ist"
+installfiles = { "*.sty", "*.cls", "*.code.tex" }
 manifestfile = "manifest.txt"
 -- sourcefiles = {"*.dtx","*.ins","chronos.tex"}
 sourcefiles = {"*.dtx","*.ins"}
-tagfiles = { "*.dtx", "README.md", "build.lua", "*.sty", "chronos.tex", "manifest.txt" }
+tagfiles = { "*.dtx", "README.md", "build.lua", "*.sty", "chronos.tex", "manifest.txt", "tikzlibraryscriptfix.code.tex" }
 typesetfiles = {"*-doc.tex", "*-imp.tex"}
 typesetopts = "-interaction=nonstopmode -cnf-line='TEXMFHOME=.' -cnf-line='TEXMFLOCAL=.' -cnf-line='TEXMFARCH=.'"
 typesetruns = 5 -- 4
@@ -29,10 +30,10 @@ uploadconfig = {
   license = "lppl1.3c",
   update = true,
   summary = "TikZ-based package for drawing customisable timelines with support for colour schemes, styles and memoization.",
-  description = "The package supports drawing timelines and aims to be highly customisable. Extensive configuration options are offered via a standard key-value interface based on pgfkeys. Custom colour schemes and styles are supported, and the package includes documented examples of each. Memoization works out-of-the-box if the memoize package is loaded. The code was developed as a result of questions concerning difficulties in customising the output of existing packages for drawing timelines, which sometimes eschew pgfkeys and are often challenging to configure, even when based on PGF/TikZ.",
+  description = "The package supports drawing timelines and aims to be highly customisable. Extensive configuration options are offered via a standard key-value interface based on pgfkeys. Custom colour schemes and styles are supported, and the package includes documented examples of each. Memoization works out-of-the-box if the memoize package is loaded. The code was developed as a result of questions concerning difficulties in customising the output of existing packages for drawing timelines, which sometimes eschew pgfkeys and are often challenging to configure, even when based on PGF/TikZ. Includes a compatibility library for subscripts and superscripts in tikzpictures for LaTeX2e 2026-06-01+.",
 	bugtracker = "https://codeberg.org/cfr/chronos/issues",
 	repository = {"https://codeberg.org/cfr/chronos", "https://github.com/cfr42/chronos"},
-  topic = {"diagrams", "pgf-tikz", "expl3", "calendar"},
+  topic = {"pgf-tikz", "calendar"},
   -- note = "",
 }
 --------------------------------------------------------------------------------
