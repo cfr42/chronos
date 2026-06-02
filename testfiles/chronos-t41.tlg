@@ -455,11 +455,14 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line ....
 .............\hbox(8.44997+0.0)x67.37256
 ..............\glue 0.0 plus 1.0fil
 ..............\T1/cmr/m/n/10 2
-..............\mathon
-..............\hbox(4.82104+0.0)x9.33118, shifted -3.62892
+..............\hbox(4.82104+0.0)x8.83118, shifted -3.62892
+...............\pdfcolorstack 0 push {0.75 0 0 rg 0.75 0 0 RG}
 ...............\T1/cmr/m/n/7 n
 ...............\T1/cmr/m/n/7 d
-..............\mathoff
+...............\pdfcolorstack 0 pop
+..............\penalty 10000
+..............\glue 0.5
+..............\kern 0.0
 ..............\glue 3.33252 plus 1.66626 minus 1.11084
 ..............\T1/cmr/m/n/10 M
 ..............\T1/cmr/m/n/10 i

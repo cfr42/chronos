@@ -5313,11 +5313,14 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line ....
 ...........\pdfcolorstack 0 push {0 0 0 rg 0 0 0 RG}
 ...........\hbox(5.62827+0.0)x37.89346
 ............\T1/cmr/m/sc/7 5
-............\mathon
-............\hbox(2.61047+0.0)x6.9595, shifted -3.01779
+............\hbox(2.61047+0.0)x6.4595, shifted -3.01779
+.............\pdfcolorstack 0 push {0 0 0 rg 0 0 0 RG}
 .............\T1/cmr/m/sc/5 t
 .............\T1/cmr/m/sc/5 h
-............\mathoff
+.............\pdfcolorstack 0 pop
+............\penalty 10000
+............\glue 0.5
+............\kern 0.0
 ............\T1/cmr/m/sc/7 c
 ............\T1/cmr/m/sc/7 .
 ............\kern 1.46754
@@ -5356,11 +5359,14 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line ....
 ...........\pdfcolorstack 0 push {0 0 0 rg 0 0 0 RG}
 ...........\hbox(5.62827+0.0)x37.89346
 ............\T1/cmr/m/sc/7 4
-............\mathon
-............\hbox(2.61047+0.0)x6.9595, shifted -3.01779
+............\hbox(2.61047+0.0)x6.4595, shifted -3.01779
+.............\pdfcolorstack 0 push {0 0 0 rg 0 0 0 RG}
 .............\T1/cmr/m/sc/5 t
 .............\T1/cmr/m/sc/5 h
-............\mathoff
+.............\pdfcolorstack 0 pop
+............\penalty 10000
+............\glue 0.5
+............\kern 0.0
 ............\T1/cmr/m/sc/7 c
 ............\T1/cmr/m/sc/7 .
 ............\kern 1.46754
@@ -6964,11 +6970,14 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line ....
 ...........\hbox(6.9883+0.0)x24.69202
 ............\T1/cmr/bx/it/8 1
 ............\T1/cmr/bx/it/8 6
-............\mathon
-............\hbox(4.16496+0.0)x7.0852, shifted -2.82333
+............\hbox(4.16496+0.0)x6.5852, shifted -2.82333
+.............\pdfcolorstack 0 push {0.25 0.25 0.25 rg 0.25 0.25 0.25 RG}
 .............\T1/cmr/bx/it/6 t
 .............\T1/cmr/bx/it/6 h
-............\mathoff
+.............\pdfcolorstack 0 pop
+............\penalty 10000
+............\glue 0.5
+............\kern 0.0
 ............\T1/cmr/bx/it/8 c
 ............\T1/cmr/bx/it/8 .
 ...........\pdfcolorstack 0 pop
@@ -7022,11 +7031,14 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line ....
 ...........\hbox(6.9883+0.0)x24.69202
 ............\T1/cmr/bx/it/8 1
 ............\T1/cmr/bx/it/8 7
-............\mathon
-............\hbox(4.16496+0.0)x7.0852, shifted -2.82333
+............\hbox(4.16496+0.0)x6.5852, shifted -2.82333
+.............\pdfcolorstack 0 push {0.25 0.25 0.25 rg 0.25 0.25 0.25 RG}
 .............\T1/cmr/bx/it/6 t
 .............\T1/cmr/bx/it/6 h
-............\mathoff
+.............\pdfcolorstack 0 pop
+............\penalty 10000
+............\glue 0.5
+............\kern 0.0
 ............\T1/cmr/bx/it/8 c
 ............\T1/cmr/bx/it/8 .
 ...........\pdfcolorstack 0 pop
@@ -7080,11 +7092,14 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line ....
 ...........\hbox(6.9883+0.0)x24.69202
 ............\T1/cmr/bx/it/8 1
 ............\T1/cmr/bx/it/8 8
-............\mathon
-............\hbox(4.16496+0.0)x7.0852, shifted -2.82333
+............\hbox(4.16496+0.0)x6.5852, shifted -2.82333
+.............\pdfcolorstack 0 push {0.25 0.25 0.25 rg 0.25 0.25 0.25 RG}
 .............\T1/cmr/bx/it/6 t
 .............\T1/cmr/bx/it/6 h
-............\mathoff
+.............\pdfcolorstack 0 pop
+............\penalty 10000
+............\glue 0.5
+............\kern 0.0
 ............\T1/cmr/bx/it/8 c
 ............\T1/cmr/bx/it/8 .
 ...........\pdfcolorstack 0 pop
@@ -7138,11 +7153,14 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line ....
 ...........\hbox(6.9883+0.0)x24.69202
 ............\T1/cmr/bx/it/8 1
 ............\T1/cmr/bx/it/8 9
-............\mathon
-............\hbox(4.16496+0.0)x7.0852, shifted -2.82333
+............\hbox(4.16496+0.0)x6.5852, shifted -2.82333
+.............\pdfcolorstack 0 push {0.25 0.25 0.25 rg 0.25 0.25 0.25 RG}
 .............\T1/cmr/bx/it/6 t
 .............\T1/cmr/bx/it/6 h
-............\mathoff
+.............\pdfcolorstack 0 pop
+............\penalty 10000
+............\glue 0.5
+............\kern 0.0
 ............\T1/cmr/bx/it/8 c
 ............\T1/cmr/bx/it/8 .
 ...........\pdfcolorstack 0 pop
@@ -7196,11 +7214,14 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line ....
 ...........\hbox(6.9883+0.0)x24.69202
 ............\T1/cmr/bx/it/8 2
 ............\T1/cmr/bx/it/8 0
-............\mathon
-............\hbox(4.16496+0.0)x7.0852, shifted -2.82333
+............\hbox(4.16496+0.0)x6.5852, shifted -2.82333
+.............\pdfcolorstack 0 push {0.25 0.25 0.25 rg 0.25 0.25 0.25 RG}
 .............\T1/cmr/bx/it/6 t
 .............\T1/cmr/bx/it/6 h
-............\mathoff
+.............\pdfcolorstack 0 pop
+............\penalty 10000
+............\glue 0.5
+............\kern 0.0
 ............\T1/cmr/bx/it/8 c
 ............\T1/cmr/bx/it/8 .
 ...........\pdfcolorstack 0 pop
@@ -7253,11 +7274,14 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line ....
 ...........\hbox(6.6313+0.0)x24.1076
 ............\T1/cmr/bx/it/8 2
 ............\T1/cmr/bx/it/8 1
-............\mathon
-............\hbox(3.80797+0.0)x6.5008, shifted -2.82333
+............\hbox(3.80797+0.0)x6.0008, shifted -2.82333
+.............\pdfcolorstack 0 push {0.25 0.25 0.25 rg 0.25 0.25 0.25 RG}
 .............\T1/cmr/bx/it/6 s
 .............\T1/cmr/bx/it/6 t
-............\mathoff
+.............\pdfcolorstack 0 pop
+............\penalty 10000
+............\glue 0.5
+............\kern 0.0
 ............\T1/cmr/bx/it/8 c
 ............\T1/cmr/bx/it/8 .
 ...........\pdfcolorstack 0 pop
