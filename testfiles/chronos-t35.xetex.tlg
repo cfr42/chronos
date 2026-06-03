@@ -5624,13 +5624,10 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line ....
 .........\special{color push rgb 0 0 0}
 .........\hbox(5.5878+0.15399)x34.02092
 ..........\TU/lmr/m/sc/7 5
-..........\hbox(2.57+0.0)x6.02, shifted -3.01779
-...........\special{color push rgb 0 0 0}
+..........\mathon
+..........\hbox(2.57+0.0)x6.52, shifted -3.01779
 ...........\TU/lmr/m/sc/5 th
-...........\special{color pop}
-..........\penalty 10000
-..........\glue 0.5
-..........\kern 0.0
+..........\mathoff
 ..........\TU/lmr/m/sc/7 c.
 ..........\kern 1.16692
 ..........\TU/lmr/m/sc/7 BCE
@@ -5673,13 +5670,10 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line ....
 .........\special{color push rgb 0 0 0}
 .........\hbox(5.5878+0.15399)x34.02092
 ..........\TU/lmr/m/sc/7 4
-..........\hbox(2.57+0.0)x6.02, shifted -3.01779
-...........\special{color push rgb 0 0 0}
+..........\mathon
+..........\hbox(2.57+0.0)x6.52, shifted -3.01779
 ...........\TU/lmr/m/sc/5 th
-...........\special{color pop}
-..........\penalty 10000
-..........\glue 0.5
-..........\kern 0.0
+..........\mathoff
 ..........\TU/lmr/m/sc/7 c.
 ..........\kern 1.16692
 ..........\TU/lmr/m/sc/7 BCE
@@ -7253,13 +7247,10 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line ....
 .........\special{color push rgb 0.25 0.25 0.25}
 .........\hbox(6.99333+0.13599)x22.916
 ..........\TU/lmr/bx/it/8 16
-..........\hbox(4.17+0.04799)x5.856, shifted -2.82333
-...........\special{color push rgb 0.25 0.25 0.25}
+..........\mathon
+..........\hbox(4.17+0.04799)x6.356, shifted -2.82333
 ...........\TU/lmr/bx/it/6 th
-...........\special{color pop}
-..........\penalty 10000
-..........\glue 0.5
-..........\kern 0.0
+..........\mathoff
 ..........\TU/lmr/bx/it/8 c.
 .........\special{color pop}
 ........\glue 0.0
@@ -7318,13 +7309,10 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line ....
 .........\special{color push rgb 0.25 0.25 0.25}
 .........\hbox(6.99333+0.13599)x22.916
 ..........\TU/lmr/bx/it/8 17
-..........\hbox(4.17+0.04799)x5.856, shifted -2.82333
-...........\special{color push rgb 0.25 0.25 0.25}
+..........\mathon
+..........\hbox(4.17+0.04799)x6.356, shifted -2.82333
 ...........\TU/lmr/bx/it/6 th
-...........\special{color pop}
-..........\penalty 10000
-..........\glue 0.5
-..........\kern 0.0
+..........\mathoff
 ..........\TU/lmr/bx/it/8 c.
 .........\special{color pop}
 ........\glue 0.0
@@ -7383,13 +7371,10 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line ....
 .........\special{color push rgb 0.25 0.25 0.25}
 .........\hbox(6.99333+0.13599)x22.916
 ..........\TU/lmr/bx/it/8 18
-..........\hbox(4.17+0.04799)x5.856, shifted -2.82333
-...........\special{color push rgb 0.25 0.25 0.25}
+..........\mathon
+..........\hbox(4.17+0.04799)x6.356, shifted -2.82333
 ...........\TU/lmr/bx/it/6 th
-...........\special{color pop}
-..........\penalty 10000
-..........\glue 0.5
-..........\kern 0.0
+..........\mathoff
 ..........\TU/lmr/bx/it/8 c.
 .........\special{color pop}
 ........\glue 0.0
@@ -7448,13 +7433,10 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line ....
 .........\special{color push rgb 0.25 0.25 0.25}
 .........\hbox(6.99333+0.13599)x22.916
 ..........\TU/lmr/bx/it/8 19
-..........\hbox(4.17+0.04799)x5.856, shifted -2.82333
-...........\special{color push rgb 0.25 0.25 0.25}
+..........\mathon
+..........\hbox(4.17+0.04799)x6.356, shifted -2.82333
 ...........\TU/lmr/bx/it/6 th
-...........\special{color pop}
-..........\penalty 10000
-..........\glue 0.5
-..........\kern 0.0
+..........\mathoff
 ..........\TU/lmr/bx/it/8 c.
 .........\special{color pop}
 ........\glue 0.0
@@ -7513,13 +7495,10 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line ....
 .........\special{color push rgb 0.25 0.25 0.25}
 .........\hbox(6.99333+0.13599)x22.916
 ..........\TU/lmr/bx/it/8 20
-..........\hbox(4.17+0.04799)x5.856, shifted -2.82333
-...........\special{color push rgb 0.25 0.25 0.25}
+..........\mathon
+..........\hbox(4.17+0.04799)x6.356, shifted -2.82333
 ...........\TU/lmr/bx/it/6 th
-...........\special{color pop}
-..........\penalty 10000
-..........\glue 0.5
-..........\kern 0.0
+..........\mathoff
 ..........\TU/lmr/bx/it/8 c.
 .........\special{color pop}
 ........\glue 0.0
@@ -7577,13 +7556,10 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line ....
 .........\special{color push rgb 0.25 0.25 0.25}
 .........\hbox(6.68134+0.13599)x22.29199
 ..........\TU/lmr/bx/it/8 21
-..........\hbox(3.858+0.04799)x5.232, shifted -2.82333
-...........\special{color push rgb 0.25 0.25 0.25}
+..........\mathon
+..........\hbox(3.858+0.04799)x5.732, shifted -2.82333
 ...........\TU/lmr/bx/it/6 st
-...........\special{color pop}
-..........\penalty 10000
-..........\glue 0.5
-..........\kern 0.0
+..........\mathoff
 ..........\TU/lmr/bx/it/8 c.
 .........\special{color pop}
 ........\glue 0.0

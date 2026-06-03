@@ -473,13 +473,10 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line ....
 ...........\hbox(8.48692+0.10999)x67.404
 ............\glue 0.0 plus 1.0fil
 ............\TU/lmr/m/n/10 2
-............\hbox(4.858+0.06999)x8.834, shifted -3.62892
-.............\special{color push rgb 0.75 0 0}
+............\mathon
+............\hbox(4.858+0.06999)x9.334, shifted -3.62892
 .............\TU/lmr/m/n/7 nd
-.............\special{color pop}
-............\penalty 10000
-............\glue 0.5
-............\kern 0.0
+............\mathoff
 ............\glue 3.33 plus 1.665 minus 1.11
 ............\TU/lmr/m/n/10 Millennium
 ............\glue 0.0 plus 1.0fil
