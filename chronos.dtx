@@ -30,7 +30,7 @@
 %^^A ref. ateb Max Chernoff: https://tex.stackexchange.com/a/723294/
 \def\MyMakePrivateLetters{\makeatletter\ExplSyntaxOn\endlinechar13}
 \ExplSyntaxOff
-\ProvidesFileSVN{$Id: chronos.dtx 11838 2026-04-01 07:39:03Z cfrees $}[v0.9.4 \revinfo][\filebase\ DTX]
+\ProvidesFileSVN{$Id: chronos.dtx 11938 2026-06-03 03:33:12Z cfrees $}[v0.9.4 \revinfo][\filebase\ DTX]
 \DefineFileInfoSVN[chronosdoc]
 \GetFileInfoSVN*
 \let\chronosdocversion\fileversion
@@ -43,6 +43,23 @@
 \documentclass[10pt,british,a4paper]{ltxdoc}
 % ltnews42 / ateb David Carlisle: https://tex.stackexchange.com/a/754799/ (sylwad Ulrike Fischer rhywle ond alla i ddim canfod o hyd iddo fe)
 \partokencontext=0
+% Joseph Wright: \url{https://chat.stackexchange.com/transcript/message/69011532#69011532}.
+%    \begin{macrocode}
+\ExplSyntaxOn
+\makeatletter
+\DeclareDocumentCommand \DeclareUnknownKeyHandler { O { \@currname } +m }
+{
+  \cs_set_protected:cpn { __keys_unknown_handler_ #1 :nn } ##1##2 {#2}
+  \__keys_options_expand_module:Nn \keys_define:ne {#1}
+  {
+    unknown .code:n =
+    \exp_not:N \exp_args:NV
+    \exp_not:c { __keys_unknown_handler_ #1 :nn }
+    \exp_not:N \l_keys_key_str {##1}
+  }
+}
+\makeatother
+\ExplSyntaxOff
 \usepackage[extract=python]{memoize}
 \mmzset{%
   prefix=memos/,
@@ -7723,7 +7740,7 @@ mode=overlay}}.
 \RequirePackage{svn-prov}
 \def\GetFileBaseName#1-#2\nil{#1}
 \edef\MyFileBaseName{\expandafter\GetFileBaseName\jobname\nil}
-\ProvidesFileSVN[\MyFileBaseName-doc]{$Id: chronos.dtx 11838 2026-04-01 07:39:03Z cfrees $}[v0.9.4 \revinfo]
+\ProvidesFileSVN[\MyFileBaseName-doc]{$Id: chronos.dtx 11938 2026-06-03 03:33:12Z cfrees $}[v0.9.4 \revinfo]
 \DefineFileInfoSVN
 \AddToHook{begindocument}{\OnlyDescription}
 \expandafter\newif\csname ifchronoscodetoo\endcsname
@@ -7736,7 +7753,7 @@ mode=overlay}}.
 \RequirePackage{svn-prov}
 \def\GetFileBaseName#1-#2\nil{#1}
 \edef\MyFileBaseName{\expandafter\GetFileBaseName\jobname\nil}
-\ProvidesFileSVN[\MyFileBaseName-imp]{$Id: chronos.dtx 11838 2026-04-01 07:39:03Z cfrees $}[v0.9.4 \revinfo]
+\ProvidesFileSVN[\MyFileBaseName-imp]{$Id: chronos.dtx 11938 2026-06-03 03:33:12Z cfrees $}[v0.9.4 \revinfo]
 \DefineFileInfoSVN
 \AddToHook{begindocument}{\AlsoImplementation}
 \expandafter\newif\csname ifchronoscodetoo\endcsname
