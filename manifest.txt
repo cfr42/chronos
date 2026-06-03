@@ -1,6 +1,6 @@
 # Manifest for chronos
 
-Copyright (C) 2023-2025 Clea F. Rees
+Copyright (C) 2023-2026 Clea F. Rees
 
 This work may be distributed and/or modified under the conditions of the LaTeX
 Project Public License, either version 1.3c of this license or (at your option)
@@ -285,6 +285,8 @@ too ashamed to share.
 * chronos-t57-shifted-lines.lvt
 * chronos-t57-shifted-lines.tlg
 * chronos-t57-shifted-lines.xetex.tlg
+* chronos-t58-every-date-format.lvt
+* chronos-t58-every-date-format.tlg
 * chronos-info.lvt
 * chronos-info.luatex.tlg
 * chronos-info.tlg
@@ -301,6 +303,7 @@ too ashamed to share.
 * chronos.sty
 * chronos-doc.tex
 * chronos-imp.tex
+* tikzlibraryscriptfix.code.tex
 
 ### Typeset documentation
 
