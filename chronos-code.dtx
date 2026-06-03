@@ -33,7 +33,7 @@
 % ref. ateb Max Chernoff: https://tex.stackexchange.com/a/723294/
 \def\MakePrivateLetters{\makeatletter\ExplSyntaxOn\endlinechar13}
 \ExplSyntaxOff
-\ProvidesFileSVN{$Id: chronos-code.dtx 11933 2026-06-02 20:52:14Z cfrees $}[v0.9.4 \revinfo][\filebase DTX: Customisable TikZ-based timelines]
+\ProvidesFileSVN{$Id: chronos-code.dtx 11934 2026-06-03 00:22:08Z cfrees $}[v0.9.4 \revinfo][\filebase DTX: Customisable TikZ-based timelines]
 \DefineFileInfoSVN[chronoscode]
 \let\chronoscodeversion\fileversion
 \let\chronoscodebase\filebase
@@ -70,7 +70,7 @@
 % \changes{v0.9}{2025-02-27}{First \ctan{} release.}
 % ^^A lua will replace v0.0 and 0000/00/00 when tagging
 % \ifchronoscodetoo
-%   \ProvidesFileSVN{$Id: chronos-code.dtx 11933 2026-06-02 20:52:14Z cfrees $}[v0.9.4 \revinfo]
+%   \ProvidesFileSVN{$Id: chronos-code.dtx 11934 2026-06-03 00:22:08Z cfrees $}[v0.9.4 \revinfo]
 %   \DefineFileInfoSVN[chronoscode]
 %   \GetFileInfoSVN{chronoscode}
 %   \let\chronoscodeversion\fileversion
@@ -147,7 +147,7 @@
 % \LaTeXe{} package.
 %    \begin{macrocode}
 \RequirePackage{svn-prov}
-\ProvidesPackageSVN[chronos.sty]{$Id: chronos-code.dtx 11933 2026-06-02 20:52:14Z cfrees $}[v0.9.4 \revinfo]
+\ProvidesPackageSVN[chronos.sty]{$Id: chronos-code.dtx 11934 2026-06-03 00:22:08Z cfrees $}[v0.9.4 \revinfo]
 \DefineFileInfoSVN[chronos]
 %    \end{macrocode}
 % \iffalse
@@ -7047,7 +7047,7 @@
 % \changes{v0.9.2}{2025-03-15}{Fix info reported for \texttt{chronos-lib-styles.sty}.}
 %    \begin{macrocode}
 \RequirePackage{chronos}
-\ProvidesPackageSVN[chronos-lib-styles.sty]{$Id: chronos-code.dtx 11933 2026-06-02 20:52:14Z cfrees $}[v0.9.4 \revinfo]
+\ProvidesPackageSVN[chronos-lib-styles.sty]{$Id: chronos-code.dtx 11934 2026-06-03 00:22:08Z cfrees $}[v0.9.4 \revinfo]
 \pgfqkeys{/chronos}{%^^A BEGIN styles <<<
 %    \end{macrocode}
 % Styles come in three flavours: on-line, off-line and no-year.
@@ -7657,7 +7657,7 @@
 % \changes{v0.9.2}{2025-03-15}{Fix info reported for \texttt{chronos-lib-styles.sty}.}
 %    \begin{macrocode}
 \RequirePackage{chronos}
-\ProvidesPackageSVN[chronos-lib-colschemes.sty]{$Id: chronos-code.dtx 11933 2026-06-02 20:52:14Z cfrees $}[v0.9.4 \revinfo]
+\ProvidesPackageSVN[chronos-lib-colschemes.sty]{$Id: chronos-code.dtx 11934 2026-06-03 00:22:08Z cfrees $}[v0.9.4 \revinfo]
 %    \end{macrocode}
 % \begin{colscheme}{blues,contninety,offlinealt,xcolseries,lavender,modern,offlinebasic,sobriety}%^^A <<< BEGIN cylluniau lliwiau | colour schemes
 % cylluniau lliwiau \textbar{} colour schemes 
@@ -7764,18 +7764,56 @@
 % \changes{v0.0}{2026-02-02}{Add \texttt{tikzlibraryscriptfix.code.tex}.}
 %    \begin{macrocode}
 \RequirePackage{svn-prov}
-\ProvidesFileSVN[tikzlibraryscriptfix.code.tex]{$Id: chronos-code.dtx 11933 2026-06-02 20:52:14Z cfrees $}[v0.1 \revinfo]
+\ProvidesFileSVN[tikzlibraryscriptfix.code.tex]{$Id: chronos-code.dtx 11934 2026-06-03 00:22:08Z cfrees $}[v0.1 \revinfo]
 \RequirePackage{tikz}
 %    \end{macrocode}
-% \begin{macro}{\textsuperscript,\textsubscript}%^^A <<< BEGIN \textsubscript \textsuperscript
+% \begin{macro}{\safe@textsuperscript,\safe@textsubscript,\@safe@textsuperscript,\@safe@textsubscript,\textsuperscript,\textsubscript}%^^A <<< BEGIN \textsubscript \textsuperscript
 %   Redefine locally to use maths mode for versions of the format where the 2026-06-01 definitions break in \TikZ{} multiline nodes if used before a line break.
+%   These are copied verbatim from \texttt{latex.ltx} \emph{modulo} names.
+%   The redefinitions are \emph{not} executed if tagging is active and the \texttt{text} plug is installed into the \texttt{tagsupport/tikz/picture/begin} socket.
+%   \texttt{chronos} isn't really the right prefix here, but I am not going to try to register another one for a single variable \dots.
 %    \begin{macrocode}
-\IfFormatAtLeastTF{2026-06-01}{%
-  \AddToHook{env/tikzpicture/begin}{%
-    \protected\def\textsuperscript#1{$^{\hbox{\tiny #1}}$}%
-    \protected\def\textsubscript#1{$_{\hbox{\tiny #1}}$}%
-  }%
-}{}
+\newcommand\safe@textsuperscript{}
+\newcommand\safe@textsubscript{}
+\newcommand\@safe@textsuperscript{}
+\newcommand\@safe@textsubscript{}
+\DeclareRobustCommand*\safe@textsuperscript[1]{%
+  \@safe@textsuperscript{\selectfont#1}%
+}
+\DeclareRobustCommand*\safe@textsubscript[1]{%
+  \@safe@textsubscript{\selectfont#1}%
+}
+\def\@safe@textsuperscript#1{%
+  {\m@th\ensuremath{^{\mbox{\fontsize\sf@size\sf@size#1}}}}%
+}
+\def\@safe@textsubscript#1{%
+  {\m@th\ensuremath{_{\mbox{\fontsize\sf@size\sf@size#1}}}}%
+}
+\ExplSyntaxOn
+\cs_if_free:NF \IfFormatAtLeastT {
+  \IfFormatAtLeastT{2026-06-01}{
+    \bool_new:N \l__chronos_scriptfix_bool
+    \hook_gput_code:nnn {env/tikzpicture/before} {.} {
+      \bool_set_false:N \l__chronos_scriptfix_bool
+      \tag_if_active:F {
+        \bool_set_true:N \l__chronos_scriptfix_bool
+      }
+      \hook_gput_next_code:nn {env/tikzpicture/begin} {
+        \bool_if:NF \l__chronos_scriptfix_bool {
+          \socket_get_plug:nN {tagsupport/tikz/picture/begin} \l_tmpa_tl
+          \str_if_eq:eeF {\l_tmpa_tl} {text} {
+            \bool_set_true:N \l__chronos_scriptfix_bool
+          }
+        }
+        \bool_if:NT \l__chronos_scriptfix_bool {
+          \cs_set_eq:NN \textsuperscript \safe@textsuperscript
+          \cs_set_eq:NN \textsubscript \safe@textsubscript
+        }
+      }
+    }
+  }
+}
+\ExplSyntaxOff
 %    \end{macrocode}
 % \end{macro}%^^A >>> END \textsubscript \textsuperscript
 % ^^A >>> (lib)
