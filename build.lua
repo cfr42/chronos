@@ -1,4 +1,4 @@
--- $Id: build.lua 11948 2026-06-03 16:02:03Z cfrees $
+-- $Id: build.lua 11958 2026-06-04 19:01:02Z cfrees $
 -- Build configuration for chronos
 --------------------------------------------------------------------------------
 maindir = maindir or "."
@@ -18,6 +18,7 @@ manifestfile = "manifest.txt"
 sourcefiles = {"*.dtx","*.ins"}
 tagfiles = { "*.dtx", "README.md", "build.lua", "*.sty", "chronos.tex", "manifest.txt", "tikzlibraryscriptfix.code.tex" }
 typesetfiles = {"*-doc.tex", "*-imp.tex"}
+typesetdemofiles = {"chronos-demo-*.tex"}
 typesetopts = "-interaction=nonstopmode -cnf-line='TEXMFHOME=.' -cnf-line='TEXMFLOCAL=.' -cnf-line='TEXMFARCH=.'"
 typesetruns = 5 -- 4
 --------------------------------------------------------------------------------
