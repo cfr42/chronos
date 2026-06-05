@@ -33,7 +33,7 @@
 % ref. ateb Max Chernoff: https://tex.stackexchange.com/a/723294/
 \def\MakePrivateLetters{\makeatletter\ExplSyntaxOn\endlinechar13}
 \ExplSyntaxOff
-\ProvidesFileSVN{$Id: chronos-demos.dtx 11958 2026-06-04 19:01:02Z cfrees $}[v0.9.5 \revinfo][\filebase DTX: Customisable TikZ-based timelines]
+\ProvidesFileSVN{$Id: chronos-demos.dtx 11959 2026-06-05 04:50:40Z cfrees $}[v0.9.5 \revinfo][\filebase DTX: Customisable TikZ-based timelines]
 \DefineFileInfoSVN[chronosdemos]
 \let\chronosdemosversion\fileversion
 \let\chronosdemosbase\filebase
@@ -60,11 +60,7 @@
 \usepackage{chronos}
 \usepackage{calc,amssymb,amsmath,amsfonts,mathtools}
 \usepackage{babel}
-\ifpdftex
-  \usepackage[T1]{fontenc}
-\else
-  \usepackage{fontspec}
-\fi
+\usepackage[T1]{fontenc}
 \usepackage[landscape,scale=0.9]{geometry}
 \parindent=0pt
 \pagestyle{empty}
@@ -86,7 +82,7 @@
 %<*demo-01>
 % \fi
 %    \begin{macrocode}
-\ProvidesFileSVN[chronos-demo-01.tex]{$Id: chronos-demos.dtx 11958 2026-06-04 19:01:02Z cfrees $}[v0.1 \revinfo][\filebase DTX: demo 01]
+\ProvidesFileSVN[chronos-demo-01.tex]{$Id: chronos-demos.dtx 11959 2026-06-05 04:50:40Z cfrees $}[v0.1 \revinfo][\filebase DTX: demo 01]
 \begin{document}
 \begin{chronos}
   [% https://tex.stackexchange.com/a/712296/
@@ -170,7 +166,7 @@
 %<*demo-12>
 % \fi
 %    \begin{macrocode}
-\ProvidesFileSVN[chronos-demo-12.tex]{$Id: chronos-demos.dtx 11958 2026-06-04 19:01:02Z cfrees $}[v0.1 \revinfo][\filebase DTX: demo 12]
+\ProvidesFileSVN[chronos-demo-12.tex]{$Id: chronos-demos.dtx 11959 2026-06-05 04:50:40Z cfrees $}[v0.1 \revinfo][\filebase DTX: demo 12]
 \begin{document}
 \begin{chronos}
   [
@@ -195,7 +191,7 @@
 %<*demo-19>
 % \fi
 %    \begin{macrocode}
-\ProvidesFileSVN[chronos-demo-19.tex]{$Id: chronos-demos.dtx 11958 2026-06-04 19:01:02Z cfrees $}[v0.1 \revinfo][\filebase DTX: demo 19]
+\ProvidesFileSVN[chronos-demo-19.tex]{$Id: chronos-demos.dtx 11959 2026-06-05 04:50:40Z cfrees $}[v0.1 \revinfo][\filebase DTX: demo 19]
 \begin{document}
 \begin{chronos}
   [
@@ -233,7 +229,7 @@
 %<*demo-30>
 % \fi
 %    \begin{macrocode}
-\ProvidesFileSVN[chronos-demo-30.tex]{$Id: chronos-demos.dtx 11958 2026-06-04 19:01:02Z cfrees $}[v0.1 \revinfo][\filebase DTX: demo 30]
+\ProvidesFileSVN[chronos-demo-30.tex]{$Id: chronos-demos.dtx 11959 2026-06-05 04:50:40Z cfrees $}[v0.1 \revinfo][\filebase DTX: demo 30]
 \usepackage{fetamont,metalogo}
 \setlogokern{La}{-0.2em}
 \setlogokern{aT}{-0.05em}
@@ -252,7 +248,7 @@
     cam blwyddyn fach=250,
     cam blwyddyn fawr=500,
     chronos coords={2099,1938,1377,868},
-    levels=7:5,
+    levels=7:7,
     event/colour rotation=true,
     period/colour rotation=true,
     minor year format={!Y},
@@ -266,7 +262,7 @@
     chronos coords={-771,1271,1368,618,907,1990},
     heading={scrolls}{chronos year -2000}{chronos year 700},
     headings={paste/chronos year 700/chronos year 1200,sewn/chronos year 1400/chronos year 1800,ebooks/chronos year 1990/chronos year 2050},
-    subheadings={shang/chronos year -2000/chronos year -1000/chronos upper subheadings,western zhou/chronos year -1000/chronos year -771/chronos upper subheadings,yuan/chronos year 1271/chronos year 1368/chronos upper subheadings,tang/chronos year 618/chronos year 907/chronos upper subheadings,concertina/chronos year 700/chronos year 750/chronos lower subheadings,butterfly/chronos year 1000/chronos year 1100/chronos lower subheadings},
+    subheadings={shang/chronos year -2000/chronos year -1000/chronos upper subheadings,western zhou/chronos year -1000/chronos year -771/chronos upper subheadings,yuan/chronos year 1271/chronos year 1368/chronos upper subheadings,tang/chronos year 618/chronos year 907/chronos upper subheadings,concertina/chronos year 700/chronos year 750/chronos lower subheadings,butterfly/chronos year 1250/chronos year 1100/chronos lower subheadings},
     century subheadings={15,17,19}{th},
     century subheading={21}{st},
     headings drops'=10pt:10pt:9pt,
@@ -287,14 +283,14 @@
     dates=1400:{1468-02-03},
     dates content={c1393/1406--1468\,\celabel},
     place above,
-    at=johannes gutenberg |- u2.center,
+    at=johannes gutenberg |- u4.center,
     yshift=5pt,
     connectors={north,west,east},
   }
   \chronoslife{%
     name=friedrich gottlob koenig,
     dates={1774-04-17}:{1833-01-17},
-    at=friedrich gottlob koenig |- i1.north,
+    at=friedrich gottlob koenig |- i4.north,
     tag anchor=east,
     anchor=north east,
     xshift=-5pt,
@@ -302,7 +298,7 @@
   \chronoslife{%
     name=donald knuth,
     birth={1938-01-10},
-    at=donald knuth |- i2.north,
+    at=donald knuth |- tag friedrich gottlob koenig.south,
     connectors={west},
     tag anchor=east,
     anchor=north east,
@@ -318,20 +314,20 @@
     anchor=north west,
     xshift=20pt,
   }
-  %   \chronoslife{%
-  %     name=chris rowley,
-  %     birth={},
-  %     at=leslie lamport |- i4.north,
-  %     connectors=east,
-  %     tag anchor=west,
-  %     anchor=north west,
-  %     xshift=5pt,
-  %   }  
+%<skip>    %   \chronoslife{%
+%<skip>    %     name=chris rowley,
+%<skip>    %     birth={},
+%<skip>    %     at=leslie lamport |- i4.north,
+%<skip>    %     connectors=east,
+%<skip>    %     tag anchor=west,
+%<skip>    %     anchor=north west,
+%<skip>    %     xshift=5pt,
+%<skip>    %   }  
   \chronoslife{%
     name=TeX lion,
     name content=\TeX\ Lion,
     birth={1986},
-    at=TeX lion |- i3.north,
+    at=TeX lion |- tag donald knuth.south,
     connectors=west,
     tag anchor=east,
     anchor=north east,
@@ -341,7 +337,7 @@
     name=TeX lioness,
     name content=\TeX\ Lioness,
     birth={1988},
-    at=TeX lioness |- i4.north,
+    at=TeX lioness |- tag TeX lion.south,
     connectors=west,
     tag anchor=east,
     anchor=north east,
@@ -367,25 +363,25 @@
     anchor=north west,
     xshift=5pt,
   }
-  %   \chronoslife{%
-  %     name=rainer schopf,
-  %     name contents=Rainer Schöpf,
-  %     birth={},
-  %     at=rainer schopf |- i3.north,
-  %     connectors=east,
-  %     tag anchor=west,
-  %     anchor=north west,
-  %     xshift=5pt,
-  %   }
-  %   \chronoslife{%
-  %     name=frank mittelbach,
-  %     birth={},
-  %     at=frank mittelbach |- i2.north,
-  %     connectors=east,
-  %     tag anchor=west,
-  %     anchor=north west,
-  %     xshift=5pt,
-  %   }
+%<skip>    %   \chronoslife{%
+%<skip>    %     name=rainer schopf,
+%<skip>    %     name contents=Rainer Schöpf,
+%<skip>    %     birth={},
+%<skip>    %     at=rainer schopf |- i3.north,
+%<skip>    %     connectors=east,
+%<skip>    %     tag anchor=west,
+%<skip>    %     anchor=north west,
+%<skip>    %     xshift=5pt,
+%<skip>    %   }
+%<skip>    %   \chronoslife{%
+%<skip>    %     name=frank mittelbach,
+%<skip>    %     birth={},
+%<skip>    %     at=frank mittelbach |- i2.north,
+%<skip>    %     connectors=east,
+%<skip>    %     tag anchor=west,
+%<skip>    %     anchor=north west,
+%<skip>    %     xshift=5pt,
+%<skip>    %   }
   \chronosevent{%
     date={868-05-11},
     name={Publication of \emph{Diamond Sutra}},
@@ -397,9 +393,10 @@
   }
   \chronosevent{%
     name=gutenberg bible,
+    name content={\textsc{Gutenberg}\\\textsc{Bible}},
     date={1455},
     dates content={1450s},
-    at=u1.south -| gutenberg bible,
+    at=u2.south -| gutenberg bible,
     anchor=south west,
     tag anchor=west,
     connectors=north,
@@ -425,9 +422,8 @@
     name=woodblock printing,
     start=600,
     end=1450,
-    at=i1.west -| woodblock printing,
-    xshift=-50pt,
-    tag anchor=east,
+    at=i3.north -| woodblock printing,
+    tag anchor=north,
     dates content={c600--1450\,\celabel},
     place below,
   }
@@ -441,6 +437,41 @@
     xshift=5pt,
     connectors=north,
     connectors=east,
+  }
+  \chronosperiod{%
+    name=papyrus scrolls,
+    dates={-3000}:100,
+    dates content={c3000\,\bcelabel--},
+    at=papyrus scrolls |- i3.north,
+    tag anchor=east,
+    xshift=-20pt,
+  }
+  \chronosperiod{%
+    name=papyrus codices,
+    dates=1:1100,
+    dates content={--1100+\,\celabel},
+    at=papyrus codices |- i3.north,
+    tag anchor=east,
+    anchor=north east,
+    xshift=-10pt,
+  }
+  \chronosperiod{%
+    name=parchment codices,
+    dates={-500}:1500,
+    dates content={--c15+\,\celabel},
+    at=parchment codices |- tag papyrus codices.north,
+    tag anchor=east,
+    anchor=south east,
+    xshift=-10pt,
+  }
+  \chronosperiod{%
+    name=paper,
+    dates={-150}:,
+    dates content={c2\,\bcelabel--},
+    at=paper |- tag woodblock printing.north,
+    tag anchor=east,
+    anchor=south east,
+    xshift=-2.5pt,
   }
   \chronostheory {%
     name=metafont,
@@ -461,7 +492,7 @@
   \def\tempa{-|-}
   \def\tempb{|-|}
   \draw [chronos connect=life:donald knuth] (connector donald knuth) \tempa (connector TeX) (connector donald knuth) -- (connector metafont);
-  \draw [chronos connect=life:TeX lion] (connector TeX lion) \tempa ([yshift=-2.5pt,xshift=-5pt]knuth pi.south east) -|  (connector TeX2);
+  \draw [chronos connect=life:TeX lion] (connector TeX lion) \tempa ([yshift=-2.5pt,xshift=-17.5pt]knuth pi.south east) -|  (connector TeX2);
   \draw [chronos connect=life:TeX lioness] (connector TeX lioness) -| (connector metafont2);
   \chronostheory {%
     name=LaTeX,
@@ -476,13 +507,13 @@
   \draw [chronos connect=life:l3 hummingbird] (connector l3 hummingbird) -| (connector LaTeX2.south west);
   \chronostheory {%
     name=movable type,
-    at=tag bi sheng.east |- u3.center,
+    at=tag bi sheng.east |- u5.center,
     anchor=south east,
     connectors={east,west,north},
   }
   \chronostheory {%
     name=printing press,
-    at=u5.south -| johannes gutenberg,
+    at=u7.south -| johannes gutenberg,
     connectors={south,west},
     anchor=south,
   }
@@ -498,7 +529,7 @@
   }
   \chronostheorycircle{
     name=digital typesetting,
-    at={chronos end |- tag johannes gutenberg.north},
+    at={chronos end |- u3.north},
     yshift=-7.5pt,
     sizes'=15pt:9pt,
     circle texts=Digital:Typesetting,
@@ -513,10 +544,10 @@
   \chronosinfo{%
     name=block printing,
     text content={Block printing, originally used to print pictures and text onto cloth, developed into a method of printing books on paper.},
-    anchor=north east,
-    at=tag woodblock printing.south,
-    text width=60pt, 
-    yshift=-10pt,
+    anchor=south east,
+    at=tag woodblock printing.south |- i6.south,
+    text width=120pt, 
+    xshift=-50pt,
   }
 \end{chronos}
 \end{document}
@@ -529,7 +560,7 @@
 %<*demo-40>
 % \fi
 %    \begin{macrocode}
-\ProvidesFileSVN[chronos-demo-40.tex]{$Id: chronos-demos.dtx 11958 2026-06-04 19:01:02Z cfrees $}[v0.1 \revinfo][\filebase DTX: demo 40]
+\ProvidesFileSVN[chronos-demo-40.tex]{$Id: chronos-demos.dtx 11959 2026-06-05 04:50:40Z cfrees $}[v0.1 \revinfo][\filebase DTX: demo 40]
 \begin{document}
 %% ateb: https://tex.stackexchange.com/a/324448/
 \begin{chronos}
@@ -562,7 +593,7 @@
 %<*demo-56>
 % \fi
 %    \begin{macrocode}
-\ProvidesFileSVN[chronos-demo-56.tex]{$Id: chronos-demos.dtx 11958 2026-06-04 19:01:02Z cfrees $}[v0.1 \revinfo][\filebase DTX: demo 56]
+\ProvidesFileSVN[chronos-demo-56.tex]{$Id: chronos-demos.dtx 11959 2026-06-05 04:50:40Z cfrees $}[v0.1 \revinfo][\filebase DTX: demo 56]
 \begin{document}
 %% ateb: https://tex.stackexchange.com/a/703431/
 \begin{chronos}
@@ -604,13 +635,14 @@
 % \fi
 %    \begin{macrocode}
 \RequirePackage{svn-prov}
-\ProvidesFileSVN[chronos-demo-refs.tex]{$Id: chronos-demos.dtx 11958 2026-06-04 19:01:02Z cfrees $}[v0.1 \revinfo][\filebase DTX: demo refs (Biblatex)]
+\ProvidesFileSVN[chronos-demo-refs.tex]{$Id: chronos-demos.dtx 11959 2026-06-05 04:50:40Z cfrees $}[v0.1 \revinfo][\filebase DTX: demo refs (Biblatex)]
 \documentclass[british,a4paper,landscape]{article}
 \usepackage{babel}
-\usepackage[vscale=0.9,hscale=0.7]{geometry}
+\usepackage[scale=0.9]{geometry}
 \parindent=0pt
 \pagestyle{empty}
 \usepackage{chronos}
+\usepackage{csquotes}
 \usepackage{biblatex}
 \bibliography{biblatex-examples}
 \begin{document}
@@ -619,7 +651,7 @@
 \begin{chronos}
   [
     timeline={%
-      dates=2019:{2024-01-01},
+      dates=2021:{2023-01-01},
       timeline years=below,
       height=1pt,
       width=150mm,
@@ -634,26 +666,17 @@
     /tikz/my label/.style={label={[font=\scriptsize\sffamily,text=black]left:\MakeTitlecase{#1}}},
   ]
   \chronosevent{name=another new year,date=2022-01-01,name content={Yet Another Year \cite{westfahl:space}},xshift=2pt,yshift=1pt,my label=jan}
-  \foreach \i/\j/\k [remember=\i as \ilast (initially another new year)] in {martin-luther-king//{MLK, Jr.},wintry-storms/feb/Winter Blizzards,dydd dewi sant/mar/Dathlu!,april fools/apr/Hwyl!,may--day/may/{May Day \cite{padhye}},longest day/jun/{\Textcite{chiu}},holidays/jul/{\Autocite{jcg,nietzsche:historie}},sunshine/aug/Gwyliau,back to school/sep/Learning Ladder,all hallows eve/oct/Nos Galan Gaeaf,fireworks/nov/{Tân Gwyllt},christmas/dec/Nadolig,hanukkah//Festival of Light}
+  \foreach \i/\j/\k [remember=\i as \ilast (initially another new year)] in {martin-luther-king//{MLK, Jr.},wintry-storms/feb/Winter Blizzards,dydd dewi sant/mar/Dathlu!,april fools/apr/Hwyl!,may--day/may/{May Day \cite{padhye}},longest day/jun/{\Textcite{chiu}},holidays/jul/{\Autocite{jcg,nietzsche:historie}},sunshine/aug/Gwyliau,back to school/sep/Learning Ladder,all hallows eve/oct/Nos Galan Gaeaf,fireworks/nov/{T\^an Gwyllt},christmas/dec/Nadolig,hanukkah//Festival of Light}
   {
     \chronosevent{name/.expand once=\i,name content={\k},date=2022-01-01,at=text tag \ilast.north west,my label=\j}
   }
-  \chronosevent{name=new-year,date=2021-01-01,yshift=1pt,xshift=2pt,my label=jan}
-  \foreach \i/\j [remember=\i as \ilast (initially new-year)] in {martin-luther-king/,wintry-storms/feb,dydd dewi sant/mar,april fools/apr,may--day/may,longest day/jun,holidays/jul,sunshine/aug,back to school/sep,all hallows eve/oct,fireworks/nov,christmas/dec,hanukkah/}
-  {
-    \chronosevent{name/.expand once=\i,date=2021-01-01,at=text tag \ilast.north west,my label=\j}
-  }
-  \chronosevent{name=new year,date=2019-01-01,yshift=1pt,xshift=2pt,my label=jan}
+  \chronosevent{name=new year,date=2021-01-01,yshift=-15pt,xshift=2pt,my label=jan,anchor=north west,connection+={shorten <=12pt}}
   \foreach \i/\j [remember=\i as \ilast (initially new year)] in {martin luther king/,wintry storms/feb,dydd dewi sant/mar,april fools/apr,may day/may,longest day/jun,holidays/jul,sunshine/aug,back to school/sep,all hallows eve/oct,fireworks/nov,christmas/dec,hanukkah/}
   {
-    \chronosevent{name/.expand once=\i,date=2019-01-01,at=text tag \ilast.north west,my label=\j}
-  }
-  \chronosevent{name=new year,date=2020-01-01,yshift=-15pt,xshift=2pt,my label=jan,anchor=north west,connection+={shorten <=12pt}}
-  \foreach \i/\j [remember=\i as \ilast (initially new year)] in {martin luther king/,wintry storms/feb,dydd dewi sant/mar,april fools/apr,may day/may,longest day/jun,holidays/jul,sunshine/aug,back to school/sep,all hallows eve/oct,fireworks/nov,christmas/dec,hanukkah/}
-  {
-    \chronosevent{name/.expand once=\i,date=2020-01-01,at=text tag \ilast.south west,my label=\j,anchor=north west,connection+={shorten <=12pt}}
+    \chronosevent{name/.expand once=\i,date=2021-01-01,at=text tag \ilast.south west,my label=\j,anchor=north west,connection+={shorten <=12pt}}
   }
 \end{chronos}
+\printbibliography
 \end{document}
 %    \end{macrocode}
 % \iffalse
@@ -665,7 +688,7 @@
 % \fi
 %    \begin{macrocode}
 \RequirePackage{svn-prov}
-\ProvidesFileSVN[chronos-demo-memoize.tex]{$Id: chronos-demos.dtx 11958 2026-06-04 19:01:02Z cfrees $}[v0.0 \revinfo][\filebase: memoization demo]
+\ProvidesFileSVN[chronos-demo-memoize.tex]{$Id: chronos-demos.dtx 11959 2026-06-05 04:50:40Z cfrees $}[v0.0 \revinfo][\filebase: memoization demo]
 \documentclass[a4paper,landscape]{article}
 \usepackage{memoize}
 \mmzset{prefix=memos/,}

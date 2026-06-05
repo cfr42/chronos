@@ -1,4 +1,4 @@
--- $Id: build.lua 11958 2026-06-04 19:01:02Z cfrees $
+-- $Id: build.lua 11959 2026-06-05 04:50:40Z cfrees $
 -- Build configuration for chronos
 --------------------------------------------------------------------------------
 maindir = maindir or "."
@@ -94,5 +94,23 @@ else
     print("Warning: Cannot build manifest here.")
     return 1
   end
+end
+function docinit_hook()
+  for _, i in ipairs(typesetdemofiles) do
+    cp(i, unpackdir, typesetdir)
+    for _, j in ipairs(filelist(typesetdir, i)) do
+      assert(tex(j, typesetdir, typesetexe .. " " .. typesetopts))
+      if fileexists(typesetdir .. "/" .. (string.gsub(j, "%.tex", ".bcf"))) then
+        assert(biber((string.gsub(j, "%.tex", "")), typesetdir))
+        assert(tex(j, typesetdir, typesetexe .. " " .. typesetopts))
+        assert(tex(j, typesetdir, typesetexe .. " " .. typesetopts))
+      end
+      if fileexists(typesetdir .. "/" .. (string.gsub(j, "%.tex", ".mmz.log"))) then
+        assert(tex(j, typesetdir, typesetexe .. " " .. typesetopts))
+        assert(tex(j, typesetdir, typesetexe .. " " .. typesetopts))
+      end
+    end
+  end
+  return 0
 end
 -- vim: ts=2:sw=2:et:

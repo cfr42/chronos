@@ -30,7 +30,7 @@
 %^^A ref. ateb Max Chernoff: https://tex.stackexchange.com/a/723294/
 \def\MyMakePrivateLetters{\makeatletter\ExplSyntaxOn\endlinechar13}
 \ExplSyntaxOff
-\ProvidesFileSVN{$Id: chronos.dtx 11948 2026-06-03 16:02:03Z cfrees $}[v0.9.5 \revinfo][\filebase\ DTX]
+\ProvidesFileSVN{$Id: chronos.dtx 11959 2026-06-05 04:50:40Z cfrees $}[v0.9.5 \revinfo][\filebase\ DTX]
 \DefineFileInfoSVN[chronosdoc]
 \GetFileInfoSVN*
 \let\chronosdocversion\fileversion
@@ -111,6 +111,7 @@
 \usepackage{booktabs}
 \usepackage{tabularx}
 \usepackage{array}
+\usepackage{pdfpages}
 \usepackage{subcaption}
 \usepackage{csquotes}
   \MakeAutoQuote{‘}{’}
@@ -7721,6 +7722,34 @@ mode=overlay}}.
 % 
 % \changes{v0.7?}{2023-07-01}{First repo release. (Ish.) Earlier versions were published informally on \href{https:tex.stackexchange.com}{\TeX{} StackExchange}.}
 % 
+% \section{Example Documents}\label{sec:demos}
+%
+% \changes{v0.0}{2026-06-05}{Add examples of complete documents (per \TeX{} SE request).}
+%
+% \lstinputlisting{chronos-demo-01.tex}
+% \includepdf{chronos-demo-01}
+%
+% \lstinputlisting{chronos-demo-12.tex}
+% \includepdf{chronos-demo-12}
+%
+% \lstinputlisting{chronos-demo-19.tex}
+% \includepdf{chronos-demo-19}
+%
+% \lstinputlisting{chronos-demo-30.tex}
+% \includepdf{chronos-demo-30}
+%
+% \lstinputlisting{chronos-demo-40.tex}
+% \includepdf{chronos-demo-40}
+%
+% \lstinputlisting{chronos-demo-56.tex}
+% \includepdf{chronos-demo-56}
+%
+% \lstinputlisting{chronos-demo-refs.tex}
+% \includepdf{chronos-demo-refs}
+%
+% \lstinputlisting{chronos-demo-memoize.tex}
+% \includepdf{chronos-demo-memoize}
+%
 % 
 % \MaybeStop{%
 %^^A \loadgeometry{safonol}%
@@ -7740,7 +7769,7 @@ mode=overlay}}.
 \RequirePackage{svn-prov}
 \def\GetFileBaseName#1-#2\nil{#1}
 \edef\MyFileBaseName{\expandafter\GetFileBaseName\jobname\nil}
-\ProvidesFileSVN[\MyFileBaseName-doc]{$Id: chronos.dtx 11948 2026-06-03 16:02:03Z cfrees $}[v0.9.5 \revinfo]
+\ProvidesFileSVN[\MyFileBaseName-doc]{$Id: chronos.dtx 11959 2026-06-05 04:50:40Z cfrees $}[v0.9.5 \revinfo]
 \DefineFileInfoSVN
 \AddToHook{begindocument}{\OnlyDescription}
 \expandafter\newif\csname ifchronoscodetoo\endcsname
@@ -7753,7 +7782,7 @@ mode=overlay}}.
 \RequirePackage{svn-prov}
 \def\GetFileBaseName#1-#2\nil{#1}
 \edef\MyFileBaseName{\expandafter\GetFileBaseName\jobname\nil}
-\ProvidesFileSVN[\MyFileBaseName-imp]{$Id: chronos.dtx 11948 2026-06-03 16:02:03Z cfrees $}[v0.9.5 \revinfo]
+\ProvidesFileSVN[\MyFileBaseName-imp]{$Id: chronos.dtx 11959 2026-06-05 04:50:40Z cfrees $}[v0.9.5 \revinfo]
 \DefineFileInfoSVN
 \AddToHook{begindocument}{\AlsoImplementation}
 \expandafter\newif\csname ifchronoscodetoo\endcsname
