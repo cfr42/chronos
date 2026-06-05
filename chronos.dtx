@@ -30,7 +30,7 @@
 %^^A ref. ateb Max Chernoff: https://tex.stackexchange.com/a/723294/
 \def\MyMakePrivateLetters{\makeatletter\ExplSyntaxOn\endlinechar13}
 \ExplSyntaxOff
-\ProvidesFileSVN{$Id: chronos.dtx 11959 2026-06-05 04:50:40Z cfrees $}[v0.9.5 \revinfo][\filebase\ DTX]
+\ProvidesFileSVN{$Id: chronos.dtx 11960 2026-06-05 21:54:45Z cfrees $}[v0.9.5 \revinfo][\filebase\ DTX]
 \DefineFileInfoSVN[chronosdoc]
 \GetFileInfoSVN*
 \let\chronosdocversion\fileversion
@@ -7725,24 +7725,50 @@ mode=overlay}}.
 % \section{Example Documents}\label{sec:demos}
 %
 % \changes{v0.0}{2026-06-05}{Add examples of complete documents (per \TeX{} SE request).}
+% As per user request, this section contains a collection of complete examples.
+% The sources and output are given here, but the files may also be viewed independently i.e.~each \texttt{.tex} and \texttt{.pdf} pair is available standalone in the documentation directory.
+% This may be convenient if you wish to use one as a starting point, since copy-pasting code-listings from typeset documentation is notoriously problematic.
+%
+% Note that \texttt{chronos-demo-30.tex}, \texttt{chronos-demo-refs.tex} and \texttt{chronos-demo-memoize.tex} either produce full-page output or are incompatible with the \texttt{standalone} class, so are included with \cs{includepdf}, whereas the outputs of the remaining examples are included with \cs{includegraphics} in \texttt{figure} environments. 
+% This means that the order in which sources are listed may differ from the order in which the outputs are shown.
 %
 % \lstinputlisting{chronos-demo-01.tex}
-% \includepdf{chronos-demo-01}
+% \begin{figure}
+%   \centering
+%   \includegraphics{chronos-demo-01}
+%   \caption{\texttt{chronos-demo-01.pdf}}
+% \end{figure}
 %
 % \lstinputlisting{chronos-demo-12.tex}
-% \includepdf{chronos-demo-12}
+% \begin{figure}
+%   \centering
+%   \includegraphics{chronos-demo-12}
+%   \caption{\texttt{chronos-demo-12.pdf}}
+% \end{figure}
 %
 % \lstinputlisting{chronos-demo-19.tex}
-% \includepdf{chronos-demo-19}
+% \begin{figure}
+%   \centering
+%   \includegraphics{chronos-demo-19}
+%   \caption{\texttt{chronos-demo-19.pdf}}
+% \end{figure}
 %
 % \lstinputlisting{chronos-demo-30.tex}
 % \includepdf{chronos-demo-30}
 %
 % \lstinputlisting{chronos-demo-40.tex}
-% \includepdf{chronos-demo-40}
+% \begin{figure}
+%   \centering
+%   \includegraphics{chronos-demo-40}
+%   \caption{\texttt{chronos-demo-40.pdf}}
+% \end{figure}
 %
 % \lstinputlisting{chronos-demo-56.tex}
-% \includepdf{chronos-demo-56}
+% \begin{figure}
+%   \centering
+%   \includegraphics{chronos-demo-56}
+%   \caption{\texttt{chronos-demo-56.pdf}}
+% \end{figure}
 %
 % \lstinputlisting{chronos-demo-refs.tex}
 % \includepdf{chronos-demo-refs}
@@ -7769,7 +7795,7 @@ mode=overlay}}.
 \RequirePackage{svn-prov}
 \def\GetFileBaseName#1-#2\nil{#1}
 \edef\MyFileBaseName{\expandafter\GetFileBaseName\jobname\nil}
-\ProvidesFileSVN[\MyFileBaseName-doc]{$Id: chronos.dtx 11959 2026-06-05 04:50:40Z cfrees $}[v0.9.5 \revinfo]
+\ProvidesFileSVN[\MyFileBaseName-doc]{$Id: chronos.dtx 11960 2026-06-05 21:54:45Z cfrees $}[v0.9.5 \revinfo]
 \DefineFileInfoSVN
 \AddToHook{begindocument}{\OnlyDescription}
 \expandafter\newif\csname ifchronoscodetoo\endcsname
@@ -7782,7 +7808,7 @@ mode=overlay}}.
 \RequirePackage{svn-prov}
 \def\GetFileBaseName#1-#2\nil{#1}
 \edef\MyFileBaseName{\expandafter\GetFileBaseName\jobname\nil}
-\ProvidesFileSVN[\MyFileBaseName-imp]{$Id: chronos.dtx 11959 2026-06-05 04:50:40Z cfrees $}[v0.9.5 \revinfo]
+\ProvidesFileSVN[\MyFileBaseName-imp]{$Id: chronos.dtx 11960 2026-06-05 21:54:45Z cfrees $}[v0.9.5 \revinfo]
 \DefineFileInfoSVN
 \AddToHook{begindocument}{\AlsoImplementation}
 \expandafter\newif\csname ifchronoscodetoo\endcsname
