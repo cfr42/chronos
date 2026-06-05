@@ -30,7 +30,7 @@
 %^^A ref. ateb Max Chernoff: https://tex.stackexchange.com/a/723294/
 \def\MyMakePrivateLetters{\makeatletter\ExplSyntaxOn\endlinechar13}
 \ExplSyntaxOff
-\ProvidesFileSVN{$Id: chronos.dtx 11960 2026-06-05 21:54:45Z cfrees $}[v0.9.5 \revinfo][\filebase\ DTX]
+\ProvidesFileSVN{$Id: chronos.dtx 11961 2026-06-05 23:41:54Z cfrees $}[v0.9.5 \revinfo][\filebase\ DTX]
 \DefineFileInfoSVN[chronosdoc]
 \GetFileInfoSVN*
 \let\chronosdocversion\fileversion
@@ -7732,48 +7732,61 @@ mode=overlay}}.
 % Note that \texttt{chronos-demo-30.tex}, \texttt{chronos-demo-refs.tex} and \texttt{chronos-demo-memoize.tex} either produce full-page output or are incompatible with the \texttt{standalone} class, so are included with \cs{includepdf}, whereas the outputs of the remaining examples are included with \cs{includegraphics} in \texttt{figure} environments. 
 % This means that the order in which sources are listed may differ from the order in which the outputs are shown.
 %
-% \lstinputlisting{chronos-demo-01.tex}
+% \subsection{Six Samples}\label{subsec:demos-six}
+% These examples vary in complexity, but all render after a single compilation.
+%
+% \subsubsection{\texttt{chronos-demo-01.tex}}\label{subsubsec:demos-six-01}
+% \lstinputlisting[style=lstchronos]{chronos-demo-01.tex}
 % \begin{figure}
 %   \centering
 %   \includegraphics{chronos-demo-01}
 %   \caption{\texttt{chronos-demo-01.pdf}}
 % \end{figure}
 %
-% \lstinputlisting{chronos-demo-12.tex}
+% \subsubsection{\texttt{chronos-demo-12.tex}}\label{subsubsec:demos-six-12}
+% \lstinputlisting[style=lstchronos]{chronos-demo-12.tex}
 % \begin{figure}
 %   \centering
 %   \includegraphics{chronos-demo-12}
 %   \caption{\texttt{chronos-demo-12.pdf}}
 % \end{figure}
 %
-% \lstinputlisting{chronos-demo-19.tex}
+% \subsubsection{\texttt{chronos-demo-19.tex}}\label{subsubsec:demos-six-19}
+% \lstinputlisting[style=lstchronos]{chronos-demo-19.tex}
 % \begin{figure}
 %   \centering
 %   \includegraphics{chronos-demo-19}
 %   \caption{\texttt{chronos-demo-19.pdf}}
 % \end{figure}
 %
-% \lstinputlisting{chronos-demo-30.tex}
+% \subsubsection{\texttt{chronos-demo-30.tex}}\label{subsubsec:demos-six-30}
+% \lstinputlisting[style=lstchronos]{chronos-demo-30.tex}
 % \includepdf{chronos-demo-30}
 %
-% \lstinputlisting{chronos-demo-40.tex}
+% \subsubsection{\texttt{chronos-demo-40.tex}}\label{subsubsec:demos-six-40}
+% \lstinputlisting[style=lstchronos]{chronos-demo-40.tex}
 % \begin{figure}
 %   \centering
 %   \includegraphics{chronos-demo-40}
 %   \caption{\texttt{chronos-demo-40.pdf}}
 % \end{figure}
 %
-% \lstinputlisting{chronos-demo-56.tex}
+% \subsubsection{\texttt{chronos-demo-56.tex}}\label{subsubsec:demos-six-56}
+% \lstinputlisting[style=lstchronos]{chronos-demo-56.tex}
 % \begin{figure}
 %   \centering
 %   \includegraphics{chronos-demo-56}
 %   \caption{\texttt{chronos-demo-56.pdf}}
 % \end{figure}
 %
-% \lstinputlisting{chronos-demo-refs.tex}
+% \subsection{Integrating Citations}\label{subsec:demos-refs}
+% This file demonstrates use of citations in \cs{chronosevent}s.
+% \lstinputlisting[style=lstchronos]{chronos-demo-refs.tex}
 % \includepdf{chronos-demo-refs}
 %
-% \lstinputlisting{chronos-demo-memoize.tex}
+% \subsection{Externalisation}\label{subsec:demos-mmz}
+% This file demonstrates the use of \lpack{memoize} to externalise timelines.
+% \lstinputlisting[style=lstchronos]{chronos-demo-memoize.tex}
 % \includepdf{chronos-demo-memoize}
 %
 % 
@@ -7795,7 +7808,7 @@ mode=overlay}}.
 \RequirePackage{svn-prov}
 \def\GetFileBaseName#1-#2\nil{#1}
 \edef\MyFileBaseName{\expandafter\GetFileBaseName\jobname\nil}
-\ProvidesFileSVN[\MyFileBaseName-doc]{$Id: chronos.dtx 11960 2026-06-05 21:54:45Z cfrees $}[v0.9.5 \revinfo]
+\ProvidesFileSVN[\MyFileBaseName-doc]{$Id: chronos.dtx 11961 2026-06-05 23:41:54Z cfrees $}[v0.9.5 \revinfo]
 \DefineFileInfoSVN
 \AddToHook{begindocument}{\OnlyDescription}
 \expandafter\newif\csname ifchronoscodetoo\endcsname
@@ -7808,7 +7821,7 @@ mode=overlay}}.
 \RequirePackage{svn-prov}
 \def\GetFileBaseName#1-#2\nil{#1}
 \edef\MyFileBaseName{\expandafter\GetFileBaseName\jobname\nil}
-\ProvidesFileSVN[\MyFileBaseName-imp]{$Id: chronos.dtx 11960 2026-06-05 21:54:45Z cfrees $}[v0.9.5 \revinfo]
+\ProvidesFileSVN[\MyFileBaseName-imp]{$Id: chronos.dtx 11961 2026-06-05 23:41:54Z cfrees $}[v0.9.5 \revinfo]
 \DefineFileInfoSVN
 \AddToHook{begindocument}{\AlsoImplementation}
 \expandafter\newif\csname ifchronoscodetoo\endcsname
