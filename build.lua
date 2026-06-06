@@ -1,4 +1,4 @@
--- $Id: build.lua 11959 2026-06-05 04:50:40Z cfrees $
+-- $Id: build.lua 11962 2026-06-06 01:03:00Z cfrees $
 -- Build configuration for chronos
 --------------------------------------------------------------------------------
 maindir = maindir or "."
@@ -25,7 +25,7 @@ typesetruns = 5 -- 4
 uploadconfig = {
   ctanPath = "/macros/latex/contrib/chronos",
   pkg = "chronos",
-  version = "v0.9.5",
+  version = "v0.9.6",
   author = "Clea F. Rees",
   uploader = "Clea F. Rees",
   license = "lppl1.3c",
